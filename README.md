@@ -7,10 +7,10 @@
 Remember https://cyanogenmodroms.com/oneplus3/
 
 PowerShell not Terminal
-press
+- press
 
 APK not DEB
-droid-examiner
+- droid-examiner
 textadept
 ungoogled-chromium-android
 Catlog
