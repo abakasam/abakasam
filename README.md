@@ -7,25 +7,25 @@
 Remember https://cyanogenmodroms.com/oneplus3/
 
 PowerShell not Terminal
-- press
+* Press (press)
 
 APK not DEB
-- droid-examiner
-textadept
-ungoogled-chromium-android
-Catlog
+* Droid Examiner (droid-examiner)
+* Textadept (textadept)
+* Ungoogled Chromium (ungoogled-chromium-android)
+* Catlog (Catlog)
 
-Cyanogenmod still going
-android_kernel_oneplus_msm8996
-android_device_oneplus_oneplus3
+Cyanogenmod still going...
+* OnePlus 3 Kernel MSM8996 (android_kernel_oneplus_msm8996)
+* OnePlus 3 Cyanogenmod (android_kernel_oneplus_oneplus3)
 
 Know Assembly or fail Programming
-tiboyse
-gamelate
+* TI-Boy
+* Gamelate
 
 Joy of programming when you make it come alive and use it in video game development
-1993FD
-corewar.io
+* NABIS (1993FD)
+* Core War (corewar.io)
 
 <!---
 abakasam/abakasam is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
