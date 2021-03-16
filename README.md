@@ -6,10 +6,10 @@
 
 Remember https://cyanogenmodroms.com/oneplus3/
 
-PowerShell not Terminal
+PowerShell not terminal
 * Press (press)
 
-APK not DEB
+*.apk not *.deb
 * Droid Examiner (droid-examiner)
 * Textadept (textadept)
 * Ungoogled Chromium (ungoogled-chromium-android)
@@ -19,7 +19,7 @@ Cyanogenmod still going...
 * OnePlus 3 Kernel MSM8996 (android_kernel_oneplus_msm8996)
 * OnePlus 3 Cyanogenmod (android_kernel_oneplus_oneplus3)
 
-Know Assembly or fail Programming
+Know assembly or fail programming
 * TI-Boy (tiboyse)
 * Gamelate (gamelate)
 
