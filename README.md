@@ -20,8 +20,8 @@ Cyanogenmod still going...
 * OnePlus 3 Cyanogenmod (android_kernel_oneplus_oneplus3)
 
 Know Assembly or fail Programming
-* TI-Boy
-* Gamelate
+* TI-Boy (tiboyse)
+* Gamelate (gamelate)
 
 Joy of programming when you make it come alive and use it in video game development
 * NABIS (1993FD)
