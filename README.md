@@ -22,6 +22,7 @@ Cyanogenmod still going...
 Know assembly or fail programming
 * TI-Boy (tiboyse)
 * Gamelate (gamelate)
+* Visual Boy Advanced (vba)
 
 Joy of programming when you make it come alive and use it in video game development
 * NABIS (1993FD)
