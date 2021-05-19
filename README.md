@@ -4,6 +4,8 @@
 - 💞️ I’m looking to collaborate on ... TI-Boy
 - 📫 How to reach me ... (469) 214-2094
 
+Work!
+
 Remember https://cyanogenmodroms.com/oneplus3/
 
 PowerShell not terminal
