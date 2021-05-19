@@ -11,18 +11,18 @@ set | description     | values
  f  | choice          | 6,3,9,2,4
  g  | result          | y,y,y,n,y 
 
-Game Boy                 | |
--------------------------| |
-Metal Gear: Ghost Babel  | |
-Pokemon                  | https://github.com/pret/pokeyellow |
-PowerQuest               | |
-XMEN                     | |
-Mirror's Edge            | |
+Game Boy                 | 
+-------------------------|-- 
+Metal Gear: Ghost Babel  | 
+Pokemon                  | https://github.com/pret/pokeyellow 
+PowerQuest               | 
+XMEN                     | 
+Mirror's Edge            | 
 
-Game Boy Advance         | |
--------------------------| |
-Super Mario World        | |
-Yoshi's Island           | |
+Game Boy Advance         | 
+-------------------------|-- 
+Super Mario World        |
+Yoshi's Island           | 
 
 ## Welcome to GitHub Pages
 
