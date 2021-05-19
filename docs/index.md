@@ -1,3 +1,6 @@
+So much to write own...
+Start with Gamelate!
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/abakasam/abakasam/edit/pages/docs/index.md) to maintain and preview the content for your website in Markdown files.
