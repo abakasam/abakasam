@@ -1,8 +1,8 @@
 So much to write own...
 Start with Gamelate!
 
-Game Boy                 | 
--------------------------|
+Game Boy                 | Source
+-------------------------|--------
 Metal Gear: Ghost Babel  | 
 Pokemon                  | 
 PowerQuest               | 
