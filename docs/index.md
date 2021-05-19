@@ -2,15 +2,15 @@ So much to write own...
 Start with Gamelate!
 
 Game Boy
-| Metal Gear: Ghost Babel |
-| Pokemon | https://github.com/pret/pokeyellow
-| PowerQuest |
-| XMEN |
-| Mirror's Edge |
+Metal Gear: Ghost Babel | |
+Pokemon | https://github.com/pret/pokeyellow |
+PowerQuest | |
+XMEN | |
+Mirror's Edge | |
 
 Game Boy Advance
-| Super Mario World |
-| Yoshi's Island |
+Super Mario World | |
+Yoshi's Island | |
 
 ## Welcome to GitHub Pages
 
