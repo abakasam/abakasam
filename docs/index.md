@@ -1,6 +1,16 @@
 So much to write own...
 Start with Gamelate!
 
+set | description     | values
+----|-----------------|---------------------
+ a  | order           | 1,2,3,4,5,6,7,8,9,10
+ b  | position        | 8,1,4,10,3,2,7,9,6,5
+ c  | (even) answer   | 2,4,6,8,10
+ d  | (odd)  question | 1,3,5,7,9
+ e  | d               | 6,3,9,1,4
+ f  | choice          | 6,3,9,2,4
+ g  | result          | y,y,y,n,y 
+
 Game Boy                 | |
 -------------------------| |
 Metal Gear: Ghost Babel  | |
