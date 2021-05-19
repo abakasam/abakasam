@@ -1,6 +1,3 @@
-So much to write own...
-Start with Gamelate!
-
 Project     | Purpose 
 ------------|----------------------------------------------------------------------------
 1993FD      | Symbolic language for describing computer viruses
