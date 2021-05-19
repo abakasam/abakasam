@@ -1,13 +1,13 @@
 So much to write own...
 Start with Gamelate!
 
-Game Boy                 | 
--------------------------|--
-Metal Gear: Ghost Babel  | a
-Pokemon                  | a
-PowerQuest               | a
-XMEN                     | a
-Mirror's Edge            | a
+Game Boy                 |   |
+-------------------------|---|--
+Metal Gear: Ghost Babel  | a |
+Pokemon                  | a |
+PowerQuest               | a |
+XMEN                     | a |
+Mirror's Edge            | a |
 
 Game Boy Advance         | 
 -------------------------| 
