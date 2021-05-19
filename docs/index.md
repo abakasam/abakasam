@@ -1,19 +1,18 @@
 So much to write own...
 Start with Gamelate!
 
-Game Boy                 | Source
+Game Boy (Z80)           | Source
+-------------------------|-------- 
+XMEN                     | 
+Mirror's Edge            |
+
+Game Boy Advance (ARM)   | Source 
 -------------------------|--------
+Super Mario World        |
+Yoshi's Island           |
 Metal Gear: Ghost Babel  | 
 Pokemon                  | 
-PowerQuest               | 
-XMEN                     | 
-Mirror's Edge            | 
-a                        |
-
-Game Boy Advance         | 
--------------------------| 
-Super Mario World        | a
-Yoshi's Island           | a
+PowerQuest               |
 
 ## Welcome to GitHub Pages
 
