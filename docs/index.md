@@ -6,6 +6,18 @@ Ionic(v1)   | Fourth and third market for seperate technologies given Amazon and
 Cordova     | Identify when a .apk is not for using adequate hardware
 Cyanogenmod | Keep an OS that can hack
 
+* 1993FD
+  * Corewar - Program like Bejeweled for scientist
+* Cyanogenmod - Keep with latest Android release
+  * Copperhead - Keep with latest Android release
+  * Windows 9 - Build with Microsoft and ReactOS
+  * EncFS - More freedom when can survive without encryption   
+* Gamelate
+  * PSP - Build my games for and then Xbox marketplace
+  * Watson - Use as intelligence in 3D video game
+  * CLISP - Use as intelligence in 2D video game
+  * MonoGame - Keep Game Boy and PSP compilation
+
 * assail
 * ass-ail
 * emo-qatar
