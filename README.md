@@ -5,6 +5,7 @@
 - 📫 How to reach me ... (469) 214-2094
 
 Remember https://cyanogenmodroms.com/oneplus3/
+Oh,... One ... Plus ... https://www.oneplus.com/
 
 PowerShell not terminal
 * Press (press)
