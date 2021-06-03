@@ -6,6 +6,32 @@ Ionic(v1)   | Fourth and third market for seperate technologies given Amazon and
 Cordova     | Identify when a .apk is not for using adequate hardware
 Cyanogenmod | Keep an OS that can hack
 
+* assail
+* ass-ail
+* emo-qatar
+* a(e)mo qa(ta)r
+* amoqar
+
+License   | Organization
+----------|-------------------------------------
+Apache-2.0| Apache License 2.0
+MS-PL     | Microsoft Public License
+MIT       | MIT License
+SISSL     | Sun Industry Standards Source License
+NASA-1.3  | NASA Open Source Agreements 1.3
+Intel     | Intel Open Source License
+IPL-1.0   | IBM Public License 1.0
+
+License   | Organization   | ---------------------------
+----------|----------------|-----------------------------
+Intel     | Nintendo       | ticalc
+NASA-1.3  | NASA           | CLISP
+MS-PL     | Microsoft      | MonoGame
+IPL-1.0   | Sony           | PSP, Watson
+SISSL     | Ahijuna        | Cyanogenmod, Copperhead, Windows 9 (NUI)
+MIT       | ISAL           | Gamelate
+Apache-2.0| Google         | 1993FD, Cordova, Ionic (v1)
+
 OS      | Desktop | Mobile
 --------|---------|--------
 Chrome  | .apk    | .js
