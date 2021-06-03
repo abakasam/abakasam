@@ -61,3 +61,16 @@ Yoshi's Island           |
 Metal Gear: Ghost Babel  | 
 Pokemon                  | https://github.com/pret/pokeyellow
 PowerQuest               |
+
+Use          | Domain
+-------------|------
+Organization | .org
+Network      | .net
+Business (US)| .com
+International| .it .(country or state) 
+National     | .us
+Government   | .gov
+Military     | .mil
+School       | .edu
+Development  | .io
+
