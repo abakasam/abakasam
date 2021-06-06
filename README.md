@@ -7,6 +7,12 @@
 Remember https://cyanogenmodroms.com/oneplus3/
 Oh,... One ... Plus ... https://www.oneplus.com/
 
+Phone OS with only Phone, SMS, Instant Camera, Cloud Storage, VOIP, Video Conferencing, Bluetooth
+
+Telephone OS with only (home) Phone
+
+Smartphone, Telephone, Phone
+
 PowerShell not terminal
 * Press (press)
 
