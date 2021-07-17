@@ -1,39 +1,50 @@
 #!/bin/bash
 
-optionshelp()
+source my.config
+
+usage()
 {
-   echo "Save current progress to GitHub"
+   echo "Upload files to GitHub"
    echo
-   echo "Syntax: ./save-github [-g|r|a|c] <commitmessage>"
+   echo "Usage: ./save-github --option <message>"
+   echo
    echo "options:"
-   echo
-   echo "h     Print script help"
-   echo "r     See username, email, and repository in use"
-   echo "a     See added"
-   echo "c     See commit"
+   echo "--help            Show help for save-github"
+   echo "--user            Show current user and their email"
+   echo "--saving          List files being modified"
 }
 
-while getopts ":hrn:" option; do
-   case $option in
-      h)
-         optionshelp
-         exit;;
-      r)
-         git config --list --show-origin
-         exit;;
-      n)
-         exit;;
-         # Name=$OPTARG;; Wait for input and store in bash variable
-     \?)
-         echo "Error: Invalid option"
-         exit;;
-   esac
+flags="abcd:"
+options="help,user,files,save:"
+getopt -o $flags --long $options
+
+echo $1
+while true $1
+do
+	case $1 in
+		--help)
+			usage
+			exit
+			;;
+    	--user)
+			git config --list --show-origin
+			exit
+			;;
+		--saving)
+         for directory in $directoryproject $directoryuser
+         do
+            echo $directory
+            cd $directory
+            git add -A
+            git ls-files --stage
+         done
+			exit
+			;;
+      "")
+         message=$2
+         git commit -m $message
+         git push
+         exit
+         ;;
+  esac
 done
-
-commitmessage=$1
-echo $commitmessage
-
-git add -A $directoryproject
-git status
-exit 0
-git commit $commitmessage
