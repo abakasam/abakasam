@@ -6,7 +6,7 @@ usage()
 {
 	echo "Upload files to GitHub"
 	echo
-	echo "Usage: ./save-github.sh --option <message>"
+	echo "Usage: ./save-github.sh <message> --option"
 	echo
 	echo "options:"
 	echo "--help            Show help for save-github"
@@ -16,9 +16,8 @@ usage()
 
 flags="abcd:"
 options="help,user,files,save:"
-getopt -o $flags --long $options
+output=$(getopt -o $flags --long $options)
 
-echo $1
 while true $1
 do
 	case $1 in
@@ -39,17 +38,18 @@ do
 		 	done
 			exit
 			;;
-		"")
-			message=$2
-			for directory in $directoryproject $directoryuser
-			do
-				echo $directory
-				cd $directory
-				git add -A
-		 	done
-			git commit -m $message
-			git push
-			exit
+		*)
+			break
 			;;
 	esac
 done
+
+message=$1
+for directory in $directoryproject $directoryuser
+do
+	echo $directory
+	cd $directory
+	git add -A
+done
+git commit -m "$message"
+git push
