@@ -4,14 +4,14 @@ source my.config
 
 usage()
 {
-   echo "Upload files to GitHub"
-   echo
-   echo "Usage: ./save-github --option <message>"
-   echo
-   echo "options:"
-   echo "--help            Show help for save-github"
-   echo "--user            Show current user and their email"
-   echo "--saving          List files being modified"
+	echo "Upload files to GitHub"
+	echo
+	echo "Usage: ./save-github.sh --option <message>"
+	echo
+	echo "options:"
+	echo "--help            Show help for save-github"
+	echo "--user            Show current user and their email"
+	echo "--saving          List files being modified"
 }
 
 flags="abcd:"
@@ -26,25 +26,30 @@ do
 			usage
 			exit
 			;;
-    	--user)
+		--user)
 			git config --list --show-origin
 			exit
 			;;
 		--saving)
-         for directory in $directoryproject $directoryuser
-         do
-            echo $directory
-            cd $directory
-            git add -A
-            git ls-files --stage
-         done
+			for directory in $directoryproject $directoryuser
+			do
+				echo $directory
+				cd $directory
+				git ls-files --stage
+		 	done
 			exit
 			;;
-      "")
-         message=$2
-         git commit -m $message
-         git push
-         exit
-         ;;
-  esac
+		"")
+			message=$2
+			for directory in $directoryproject $directoryuser
+			do
+				echo $directory
+				cd $directory
+				git add -A
+		 	done
+			git commit -m $message
+			git push
+			exit
+			;;
+	esac
 done
