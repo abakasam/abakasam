@@ -49,7 +49,7 @@ for directory in $directoryproject $directoryuser
 do
 	echo $directory
 	cd $directory
-	git add -A
+	git add --all
 done
 git commit -m "$message"
 git push
