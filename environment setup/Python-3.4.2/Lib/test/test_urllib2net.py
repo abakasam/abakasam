@@ -101,7 +101,7 @@ class OtherNetworkTests(unittest.TestCase):
     # XXX The rest of these tests aren't very good -- they don't check much.
     # They do sometimes catch some major disasters, though.
 
-    def test_ftp(self):
+    """ def test_ftp(self):
         urls = [
             'ftp://ftp.debian.org/debian/README',
             ('ftp://ftp.debian.org/debian/non-existent-file',
@@ -109,7 +109,7 @@ class OtherNetworkTests(unittest.TestCase):
             'ftp://gatekeeper.research.compaq.com/pub/DEC/SRC'
                 '/research-reports/00README-Legal-Rules-Regs',
             ]
-        self._test_urls(urls, self._extra_handlers())
+        self._test_urls(urls, self._extra_handlers()) """
 
     def test_file(self):
         TESTFN = support.TESTFN
