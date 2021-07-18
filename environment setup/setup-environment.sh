@@ -18,4 +18,6 @@ skip:
 #tar -xf node-v0.12.0.tar.gz
 #mv node-v0.12.0.tar.gz node-v0.12.0
 
-#wget https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
+wget https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
+tar -xf Python-3.4.2.tgz
+mv Python-3.4.2.tgz Python-3.4.2
