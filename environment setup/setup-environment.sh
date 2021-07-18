@@ -14,6 +14,8 @@ git clone $projectURL
 
 skip:
 
-wget https://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz
-tar -xf node-v0.12.0.tar.gz
-mv node-v0.12.0.tar.gz node-v0.12.0
+#wget https://nodejs.org/dist/v0.12.0/node-v0.12.0.tar.gz
+#tar -xf node-v0.12.0.tar.gz
+#mv node-v0.12.0.tar.gz node-v0.12.0
+
+#wget https://www.python.org/ftp/python/3.4.2/Python-3.4.2.tgz
