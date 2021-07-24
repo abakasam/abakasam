@@ -11,6 +11,8 @@ cd $directoryworking
 git clone $userURL
 git clone $projectURL
 
+exit
+
 packagenode="v0.12.18"
 wget https://nodejs.org/dist/$packagenode/node-$packagenode.tar.gz
 tar -xf node-$packagenode.tar.gz
