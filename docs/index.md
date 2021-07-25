@@ -51,6 +51,13 @@ Mac     | .dmg    | .ipa
 Windows | .exe    | .xap
 Ubuntu  | .deb    | .pro
 
+release | scripts | package | SOURCE
+--------|---------|---------|--------
+ msi    | .ps1    | .nupkg  | .zip
+ apk    | ?       | ?       | !.aar
+ dmg    | ?       | ?       | ?
+ ?      | .sh     | .deb    | .tar.gz  
+
 Google      | Love
 ------------|------------------------------------------
 Chromium    | Make sure Google has an OS
