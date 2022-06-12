@@ -1,0 +1,37 @@
+06102022 Bash Paramater Substitution
+
+https://www.cnblogs.com/tekkaman/archive/2013/12/06/3461317.html
+
+${NAME}       polish.ostrich.racing.champion
+${NAME#*.}           ostrich.racing.champion
+${NAME##*.}                         champion
+${NAME%%.*}   polish
+${NAME%.*}    polish.ostrich.racing
+
+${FILE}       /usr/share/java-1.4.2-sun/demo/applets/Clock/Clock.class
+${FILE#*/}     usr/share/java-1.4.2-sun/demo/applets/Clock/Clock.class
+${FILE##*/}                                                Clock.class
+${FILE%%/*}
+${FILE%/*}    /usr/share/java-1.4.2-sun/demo/applets/Clock
+
+${string:2:1}   # The third character of string (0, 1, 2 = third)
+${string:1}     # The string starting from the second character
+${string%?}     # The string with its last character removed.
+${string: -1}   # The last character of string
+${string:(-1)}  # The last character of string, alternate syntax
+
+${file%.mp3}    # The filename without the .mp3 extension
+${file%.*}      # The filename without its last extension
+${file%%.*}     # The filename without all of its extensions
+${file##*.}     # The extension only, assuming there is one. If not, will expand to ${file}
+
+# string='hello, World!'
+${string^}    Hello, World! # First character to uppercase
+${string^^}   HELLO, WORLD! # All characters to uppercase
+${string,}    hello, World! # First character to lowercase
+${string,,}   hello, world! # All characters to lowercase
+
+${var-word}             # if var is defined, use var; otherwise, "word"
+${var+word}             # if var is defined, use "word"; otherwise, nothing
+${var=word}             # if var is defined, use var; otherwise, use "word" AND...
+${var?error}            # if var is defined, use var; otherwise print "error" and exit

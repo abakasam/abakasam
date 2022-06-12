@@ -1,8 +1,8 @@
 - 👋 Hi, I’m @abakasam
-- 👀 I’m interested in ... Video Games
+- 👀 I’m interested in ... Game Development
 - 🌱 I’m currently learning ... Z80
 - 💞️ I’m looking to collaborate on ... MonoGame
-- 📫 How to reach me ... (469) 214-2094
+- 📫 How to reach me ... (Google Fi)
 
 Remember https://cyanogenmodroms.com/oneplus3/
 Oh,... One ... Plus ... https://www.oneplus.com/
