@@ -1,0 +1,26 @@
+06132022 Using date in Bash
+
+https://www.jianshu.com/p/cc9ebb212a8e
+
+date '+%Y-%m-%d %H:%M:%S'	# 2021-08-17 22:49:57
+date '+%Y-%m-%d'			# 2021-08-17
+date '+%Y%m%d'				# 20210817
+date +%Y%m%d				# 20210817
+date +%s					# 1629211600
+date -d '2021-06-18 13:13:13' 				# 2021年 06月 18日 星期五 13:13:13 CST
+date -d '2021-06-18'						# 2021年 06月 18日 星期五 00:00:00 CST
+date -d '20210618'							# 2021年 06月 18日 星期五 00:00:00 CST
+date -d @1629535772 '+%Y-%m-%d %H:%M:%S'	# 2021-08-21 16:49:32
+date -d '2018-05-13' '+%Y'  				# 2018
+date -d 'yesterday'		# 2021年 08月 20日 星期五 17:24:14 CST
+date -d 'tomorrow'		# 2021年 08月 22日 星期日 17:24:54 CST
+date -d 'next day'		# 2021年 08月 22日 星期日 17:24:54 CST
+date -d '2 days ago'	# 2021年 08月 19日 星期四 17:24:24 CST
+date -d '1 hour ago'	# 2021年 08月 21日 星期六 16:24:33 CST
+date -d '2021-03-03 11:11:11 1 hour ago' 	# 2021年 03月 03日 星期三 10:11:11 CST
+date -d '2021-01-01 -1day'
+date -d '2021-01-01 +1day'					# 2021年 01月 02日 星期六 00:00:00 CST
+date -d '2021-01-01 1 minute ago' 			# 2020年 12月 31日 星期四 23:59:00 CST
+
+https://www.cnblogs.com/workingdiary/p/12888531.html
+https://blog.csdn.net/huqin186/article/details/51753511?locationNum=9&fps=1

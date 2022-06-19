@@ -7,5 +7,62 @@ comment
 /workspace/abakasam/scripts/code/index.js 11 // TODO: message (Review)
 
 map
+
+function   (executable) /scripts
+project    (folder)     /scripts/.
+project    (folder)     /scripts/..
+project    (folder)     /scripts/INSTALL.md
+project    (folder)     /scripts/code
+project    (folder)     /scripts/codeprojectarticleupload.sh
+project    (folder)     /scripts/environment
+project    (folder)     /scripts/filecopy.sh
+project    (folder)     /scripts/main.sh
+project    (folder)     /scripts/code
+assignment (folder)     /scripts/code/.
+assignment (folder)     /scripts/code/..
+assignment (folder)     /scripts/code/...code
+assignment (folder)     /scripts/code/...code
+task       (file)       /scripts/code/...code/.
+task       (file)       /scripts/code/...code/..
+task       (file)       /scripts/code/...code/README.md
+task       (file)       /scripts/code/...code/TODO
+task       (file)       /scripts/code/...code/TODO.see
+task       (file)       /scripts/code/...code/commentcode.help
+task       (file)       /scripts/code/...code/commentcode.languages
+task       (file)       /scripts/code/...code/commentcode.sh
+task       (file)       /scripts/code/...code/index.js
+task       (file)       /scripts/code/...code/listing
+task       (file)       /scripts/code/...code/mapcode.sh
+project    (folder)     /scripts/environment
+assignment (folder)     /scripts/environment/.
+assignment (folder)     /scripts/environment/..
+assignment (folder)     /scripts/environment/Workspace
+assignment (folder)     /scripts/environment/Workspace
+task       (file)       /scripts/environment/Workspace/.
+task       (file)       /scripts/environment/Workspace/..
+task       (file)       /scripts/environment/Workspace/README.md
+task       (file)       /scripts/environment/Workspace/index.sh
+task       (file)       /scripts/environment/Workspace/my.config
+task       (file)       /scripts/environment/Workspace/save-github.sh
+task       (file)       /scripts/environment/Workspace/setup-environment.sh
+task       (file)       /scripts/environment/Workspace/setup-environment.sh.tmp
+
 see
+
+/home/cabox/workspace/abakasam/scripts/code/...code/main.sh Hello
+/home/cabox/workspace/abakasam/scripts/code/...code/main.sh Hi
+/home/cabox/workspace/abakasam/scripts/code/...code/main.sh Yup
+/home/cabox/workspace/abakasam/scripts/code/...code/main.sh name() Yay
+/home/cabox/workspace/abakasam/scripts/code/...code/main.sh Sup
+/home/cabox/workspace/abakasam/scripts/code/...code/main.sh name2() Go
+/home/cabox/workspace/abakasam/scripts/code/...code/main.sh Good
+
 interface
+
+aprogram/
+aprogram/index-driver.html
+aprogram/server-driver.js
+aprogram/aclass
+aprogram/aclass/aclass-members.js
+aprogram/aclass/aobject
+aprogram/aclass/aobject/aobject-members.js

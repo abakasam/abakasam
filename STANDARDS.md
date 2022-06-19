@@ -1,0 +1,40 @@
+programming
+abakasam Virus Writing			(Drifty)
+Asail    Game Development		helix > github > azure > everhour > wikidot > godaddy > sites
+Aquaogen Software Engineering	(Drifty)
+Drifty   Web Development		github > codeanywhere > codetree > office > onedrive > mediafire > wikidot > codeproject > sites
+Sunsoft  Robotics Engineering	(Microsoft)
+Whisper	 Cryptography			(Netgear)
+
+abakasam programming Monogame	GitHub
+Aquaogen programming OnePlus	LinkedIn
+Drifty   programming Ionic		LinkedIn
+Whisper  programming Netgear	LinkedIn
+Runflash running	 Starbucks	Facebook
+Firestar racing		 Toyota		LinkedIn
+?		 racing 	 Greddy	 	LinkedIn
+Starbuck racing		 Camden		LinkedIn	
+Gabet    gaming		 Microsoft	Facebook
+Sunsoft  gaming 	 SHADE		LinkedIn
+Asail	 gaming		 SHADE		Facebook
+
+NEWS				  u
+code report           f
+ comment
+ map
+ see
+ interface
+project report
+ programming meeting  u
+ project portfolio    u
+ progress report      f
+document
+ change.log           usf
+ blog                 usf
+ code project		  s
+ wikidot			  u
+
+style
+ no abbreviations
+ use change log
+ only use developer comments

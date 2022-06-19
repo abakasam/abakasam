@@ -1,0 +1,15 @@
+assignment (file)                 /scripts/code/...code
+task       (file / block)         /scripts/code/...code/.
+task       (file / block)         /scripts/code/...code/..
+task       (file / block)         /scripts/code/...code/README.md
+task       (file / block)         /scripts/code/...code/TODO
+task       (file / block)         /scripts/code/...code/commentcode.help
+task       (file / block)         /scripts/code/...code/commentcode.languages
+task       (file / block)         /scripts/code/...code/commentcode.sh
+task       (file / block)         /scripts/code/...code/index.js
+task       (file / block)         /scripts/code/...code/interfacecode.sh
+task       (file / block)         /scripts/code/...code/listing
+task       (file / block)         /scripts/code/...code/mapcode.sh
+task       (file / block)         /scripts/code/...code/output.lg
+task       (file / block)         /scripts/code/...code/output.log
+task       (file / block)         /scripts/code/...code/seecode.sh
