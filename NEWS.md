@@ -8,6 +8,12 @@ Drifty
 Sunsoft
 Whisper
 
+19, June 2022
+
+abakasam	corewar, vx classify
+Asail		psp, nintendo ds, clisp game es
+Drifty		reactos, metro ui, ionic v1, io.js, oneplus3 cyanogenmod
+
 17, June 2022
 
 abakasam	Creating environment and code scripts, Creating blog and uploading

@@ -1,9 +1,18 @@
+Title Language Description Platform Technology Topic Subtopic Subsection Type Abstract
+
+06052022 Installing X Windows System on CentOS
+06062022 CentOS Subdomains
+06072022 Virtualize CentOS
 06082022 Configure SSH Login Codeanywhere
 06092022 Bash Using date
-06102022 Bash Paramater Substitution
+06102022 Bash ParameterSubstitution Linux ShellProgramming StringManipulation GeneralProgramming Strings Tip Avoiding the use of regular expression reducing number of languages used
 06112022 ...code Code Standard Expected Output
 06122022 Bash Checking for Element in Array
 06132022 sed Replace line
 06142022 Bash try catch
 06152022 Bash Redirection and Output
 06162022 User Blog and Change Log
+06172022 CodeProject GitHub Blog Upload
+06182022 Bash getopt Flags or Options
+06192022 Git Basic Use
+06202022 CentOS yum localinstall [y/d/N]:d

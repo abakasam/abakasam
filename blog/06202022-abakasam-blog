@@ -1,0 +1,10 @@
+06202022 CentOS yum localinstall [y/d/N]:d
+
+https://centos.pkgs.org/7/centos-x86_64/libX11-1.6.7-2.el7.x86_64.rpm.html
+http://www.koth.org/pmars/
+https://www.x.org/wiki/
+https://blog.csdn.net/u012140133/article/details/51944655?locationNum=15&fps=1
+https://www.cnblogs.com/x1499872666/p/14010891.html
+https://www.jianshu.com/p/871682a50c19
+
+yum localinstall .rpm --downloaddir=""

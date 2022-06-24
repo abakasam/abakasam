@@ -1,4 +1,4 @@
-06102022 Bash Paramater Substitution
+06102022 Bash ParameterSubstitution Linux ShellProgramming StringManipulation GeneralProgramming Strings Avoiding the use of regular expression reducing number of languages used
 
 https://www.cnblogs.com/tekkaman/archive/2013/12/06/3461317.html
 
@@ -42,6 +42,8 @@ ${string}
 "$string"
 "$string $string2"
 ${string[@]}
+"${string[@]}"
 ${stirng[*]}
 ${string[@]:2:1}
+${string[@]:2}
 ${string[3]}
