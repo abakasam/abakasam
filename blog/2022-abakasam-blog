@@ -1,4 +1,6 @@
-Title Language Description Platform Technology Topic Subtopic Subsection Type Abstract
+
+BLOGS
+Date Title Language Description Platform Technology Topic Subtopic Subsection Type Abstract
 
 06052022 Installing X Windows System on CentOS
 06062022 CentOS Subdomains
@@ -16,3 +18,35 @@ Title Language Description Platform Technology Topic Subtopic Subsection Type Ab
 06182022 Bash getopt Flags or Options
 06192022 Git Basic Use
 06202022 CentOS yum localinstall [y/d/N]:d
+
+NOTES
+
+Apress		Google
+Manning		not Google 
+O'Reilly	Programming 
+Dover		Math 
+Penguin		Novels 
+Symantec	Theoretical 
+
+
+PHP						O'Reilly
+SQL						SQL In A Nutshell, by Kevin Kline
+Ionic					Mobile App Development with Ionic: Cross-Platform Apps with Ionic, Angular, and Cordova, by Chris Griffith
+Cyanogenmod				CyanogenMod: Installation und Praxis, by Christian Immler
+Bash					Learning the bash Shell: Unix Shell Programming, by Cameron Newham
+CentOS					
+Heroku					Heroku: Up and Running: Effortless Application Deployment and Scaling, by Neil Middleton
+Git						O'Reilly
+C						Practical C Programming, by Steve Oualline
+C++						Practical C++ Programming, by Steve Oualline
+HTML					O'Reilly
+CSS						O'Reilly
+Javascript				O'Reilly
+XML						HTML and XHTML: The Definitive Guide, by Chuck Musciano
+Powershell				Microsoft Windows PowerShell: Step By Step, by Ed Wilson
+Angular					Apress
+React					
+Bootstrap				
+Node					Manning?Apress
+JQuery					Manning
+Python					

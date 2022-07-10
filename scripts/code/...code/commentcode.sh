@@ -21,16 +21,20 @@ todofile=$3
 
 declare -A streams
 
-streams[js]="console.log(<message>)"
-streams[sh]="echo (<message>)"
+streams[js]="console.log('<message>')"
+streams[sh]="echo (\"<message>\")"
 
 if [[ ${streams[$language]} == "" ]];
 then :
     echo "Langauge, ${language}, not supported"
     exit
 fi
-
+# TODO: List and grep
+echo $path
 cd $path
+pwd
+ls -R | grep "*.js"
+exit
 files=$(ls *.$language)
 
 if [[ $path == "." ]];
@@ -45,8 +49,9 @@ declare -a lines
 
 for file in ${files[@]}
 do 
-    while read line
-    do
+	echo $file
+	
+    while read -r line || [[ -n $line ]]; do
         lines[${#lines[@]}]="${#lines[@]} $line"
     done < $file
 
@@ -66,14 +71,15 @@ do
         status=${status%%)*}
         
         if [[ "Complete" == $status ]];
-        then :
+        then :		
             # TODO: Mark to be reviewed (Complete)
             line=${line/"Complete"/"Review"}
         fi
         if [[ "Reviewed" == $status ]];
         then :
+			# BUG: Last line not read
             # TODO: Convert into console output (Complete)
-            line=${streams[$language]/"<message>"/$message}
+            line="$count ${streams[$language]/"<message>"/$message}"
         fi
 
         for typed in ${types[@]}
@@ -98,5 +104,6 @@ touch $todofile
 
 for comment in "${comments[@]}"
 do
+	echo "$comment"
     echo "$comment" >> $todofile
 done

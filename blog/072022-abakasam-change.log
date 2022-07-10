@@ -1,0 +1,1230 @@
+SQL UPDATE fail
+
+mysql | pg | sqlite - connection options
+database - name of the database to use for this connection (sqlite: absolute path to a database file)
+user - database user to authenticate with
+password - password for that database user
+schema - used only with PostgreSQL (default: "public")
+server - server configuration
+port - the server's port number (default: 3000)
+app - admin application configuration
+layouts - toggle the layout button
+themes - toggle the themes button
+languages - toggle the languages button
+root - root location for the admin (used only when embedding)
+upload - absolute path to the upload folder (default: "public/upload")
+
+https://simov.github.io/express-admin/#configjson
+mysql://b8f3dd1d8d9c29:0611b499@us-cdbr-east-04.cleardb.com/heroku_23ebff43a942f06?reconnect=true
+database type: 		mysql
+database name: 		heroku_23ebff43a942f06
+database user: 		b8f3dd1d8d9c29
+database password: 	0611b499
+server port:		3000
+admin user:			database name
+
+	host: 'us-cdbr-east-04.cleardb.com',
+	user: 'b8f3dd1d8d9c29',
+	password: '0611b499',
+	database: 'heroku_23ebff43a942f06',
+	multipleStatements: true
+}
+
+mysql
+	database
+
+return
+
+function call(task, records) {
+	console.log(query[task])
+	console.log(records[query['placeholder'][task]])
+	
+
+	if(task == 'ORDER') {
+		var columns = records
+		records[query['placeholder'][task]] =  [[columns.phone, columns.item, columns.location, columns.time]]
+		console.log(records[query['placeholder'][task]])
+	}
+	
+	connection.query(query[task], records[query['placeholder'][task]], function(errors, results, fields) {
+		module.exports.results = results
+
+		query.after[task]()
+	})
+}
+
+INSERT INTO ORDERS (PHONE, ITEM, LOCATION, TIME) VALUES (?)
+
+UPDATE ORDERS SET PHONE = columns.phone, ITEM = columns.item, LOCATION = columns.location, TIME = columns.time WHERE PHONE = columns.phone AND TIME = columns.time
+
+if(task == 'ORDER') {
+	var columns = records
+	records[query['placeholder'][task]] =  [[columns.phone, columns.item, columns.location, columns.time]]
+	console.log(records[query['placeholder'][task]])
+}
+
+work as
+
+Express
+http://expressjs.com/en/resources/middleware/multer.html
+
+
+app.post('/file_upload', function (req, res) {
+ 
+   console.log(req.files[0]);  // 上传的文件信息
+ 
+   var des_file = __dirname + "/" + req.files[0].originalname;
+   fs.readFile( req.files[0].path, function (err, data) {
+        fs.writeFile(des_file, data, function (err) {
+         if( err ){
+              console.log( err );
+         }else{
+               response = {
+                   message:'File uploaded successfully', 
+                   filename:req.files[0].originalname
+              };
+          }
+          console.log( response );
+          res.end( JSON.stringify( response ) );
+       });
+   });
+})
+
+https://www.jianshu.com/p/b5973ef87f73
+https://www.cnblogs.com/mq0036/p/5243312.html
+https://itbilu.com/nodejs/npm/Vkp32gJpg.html
+
+	var url = {}
+	url.slug = request.originalUrl
+	url.parameters = url.slug.substring(2).split('&')
+	request.next = next
+
+https://www.cnblogs.com/mq0036/p/5243312.html
+https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL
+https://forgetcode.com/JavaScript/198-substring
+https://www.jianshu.com/p/a51aec5530af
+old ionic bugs return
+
+TODO: Change templates folder to stater (Complete)
+TODO: Download remaining templates from ionicframework (Complete)
+TODO: Edit running or installating for ionic-1.3.4.tar.gz
+TODO: Update ionic-1.3.4.tar.gz from 3, July 2022
+
+iojs and ionic not clean or default
+
+https://docs.npmjs.com/cli/v8/configuring-npm/package-json#engines
+
+package.json
+1.0.12 emailjs
+
+http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html
+https://docs.npmjs.com/cli/v8/using-npm/scripts
+https://www.cnblogs.com/niejunchan/p/15074203.html
+https://www.jb51.net/article/148443.htm
+https://www.cnblogs.com/zldream1106/p/why-npm-scripts.html
+https://www.cnblogs.com/webxiaochou/p/6664906.html
+
+https://blog.csdn.net/qq_46112274/article/details/117365575
+http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html
+"start": "iojs-3.3.1/node www/js/server.js && iojs-3.3.1/node ionic-1.3.4/bin/ionic serve --port=3000 --address=localhost"
+
+"start": "npm start-ionic && npm start-database",
+"start-ionic": "node -v",
+"start-database": "node -v"
+
+"start-ionic": "iojs-3.3.1/node ionic-1.3.4/bin/ionic serve --port=3000 --address=localhost"
+
+iojs-3.3.1/node www/js/server.js
+
+web: iojs/node ionic-1.3.4/bin/ionic serve
+
+Application Design
+ Stucture
+ URL
+ Technologies
+  Used Languages
+  Main Packages
+Running
+
+https://devcenter.heroku.com/articles/container-registry-and-runtime
+
+https://bower.io/docs/creating-packages/#bowerjson
+https://devcenter.heroku.com/articles/procfile
+https://gulpjs.com/docs/en/getting-started/javascript-and-gulpfiles
+
+https://devcenter.heroku.com/articles/build-docker-images-heroku-yml#getting-started
+https://devcenter.heroku.com/articles/github-integration-review-apps
+
+https://devcenter.heroku.com/articles/config-vars
+https://devcenter.heroku.com/articles/http-routing
+https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true
+https://developer.mozilla.org/en-US/docs/Web/API/URL/port
+
+TODO: Creating npm start (Complete)
+
+TODO: From package.json, set environment variables
+
+process.env.PORT
+npm_package_config_env_PORT
+
+TODO: Clean npm node_modles coachshake Drifty/local/node/ionic (Working)
+
+downloading buggy Aquaogen workspace
+
+cleaning...
+desktop/iojs-3.3.1
+desktop/iojs-3.3.1/cli-2.1.3
+desktop/iojs-3.3.1/cli-2.1.3/node_modules
+desktop/ionic-1.3.4
+desktop/ionic-1.3.4/node_modules
+
+can not identify if clean
+
+git ionic abakasam
+
+wget https://iojs.org/download/release/v3.3.1/iojs-v3.3.1-linux-armv7l.tar.gz
+wget https://iojs.org/download/release/v3.3.1/iojs-v3.3.1-linux-x86.tar.gz
+wget https://iojs.org/download/release/v3.3.1/iojs-v3.3.1-linux-x64.tar.gz
+wget https://iojs.org/download/release/v3.3.1/iojs-v3.3.1-x64.msi
+wget https://iojs.org/download/release/v3.3.1/iojs-v3.3.1-x86.msi
+wget https://iojs.org/download/release/v3.3.1/iojs-v3.3.1.tar.gz
+wget https://iojs.org/download/release/v3.3.1/doc/api/
+
+----compile
+iojs
+starter
+templates
+ionic-1.3.4.tar.gz
+README.md
+NEWS.md
+
+ionic complete
+
+wget https://github.com/abakasam/ionic/releases/download/functional/ionic-1.3.4.tar.gz
+npm pack ionic@1.3.4
+	github.com/abakasam -- package.json
+	github.com/abakasam -- inflect-0.3.2.tgz or i-0.3.2.tgz
+https://github.com/abakasam/ionic/releases/download/functional/ionic-1.3.4.tar.gz
+install g++, create new container c/c++
+download tars
+
+TODO: Update ionic.bundle.js location (Complete)
+
+js/ionic.bundle.js
+lib
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
+
+mhtml mime
+xhtml xml
+
+Apress		Google 
+Manning		not Google 
+O'Reilly	Programming 
+Dover		Math 
+Penguin		Novels 
+Symantec	Theoretical 
+
+HTML and XHTML: The Definitive Guide 6th Edition, by Chuck Musciano 9780596527327
+SQL In A Nutshell, by Kevin Kline
+Microsoft Windows PowerShell Step By Step, by Ed Wilson
+
+TODO: Update app/ location 
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
+
+mhtml mime
+xhtml xml
+
+https://qa.icopy.site/questions/15485555/read-last-line-of-file-in-bash-script-when-reading-file-line-by-line
+https://cloud.tencent.com/developer/ask/sof/110197
+
+TODO: Fix url and make https for Heroku concerning Drifty
+
+http://port-3001-drifty-abakasam720639.codeanyapp.com/
+http://drifty-abakasam720639.codeanyapp.com/
+
+use require('https')
+
+TODO: Fix iojs from generic iojs package not coachshake (Complete)
+TODO: Install Cordova (Complete)
+
+TODO: Create angular starter from src
+
+https://blog.csdn.net/weixin_38117216/article/details/118572669
+https://blog.csdn.net/christine95/article/details/49620595
+https://www.jianshu.com/p/54b05cec1b03
+
+Lost a lot from modifying .bash_profile
+
+php-5.6.5
+heroku-7.60.2
+python-2.7.5
+
+29 houston
+37 hong kong
+26 sardania
+
+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
+
+BUG: Broken links on ionic docs host
+
+var URL = 'https://drifty-abakasam720639.codeanyapp.com/'
+var slug = '?Cmd=action&date=1.38sdh'.substring(1)
+var parameters = slug.split('&')
+
+var url = require("url")
+var myurl="http://www.nodejs.org/some/url/?with=query&param=that#about"
+parsedUrl=url.parse(myurl)
+console.log(parsedUrl)
+
+let addr = new URL("https://example.com/login?user=someguy&page=news");
+try {
+  loginUser(addr.searchParams.get("user"));
+  gotoPage(addr.searchParams.get("page"));
+} catch(err) {
+  showErrorMessage(err);
+}
+
+return
+
+express.application.get('/', function(req, res) {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+return
+var express = require('express')
+var path = require('path')
+
+var directory = path.parse(__dirname)
+directory.dir = '/home/cabox/workspace/abakasam/local'
+directory.html = directory.dir + '/public_html'
+var URL = 'https://drifty-abakasam720639.codeanyapp.com/'
+console.log(directory.html)
+express.application = express()
+express.application.use(express.static(directory.html))
+var port = 3000
+express.application.listen(port)
+
+// TODO: Create HTTP Methods
+
+express.application.get('/', function (request, response, next) { 
+	request.next = next
+	response.send('Hello')
+	//console.log('GET') 
+	//console.log(request.next())
+})
+
+return
+express.application.post()
+express.application.put()
+express.application.head()
+express.application.delete()
+express.application.options
+
+
+
+var fake = {
+	phone: '3468727348',
+	appointment: {
+		date: '3/22/2021 10:00AM',
+		history: [
+			'3/22 Body Track',
+			'3/19 Body Track',
+			'Shake Guide',
+			'3/16 Body Track',
+			'Recovery Plan'
+		]
+	},
+	offers: [ 
+		'Home Workout', 
+		'Body Challenge', 
+		'Weight Loss', 
+		'Nutrition Lesson', 
+		'3 Day Packs'
+	],
+	orders: { 
+		type: 'shake',
+		shake: [ 
+			'Strawberry, Gas Station', 
+			'', 
+			'', 
+			'Watermelon, Pickup' 
+		], 
+		pill: [
+			'', 
+			'', 
+			'', 
+			''
+		],
+		tea: [
+			'', 
+			'', 
+			'', 
+			''
+		],
+		aloe: [
+			'', 
+			'', 
+			'', 
+			''
+		]
+	}, 
+	menu: { 
+		shake: ['Strawberry', 'Chocholate', 'Orange', 'Grape', 'Apple'], 
+		pill: ['Hair', 'Sleep', 'Mental', 'Stomach', 'Back'], 
+		tea: ['Green', 'Red', 'Black', 'Honey', 'Yellow'], 
+		aloe: ['Strong', 'Green', 'Lower', 'Plant', 'Weak']
+	}
+}
+
+alert(task)
+
+data = {
+	phone: '3468727348',
+	appointment: {
+		date: '3/31',
+		time: '10AM',
+		history: [
+			'3/22 Body Track',
+			'3/19 Body Track',
+			'Shake Guide',
+			'3/16 Body Track',
+			'Recovery Plan'
+		]
+	},
+	offers: { 
+		offer: [ 
+			'Home Workout', 
+			'Body Challenge', 
+			'Weight Loss', 
+			'Nutrition Lesson', 
+			'3 Day Packs'
+		]	
+	}
+}
+
+var inputData = '';
+var readStream = fs.createReadStream('output.txt');
+
+readStream.setEncoding('UTF8');
+
+readStream.on('data', function(chunk){
+	inputData += chunk;
+});
+
+readStream.on('end', function(){
+	console.log('Reading Finished');
+	console.log(inputData);
+});
+
+readStream.on('error', function(err){
+	console.log(err.stack);
+});
+
+var call = (connection.query('SELECT * FROM ORDERS WHERE PHONE = ?', '3469322511', function(error, results, fields) {
+	if (error) {
+		console.log(error.message)
+	}
+
+	console.log(SQL)
+	console.log(results)
+
+	return results
+}))(results)
+
+	var data
+	var charsInBody = (function () {
+
+	data = 1
+	  return data
+	})(data)
+	
+	console.log(data)
+
+console.log(results)
+
+
+var data
+	var charsInBody = (function () {
+
+	data = 1
+	  return data
+	})(data)
+	
+	console.log(data)
+	
+	//database.call(query[server.URL.parameters.task], server.URL.parameters[query.placeholder[server.URL.parameters.task]])
+	
+	//var promise = database.call(query[server.URL.parameters.task], server.URL.parameters[query.placeholder[server.URL.parameters.task]])
+	
+	//database.call(query[server.URL.parameters.task], server.URL.parameters[query.placeholder[server.URL.parameters.task]]).then(function(value) {
+	//	promise.then(function(valueB) {
+	//		console.log(value)
+	//		console.log(valueB)
+	//	})
+	//})
+
+	var data
+	var charsInBody = (function () {
+
+	data = 1
+	  return data
+	})(data)
+	
+	console.log(data)
+
+
+module.exports = { call }
+
+function search(SQL, record) {
+	return new Promise(function(resolve, reject) {
+		var connection = mysql.createConnection(configuration)
+
+		connection.connect(function(error) {
+			if (error) {
+				return console.error('error: ' + error.message)
+			}
+
+			console.log('Connected to the MySQL serer')
+		})
+
+		
+		
+		connection.query(SQL, record, function(error, results, fields) {
+			if (error) {
+				console.log(error.message)
+			}
+
+			console.log(SQL)
+			console.log(results)
+			resolve(JSON.stringify(results))
+		})
+		
+		connection.destroy()
+	})
+}
+
+function call(query, placeholder) { 
+	return search(query, placeholder)	
+}
+
+function call(SQL, record, callback) {
+	console.log(SQL)
+	console.log(record)
+	
+	var connection = mysql.createConnection(configuration)
+
+	connection.connect(function(error) {
+		if (error) {
+			return console.error('error: ' + error.message)
+		}
+
+		console.log('Connected to the MySQL serer')
+	})
+	
+	connection.query(SQL, record, function(error, results, fields) {
+		if (error) {
+			console.log(error.message)
+		}
+
+		callback(null, JSON.stringify(results))
+	})
+	
+	connection.destroy()
+}
+
+
+function search(SQL, record) {
+	return new Promise(function(resolve, reject) {
+		var connection = mysql.createConnection(configuration)
+
+		connection.connect(function(error) {
+			if (error) {
+				return console.error('error: ' + error.message)
+			}
+
+			console.log('Connected to the MySQL serer')
+		})
+		
+		connection.query(SQL, record, function(error, results, fields) {
+			if (error) {
+				console.log(error.message)
+			}
+
+			console.log(SQL)
+			console.log(results)
+			resolve(JSON.stringify(results))
+		})
+		
+		connection.destroy()
+	})
+}
+
+function call(query, placeholder) { 
+	return search(query, placeholder)	
+}
+
+module.exports = { call }
+
+var setH = new Promise((resolve, reject) => {
+		h.responseHeaders.push({
+			name: 'Set-Cookie',
+			value: "test=123"
+		});
+		resolve({responseHeaders: h.responseHeaders});
+	});
+
+/var query = "SHOW DATABASES; USE heroku_23ebff43a942f06; SELECT * FROM ORDERS";
+//var query = 'SELECT * FROM ORDERS; CREATE TABLE HISTORY ( PHONE VARCHAR(11) PRIMARY KEY, ONE VARCHAR(50), TWO VARCHAR(50), THREE VARCHAR(50), FOUR VARCHAR(50), FIVE VARCHAR(50));'
+//var query = 'SELECT * FROM HISTORY'
+
+	//var output = search(query, placeholder).then(function(results) {
+	//	return 'hello'
+	//})
+
+var query = 'SELECT * FROM ORDERS'
+var file = { 
+  'name': 'message.json',
+  'system': require('fs') 
+};
+
+//file.system.readFile(file.name, function(error, data) {
+//  if(error) throw error;
+//  console.log(JSON.parse(data)[0]);
+//});
+
+	  //file.system.writeFile(file.name, JSON.stringify(results), function(error) {
+	  //  if(error) throw error;
+	  //  console.log('It saved!');
+	  //});
+	  
+	connection.query(SQL, placeholder, function(error, results, fields) {
+	  if(error) {
+			console.log(error.message)
+	  } 
+
+		resolve(JSON.stringify(results))
+	})
+
+	//global.SQL = query[server.URL.parameters.task]
+	//global.placeholder = query[server.URL.parameters.task]
+	//console.log(SQL, placeholder)
+	
+		var resolvedProm = Promise.resolve(33)
+
+	var thenProm = resolvedProm.then(function(value) {
+		return value
+	})
+
+	var value
+	setTimeout(value = function() {
+		return thenProm.PromiseValue
+	})
+
+	console.log(value)
+	
+var appointment = {
+	phone: document.getElementById('appointment-phone'),
+	date: document.getElementById('appointment-date'),
+	history: document.getElementById('appointment-history'),
+	schedule: document.getElementById('appointment-schedule')
+}
+
+alert(task) 
+alert(data.length)
+alert(id)
+
+console.log('phone: User enters phone number')
+
+if(data.length == 0 && task == 'phone') { 
+	var appoint = document.getElementById('phone-history') 
+	appoint.onclick = function() { 
+		parent.location='https://port-3001-aquaogen-abakasam720639.codeanyapp.com/phone?task=history&number=' + id
+	}
+	appoint.click()
+}
+
+if (task == "phone") {	
+	var phone = document.getElementById('appointment-phone') 
+	phone.innerHTML = data[0].PHONE
+	
+	console.log('history: Display client store history')
+	
+	var story = '' 
+	var count = ['ONE','TWO','THREE','FOUR','FIVE']
+	for(var index = 0; index < count.length; index++) { 
+		story += data[0][count[index]] + '<br\>'
+	} 
+	
+	var appointment = document.getElementById('appointment-history') 
+	appointment.innerHTML = story 
+		
+	var time = document.getElementById('appointment-time') 
+	time.click()
+}
+
+function phone(number) { 
+	var numbers = '0123456789'
+	number = number + '' 
+	var dial = ''
+	
+	for(var index = 0; index < number.length; index++) { 
+		var exist = false
+		
+		for(var indexB = 0; indexB < numbers.length; indexB++) { 
+			if(number[index] == numbers[indexB]) exist = true
+		} 
+		
+		if(exist == false) { 
+		} else { 
+			dial = dial + number[index]
+		}
+	} 
+	
+	return dial
+}
+
+console.log('database: Enter phone to login')
+console.log('history: Display client store history')
+
+if(task == 'history') { 
+	var phone = document.getElementById('phone-history') 
+	phone.onclick = function() { 
+		parent.location = 'https://port-3001-aquaogen-abakasam720639.codeanyapp.com/phone?task=phone&number=' + id
+	} 
+	phone.click()
+}
+
+console.log('database: Schedule appointment by clicking schedule')
+
+if(task == 'appointments') { 
+	var schedule = document.getElementById('appointment-next')
+	
+	if(data[1].length == 0) { 
+		schedule.innerHTML = '<br/> No appointment schedule'
+	} else {
+		schedule.innerHTML = ''
+	}
+	
+	var phone = document.getElementById('appointment-phone') 
+	phone.innerHTML = data[0][0].PHONE
+	
+	console.log('history: Display client store history')
+	
+	var story = '' 
+	var count = ['ONE','TWO','THREE','FOUR','FIVE']
+	for(var index = 0; index < count.length; index++) { 
+		story += data[0][0][count[index]] + '<br\>'
+	} 
+	
+	var appointment = document.getElementById('appointment-history') 
+	appointment.innerHTML = story 
+}
+
+console.log('schedule: Get next available date')
+
+if (task == 'schedule') { 
+	if(data == []) { 
+		var appoint = document.getElementById('appointment-time') 
+		appoint.click()
+	}
+	
+
+}
+
+function schedule() { 
+	var schedule = document.getElementById('appointment-date') 
+	var day = ((new Date()).getMonth() + 1) + '/' + (new Date()).getDate() + '/20' + (new Date()).getYear()
+	var times = ['10:00AM', '01:00PM', '03:00PM', '05:00PM'] 
+	var time = fake.appointment.date.split(' ')[1]
+}
+
+console.log('!database: (admin) Set dates available for client to meet')
+console.log('!database: (admin) Post event for client store history')
+
+if (task == 'offers') { 
+	var offer = '' 
+	for(var index = 0; index < fake.offers.length; index++) { 
+		offer += fake.offers[index] + '<br\>'
+	} 
+	
+	var offers = document.getElementById('offers') 
+	offers.innerHTML = offer
+}
+
+console.log('!database: (admin) Enter possible offers into system for week')
+console.log('orders: Show orders by item type')
+
+if (task == 'orders') { 
+
+}
+
+function show(type) {
+	var days = document.getElementsByName('schedule-day') 
+	
+	for(var index = 0; index < fake.orders[type].length; index++) { 
+		days[index].innerHTML = fake.orders[type][index]
+	}
+}
+
+console.log('database: View what orders are in place')
+console.log('menu: Select item to order')
+console.log('database: Get list of items to order')
+
+if (task == 'menu') { 
+	
+	var shake = document.getElementById('item-shake') 
+	var items = ['shake','pill','tea','aloe'] 
+	
+	
+	for(var indexA = 0; indexA < 4; indexA++) { 
+		for(var indexB = 0; indexB < fake.menu[items[indexA]].length; indexB++) { 		
+			var option = document.createElement('option') 
+			option.value = fake.menu[items[indexA]][indexB] 
+			option.innerHTML = fake.menu[items[indexA]][indexB]
+			
+			document.getElementById('item-' + items[indexA]).appendChild(option)
+		} 
+	}
+}
+
+console.log('delivery: Select item and set delivery')
+
+if (task == 'delivery') {
+}
+
+console.log('database: Set item, day, and pickup location')
+console.log('database: Send text of order')
+
+parent.location='https://port-3001-aquaogen-abakasam720639.codeanyapp.com/phone?task=appointments&number=' + document.getElementById('appointment-phone').value
+
+	var phone = document.getElementById('appointment-phone') 
+	phone.innerHTML = fake.phone 
+	
+	var story = ''
+	for(var index = 0; index < fake.appointment.history.length; index++) { 
+		story += fake.appointment.history[index] + '<br\>'
+	} 
+	
+	var appointment = document.getElementById('appointment-history') 
+	appointment.innerHTML = story
+	
+if(data == []) { 
+		var history = document.getElementById('phone-history') 
+		history.click()
+	}
+	
+		var time = document.getElementById('appointment-time') 
+	time.click()
+	
+
+var task = 'menu'
+
+var shake = document.getElementById('item-shake') 
+	var pill = document.getElementById('item-pill') 
+	var tea = document.getElementById('item-tea') 
+	var aloe = document.getElementById('item-aloe') 
+	
+	for(var index = 0; indexA < fake.menu.length; indexA++) { 
+		for(var index = 0; indexB < fake.menu.length; indexB++) { 
+			alert(fake.menu[indexA][indexB])
+		}
+	} 
+	return
+	
+	var option = document.createElement('option') 
+	option.setAttribute('value', fake.menu.[indexA][indexB]) 
+	option.setAttribute('innerHTML', fake.menu[indexA][indexB)
+	shake.appendChild(option)
+
+if(this.value == 'order') {parent.location='menu.html'} else show(this.value)
+
+var days = document.getElementsByName('schedule-day') 
+	alert(days.length)
+	
+	for(var index = 0; index < fake.orders[type].length; index++) { 
+		days[index].innerHTML = fake.orders[type][index]
+	}
+
+alert('hello')
+
+var script = document.createElement('script')
+script.id = 'data'
+script.type = 'application/json'
+script.innerHTML = '{"userId":1234,"userName":"John Doe","memberSince":"2000-01-01T00:00:00.000Z"}'
+document.body.appendChild(script)
+
+alert('hello')
+
+var data = document.getElementById('data')
+
+data = JSON.parse(data.innerHTML)
+
+
+
+alert('hello')
+
+var script = document.createElement('script')
+script.id = 'data'
+script.type = 'application/json'
+script.innerHTML = '{"userId":1234,"userName":"John Doe","memberSince":"2000-01-01T00:00:00.000Z"}'
+document.body.appendChild(script)
+
+alert('hello')
+
+//var data = JSON.parse(document.getElmentById('data'))
+
+return
+var script = document.createElement('script')
+script.id = 'data'
+script.type = 'application/json'
+script.innerHTML = '{"userId":1234,"userName":"John Doe","memberSince":"2000-01-01T00:00:00.000Z"}'
+document.body.appendChild(script)
+	
+var data = JSON.parse(document.getElmentById('data').text)
+alert(data) 
+return
+
+function fill(task) { 
+	var elements = document.getElementsByName(task) 
+	
+	alert(elements.length)
+	for(var index = 0; index < elements.length; index++) {
+		//elements[index].innnerHTML = data[task][index] 
+	}
+}
+
+document.getElementById('appointment-date').innerHTML = data.appointment.date
+	document.getElementById('appointment-phone').innerHTML = data.phone
+	document.getElementById('appointment-history').innerHTML = data.appointment.history.join('<br/>')
+function fill(task) { 
+	alert('hello') 
+	alert(task)
+	var elements = document.getElementsByName(task) 
+	alert(elements)
+	
+	for(var index = 0; index < elements.length; index++) {
+		elements[index].innnerHTML = data[task][index]
+	}
+}
+
+	var script = document.createElement('script'); script.src = "js/data.js"; alert(script.text)
+	//script.setAttribute("src", "js/data.js"); alert(script.innerHTML)
+	//document.head.appendChild(script); alert(script.innerHTML); return
+	
+
+var present = {}
+present.elements = {
+	none: '',
+	show: ''
+}
+
+present.elements.none = function() {
+	elements = document.getElementsByName('entry')
+	
+	for(var index = 0; index < elements.length; index++) {
+		elements[index].style.display = 'none'
+	}
+}
+
+present.elements.show = function(indexes) {
+	elements = document.getElementsByName('entry')
+	console.log(elements)
+
+	for(var index = 0; index < indexes.length; index++) {
+		elements[indexes[index]].style.display = 'block'
+	}
+}
+present.elements.none()
+present.elements.show([0])
+
+	// BUG: undefined on first database call
+	//var fail = (database.results == undefined)
+	//if(fail) { database.call(server.task, server.URL.parameters) }
+
+//var wait = function(duration) {
+	//	if(database.results == undefined) {
+	//		setTimeout(wait, duration)
+	//	}
+	//}
+	//wait(100)
+
+filestream.readFile('people.json', function(error, data) {
+		response.writeHead(200, {'Content-Type': 'application/json'})
+		response.write(data)
+		response.end()
+	})
+	
+console.log('Setup for redirect', request.url)
+	//var redirect = '' 
+	//var host = 'https://aquaogen-abakasam720639.codeanyapp.com' 
+	
+	//var parameters = url.parse(request.url,true).query 
+	
+	//response.writeHead(302, { location: redirect })
+	//response.end()
+
+var query = ''
+	var path = parameters.task 
+	
+	console.log('PATH: ', path)
+	if(path == 'phone') {
+		redirect = host + '/council.html'
+		query = 'SELECT * FROM HISTORY WHERE PHONE = ' + parameters.number
+	} 
+	if(path == 'history') { 
+		redirect = host + '/council.html' 
+		query = 'INSERT INTO HISTORY (PHONE, ONE, TWO, THREE, FOUR, FIVE) VALUES (' + parameters.number + ', "none", "none", "none", "none", "none")'
+	} 
+	if(path == 'appointments') { 
+		redirect = host + '/council.html' 
+		query = 'SELECT * FROM HISTORY WHERE PHONE = ' + parameters.number + ';'
+		query += 'SELECT TIME FROM APPOINTMENTS WHERE PHONE = ' + parameters.number
+	}
+	if(path == 'delivery') {
+		redirect = host + '/delivery.html' 
+		query = 'INSERT INTO ORDERS (PHONE, ITEM, LOCATION, TIME) VALUES (' + parameters.number + ', ' + parameters.item + ', ' + parameters.location + ', ' + parameters.time + ')'
+	}
+	if(path == 'schedule') { 
+		redirect = host + '/schedule.html' 
+		query = 'SELECT * FROM ORDERS WHERE PHONE =' + parameters.number
+	} 
+	
+	console.log('Query database', query)
+	var mysql = require("mysql")
+	var configuration = {
+		host: 'us-cdbr-east-04.cleardb.com',
+		user: 'b8f3dd1d8d9c29',
+		password: '0611b499',
+		database: 'heroku_23ebff43a942f06',
+		multipleStatements: true
+	}
+	var connection = mysql.createConnection(configuration)
+
+	connection.connect(function(error) {
+		if(error) {
+			return console.error('error: ' + error.message)
+		}
+
+		console.log('Connected to the MySQL serer.')
+	}) 
+	
+	console.log(query)
+	connection.query(query, function(error, results, fields) {
+		console.log('results: ' + JSON.stringify(results))
+		
+		filestream.writeFile('data.js', 'data = ' + JSON.stringify(results) + '; task = "' + parameters.task + '"; id = "' + parameters.number + '"', function(error) {
+			if(error) throw error
+
+			console.log('It saved!')
+		})
+	})
+	connection.end() 
+
+queryB = 'INSERT INTO HISTORY (PHONE, ONE, TWO, THREE, FOUR, FIVE) VALUES (' + parameters.number + ', "none", "none", "none", "none", "none")' 
+		queryC = 'SELECT * FROM APPOINTMENTS WHERE PHONE = ' + parameters.number 
+		queryD = 'INSERT INTO HISTORY (PHONE, TIME) VALUES ?'
+
+filestream.writeFile('data.js', 'data = ' + JSON.stringify(results) + '; task = "phone" ; module.exports = {data, task}', function(error) {
+		if(error) throw error
+
+		console.log('It saved!')
+	})
+
+
+var mysql = require("mysql")
+var configuration = {
+  host: 'us-cdbr-east-04.cleardb.com',
+  user: 'b8f3dd1d8d9c29',
+  password: '0611b499',
+  database: 'heroku_23ebff43a942f06',
+  multipleStatements: true
+}
+var connection = mysql.createConnection(configuration)
+connection.connect(function(error) {
+	if(error) {
+		return console.error('error: ' + error.message)
+	}
+
+	console.log('Connected to the MySQL serer.')
+})
+
+	var query = "SELECT * FROM ORDERS" 
+	if(query != "") {
+		connection.query(query, function(error, results, fields) {
+			if(error) {
+				console.log(error.message)
+			} 
+			
+			console.log(JSON.stringify(results))
+			
+			//filestream.writeFile('data.js', 'data = {phone: 3469322511, task: "phone"}', function(error) { 
+			filestream.writeFile('data.js', 'data = ' + JSON.stringify(results) + '; task = "phone"', function(error) {
+				if(error) throw error
+
+				console.log('It saved!')
+			})
+		}) 
+		
+		connection.end()
+	}	
+
+
+
+
+
+var filestream = require('fs')
+var contents = filestream.readFileSync('../index.html', 'utf8')
+
+
+if(request.url == "/phone") { 
+		
+		//https://holycoders.com/tutorial/get-url-parameters-query-strings-node-js/
+		//https://usefulangle.com/post/91/nodejs-get-url-parameters  
+		
+		redirect from localhost of ionic serve when here
+	
+		response.write(contents) 
+		response.end()
+	}
+
+var connection = mysql.createConnection(configuration)
+connection.connect()
+var query = "SHOW DATABASES"
+
+connection.query(query, function(error, results, fields) {
+  if(error) { console.log(error.message) }
+
+  filestream.writeFile('message.json', JSON.stringify(results), function(error) {
+  	if(error) throw error
+  	console.log('It saved!')
+  })
+})
+
+
+var environment = {
+    KAMATERA: {
+        PORT: ''
+    },
+    CODEANYWHERE: {
+        PORT: 3000
+    },
+    HEROKU: {
+        PORT: ''
+    }
+};
+
+
+var http = {
+	codes: {
+		REQUEST:  {
+			OK: 200,
+			UNAUTHORIZED: 401,
+			DENY: 403,
+			BAD: 404,
+			TIMEOUT: 408
+		},
+		ERROR: {
+			SERVER: 500,
+			GATEWAY: 502,
+			UNAVAILABLE: 503
+		}
+	}
+}
+
+
+	if (request.url == "/") {
+        filestream.readFile("../www/html/index.html", function (error, response) {
+            if (error) {
+                response.writeHead(http.codes.REQUEST.BAD);
+                response.write('Contents you are looking are Not Found');
+            } else {
+                response.writeHead(http.codes.REQUEST.OK, { 'Content-Type': 'text/html' });
+                response.write(response);
+            }
+             
+            response.end();
+        });
+    } else {
+        
+        response.writeHead(http.codes.REQUEST.OK, { 'Content-Type': 'text/html' });
+        response.write('<h1>Product Manaager</h1><br /><br />To create product please enter: ' + request.url);
+        response.end();
+    }    
+    response.writeHead(http.codes.REQUEST.OK, {
+        'Content-Length': Buffer.byteLength(page),
+        'Content-Type': 'text/html'
+    })
+    .end(page);
+	response.end();
+
+				<input id="appointment-time" type="hidden" onclick="parent.location='https://port-3001-aquaogen-abakasam720639.codeanyapp.com/phone?task=appointments&number=' + document.getElementById('appointment-phone').innerHTML"></input>
+				<input id="phone-history" type="hidden"></input>
+				
+								<button class="button button-calm" onclick="parent.location='https://port-3001-aquaogen-abakasam720639.codeanyapp.com/schedule?task=schedule'">
+					Schedule
+				</button>
+
+        <div class="list list-inset">
+            <div id="phone" name="entry" class="card">
+                <div class="item item-text-wrap">Please enter your phone number:<br/>
+					<input id="phone-user" type="text" style="width: 100%; height: 75px" placeholder="##########" onchange="this.value = phone(this.value); if(this.value.length != 10) {this.placeholder = 'Please enter a valid phone number'; this.value = ''}"></input>
+					<button class="button button-calm" onclick="document.getElementById('phone-user').onchange(); if(document.getElementById('phone-user').value != '') {window.value = document.getElementById('phone-user'); parent.location='https://port-3001-aquaogen-abakasam720639.codeanyapp.com/phone?task=phone&number=' + document.getElementById('phone-user').value}">OK</button>
+                </div>
+            </div> 
+        </div>
+
+<button class="button button-calm" onclick="parent.location='council.html'">
+                        No phone number
+                    </button>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Ionic Blank Starter</h1>
+      </ion-header-bar>
+      <ion-content>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>

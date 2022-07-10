@@ -12,3 +12,8 @@ CentOS Package Install       |install-package
  CentOS Package Save         | save-dependencies
 
 Bash variables are stored in "my.config"
+
+login-github      > save-github
+setup-variables   > bin
+setup-environment : local/bin + products/abakasam -> webser
+save-dependencies : codeanywhere <-> github, centos 7 iso
