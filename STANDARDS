@@ -19,16 +19,17 @@ Sunsoft  gaming 	 SHADE		LinkedIn
 Asail	 gaming		 SHADE		Facebook
 
 gifts
-Firestar	Vamos
-Aquaogen	Metro UI (Windows 9)
-Aquaogen	Cyanogenmod
-Aquaogen	ChromeOS (ARM, Power, i686)
-Drifty		Clisp
-Asail		PowerQuest
-Asail		TI-83+ (Z80, GBZ80)
-abakasam	VXHeaven
-abakasam	Corewar
-abakasam	Encfs
+Firestar	Vamos							https://sourceforge.net/projects/vamos
+Aquaogen	Metro UI (Windows 9)			https://reactos.org
+Aquaogen	Cyanogenmod						https://cyanogenmodroms.com
+Aquaogen	Aquaogenlock					https://redns.aquauogen.net
+Aquaogen	ChromeOS (ARM, Power, i686)		https://www.chromium.org/chromium-projects (Use of Android (.apk and .rs) instead of Gentoo)
+Drifty		Clisp							https://clisp.sourceforge.io
+Asail		PowerQuest						https://robocup.org
+Asail		TI-83+ (Z80, GBZ80)				https://gamelate.aquaogen.net
+abakasam	VXHeaven						https://vxheaven.aquaogen.net
+abakasam	Corewar							https://www.corewar.io
+abakasam	Encfs							https://vgough.github.io/encfs
 
 reports
 NEWS				  u

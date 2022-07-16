@@ -1,4 +1,140 @@
+production
+ testing
+  development
+
+MicrosoftSiban
+ abakasam-development
+  abakasam
+
+MicrosoftSiban 
+ abakasam-development > Sammight
+  abakasam
+
+MicrosoftSiban
+ Sammight
+  abakasam
+
+https://drifty-abakasam720639.codeanyapp.com/
+
+https://devcenter.heroku.com/articles/procfile
+use environmental variables
+Heroku process.env.PORT
+Codeanywhere 
+
+Coachshake
+Drifty Database, cleardb - URL
+ <Application>.js
+
+BUG: https://timonweb.com/javascript/how-to-fix-referenceerror-primordials-is-not-defined-error/
+BUG: mysql not found, heroku
+
+https://port-3001-drifty-abakasam720639.codeanyapp.com/?task=LOGIN&phone=3469322511
+
+http://drifty-database.herokuapp.com/?task=LOGIN&phone=3469322511
+
+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
+
+heroku auth:login
+heroku auth:token
+HEROKU_API_KEY=61180e6b-0bbc-42ad-a719-88e5ee53d29a
+restart dyno (first time)
+
+heroku-7.60.2/bin/heroku ps:forward 3001 --app=drifty-coachshake && 
+heroku-7.60.2/bin/heroku ps:forward 3000 --app=drifty-coachshake && 
+iojs-3.3.1/deps/npm/cli.js start
+
+https://drifty-database.herokuapp.com/
+
+2.18.1
+1.0.12
+$ node -e 'process.env.foo = "bar"' && echo $foo
+
+node -e 'process.env.PORT || 3000'
+
+iojs-3.3.1/node ionic-1.3.4/bin/ionic serve --port=3000 --address=localhost
+
+https://port-3001-drifty-abakasam720639.codeanyapp.com/?task=LOGIN&phone=3469322511
+
+https://drifty-database.herokuapp.com/council.html?task=LOGIN&phone=3469322511&data=[{%22PHONE%22:%223469322511%22,%22ONE%22:%22none%22,%22TWO%22:%22none%22,%22THREE%22:%22none%22,%22FOUR%22:%22none%22,%22FIVE%22:%22none%22,%22APPOINTMENT%22:%2212/31/2021%201:00PM%22}]
+
+http://drifty-database.herokuapp.com/?task=LOGIN&phone=3469322511
+
+TODO: Define and name Aquaogen spy application (Complete)
+TODO: Upload coachshake to Heroku
+
+TODO: Configure Heroku ports
+
+			//mail.send({
+			//	text:    'New Order! Phone: ' + server.URL.parameters.phone + ' Item: ' + server.URL.parameters.item + ' Location: ' + server.URL.parameters.location + ' Time: ' + server.URL.parameters.time,
+			//	from:    'abakasam@zohomail.com', 
+			//	to:      'abakasam@outlook.com',
+			//	cc:      'noreply@outlook.com',
+			//	subject: ' '
+			//}, function(error, message) { console.log(error || message) })
+
+build:
+  docker:
+    web: Dockerfile
+
+5000 - process.env.
+
+app drifty-coachshake && iojs-3.3.1/deps/npm/cli.js start`
+2022-07-15T16:50:36.739709+00:00 app[web.1]:  ›   Warning: Our terms of service have changed: 
+2022-07-15T16:50:36.739740+00:00 app[web.1]:  ›   https://dashboard.heroku.com/terms-of-service
+2022-07-15T16:50:37.730390+00:00 app[web.1]:  ▸    Invalid credentials provided.
+2022-07-15T16:50:37.734780+00:00 app[web.1]: /bin/sh: 1: heroku: not found
+2022-07-15T16:50:37.735721+00:00 app[web.1]:  ▸    Command failed: heroku login
+
+https://devcenter.heroku.com/articles/getting-started-with-nodejs#run-the-app-locally
+https://devcenter.heroku.com/articles/heroku-cli-commands#heroku-ps-forward-port
+
+https://www.npmjs.com/package/heroku
+https://devcenter.heroku.com/articles/build-docker-images-heroku-yml#run-defining-the-processes-to-run
+https://devcenter.heroku.com/articles/getting-started-with-nodejs#define-a-procfile
+https://devcenter.heroku.com/articles/procfile#deploying-to-heroku
+https://www.npmjs.com/package/heroku
+
+heroku ps:forward 9090
+
+heroku ps:forward 3001 --app drifty-coachshake
+heroku ps:forward 3000 --app drifty-coachshake
+
+https://devcenter.heroku.com/articles/exec#port-forwarding
+
+	"config": {
+		"process.env.PORT": "5000"
+	},
+	
+https://devcenter.heroku.com/articles/procfile
+	
+BUG: Heroku fails paths from npm, have to use relative
+
+# TODO: Add program shortcuts to system
+# PATH=$(pwd)/iojs-3.3.1/node:\
+# $(pwd)/iojs-3.3.1/cli-2.1.3/npm:\
+# $(pwd)/ionic-1.3.4/bin/ionic:\
+# $(pwd)/node_modules/cordova/bin
+
+echo $PATH
+
+# export PATH
+
+TODO: Dyanmic URL and port for coachshake
+
+
+sesh uma map kantara
+redns cbac firewall
+vxheaven vx database
+
+serve
+apache tomcat
+php
+mysql
+
+admin ui - node
+
 SQL UPDATE fail
+test quotes
 
 mysql | pg | sqlite - connection options
 database - name of the database to use for this connection (sqlite: absolute path to a database file)
@@ -166,6 +302,7 @@ TODO: From package.json, set environment variables
 
 process.env.PORT
 npm_package_config_env_PORT
+
 
 TODO: Clean npm node_modles coachshake Drifty/local/node/ionic (Working)
 
