@@ -1,65 +1,63 @@
-comment (generate TODO)
+## comment (generate TODO)
+Add developer comment and add issues to GitHub
 
-./commentcode.sh js /workspace/abakasam/scripts/code TODO
-./commentcode.sh [language] [working directory] [list file]
+	./commentcode.sh --help
 
-language: Bash
+	Developer Comment
 
-Developer Comment
+		<operator> <type>: <message> <status>
+		# TODO: message
+		# TODO: message (Review)
 
-	# TODO: message
-	# TODO: message (Review)
-
-Developer Comment Types
-	1	TODO
-	1a	IMPROVE	
-	1b	REDO	
-	2	BUG		
-	2a	MEMORY	
-	2b	LEGACY	
-
-Comment Status
-	1	
-	2	(Complete)
-	3	(Review)
-	4	(Reviewed)
-
-Console Output
-	echo "message"
+	Developer Comment Types
 	
-TODO file
+		1	TODO
+		1a	IMPROVE	
+		1b	REDO	
+		2	BUG		
+		2a	MEMORY	
+		2b	LEGACY	
 
-	<filepath> <linenumber> <developer comment(comment status)>
-	/workspace/abakasam/scripts/code/index.js 8 // TODO: message
+	Developer Comment Status
+	
+		1	
+		2	(Complete)
+		3	(Review)
+		4	(Reviewed)
 
-map (generate TODO.map)
+	(Reviewed) Console Output
 
-./mapcode.sh
+		// TODO: Yup
+		<filepath> <console output command> <developer comment message>
+		echo "$(pwd)/main.sh Yup"
 
-Task Name and Type
-	Function   (folders / executable)
-	Project    (folder)              
-	Assignment (file)                
-	Task       (file / block)        
+	TODO file
 
-Fixing Filetype
+		<filepath> <linenumber> <developer comment(comment status)>
+		/workspace/abakasam/scripts/code/index.js 8 // TODO: message
 
-	<taskname> <filetype> ?A <path>
-	?A: Taskname == Filetype
+## map (generate NEWS)
+View file structure as project for code modeling
 
-see
+	./mapcode.sh --help
 
-commment Console Output
+	Task Name and Type
+	
+	3	Product    (folders)
+	3	Function   (folders / executable)
+	2	Project    (folder)              
+	2	Assignment (folder / file)                
+	1	Task       (file)
+	0			   (developer comment)	
 
-	/home/main.sh
-	// TODO: Yup
-	<filepath> <developer comment message>
-	echo "$(pwd)/main.sh Yup"
 
-interface
+	Fixing Filetype
 
-Object Oriented Programming
+		<taskname> <filetype> ?A <path>
+		?A: Taskname == Filetype
 
-	<taskname>-driver.<extension>
-	<taskname>-members.<extension>
-	<taskname>-object.<extension>
+## see ((Reviewed) Console Output)
+Multipath and timeline execution sequence of to debug code
+
+## interface (Object Oriented Programming)
+Build interface to model code to interpret like object

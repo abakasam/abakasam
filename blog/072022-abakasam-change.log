@@ -1,3 +1,9 @@
+#path="/home/cabox/workspace/abakasam/scripts"
+#path=$(pwd)
+#container="abakasam"
+
+https://blog.csdn.net/cunjiu9486/article/details/109075943
+
 production
  testing
   development

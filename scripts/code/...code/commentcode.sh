@@ -2,15 +2,18 @@
 
 if [[ $1 == "--version" ]]; 
 then :
-    cat commentcode.version
+    #cat commentcode.version
+	exit
 fi
 if [[ $1 == "--help" ]]; 
 then :
     cat commentcode.help
+	exit
 fi
 if [[ $1 == "--languages" ]]; 
 then :
     cat commentcode.languages
+	exit
 fi
 
 # TODO: Parse files (Complete)
@@ -29,20 +32,20 @@ then :
     echo "Langauge, ${language}, not supported"
     exit
 fi
-# TODO: List and grep
-echo $path
+
+# TODO: List and grep (Complete)
+
 cd $path
 pwd
-ls -R | grep "*.js"
-exit
-files=$(ls *.$language)
+
+files=$(find $path -name "*.$language")
 
 if [[ $path == "." ]];
 then :
     path=$(pwd)
 fi
 
-types="TODO IMPROVE REDO BUG MEMORY LEGACY"
+types=(TODO IMPROVE REDO BUG MEMORY LEGACY)
 
 declare -a comments
 declare -a lines
@@ -51,7 +54,8 @@ for file in ${files[@]}
 do 
 	echo $file
 	
-    while read -r line || [[ -n $line ]]; do
+    while read line
+	do
         lines[${#lines[@]}]="${#lines[@]} $line"
     done < $file
 
@@ -83,10 +87,18 @@ do
         fi
 
         for typed in ${types[@]}
-        do
-            if [[ $typed == $type ]];
+        do			
+		
+            if [[ "$typed" == "$type" ]];
             then :
-                comments[${#comments[@]}]="$path/$file $line"
+			
+				echo " "
+				echo "COUNT:        $count"
+				echo "OPERATOR:     $operator"
+				echo "TYPE:         $type == $typed"
+				echo " "
+				
+                comments[${#comments[@]}]="$file $line"
             fi
         done
 

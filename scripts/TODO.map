@@ -1,0 +1,69 @@
+product	(folders)              /scripts
+function   (folders / executable) /scripts/.
+function   (folders / executable) /scripts/..
+function   (folders / executable) /scripts/code
+function   (folders / executable) /scripts/environment
+function   (folders / executable) /scripts/listing
+function   (folders / executable) /scripts/code
+project    (folder)               /scripts/code/.
+project    (folder)               /scripts/code/..
+project    (folder)               /scripts/code/...code
+project    (folder)               /scripts/code/task
+project    (folder)               /scripts/code/...code
+assignment (folder / file)        /scripts/code/...code/.
+assignment (folder / file)        /scripts/code/...code/..
+assignment (folder / file)        /scripts/code/...code/README.md
+assignment (folder / file)        /scripts/code/...code/TODO
+assignment (folder / file)        /scripts/code/...code/TODO.map
+assignment (folder / file)        /scripts/code/...code/commentcode.help
+assignment (folder / file)        /scripts/code/...code/commentcode.languages
+assignment (folder / file)        /scripts/code/...code/commentcode.sh
+assignment (folder / file)        /scripts/code/...code/examples
+assignment (folder / file)        /scripts/code/...code/mapcode.help
+assignment (folder / file)        /scripts/code/...code/mapcode.sh
+assignment (folder / file)        /scripts/code/...code/output.lo
+assignment (folder / file)        /scripts/code/...code/examples
+task       (file)                 /scripts/code/...code/examples/.
+task       (file)                 /scripts/code/...code/examples/..
+task       (file)                 /scripts/code/...code/examples/TODO
+task       (file)                 /scripts/code/...code/examples/TODO.map
+task       (file)                 /scripts/code/...code/examples/aprogram
+task       (file)                 /scripts/code/...code/examples/index.js
+task       (file)                 /scripts/code/...code/examples/aprogram
+ /scripts/code/...code/examples/aprogram/.
+ /scripts/code/...code/examples/aprogram/..
+ /scripts/code/...code/examples/aprogram/aclass
+ /scripts/code/...code/examples/aprogram/index-driver.html
+ /scripts/code/...code/examples/aprogram/server-driver.js
+ /scripts/code/...code/examples/aprogram/aclass
+ /scripts/code/...code/examples/aprogram/aclass/.
+ /scripts/code/...code/examples/aprogram/aclass/..
+ /scripts/code/...code/examples/aprogram/aclass/aclass-members.js
+ /scripts/code/...code/examples/aprogram/aclass/aobject
+ /scripts/code/...code/examples/aprogram/aclass/aobject
+ /scripts/code/...code/examples/aprogram/aclass/aobject/.
+ /scripts/code/...code/examples/aprogram/aclass/aobject/..
+ /scripts/code/...code/examples/aprogram/aclass/aobject/aobject-members.js
+project    (folder)               /scripts/code/task
+assignment (folder / file)        /scripts/code/task/.
+assignment (folder / file)        /scripts/code/task/..
+assignment (folder / file)        /scripts/code/task/articleupload.sh
+assignment (folder / file)        /scripts/code/task/codeproject.sh
+assignment (folder / file)        /scripts/code/task/filecopy.sh
+function   (folders / executable) /scripts/environment
+project    (folder)               /scripts/environment/.
+project    (folder)               /scripts/environment/..
+project    (folder)               /scripts/environment/local
+project    (folder)               /scripts/environment/workspace
+project    (folder)               /scripts/environment/local
+assignment (folder / file)        /scripts/environment/local/.
+assignment (folder / file)        /scripts/environment/local/..
+assignment (folder / file)        /scripts/environment/local/bin.sh
+project    (folder)               /scripts/environment/workspace
+assignment (folder / file)        /scripts/environment/workspace/.
+assignment (folder / file)        /scripts/environment/workspace/..
+assignment (folder / file)        /scripts/environment/workspace/README.md
+assignment (folder / file)        /scripts/environment/workspace/index.sh
+assignment (folder / file)        /scripts/environment/workspace/my.config
+assignment (folder / file)        /scripts/environment/workspace/save-github.sh
+assignment (folder / file)        /scripts/environment/workspace/setup-environment.sh
