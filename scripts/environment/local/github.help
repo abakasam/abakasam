@@ -1,0 +1,22 @@
+
+	github, abakasam @ 2022
+	Save code to GitHub, 0.0.1
+
+	Usage:
+
+		github.sh [option] [repository] [branch] [directory]
+		github.sh [option] [name] [email] [password acesss token] [username]
+		github.sh [option] [project] [branch]
+
+	Example:
+
+		./github.sh --config "Sam Weddington" "abakasam@outlook.com" "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" "abakasam"
+		./github.sh --clone https://github.com/abakasam-development/ionic main
+
+	Options
+	
+		--help
+		--config
+		--commit
+		--clone
+
