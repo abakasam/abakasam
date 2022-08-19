@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="th" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/th/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express FAQ</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/th.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">หน้าแรก</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">เริ่มกันเลย</a>
+<ul>
+<li>
+<a href="installing.html">
+การติดตั้ง
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="generator.html">
+เครื่องมือสร้าง Express
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+เส้นทางเบื้องต้น
+</a>
+</li>
+<li>
+<a href="static-files.html">
+บริการไฟล์คงที่
+</a>
+</li>
+<li>
+<a href="faq.html">
+คำถามที่พบบ่อย
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">แนะนำ</a>
+<ul>
+<li><a href="../guide/routing.html">การใช้งานเราเตอร์</a>
+</li>
+<li><a href="../guide/writing-middleware.html">การเขียนมิดเดิลแวร์</a>
+</li>
+<li><a href="../guide/using-middleware.html">การใช้งานมิดเดิลแวร์</a>
+</li>
+<li><a href="../guide/using-template-engines.html">การใช้งานเครื่องสร้างโครงแบบ</a>
+</li>
+<li><a href="../guide/error-handling.html">การจักการความผิดพลาด</a>
+</li>
+<li><a href="../guide/debugging.html">การแก้จุดบกพร่อง</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express เบื่องหลังพร็อกซี</a>
+</li>
+<li><a href="../guide/migrating-4.html">การย้ายไป Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">การย้ายไป Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">การเชื่อมโยงกับฐานข้อมูล</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">การอ้างอิง API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (เลิกใช้)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (เลิกใช้)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">หัวข้อขั้นสูง</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">เครื่องสร้างโครงแบบ</a>
+</li>
+<li><a href="../advanced/pm.html">การใช้กระบวนการจัดการ</a>
+</li>
+<li><a href="../advanced/security-updates.html">ความปลอดภัยล่าสุด</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">แนวทางปฏิบัติความปลอดภัย</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">แนวทางปฏิบัติประสิทธิภาพ</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">แหล่งข้อมูลอื่น</a>
+<ul>
+<li>
+<a href="../resources/community.html">ชุมชน</a>
+</li>
+<li>
+<a href="../resources/glossary.html">ศัพย์</a>
+</li>
+<li>
+<a href="../resources/middleware.html">มิลเดิลแวร์</a>
+</li>
+<li>
+<a href="../resources/utils.html">โมดูลที่มีประโยชน์</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">เฟรมเวอร์ค</a>
+</li>
+<li>
+<a href="../resources/learning.html">การเรียนรู้เพิ่มเติม</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">บริษัทที่ใช้ Express</a>
+</li>
+<li>
+<a href="../resources/contributing.html">มีส่วนร่วมกับ Express</a>
+</li>
+<li>
+<a href="../changelog/4x.html">บันทึกการเปลี่ยนแปลง</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>ในเอกสารนี้อาจจะเก่าไปแล้วที่เกี่ยวเนื่องกับรุ่นของเอกสารในภาษาอังกฤษ สำหรับรุ่นล่าสุดโปรดอ้างอิงจาก <a href="../../index.html">เอกสารในภาษาอังกฤษ</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="คำถามที่พบบ่อย">คำถามที่พบบ่อย</h1>
+<h2 id="โครงสร้างแอปพลิเคชันของผมควรจะเป็นอย่าไร">โครงสร้างแอปพลิเคชันของผมควรจะเป็นอย่าไร?</h2>
+<p>ไม่มีการกำหนดนิยามของคำตอบสำหรับคำถามนี้ คำตอบขึ้นอยู่กับว่าขนาดของแอปพลิเคชันเท่าใด
+และทีมงานที่ร่วมทำงานด้วยมีจำนวนขนาดไหน เพื่อที่จะทำงานคล่องตัวที่สุด Express ไม่มีข้อบังคับของโครงสร้าง</p>
+<p>เส้นทางและตรรกะเฉพาะแอปพลิเคชัน (application-specific) อื่นๆ สามารถทำงานในหลากหลายไฟล์ที่คุณต้องการ
+ในหลายๆ ไดเรกเทอรีที่คุณต้องการ สามารถดูตัวอย่างด้านล่างนี้เพื่อเป็นแนวทาง:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47">Route listings</a></li>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66">Route map</a></li>
+<li><a href="https://github.com/expressjs/express/tree/master/examples/mvc">MVC style controllers</a></li>
+</ul>
+<p>ยังมีแหล่งตัวอย่างอื่นๆ สำหรับ Express ซึ่งทำให้ง่ายโดยใช้รูปแบบ:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express-resource">Resourceful routing</a></li>
+</ul>
+<h2 id="จะกำหมดโมเกลอย่างไร">จะกำหมดโมเกลอย่างไร?</h2>
+<p>Express ไม่มีความคิดของฐานข้อมูล แนวคิดนี้อยู่ในโมดูลอื่นของ Node ที่จะทำให้คุณติดต่อกับหลากหลายฐานข้อมูล</p>
+<p>ดู <a href="http://loopback.io/">LoopBack</a> for an Express-based framework that is centered around models.</p>
+<h2 id="จะพิสูจน์ตัวตนของผู้ใช้งานได้อย่างไร">จะพิสูจน์ตัวตนของผู้ใช้งานได้อย่างไร?</h2>
+<p>การพิสูจน์ตัวตนของผู้ใช้งานเป็นอีกส่วนหนี่งที่ Express ไม่ได้เข้าร่วม คุณอาจใช้รูปแบบพิสูจน์ตัวตนของผู้ใช้งานที่คุณต้องการ
+สำหรับตัวอย่างที่ง่ายที่สุดคือรูปแบบ username / password, ดู <a href="https://github.com/expressjs/express/tree/master/examples/auth">ตัวอย่างนี้</a></p>
+<h2 id="template-engines-ไหนบ้างที่-express-รองรับ">template engines ไหนบ้างที่ Express รองรับ?</h2>
+<p>Express รองรับทุก template engine ที่สอดคล้องกับ <code>(path, locals, callback)</code>
+เพื่อสร้างอินเทอร์เฟสสำหรับ template engine และการเคช ดูที่ <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>
+โครงการที่รองรับ ที่ไม่อยู่ในรายการ template engines อาจยังคงรองรับโดย Express</p>
+<p>สำหรับข้อมูลเพิ่มเติม, ดูที่ <a href="../guide/using-template-engines.html">การใช้ template engine กับ Express</a></p>
+<h2 id="จะจัดการกับการตอบสนอง-404-ได้อย่างไร">จะจัดการกับการตอบสนอง 404 ได้อย่างไร?</h2>
+<p>ใน Express, การตอบสนอง 404 ไม่ใช้ผลของความผิดพลาด ดังนั้น
+มิดเดิลแวร์ที่จัดการกับความผิดพลาด (error-handler) จะไม่ตรวจจับมัน พฤติกรรมเป็นแบบนี้
+เพราะว่าการตอบสนอง 404 เป็นการบ่งชี้ว่ามีสิ่งผิดปรกติเกิดขึ้นอาจจะต้อมีสิ่งเพิ่มเติมมาจัดการ
+ในงานอื่นๆ Express จะดำเนินการฟังก์ชันมิดเดิลแวร์และเส้นทางทั้งหมด และพบว่าไม่มีอะไรที่จะตอบสนอง
+สิ่งที่คุณต้องทำคือเพิ่มฟังก์ชันมิดเดิลแวร์ที่ด้านล่างสุดเพื่อจัดการกับการตอบสนอง 404:</p>
+<pre><code class="language-js">app.use((req, res, next) =&gt; {
+  res.status(404).send("Sorry can't find that!")
+})
+</code></pre>
+<h2 id="จะตั้งค่าจัดการความผิดพลาดได้อย่างไร">จะตั้งค่าจัดการความผิดพลาดได้อย่างไร?</h2>
+<p>กำหนดมิดเดิลแวร์จัดการความผิดพลาด (error-handler) เช่นเดียวกับมิดเดิลแวร์อื่น ยกเว้นอาร์กิวเมนต์ 4 ตัวแทนที่จะเป็น 3 ตัว
+ดังนี้ <code>(err, req, res, next)</code></p>
+<pre><code class="language-js">app.use((err, req, res, next) =&gt; {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+</code></pre>
+<p>สำหรับข้อมูลเพิ่มเติม, ดูที่ <a href="../guide/error-handling.html">Error handling</a>.</p>
+<h2 id="จะสร้าง-html-ธรรมดาได้อย่างไร">จะสร้าง HTML ธรรมดาได้อย่างไร?</h2>
+<p>คุณไม่ต้อง! ไม่จำเป็นต้องสร้าง HTML ด้วยฟังก์ชัน <code>res.render()</code>
+ถ้าคุณมีไฟล์เฉพาะ ใช้ฟังก์ชัน <code>res.sendFile()</code> ถ้าคุณต้องการบริการหลายสินทรัพย์จากไดเรกเทอรี ใช้ฟังก์ชันมิดเดิลแวร์ <code>express.static()</code></p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> เป็นโครงการของ <a href="https://openjsf.org">มูลนิธิ OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork เว็บไซต์บน GitHub</a>.</div>
+<div>Copyright &copy; 2017 StrongLoop, IBM, และผู้มีส่วนร่วมอื่นๆ ของ expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> เว็บไซต์นี้อยู่ภายใต้สัญญาอนุญาตของ <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">สัญญาอนุญาติครีเอทีฟคอมมอนส์ แบบแสดงที่มา-อนุญาตแบบเดียวกัน 3.0 สหรัฐอเมริกา</a>.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="f5321d994d79af32c7b8abdd-text/javascript"></script>
+<script type="f5321d994d79af32c7b8abdd-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:th'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="f5321d994d79af32c7b8abdd-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/th/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

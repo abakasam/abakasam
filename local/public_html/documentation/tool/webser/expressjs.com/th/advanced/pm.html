@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html lang="th" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/th/advanced/pm.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Process managers for Express apps</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/th.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">หน้าแรก</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">เริ่มกันเลย</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+การติดตั้ง
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+เครื่องมือสร้าง Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+เส้นทางเบื้องต้น
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+บริการไฟล์คงที่
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+คำถามที่พบบ่อย
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">แนะนำ</a>
+<ul>
+<li><a href="../guide/routing.html">การใช้งานเราเตอร์</a>
+</li>
+<li><a href="../guide/writing-middleware.html">การเขียนมิดเดิลแวร์</a>
+</li>
+<li><a href="../guide/using-middleware.html">การใช้งานมิดเดิลแวร์</a>
+</li>
+<li><a href="../guide/using-template-engines.html">การใช้งานเครื่องสร้างโครงแบบ</a>
+</li>
+<li><a href="../guide/error-handling.html">การจักการความผิดพลาด</a>
+</li>
+<li><a href="../guide/debugging.html">การแก้จุดบกพร่อง</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express เบื่องหลังพร็อกซี</a>
+</li>
+<li><a href="../guide/migrating-4.html">การย้ายไป Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">การย้ายไป Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">การเชื่อมโยงกับฐานข้อมูล</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">การอ้างอิง API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (เลิกใช้)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (เลิกใช้)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">หัวข้อขั้นสูง</a>
+<ul>
+<li><a href="developing-template-engines.html">เครื่องสร้างโครงแบบ</a>
+</li>
+<li><a href="pm.html">การใช้กระบวนการจัดการ</a>
+</li>
+<li><a href="security-updates.html">ความปลอดภัยล่าสุด</a>
+</li>
+<li><a href="best-practice-security.html">แนวทางปฏิบัติความปลอดภัย</a>
+</li>
+<li><a href="best-practice-performance.html">แนวทางปฏิบัติประสิทธิภาพ</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">แหล่งข้อมูลอื่น</a>
+<ul>
+<li>
+<a href="../resources/community.html">ชุมชน</a>
+</li>
+<li>
+<a href="../resources/glossary.html">ศัพย์</a>
+</li>
+<li>
+<a href="../resources/middleware.html">มิลเดิลแวร์</a>
+</li>
+<li>
+<a href="../resources/utils.html">โมดูลที่มีประโยชน์</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">เฟรมเวอร์ค</a>
+</li>
+<li>
+<a href="../resources/learning.html">การเรียนรู้เพิ่มเติม</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">บริษัทที่ใช้ Express</a>
+</li>
+<li>
+<a href="../resources/contributing.html">มีส่วนร่วมกับ Express</a>
+</li>
+<li>
+<a href="../changelog/4x.html">บันทึกการเปลี่ยนแปลง</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>ในเอกสารนี้อาจจะเก่าไปแล้วที่เกี่ยวเนื่องกับรุ่นของเอกสารในภาษาอังกฤษ สำหรับรุ่นล่าสุดโปรดอ้างอิงจาก <a href="../../index.html">เอกสารในภาษาอังกฤษ</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="process-managers-for-express-apps">Process managers for Express apps</h1>
+<p>When you run Express apps for production, it is helpful to use a <em>process manager</em> to achieve the following tasks:</p>
+<ul>
+<li>Restart the app automatically if it crashes.</li>
+<li>Gain insights into runtime performance and resource consumption.</li>
+<li>Modify settings dynamically to improve performance.</li>
+<li>Control clustering.</li>
+</ul>
+<p>A process manager is somewhat like an application server: it’s a “container” for applications that facilitates deployment,
+provides high availability, and enables you to manage the application at runtime.</p>
+<p>The most popular process managers for Express and other Node.js applications are as follows:</p>
+<ul>
+<li><a href="#strongloop-process-manager">StrongLoop Process Manager</a></li>
+<li><a href="#pm2">PM2</a></li>
+<li><a href="#forever">Forever</a></li>
+<li><a href="#systemd">SystemD</a></li>
+</ul>
+<p>Using any of these four tools can be very helpful, however StrongLoop Process Manager is the only tool that provides a comprehensive runtime and deployment solution that addresses the entire Node.js application life cycle, with tooling for every step before and after production, in a unified interface.</p>
+<p>Here’s a brief look at each of these tools.
+For a detailed comparison, see <a href="http://strong-pm.io/compare/">http://strong-pm.io/compare/</a>.</p>
+<h2 id="strongloop-process-manager">StrongLoop Process Manager</h2>
+<p>StrongLoop Process Manager (StrongLoop PM) is a production process manager for Node.js applications. StrongLoop PM has built-in load balancing, monitoring, and multi-host deployment, and a graphical console.
+You can use StrongLoop PM for the following tasks:</p>
+<ul>
+<li>Build, package, and deploy your Node.js application to a local or remote system.</li>
+<li>View CPU profiles and heap snapshots to optimize performance and diagnose memory leaks.</li>
+<li>Keep processes and clusters alive forever.</li>
+<li>View performance metrics on your application.</li>
+<li>Easily manage multi-host deployments with Nginx integration.</li>
+<li>Unify multiple StrongLoop PMs to a distributed microservices runtime that is managed from Arc.</li>
+</ul>
+<p>You can work with StrongLoop PM by using a powerful command-line interface tool called <code>slc</code>, or a graphical tool called Arc. Arc is open source, with professional support provided by StrongLoop.</p>
+<p>For more information, see <a href="http://strong-pm.io/">http://strong-pm.io/</a>.</p>
+<p>Full documentation:</p>
+<ul>
+<li><a href="http://docs.strongloop.com/display/SLC">Operating Node apps (StrongLoop documentation)</a></li>
+<li><a href="http://docs.strongloop.com/display/SLC/Using+Process+Manager">Using StrongLoop Process Manager</a>.</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<pre><code class="language-console">$ [sudo] npm install -g strongloop
+</code></pre>
+<h3 id="basic-use">Basic use</h3>
+<pre><code class="language-console">$ cd my-app
+$ slc start
+</code></pre>
+<p>View the status of Process Manager and all deployed apps:</p>
+<pre><code class="language-console">$ slc ctl
+Service ID: 1
+Service Name: my-app
+Environment variables:
+  No environment variables defined
+Instances:
+    Version  Agent version  Cluster size
+     4.1.13      1.5.14           4
+Processes:
+        ID      PID   WID  Listening Ports  Tracking objects?  CPU profiling?
+    1.1.57692  57692   0
+    1.1.57693  57693   1     0.0.0.0:3001
+    1.1.57694  57694   2     0.0.0.0:3001
+    1.1.57695  57695   3     0.0.0.0:3001
+    1.1.57696  57696   4     0.0.0.0:3001
+</code></pre>
+<p>List all the apps (services) under management:</p>
+<pre><code class="language-console">$ slc ctl ls
+Id          Name         Scale
+ 1          my-app       1
+</code></pre>
+<p>Stop an app:</p>
+<pre><code class="language-console">$ slc ctl stop my-app
+</code></pre>
+<p>Restart an app:</p>
+<pre><code class="language-console">$ slc ctl restart my-app
+</code></pre>
+<p>You can also “soft restart,” which gives worker processes a grace period to close existing connections, then restarts the current application:</p>
+<pre><code class="language-console">$ slc ctl soft-restart my-app
+</code></pre>
+<p>To remove an app from management:</p>
+<pre><code class="language-console">$ slc ctl remove my-app
+</code></pre>
+<h2 id="pm2">PM2</h2>
+<p>PM2 is a production process manager for Node.js applications, that has a built-in load balancer. PM2 allows you to keep applications alive forever and reload them without downtime, and will facilitate common system admin tasks. PM2 also enables you to manage application logging, monitoring, and clustering.</p>
+<p>For more information, see <a href="https://github.com/Unitech/pm2">https://github.com/Unitech/pm2</a>.</p>
+<h3 id="installation-1">Installation</h3>
+<pre><code class="language-console">$ [sudo] npm install pm2 -g
+</code></pre>
+<h3 id="basic-use-1">Basic use</h3>
+<p>When you start an app by using the <code>pm2</code> command, you must specify the path of the app. However, when you stop, restart, or delete an app, you can specify just the name or the id of the app.</p>
+<pre><code class="language-console">$ pm2 start npm --name my-app -- start
+[PM2] restartProcessId process id 0
+┌──────────┬────┬──────┬───────┬────────┬─────────┬────────┬─────────────┬──────────┐
+│ App name │ id │ mode │ pid   │ status │ restart │ uptime │ memory      │ watching │
+├──────────┼────┼──────┼───────┼────────┼─────────┼────────┼─────────────┼──────────┤
+│ my-app   │ 0  │ fork │ 64029 │ online │ 1       │ 0s     │ 17.816 MB   │ disabled │
+└──────────┴────┴──────┴───────┴────────┴─────────┴────────┴─────────────┴──────────┘
+ Use the `pm2 show &lt;id|name&gt;` command to get more details about an app.
+</code></pre>
+<p>When you start an app by using the <code>pm2</code> command, the app is immediately sent to the background. You can control the background app from the command line by using various <code>pm2</code> commands.</p>
+<p>After an app is started by using the <code>pm2</code> command, it is registered in PM2’s list of processes with an ID. You can therefore manage apps with the same name from different directories on the system, by using their IDs.</p>
+<p>Note that if more than one app with the same name is running, <code>pm2</code> commands affect all of them. So use IDs instead of names to manage individual apps.</p>
+<p>List all running processes:</p>
+<pre><code class="language-console">$ pm2 list
+</code></pre>
+<p>Stop an app:</p>
+<pre><code class="language-console">$ pm2 stop 0
+</code></pre>
+<p>Restart an app:</p>
+<pre><code class="language-console">$ pm2 restart 0
+</code></pre>
+<p>To view detailed information about an app:</p>
+<pre><code class="language-console">$ pm2 show 0
+</code></pre>
+<p>To remove an app from PM2’s registry:</p>
+<pre><code class="language-console">$ pm2 delete 0
+</code></pre>
+<h2 id="forever">Forever</h2>
+<p>Forever is a simple command-line interface tool for ensuring that a given script runs continuously (forever). Forever’s simple interface makes it ideal for running smaller deployments of Node.js apps and scripts.</p>
+<p>For more information, see <a href="https://github.com/foreverjs/forever">https://github.com/foreverjs/forever</a>.</p>
+<h3 id="installation-2">Installation</h3>
+<pre><code class="language-console">$ [sudo] npm install forever -g
+</code></pre>
+<h3 id="basic-use-2">Basic use</h3>
+<p>To start a script, use the <code>forever start</code> command and specify the path of the script:</p>
+<pre><code class="language-console">$ forever start script.js
+</code></pre>
+<p>This command will run the script in daemon mode (in the background).</p>
+<p>To run the script so that it is attached to the terminal, omit <code>start</code>:</p>
+<pre><code class="language-console">$ forever script.js
+</code></pre>
+<p>It is a good idea to log output from the Forever tool and the script by using the logging options <code>-l</code>, <code>-o</code>, and <code>-e</code>, as shown this example:</p>
+<pre><code class="language-console">$ forever start -l forever.log -o out.log -e err.log script.js
+</code></pre>
+<p>To view the list of scripts that were started by Forever:</p>
+<pre><code class="language-console">$ forever list
+</code></pre>
+<p>To stop a script that was started by Forever use the <code>forever stop</code> command and specify the process index (as listed by the <code>forever list</code> command).</p>
+<pre><code class="language-console">$ forever stop 1
+</code></pre>
+<p>Alternatively, specify the path of the file:</p>
+<pre><code class="language-console">$ forever stop script.js
+</code></pre>
+<p>To stop all the scripts that were started by Forever:</p>
+<pre><code class="language-console">$ forever stopall
+</code></pre>
+<p>Forever has many more options, and it also provides a programmatic API.</p>
+<h2 id="systemd">SystemD</h2>
+<h3 id="introduction">Introduction</h3>
+<p>SystemD is the default process manager on modern Linux distributions. Running a Node service based on SystemD is very simple. NOTE: This section is based on <a href="https://www.axllent.org/docs/view/nodejs-service-with-systemd/">a blog post by Ralph Slooten (@axllent)</a>.</p>
+<h3 id="set-up-the-service">Set up the service</h3>
+<p>Create a file in <code>/etc/systemd/system/express.service</code>:</p>
+<pre><code>[Unit]
+Description=Express
+# Set dependencies to other services (optional)
+#After=mongodb.service
+
+[Service]
+# Run Grunt before starting the server (optional)
+#ExecStartPre=/usr/bin/grunt
+
+# Start the js-file starting the express server
+ExecStart=/usr/bin/node server.js
+WorkingDirectory=/usr/local/express
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=Express
+# Change to a non-root user (optional, but recommended)
+#User=&lt;alternate user&gt;
+#Group=&lt;alternate group&gt;
+# Set environment options
+Environment=NODE_ENV=production PORT=8080
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<h3 id="enable-service">Enable service</h3>
+<pre><code>$ systemctl enable express.service
+</code></pre>
+<h3 id="start-service">Start service</h3>
+<pre><code>$ systemctl start express.service
+</code></pre>
+<h3 id="check-service-status">Check service status</h3>
+<pre><code>$ systemctl status express.service
+</code></pre>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> เป็นโครงการของ <a href="https://openjsf.org">มูลนิธิ OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork เว็บไซต์บน GitHub</a>.</div>
+<div>Copyright &copy; 2017 StrongLoop, IBM, และผู้มีส่วนร่วมอื่นๆ ของ expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> เว็บไซต์นี้อยู่ภายใต้สัญญาอนุญาตของ <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">สัญญาอนุญาติครีเอทีฟคอมมอนส์ แบบแสดงที่มา-อนุญาตแบบเดียวกัน 3.0 สหรัฐอเมริกา</a>.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="4148f582780bb8bff772ddc3-text/javascript"></script>
+<script type="4148f582780bb8bff772ddc3-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:th'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="4148f582780bb8bff772ddc3-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/th/advanced/pm.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

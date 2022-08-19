@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="de" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/de/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Häufig gestellte Fragen zu Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/de.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">Einführung</a>
+<ul>
+<li>
+<a href="installing.html">
+Installation
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="generator.html">
+Express Generator
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+Basisrouting
+</a>
+</li>
+<li>
+<a href="static-files.html">
+Statische Dateien
+</a>
+</li>
+<li>
+<a href="faq.html">
+Häufig gestellte Fragen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Leitfaden</a>
+<ul>
+<li><a href="../guide/routing.html">Routing</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Middleware schreiben</a>
+</li>
+ <li><a href="../guide/using-middleware.html">Middleware verwenden</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Template-Engines verwenden</a>
+</li>
+<li><a href="../guide/error-handling.html">Fehlerbehandlung</a>
+</li>
+<li><a href="../guide/debugging.html">Debugging</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express hinter Proxys</a>
+</li>
+<li><a href="../guide/migrating-4.html">Wechsel zu Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Wechsel zu Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Datenbankintegration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API-Referenz</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (veraltet)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (veraltet)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Themen für Fortgeschrittene</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Template-Engines</a>
+</li>
+<li><a href="../advanced/pm.html">Process Manager verwenden</a>
+</li>
+<li><a href="../advanced/security-updates.html">Sicherheitsupdates</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Sicherheitsspezifische Best Practices</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Leistungsspezifische Best Practices</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ressourcen</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossar</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Community</a>
+</li>
+<li><a href="../resources/learning.html">Zusätzliches Lernen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Diese Übersetzung zur Verfügung gestellt von <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Dieses Dokument kann im Vergleich zur englischen Dokumentation veraltet sein. Aktuelle Updates finden Sie in der <a href="../../index.html">englischen Dokumentation</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="häufig-gestellte-fragen">Häufig gestellte Fragen</h1>
+<h2 id="wie-muss-ich-meine-anwendung-strukturieren">Wie muss ich meine Anwendung strukturieren?</h2>
+<p>Auf diese Frage gibt es keine verbindliche Antwort. Die Antwort hängt vom Umfang Ihrer Anwendung und dem eingebundenen Team ab. Um so flexibel wie möglich zu sein, gibt es bei Express keine Voraussetzungen hinsichtlich der Struktur.</p>
+<p>Weiterleitungen und andere anwendungsspezifische Logik können in einer beliebigen Anzahl von Dateien und in jeder von Ihnen bevorzugten Verzeichnisstruktur vorkommen. Die folgenden Beispiele sollen als Entscheidungshilfe dienen:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47">Weiterleitungslisten</a></li>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66">Weiterleitungszuordnung</a></li>
+<li><a href="https://github.com/expressjs/express/tree/master/examples/mvc">Controller im MVC-Stil</a></li>
+</ul>
+<p>Darüber hinaus gibt es Erweiterungen anderer Anbieter für Express, die zur Vereinfachung einiger dieser Muster beitragen:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express-resource">Weiterleitung mit “express-resource”</a></li>
+</ul>
+<h2 id="wie-definiere-ich-modelle">Wie definiere ich Modelle?</h2>
+<p>Express hat keine Vorstellungen von einer Datenbank. Dieses Konzept bleibt Node-Modulen anderer Anbieter überlassen, wodurch Schnittstellen zu allen Datenbank möglich sind.</p>
+<p><a href="http://loopback.io/">LoopBack</a> zeigt ein Express-basiertes Framework, um das Modelle angeordnet sind.</p>
+<h2 id="wie-kann-ich-benutzer-authentifizieren">Wie kann ich Benutzer authentifizieren?</h2>
+<p>Die Authentifizierung ist ein weiterer meinungsstarker Bereich, in den Express nicht eingreift. Sie können ein Authentifizierungsschema nach Ihren Vorstellungen verwenden. Ein einfaches Benutzername/Kennwort-Schema können Sie in <a href="https://github.com/expressjs/express/tree/master/examples/auth">diesem Beispiel</a> sehen.</p>
+<h2 id="welche-template-engines-unterstützt-express">Welche Template-Engines unterstützt Express?</h2>
+<p>Express unterstützt jede Template-Engine, die der <code>(path, locals, callback)</code>-Signatur entspricht. Informationen zur Normalisierung von Template-Engine-Schnittstellen und -Caching siehe das Projekt <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>. Nicht aufgelistete Template-Engines können trotzdem die Express-Signatur unterstützen.</p>
+<h2 id="wie-handhabe-ich-404-antworten">Wie handhabe ich 404-Antworten?</h2>
+<p>In Express sind 404-Antworten nicht das Ergebnis eines Fehlers, sodass diese Antworten von der Fehlerbehandlungsroutine nicht erfasst werden. Dieses Verhalten ist damit zu erklären, dass eine 404-Antwort einfach angibt, dass keine weiteren Arbeiten auszuführen sind. In anderen Worten: Express hat alle Middlewarefunktionen und Weiterleitungen ausgeführt und festgestellt, dass keine Funktion eine Antwort zurückgegeben hat. Sie müssen also bei der Handhabung der 404-Antwort nur eine Middlewarefunktion am Ende des Stacks (unterhalb von allen anderen Funktionen) hinzufügen:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(req, res, next) {
+  res.status(404).send('Sorry cant find that!');
+});
+</code>
+</pre>
+<h2 id="wie-richte-ich-eine-fehlerbehandlungsroutine-ein">Wie richte ich eine Fehlerbehandlungsroutine ein?</h2>
+<p>Middleware für die Fehlerbehandlung wird in derselben Weise definiert wie andere Middleware; außer dass sie vier anstatt drei Argumente aufweist. Dies gilt speziell bei der Signatur <code>(err, req, res, next)</code>:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+<p>Weitere Informationen siehe <a href="../guide/error-handling.html">Fehlerbehandlung</a>.</p>
+<h2 id="wie-gebe-ich-normales-html-format-aus">Wie gebe ich normales HTML-Format aus?</h2>
+<p>Das ist nicht Ihre Aufgabe! Sie müssen kein HTML-Format mit der Funktion <code>res.render()</code> ausgeben. Verwenden Sie die Funktion <code>res.sendFile()</code>, wenn Sie es mit einer bestimmten Datei zu tun haben. Wenn Sie viele Assets aus einem Verzeichnis bedienen müssen, verwenden Sie die Middlewarefunktion <code>express.static()</code>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> ist ein Projekt der <a href="https://openjsf.org">Stiftung OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Website auf GitHub forken</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. und andere Mitwirkende an expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Dieses Werk ist lizenziert unter einer <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Vereinigte Staaten von Amerika Lizenz</a>.
+</div>
+</footer>
+<script type="9e8b863f519fbce2635c8de6-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:de'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="9e8b863f519fbce2635c8de6-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/de/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

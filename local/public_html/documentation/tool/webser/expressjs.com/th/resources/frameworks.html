@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="th" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/th/resources/frameworks.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Frameworks built on Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/th.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">หน้าแรก</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">เริ่มกันเลย</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+การติดตั้ง
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+เครื่องมือสร้าง Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+เส้นทางเบื้องต้น
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+บริการไฟล์คงที่
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+คำถามที่พบบ่อย
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">แนะนำ</a>
+<ul>
+<li><a href="../guide/routing.html">การใช้งานเราเตอร์</a>
+</li>
+<li><a href="../guide/writing-middleware.html">การเขียนมิดเดิลแวร์</a>
+</li>
+<li><a href="../guide/using-middleware.html">การใช้งานมิดเดิลแวร์</a>
+</li>
+<li><a href="../guide/using-template-engines.html">การใช้งานเครื่องสร้างโครงแบบ</a>
+</li>
+<li><a href="../guide/error-handling.html">การจักการความผิดพลาด</a>
+</li>
+<li><a href="../guide/debugging.html">การแก้จุดบกพร่อง</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express เบื่องหลังพร็อกซี</a>
+</li>
+<li><a href="../guide/migrating-4.html">การย้ายไป Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">การย้ายไป Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">การเชื่อมโยงกับฐานข้อมูล</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">การอ้างอิง API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (เลิกใช้)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (เลิกใช้)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">หัวข้อขั้นสูง</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">เครื่องสร้างโครงแบบ</a>
+</li>
+<li><a href="../advanced/pm.html">การใช้กระบวนการจัดการ</a>
+</li>
+<li><a href="../advanced/security-updates.html">ความปลอดภัยล่าสุด</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">แนวทางปฏิบัติความปลอดภัย</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">แนวทางปฏิบัติประสิทธิภาพ</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="glossary.html">แหล่งข้อมูลอื่น</a>
+<ul>
+<li>
+<a href="community.html">ชุมชน</a>
+</li>
+<li>
+<a href="glossary.html">ศัพย์</a>
+</li>
+<li>
+<a href="middleware.html">มิลเดิลแวร์</a>
+</li>
+<li>
+<a href="utils.html">โมดูลที่มีประโยชน์</a>
+</li>
+<li>
+<a href="frameworks.html">เฟรมเวอร์ค</a>
+</li>
+<li>
+<a href="learning.html">การเรียนรู้เพิ่มเติม</a>
+</li>
+<li>
+<a href="companies-using-express.html">บริษัทที่ใช้ Express</a>
+</li>
+<li>
+<a href="contributing.html">มีส่วนร่วมกับ Express</a>
+</li>
+<li>
+<a href="../changelog/4x.html">บันทึกการเปลี่ยนแปลง</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>ในเอกสารนี้อาจจะเก่าไปแล้วที่เกี่ยวเนื่องกับรุ่นของเอกสารในภาษาอังกฤษ สำหรับรุ่นล่าสุดโปรดอ้างอิงจาก <a href="../../index.html">เอกสารในภาษาอังกฤษ</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="frameworks-built-on-express">Frameworks built on Express</h1>
+<p>Several popular Node.js frameworks are built on Express:</p>
+<ul>
+<li><strong><a href="http://feathersjs.com/">Feathers</a></strong>: Build prototypes in minutes and production ready real-time apps in days.</li>
+<li><strong><a href="https://www.itemsapi.com/">ItemsAPI</a></strong>: Search backend for web and mobile applications built on Express and Elasticsearch.</li>
+<li><strong><a href="http://keystonejs.com/">KeystoneJS</a></strong>: Website and API Application Framework / CMS with an auto-generated React.js Admin UI.</li>
+<li><strong><a href="http://krakenjs.com/">Kraken</a></strong>: Secure and scalable layer that extends Express by providing structure and convention.</li>
+<li><strong><a href="http://lean-stack.io/">LEAN-STACK</a></strong>: The Pure JavaScript Stack.</li>
+<li><strong><a href="http://loopback.io/">LoopBack</a></strong>: Highly-extensible, open-source Node.js framework for quickly creating dynamic end-to-end REST APIs.</li>
+<li><strong><a href="http://mean.io/">MEAN</a></strong>: Opinionated fullstack JavaScript framework that simplifies and accelerates web application development.</li>
+<li><strong><a href="http://sailsjs.org/">Sails</a></strong>: MVC framework for Node.js for building practical, production-ready apps.</li>
+<li><strong><a href="http://bottr.co/">Bottr</a></strong>: Framework that simplifies building chatbot applications.</li>
+<li><strong><a href="https://github.com/flywheelsports/fwsp-hydra-express">Hydra-Express</a></strong>: Hydra-Express is a light-weight library which facilitates building Node.js Microservices using ExpressJS.</li>
+<li><strong><a href="http://github.com/onehilltech/blueprint">Blueprint</a></strong>: Highly-configurable MVC framework for composing production-ready services from reusable components</li>
+<li><strong><a href="http://locomotivejs.org/">Locomotive</a></strong>: Powerful MVC web framework for Node.js from the maker of Passport.js</li>
+<li><strong><a href="https://github.com/graphcool/graphql-yoga">graphql-yoga</a></strong>: Fully-featured, yet simple and lightweight GraphQL server</li>
+</ul>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> เป็นโครงการของ <a href="https://openjsf.org">มูลนิธิ OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork เว็บไซต์บน GitHub</a>.</div>
+<div>Copyright &copy; 2017 StrongLoop, IBM, และผู้มีส่วนร่วมอื่นๆ ของ expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> เว็บไซต์นี้อยู่ภายใต้สัญญาอนุญาตของ <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">สัญญาอนุญาติครีเอทีฟคอมมอนส์ แบบแสดงที่มา-อนุญาตแบบเดียวกัน 3.0 สหรัฐอเมริกา</a>.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="2899ca6db051feef75e16ff3-text/javascript"></script>
+<script type="2899ca6db051feef75e16ff3-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:th'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="2899ca6db051feef75e16ff3-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/th/resources/frameworks.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html lang="zh-tw" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-tw/guide/using-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>使用 Express 中介軟體</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-tw.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">首頁</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入門</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安裝
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 產生器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+靜態檔案
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常見問題 (FAQ)
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">手冊</a>
+<ul>
+<li><a href="routing.html">路由</a>
+</li>
+<li><a href="writing-middleware.html">撰寫中介軟體</a>
+</li>
+<li><a href="using-middleware.html">使用中介軟體</a>
+</li>
+<li><a href="using-template-engines.html">使用範本引擎</a>
+</li>
+<li><a href="error-handling.html">錯誤處理</a>
+</li>
+<li><a href="debugging.html">除錯</a>
+</li>
+<li><a href="behind-proxies.html">位於 Proxy 背後的 Express</a>
+</li>
+<li><a href="migrating-4.html">移至 Express 4</a>
+</li>
+<li><a href="migrating-5.html">移至 Express 5</a>
+</li>
+<li><a href="database-integration.html">資料庫整合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 參照</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（已淘汰）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（已淘汰）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">進階主題</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">範本引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用程序管理程式</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳作法</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">效能最佳作法</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">資源</a>
+<ul>
+<li><a href="../resources/glossary.html">名詞解釋</a>
+</li>
+<li><a href="../resources/middleware.html">中介軟體</a>
+</li>
+<li><a href="../resources/community.html">社群</a>
+</li>
+<li><a href="../resources/learning.html">額外學習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>這個翻譯<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相對於英文版說明文件，本文件可能已不合時宜。如需最新的更新，請參閱<a href="../../index.html">英文版說明文件</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="使用中介軟體">使用中介軟體</h1>
+<p>Express 是一個本身功能極簡的路由與中介軟體 Web 架構：本質上，Express 應用程式是一系列的中介軟體函數呼叫。</p>
+<p><em>中介軟體</em>函數是一些有權存取<a href="../4x/api.html#req">要求物件</a> (<code>req</code>)、<a href="../4x/api.html#res">回應物件</a> (<code>res</code>) 和應用程式要求/回應循環中之下一個中介軟體函數的函數。下一個中介軟體函數通常以名為 <code>next</code> 的變數表示。</p>
+<p>中介軟體函數可以執行下列作業：</p>
+<ul>
+<li>執行任何程式碼。</li>
+<li>對要求和回應物件進行變更。</li>
+<li>結束要求/回應循環。</li>
+<li>呼叫堆疊中的下一個中介軟體函數。</li>
+</ul>
+<p>如果現行中介軟體函數不會結束要求/回應循環，它必須呼叫 <code>next()</code>，以便將控制權傳遞給下一個中介軟體函數。否則，要求將會停擺。</p>
+<p>Express 應用程式可以使用下列類型的中介軟體：</p>
+<ul>
+<li><a href="#middleware.application">應用程式層次的中介軟體</a></li>
+<li><a href="#middleware.router">路由器層次的中介軟體</a></li>
+<li><a href="#middleware.error-handling">錯誤處理中介軟體</a></li>
+<li><a href="#middleware.built-in">內建中介軟體</a></li>
+<li><a href="#middleware.third-party">協力廠商中介軟體</a></li>
+</ul>
+<p>您可以使用選用的裝載路徑，來載入應用程式層次的中介軟體和路由器層次的中介軟體。您也可以一併載入一系列的中介軟體函數，如此會在裝載點建立一個中介軟體系統子堆疊。</p>
+<h2 id="middleware.application">應用程式層次的中介軟體</h2>
+<p>使用 <code>app.use()</code> 和 <code>app.METHOD()</code> 函數，將應用程式層次的中介軟體連結至 <a href="../4x/api.html#app">app object</a> 實例，其中 <code>METHOD</code> 是中介軟體函數要處理的 HTTP 要求方法（例如 GET、PUT 或 POST），並採小寫。</p>
+<p>本例顯示沒有裝載路徑的中介軟體函數。每當應用程式收到要求時，就會執行此函數。</p>
+<pre><code class="language-javascript" translate="no">
+var app = express();
+
+app.use(function (req, res, next) {
+  console.log('Time:', Date.now());
+  next();
+});
+</code>
+</pre>
+<p>本例顯示裝載在 <code>/user/:id</code> 路徑的中介軟體函數。會對 <code>/user/:id</code> 路徑上任何類型的 HTTP 要求，執行此函數。</p>
+<pre><code class="language-javascript" translate="no">
+app.use('/user/:id', function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+</code>
+</pre>
+<p>本例顯示路由和其處理程式函數（中介軟體系統）。此函數會處理指向 <code>/user/:id</code> 路徑的 GET 要求。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/user/:id', function (req, res, next) {
+  res.send('USER');
+});
+</code>
+</pre>
+<p>下列範例顯示使用裝載路徑在裝載點載入一系列中介軟體函數。其中說明中介軟體子堆疊，這個子堆疊會針對指向 <code>/user/:id</code> 路徑之任何類型的 HTTP 要求，列印其要求資訊。</p>
+<pre><code class="language-javascript" translate="no">
+app.use('/user/:id', function(req, res, next) {
+  console.log('Request URL:', req.originalUrl);
+  next();
+}, function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+</code>
+</pre>
+<p>路由處理程式可讓您為一個路徑定義多個路由。下列範例為指向 <code>/user/:id</code> 路徑的 GET 要求，定義兩個路由。第二個路由不會造成任何問題，卻絕不會呼叫，因為第一個路由會結束要求/回應循環。</p>
+<p>本例顯示中介軟體子堆疊，它處理了指向 <code>/user/:id</code> 路徑的 GET 要求。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/user/:id', function (req, res, next) {
+  console.log('ID:', req.params.id);
+  next();
+}, function (req, res, next) {
+  res.send('User Info');
+});
+
+// handler for the /user/:id path, which prints the user ID
+app.get('/user/:id', function (req, res, next) {
+  res.end(req.params.id);
+});
+</code>
+</pre>
+<p>如果要跳過路由器中介軟體堆疊中其餘的中介軟體函數，請呼叫 <code>next('route')</code>，將控制權傳遞給下一個路由。<strong>附註</strong>：
+<code>next('route')</code> 只適用於使用 <code>app.METHOD()</code> 或 <code>router.METHOD()</code> 函數載入的中介軟體函數。</p>
+<p>本例顯示中介軟體子堆疊，它處理了指向 <code>/user/:id</code> 路徑的 GET 要求。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/user/:id', function (req, res, next) {
+  // if the user ID is 0, skip to the next route
+  if (req.params.id == 0) next('route');
+  // otherwise pass the control to the next middleware function in this stack
+  else next(); //
+}, function (req, res, next) {
+  // render a regular page
+  res.render('regular');
+});
+
+// handler for the /user/:id path, which renders a special page
+app.get('/user/:id', function (req, res, next) {
+  res.render('special');
+});
+</code>
+</pre>
+<h2 id="middleware.router">路由器層次的中介軟體</h2>
+<p>路由器層次的中介軟體的運作方式如同應用程式層次的中介軟體，不同之處在於它會連結至 <code>express.Router()</code> 實例。</p>
+<pre><code class="language-javascript" translate="no">
+var router = express.Router();
+</code>
+</pre>
+<p>請利用 <code>router.use()</code> 和 <code>router.METHOD()</code> 函數來載入路由器層次的中介軟體。</p>
+<p>下列的程式碼範例是使用路由器層次的中介軟體，抄寫上述針對應用程式層次的中介軟體顯示的中介軟體系統：</p>
+<pre><code class="language-javascript" translate="no">
+var app = express();
+var router = express.Router();
+
+// a middleware function with no mount path. This code is executed for every request to the router
+router.use(function (req, res, next) {
+  console.log('Time:', Date.now());
+  next();
+});
+
+// a middleware sub-stack shows request info for any type of HTTP request to the /user/:id path
+router.use('/user/:id', function(req, res, next) {
+  console.log('Request URL:', req.originalUrl);
+  next();
+}, function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+
+// a middleware sub-stack that handles GET requests to the /user/:id path
+router.get('/user/:id', function (req, res, next) {
+  // if the user ID is 0, skip to the next router
+  if (req.params.id == 0) next('route');
+  // otherwise pass control to the next middleware function in this stack
+  else next(); //
+}, function (req, res, next) {
+  // render a regular page
+  res.render('regular');
+});
+
+// handler for the /user/:id path, which renders a special page
+router.get('/user/:id', function (req, res, next) {
+  console.log(req.params.id);
+  res.render('special');
+});
+
+// mount the router on the app
+app.use('/', router);
+</code>
+</pre>
+<h2 id="middleware.error-handling">錯誤處理中介軟體</h2>
+<div class="doc-box doc-notice">
+<p>錯誤處理中介軟體一律會使用<em>四個</em>引數。您必須提供這四個引數，將它識別為錯誤處理中介軟體函數。即使您不需要使用 <code>next</code> 物件也必須指定，以維護簽章。否則，會將 <code>next</code> 物件解譯為一般中介軟體，而無法處理錯誤。</p>
+</div>
+<p>錯誤處理中介軟體函數的定義方式，與其他中介軟體函數相同，差別在於引數是四個而非三個，具體來說，就是使用 <code>(err, req, res, next)</code>) 簽章：</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+<p>如需錯誤處理中介軟體的詳細資料，請參閱：<a href="error-handling.html">錯誤處理</a>。</p>
+<h2 id="middleware.built-in">內建中介軟體</h2>
+<p>從 4.x 版起，Express 不再相依於 <a href="https://github.com/senchalabs/connect">Connect</a>。除了 <code>express.static</code>，Express 先前隨附的所有中介軟體函數現在位於個別的模組中。請檢視<a href="https://github.com/senchalabs/connect#middleware">中介軟體函數清單</a>。</p>
+<h4 id="express.static">express.static(root, [options])</h4>
+<p>Express 唯一的內建中介軟體函數是 <code>express.static</code>。此函數以 <a href="https://github.com/expressjs/serve-static">serve-static</a> 為基礎，負責在 Express 應用程式中提供靜態資產。</p>
+<p><code>root</code> 引數指定提供靜態資產的根目錄。</p>
+<p><code>options</code> 選用物件可具有下列內容：</p>
+<table>
+<thead>
+<tr>
+<th>內容</th>
+<th>說明</th>
+<th>類型</th>
+<th>預設值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dotfiles</code></td>
+<td>用來提供點檔案的選項。可能的值是 “allow”、”deny” 和 “ignore”</td>
+<td>字串</td>
+<td>“ignore”</td>
+</tr>
+<tr>
+<td><code>etag</code></td>
+<td>啟用或停用 etag 的產生</td>
+<td>布林</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>extensions</code></td>
+<td>設定副檔名遞補。</td>
+<td>陣列</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>傳送目錄索引檔。設定 <code>false</code>，會停用目錄檢索。</td>
+<td>混合</td>
+<td>“index.html”</td>
+</tr>
+<tr>
+<td><code>lastModified</code></td>
+<td>將 <code>Last-Modified</code> 標頭設為作業系統上檔案的前次修改日期。可能的值是 <code>true</code> 或 <code>false</code>。</td>
+<td>布林</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>maxAge</code></td>
+<td>設定 Cache-Control 標頭的 max-age 內容，以毫秒為單位或 <a href="https://www.npmjs.org/package/ms">ms 格式</a>的字串</td>
+<td>數字</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>redirect</code></td>
+<td>當路徑名稱是目錄時，重新導向至尾端 “/”。</td>
+<td>布林</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>setHeaders</code></td>
+<td>用來設定 HTTP 標頭以提供檔案的函數。</td>
+<td>函數</td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+<p>下列範例顯示如何使用 <code>express.static</code> 中介軟體函數，且其中詳細闡述了 options 物件：</p>
+<pre><code class="language-javascript" translate="no">
+var options = {
+  dotfiles: 'ignore',
+  etag: false,
+  extensions: ['htm', 'html'],
+  index: false,
+  maxAge: '1d',
+  redirect: false,
+  setHeaders: function (res, path, stat) {
+    res.set('x-timestamp', Date.now());
+  }
+}
+
+app.use(express.static('public', options));
+</code>
+</pre>
+<p>每一個應用程式可有多個靜態目錄：</p>
+<pre><code class="language-javascript" translate="no">
+app.use(express.static('public'));
+app.use(express.static('uploads'));
+app.use(express.static('files'));
+</code>
+</pre>
+<p>如需 <code>serve-static</code> 函數和其選項的詳細資料，請參閱 <a href="https://github.com/expressjs/serve-static">serve-static</a> 說明文件。</p>
+<h2 id="middleware.third-party">協力廠商中介軟體</h2>
+<p>使用協力廠商中介軟體，在 Express 應用程式中新增功能。</p>
+<p>針對必要的功能安裝 Node.js 模組，然後在應用程式層次或路由器層次將它載入到您的應用程式中。</p>
+<p>下列範例說明如何安裝和載入用來剖析 Cookie 的中介軟體函數 <code>cookie-parser</code>。</p>
+<pre><code class="language-console">$ npm install cookie-parser
+</code></pre>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+var cookieParser = require('cookie-parser');
+
+// load the cookie-parsing middleware
+app.use(cookieParser());
+</code>
+</pre>
+<p>如需 Express 中常用的部分協力廠商中介軟體函數清單，請參閱：<a href="../resources/middleware.html">協力廠商中介軟體</a>。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金會的</a>一個項目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub 上的網站分支</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc. 與其他 expressjs.com 貢獻者。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本著作係採用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">創用 CC 姓名標示-相同方式分享 3.0 美國 授權條款</a>授權.
+</div>
+</footer>
+<script type="02173e2c3364405a82dd49a0-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-tw'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="02173e2c3364405a82dd49a0-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-tw/guide/using-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

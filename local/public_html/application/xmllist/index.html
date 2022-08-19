@@ -1,0 +1,22 @@
+<html>
+	<body>
+
+		<script>
+			var xml = {
+				http: {
+					request: (new XMLHttpRequest()),
+					method: 'GET',
+					URL: 'https://drifty-abakasam720639.codeanyapp.com/xmllist/list.xml' 
+				}
+			}
+			
+			xml.document = function() { var data = xml.http.request.responseXML; alert(data); return data }
+			xml.http.request.open(xml.http.method, xml.http.URL)
+			xml.http.request.send()
+			
+			setTimeout(xml.document, 5000)
+			
+			
+		</script>
+	</body>
+</html>

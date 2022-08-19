@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<!-- Mirrored from expressjs.com/ko/ by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:47:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express - Node.js 웹 애플리케이션 프레임워크</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../images/favicon.png" />
+<link rel="stylesheet" href="../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../css/dropit.css">
+<link rel="stylesheet" href="../css/prism.css">
+<link rel="stylesheet" href="../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../css/ko.css">
+<link rel="stylesheet" href="../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../js/ismobile.js"></script>
+<script data-cfasync="false" src="../js/app.js"></script>
+<script data-cfasync="false" src="../js/retina.js"></script>
+<script data-cfasync="false" src="../js/dropit.js"></script>
+<script data-cfasync="false" src="../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../strongloop.com/index.html">StrongLoop / IBM</a>에 의해 제공이 번역.</p>
+이 문서는 영문판 문서에 비해 더 오래된 버전일 수도 있습니다. 최신 업데이트를 확인하려면 <a href="../index.html">영문판 문서</a>를 참조하십시오.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<section id="home-content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br />
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="index.html" id="home-menu" class="active">홈</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="starter/installing.html">시작하기</a>
+<ul>
+<li>
+<a href="starter/installing.html">
+설치
+</a>
+</li>
+<li>
+<a href="starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="starter/generator.html">
+Express 생성기
+</a>
+</li>
+<li>
+<a href="starter/basic-routing.html">
+기본 라우팅
+</a>
+</li>
+<li>
+<a href="starter/static-files.html">
+정적 파일
+</a>
+</li>
+<li>
+<a href="starter/faq.html">
+자주 묻는 질문(FAQ)
+</a>
+</li>
+</ul>
+</li>
+ </ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="guide/routing.html">안내서</a>
+<ul>
+<li><a href="guide/routing.html">라우팅</a>
+</li>
+<li><a href="guide/writing-middleware.html">미들웨어 작성</a>
+</li>
+<li><a href="guide/using-middleware.html">미들웨어 사용</a>
+</li>
+<li><a href="guide/using-template-engines.html">템플리트 엔진 사용</a>
+</li>
+<li><a href="guide/error-handling.html">오류 처리</a>
+</li>
+<li><a href="guide/debugging.html">디버깅</a>
+</li>
+<li><a href="guide/behind-proxies.html">프록시 환경에서 Express 사용</a>
+</li>
+<li><a href="guide/migrating-4.html">Express 4로의 이전</a>
+</li>
+<li><a href="guide/migrating-5.html">Express 5로의 이전</a>
+</li>
+<li><a href="guide/database-integration.html">데이터베이스 통합</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="4x/api.html">API 참조</a>
+<ul>
+<li><a href="4x/api.html">4.x</a>
+</li>
+<li><a href="3x/api.html">3.x(더 이상 사용되지 않음)</a>
+</li>
+<li><a href="../2x/index.html">2.x(더 이상 사용되지 않음)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="advanced/developing-template-engines.html">고급 주제</a>
+<ul>
+<li><a href="advanced/developing-template-engines.html">템플리트 엔진</a>
+</li>
+<li><a href="advanced/pm.html">프로세스 관리자 사용</a>
+</li>
+<li><a href="advanced/security-updates.html">보안 업데이트</a>
+</li>
+<li><a href="advanced/best-practice-security.html">보안 우수 사례</a>
+</li>
+<li><a href="advanced/best-practice-performance.html">성능 우수 사례</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="resources/glossary.html">자원</a>
+<ul>
+<li><a href="resources/glossary.html">용어집</a>
+</li>
+<li><a href="resources/middleware.html">미들웨어</a>
+</li>
+<li><a href="resources/community.html">커뮤니티</a>
+</li>
+<li><a href="resources/learning.html">추가 학습</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="homepage-leftpane" class="pane">
+<section id="description">
+<div class="express"><a href="../index.html">Express</a><a href="changelog/4x.html#4.18.1" id="express-version">4.18.1</a></div>
+<span class="description"><a href="http://nodejs.org/">Node.js</a>를 위한 빠르고 개방적인 간결한 웹 프레임워크</span>
+</section>
+<div id="install-command">$ npm install express --save</div>
+</div>
+</section>
+
+<section id="intro">
+<div id="boxes" class="clearfix">
+<div id="web-applications">
+<h3>웹 애플리케이션</h3> Express는 웹 및 모바일 애플리케이션을 위한 일련의 강력한 기능을 제공하는 간결하고 유연한 Node.js 웹 애플리케이션 프레임워크입니다.
+</div>
+<div id="apis">
+<h3>API</h3> 자유롭게 활용할 수 있는 수많은 HTTP 유틸리티 메소드 및 미들웨어를 통해 쉽고 빠르게 강력한 API를 작성할 수 있습니다.
+</div>
+<div id="performance">
+<h3>성능</h3> Express는 기본적인 웹 애플리케이션 기능으로 구성된 얇은 계층을 제공하여, 여러분이 알고 있고 선호하는 Node.js 기능을 모호하게 만들지 않습니다.
+</div>
+<div id="frameworks">
+<h3>Frameworks</h3> <a href="resources/frameworks.html">많은 유명한 프레임워크들이</a> Express를 기반으로 하고 있습니다.
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>는 <a href="https://openjsf.org">OpenJS 기반의</a> 프로젝트입니다.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub에서 웹사이트의 포크를 작성하십시오</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 이 저작물은 <a rel="license" href="../../creativecommons.org/licenses/by-sa/3.0/us/index.html">크리에이티브 커먼즈 저작자표시-동일조건변경허락 3.0 미국 라이선스</a>에 따라 이용할 수 있습니다.
+</div>
+</footer>
+<script type="814dad321577b517c715967f-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ko'] }
+})" async></script>
+<script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="814dad321577b517c715967f-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ko/ by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:47:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ja/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express でのエラー処理</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ja.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">ホーム</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">概説</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+インストール
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express ジェネレーター
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本的なルーティング
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静的ファイル
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">ガイド</a>
+<ul>
+<li><a href="routing.html">ルーティング</a>
+</li>
+<li><a href="writing-middleware.html">ミドルウェアの作成</a>
+</li>
+<li><a href="using-middleware.html">ミドルウェアの使用</a>
+</li>
+<li><a href="using-template-engines.html">テンプレート・エンジンの使用</a>
+</li>
+<li><a href="error-handling.html">エラー処理</a>
+</li>
+<li><a href="debugging.html">デバッグ</a>
+</li>
+<li><a href="behind-proxies.html">プロキシーの背後の Express</a>
+</li>
+<li><a href="migrating-4.html">Express 4 への移行</a>
+</li>
+<li><a href="migrating-5.html">Express 5 への移行</a>
+</li>
+<li><a href="database-integration.html">データベースの統合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API リファレンス</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (非推奨)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (非推奨)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高度なトピック</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">テンプレート・エンジン</a>
+</li>
+<li><a href="../advanced/pm.html">プロセス・マネージャーの使用</a>
+</li>
+<li><a href="../advanced/security-updates.html">セキュリティー更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">セキュリティーに関するベスト・プラクティス</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">パフォーマンスに関するベスト・プラクティス</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">リソース</a>
+<ul>
+<li><a href="../resources/glossary.html">用語集</a>
+</li>
+<li><a href="../resources/middleware.html">ミドルウェア</a>
+</li>
+<li><a href="../resources/community.html">コミュニティー</a>
+</li>
+<li><a href="../resources/learning.html">追加学習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>によって提供されるこの翻訳.</p>
+本書は、英語の資料と比較すると古くなっている可能性があります。最新の更新については、<a href="../../index.html">英語版の資料</a>を参照してください。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="エラー処理">エラー処理</h1>
+<p><em>エラー処理</em> は、Expressが同期的および非同期的に発生するエラーをキャッチして処理する方法です。Expressにはデフォルトのエラーハンドラが付属しているので、自分で作成する必要はありません。</p>
+<h2 id="エラーのキャッチ">エラーのキャッチ</h2>
+<p>Expressがルート・ハンドラとミドルウェアの実行中に発生するすべてのエラーを確実にキャッチすることが重要です。</p>
+<p>ルート・ハンドラとミドルウェア内の同期コードで発生するエラーは、余分な作業を必要としません。同期コードがエラーをスローすると、Expressはそれをキャッチして処理します。 例えば：</p>
+<pre><code class="language-js">app.get('/', (req, res) =&gt; {
+  throw new Error('BROKEN') // Express will catch this on its own.
+})
+</code></pre>
+<p>ルート・ハンドラとミドルウェアによって呼び出された非同期関数から返されたエラーについては、それらを<code>next()</code>関数に渡す必要があります。ここでExpressはそれらをキャッチして処理します。例えば：</p>
+<pre><code class="language-js">app.get('/', (req, res, next) =&gt; {
+  fs.readFile('/file-does-not-exist', (err, data) =&gt; {
+    if (err) {
+      next(err) // Pass errors to Express.
+    } else {
+      res.send(data)
+    }
+  })
+})
+</code></pre>
+<p>シーケンス内のコールバックにデータがなく、エラーのみが発生する場合は、次のようにこのコードを単純化できます。</p>
+<pre><code class="language-js">app.get('/', [
+  function (req, res, next) {
+    fs.writeFile('/inaccessible-path', 'data', next)
+  },
+  function (req, res) {
+    res.send('OK')
+  }
+])
+</code></pre>
+<p>上記の例では<code>fs.writeFile</code>のコールバックとして<code>next</code>が提供されています。これはエラーの有無にかかわらず呼び出されます。エラーがなければ、2番目のハンドラが実行されます。それ以外の場合、Expressはエラーをキャッチして処理します。</p>
+<p>ルート・ハンドラまたはミドルウェアによって呼び出された非同期コードで発生したエラーをキャッチして、Expressに渡して処理する必要があります。例えば：</p>
+<pre><code class="language-js">app.get('/', (req, res, next) =&gt; {
+  setTimeout(() =&gt; {
+    try {
+      throw new Error('BROKEN')
+    } catch (err) {
+      next(err)
+    }
+  }, 100)
+})
+</code></pre>
+<p>上記の例では、<code>try ... catch</code>ブロックを使用して非同期コードのエラーを捕捉してExpressに渡しています。<code>try ... catch</code>ブロックが省略された場合、Expressは同期ハンドラ・コードの一部ではないため、エラーをキャッチしません。</p>
+<p>Promiseを使って<code>try..catch</code>ブロックのオーバーヘッドを避けるか、Promiseを返す関数を使うとき。例えば：</p>
+<pre><code class="language-js">app.get('/', (req, res, next) =&gt; {
+  Promise.resolve().then(() =&gt; {
+    throw new Error('BROKEN')
+  }).catch(next) // Errors will be passed to Express.
+})
+</code></pre>
+<p>Promiseは自動的に同期エラーと拒否されたPromiseをキャッチするので、catchハンドラに最初の引数としてエラーが与えられ、最終的なcatchハンドラとして<code>next</code>を指定するだけで、Expressはエラーをキャッチします。</p>
+<p>また、非同期コードを単純なものに減らすことで、同期エラーのキャッチに依存する一連のハンドラを使用することもできます。例えば：</p>
+<pre><code class="language-js">app.get('/', [
+  function (req, res, next) {
+    fs.readFile('/maybe-valid-file', 'utf8', (err, data) =&gt; {
+      res.locals.data = data
+      next(err)
+    })
+  },
+  function (req, res) {
+    res.locals.data = res.locals.data.split(',')[1]
+    res.send(res.locals.data)
+  }
+])
+</code></pre>
+<p>上の例は<code>readFile</code>呼び出しからの簡単なステートメントをいくつか持っています。<code>readFile</code>でエラーが発生した場合、エラーをExpressに渡します。そうでなければ、チェーン内の次のハンドラで同期エラー処理の世界に素早く戻ります。次に、上記の例ではデータを処理しようとしています。これが失敗すると、同期エラーハンドラはそれをキャッチします。 この処理を<code>readFile</code>コールバックの中で行った場合、アプリケーションは終了し、Expressのエラーハンドラは実行されません。</p>
+<p>どちらの方法を使用しても、Expressのエラーハンドラを呼び出す場合や、アプリケーションを存続させる場合は、Expressがエラーを受け取るようにする必要があります。</p>
+<h2 id="デフォルトのエラー処理">デフォルトのエラー処理</h2>
+<p>Expressには、アプリケーションで発生する可能性のあるエラーを処理するビルトインエラーハンドラが付属しています。 このデフォルトのエラー処理ミドルウェア関数は、ミドルウェア関数スタックの最後に追加されます。</p>
+<p><code>next()</code>にエラーを渡し、カスタムエラーハンドラでそれを処理しない場合、それは組み込みのエラーハンドラによって処理されます。エラーはスタックトレースを使用してクライアントに書き込まれます。スタックトレースは本番環境には含まれていません。</p>
+<div class="doc-box doc-info">
+<p>プロダクションモードでアプリケーションを実行するには、環境変数<code>NODE_ENV</code>を<code> production</code>に設定します。</p>
+</div>
+<p>レスポンスの記述を開始した後でエラーを伴って<code>next()</code>を呼び出すと（例えば、クライアントへの応答をストリーミング中にエラーが発生した場合）、Expressのデフォルトエラーハンドラは接続を閉じてリクエストを失敗します。</p>
+<p>したがって、カスタムエラーハンドラを追加するときは、ヘッダーがすでにクライアントに送信されているときに、デフォルトのExpressエラーハンドラに委任する必要があります。</p>
+<pre><code class="language-js">function errorHandler (err, req, res, next) {
+  if (res.headersSent) {
+    return next(err)
+  }
+  res.status(500)
+  res.render('error', { error: err })
+}
+</code></pre>
+<p>カスタムエラー処理ミドルウェアが存在していても、コード内でエラーが2回以上発生したときに<code>next()</code>を呼び出すと、デフォルトのエラーハンドラがトリガされることに注意してください。</p>
+<h2 id="エラー処理を記述する">エラー処理を記述する</h2>
+<p>エラー処理ミドルウェア関数は、その他のミドルウェア関数と同じ方法で定義しますが、エラー処理関数の引数が3つではなく、4つ <code>(err、req、res、next)</code> であることが例外です。次に例を示します。</p>
+<pre><code class="language-js">app.use((err, req, res, next) =&gt; {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+</code></pre>
+<p>エラー処理ミドルウェアは、その他の <code>app.use()</code> およびルート呼び出しの後で最後に定義します。次に例を示します。</p>
+<pre><code class="language-js">const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(bodyParser.json())
+app.use(methodOverride())
+app.use((err, req, res, next) =&gt; {
+  // logic
+})
+</code></pre>
+<p>ミドルウェア関数の中からの応答は、HTML エラー・ページ、単純なメッセージ、または JSON ストリングなど、任意の形式にすることができます。</p>
+<p>組織的な (および高水準フレームワークの) 目的で、通常のミドルウェア関数と同じように、複数のエラー処理のミドルウェア関数を定義できます。例えば、<code>XHR</code> を使用する要求と、使用しない要求のためのエラー・ハンドラーを定義するには、以下のコマンドを使用します。</p>
+<pre><code class="language-js">const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(bodyParser.json())
+app.use(methodOverride())
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
+</code></pre>
+<p>この例では、汎用の <code>logErrors</code> が要求とエラーの情報を <code>stderr</code> に書き込む可能性があります。次に例を示します。</p>
+<pre><code class="language-js">function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
+}
+</code></pre>
+<p>また、この例では、<code>clientErrorHandler</code> は次のように定義されます。この場合、エラーは明示的に次のエラーに渡されます。</p>
+<p>エラー処理関数の中で”next”を呼んで <em>いない</em> ときは、レスポンスの記述（および終了）を行う必要があります。そうしなければ、それらのリクエストは「ハング」し、ガベージコレクションの対象になりません。</p>
+<pre><code class="language-js">function clientErrorHandler (err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' })
+  } else {
+    next(err)
+  }
+}
+</code></pre>
+<p>「catch-all」<code>errorHandler</code> 関数は、次のように実装されます。</p>
+<pre><code class="language-js">function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
+}
+</code></pre>
+<p><code>next()</code> 関数に (ストリング <code>'route'</code> を除く) 何らかを渡すと、Express は、現在のリクエストでエラーが発生したと想定して、エラーが発生していない残りのすべての処理のルーティングとミドルウェア関数をスキップします。そのエラーを何らかの方法で渡す場合は、次のセクションで説明するようにエラー処理ルートを作成する必要があります。</p>
+<p>複数のコールバック関数を使用するルート・ハンドラーがある場合、<code>route</code> パラメーターを使用して、次のルート・ハンドラーまでスキップできます。次に例を示します。</p>
+<pre><code class="language-js">app.get('/a_route_behind_paywall',
+  (req, res, next) =&gt; {
+    if (!req.user.hasPaid) {
+      // continue handling this request
+      next('route')
+    } else {
+      next()
+    }
+  }, (req, res, next) =&gt; {
+    PaidContent.find((err, doc) =&gt; {
+      if (err) return next(err)
+      res.json(doc)
+    })
+  })
+</code></pre>
+<p>この例では、<code>getPaidContent</code> ハンドラーはスキップされますが、<code>/a_route_behind_paywall</code> の <code>app</code> にある残りのハンドラーはすべて引き続き実行されます。</p>
+<div class="doc-box doc-info">
+<p><code>next()</code> および <code>next(err)</code> の呼び出しは、現在のハンドラーが完了したことと、その状態を示します。<code>next(err)</code> は、上記のようにエラーを処理するようにセットアップされたハンドラーを除き、チェーン内の残りのハンドラーをすべてスキップします。</p>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>は、<a href="https://openjsf.org">OpenJSの財団</a>のプロジェクトです。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub で Web サイトを fork します</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc.、およびその他の expressjs.com コントリビューター。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> この 作品 は <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">クリエイティブ・コモンズ 表示 - 継承 3.0 アメリカ合衆国 ライセンスの下に提供されています。</a>
+</div>
+</footer>
+<script type="b1340a22b2a3c5f6ed2e9ff8-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ja'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="b1340a22b2a3c5f6ed2e9ff8-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ja/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

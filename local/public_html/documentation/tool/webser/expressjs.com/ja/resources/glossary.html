@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ja/resources/glossary.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express の用語集</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ja.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">ホーム</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">概説</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+インストール
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express ジェネレーター
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本的なルーティング
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静的ファイル
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">ガイド</a>
+<ul>
+<li><a href="../guide/routing.html">ルーティング</a>
+</li>
+<li><a href="../guide/writing-middleware.html">ミドルウェアの作成</a>
+</li>
+<li><a href="../guide/using-middleware.html">ミドルウェアの使用</a>
+</li>
+<li><a href="../guide/using-template-engines.html">テンプレート・エンジンの使用</a>
+</li>
+<li><a href="../guide/error-handling.html">エラー処理</a>
+</li>
+<li><a href="../guide/debugging.html">デバッグ</a>
+</li>
+<li><a href="../guide/behind-proxies.html">プロキシーの背後の Express</a>
+</li>
+<li><a href="../guide/migrating-4.html">Express 4 への移行</a>
+</li>
+<li><a href="../guide/migrating-5.html">Express 5 への移行</a>
+</li>
+<li><a href="../guide/database-integration.html">データベースの統合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API リファレンス</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (非推奨)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (非推奨)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高度なトピック</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">テンプレート・エンジン</a>
+</li>
+<li><a href="../advanced/pm.html">プロセス・マネージャーの使用</a>
+</li>
+<li><a href="../advanced/security-updates.html">セキュリティー更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">セキュリティーに関するベスト・プラクティス</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">パフォーマンスに関するベスト・プラクティス</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="glossary.html" class="active">リソース</a>
+<ul>
+<li><a href="glossary.html">用語集</a>
+</li>
+<li><a href="middleware.html">ミドルウェア</a>
+</li>
+<li><a href="community.html">コミュニティー</a>
+</li>
+<li><a href="learning.html">追加学習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>によって提供されるこの翻訳.</p>
+本書は、英語の資料と比較すると古くなっている可能性があります。最新の更新については、<a href="../../index.html">英語版の資料</a>を参照してください。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="用語集">用語集</h1>
+<h3 id="アプリケーション">アプリケーション</h3>
+<p>一般に、特定の目的で操作を実行するよう設計された 1 つ以上のプログラム。Express のコンテキストでは、Node.js プラットフォームで稼働する Express API を使用するプログラム。<a href="../api.html#express">アプリケーション・オブジェクト</a>と呼ばれることもある。</p>
+<h3 id="api">API</h3>
+<p>アプリケーション・プログラミング・インターフェース。最初に使用するときは、略語のスペルを略さない。</p>
+<h3 id="express">Express</h3>
+<p>特定の意見に固執しない、Node.js アプリケーション向けの高速で最小限の Web フレームワーク。一般に、「Express」の望ましい呼び方は「Express.js」であるが、後者でも問題はない。</p>
+<h3 id="libuv">libuv</h3>
+<p>主に Node.js で使用するために開発された、非同期入出力に重点を置いたマルチプラットフォーム・サポート・ライブラリー。</p>
+<h3 id="ミドルウェア">ミドルウェア</h3>
+<p>最後のリクエストハンドラーの前に Express ルーティング層によって呼び出される関数。そのため、未加工要求と最後の目的のルートの間に配置される。ミドルウェアの用語に関しては、微妙な点がいくつかある。</p>
+<ul>
+<li><code>var foo = require('middleware')</code> は、Node.js モジュールを<em>要求</em> または<em>使用</em> することで呼び出される。その後、通常はステートメント <code>var mw = foo()</code> がミドルウェアを返す。</li>
+<li><code>app.use(mw)</code> は、<em>グローバル処理スタックにミドルウェアを追加</em> することで呼び出される。</li>
+<li><code>app.get('/foo', mw, function (req, res) { ... })</code> は、<em>「GET /foo」処理スタックにミドルウェアを追加</em> することで呼び出される。</li>
+</ul>
+<h3 id="nodejs">Node.js</h3>
+<p>スケーラブルなネットワーク・アプリケーションを作成するために使用されるソフトウェア・プラットフォーム。Node.js は、スクリプト言語として JavaScript を使用し、ノンブロッキング入出力と単一スレッドのイベント・ループを通して高スループットを実現する。<a href="http://nodejs.org/">nodejs.org</a> を参照。<strong>使用上の注意</strong>: 初回は「Node.js」を使用し、その後は「Node」を使用する。</p>
+<h3 id="オープンソース">オープン・ソース</h3>
+<p>形容詞として使用する場合は、ハイフンを付ける (例:「This is open-source software.」)。<a href="http://en.wikipedia.org/wiki/Open-source_software">Wikipedia の「Open-source software」</a>を参照。注: 一般的にはこの用語にハイフンを付けないが、ここでは複合形容詞にハイフンを付けるという標準英語の規則に従う。</p>
+<h3 id="リクエスト">リクエスト</h3>
+<p>HTTP リクエスト。クライアントは HTTP リクエストメッセージをサーバーに送信して、サーバーはレスポンスを返す。リクエストでは、いずれかの<a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">リクエストメソッド</a> (GET、POST など) を使用する必要がある。</p>
+<h3 id="レスポンス">レスポンス</h3>
+<p>HTTP レスポンス。サーバーは、HTTP レスポンスメッセージをクライアントに返す。レスポンスにはリクエストの完了状況情報が含まれ、リクエストされた内容がメッセージの本文に入っている場合もある。</p>
+<h3 id="ルート">ルート</h3>
+<p>リソースを識別する URL の一部。例えば、<code>http://foo.com/products/id</code> の中では「/products/id」がルートである。</p>
+<h3 id="ルーター">ルーター</h3>
+<p>API リファレンスで<a href="../4x/api.html#router">ルーター</a>を参照。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>は、<a href="https://openjsf.org">OpenJSの財団</a>のプロジェクトです。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub で Web サイトを fork します</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc.、およびその他の expressjs.com コントリビューター。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> この 作品 は <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">クリエイティブ・コモンズ 表示 - 継承 3.0 アメリカ合衆国 ライセンスの下に提供されています。</a>
+</div>
+</footer>
+<script type="02da0cdb5b5475dbe72a1aeb-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ja'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="02da0cdb5b5475dbe72a1aeb-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ja/resources/glossary.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html lang="pt-br" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/pt-br/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Manipulação de erros do Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/pt-br.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Página Inicial</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Introdução</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Instalação
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Gerador do Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Roteamento Básico
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Arquivos Estáticos
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Perguntas mais frequentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Guia</a>
+<ul>
+<li><a href="routing.html">Roteamento</a>
+</li>
+<li><a href="writing-middleware.html">Escrevendo o middleware</a>
+</li>
+<li><a href="using-middleware.html">Usando o middleware</a>
+</li>
+<li><a href="using-template-engines.html">Usando o mecanismo de modelo</a>
+</li>
+<li><a href="error-handling.html">Manipulação de erros</a>
+</li>
+<li><a href="debugging.html">Depuração</a>
+</li>
+<li><a href="behind-proxies.html">Express atrás de proxies</a>
+</li>
+<li><a href="migrating-4.html">Migrando para o Express 4</a>
+</li>
+<li><a href="migrating-5.html">Migrando para o Express 5</a>
+</li>
+<li><a href="database-integration.html">Integração de Banco de dados</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referência da API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (descontinuada)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (descontinuada)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Tópicos Avançados</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Mecanismos de modelo</a>
+</li>
+<li><a href="../advanced/pm.html">Usando gerenciadores de processos</a>
+</li>
+<li><a href="../advanced/security-updates.html">Atualizações de segurança</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Melhores práticas de segurança</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Melhores práticas de desempenho</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossário</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Comunidade</a>
+</li>
+<li><a href="../resources/learning.html">Aprendizagem adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta tradução fornecida pelo <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento pode estar desatualizado em relação à documentação em Inglês. Para obter as atualizações mais recentes, consulte a <a href="../../index.html">documentação em Inglês</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="manipulação-de-erros">Manipulação de erros</h1>
+<p>Defina funções de middleware de manipulação de erros da mesma
+forma que outras funções de middleware, exceto que funções de
+manipulação de erros possuem quatro argumentos ao invés de três:
+<code>(err, req, res, next)</code>. Por exemplo:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+<p>Você define os middlewares de manipulação de erros por
+último, após outros <code>app.use()</code> e chamads de rota; por
+exemplo:</p>
+<pre><code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(function(err, req, res, next) {
+  // logic
+});
+</code>
+</pre>
+<p>Repostas de dentro de uma função de middleware podem estar em
+qualquer formato que preferir, como uma página HTML de erros, uma
+mensagem simples, ou uma sequência de caracteres JSON.</p>
+<p>Para propósitos organizacionais (e estrutura de alto nível), é
+possível definir várias funções de middleware de manipulação de
+erros, de forma muito parecida como você faria com funções de
+middleware comuns. Por exemplo, se desejar definir um manipulador de
+erros para solicitações feitas usando o <code>XHR</code>, e
+aqueles sem, você pode usar os seguintes comandos:</p>
+<pre><code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
+</code>
+</pre>
+<p>Neste exemplo, o <code>logErrors</code> genérico pode
+escrever informações de solicitações e erros no
+<code>stderr</code>, por exemplo:</p>
+<pre><code class="language-javascript" translate="no">
+function logErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
+</code>
+</pre>
+<p>Também neste exemplo, o <code>clientErrorHandler</code> é
+definido como segue; neste caso, o erro é explicitamente passado para
+o próximo:</p>
+<pre><code class="language-javascript" translate="no">
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' });
+  } else {
+    next(err);
+  }
+}
+</code>
+</pre>
+<p>A função “catch-all” <code>errorHandler</code> pode ser implementada como segue:</p>
+<pre><code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code>
+</pre>
+<p>Se passar qualquer coisa para a função <code>next()</code>
+(exceto a sequência de caracteres <code>'route'</code>),
+o Express considera a solicitação atual como estando em erro e irá
+ignorar quaisquer funções restantes de roteamento e middleware que
+não sejam de manipulação de erros. Se desejar manipular este erro de
+alguma forma, você terá que criar uma rota de manipulação de erros na
+próxima seção.</p>
+<p>Se você tiver um manipulador de rota com as funções de retorno
+de chamada é possível usar o parâmetro <code>route</code>
+para ignorar o próximo manipulador de rota. Por exemplo:</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/a_route_behind_paywall',
+  function checkIfPaidSubscriber(req, res, next) {
+    if(!req.user.hasPaid) {
+
+      // continue handling this request
+      next('route');
+    }
+  }, function getPaidContent(req, res, next) {
+    PaidContent.find(function(err, doc) {
+      if(err) return next(err);
+      res.json(doc);
+    });
+  });
+</code>
+</pre>
+<p>Neste exemplo, o manipulador <code>getPaidContent</code>
+será ignorado mas qualquer manipulador remanescente no
+<code>app</code> para
+<code>/a_route_behind_paywall</code> continuariam sendo
+executados.</p>
+<div class="doc-box doc-info">
+<p>Chamadas para <code>next()</code> e <code>next(err)</code>
+indicam que o manipulador atual está completo e em qual estado.
+<code>next(err)</code> irá ignorar todos os manipuladores
+remanescentes na cadeia exceto por aqueles que estão configurados
+para manipular erros como descrito acima.</p>
+</div>
+<h2 id="o-manipulador-de-erros-padrão">O Manipulador de Erros Padrão</h2>
+<p>O Express vem com um manipulador de erros integrado, que cuida
+de qualquer erro que possa ser encontrado no aplicativo. Essa função
+de middleware de manipulação de erros padrão é incluída no final da
+pilha de funções de middleware.</p>
+<p>se você passar um erro para o <code>next()</code> e você
+não manipulá-lo com um manipulador de erros, ele irá ser manipulado
+por um manipulador de erros integrado; o erro será escrito no cliente
+com o rastreio de pilha. O rastreio de pilha não será incluído no
+ambiente de produção.</p>
+<div class="doc-box doc-info">
+<p>Configura a variável de ambiente <code>NODE_ENV</code> para
+<code>production</code>, para executar o aplicativo em modo de
+produção.</p>
+</div>
+<p>Se você chamar o <code>next()</code> com um erro após ter
+inicializado escrevendo a resposta (por exemplo, se encontrar um erro
+enquanto passa a resposta ao cliente) o manipulador de erros padrão do
+Express fecha a conexão e falha a solicitação.</p>
+<p>Portanto ao incluir um manipulador de erro customizado, você
+desejará delegar para o mecanismo de manipulação de erros padrão no
+Express, quando os cabeçalhos já tiverem sido enviados para o cliente:</p>
+<pre><code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code>
+</pre>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> é um projeto da <a href="https://openjsf.org">Fundação Node.js</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Crie um Fork do website no GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., e outros contribuidores do expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Este obra está licenciado com uma Licença <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Atribuição-CompartilhaIgual 3.0 Estados Unidos</a>.
+</div>
+</footer>
+<script type="9ef41b68402e1208311a4033-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:pt-br'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="9ef41b68402e1208311a4033-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/pt-br/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ja/starter/installing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express のインストール</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ja.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">ホーム</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">概説</a>
+<ul>
+<li>
+<a href="installing.html">
+インストール
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="generator.html">
+Express ジェネレーター
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+基本的なルーティング
+</a>
+</li>
+<li>
+<a href="static-files.html">
+静的ファイル
+</a>
+</li>
+<li>
+<a href="faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">ガイド</a>
+<ul>
+<li><a href="../guide/routing.html">ルーティング</a>
+</li>
+<li><a href="../guide/writing-middleware.html">ミドルウェアの作成</a>
+</li>
+<li><a href="../guide/using-middleware.html">ミドルウェアの使用</a>
+</li>
+<li><a href="../guide/using-template-engines.html">テンプレート・エンジンの使用</a>
+</li>
+<li><a href="../guide/error-handling.html">エラー処理</a>
+</li>
+<li><a href="../guide/debugging.html">デバッグ</a>
+</li>
+<li><a href="../guide/behind-proxies.html">プロキシーの背後の Express</a>
+</li>
+<li><a href="../guide/migrating-4.html">Express 4 への移行</a>
+</li>
+<li><a href="../guide/migrating-5.html">Express 5 への移行</a>
+</li>
+<li><a href="../guide/database-integration.html">データベースの統合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API リファレンス</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (非推奨)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (非推奨)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高度なトピック</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">テンプレート・エンジン</a>
+</li>
+<li><a href="../advanced/pm.html">プロセス・マネージャーの使用</a>
+</li>
+<li><a href="../advanced/security-updates.html">セキュリティー更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">セキュリティーに関するベスト・プラクティス</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">パフォーマンスに関するベスト・プラクティス</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">リソース</a>
+<ul>
+<li><a href="../resources/glossary.html">用語集</a>
+</li>
+<li><a href="../resources/middleware.html">ミドルウェア</a>
+</li>
+<li><a href="../resources/community.html">コミュニティー</a>
+</li>
+<li><a href="../resources/learning.html">追加学習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>によって提供されるこの翻訳.</p>
+本書は、英語の資料と比較すると古くなっている可能性があります。最新の更新については、<a href="../../index.html">英語版の資料</a>を参照してください。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="インストール">インストール</h1>
+<p>既に <a href="https://nodejs.org/">Node.js</a> をインストールしてあることを想定して、ここではアプリケーションを作成するディレクトリーを作り、それを作業ディレクトリーにします。</p>
+<pre><code class="language-console">$ mkdir myapp
+$ cd myapp
+</code></pre>
+<p><code>npm init</code> コマンドを使用して、アプリケーション用の <code>package.json</code> ファイルを作成します。
+<code>package.json</code> の機能について詳しくは、<a href="https://docs.npmjs.com/files/package.json">Specifics of npm’s package.json handling</a> を参照してください。</p>
+<pre><code class="language-console">$ npm init
+</code></pre>
+<p>次のコマンドは、アプリケーションの名前やバージョンなど、いくつかのことを要求します。
+ここでは、以下の例外を除いて、RETURN キーを押して単にそれらのデフォルトのほとんどを受け入れることができます。</p>
+<pre><code class="language-console">entry point: (index.js)
+</code></pre>
+<p><code>app.js</code> と入力するか、メインファイルの名前にしたいものを何か入力してください。もしそれを <code>index.js</code> にしたいのなら、RETURN キーを押して提案されたデフォルトのファイル名を受け入れてください。</p>
+<p>Expressを <code>myapp</code> ディレクトリにインストールし、それを依存関係リストに保存してください。例えば：</p>
+<pre><code class="language-console">$ npm install express
+</code></pre>
+<p>Express を一時的にインストールし、それを依存関係リストに追加しないようにするには、次のようにします。</p>
+<pre><code class="language-console">$ npm install express --no-save
+</code></pre>
+<div class="doc-box doc-info">
+<p>npm 5.0 以降のデフォルトでは、npm install はモジュールを <code>package.json</code> ファイルの <code>dependencies</code> リストに追加します。以前のバージョンの npm では、<code>--save</code> オプションを明示的に指定しなければなりません。その後、app ディレクトリで <code>npm install</code> を実行すると、依存関係リストにモジュールが自動的にインストールされます。</p>
+</div>
+<h3 id="next-hello-world-"><a href="hello-world.html">Next: Hello World </a></h3>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>は、<a href="https://openjsf.org">OpenJSの財団</a>のプロジェクトです。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub で Web サイトを fork します</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc.、およびその他の expressjs.com コントリビューター。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> この 作品 は <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">クリエイティブ・コモンズ 表示 - 継承 3.0 アメリカ合衆国 ライセンスの下に提供されています。</a>
+</div>
+</footer>
+<script type="625a02f1fd3d30570b11c41e-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ja'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="625a02f1fd3d30570b11c41e-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ja/starter/installing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

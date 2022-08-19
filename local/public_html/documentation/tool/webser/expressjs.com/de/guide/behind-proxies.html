@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="de" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/de/guide/behind-proxies.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express hinter Proxys</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/de.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Einführung</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Installation
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Generator
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basisrouting
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statische Dateien
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Häufig gestellte Fragen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Leitfaden</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+</li>
+<li><a href="writing-middleware.html">Middleware schreiben</a>
+</li>
+<li><a href="using-middleware.html">Middleware verwenden</a>
+</li>
+<li><a href="using-template-engines.html">Template-Engines verwenden</a>
+</li>
+<li><a href="error-handling.html">Fehlerbehandlung</a>
+</li>
+<li><a href="debugging.html">Debugging</a>
+</li>
+<li><a href="behind-proxies.html">Express hinter Proxys</a>
+</li>
+<li><a href="migrating-4.html">Wechsel zu Express 4</a>
+</li>
+<li><a href="migrating-5.html">Wechsel zu Express 5</a>
+</li>
+<li><a href="database-integration.html">Datenbankintegration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API-Referenz</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (veraltet)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (veraltet)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Themen für Fortgeschrittene</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Template-Engines</a>
+</li>
+<li><a href="../advanced/pm.html">Process Manager verwenden</a>
+</li>
+<li><a href="../advanced/security-updates.html">Sicherheitsupdates</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Sicherheitsspezifische Best Practices</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Leistungsspezifische Best Practices</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ressourcen</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossar</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Community</a>
+</li>
+<li><a href="../resources/learning.html">Zusätzliches Lernen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Diese Übersetzung zur Verfügung gestellt von <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Dieses Dokument kann im Vergleich zur englischen Dokumentation veraltet sein. Aktuelle Updates finden Sie in der <a href="../../index.html">englischen Dokumentation</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="express-hinter-proxys">Express hinter Proxys</h1>
+<p>Bei der Ausführung einer Express-Anwendung hinter einem Proxy legen Sie die Anwendungsvariable <code>trust proxy</code> (mithilfe von <a href="../4x/api.html#app.set">app.set()</a>) auf einen der in der folgenden Tabelle enthaltenen Werte fest:</p>
+<div class="doc-box doc-info">
+<p>Auch wenn die Anwendungsausführung nicht fehlschlägt, wenn die Anwendungsvariable <code>trust proxy</code> nicht festgelegt wurde, wird die IP-Adresse des Proxys nicht ordnungsgemäß als Client-IP-Adresse eingetragen, es sei denn, <code>trust proxy</code> wurde konfiguriert.</p>
+</div>
+<table class="doctable" border="1">
+<thead><tr><th>Typ</th><th>Wert</th></tr></thead>
+<tbody>
+<tr>
+<td>Boolesch</td>
+<td>
+<p>Wenn <code>true</code> angegeben wird, wird die IP-Adresse des Clients als der äußerst rechte Eintrag im Header <code>X-Forwarded-*</code> interpretiert.
+Wenn <code>false</code> angegeben wird, wird die Anwendung als direkte Verbindung zum Internet gesehen. Die IP-Adresse des Clients wird dann von <code>req.connection.remoteAddress</code> abgeleitet. Dies ist die Standardeinstellung.</p>
+</td>
+</tr>
+<tr>
+<td>IP-Adressen</td>
+<td>
+<p>Eine einzelne IP-Adresse, ein Teilnetz oder ein Array von IP-Adressen und Teilnetzen, denen vertraut werden kann. Die folgende Liste zeigt die vorkonfigurierten Teilnetznamen:</p>
+<ul>
+<li>loopback - <code>127.0.0.1/8</code>, <code>::1/128</code></li>
+<li>linklocal - <code>169.254.0.0/16</code>, <code>fe80::/10</code></li>
+<li>uniquelocal - <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>, <code>fc00::/7</code>.</li>
+</ul>
+<p>Sie können IP-Adressen wie folgt festlegen:</p>
+<pre><code class="language-js" translate="no">app.set('trust proxy', 'loopback') // specify a single subnet
+app.set('trust proxy', 'loopback, 123.123.123.123') // specify a subnet and an address
+app.set('trust proxy', 'loopback, linklocal, uniquelocal') // specify multiple subnets as CSV
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']) // specify multiple subnets as an array</code>
+</pre>
+<p>Sobald die Werte angegeben wurden, werden die betreffenden IP-Adressen und Teilnetze aus dem Adressfeststellungsprozess ausgeschlossen. Die nicht vertrauenswürdige IP-Adresse, die am nächsten zum Anwendungsserver liegt, wird als IP-Adresse des Clients festgelegt.</p>
+</td>
+</tr>
+<tr>
+<td>Zahl</td>
+<td>
+<p>Dem <code>n</code>-ten Hop vom Proxy-Server soll als Client vertraut werden.</p>
+</td>
+</tr>
+<tr>
+<td>Funktion</td>
+<td>
+<p>Individuell angepasste, vertrauenswürdige Implementierung. Dies sollten Sie nur verwenden, wenn Sie genau wissen, was Sie tun. &lt;pre&gt;
+<code class="language-js" translate="no">app.set('trust proxy', function (ip) {
+if (ip === '127.0.0.1' || ip === '123.123.123.123') return true; // trusted IPs
+else return false;
+});</code>
+&lt;/pre&gt;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Die Festlegung eines anderen <code>trust proxy</code>-Werts als <code>false</code> resultiert in drei wichtigen Änderungen:</p>
+<ul>
+<li>
+<p>Der Wert für <a href="../api.html#req.hostname">req.hostname</a> wird vom Wert abgeleitet, der im Header <code>X-Forwarded-Host</code> festgelegt wurde. Dieser Wert kann vom Client oder Proxy festgelegt werden.</p>
+</li>
+<li>
+<p><code>X-Forwarded-Proto</code> kann vom Reverse Proxy festgelegt werden, um der Anwendung mitzuteilen, ob es sich um <code>https</code> oder <code>http</code> oder sogar um einen ungültigen Namen handelt. Dieser Wert wird durch <a href="../api.html#req.protocol">req.protocol</a> abgebildet.</p>
+</li>
+<li>
+<p>Als Werte für <a href="../api.html#req.ip">req.ip</a> und <a href="../api.html#req.ips">req.ips</a> wird die Liste der Adressen aus <code>X-Forwarded-For</code> herangezogen.</p>
+</li>
+</ul>
+<p>Die Einstellung für <code>trust proxy</code> wird mithilfe des <a href="https://www.npmjs.com/package/proxy-addr">proxy-addr</a>-Pakets implementiert. Weitere Informationen finden Sie in der zugehörigen Dokumentation.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> ist ein Projekt der <a href="https://openjsf.org">Stiftung OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Website auf GitHub forken</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. und andere Mitwirkende an expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Dieses Werk ist lizenziert unter einer <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Vereinigte Staaten von Amerika Lizenz</a>.
+</div>
+</footer>
+<script type="39129d08a97f38499bbc4d7e-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:de'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="39129d08a97f38499bbc4d7e-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/de/guide/behind-proxies.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

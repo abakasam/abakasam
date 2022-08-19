@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="uk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/uk/starter/basic-routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Базова маршрутизація Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/uk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Початкова сторінка</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">Ознайомлення</a>
+<ul>
+<li>
+<a href="installing.html">
+Встановлення
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="generator.html">
+Генератор структури Express
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+Базова маршрутизація
+</a>
+</li>
+<li>
+<a href="static-files.html">
+Статичні файли
+</a>
+</li>
+<li>
+<a href="faq.html">
+ЧАПи
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Гід</a>
+<ul>
+<li><a href="../guide/routing.html">Маршрутизація</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Створення проміжних обробників</a>
+</li>
+<li><a href="../guide/using-middleware.html">Використання проміжних обробників</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Використання шаблонізаторів</a>
+</li>
+<li><a href="../guide/error-handling.html">Обробка помилок</a>
+</li>
+<li><a href="../guide/debugging.html">Зневадження</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express позаду проксі</a>
+</li>
+<li><a href="../guide/migrating-4.html">Перехід на Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Перехід на Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Інтеграція з базами даних</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Довідник API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (застаріла)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Додаткові можливості</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Шаблонізатори</a>
+</li>
+<li><a href="../advanced/pm.html">Використання менеджерів процесів</a>
+</li>
+<li><a href="../advanced/security-updates.html">Оновлення безпеки</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Кращі практики безпеки</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Кращі практики продуктивності</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ресурси</a>
+<ul>
+<li><a href="../resources/glossary.html">Голосарій</a>
+</li>
+<li><a href="../resources/middleware.html">Проміжний обробник</a>
+</li>
+<li><a href="../resources/community.html">Спільнота</a>
+</li>
+<li><a href="../resources/frameworks.html">Фреймворки</a>
+</li>
+<li><a href="../resources/learning.html">Додаткове навчання</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Цей документ може бути застарілим, в порівнянні з оригінальною <a href="../../index.html">англійською версією документації</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="базова-маршрутизація">Базова маршрутизація</h1>
+<p><em>Маршрутизація</em> визначає: яку саме відповідь застосунок буде видавати клієнту,
+коли від клієнта йде запит з використанням певного HTTP-методу (GET, POST, і т.д.) та по конкретному URI.</p>
+<p>Кожен маршрут може мати одну чи більше функцій-обробників, що виконуються, коли даний маршрут затверджено як співпадаючий.</p>
+<p>Визначення маршрутів має наступну структуру:</p>
+<pre><code class="language-javascript" translate="no">
+app.METHOD(PATH, HANDLER)
+</code></pre>
+<p>Де:</p>
+<ul>
+<li><code>app</code> є екземпляром <code>express</code>.</li>
+<li><code>METHOD</code> є <a href="https://uk.wikipedia.org/wiki/HTTP">методом HTTP-запиту</a>.</li>
+<li><code>PATH</code> є шляхом на сервері.</li>
+<li><code>HANDLER</code> є функцією-обробником, що спрацьовує, коли даний маршрут затверджено як співпадаючий.</li>
+</ul>
+<div class="doc-box doc-notice">
+<p>В цьому керівництві припускається, що у вас вже створено та запущено екземпляр веб-сервера <code>express</code> і його передано у змінну з іменем <code>app</code>.
+Якщо ви ще не вмієте створювати екземпляри застосунків та запускати їх, прогляньте <a href="hello-world.html">Приклад Hello world</a>.</p>
+</div>
+<p>В наступних прикладах продемонстровано визначення простих маршрутів.</p>
+<p>Визначення маршруту, що відповідає на GET-запити до головної сторінки, в результаті чого друкується <code>Hello World!</code>:</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+</code></pre>
+<p>Визначення маршруту, що відповідає на POST-запити до кореневого маршруту (<code>/</code>), тобто до головної сторінки:</p>
+<pre><code class="language-javascript" translate="no">
+app.post('/', function (req, res) {
+  res.send('Маємо POST-запит');
+});
+</code></pre>
+<p>Визначення маршруту, що відповідає на PUT-запити до <code>/user</code>:</p>
+<pre><code class="language-javascript" translate="no">
+app.put('/user', function (req, res) {
+  res.send('Маємо PUT-запит до /user');
+});
+</code></pre>
+<p>Визначення маршруту, що відповідає на DELETE-запити до <code>/user</code>:</p>
+<pre><code class="language-javascript" translate="no">
+app.delete('/user', function (req, res) {
+  res.send('Маємо DELETE-запит до /user');
+});
+</code></pre>
+<p>Більш детально про маршрутизацію описано на сторінці <a href="../guide/routing.html">гід маршрутизації</a>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> проект <a href="https://openjsf.org">фонду OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Розмістіть веб-сайт на GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. та інших учасників expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Ліцензія Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Цей твір ліцензовано за <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">ліцензією Creative Commons Із Зазначенням Авторства - Поширення На Тих Самих Умовах 3.0 Сполучені Штати</a>.
+</div>
+</footer>
+<script type="442fc3097475fb2d9e4fbc15-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:uk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="442fc3097475fb2d9e4fbc15-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/uk/starter/basic-routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

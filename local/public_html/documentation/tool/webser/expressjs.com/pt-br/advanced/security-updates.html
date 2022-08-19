@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="pt-br" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/pt-br/advanced/security-updates.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Atualizações de segurança do Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/pt-br.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Página Inicial</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Introdução</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Instalação
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Gerador do Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Roteamento Básico
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Arquivos Estáticos
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Perguntas mais frequentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Guia</a>
+<ul>
+<li><a href="../guide/routing.html">Roteamento</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Escrevendo o middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Usando o middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Usando o mecanismo de modelo</a>
+</li>
+<li><a href="../guide/error-handling.html">Manipulação de erros</a>
+</li>
+<li><a href="../guide/debugging.html">Depuração</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express atrás de proxies</a>
+</li>
+<li><a href="../guide/migrating-4.html">Migrando para o Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Migrando para o Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integração de Banco de dados</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referência da API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (descontinuada)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (descontinuada)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">Tópicos Avançados</a>
+<ul>
+<li><a href="developing-template-engines.html">Mecanismos de modelo</a>
+</li>
+<li><a href="pm.html">Usando gerenciadores de processos</a>
+</li>
+<li><a href="security-updates.html">Atualizações de segurança</a>
+</li>
+<li><a href="best-practice-security.html">Melhores práticas de segurança</a>
+</li>
+<li><a href="best-practice-performance.html">Melhores práticas de desempenho</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossário</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Comunidade</a>
+</li>
+<li><a href="../resources/learning.html">Aprendizagem adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta tradução fornecida pelo <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento pode estar desatualizado em relação à documentação em Inglês. Para obter as atualizações mais recentes, consulte a <a href="../../index.html">documentação em Inglês</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="atualizações-de-segurança">Atualizações de segurança</h1>
+<div class="doc-box doc-notice">
+<p>As vulnerabilidades do Node.js afetam diretamente o Express. Portanto
+<a href="http://blog.nodejs.org/vulnerability/">fique atento às
+vulnerabilidades do Node.js</a> e certifique-se de que você está
+usando a versão estável mais recente do Node.js.</p>
+</div>
+<p>A lista abaixo enumera as vulnerabilidades do Express que foram
+corrigidas na versão da atualização especificadas.</p>
+<h2 id="4x">4.x</h2>
+<ul>
+<li>4.11.1
+<ul>
+<li>Corrigida a vulnerabilidade de divulgação do caminho
+raiz no <code>express.static</code>, <code>res.sendfile</code>, e <code>res.sendFile</code></li>
+</ul>
+</li>
+<li>4.10.7
+<ul>
+<li>Corrigida a vulnerabilidade de redirecionamento aberto
+no <code>express.static</code> (<a href="https://npmjs.com/advisories/35">recomendação</a>,
+<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164">CVE-2015-1164</a>).</li>
+</ul>
+</li>
+<li>4.8.8
+<ul>
+<li>Corrigida a vulnerabilidade de travessia de diretório no <code>express.static</code> (<a href="http://npmjs.com/advisories/32">recomendação</a>, <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6394">CVE-2014-6394</a>).</li>
+</ul>
+</li>
+<li>4.8.4
+<ul>
+<li>O Node.js 0.10 pode vazar os <code>fd</code>s em certas situações que afetam o <code>express.static</code> e o
+<code>res.sendfile</code>. Solicitações maliciosas podem causar os <code>fd</code>s a vazar e eventualmente levar a erros
+de <code>EMFILE</code> e servidores sem capacidade de resposta.</li>
+</ul>
+</li>
+<li>4.8.0
+<ul>
+<li>Matrizes esparsas que possuem índices extremamente altos na sequência de consulta podem fazer com que o processo sofra um
+esgotamento de memória e derrubar o servidor.</li>
+<li>Objetos de sequência de consulta extremamente aninhados podem fazer com que o processo fique bloqueado e o servidor
+temporariamente não responsivo.</li>
+</ul>
+</li>
+</ul>
+<h2 id="3x">3.x</h2>
+<ul>
+<li>3.19.1
+<ul>
+<li>Corrigida a vulnerabilidade de divulgação do caminho raiz no <code>express.static</code>,
+<code>res.sendfile</code>, e <code>res.sendFile</code></li>
+</ul>
+</li>
+<li>3.19.0
+<ul>
+<li>Corrigida a vulnerabilidade de redirecionamento aberto no <code>express.static</code> (<a href="https://npmjs.com/advisories/35">recomendação</a>,
+<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164">CVE-2015-1164</a>).</li>
+</ul>
+</li>
+<li>3.16.10
+<ul>
+<li>Corrigida a vulnerabilidade de travessia de diretório no <code>express.static</code>.</li>
+</ul>
+</li>
+<li>3.16.6
+<ul>
+<li>O Node.js 0.10 pode vazar os <code>fd</code>s em certas situações que afetam o <code>express.static</code> e o
+<code>res.sendfile</code>. Solicitações maliciosas podem causar os <code>fd</code>s a vazar e eventualmente levar a erros de
+<code>EMFILE</code> e servidores sem capacidade de resposta.</li>
+</ul>
+</li>
+<li>3.16.0
+<ul>
+<li>Matrizes esparsas que possuem índices extremamente altos na sequência de consulta podem fazer com que o processo sofra um
+esgotamento de memória e derrubar o servidor.</li>
+<li>Objetos de sequência de consulta extremamente aninhados podem fazer com que o processo fique bloqueado e o servidor
+temporariamente não responsivo.</li>
+</ul>
+</li>
+<li>3.3.0
+<ul>
+<li>A resposta 404 de uma tentativa de substituição de um método não suportado era suscetível a ataques de cross-site scripting.</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> é um projeto da <a href="https://openjsf.org">Fundação Node.js</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Crie um Fork do website no GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., e outros contribuidores do expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Este obra está licenciado com uma Licença <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Atribuição-CompartilhaIgual 3.0 Estados Unidos</a>.
+</div>
+</footer>
+<script type="bfbaf3f6b081eb518639cf1b-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:pt-br'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="bfbaf3f6b081eb518639cf1b-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/pt-br/advanced/security-updates.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

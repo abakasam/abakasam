@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="sk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/sk/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express FAQ</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/sk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Domov</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">Začíname</a>
+<ul>
+<li>
+<a href="installing.html">
+Inštalácia
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="generator.html">
+Express generátor
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+Základný routing
+</a>
+</li>
+<li>
+<a href="static-files.html">
+Statické súbory
+</a>
+</li>
+<li>
+<a href="faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Príručka</a>
+<ul>
+<li><a href="../guide/routing.html">Routing</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Tvorba middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Použitie middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Použitie template enginov</a>
+</li>
+<li><a href="../guide/error-handling.html">Error handling</a>
+</li>
+<li><a href="../guide/debugging.html">Debuggovanie</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Použitie Express za proxy</a>
+</li>
+<li><a href="../guide/migrating-4.html">Prechod na Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Prechod na Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integrácia s databázou</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API referenčná príručka</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (zastaralé)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (zastaralé)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Pokročilé témy</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Templatovacie enginy</a>
+</li>
+<li><a href="../advanced/pm.html">Použitie správcov procesov</a>
+</li>
+<li><a href="../advanced/security-updates.html">Security - aktualizácie</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Security - osvedčené postupy</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Výkonnosť - osvedčené postupy</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Zdroje</a>
+<ul>
+<li><a href="../resources/glossary.html">Glosár</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Komunita</a>
+</li>
+<li><a href="../resources/frameworks.html">Frameworky</a>
+</li>
+<li><a href="../resources/learning.html">Dodatočné vzdelávanie</a>
+</li>
+<li><a href="../resources/companies-using-express.html">Firmy používajúce Express</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Tento dokument môže byť v porovnaní s dokumentáciou v angličtine zastaralý. Aktuálne informácie nájdete v <a href="../../index.html">dokumentácii v angličtine</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+
+<h1 id="faq">FAQ</h1>
+<h2 id="akú-štruktúru-priečinkov-by-som-mal-zvoliť-pre-svoju-aplikáciu">Akú štruktúru priečinkov by som mal zvoliť pre svoju aplikáciu?</h2>
+<p>Jednoznačná odpoveď na túto otázku neexistuje. Odpoveď závisí od rozsahu
+aplikácie a tímu, ktorí na nej pracuje. Z dôvodu maximálnej flexibility nedefinuje
+Express žiadne pravidlá, či obmedzenia.</p>
+<p>Samotná logika pre routing a ostatné špecifické časti aplikácie môže byť rozdelená
+do ľubovoľného počtu súborov a organizovaná v ľubovoľnej štruktúre priečinkov,
+presne tak, ako vám to vyhovuje. Pre inšpiráciu sa pozrite sa na nasledujúce príklady:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47">Route listings</a></li>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66">Route maping</a></li>
+<li><a href="https://github.com/expressjs/express/tree/master/examples/mvc">MVC style controllers</a></li>
+</ul>
+<p>Existujú taktiež mnohé rozšírenia tretích strán, ktoré toto zjednodušujú:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express-resource">Resourceful routing</a></li>
+</ul>
+<h2 id="ako-si-zadefinujem-model">Ako si zadefinujem model?</h2>
+<p>Samotný Express nemá žiaden koncept databáze. Tento koncept je ponechaný na Node moduly tretích strán,
+ktoré umožňujú pracovať s takmer všetkými databázami.</p>
+<p>Pre viac informácií ohľadom frameworku postavenom na Express-e, ktorý sa zameriava na prácu s modelom,
+navštívte stránku <a href="http://loopback.io/">LoopBack</a>.</p>
+<h2 id="ako-dokážem-autentifikovať-používateľov">Ako dokážem autentifikovať používateľov?</h2>
+<p>Autentifikácia je ďalšia otvorená oblasť do ktorej Express priamo nezasahuje.
+Môžete si zvoliť akúkoľvek autentifikačnú schému, ktorá vám vyhovuje. Pre jednoduchú meno / heslo autentifikáciu si pozrite <a href="https://github.com/expressjs/express/tree/master/examples/auth">tento príklad</a>.</p>
+<h2 id="aké-template-enginy-express-podporuje">Aké template enginy Express podporuje?</h2>
+<p>Express podporuje všetky template enginy definujúce <code>(path, locals, callback)</code> signatúru.
+Pre porovnanie rozhraní template enginov a caching-u sa pozrite na projekt
+<a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>.
+Templatovacie enginy, ktoré nie sú v zozname, môžu byť Express-om taktiež podporované.</p>
+<h2 id="ako-handlovať-404-ky">Ako handlovať 404-ky?</h2>
+<p>V Express aplikácii nie sú odpovede 404 výsledkom chyby, preto ich error-handler middleware nezachytí.
+Toto správanie je z dôvodu, že odpoveď 404 jednoducho indikuje absenciu práce, ktorú treba vykonať,
+inými slovami, Express vykonal všetky middlware funkcie a nenašiel žiaden routing,
+ktorý by na danú požiadavku vedel odpovedať. Všetko čo musíte spraviť k odchyteniu 404-ky je, že pridáte nasledovnú middleware funkciu pod všetky ostatné definície:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(req, res, next) {
+  res.status(404).send('Sorry cant find that!');
+});
+</code>
+</pre>
+<h2 id="ako-si-zadefinujem-error-handler">Ako si zadefinujem error handler?</h2>
+<p>Error-handling middleware je rovnakým middlewarom ako všetky ostatné,
+s jediným rozdielom a to, že je vyvolaný so štyrmi argumentami, namiesto troch.
+Jeho signatúra je nasledovná <code>(err, req, res, next)</code>:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+<p>Viac informácií sa dozviete v kapitole <a href="../guide/error-handling.html">Error handling</a>.</p>
+<h2 id="ako-dokážem-rendrovať-čisté-html">Ako dokážem rendrovať čisté HTML?</h2>
+<p>Nedokážeš! Nie je žiaden dôvod na rendrovanie HTML pomocou <code>res.render()</code> funkcie.
+Ak máte konkrétny súbor, použite <code>res.sendFile()</code> funkciu.
+Ak potrebujete servovať veľa statických súborov z konkrétneho priečinka, použite <code>express.static()</code>
+middleware.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="https://ghbtns.com/github-btn.html?user=expressjs&repo=express&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> je projekt patriaci pod <a href="https://openjsf.org">Nadácie OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Editovať stránku na GitHub-e</a>.</div>
+<div>Copyright &copy; 2016 StrongLoop, IBM a ostatní expressjs.com prispievatelia.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script type="fb817aae93bcc47605ea6411-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:sk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="fb817aae93bcc47605ea6411-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/sk/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

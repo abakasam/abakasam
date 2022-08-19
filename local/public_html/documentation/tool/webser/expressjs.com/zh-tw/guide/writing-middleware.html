@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="zh-tw" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-tw/guide/writing-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>撰寫中介軟體以用於 Express 應用程式中</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-tw.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">首頁</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入門</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安裝
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 產生器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+靜態檔案
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常見問題 (FAQ)
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">手冊</a>
+<ul>
+<li><a href="routing.html">路由</a>
+</li>
+<li><a href="writing-middleware.html">撰寫中介軟體</a>
+</li>
+<li><a href="using-middleware.html">使用中介軟體</a>
+</li>
+<li><a href="using-template-engines.html">使用範本引擎</a>
+</li>
+<li><a href="error-handling.html">錯誤處理</a>
+</li>
+<li><a href="debugging.html">除錯</a>
+</li>
+<li><a href="behind-proxies.html">位於 Proxy 背後的 Express</a>
+</li>
+<li><a href="migrating-4.html">移至 Express 4</a>
+</li>
+<li><a href="migrating-5.html">移至 Express 5</a>
+</li>
+<li><a href="database-integration.html">資料庫整合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 參照</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（已淘汰）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（已淘汰）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">進階主題</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">範本引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用程序管理程式</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳作法</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">效能最佳作法</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">資源</a>
+<ul>
+<li><a href="../resources/glossary.html">名詞解釋</a>
+</li>
+<li><a href="../resources/middleware.html">中介軟體</a>
+</li>
+<li><a href="../resources/community.html">社群</a>
+</li>
+<li><a href="../resources/learning.html">額外學習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>這個翻譯<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相對於英文版說明文件，本文件可能已不合時宜。如需最新的更新，請參閱<a href="../../index.html">英文版說明文件</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="撰寫中介軟體以用於-express-應用程式中">撰寫中介軟體以用於 Express 應用程式中</h1>
+<h2>概觀</h2>
+<p><em>中介軟體</em>函數是一些有權存取<a href="../4x/api.html#req">要求物件</a> (<code>req</code>)、<a href="../4x/api.html#res">回應物件</a> (<code>res</code>) 和應用程式要求/回應循環中之下一個中介軟體函數的函數。下一個中介軟體函數通常以名為 <code>next</code> 的變數表示。</p>
+<p>中介軟體函數可以執行下列作業：</p>
+<ul>
+<li>執行任何程式碼。</li>
+<li>對要求和回應物件進行變更。</li>
+<li>結束要求/回應循環。</li>
+<li>呼叫堆疊中的下一個中介軟體。</li>
+</ul>
+<p>如果現行中介軟體函數不會結束要求/回應循環，它必須呼叫 <code>next()</code>，以便將控制權傳遞給下一個中介軟體函數。否則，要求將會停擺。</p>
+<p>下列範例顯示中介軟體函數呼叫中的元素：</p>
+<table id="mw-fig">
+<tr><td id="mw-fig-imgcell">
+<img src="../../images/express-mw.png" id="mw-fig-img" />
+</td>
+<td class="mw-fig-callouts">
+<div class="callout" id="callout1">要套用中介軟體函數的 HTTP 方法。</div>
+<div class="callout" id="callout2">要套用中介軟體函數的路徑（路由）。</div>
+<div class="callout" id="callout3">中介軟體函數。</div>
+<div class="callout" id="callout4">中介軟體函數的回呼引數，依慣例，稱為 "next"。</div>
+<div class="callout" id="callout5">中介軟體函數的 HTTP <a href="../4x/api.html#res">response</a> 引數，依慣例，稱為 "res"。</div>
+<div class="callout" id="callout6">中介軟體函數的 HTTP <a href="../4x/api.html#req">request</a> 引數，依慣例，稱為 "req"。</div>
+</td></tr>
+</table>
+<p>下列範例顯示簡單的 “Hello World” Express 應用程式，您將為這個應用程式定義兩個中介軟體函數：</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code>
+</pre>
+<h2>開發</h2>
+<p>以下的簡單範例顯示一個稱為 “myLogger” 的中介軟體函數。當透過這個函數將要求傳遞給應用程式時，此函數只會列印 “LOGGED”。中介軟體函數會指派給名為 <code>myLogger</code> 的變數。</p>
+<pre><code class="language-javascript" translate="no">
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+</code>
+</pre>
+<div class="doc-box doc-notice">
+<p>請注意上述對 <code>next()</code> 的呼叫。呼叫這個函數時，會呼叫應用程式中的下一個中介軟體函數。<code>next()</code> 函數並非 Node.js 或 Express API 的一部分，而是傳遞給中介軟體函數的第三個引數。<code>next()</code> 函數雖沒有命名限制，但依慣例，都是稱為 “next”。為避免混淆，請一律採用此慣例。</p>
+</div>
+<p>若要載入中介軟體函數，請呼叫 <code>app.use()</code>，以指定中介軟體函數。舉例來說，下列程式碼會在根路徑 (/) 路由之前先載入 <code>myLogger</code> 中介軟體函數。</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+
+app.use(myLogger);
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code>
+</pre>
+<p>每當應用程式收到要求時，它會將 “LOGGED” 訊息列印至終端機。</p>
+<p>中介軟體的載入順序很重要：先載入的中介軟體函數也會先執行。</p>
+<p>如果 <code>myLogger</code> 是在根路徑路由之後才載入，要求永不會抵達該函數，應用程式也不會列印 “LOGGED”，因為根路徑的路由處理程式會終止要求/回應循環。</p>
+<p>中介軟體函數 <code>myLogger</code> 只會列印訊息，然後呼叫 <code>next()</code> 函數，將要求傳遞給堆疊中的下一個中介軟體函數。</p>
+<p>下一個範例是在要求物件中新增一個稱為 <code>requestTime</code> 的內容。我們將這個中介軟體函數命名為 “requestTime”。</p>
+<pre><code class="language-javascript" translate="no">
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+</code>
+</pre>
+<p>現在，應用程式會使用 <code>requestTime</code> 中介軟體函數。此外，根路徑路由的回呼函數會使用中介軟體函數新增至 <code>req</code>（要求物件）的內容。</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+
+app.use(requestTime);
+
+app.get('/', function (req, res) {
+  var responseText = 'Hello World!<br />';
+  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
+  res.send(responseText);
+});
+
+app.listen(3000);
+</code>
+</pre>
+<p>當您對應用程式根位置發出要求時，應用程式現在會在瀏覽器中顯示該要求的時間戳記。</p>
+<p>由於您有權存取要求物件、回應物件、堆疊中的下一個中介軟體函數，以及整個 Node.js API，因此，中介軟體函數的可能性無止盡。</p>
+<p>如需 Express 中介軟體的相關資訊，請參閱：<a href="using-middleware.html">使用 Express 中介軟體</a>。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金會的</a>一個項目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub 上的網站分支</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc. 與其他 expressjs.com 貢獻者。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本著作係採用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">創用 CC 姓名標示-相同方式分享 3.0 美國 授權條款</a>授權.
+</div>
+</footer>
+<script type="1a4ec70c45850372a45b4774-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-tw'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="1a4ec70c45850372a45b4774-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-tw/guide/writing-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

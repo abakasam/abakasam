@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html lang="it" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/it/starter/static-files.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Gestione dei file statici in Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/it.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">Introduzione</a>
+<ul>
+<li>
+<a href="installing.html">
+Installazione</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="generator.html">
+Programma di creazione Express
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+Routing di base</a>
+</li>
+<li>
+<a href="static-files.html">
+File statici
+</a>
+</li>
+<li>
+<a href="faq.html">
+FAQ</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Guida</a>
+<ul>
+<li><a href="../guide/routing.html">Routing</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Scrittura del middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Utilizzo del middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Utilizzo dei motori di template</a>
+</li>
+<li><a href="../guide/error-handling.html">Gestione degli errori</a>
+</li>
+<li><a href="../guide/debugging.html">Debug</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express con i proxy</a>
+</li>
+<li><a href="../guide/migrating-4.html">Passaggio a Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Passaggio a Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integrazione database</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Riferimento API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (deprecato)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (deprecato)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Argomenti avanzati</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Motori di template</a>
+</li>
+<li><a href="../advanced/pm.html">Utilizzo dei process manager</a>
+</li>
+<li><a href="../advanced/security-updates.html">Aggiornamenti sulla sicurezza</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Best practice sulla sicurezza</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Best practice sulle prestazioni</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Risorse</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossario</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Community</a>
+</li>
+<li><a href="../resources/learning.html">Apprendimento aggiuntivo</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Questa traduzione fornita da <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+È possibile che questo documento non sia aggiornato poiché la documentazione è in inglese. Per gli ultimi aggiornamenti, fare riferimento alla <a href="../../index.html">documentazione in inglese</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="gestione-dei-file-statici-in-express">Gestione dei file statici in Express</h1>
+<p>Per gestire i file statici, quali immagini, file CSS e file JavaScript, utilizzare la funzione middleware integrata <code>express.static</code> in Express.</p>
+<p>Fornire il nome della directory che contiene gli asset statici alla funzione middleware <code>express.static</code> per iniziare a gestire i file direttamente. Ad esempio, utilizzare il seguente codice per gestire le immagini, i file CSS e i file JavaScript nella directory denominata <code>public</code>:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(express.static('public'));
+</code>
+</pre>
+<p>Ora, è possibile caricare i file che si trovano nella directory <code>public</code>:</p>
+<pre><code class="language-javascript" translate="no">
+http://localhost:3000/images/kitten.jpg
+http://localhost:3000/css/style.css
+http://localhost:3000/js/app.js
+http://localhost:3000/images/bg.png
+http://localhost:3000/hello.html
+</code>
+</pre>
+<div class="doc-box doc-info">
+Express ricerca i file relativi alla directory statica, pertanto il nome della directory statica non è parte dell'URL.
+</div>
+<p>Per utilizzare più directory di asset statiche, richiamare la funzione middleware <code>express.static</code> più volte:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(express.static('public'));
+app.use(express.static('files'));
+</code>
+</pre>
+<p>Express ricerca i file nell’ordine in cui sono state impostate le directory statiche con la funzione middleware <code>express.static</code>.</p>
+<p>Per creare un prefisso per il percorso virtuale (in cui il percorso non esiste effettivamente nel file system) per i file gestiti dalla funzione <code>express.static</code>, <a href="../4x/api.html#app.use">specificare un percorso di caricamento</a> per la directory statica, come mostrato di seguito:</p>
+<pre><code class="language-javascript" translate="no">
+app.use('/static', express.static('public'));
+</code>
+</pre>
+<p>Ora, è possibile caricare i file che si trovano nella directory <code>public</code> dal prefisso del percorso <code>/static</code>.</p>
+<pre><code class="language-javascript" translate="no">
+http://localhost:3000/static/images/kitten.jpg
+http://localhost:3000/static/css/style.css
+http://localhost:3000/static/js/app.js
+http://localhost:3000/static/images/bg.png
+http://localhost:3000/static/hello.html
+</code>
+</pre>
+<p>Tuttavia, il percorso fornito per la funzione <code>express.static</code> è relativo alla directory dalla quale è possibile avviare il processo <code>node</code>. Se si esegue l’applicazione express da un’altra directory, è preferibile utilizzare il percorso assoluto della directory che si desidera gestire:</p>
+<pre><code class="language-javascript" translate="no">
+app.use('/static', express.static(__dirname + '/public'));
+</code>
+</pre>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> è un progetto della <a href="https://openjsf.org">Fondazione OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Avviare il sito web su GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. e altri contributor di expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Quest'opera è distribuita con Licenza <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribuzione - Condividi allo stesso modo 3.0 Stati Uniti</a>.
+</div>
+</footer>
+<script type="b1f87ef2901bee8f395652d5-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:it'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="b1f87ef2901bee8f395652d5-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/it/starter/static-files.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-cn/guide/migrating-5.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>迁移到 Express 5</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-cn.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">主页</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入门</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安装
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 生成器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静态文件
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常见问题及解答
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">指南</a>
+<ul>
+<li><a href="routing.html">路由</a>
+</li>
+<li><a href="writing-middleware.html">编写中间件</a>
+ </li>
+<li><a href="using-middleware.html">使用中间件</a>
+</li>
+<li><a href="using-template-engines.html">使用模板引擎</a>
+</li>
+<li><a href="error-handling.html">错误处理</a>
+</li>
+<li><a href="debugging.html">调试</a>
+</li>
+<li><a href="behind-proxies.html">代理背后的 Express</a>
+</li>
+<li><a href="migrating-4.html">迁移到 Express 4</a>
+</li>
+<li><a href="migrating-5.html">迁移到 Express 5</a>
+</li>
+<li><a href="database-integration.html">数据库集成</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 参考</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（不推荐）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（不推荐）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高级主题</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">模板引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用进程管理器</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳实践</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">性能最佳实践</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">资源</a>
+<ul>
+<li><a href="../resources/glossary.html">词汇表</a>
+</li>
+<li><a href="../resources/middleware.html">中间件</a>
+</li>
+<li><a href="../resources/community.html">社区</a>
+</li>
+<li><a href="../resources/learning.html">额外学习</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>这个翻译<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相对于英文版的文档，本文档可能已过时。要了解最近的更新，请参阅<a href="../../index.html">英文版文档</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="迁移到-express-5">迁移到 Express 5</h1>
+<h2 id="overview">概述</h2>
+<p>Express 5.0 仍然处于 α 测试发布阶段，但我们可以在这里先睹为快，了解一下这个发行版中的变化以及如何将 Express 4 应用程序迁移到 Express 5。</p>
+<p>Express 5 与 Express 4 的差异不是很大：对 API 的更改不像 3.0 到 4.0 升级那样大刀阔斧。虽然基本 API 保持相同，但仍有一些重大更改；换言之，如果将现有 Express 4 程序更新为使用 Express 5，那么该程序可能无法工作。</p>
+<p>要安装最新的 α 测试版以预览 Express 5，请在应用程序根目录中输入以下命令：</p>
+<pre><code class="language-console">$ npm install express@5.0.0-alpha.2 --save
+</code></pre>
+<p>随后，可以运行自动化测试以查看哪些地方发生故障，然后根据以下列出的更新修复问题。在解决测试故障问题之后，运行应用程序以查看发生哪些错误。如果应用程序使用任何不受支持的方法或属性，您马上就可以发现。</p>
+<h2 id="changes">Express 5 中的更改</h2>
+<p>以下是将影响 Express 用户的更改的列表（截至在 α R2）。
+请参阅 <a href="https://github.com/expressjs/express/pull/2237">pull request</a> 以查看所有计划功能的列表。</p>
+<p><strong>已移除的方法和属性</strong></p>
+<ul class="doclist">
+<li><a href="#app.del">app.del()</a></li>
+<li><a href="#app.param">app.param(fn)</a></li>
+<li><a href="#plural">复数的方法名称</a></li>
+<li><a href="#leading">app.param(name, fn) 的 name 自变量中的前置冒号</a></li>
+<li><a href="#req.param">req.param(name)</a></li>
+<li><a href="#res.json">res.json(obj, status)</a></li>
+<li><a href="#res.jsonp">res.jsonp(obj, status)</a></li>
+<li><a href="#res.send.body">res.send(body, status)</a></li>
+<li><a href="#res.send.status">res.send(status)</a></li>
+<li><a href="#res.sendfile">res.sendfile()</a></li>
+</ul>
+<p><strong>已更改</strong></p>
+<ul class="doclist">
+<li><a href="#app.router">app.router</a></li>
+<li><a href="#req.host">req.host</a></li>
+<li><a href="#req.query">req.query</a></li>
+</ul>
+<p><strong>改进</strong></p>
+<ul class="doclist">
+<li><a href="#res.render">res.render()</a></li>
+</ul>
+<h3>已移除的方法和属性</h3>
+<p>如果在应用程序中使用任何已删除的方法或属性，应用程序将崩溃。所以，需要在更新到 V5 之后更改应用程序。</p>
+<h4 id="app.del">app.del()</h4>
+<p>Express 5 不再支持 <code>app.del()</code> 函数。如果使用此函数，将抛出错误。要注册 HTTP DELETE 路由，请使用 <code>app.delete()</code> 函数。</p>
+<p>最初之所以使用 <code>del</code> 而不是 <code>delete</code>，是因为 <code>delete</code> 是 JavaScript 中的保留关键字。但在 ECMAScript 6 时，<code>delete</code> 和其他保留关键字可以合法地用作属性名称。您可以在此阅读该讨论，这导致我们在此不推荐使用 <code>app.del</code> 函数。</p>
+<h4 id="app.param">app.param(fn)</h4>
+<p><code>app.param(fn)</code> 特征符用于修改 <code>app.param(name, fn)</code> 函数的行为。自 V4.11.0 起不推荐使用该特征符，而 Express 5 完全不再提供支持。</p>
+<h4 id="plural">复数的方法名称</h4>
+<p>以下方法名称已加复数。在 Express 4 中，使用旧方法时会出现不推荐使用的警告。Express 5 则完全不再支持：</p>
+<p><code>req.acceptsCharset()</code> 由 <code>req.acceptsCharsets()</code> 取代。</p>
+<p><code>req.acceptsEncoding()</code> 由 <code>req.acceptsEncodings()</code> 取代。</p>
+<p><code>req.acceptsLanguage()</code> 由 <code>req.acceptsLanguages()</code> 取代。</p>
+<h4 id="leading">app.param(name, fn) 的名称中的前置冒号 (:)</h4>
+<p><code>app.param(name, fn)</code> 函数名称中的前置冒号字符 (:) 是 Express 3 的遗留问题，为了向后兼容性，Express 4 提供支持但会显示不推荐使用的提醒。而 Express 5 则静默忽略它，使用不带前置冒号的名称参数。</p>
+<p>如果您遵循 <a href="../4x/api.html#app.param">app.param</a> 的 Express 4 文档进行开发，那么不会影响代码，因为文档中没有提及前置冒号。</p>
+<h4 id="req.param">req.param(name)</h4>
+<p>已移除用于检索表单数据的方法，因为这可能引起混淆，而且很危险。现在，您需要在 <code>req.params</code>、<code>req.body</code> 或 <code>req.query</code> 对象中专门寻找提交的参数名称。</p>
+<h4 id="res.json">res.json(obj, status)</h4>
+<p>Express 5 不再支持特征符 <code>res.json(obj, status)</code>。而是设置状态，然后将其链接到 <code>res.json()</code> 方法，如下所示：<code>res.status(status).json(obj)</code>。</p>
+<h4 id="res.jsonp">res.jsonp(obj, status)</h4>
+<p>Express 5 不再支持特征符 <code>res.jsonp(obj, status)</code>。而是设置状态，然后将其链接到 <code>res.jsonp()</code> 方法，如下所示：<code>res.status(status).jsonp(obj)</code>。</p>
+<h4 id="res.send.body">res.send(body, status)</h4>
+<p>Express 5 不再支持特征符 <code>res.send(obj, status)</code>。而是设置状态，然后将其链接到 <code>res.send()</code> 方法，如下所示：<code>res.status(status).send(obj)</code>。</p>
+<h4 id="res.send.status">res.send(status)</h4>
+<p>Express 5 不再支持特征符 <code>res.send(<em>status</em>)</code>，其中 <em><code>status</code></em> 是数字。而是使用 <code>res.sendStatus(statusCode)</code> 函数，它会设置 HTTP 响应头状态码并发送该代码的文字版：“Not Found”、“Internal Server Error”等。
+如果需要使用 <code>res.send()</code> 函数来发送数字，请对该数字加上引号以将其转换为字符串，以便 Express 不会将其解释为尝试使用不受支持的旧特征符。</p>
+<h4 id="res.sendfile">res.sendfile()</h4>
+<p>在 Express 5 中，<code>res.sendfile()</code> 函数已由驼峰式大小写版本 <code>res.sendFile()</code> 替换。</p>
+<h3>已更改</h3>
+<h4 id="app.router">app.router</h4>
+<p>在 Express 4 中已移除的 <code>app.router</code> 对象在 Express 5 中已恢复。在新版本中，此对象只是对 Express 基本路由器的引用，不像在 Express 3 中应用程序必须显式将该路由器装入。</p>
+<h4 id="req.host">req.host</h4>
+<p>在 Express 4 中，如果存在端口号，<code>req.host</code> 函数会错误地将其剥离。在 Express 5 中，则会保留端口号。</p>
+<h4 id="req.query">req.query</h4>
+<p>在 Express 4.7 以及 Express 5 之后，如果您希望使用自己的查询字符串解析逻辑函数，查询解析器选项可以接受 <code>false</code> 以禁用查询字符串解析。</p>
+<h3>改进</h3>
+<h4 id="res.render">res.render()</h4>
+<p>现在，此方法为所有查看引擎强制执行异步行为，避免具有同步实现以及违反建议接口的查看引擎所导致的错误。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金会的</a>一个项目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">在 GitHub 上派生出网站</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本作品采用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">知识共享署名-相同方式共享 3.0 美国许可协议</a>进行许可。
+</div>
+</footer>
+<script type="5d042b696d24711add6b0a1e-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-cn'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="5d042b696d24711add6b0a1e-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-cn/guide/migrating-5.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="sk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/sk/guide/writing-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Tvorba middleware pre použitie v Express applikáciách</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/sk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Domov</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Začíname</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Inštalácia
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express generátor
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Základný routing
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statické súbory
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Príručka</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+ </li>
+<li><a href="writing-middleware.html">Tvorba middleware</a>
+</li>
+<li><a href="using-middleware.html">Použitie middleware</a>
+</li>
+<li><a href="using-template-engines.html">Použitie template enginov</a>
+</li>
+<li><a href="error-handling.html">Error handling</a>
+</li>
+<li><a href="debugging.html">Debuggovanie</a>
+</li>
+<li><a href="behind-proxies.html">Použitie Express za proxy</a>
+</li>
+<li><a href="migrating-4.html">Prechod na Express 4</a>
+</li>
+<li><a href="migrating-5.html">Prechod na Express 5</a>
+</li>
+<li><a href="database-integration.html">Integrácia s databázou</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API referenčná príručka</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (zastaralé)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (zastaralé)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Pokročilé témy</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Templatovacie enginy</a>
+</li>
+<li><a href="../advanced/pm.html">Použitie správcov procesov</a>
+</li>
+<li><a href="../advanced/security-updates.html">Security - aktualizácie</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Security - osvedčené postupy</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Výkonnosť - osvedčené postupy</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Zdroje</a>
+<ul>
+<li><a href="../resources/glossary.html">Glosár</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Komunita</a>
+</li>
+<li><a href="../resources/frameworks.html">Frameworky</a>
+</li>
+<li><a href="../resources/learning.html">Dodatočné vzdelávanie</a>
+</li>
+<li><a href="../resources/companies-using-express.html">Firmy používajúce Express</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+ <p>Tento dokument môže byť v porovnaní s dokumentáciou v angličtine zastaralý. Aktuálne informácie nájdete v <a href="../../index.html">dokumentácii v angličtine</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+
+<h1 id="tvorba-middleware-pre-použitie-v-express-aplikáciách">Tvorba middleware pre použitie v Express aplikáciách</h1>
+<h2>Prehľad</h2>
+<p><em>Middleware</em> funkcie sú funkcie, ktoré majú prístup k <a href="../../4x/api.html#req">request objektu</a> (<code>req</code>), <a href="../../4x/api.html#res">response objektu</a> (<code>res</code>) a nasledujúcej middleware funkcii v request-response cykle aplikácie. Nasledujúca middleware funkcia v poradí je bežne označovaná premennou <code>next</code>.</p>
+<p>Middleware funkcie dokážu vykonávať nasledujúce úlohy:</p>
+<ul>
+<li>Vykonať akýkoľvek kód.</li>
+<li>Vykonať zmeny na request a response objektoch.</li>
+<li>Ukončiť request-response cyklus.</li>
+<li>Zavolať nasledujúcu middleware funkciu v poradí.</li>
+</ul>
+<p>Ak aktuálna middleware funkcia neukončuje request-response cyklus, musí posunúť obsluhu nasledujúcej middleware funkcii vyvolaním <code>next()</code>. V opačnom prípade zostane request ‘visieť’.</p>
+<p>Nasledujúci diagram ukazuje jednotlivé časti volania middleware funkcie:</p>
+<table id="mw-fig">
+<tr><td id="mw-fig-imgcell">
+<img src="../../images/express-mw.png" id="mw-fig-img" />
+</td>
+<td class="mw-fig-callouts">
+<div class="callout" id="callout1">HTTP metóda pre ktorú je middleware funkcia aplikovateľná.</div>
+<div class="callout" id="callout2">Cesta (route) pre ktorú je middleware funkcia aplikovateľná.</div>
+<div class="callout" id="callout3">Middleware funkcia.</div>
+<div class="callout" id="callout4">Callback argument k middleware funkcii, nazvaný "next" podľa konvencie.</div>
+<div class="callout" id="callout5">HTTP <a href="../../en/4x/api.html#res">response</a> argument k middleware funkcii, nazvaný "res" podľa konvencie.</div>
+<div class="callout" id="callout6">HTTP <a href="../../en/4x/api.html#req">request</a> argument k middleware funkcii, nazvaný "req" podľa konvencie.</div>
+</td></tr>
+</table>
+<h2>Príklad</h2>
+<p>Tu je príklad jednoduchej “Hello World” Express aplikácie.
+Zvyšná časť tohto článku definuje a pridáva do aplikácie dve middleware funkcie:
+jedna nazvaná <code>myLogger</code> ktorá vypíše jednoduchú log message a druhá nazvaná <code>requestTime</code> ktorá vypíše timestamp HTTP requestu.</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code>
+</pre>
+<h2>Middleware funkcia myLogger</h2>
+<p>Tu je príklad jednoduchej middleware funkcie nazvanej “myLogger”. Táto funkcia len vypíše “LOGGED”, vždy keď aplikácia odchytí request. Middleware funkcia je priradená premennej nazvanej <code>myLogger</code>.</p>
+<pre><code class="language-javascript" translate="no">
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+</code>
+</pre>
+<div class="doc-box doc-notice">
+<p>Všimnite si volanie <code>next()</code> metódy hore. Zavolanie tejto funkcie vyvolá ďalší middleware v aplikácii.
+Funkcia <code>next()</code> nie je súčasťou Node.js či Express API, ale je tretím argumentom s ktorým je middleware funkcia vyvolaná.
+Funkcia <code>next()</code> môže byť nazvaná hocijako, ale podľa konvencie sa zvykne nazývať vždy “next”.
+Aby ste predišli zmätkom používajte túto konvenciu.</p>
+</div>
+<p>Pre načítanie middleware funkcie zavolajte <code>app.use()</code>, prostredníctvom ktorej ho špecifikujete.
+Nasledujúci kód načíta <code>myLogger</code> middleware funkciu ešte pred route definíciou hlavnej cesty aplikácie (/).</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+
+app.use(myLogger);
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code>
+</pre>
+<p>Vždy keď aplikácia obdrží request požiadavku, vypíše do konzoly správu “LOGGED”.</p>
+<p>Poradie načítania middleware-ov je dôležité: middleware funkcie, ktoré sú načítane prvé, sú aj ako prvé vyvolané.</p>
+<p>Ak by <code>myLogger</code> bol načítaný až za definíciou route pre hlavnú stránku aplikácie, nikdy by ho request nedosiahol a aplikácia by nevypísala “LOGGED”, pretože route handler ukončí request-response cyklus.</p>
+<p>Táto <code>myLogger</code> middleware funkcia len vypisuje správu a posunie spracovanie ďalšej middleware funkcii v poradí zavolaním funkcie <code>next()</code>.</p>
+<h3>Middleware funkcia requestTime</h3>
+<p>Ďalej vytvoríme middleware funkciu s názvom “requestTime” a ktorá pridáva <code>requestTime</code> atribút na request objekt.</p>
+<pre><code class="language-javascript" translate="no">
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+</code>
+</pre>
+<p>Aplikácia teraz používa <code>requestTime</code> middleware funkciu. Taktiež callback funkcia pre obsluhu route hlavnej stránky aplikácie používa atribút, ktorý táto middleware funkcia pridala na <code>req</code> (request objekt).</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+
+app.use(requestTime);
+
+app.get('/', function (req, res) {
+  var responseText = 'Hello World!<br />';
+  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
+  res.send(responseText);
+});
+
+app.listen(3000);
+</code>
+</pre>
+<p>Po vykonaní requestu na hlavnú stránku aplikácie sa zobrazí v prehliadači timestamp vášho requestu.</p>
+<p>Keďže máte prístup k request a response objektu, ďalšej middleware funkcii v poradí a celému Node.js API, možnosti middleware funkcií sú nekonečné.</p>
+<p>Pre viac informácií ohľadom Express middleware si pozrite: <a href="using-middleware.html">Použitie Express middleware</a>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="https://ghbtns.com/github-btn.html?user=expressjs&repo=express&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> je projekt patriaci pod <a href="https://openjsf.org">Nadácie OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Editovať stránku na GitHub-e</a>.</div>
+<div>Copyright &copy; 2016 StrongLoop, IBM a ostatní expressjs.com prispievatelia.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script type="87a08d0a9c470a543b82f926-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:sk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="87a08d0a9c470a543b82f926-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/sk/guide/writing-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

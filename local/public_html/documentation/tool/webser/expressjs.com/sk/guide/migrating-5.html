@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="sk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/sk/guide/migrating-5.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Prechod na Express 5</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/sk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Domov</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Začíname</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Inštalácia
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express generátor
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Základný routing
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statické súbory
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Príručka</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+</li>
+ <li><a href="writing-middleware.html">Tvorba middleware</a>
+</li>
+<li><a href="using-middleware.html">Použitie middleware</a>
+</li>
+<li><a href="using-template-engines.html">Použitie template enginov</a>
+</li>
+<li><a href="error-handling.html">Error handling</a>
+</li>
+<li><a href="debugging.html">Debuggovanie</a>
+</li>
+<li><a href="behind-proxies.html">Použitie Express za proxy</a>
+</li>
+<li><a href="migrating-4.html">Prechod na Express 4</a>
+</li>
+<li><a href="migrating-5.html">Prechod na Express 5</a>
+</li>
+<li><a href="database-integration.html">Integrácia s databázou</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API referenčná príručka</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (zastaralé)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (zastaralé)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Pokročilé témy</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Templatovacie enginy</a>
+</li>
+<li><a href="../advanced/pm.html">Použitie správcov procesov</a>
+</li>
+<li><a href="../advanced/security-updates.html">Security - aktualizácie</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Security - osvedčené postupy</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Výkonnosť - osvedčené postupy</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Zdroje</a>
+<ul>
+<li><a href="../resources/glossary.html">Glosár</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Komunita</a>
+</li>
+<li><a href="../resources/frameworks.html">Frameworky</a>
+</li>
+<li><a href="../resources/learning.html">Dodatočné vzdelávanie</a>
+</li>
+<li><a href="../resources/companies-using-express.html">Firmy používajúce Express</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Tento dokument môže byť v porovnaní s dokumentáciou v angličtine zastaralý. Aktuálne informácie nájdete v <a href="../../index.html">dokumentácii v angličtine</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+
+<h1 id="prechod-na-express-5">Prechod na Express 5</h1>
+<h2 id="overview">Overview</h2>
+<p>Hoci je Express 5.0 ešte len v alpha release verzii, tu je náhľad zmien, ktoré budú v tomto release a návod ako zmigrovať vašu aplikáciu z verzie Express 4 na Express 5.</p>
+<p>Express 5 sa od Express 4 veľmi nelíši: Zmeny v API nie sú tak veľké, ako v pŕipade prechodu z verzie 3.0 na 4.0. Hoci základné API zostáva rovnaké, sú tam niektoré podstatné zmeny; inými slovami, existujúca Express 4 aplikácia nemusí po upgrade na Express 5 fungovať.</p>
+<p>Pre nainštalovanie poslednej alpha verzie Express 5, spustite v hlavnom priečinku vašej aplikácie nasledujúci príkaz:</p>
+<pre><code class="language-console">$ npm install express@5.0.0-alpha.2 --save
+</code></pre>
+<p>Potom môžete spustiť vaše automatizované testy, aby ste videli čo padá a opravili tieto problémy podľa informácií nižšie. Potom, ako identifikujete padajúce testy, spustite aplikáciu, aby ste videli aké errory nastávajú. Okamžite zistíte, či aplikácia používa niektorú z metód, alebo properties, ktoré nie sú podporované.</p>
+<h2 id="changes">Zmeny v Express 5</h2>
+<p>Tu je zoznam zmien (týkajúcich sa verzie alpha 2 release), ktoré vás, ako používateľa Express aplikácie, môžu ovplyvniť.
+Pozrite sa na zoznam <a href="https://github.com/expressjs/express/pull/2237">pull request-ov</a> všetkých plánovaných zmien.</p>
+<p><strong>Odstránené metódy a properties</strong></p>
+<ul class="doclist">
+<li><a href="#app.del">app.del()</a></li>
+<li><a href="#app.param">app.param(fn)</a></li>
+<li><a href="#plural">Pluralizované názvy metód</a></li>
+<li><a href="#leading">Dvojbodka na začiatku v name argumente volania app.param(name, fn)</a></li>
+<li><a href="#req.param">req.param(name)</a></li>
+<li><a href="#res.json">res.json(obj, status)</a></li>
+<li><a href="#res.jsonp">res.jsonp(obj, status)</a></li>
+<li><a href="#res.send.body">res.send(body, status)</a></li>
+<li><a href="#res.send.status">res.send(status)</a></li>
+<li><a href="#res.sendfile">res.sendfile()</a></li>
+</ul>
+<p><strong>Zmenené</strong></p>
+<ul class="doclist">
+<li><a href="#app.router">app.router</a></li>
+<li><a href="#req.host">req.host</a></li>
+<li><a href="#req.query">req.query</a></li>
+</ul>
+<p><strong>Vylepšenia</strong></p>
+<ul class="doclist">
+<li><a href="#res.render">res.render()</a></li>
+</ul>
+<h3>Odstránené metódy a properties</h3>
+<p>Ak používate niektorú z nasledujúcich metód, alebo properties vo vašej aplikácii, aplikácia bude padať. Preto budete musieť vykonať zmeny vo vašej aplikácii, aby fungovala aj po update na veziu 5.</p>
+<h4 id="app.del">app.del()</h4>
+<p>Express 5 už viac nepodporuje <code>app.del()</code> funkciu. V prípade použitia tejto metódy nastane error. Namiesto nej použite pre zaregistrovanie HTTP DELETE route-ov funkciu <code>app.delete()</code>.</p>
+<p>Pôvodne bola funkcia <code>del</code> používaná namiesto <code>delete</code>, pretože <code>delete</code> je v JavaScript-e rezervované kľúčové slovo. Avšak od ECMAScript 6, <code>delete</code> a ďalšie rezervované klúčové slová môžu byť bezpečne použité ako názov property.</p>
+<h4 id="app.param">app.param(fn)</h4>
+<p>Zápis <code>app.param(fn)</code> bol používaný pre modifikovanie správania <code>app.param(name, fn)</code> funkcie. Tento zápis bol označený ako deprecated už od v4.11.0 a Express 5 ho už nepodporuje vôbec.</p>
+<h4 id="plural">Pluralizované názvy metód</h4>
+<p>Nasledujúce názvy metód boli pluralizované. Používanie pôvodných názvov v Express 4 viedlo k deprecation warning-om. Express 5 ich už nepodporuje vôbec:</p>
+<p><code>req.acceptsCharset()</code> bola nahradená za <code>req.acceptsCharsets()</code>.</p>
+<p><code>req.acceptsEncoding()</code> bola nahradená za <code>req.acceptsEncodings()</code>.</p>
+<p><code>req.acceptsLanguage()</code> bola nahradená za <code>req.acceptsLanguages()</code>.</p>
+<h4 id="leading">Dvojbodka (:) na začiatku v name argumente volania app.param(name, fn)</h4>
+<p>Dvojbodka (:) na začiatku v name argumente volania <code>app.param(name, fn)</code> funkcie je pozostatkom z Express 3 a v záujme spätnej kompatibility ju Express 4 podporoval s deprecation warning-om. Express 5 ju bude ticho ignorovať a používa name parameter bez prefixu počiatočnej dvojbodky.</p>
+<p>Táto zmena by nemala ovplyvniť váš kód v prípade, ak postupujete podľa dokumentácie k Express 4 <a href="../4x/api.html#app.param">app.param</a>, kde sa žiadna počiatočná dvojbodka už nespomína.</p>
+<h4 id="req.param">req.param(name)</h4>
+<p>Táto potenciálne mätúca a nebezpečná metóda získania dát z formulára bola odstránená. Odteraz budete musieť pozrieť na konkrétny názov parametra v <code>req.params</code>, <code>req.body</code>, alebo <code>req.query</code> objektu.</p>
+<h4 id="res.json">res.json(obj, status)</h4>
+<p>Express 5 už viac nepodporuje zápis <code>res.json(obj, status)</code>. Namiesto toho nastavte status a zreťazte ho s <code>res.json()</code> volaním, takto <code>res.status(status).json(obj)</code>.</p>
+<h4 id="res.jsonp">res.jsonp(obj, status)</h4>
+<p>Express 5 už viac nepodporuje zápis <code>res.jsonp(obj, status)</code>. Namiesto toho nastavte status a zreťazte ho s <code>res.jsonp()</code> volaním, takto: <code>res.status(status).jsonp(obj)</code>.</p>
+<h4 id="res.send.body">res.send(body, status)</h4>
+<p>Express 5 už viac nepodporuje zápis <code>res.send(obj, status)</code>. Namiesto toho nastavte status a zreťazte ho s <code>res.send()</code> volaním, takto: <code>res.status(status).send(obj)</code>.</p>
+<h4 id="res.send.status">res.send(status)</h4>
+<p>Express 5 už viac nepodporuje zápis <code>res.send(<em>status</em>)</code>, kde <em><code>status</code></em> je číslo. Namiesto toho použite funkciu <code>res.sendStatus(statusCode)</code>, ktorá nastavuje status kód HTTP response hlavičky a odošle jej textovú verziu spolu s: “Not Found”, “Internal Server Error”, a podobne.
+Ak potrebujete poslať pomocou funkcie <code>res.send()</code> číslo, uveďte ho v úvodzovkách, aby ste ho pretypovali na string, takže to Express nevyhodnotí ako pokus o nepodporovaný zápis.</p>
+<h4 id="res.sendfile">res.sendfile()</h4>
+<p>Funkcia <code>res.sendfile()</code> bola v Express 5 nahradená camel-cased verziou <code>res.sendFile()</code>.</p>
+<h3>Zmenené</h3>
+<h4 id="app.router">app.router</h4>
+<p>Objekt <code>app.router</code>, ktorý bol v Express 4 odstránený, bol v Express 5 vrátený späť. V novej verzii je tento objekt len referenciou na základný Express router, kým v Express 3 ho bolo nutné explicitne načítať.</p>
+<h4 id="req.host">req.host</h4>
+<p>Funkcia <code>req.host</code> v Express 4 nekorektne odstraňovala číslo portu, ak bol definovaný. V Express 5 je číslo portu ponechané.</p>
+<h4 id="req.query">req.query</h4>
+<p>V Express 4.7 a od Express 5, query parser parameter akceptuje hodnotu <code>false</code> pre zakázanie parsovania query stringu v prípade, ak chcete použiť vlastnú funkciu na parsovanie.</p>
+<h3>Improvements</h3>
+<h4 id="res.render">res.render()</h4>
+<p>Táto metóda si odteraz vynucuje asynchrónne správanie všetkých view engine-ov, čím predchádza chybám spôsobenými view engine-ami, ktorých implementácia je synchrónna a porušuje doporučený interface.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="https://ghbtns.com/github-btn.html?user=expressjs&repo=express&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> je projekt patriaci pod <a href="https://openjsf.org">Nadácie OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Editovať stránku na GitHub-e</a>.</div>
+<div>Copyright &copy; 2016 StrongLoop, IBM a ostatní expressjs.com prispievatelia.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script type="cab2c8ddaf55cadb35eaed38-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:sk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="cab2c8ddaf55cadb35eaed38-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/sk/guide/migrating-5.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-cn/guide/using-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>使用 Express 中间件</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-cn.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">主页</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入门</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安装
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 生成器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静态文件
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常见问题及解答
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">指南</a>
+<ul>
+<li><a href="routing.html">路由</a>
+</li>
+<li><a href="writing-middleware.html">编写中间件</a>
+</li>
+<li><a href="using-middleware.html">使用中间件</a>
+</li>
+<li><a href="using-template-engines.html">使用模板引擎</a>
+</li>
+<li><a href="error-handling.html">错误处理</a>
+</li>
+<li><a href="debugging.html">调试</a>
+</li>
+<li><a href="behind-proxies.html">代理背后的 Express</a>
+</li>
+<li><a href="migrating-4.html">迁移到 Express 4</a>
+</li>
+<li><a href="migrating-5.html">迁移到 Express 5</a>
+</li>
+<li><a href="database-integration.html">数据库集成</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 参考</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（不推荐）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（不推荐）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高级主题</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">模板引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用进程管理器</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳实践</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">性能最佳实践</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">资源</a>
+<ul>
+<li><a href="../resources/glossary.html">词汇表</a>
+</li>
+<li><a href="../resources/middleware.html">中间件</a>
+</li>
+<li><a href="../resources/community.html">社区</a>
+</li>
+<li><a href="../resources/learning.html">额外学习</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>这个翻译<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相对于英文版的文档，本文档可能已过时。要了解最近的更新，请参阅<a href="../../index.html">英文版文档</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="使用中间件">使用中间件</h1>
+<p>Express 是一个路由和中间件 Web 框架，其自身只具有最低程度的功能：Express 应用程序基本上是一系列中间件函数调用。</p>
+<p><em>中间件</em>函数能够访问<a href="../4x/api.html#req">请求对象</a> (<code>req</code>)、<a href="../4x/api.html#res">响应对象</a> (<code>res</code>) 以及应用程序的请求/响应循环中的下一个中间件函数。下一个中间件函数通常由名为 <code>next</code> 的变量来表示。</p>
+<p>中间件函数可以执行以下任务：</p>
+<ul>
+<li>执行任何代码。</li>
+<li>对请求和响应对象进行更改。</li>
+<li>结束请求/响应循环。</li>
+<li>调用堆栈中的下一个中间件函数。</li>
+</ul>
+<p>如果当前中间件函数没有结束请求/响应循环，那么它必须调用 <code>next()</code>，以将控制权传递给下一个中间件函数。否则，请求将保持挂起状态。</p>
+<p>Express 应用程序可以使用以下类型的中间件：</p>
+<ul>
+<li><a href="#middleware.application">应用层中间件</a></li>
+<li><a href="#middleware.router">路由器层中间件</a></li>
+<li><a href="#middleware.error-handling">错误处理中间件</a></li>
+<li><a href="#middleware.built-in">内置中间件</a></li>
+<li><a href="#middleware.third-party">第三方中间件</a></li>
+</ul>
+<p>您可以使用可选安装路径来装入应用层和路由器层中间件。
+还可以将一系列中间件函数一起装入，这样会在安装点创建中间件系统的子堆栈。</p>
+<h2 id="middleware.application">应用层中间件</h2>
+<p>使用 <code>app.use()</code> 和 <code>app.METHOD()</code> 函数将应用层中间件绑定到<a href="../4x/api.html#app">应用程序对象</a>的实例，其中 <code>METHOD</code> 是中间件函数处理的请求的小写 HTTP 方法（例如 GET、PUT 或 POST）。</p>
+<p>此示例显示没有安装路径的中间件函数。应用程序每次收到请求时执行该函数。</p>
+<pre><code class="language-javascript" translate="no">
+var app = express();
+
+app.use(function (req, res, next) {
+  console.log('Time:', Date.now());
+  next();
+});
+</code>
+</pre>
+<p>此示例显示安装在 <code>/user/:id</code> 路径中的中间件函数。在 <code>/user/:id</code> 路径中为任何类型的 HTTP 请求执行此函数。</p>
+<pre><code class="language-javascript" translate="no">
+app.use('/user/:id', function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+</code>
+</pre>
+<p>此示例显示一个路由及其处理程序函数（中间件系统）。此函数处理针对 <code>/user/:id</code> 路径的 GET 请求。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/user/:id', function (req, res, next) {
+  res.send('USER');
+});
+</code>
+</pre>
+<p>以下是在安装点使用安装路径装入一系列中间件函数的示例。
+它演示一个中间件子堆栈，用于显示针对 <code>/user/:id</code> 路径的任何类型 HTTP 请求的信息。</p>
+<pre><code class="language-javascript" translate="no">
+app.use('/user/:id', function(req, res, next) {
+  console.log('Request URL:', req.originalUrl);
+  next();
+}, function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+</code>
+</pre>
+<p>路由处理程序使您可以为一个路径定义多个路由。以下示例为针对 <code>/user/:id</code> 路径的 GET 请求定义两个路由。第二个路由不会导致任何问题，但是永远都不会被调用，因为第一个路由结束了请求/响应循环。</p>
+<p>此示例显示一个中间件子堆栈，用于处理针对 <code>/user/:id</code> 路径的 GET 请求。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/user/:id', function (req, res, next) {
+  console.log('ID:', req.params.id);
+  next();
+}, function (req, res, next) {
+  res.send('User Info');
+});
+
+// handler for the /user/:id path, which prints the user ID
+app.get('/user/:id', function (req, res, next) {
+  res.end(req.params.id);
+});
+</code>
+</pre>
+
+<p>要跳过路由器中间件堆栈中剩余的中间件函数，请调用 <code>next('route')</code> 将控制权传递给下一个路由。
+<strong>注</strong>：<code>next('route')</code> 仅在使用 <code>app.METHOD()</code> 或 <code>router.METHOD()</code> 函数装入的中间件函数中有效。</p>
+<p>此示例显示一个中间件子堆栈，用于处理针对 <code>/user/:id</code> 路径的 GET 请求。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/user/:id', function (req, res, next) {
+  // if the user ID is 0, skip to the next route
+  if (req.params.id == 0) next('route');
+  // otherwise pass the control to the next middleware function in this stack
+  else next(); //
+}, function (req, res, next) {
+  // render a regular page
+  res.render('regular');
+});
+
+// handler for the /user/:id path, which renders a special page
+app.get('/user/:id', function (req, res, next) {
+  res.render('special');
+});
+</code>
+</pre>
+<h2 id="middleware.router">路由器层中间件</h2>
+<p>路由器层中间件的工作方式与应用层中间件基本相同，差异之处在于它绑定到 <code>express.Router()</code> 的实例。</p>
+<pre><code class="language-javascript" translate="no">
+var router = express.Router();
+</code>
+</pre>
+<p>使用 <code>router.use()</code> 和 <code>router.METHOD()</code> 函数装入路由器层中间件。
+以下示例代码使用路由器层中间件复制以上为应用层中间件显示的中间件系统：</p>
+<pre><code class="language-javascript" translate="no">
+var app = express();
+var router = express.Router();
+
+// a middleware function with no mount path. This code is executed for every request to the router
+router.use(function (req, res, next) {
+  console.log('Time:', Date.now());
+  next();
+});
+
+// a middleware sub-stack shows request info for any type of HTTP request to the /user/:id path
+router.use('/user/:id', function(req, res, next) {
+  console.log('Request URL:', req.originalUrl);
+  next();
+}, function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+
+// a middleware sub-stack that handles GET requests to the /user/:id path
+router.get('/user/:id', function (req, res, next) {
+  // if the user ID is 0, skip to the next router
+  if (req.params.id == 0) next('route');
+  // otherwise pass control to the next middleware function in this stack
+  else next(); //
+}, function (req, res, next) {
+  // render a regular page
+  res.render('regular');
+});
+
+// handler for the /user/:id path, which renders a special page
+router.get('/user/:id', function (req, res, next) {
+  console.log(req.params.id);
+  res.render('special');
+});
+
+// mount the router on the app
+app.use('/', router);
+</code>
+</pre>
+<h2 id="middleware.error-handling">错误处理中间件</h2>
+<div class="doc-box doc-notice">
+<p>错误处理中间件始终采用<em>四个</em>自变量。必须提供四个自变量，以将函数标识为错误处理中间件函数。即使无需使用 <code>next</code> 对象，也必须指定该对象以保持特征符的有效性。否则，<code>next</code> 对象将被解释为常规中间件，从而无法处理错误。</p>
+</div>
+<p>错误处理中间件函数的定义方式与其他中间件函数基本相同，差别在于错误处理函数有四个自变量而不是三个，专门具有特征符 <code>(err, req, res, next)</code>：</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+<p>有关错误处理中间件的详细信息，请参阅：<a href="error-handling.html">错误处理</a>。</p>
+<h2 id="middleware.built-in">内置中间件</h2>
+<p>自 V4.x 起，Express 不再依赖于 <a href="https://github.com/senchalabs/connect">Connect</a>。除 <code>express.static</code> 外，先前 Express 随附的所有中间件函数现在以单独模块的形式提供。请查看<a href="https://github.com/senchalabs/connect#middleware">中间件函数的列表</a>。</p>
+<h4 id="express.static">express.static(root, [options])</h4>
+<p>Express 中唯一内置的中间件函数是 <code>express.static</code>。此函数基于 <a href="https://github.com/expressjs/serve-static">serve-static</a>，负责提供 Express 应用程序的静态资源。</p>
+<p><code>root</code> 自变量指定从其中提供静态资源的根目录。</p>
+<p>可选的 <code>options</code> 对象可以具有以下属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>类型</th>
+<th>缺省值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dotfiles</code></td>
+<td>是否对外输出文件名以点（.）开头的文件。有效值包括“allow”、“deny”和“ignore”</td>
+<td>字符串</td>
+<td>“ignore”</td>
+</tr>
+<tr>
+<td><code>etag</code></td>
+<td>启用或禁用 etag 生成</td>
+<td>布尔</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>extensions</code></td>
+<td>用于设置后备文件扩展名。</td>
+<td>数组</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>发送目录索引文件。设置为 <code>false</code> 可禁用建立目录索引。</td>
+<td>混合</td>
+<td>“index.html”</td>
+</tr>
+<tr>
+<td><code>lastModified</code></td>
+<td>将 <code>Last-Modified</code> 的头设置为操作系统上该文件的上次修改日期。有效值包括 <code>true</code> 或 <code>false</code>。</td>
+<td>布尔</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>maxAge</code></td>
+<td>设置 Cache-Control 头的 max-age 属性（以毫秒或者 <a href="https://www.npmjs.org/package/ms">ms 格式</a>中的字符串为单位）</td>
+<td>数字</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>redirect</code></td>
+<td>当路径名是目录时重定向到结尾的“/”。</td>
+<td>布尔</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>setHeaders</code></td>
+<td>用于设置随文件一起提供的 HTTP 头的函数。</td>
+<td>函数</td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+<p>以下示例将使用了 <code>express.static</code> 中间件，并且提供了一个详细的’options’对象（作为示例）：</p>
+<pre><code class="language-javascript" translate="no">
+var options = {
+  dotfiles: 'ignore',
+  etag: false,
+  extensions: ['htm', 'html'],
+  index: false,
+  maxAge: '1d',
+  redirect: false,
+  setHeaders: function (res, path, stat) {
+    res.set('x-timestamp', Date.now());
+  }
+}
+
+app.use(express.static('public', options));
+</code>
+</pre>
+<p>对于每个应用程序，可以有多个静态目录：</p>
+<pre><code class="language-javascript" translate="no">
+app.use(express.static('public'));
+app.use(express.static('uploads'));
+app.use(express.static('files'));
+</code>
+</pre>
+<p>有关 <code>serve-static</code> 函数及其选项的更多详细信息，请参阅：<a href="https://github.com/expressjs/serve-static">serve-static</a> 文档。</p>
+<h2 id="middleware.third-party">第三方中间件</h2>
+<p>使用第三方中间件向 Express 应用程序添加功能。</p>
+<p>安装具有所需功能的 Node.js 模块，然后在应用层或路由器层的应用程序中将其加装入。</p>
+<p>以下示例演示如何安装和装入 cookie 解析中间件函数 <code>cookie-parser</code>。</p>
+<pre><code class="language-console">$ npm install cookie-parser
+</code></pre>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+var cookieParser = require('cookie-parser');
+
+// load the cookie-parsing middleware
+app.use(cookieParser());
+</code>
+</pre>
+<p>有关 Express 常用的第三方中间件函数的部分列表，请参阅：<a href="../resources/middleware.html">第三方中间件</a>。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金会的</a>一个项目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">在 GitHub 上派生出网站</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本作品采用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">知识共享署名-相同方式共享 3.0 美国许可协议</a>进行许可。
+</div>
+</footer>
+<script type="e338a5c40188ff4ea146736b-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-cn'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="e338a5c40188ff4ea146736b-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-cn/guide/using-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

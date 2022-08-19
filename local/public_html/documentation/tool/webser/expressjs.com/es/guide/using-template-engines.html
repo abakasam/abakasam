@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="es" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/es/guide/using-template-engines.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Utilización de motores de plantilla con Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/es.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Inicio</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Cómo empezar</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Instalación
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Generador de Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Direccionamiento básico
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Archivos estáticos
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Preguntas más frecuentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Guía</a>
+<ul>
+<li><a href="routing.html">Direccionamiento</a>
+</li>
+<li><a href="writing-middleware.html">Escritura de middleware</a>
+</li>
+<li><a href="using-middleware.html">Utilización del middleware</a>
+</li>
+<li><a href="using-template-engines.html">Utilización de motores de plantilla</a>
+</li>
+<li><a href="error-handling.html">Manejo de errores</a>
+</li>
+<li><a href="debugging.html">Depuración</a>
+</li>
+<li><a href="behind-proxies.html">Express detrás de proxies</a>
+</li>
+<li><a href="migrating-4.html">Migración a Express 4</a>
+</li>
+<li><a href="migrating-5.html">Migración a Express 5</a>
+</li>
+<li><a href="database-integration.html">Integración de la base de datos</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referencia de API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (en desuso)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (en desuso)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Temas avanzados</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Motores de plantilla</a>
+</li>
+<li><a href="../advanced/pm.html">Utilización de gestores de procesos</a>
+</li>
+<li><a href="../advanced/security-updates.html">Actualizaciones de seguridad</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Mejores prácticas de seguridad</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Mejores prácticas de rendimiento</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="../resources/glossary.html">Glosario</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Comunidad</a>
+</li>
+<li><a href="../resources/learning.html">Aprendizaje adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta traducción proporcionada por <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento puede estar desfasado respecto a la documentación en inglés. Para ver las últimas actualizaciones, consulte la <a href="../../index.html">documentación en inglés</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="utilización-de-motores-de-plantilla-con-express">Utilización de motores de plantilla con Express</h1>
+<p>Para que Express pueda representar archivos de plantilla, deben establecerse los siguientes valores de aplicación:</p>
+<ul>
+<li><code>views</code>, el directorio donde se encuentran los archivos de plantilla. Ejemplo: <code>app.set('views', './views')</code></li>
+<li><code>view engine</code>, el motor de plantilla que se utiliza. Ejemplo: <code>app.set('view engine', 'pug')</code></li>
+</ul>
+<p>A continuación, instale el paquete npm de motor de plantilla correspondiente:</p>
+<p><code>console
+$ npm install pug --save
+</code>console</p>
+<div class="doc-box doc-notice">
+<p>Los motores de plantilla compatibles con Express como, por ejemplo, Pug exportan una función denominada <code>__express(filePath, options, callback)</code>, que es invocada por la función <code>res.render()</code> para representar el código de plantilla.</p>
+<p>Algunos motores de plantilla no siguen esta convención. La biblioteca <a href="https://www.npmjs.org/package/consolidate">Consolidate.js</a> sigue esta convención correlacionando todos los motores de plantilla de Node.js más conocidos, por lo que funciona de forma ininterrumpida en Express.</p>
+</div>
+<p>Una vez establecida la propiedad view engine, no tiene que especificar el motor ni cargar el módulo de motor de plantilla en la aplicación; Express carga el módulo internamente, como se muestra a continuación (para el ejemplo anterior).</p>
+<pre><code class="language-javascript" translate="no">
+app.set('view engine', 'pug');
+</code>
+</pre>
+<p>Cree un archivo de plantilla Pug denominado <code>index.pug</code> en el directorio <code>views</code>, con el siguiente contenido:</p>
+<pre><code class="language-javascript" translate="no">
+html
+  head
+    title= title
+  body
+    h1= message
+</code>
+</pre>
+<p>A continuación, cree una ruta para representar el archivo <code>index.pug</code>. Si la propiedad <code>view engine</code> no se establece, debe especificar la extensión del archivo <code>view</code>. De lo contrario, puede omitirla.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
+});
+</code>
+</pre>
+<p>Cuando realice una solicitud a la página de inicio, el archivo <code>index.pug</code> se representará como HTML.</p>
+<p>Para obtener más información sobre cómo funcionan los motores de plantilla en Express, consulte: <a href="../advanced/developing-template-engines.html">“Desarrollo de motores de plantilla para Express”</a>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> es un proyecto de la <a href="https://openjsf.org">Fundación OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Bifurque el sitio web en GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. y otros colaboradores de expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Esta obra está bajo una <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Licencia Creative Commons Atribución-CompartirIgual 3.0 Estados Unidos de América</a>.
+</div>
+</footer>
+<script type="4a8ddfcbfc2b21e92d2ec230-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:es'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="4a8ddfcbfc2b21e92d2ec230-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/es/guide/using-template-engines.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

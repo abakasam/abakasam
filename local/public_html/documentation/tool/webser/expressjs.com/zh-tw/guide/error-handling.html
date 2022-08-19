@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="zh-tw" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-tw/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 錯誤處理</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-tw.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">首頁</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入門</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安裝
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 產生器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+靜態檔案
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常見問題 (FAQ)
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">手冊</a>
+<ul>
+<li><a href="routing.html">路由</a>
+</li>
+<li><a href="writing-middleware.html">撰寫中介軟體</a>
+</li>
+<li><a href="using-middleware.html">使用中介軟體</a>
+</li>
+<li><a href="using-template-engines.html">使用範本引擎</a>
+</li>
+<li><a href="error-handling.html">錯誤處理</a>
+</li>
+<li><a href="debugging.html">除錯</a>
+</li>
+<li><a href="behind-proxies.html">位於 Proxy 背後的 Express</a>
+</li>
+<li><a href="migrating-4.html">移至 Express 4</a>
+</li>
+<li><a href="migrating-5.html">移至 Express 5</a>
+</li>
+<li><a href="database-integration.html">資料庫整合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 參照</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（已淘汰）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（已淘汰）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">進階主題</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">範本引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用程序管理程式</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳作法</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">效能最佳作法</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">資源</a>
+<ul>
+<li><a href="../resources/glossary.html">名詞解釋</a>
+</li>
+<li><a href="../resources/middleware.html">中介軟體</a>
+</li>
+<li><a href="../resources/community.html">社群</a>
+</li>
+<li><a href="../resources/learning.html">額外學習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>這個翻譯<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相對於英文版說明文件，本文件可能已不合時宜。如需最新的更新，請參閱<a href="../../index.html">英文版說明文件</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="錯誤處理">錯誤處理</h1>
+<p>錯誤處理中介軟體函數的定義方式，與其他中介軟體函數相同，差別在於錯誤處理函數的引數是四個而非三個：<code>(err, req, res, next)</code>。例如：</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+<p>您是在定義其他 <code>app.use()</code> 和路由呼叫之後，最後才定義錯誤處理中介軟體；例如：</p>
+<pre><code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(function(err, req, res, next) {
+  // logic
+});
+</code>
+</pre>
+<p>中介軟體函數內的回應可以是任何您喜好的格式，如：HTML 錯誤頁面、簡式訊息或 JSON 字串。</p>
+<p>為了方便組織（和更高層次的架構），您可以定義數個錯誤處理中介軟體函數，就像您處理一般中介軟體函數一樣。舉例來說，如果您想為使用及沒有使用 <code>XHR</code> 所建立的要求，各定義一個錯誤處理程式，您可以使用下列指令：</p>
+<pre><code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
+</code>
+</pre>
+<p>在本例中，通用的 <code>logErrors</code> 可能將要求和錯誤資訊寫入至 <code>stderr</code>，例如：</p>
+<pre><code class="language-javascript" translate="no">
+function logErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
+</code>
+</pre>
+<p>此外在本例中，<code>clientErrorHandler</code> 定義成如下；在此情況下，會將錯誤明確傳遞給下一個：</p>
+<pre><code class="language-javascript" translate="no">
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' });
+  } else {
+    next(err);
+  }
+}
+</code>
+</pre>
+<p>“catch-all” <code>errorHandler</code> 函數的實作方式如下：</p>
+<pre><code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code>
+</pre>
+<p>不論您傳遞何者給 <code>next()</code> 函數（<code>'route'</code> 字串除外），Express 都會將現行要求視為發生錯誤，且會跳過其餘任何的非錯誤處理路由和中介軟體函數。如果您想以某種方式來處理該錯誤，您必須按照下一節的說明來建立錯誤處理路由。</p>
+<p>如果您的路由處理程式有多個回呼函數，可以使用 <code>route</code> 參數來跳到下一個路由處理程式。例如：</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/a_route_behind_paywall',
+  function checkIfPaidSubscriber(req, res, next) {
+    if(!req.user.hasPaid) {
+
+      // continue handling this request
+      next('route');
+    }
+  }, function getPaidContent(req, res, next) {
+    PaidContent.find(function(err, doc) {
+      if(err) return next(err);
+      res.json(doc);
+    });
+  });
+</code>
+</pre>
+<p>在本例中，會跳過 <code>getPaidContent</code> 處理程式，但是會繼續執行 <code>app</code> 中 <code>/a_route_behind_paywall</code> 的其餘處理程式。</p>
+<div class="doc-box doc-info">
+<p>呼叫 <code>next()</code> 和 <code>next(err)</code>，指出現行處理程式已完成以及處於何種狀態。除了依上述說明設定成用來處理錯誤的那些處理程式，<code>next(err)</code> 會跳過處理程式鏈中其餘所有的處理程式。&lt;/div&gt;</p>
+<h2 id="section">預設錯誤處理程式</h2>
+<p>Express 隨附一個內建錯誤處理常式，它會處理應用程式中可能遇到的任何錯誤。這個預設錯誤處理中介軟體函數新增於中介軟體函數堆疊尾端。</p>
+<p>如果您傳遞錯誤至 <code>next()</code>，且您沒有在錯誤處理常式中處理它，將會交由內建錯誤處理常式處理；該錯誤會連同堆疊追蹤寫入至用戶端。在正式作業環境中，則不包含堆疊追蹤。</p>
+<div class="doc-box doc-info">
+<p>將 <code>NODE_ENV</code> 環境變數設為 <code>production</code>，以便在正式作業模式下執行應用程式。</p>
+</div>
+<p>在您開始撰寫回應之後，一旦在呼叫 <code>next()</code> 時才發生錯誤（例如，當您將回應串流輸出至用戶端時遇到錯誤），Express 的預設錯誤處理程式會關閉連線，並使要求失敗。</p>
+<p>因此，在您新增自訂錯誤處理常式時，如果標頭已傳送給用戶端，您會希望委派給 Express 中的預設錯誤處理機制處理：</p>
+<pre><code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code>
+</pre>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金會的</a>一個項目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub 上的網站分支</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc. 與其他 expressjs.com 貢獻者。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本著作係採用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">創用 CC 姓名標示-相同方式分享 3.0 美國 授權條款</a>授權.
+</div>
+</footer>
+<script type="e71677343fe00f6fc16bb099-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-tw'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="e71677343fe00f6fc16bb099-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-tw/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

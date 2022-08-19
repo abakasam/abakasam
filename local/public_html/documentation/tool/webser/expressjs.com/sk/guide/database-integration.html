@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html lang="sk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/sk/guide/database-integration.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Integrácia Express s databázou</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/sk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Domov</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Začíname</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Inštalácia
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express generátor
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Základný routing
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statické súbory
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Príručka</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+</li>
+ <li><a href="writing-middleware.html">Tvorba middleware</a>
+</li>
+<li><a href="using-middleware.html">Použitie middleware</a>
+</li>
+<li><a href="using-template-engines.html">Použitie template enginov</a>
+</li>
+<li><a href="error-handling.html">Error handling</a>
+</li>
+<li><a href="debugging.html">Debuggovanie</a>
+</li>
+<li><a href="behind-proxies.html">Použitie Express za proxy</a>
+</li>
+<li><a href="migrating-4.html">Prechod na Express 4</a>
+</li>
+<li><a href="migrating-5.html">Prechod na Express 5</a>
+</li>
+<li><a href="database-integration.html">Integrácia s databázou</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API referenčná príručka</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (zastaralé)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (zastaralé)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Pokročilé témy</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Templatovacie enginy</a>
+</li>
+<li><a href="../advanced/pm.html">Použitie správcov procesov</a>
+</li>
+<li><a href="../advanced/security-updates.html">Security - aktualizácie</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Security - osvedčené postupy</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Výkonnosť - osvedčené postupy</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Zdroje</a>
+<ul>
+<li><a href="../resources/glossary.html">Glosár</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Komunita</a>
+</li>
+<li><a href="../resources/frameworks.html">Frameworky</a>
+</li>
+<li><a href="../resources/learning.html">Dodatočné vzdelávanie</a>
+</li>
+<li><a href="../resources/companies-using-express.html">Firmy používajúce Express</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Tento dokument môže byť v porovnaní s dokumentáciou v angličtine zastaralý. Aktuálne informácie nájdete v <a href="../../index.html">dokumentácii v angličtine</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+
+<h1 id="integrácia-s-databázou">Integrácia s databázou</h1>
+<p>Pridanie schopnosti pripojenia Express aplikácie na databázu je len otázkou načítania správneho Node.js drivera. Tento dokument v stručnosti popisuje možnosti pridania a použitia niektorých z obľúbených Node.js modulov pre pripojenie sa vašej Express aplikácie na databázu:</p>
+<ul>
+<li><a href="#cassandra">Cassandra</a></li>
+<li><a href="#couchdb">CouchDB</a></li>
+<li><a href="#leveldb">LevelDB</a></li>
+<li><a href="#mysql">MySQL</a></li>
+<li><a href="#mongo">MongoDB</a></li>
+<li><a href="#neo4j">Neo4j</a></li>
+<li><a href="#postgres">PostgreSQL</a></li>
+<li><a href="#redis">Redis</a></li>
+<li><a href="#sqlite">SQLite</a></li>
+<li><a href="#elasticsearch">ElasticSearch</a></li>
+</ul>
+<div class="doc-box doc-notice">
+<p>Tieto databázové drivery predstavujú len časť z mnoha ďalších, ktoré sú dostupné. Nájdete ich na <a href="https://www.npmjs.com/">npm</a> stránke.</p>
+</div>
+<p><a name="cassandra"></a></p>
+<h2 id="cassandra">Cassandra</h2>
+<p><strong>Modul</strong>: <a href="https://github.com/datastax/nodejs-driver">cassandra-driver</a>
+<strong>Inštalácia</strong></p>
+<pre><code class="language-console">$ npm install cassandra-driver
+</code></pre>
+<p><strong>Príklad</strong></p>
+<pre><code class="language-javascript" translate="no">
+var cassandra = require('cassandra-driver');
+var client = new cassandra.Client({ contactPoints: ['localhost']});
+
+client.execute('select key from system.local', function(err, result) {
+  if (err) throw err;
+  console.log(result.rows[0]);
+});
+</code>
+</pre>
+<p><a name="couchdb"></a></p>
+<h2 id="couchdb">CouchDB</h2>
+<p><strong>Modul</strong>: <a href="https://github.com/dscape/nano">nano</a>
+<strong>Inštalácia</strong></p>
+<pre><code class="language-console">$ npm install nano
+</code></pre>
+<p><strong>Príklad</strong></p>
+<pre><code class="language-javascript" translate="no">
+var nano = require('nano')('http://localhost:5984');
+nano.db.create('books');
+var books = nano.db.use('books');
+
+//Insert a book document in the books database
+books.insert({name: 'The Art of war'}, null, function(err, body) {
+  if (!err){
+    console.log(body);
+  }
+});
+
+//Get a list of all books
+books.list(function(err, body){
+  console.log(body.rows);
+});
+</code>
+</pre>
+<p><a name="leveldb"></a></p>
+<h2 id="leveldb">LevelDB</h2>
+<p><strong>Modul</strong>: <a href="https://github.com/rvagg/node-levelup">levelup</a>
+<strong>Inštalácia</strong></p>
+<pre><code class="language-console">$ npm install level levelup leveldown
+</code></pre>
+<p><strong>Príklad</strong></p>
+<pre><code class="language-javascript" translate="no">
+var levelup = require('levelup');
+var db = levelup('./mydb');
+
+db.put('name', 'LevelUP', function (err) {
+
+  if (err) return console.log('Ooops!', err);
+  db.get('name', function (err, value) {
+    if (err) return console.log('Ooops!', err);
+    console.log('name=' + value);
+  });
+
+});
+</code>
+</pre>
+<p><a name="mysql"></a></p>
+<h2 id="mysql">MySQL</h2>
+<p><strong>Modul</strong>: <a href="https://github.com/felixge/node-mysql/">mysql</a>
+<strong>Inštalácia</strong></p>
+<pre><code class="language-console">$ npm install mysql
+</code></pre>
+<p><strong>Príklad</strong></p>
+<pre><code class="language-javascript" translate="no">
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'dbuser',
+  password : 's3kreee7'
+});
+
+connection.connect();
+
+connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+  if (err) throw err;
+  console.log('The solution is: ', rows[0].solution);
+});
+
+connection.end();
+</code>
+</pre>
+<p><a name="mongo"></a></p>
+<h2 id="mongodb">MongoDB</h2>
+<p><strong>Modul</strong>: <a href="https://github.com/mongodb/node-mongodb-native">mongodb</a>
+<strong>Inštalácia</strong></p>
+<pre><code class="language-console">$ npm install mongodb
+</code></pre>
+<p><strong>Príklad</strong></p>
+<pre><code class="language-javascript" translate="no">
+var MongoClient = require('mongodb').MongoClient;
+
+MongoClient.connect('mongodb://localhost:27017/animals', function(err, db) {
+  if (err) {
+    throw err;
+  }
+  db.collection('mammals').find().toArray(function(err, result) {
+    if (err) {
+      throw err;
+    }
+    console.log(result);
+  });
+});
+</code>
+</pre>
+<p>If you want an object model driver for MongoDB, look at <a href="https://github.com/LearnBoost/mongoose">Mongoose</a>.</p>
+<p><a name="neo4j"></a></p>
+<h2 id="neo4j">Neo4j</h2>
+<p><strong>Modul</strong>: <a href="https://github.com/hacksparrow/apoc">apoc</a>
+<strong>Inštalácia</strong></p>
+<pre><code class="language-console">$ npm install apoc
+</code></pre>
+<p><strong>Príklad</strong></p>
+<pre><code class="language-javascript" translate="no">
+var apoc = require('apoc');
+
+apoc.query('match (n) return n').exec().then(
+  function (response) {
+    console.log(response);
+  },
+  function (fail) {
+    console.log(fail);
+  }
+);
+</code>
+</pre>
+<p><a name="postgres"></a></p>
+<h2 id="postgresql">PostgreSQL</h2>
+<p><strong>Modul</strong>: <a href="https://github.com/vitaly-t/pg-promise">pg-promise</a>
+<strong>Inštalácia</strong></p>
+<pre><code class="language-console">$ npm install pg-promise
+</code></pre>
+<p><strong>Príklad</strong></p>
+<pre><code class="language-javascript" translate="no">
+var pgp = require("pg-promise")(/*options*/);
+var db = pgp("postgres://username:password@host:port/database");
+
+db.one("SELECT $1 AS value", 123)
+    .then(function (data) {
+        console.log("DATA:", data.value);
+    })
+    .catch(function (error) {
+        console.log("ERROR:", error);
+    });
+</code>
+</pre>
+<p><a name="redis"></a></p>
+<h2 id="redis">Redis</h2>
+<p><strong>Modul</strong>: <a href="https://github.com/mranney/node_redis">redis</a>
+<strong>Inštalácia</strong></p>
+<pre><code class="language-console">$ npm install redis
+</code></pre>
+<p><strong>Príklad</strong></p>
+<pre><code class="language-javascript" translate="no">
+var client = require('redis').createClient();
+
+client.on('error', function (err) {
+  console.log('Error ' + err);
+});
+
+client.set('string key', 'string val', redis.print);
+client.hset('hash key', 'hashtest 1', 'some value', redis.print);
+client.hset(['hash key', 'hashtest 2', 'some other value'], redis.print);
+
+client.hkeys('hash key', function (err, replies) {
+
+  console.log(replies.length + ' replies:');
+  replies.forEach(function (reply, i) {
+    console.log('    ' + i + ': ' + reply);
+  });
+
+  client.quit();
+
+});
+</code>
+</pre>
+<p><a name="sqlite"></a></p>
+<h2 id="sqlite">SQLite</h2>
+<p><strong>Modul</strong>: <a href="https://github.com/mapbox/node-sqlite3">sqlite3</a>
+<strong>Inštalácia</strong></p>
+<pre><code class="language-console">$ npm install sqlite3
+</code></pre>
+<p><strong>Príklad</strong></p>
+<pre><code class="language-javascript" translate="no">
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database(':memory:');
+
+db.serialize(function() {
+
+  db.run('CREATE TABLE lorem (info TEXT)');
+  var stmt = db.prepare('INSERT INTO lorem VALUES (?)');
+
+  for (var i = 0; i &lt; 10; i++) {
+    stmt.run('Ipsum ' + i);
+  }
+
+  stmt.finalize();
+
+  db.each('SELECT rowid AS id, info FROM lorem', function(err, row) {
+    console.log(row.id + ': ' + row.info);
+  });
+});
+
+db.close();
+</code>
+</pre>
+<p><a name="elasticsearch"></a></p>
+<h2 id="elasticsearch">ElasticSearch</h2>
+<p><strong>Modul</strong>: <a href="https://github.com/elastic/elasticsearch-js">elasticsearch</a>
+<strong>Inštalácia</strong></p>
+<pre><code class="language-console">$ npm install elasticsearch
+</code></pre>
+<p><strong>Príklad</strong></p>
+<pre><code class="language-javascript" translate="no">
+var elasticsearch = require('elasticsearch');
+var client = elasticsearch.Client({
+  host: 'localhost:9200'
+});
+
+client.search({
+  index: 'books',
+  type: 'book',
+  body: {
+    query: {
+      multi_match: {
+        query: 'express js',
+        fields: ['title', 'description']
+      }
+    }
+  }
+}).then(function(response) {
+  var hits = response.hits.hits;
+}, function(error) {
+  console.trace(error.message);
+});
+</code>
+</pre>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="https://ghbtns.com/github-btn.html?user=expressjs&repo=express&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> je projekt patriaci pod <a href="https://openjsf.org">Nadácie OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Editovať stránku na GitHub-e</a>.</div>
+<div>Copyright &copy; 2016 StrongLoop, IBM a ostatní expressjs.com prispievatelia.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script type="99e0d5865f667e24acd3eeb2-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:sk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="99e0d5865f667e24acd3eeb2-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/sk/guide/database-integration.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

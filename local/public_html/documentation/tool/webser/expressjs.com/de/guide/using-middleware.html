@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html lang="de" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/de/guide/using-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express-Middleware verwenden</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/de.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Einführung</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Installation
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Generator
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basisrouting
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statische Dateien
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Häufig gestellte Fragen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Leitfaden</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+</li>
+<li><a href="writing-middleware.html">Middleware schreiben</a>
+</li>
+<li><a href="using-middleware.html">Middleware verwenden</a>
+</li>
+<li><a href="using-template-engines.html">Template-Engines verwenden</a>
+</li>
+<li><a href="error-handling.html">Fehlerbehandlung</a>
+</li>
+<li><a href="debugging.html">Debugging</a>
+</li>
+<li><a href="behind-proxies.html">Express hinter Proxys</a>
+</li>
+<li><a href="migrating-4.html">Wechsel zu Express 4</a>
+</li>
+<li><a href="migrating-5.html">Wechsel zu Express 5</a>
+</li>
+<li><a href="database-integration.html">Datenbankintegration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API-Referenz</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (veraltet)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (veraltet)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Themen für Fortgeschrittene</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Template-Engines</a>
+</li>
+<li><a href="../advanced/pm.html">Process Manager verwenden</a>
+</li>
+<li><a href="../advanced/security-updates.html">Sicherheitsupdates</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Sicherheitsspezifische Best Practices</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Leistungsspezifische Best Practices</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ressourcen</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossar</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Community</a>
+</li>
+<li><a href="../resources/learning.html">Zusätzliches Lernen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Diese Übersetzung zur Verfügung gestellt von <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Dieses Dokument kann im Vergleich zur englischen Dokumentation veraltet sein. Aktuelle Updates finden Sie in der <a href="../../index.html">englischen Dokumentation</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="middleware-verwenden">Middleware verwenden</h1>
+<p>Express ist ein Weiterleitungs- und Middleware-Web-Framework, das selbst nur minimale Funktionalität aufweist: Eine Express-Anwendung besteht im Wesentlichen aus einer Reihe von Middlewarefunktionsaufrufen.</p>
+<p><em>Middlewarefunktionen</em> sind Funktionen, die Zugriff auf das <a href="../4x/api.html#req">Anforderungsobjekt</a> (<code>req</code>), das <a href="../4x/api.html#res">Antwortobjekt</a> (<code>res</code>) und die nächste Middlewarefunktion im Anforderung/Antwort-Zyklus der Anwendung haben. Die nächste Middlewarefunktion wird im Allgemeinen durch die Variable <code>next</code> bezeichnet.</p>
+<p>Über Middlewarefunktionen lassen sich die folgenden Tasks ausführen:</p>
+<ul>
+<li>Ausführen von Code</li>
+<li>Vornehmen von Änderungen an der Anforderung und an Antwortobjekten</li>
+<li>Beenden des Anforderung/Antwort-Zyklus</li>
+<li>Aufrufen der nächsten Middlewarefunktion im Stack</li>
+</ul>
+<p>Wenn über die aktuelle Middlewarefunktion der Anforderung/Antwort-Zyklus nicht beendet werden kann, muss <code>next()</code> aufgerufen werden, um die Steuerung an die nächste Middlewarefunktion zu übergeben. Andernfalls geht die Anforderung in den Status “Blockiert” über.</p>
+<p>Eine Express-Anwendung kann die folgenden Middlewaretypen verwenden:</p>
+<ul>
+<li><a href="#middleware.application">Middleware auf Anwendungsebene</a></li>
+<li><a href="#middleware.router">Middleware auf Routerebene</a></li>
+<li><a href="#middleware.error-handling">Middleware für die Fehlerbehandlung</a></li>
+<li><a href="#middleware.built-in">Integrierte Middleware</a></li>
+<li><a href="#middleware.third-party">Middleware anderer Anbieter</a></li>
+</ul>
+<p>Sie können Middleware auf Anwendungsebene und Routerebene mit einem optionalen Mountpfad laden. Sie können auch eine Reihe von Middlewarefunktionen zusammen laden. Dadurch wird ein Sub-Stack des Middlewaresystems am Mountpunkt erstellt.</p>
+<h2 id="middleware.application">Middleware auf Anwendungsebene</h2>
+<p>Binden Sie Middleware auf Anwendungsebene zu einer Instanz des <a href="../4x/api.html#app">Anwendungsobjekts</a>, indem Sie die Funktionen <code>app.use()</code> und <code>app.METHOD()</code> verwenden. <code>METHOD</code> ist dabei die HTTP-Methode der Anforderung, die die Middlewarefunktion in Kleinschreibung verarbeitet (wie GET, PUT oder POST).</p>
+<p>Dieses Beispiel zeigt eine Middlewarefunktion ohne Mountpfad. Die Funktion wird immer dann ausgeführt, wenn die Anwendung eine Anforderung erhält.</p>
+<pre><code class="language-javascript" translate="no">
+var app = express();
+
+app.use(function (req, res, next) {
+  console.log('Time:', Date.now());
+  next();
+});
+</code>
+</pre>
+<p>Dieses Beispiel zeigt eine Middlewarefunktion mit dem Mountpfad <code>/user/:id</code>. Die Funktion wird für jede Art von HTTP-Anforderung auf dem Pfad <code>/user/:id</code> ausgeführt.</p>
+<pre><code class="language-javascript" translate="no">
+app.use('/user/:id', function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+</code>
+</pre>
+<p>Dieses Beispiel zeigt eine Weiterleitung und deren Handlerfunktion (Middlewaresystem). Die Funktion verarbeitet GET-Anforderungen zum Pfad <code>/user/:id</code>.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/user/:id', function (req, res, next) {
+  res.send('USER');
+});
+</code>
+</pre>
+<p>Dies ist ein Beispiel zum Laden einer Reihe von Middlewarefunktionen an einem Mountpunkt mit einem Mountpfad. Das Beispiel veranschaulicht einen Middleware-Stack, über den Anforderungsinformationen zu einer HTTP-Anforderung zum Pfad <code>/user/:id</code> ausgegeben werden.</p>
+<pre><code class="language-javascript" translate="no">
+app.use('/user/:id', function(req, res, next) {
+  console.log('Request URL:', req.originalUrl);
+  next();
+}, function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+</code>
+</pre>
+<p>Mit einem Routenhandler können Sie mehrere Weiterleitungen für einen Pfad definieren. Im folgenden Beispiel werden zwei Weiterleitungen für GET-Anforderungen zum Pfad <code>/user/:id</code> definiert. Die zweite Weiterleitung verursacht zwar keine Probleme, wird jedoch nie aufgerufen, da durch die erste Weiterleitung der Anforderung/Antwort-Zyklus beendet wird.</p>
+<p>Dieses Beispiel zeigt einen Middleware-Sub-Stack, über den GET-Anforderungen zum Pfad <code>/user/:id</code> verarbeitet werden.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/user/:id', function (req, res, next) {
+  console.log('ID:', req.params.id);
+  next();
+}, function (req, res, next) {
+  res.send('User Info');
+});
+
+// handler for the /user/:id path, which prints the user ID
+app.get('/user/:id', function (req, res, next) {
+  res.end(req.params.id);
+});
+</code>
+</pre>
+<p>Wenn Sie den Rest der Middlewarefunktionen eines Weiterleitungs-Middleware-Stack überspringen wollen, rufen Sie <code>next('route')</code> auf, um die Steuerung an die nächste Weiterleitung zu übergeben. <strong>HINWEIS</strong>: <code>next('route')</code> funktioniert nur in Middlewarefunktionen, die über die Funktionen <code>app.METHOD()</code> oder <code>router.METHOD()</code> geladen wurden.</p>
+<p>Dieses Beispiel zeigt einen Middleware-Sub-Stack, über den GET-Anforderungen zum Pfad <code>/user/:id</code> verarbeitet werden.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/user/:id', function (req, res, next) {
+  // if the user ID is 0, skip to the next route
+  if (req.params.id == 0) next('route');
+  // otherwise pass the control to the next middleware function in this stack
+  else next(); //
+}, function (req, res, next) {
+  // render a regular page
+  res.render('regular');
+});
+
+// handler for the /user/:id path, which renders a special page
+app.get('/user/:id', function (req, res, next) {
+  res.render('special');
+});
+</code>
+</pre>
+<h2 id="middleware.router">Middleware auf Routerebene</h2>
+<p>Middleware auf Routerebene funktioniert in der gleichen Weise wie Middleware auf Anwendungsebene, mit dem einzigen Unterschied, dass sie an eine Instanz von <code>express.Router()</code> gebunden ist.</p>
+<pre><code class="language-javascript" translate="no">
+var router = express.Router();
+</code>
+</pre>
+<p>Laden Sie Middleware auf Routerebene über die Funktionen <code>router.use()</code> und <code>router.METHOD()</code>.
+Der folgende Beispielcode repliziert das Middlewaresystem, das oben für die Middleware auf Anwendungsebene gezeigt wird, durch Verwendung von Middleware auf Routerebene.</p>
+<pre><code class="language-javascript" translate="no">
+var app = express();
+var router = express.Router();
+
+// a middleware function with no mount path. This code is executed for every request to the router
+router.use(function (req, res, next) {
+  console.log('Time:', Date.now());
+  next();
+});
+
+// a middleware sub-stack shows request info for any type of HTTP request to the /user/:id path
+router.use('/user/:id', function(req, res, next) {
+  console.log('Request URL:', req.originalUrl);
+  next();
+}, function (req, res, next) {
+  console.log('Request Type:', req.method);
+  next();
+});
+
+// a middleware sub-stack that handles GET requests to the /user/:id path
+router.get('/user/:id', function (req, res, next) {
+  // if the user ID is 0, skip to the next router
+  if (req.params.id == 0) next('route');
+  // otherwise pass control to the next middleware function in this stack
+  else next(); //
+}, function (req, res, next) {
+  // render a regular page
+  res.render('regular');
+});
+
+// handler for the /user/:id path, which renders a special page
+router.get('/user/:id', function (req, res, next) {
+  console.log(req.params.id);
+  res.render('special');
+});
+
+// mount the router on the app
+app.use('/', router);
+</code>
+</pre>
+<h2 id="middleware.error-handling">Middleware für die Fehlerbehandlung</h2>
+<div class="doc-box doc-notice">
+<p>Middleware für die Fehlerbehandlung benötigt immer <em>vier</em> Argumente. Sie müssen vier Argumente angeben, um die Erkennung als Middlewarefunktion für die Fehlerbehandlung zu ermöglichen. Selbst wenn das Objekt <code>next</code> nicht verwenden müssen, müssen Sie dies angeben, um die Signatur beizubehalten. Andernfalls wird das Objekt <code>next</code> als reguläre Middleware interpretiert, sodass keine Fehlerbehandlung möglich ist.</p>
+</div>
+<p>Middlewarefunktionen für die Fehlerbehandlung werden in derselben Weise definiert wie andere Middlewarefunktionen, außer dass Fehlerbehandlungsfunktionen speziell bei Signaturen vier anstatt drei Argumente aufweisen <code>(err, req, res, next)</code>:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+<p>Details zu Middleware für die Fehlerbehandlung siehe <a href="error-handling.html">Fehlerbehandlung</a>.</p>
+<h2 id="middleware.built-in">Integrierte Middleware</h2>
+<p>Seit Version 4.x bestehen bei Express keine Abhängigkeiten zu <a href="https://github.com/senchalabs/connect">Connect</a> mehr. Mit Ausnahme von <code>express.static</code> befinden sich nun alle Middlewarefunktionen, die bisher in Express enthalten waren, in separaten Modulen. Sehen Sie sich hierzu auch die <a href="https://github.com/senchalabs/connect#middleware">Liste der Middlewarefunktionen</a> an.</p>
+<h4 id="express.static">express.static(root, [options])</h4>
+<p>Die einzige integrierte Middlewarefunktion in Express ist <code>express.static</code>. Diese Funktion basiert auf <a href="https://github.com/expressjs/serve-static">serve-static</a> und ist zuständig für die statischen Assets einer Express-Anwendung.</p>
+<p>Das Argument <code>root</code> gibt das Stammverzeichnis an, von dem aus statische Assets bedient werden.</p>
+<p>Das optionale Objekt <code>options</code> kann folgende Eigenschaften aufweisen:</p>
+<table>
+<thead>
+<tr>
+<th>Eigenschaft</th>
+<th>Beschreibung</th>
+<th>Typ</th>
+<th>Standard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dotfiles</code></td>
+<td>Option für Dateien mit Punkterweiterung (dotfiles). Mögliche Werte sind “allow”, “deny” und “ignore”</td>
+<td>Zeichenfolge</td>
+<td>“ignore”</td>
+</tr>
+<tr>
+<td><code>etag</code></td>
+<td>Aktiviert oder inaktiviert die etag-Generierung.</td>
+<td>Boolesch</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>extensions</code></td>
+<td>Legt Dateierweiterungs-Fallbacks fest.</td>
+<td>Bereich</td>
+<td><code>[]</code></td>
+</tr>
+<tr>
+<td><code>index</code></td>
+<td>Sendet die verzeichnissspezifische indexierte Datei. Bei <code>false</code> wird die Verzeichnisindexierung inaktiviert.</td>
+<td>Gemischt</td>
+<td>“index.html”</td>
+</tr>
+<tr>
+<td><code>lastModified</code></td>
+<td>Legt den Header <code>Last-Modified</code> auf das Datum der letzten Änderung der Datei im Betriebssystem fest. Mögliche Werte sind<code>true</code> und <code>false</code>.</td>
+<td>Boolesch</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>maxAge</code></td>
+<td>Legt die Eigenschaft “max-age” des Headers “Cache-Control” in Millisekunden oder als Zeichenfolge im <a href="https://www.npmjs.org/package/ms">ms-Format</a> fest.</td>
+<td>Zahl</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>redirect</code></td>
+<td>Umleitung zu einem abschließenden “/”, wenn der Pfadname ein Verzeichnis ist.</td>
+<td>Boolesch</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>setHeaders</code></td>
+<td>Funktion zum Festlegen von HTTP-Headern für die Datei.</td>
+<td>Funktion</td>
+<td> </td>
+</tr>
+</tbody>
+</table>
+<p>Dies ist ein Beispiel zur Verwendung der Middlewarefunktion <code>express.static</code> mit einem ausführlich dargestellten Optionsobjekt:</p>
+<pre><code class="language-javascript" translate="no">
+var options = {
+  dotfiles: 'ignore',
+  etag: false,
+  extensions: ['htm', 'html'],
+  index: false,
+  maxAge: '1d',
+  redirect: false,
+  setHeaders: function (res, path, stat) {
+    res.set('x-timestamp', Date.now());
+  }
+}
+
+app.use(express.static('public', options));
+</code>
+</pre>
+<p>Es sind mehrere statische Verzeichnisse pro Anwendung möglich:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(express.static('public'));
+app.use(express.static('uploads'));
+app.use(express.static('files'));
+</code>
+</pre>
+<p>Details zur Funktion <code>serve-static</code> und deren Optionen finden Sie in der Dokumentation zu <a href="https://github.com/expressjs/serve-static">serve-static</a>.</p>
+<h2 id="middleware.third-party">Middleware anderer Anbieter</h2>
+<p>Mit Middleware anderer Anbieter können Sie Express-Anwendungen um neue Funktionalität erweitern.</p>
+<p>Installieren Sie das Modul Node.js für die erforderliche Funktionalität. Laden Sie das Modul dann in Ihre Anwendung auf Anwendungsebene oder auf Routerebene.</p>
+<p>Das folgende Beispiel veranschaulicht das Installieren und Laden der Middlewarefunktion <code>cookie-parser</code> für das Cookie-Parsing.</p>
+<pre><code class="language-console">$ npm install cookie-parser
+</code></pre>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+var cookieParser = require('cookie-parser');
+
+// load the cookie-parsing middleware
+app.use(cookieParser());
+</code>
+</pre>
+<p>Eine nicht vollständige Liste zu den Middlewarefunktionen anderer Anbieter, die im Allgemeinen mit Express verwendet werden, finden Sie unter <a href="../resources/middleware.html">Middleware anderer Anbieter</a>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> ist ein Projekt der <a href="https://openjsf.org">Stiftung OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Website auf GitHub forken</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. und andere Mitwirkende an expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Dieses Werk ist lizenziert unter einer <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Vereinigte Staaten von Amerika Lizenz</a>.
+</div>
+</footer>
+<script type="12d0fa7e814aa964a610823b-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:de'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="12d0fa7e814aa964a610823b-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/de/guide/using-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

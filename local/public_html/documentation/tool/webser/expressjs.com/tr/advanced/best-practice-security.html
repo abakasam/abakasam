@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="tr" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/tr/advanced/best-practice-security.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Canlı Ortamda Express için En İyi Güvenlik Pratikleri</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/tr.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div style="text-align: center; background: #010101; color: #f1f1f1; padding: 16px; font-size: 16px; width: 100vw">
+Black Lives Matter. <a style="color: #5E80F7; text-decoration: none;" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Anasayfa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Buradan Başlayın</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Kurulum
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Merhaba Dünya
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Oluşturucu
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basit Yönlendirme
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statik Dosyalar
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+SSS
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Kılavuz</a>
+<ul>
+<li><a href="../guide/routing.html">Yönlendirme</a>
+</li>
+<li><a href="../guide/writing-middleware.html">
+Middleware yazma</a>
+</li>
+<li><a href="../guide/using-middleware.html">Middleware kullanma</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Şablon motoru kullanma</a>
+</li>
+<li><a href="../guide/error-handling.html">Hata işleme</a>
+</li>
+<li><a href="../guide/debugging.html">Hata Ayıklama</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="../guide/migrating-4.html">Express 4 geçiş</a>
+</li>
+<li><a href="../guide/migrating-5.html">Express 5 geçiş</a>
+</li>
+<li><a href="../guide/database-integration.html">Database Entegrasyonu</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API Kaynak</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (Kullanımdan kaldırıldı)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (Kullanımdan kaldırıldı)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">Gelişmiş konular</a>
+<ul>
+<li><a href="developing-template-engines.html">Şablon motorları</a>
+</li>
+<li><a href="pm.html">Proses yöneticisi kullanma</a>
+</li>
+<li><a href="security-updates.html">Gğvenlik güncellemeleri</a>
+</li>
+<li><a href="best-practice-security.html">En iyi güvenlik uygulamaları</a>
+</li>
+<li><a href="best-practice-performance.html">En iyi performans uygulamaları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Kaynaklar</a>
+<ul>
+<li>
+<a href="../resources/community.html">Topluluk</a>
+</li>
+<li>
+<a href="../resources/glossary.html">Terimler</a>
+</li>
+<li>
+<a href="../resources/middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../resources/utils.html">Yardımcı Modüller</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">Yapılar</a>
+</li>
+<li>
+<a href="../resources/learning.html">Ek öğrenme</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">Express kullanan şirket</a>
+</li>
+<li>
+<a href="../resources/contributing.html">Express'e katkıda bulunmak</a>
+</li>
+<li>
+<a href="../changelog/4x.html">Sürüm Notları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Bu doküman ingilizce dokümana göre eski olabilir. Son güncellemeler için lütfen <a href="../../index.html">İngilizce Dokümanı</a>. ziyaret edin
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="en-i̇yi-canlı-ortam-pratikleri-güvenlik">En İyi Canlı Ortam Pratikleri: Güvenlik</h1>
+<h2 id="genel-bakış">Genel Bakış</h2>
+<p><em>“canlı ortam”</em> terimi, bir uygulama veya API’nin genel olarak son kullanıcıları veya tüketicileri için hazır olduğu yazılım yaşam döngüsündeki aşamayı ifade eder. Buna kıyasla, <em>“geliştirme”</em> aşamasında aktif olarak kod yazıyor ve test ediyorsunuz, ve uygulama dış erişime açık değildir. Bunlara karşılık gelen sistem ortamları sırasıyla <em>canlı ortam (production)</em> ve <em>geliştirme (development)</em> ortamları olarak bilinir.</p>
+<p>Canlı ve geliştirme ortamları genel olarak farklı şekilde kurulurlar ve çok farklı gereksinimleri vardır. Geliştirme ortamında iyi olan bir şey canlı ortamda kabul edilebilir olmayabilir. Örneğin, geliştirme ortamında hata ayıklama için ayrıntılı hataların loglanmasını isteyebilirsiniz, ancak aynı şey canlı ortamda güvenlik açığı oluşturabilir. Ve geliştirme ortamında ölçeklenebilirlik, güvenilirlik ve performans hakkında endişe etmenize gerek yok iken, bu konular canlı ortamda kritikleşir.</p>
+<div class="doc-box doc-info">
+<p><b>Note</b>:
+Express’te bir güvenlik açığı keşfettiğinizi düşünüyorsanız, lütfen bakınız
+<a href="https://github.com/expressjs/express/blob/master/Security.md">Güvenlik Politikaları ve Prosedürleri</a>.</p>
+</div>
+<p>Canlı ortamdaki Express uygulamaları için en iyi güvenlik pratikleri:</p>
+<ul>
+<li><a href="#expressin-kullanımdan-kaldırılmış-veya-bakımı-yapılmayan-versiyonlarını-kullanmayın">Express’in kullanımdan kaldırılmış veya bakımı yapılmayan versiyonlarını kullanmayın</a></li>
+<li><a href="#tls-kullanın">TLS kullanın</a></li>
+<li><a href="#helmet-kullanın">Helmet kullanın</a></li>
+<li><a href="#çerezleri-güvenli-kullanın">Çerezleri güvenli kullanın</a></li>
+<li><a href="#otorizasyona-karşı-yapılan-brute-force-saldırılarını-engelleyin">Otorizasyona karşı yapılan brute-force saldırılarını engelleyin</a></li>
+<li><a href="#bağımlılıklarınızın-güvende-olduğundan-emin-olun">Bağımlılıklarınızın güvende olduğundan emin olun</a></li>
+<li><a href="#bilinen-diğer-güvenlik-açıklarından-kaçının">Bilinen diğer güvenlik açıklarından kaçının</a></li>
+<li><a href="#ek-hususlar">Ek hususlar</a></li>
+</ul>
+<h2 id="expressin-kullanımdan-kaldırılmış-veya-bakımı-yapılmayan-versiyonlarını-kullanmayın">Express’in kullanımdan kaldırılmış veya bakımı yapılmayan versiyonlarını kullanmayın</h2>
+<p>Express 2.x ve 3.x versiyonlarının bakımı artık yapılmıyor. Bu versiyonlardaki güvenlik ve performans sorunları çözülmeyecek. Bunları kullanmayın! 4. versiyona henüz geçmediyseniz, <a href="../guide/migrating-4.html">taşıma rehberini</a> takip edin.</p>
+<p>Ayrıca <a href="security-updates.html">güvenlik güncellemeleri sayfası</a>‘nda listelenen bakımı yapılmayan herhangi bir Express versiyonunu kullanmadığınızdan emin olun. Eğer kullanıyorsanız, stabil versiyonlardan birine geçin, tercihen en son versiyona.</p>
+<h2 id="tls-kullanın">TLS kullanın</h2>
+<p>Uygulamanız hassas verilerle ilgileniyor veya bunları iletiyorsa, veri ve bağlantıyı güvende tutmak için <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security</a> (TLS) kullanın. Bu teknoloji, verileri istemciden sunucuya gönderilmeden önce şifreler ve böylelikle bazı yaygın (ve kolay) saldırıları önler. Ajax ve POST istekleri gözle görülür şekilde açık olmayabilir ve tarayıcılarda “gizli” görünebilir, ancak bunların ağ trafiği <a href="https://en.wikipedia.org/wiki/Packet_analyzer">packet sniffing</a> ve <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">man-in-the-middle saldırılarına</a> karşı korumasızdır.</p>
+<p>Secure Socket Layer (SSL) şifrelemesine aşina olabilirsiniz. <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa380515(v=vs.85).aspx">TLS, SSL’nin bir sonraki geçişidir</a>. Bir başka deyişle, daha önce SSL kullanıyorsanız TLS’e yükseltmeyi düşünün. Genel olarak, TLS kullanmak için Nginx öneririz. Nginx’te (ve diğer sunucularda) TLS’yi yapılandırmak için, bakınız <a href="https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Server_Configurations">Önerilen Sunucu Yapılandırmaları (Mozilla Wiki)</a>.</p>
+<p>Ayrıca, <a href="https://www.abetterinternet.org/">Internet Security Research Group (ISRG)</a> tarafından sunulan ücretsiz, otomatik, ve açık bir sertifika yetkilisi (CA - Certificate Authority) olan <a href="https://letsencrypt.org/about/">Let’s Encrypt</a> ücretsiz bir TLS sertifikası alabileceğiniz araçtır.</p>
+<h2 id="helmet-kullanın">Helmet kullanın</h2>
+<p><a href="https://www.npmjs.com/package/helmet">Helmet</a>, HTTP başlıklarını doğru ayarlayarak uygulamanızı bazı iyi bilinen web güvenlik açıklarına karşı koruyabilir.</p>
+<p>Helmet aslında güvenlikle ilgili HTTP yanıt başlıklarını ayarlayan, daha küçük ara yazılım (middleware) fonksiyonlarından oluşan bir koleksiyondur:</p>
+<ul>
+<li><a href="https://github.com/helmetjs/csp">csp</a> siteler arası (cross-site) komut dosyası çalıştırma saldırılarını ve diğer siteler arası enjeksiyonları önlemeye yardımcı olmak için <code>Content-Security-Policy</code> başlığını ayarlar.</li>
+<li><a href="https://github.com/helmetjs/hide-powered-by">hidePoweredBy</a> <code>X-Powered-By</code> başlığını kaldırır.</li>
+<li><a href="https://github.com/helmetjs/hsts">hsts</a> sunucuya güvenli (SSL/TLS üzerinden HTTP) bağlantıları zorunlu kılan <code>Strict-Transport-Security</code> başlığını ayarlar.</li>
+<li><a href="https://github.com/helmetjs/ienoopen">ieNoOpen</a> IE8+ için <code>X-Download-Options</code> başlığını ayarlar.</li>
+<li><a href="https://github.com/helmetjs/nocache">noCache</a> istemci-taraflı önbelleğe alma (caching) işlevini devre dışı bırakmak için <code>Cache-Control</code> ve Pragma başlıklarını ayarlar.</li>
+<li><a href="https://github.com/helmetjs/dont-sniff-mimetype">noSniff</a> tarayıcıların bildirilen içerik türünden farklı, bir sunucu yanıtına MIME-sniffing uygulanmasını önlemek için <code>X-Content-Type-Options</code> başlığını ayarlar.</li>
+<li><a href="https://github.com/helmetjs/frameguard">frameguard</a> <a href="https://www.owasp.org/index.php/Clickjacking">clickjacking</a> koruması sağlamak için <code>X-Frame-Options</code> başlığını ayarlar.</li>
+<li><a href="https://github.com/helmetjs/x-xss-protection">xssFilter</a> siteler arası komut çalıştırma (Cross-site scripting (XSS)) filtresini en yeni tarayıcılarda etkinleştirmek için <code>X-XSS-Protection</code> başlığını ayarlar.</li>
+</ul>
+<p>Helmet’ı diğer herhangi bir modül gibi kurun:</p>
+<pre><code class="language-console">$ npm install --save helmet
+</code></pre>
+<p>Daha sonra kodunuzda kullanmak için:</p>
+<pre><code class="language-js">// ...
+
+const helmet = require('helmet')
+app.use(helmet())
+
+// ...
+</code></pre>
+<h3 id="en-azından-x-powered-by-başlığını-devre-dışı-bırakın">En azından, X-Powered-By başlığını devre dışı bırakın</h3>
+<p>Eğer Helmet kullanmak istemiyorsanız, o zaman en azından <code>X-Powered-By</code> başlığını devre dışı bırakın. Saldırganlar, Express çalıştıran uygulamaları tespit etmek ve ardından özel olarak hedeflenen saldırılar başlatmak için bu başlığı (varsayılan olarak etkindir) kullanabilir.</p>
+<p>Bu yüzden, <code>app.disable()</code> metodunu kullanarak bu başlığı devre dışı bırakmak en iyi pratiktir:</p>
+<pre><code class="language-js">app.disable('x-powered-by')
+</code></pre>
+<p>Eğer <code>helmet.js</code> kullanıyorsanız, bunu sizin için halleder.</p>
+<div class="doc-box doc-info">
+<p><b>Note</b>:
+X-Powered-By başlığının devre dışı bırakılması, tecrübeli bir saldırganın bir uygulamanın Express çalıştırdığını belirlemesini önlemez. Bu, sıradan bir istismarı engelleyebilir, ancak bir uygulamanın Express çalıştırdığını belirlemenin başka yolları da var.</p>
+</div>
+<h2 id="çerezleri-güvenli-kullanın">Çerezleri güvenli kullanın</h2>
+<p>Çerezlerin uygulamanızı istismarlara açmamasını sağlamak için, varsayılan oturum çerez adını kullanmayın ve çerez güvenlik seçeneklerini uygun şekilde ayarlayın.</p>
+<p>İki ana ara yazılım çerez oturum modülü var:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/express-session">express-session</a>, Express 3.x versiyonlarında yer alan <code>express-session</code> yerleşik (built-in) ara yazılımının yerini alır.</li>
+<li><a href="https://www.npmjs.com/package/cookie-session">cookie-session</a>, Express 3.x versiyonlarında yer alan <code>express.cookieSession</code> yerleşik ara yazılımının yerini alır.</li>
+</ul>
+<p>Bu iki modülün arasındaki ana fark, çerez oturum verisinin nasıl kaydedildiğidir. <a href="https://www.npmjs.com/package/express-session">express-session</a> ara yazılımı oturum verisini sunucuda tutar; sadece oturum ID’sini çerezde tutar, oturum verisini değil. Varsayılan olarak, iç-bellek depolamayı kullanır ve canlı ortam için tasarlanmamıştır. Canlı ortamda, ölçeklenebilir bir oturum depolamayı kurmanız gerekecektir; <a href="https://github.com/expressjs/session#compatible-session-stores">uyumlu oturum depolarını</a>‘nı görmek için bakınız.</p>
+<p>Buna kıyasla, <a href="https://www.npmjs.com/package/cookie-session">cookie-session</a> ara yazılımı çerez-destekli depolamayı uygular: sadece bir oturum anahtarı yerine, tüm oturumu çerezde serileştirir. Bunu yalnızca oturum verileri nispeten küçük olduğunda ve ilkel (primitive) değerler (objeler yerine) olarak kolayca kodlandığında kullanın. Tarayıcıların çerez başına en az 4096 baytı desteklemesine rağmen, limiti aşmamanızdan emin olmak için domain başına 4093 baytı aşmayın. Ayrıca, çerez verilerinin istemciye açık olacağını unutmayın, bu yüzden verilerin güvenli veya gizli olması için herhangi bir neden var ise, express-session daha iyi bir seçenek olabilir.</p>
+<h3 id="varsayılan-oturum-çerez-adını-kullanmayın">Varsayılan oturum çerez adını kullanmayın</h3>
+<p>Varsayılan oturum çerez adı uygulamanızı saldırılara açık bırakabilir. Ortaya çıkan güvenlik sorunu <code>X-Powered-By</code> sorununa benzer: potansiyel bir saldırgan, sunucunun parmak izini almak ve saldırıları buna göre hedeflemek için kullanabilir.</p>
+<p>Bu problemi önlemek için, jenerik çerez adlarını kullanın; örnek olarak <a href="https://www.npmjs.com/package/express-session">express-session</a> ara yazılımının kullanımı:</p>
+<pre><code class="language-js">const session = require('express-session')
+app.set('trust proxy', 1)
+app.use(session({
+  secret: 's3Cur3',
+  name: 'sessionId'
+}))
+</code></pre>
+<h3 id="çerez-güvenlik-seçeneklerini-ayarlayın">Çerez güvenlik seçeneklerini ayarlayın</h3>
+<p>Güvenliği artırmak için aşağıdaki çerez seçeneklerini ayarlayın:</p>
+<ul>
+<li><code>secure</code> - Tarayıcının çerezi yalnızca HTTPS üzerinden göndermesini sağlar.</li>
+<li><code>httpOnly</code> - Çerezin JavaScript istemcisinden değil, yalnızca HTTP(S) üzerinden gönderilmesini sağlar ve böylelikle siteler arası komut dosyası çalıştırma saldırılarına karşı korumaya yardımcı olur.</li>
+<li><code>domain</code> - çerezin alan adını belirtir; URL’nin istendiği sunucunun alan adıyla karşılaştırmak için kullanın. Eğer eşleşiyorsa, ardından yol (path) alanını kontrol edin.</li>
+<li><code>path</code> - çerezin yolunu belirtir; bunu istek yoluyla karşılaştırmak için kullanın. Eğer bu ve alan adı eşleşiyorsa, istekte çerezi gönderebilirsiniz.</li>
+<li><code>expires</code> - kalıcı çerezler için son kullanma tarihini ayarlamak için kullanın.</li>
+</ul>
+<p><a href="https://www.npmjs.com/package/cookie-session">cookie-session</a> ara yazılımını kullanan bir örnek:</p>
+<pre><code class="language-js">const session = require('cookie-session')
+const express = require('express')
+const app = express()
+
+const expiryDate = new Date(Date.now() + 60 * 60 * 1000) // 1 saat
+app.use(session({
+  name: 'session',
+  keys: ['key1', 'key2'],
+  cookie: {
+    secure: true,
+    httpOnly: true,
+    domain: 'example.com',
+    path: 'foo/bar',
+    expires: expiryDate
+  }
+}))
+</code></pre>
+<h2 id="otorizasyona-karşı-yapılan-brute-force-saldırılarını-engelleyin">Otorizasyona karşı yapılan brute-force saldırılarını engelleyin</h2>
+<p>Özel verileri daha güvenli hale getirmek için giriş uç noktalarının (endpoint) korunduğundan emin olun.</p>
+<p>Basit ve güçlü bir teknik olarak iki ölçüm kullanarak yetkilendirme girişimlerini engellemektir:</p>
+<ol>
+<li>Birincisi, aynı kullanıcı adı ve IP adresi ile art arda başarısız denemelerin sayısı.</li>
+<li>İkincisi, uzun bir süre boyunca bir IP adresinden başarısız denemelerin sayısıdır. Örneğin, bir IP adresi bir günde 100 başarısız deneme yaparsa engelleyin.</li>
+</ol>
+<p><a href="https://github.com/animir/node-rate-limiter-flexible">rate-limiter-flexible</a> paketi bu tekniği kolay ve hızlıca uygulamak için gerekli araçları sağlar. <a href="https://github.com/animir/node-rate-limiter-flexible/wiki/Overall-example#login-endpoint-protection">brute-force korumasına bir örneği bu dökümantasyonda bulabilirsiniz</a>.</p>
+<h2 id="bağımlılıklarınızın-güvende-olduğundan-emin-olun">Bağımlılıklarınızın güvende olduğundan emin olun</h2>
+<p>Uygulamanızın bağımlılıklarını yönetmek için npm kullanmak güçlü ve kullanışlıdır. Ancak kullandığınız paketler, uygulamanızı da etkileyebilecek kritik güvenlik açıkları içerebilir. Uygulamanızın güvenliği, bağımlılıklarınızdaki “en zayıf halka” kadar güçlüdür.</p>
+<p>npm@6’dan beri npm otomatik olarak her yükleme isteğini inceler. Ayrıca ‘npm audit’ komutunu kullanarak bağımlılık ağacınızı analiz edebilirsiniz.</p>
+<pre><code class="language-console">$ npm audit
+</code></pre>
+<p>Daha fazla güvenli kalmak istiyorsanız, <a href="https://snyk.io/">Snyk</a> aracını gözden geçirebilirsiniz.</p>
+<p>Bağımlılıklarınızdaki bilinen tüm güvenlik açıkları için <a href="https://snyk.io/vuln/">Synk’in açık kaynak güvenlik açığı veritabanı</a>‘na karşı uygulamanızı kontrol eden bir <a href="https://www.npmjs.com/package/snyk">komut satırı aracı</a> ve de <a href="https://snyk.io/docs/github">Github integrasyonu</a> sunar.</p>
+<pre><code class="language-console">$ npm install -g snyk
+$ cd your-app
+</code></pre>
+<p>Uygulamanızı güvenlik açıklarına karşı test etmek için bu komutu kullanın:</p>
+<pre><code class="language-console">$ snyk test
+</code></pre>
+<p>Bulunan güvenlik açıklarını düzeltmek için güncelleme veya yama uygulama sürecinde size yol gösteren bir sihirbazı açmak için bu komutu kullanın:</p>
+<pre><code class="language-console">$ snyk wizard
+</code></pre>
+<h2 id="bilinen-diğer-güvenlik-açıklarından-kaçının">Bilinen diğer güvenlik açıklarından kaçının</h2>
+<p>Express’i veya uygulamanızın kullandığı diğer modülleri etkileyen <a href="https://snyk.io/vuln/">Snyk</a> ve <a href="https://npmjs.com/advisories">Node Security Project</a> tavsiyelerini takipte kalın. Genel olarak, bu veritabanları Node güvenliği hakkında bilgi ve araçlar için mükemmel kaynaklardır.</p>
+<p>Son olarak, Express uygulamaları - diğer web uygulamaları gibi - çeşitli web tabanlı saldırılara karşı savunmasız olabilir. <a href="https://www.owasp.org/index.php/Top_10-2017_Top_10">Web güvenlik açıkları</a> hakkında kendinizi bilgilendirin ve onlardan kaçınmak için önlemler alın.</p>
+<h2 id="ek-hususlar">Ek hususlar</h2>
+<p>İşte mükemmel <a href="https://blog.risingstack.com/node-js-security-checklist/">Node.js Güvenlik Kontrol Listesi</a>‘nden bazı ek öneriler. Bu önerilerle ilgili tüm ayrıntılar için o blog gönderisine bakın:</p>
+<ul>
+<li>Siteler arası istek sahteciliği’ne (CSRF) karşı korumak için <a href="https://www.npmjs.com/package/csurf">csurf</a> ara yazılımını kullanın.</li>
+<li>Siteler arası komut dosyası oluşturma (XSS) ve komut enjeksiyon saldırılarına karşı korumak için kullanıcı girişini her zaman filtreleyin ve sanitize edin.</li>
+<li>Parametreli sorgular veya hazırlanmış ifadeler kullanarak SQL enjeksiyon saldırılarına karşı savunma yapın.</li>
+<li>Uygulamanızdaki SQL enjeksion güvenlik açıklarını tespit etmek için açık kaynak olan <a href="http://sqlmap.org/">sqlmap</a> aracını kullanın.</li>
+<li>Sertifikanızın geçerliliğini kontrol etmenin yanında SSL şifrelerinin ve anahtarlarının konfigürasyonunu test etmek için <a href="https://nmap.org/">nmap</a> ve <a href="https://github.com/nabla-c0d3/sslyze">sslyze</a> araçlarını kullanın.</li>
+<li>
+<p>Use <a href="https://www.npmjs.com/package/safe-regex">safe-regex</a> to ensure your regular expressions are not susceptible to <a href="https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS">Regular expression Denial of Service (ReDoS)</a> attacks.</p>
+</li>
+<li>RegExp kodlarınızın <a href="https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS">Regular expression Denial of Service (ReDoS)</a> saldırılarına açık olmadığını sağlamak için <a href="https://www.npmjs.com/package/safe-regex">safe-regex</a> paketini kullanın.</li>
+</ul>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+<a href="../../../strongloop.com/index.html">StrongLoop/IBM</a> tarafından sağlanan belge çevirileri:
+<a href="../../fr/index.html">Fransızca</a>, <a href="../../de/index.html">Almanca</a>, <a href="../../es/index.html">İspanyolca</a>, <a href="../../it/index.html">İtalyanca</a>, <a href="../../ja/index.html">Japonca</a>, <a href="../../ru/index.html">Rusça</a>, <a href="../../zh-cn/index.html">Çince</a>, <a href="../../zh-tw/index.html">Klasik Çince</a>, <a href="../../ko/index.html">Korece</a>, <a href="../../pt-br/index.html">Portekizce</a>.
+<br>
+Topluluk çevirisi için: <a href="../../sk/index.html">Slovakça</a>, <a href="../../uk/index.html">Ukraynaca</a> and <a href="../../uz/index.html">Özbekçe</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bir <a href="https://openjsf.org">OpenJS Vakfı</a> projesidir.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Github'da Forkla</a>.</div>
+<div>Telif Hakkı &copy; 2017 StrongLoop, IBM, ve diğer expressjs.com katkıda bulunanlar.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Bu iş<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a> lisansı altındadır.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="9f1656571a12e627a361abf1-text/javascript"></script>
+<script type="9f1656571a12e627a361abf1-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:tr'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="9f1656571a12e627a361abf1-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/tr/advanced/best-practice-security.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

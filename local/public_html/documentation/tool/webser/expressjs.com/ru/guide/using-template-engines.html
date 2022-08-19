@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="ru" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ru/guide/using-template-engines.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Использование шаблонизаторов в Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ru.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Главная</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Начало работы</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Установка
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Генератор приложений Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Основы маршрутизации
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Статические файлы
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Руководство</a>
+<ul>
+<li><a href="routing.html">Маршрутизация</a>
+</li>
+<li><a href="writing-middleware.html">Написание кода промежуточных обработчиков</a>
+</li>
+<li><a href="using-middleware.html">Использование промежуточных обработчиков</a>
+</li>
+<li><a href="using-template-engines.html">Использование шаблонизаторов</a>
+</li>
+<li><a href="error-handling.html">Обработка ошибок</a>
+</li>
+<li><a href="debugging.html">Отладка</a>
+</li>
+<li><a href="behind-proxies.html">Express за прокси</a>
+</li>
+<li><a href="migrating-4.html">Переход к Express 4</a>
+</li>
+<li><a href="migrating-5.html">Переход к Express 5</a>
+</li>
+<li><a href="database-integration.html">Интеграция с базами данных</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (устарел)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (устарел)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Расширенные возможности</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Шаблонизаторы</a>
+</li>
+<li><a href="../advanced/pm.html">Работа с диспетчерами процессов</a>
+</li>
+<li><a href="../advanced/security-updates.html">Обновления системы безопасности</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Лучшие практические методы в области защиты</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Лучшие практические методы улучшения производительности</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ресурсы</a>
+<ul>
+<li><a href="../resources/glossary.html">Глоссарий</a>
+</li>
+<li><a href="../resources/middleware.html">Промежуточный обработчик</a>
+</li>
+<li><a href="../resources/community.html">Сообщество</a>
+</li>
+<li><a href="../resources/learning.html">Дополнительное обучение</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Этот перевод обеспечивается <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Этот документ может быть устаревшим по отношению к документации на английском языке. Последние обновления содержатся в <a href="../../index.html">документации на английском языке</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="использование-шаблонизаторов-в-express">Использование шаблонизаторов в Express</h1>
+<p>Для того чтобы отображать в Express файлы шаблонов, необходимо задать следующие параметры приложения:</p>
+<ul>
+<li><code>views</code>, каталог, в котором находятся файлы шаблонов. Например: <code>app.set('views', './views')</code></li>
+<li><code>view engine</code>, используемый шаблонизатор. Например: <code>app.set('view engine', 'pug')</code></li>
+</ul>
+<p>Затем установите соответствующий пакет npm шаблонизатора:</p>
+<pre><code class="language-console">$ npm install pug --save
+</code></pre>
+<div class="doc-box doc-notice">
+<p>Шаблонизаторы, совместимые с Express, например, Pug, экспортируют функцию <code>__express(filePath, options, callback)</code>, вызываемую с помощью функции <code>res.render()</code> для вывода кода шаблона.</p>
+<p>Это правило действует не для всех шаблонизаторов. Библиотека <a href="https://www.npmjs.org/package/consolidate">Consolidate.js</a> соблюдает его путем преобразования всех популярных шаблонизаторов Node.js, благодаря чему работает в Express без проблем.</p>
+</div>
+<p>После указания механизма визуализации (view engine) не нужно указывать его или загружать модуль шаблонизатора в приложение; Express загружает модуль внутренними средствами, как показано далее (для примера, приведенного выше).</p>
+<pre><code class="language-javascript" translate="no">
+app.set('view engine', 'pug');
+</code>
+</pre>
+<p>Создайте файл шаблона Pug с именем <code>index.pug</code> в каталоге <code>views</code> со следующим содержанием:</p>
+<pre><code class="language-javascript" translate="no">
+html
+  head
+    title= title
+  body
+    h1= message
+</code>
+</pre>
+<p>Затем создайте маршрут для вывода файла <code>index.pug</code>. Если свойство <code>view engine</code> не задано, необходимо указать расширение файла <code>view</code>. В противном случае, можно не указывать расширение.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
+});
+</code>
+</pre>
+<p>При выполнении запроса к домашней странице файл <code>index.pug</code> будет отображаться как HTML.</p>
+<p>Для получения дополнительной информации о работе шаблонизаторов в Express обратитесь к разделу <a href="../advanced/developing-template-engines.html">“Разработка шаблонизаторов для Express”</a>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> проект <a href="https://openjsf.org">фонда OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Создайте клон веб-сайта на GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. и других участников expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Лицензия Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Это произведение доступно по <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">лицензии Creative Commons «Attribution-ShareAlike» («Атрибуция — На тех же условиях») 3.0 США</a>.
+</div>
+</footer>
+<script type="8845e32644a72308eec5cb57-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ru'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="8845e32644a72308eec5cb57-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ru/guide/using-template-engines.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

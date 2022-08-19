@@ -1,5 +1,6 @@
 declare -A path
 
+path[abakasam-scripts]=/abakasam-scripts
 path[heroku]=/heroku-7.60.2/bin
 path[httrack]=/httrack-3.45.1/src
 path[iojs]=/iojs-3.3.1
@@ -9,10 +10,10 @@ path[php]=/php-5.6.5/sapi/cli
 path[python]=/python-2.7.5
 
 pathed=""
-for binary in "${path[@]}"
+for executable in "${path[@]}"
 do
 	# TODO: Argument for local of user
-	pathed+=$(pwd)$binary":"
+	pathed+=$(pwd)$executable":"
 done
 
 # TODO: Use .conf to set PATH for environment
@@ -20,8 +21,12 @@ PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin"
 #PATH="$PATH$pathed"
 PATH="$pathed$PATH"
 
+cd
+files=($(find . -name "*bash_profile*" | xargs ls -F))
+pwd
+echo ${files[@]}
 
-files=($(find / -name "*bash_profile*" | xargs ls -F))
+cp .bash_profile .last_bash
 
 for file in ${files[@]}
 do

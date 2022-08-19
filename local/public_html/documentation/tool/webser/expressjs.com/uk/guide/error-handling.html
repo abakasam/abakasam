@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html lang="uk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/uk/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Обробка помилок в Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/uk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Початкова сторінка</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Ознайомлення</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Встановлення
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Генератор структури Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Базова маршрутизація
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Статичні файли
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+ЧАПи
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Гід</a>
+<ul>
+<li><a href="routing.html">Маршрутизація</a>
+</li>
+<li><a href="writing-middleware.html">Створення проміжних обробників</a>
+</li>
+<li><a href="using-middleware.html">Використання проміжних обробників</a>
+</li>
+<li><a href="using-template-engines.html">Використання шаблонізаторів</a>
+</li>
+<li><a href="error-handling.html">Обробка помилок</a>
+</li>
+<li><a href="debugging.html">Зневадження</a>
+</li>
+<li><a href="behind-proxies.html">Express позаду проксі</a>
+</li>
+<li><a href="migrating-4.html">Перехід на Express 4</a>
+</li>
+<li><a href="migrating-5.html">Перехід на Express 5</a>
+</li>
+<li><a href="database-integration.html">Інтеграція з базами даних</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Довідник API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (застаріла)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Додаткові можливості</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Шаблонізатори</a>
+</li>
+<li><a href="../advanced/pm.html">Використання менеджерів процесів</a>
+</li>
+<li><a href="../advanced/security-updates.html">Оновлення безпеки</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Кращі практики безпеки</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Кращі практики продуктивності</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ресурси</a>
+<ul>
+<li><a href="../resources/glossary.html">Голосарій</a>
+</li>
+<li><a href="../resources/middleware.html">Проміжний обробник</a>
+</li>
+<li><a href="../resources/community.html">Спільнота</a>
+</li>
+<li><a href="../resources/frameworks.html">Фреймворки</a>
+</li>
+<li><a href="../resources/learning.html">Додаткове навчання</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+ <div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Цей документ може бути застарілим, в порівнянні з оригінальною <a href="../../index.html">англійською версією документації</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="обробка-помилок">Обробка помилок</h1>
+<p>Define error-handling middleware functions in the same way as other middleware functions,
+except error-handling functions have four arguments instead of three:
+<code>(err, req, res, next)</code>. For example:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code></pre>
+<p>You define error-handling middleware last, after other <code>app.use()</code> and routes calls; for example:</p>
+<pre><code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(function(err, req, res, next) {
+  // logic
+});
+</code></pre>
+<p>Responses from within a middleware function can be in any format that you prefer, such as an HTML error page, a simple message, or a JSON string.</p>
+<p>For organizational (and higher-level framework) purposes, you can define
+several error-handling middleware functions, much like you would with
+regular middleware functions. For example, if you wanted to define an error-handler
+for requests made by using <code>XHR</code>, and those without, you might use the following commands:</p>
+<pre><code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
+</code></pre>
+<p>In this example, the generic <code>logErrors</code> might write request and
+error information to <code>stderr</code>, for example:</p>
+<pre><code class="language-javascript" translate="no">
+function logErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
+</code></pre>
+<p>Also in this example, <code>clientErrorHandler</code> is defined as follows; in this case, the error is explicitly passed along to the next one:</p>
+<pre><code class="language-javascript" translate="no">
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' });
+  } else {
+    next(err);
+  }
+}
+</code></pre>
+<p>The “catch-all” <code>errorHandler</code> function might be implemented as follows:</p>
+<pre><code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code></pre>
+<p>If you pass anything to the <code>next()</code> function (except the string <code>'route'</code>), Express regards the current request as being in error and will skip any remaining non-error handling routing and middleware functions. If you want to handle that error in some way, you’ll have to create an error-handling route as described in the next section.</p>
+<p>If you have a route handler with multiple callback functions you can use the <code>route</code> parameter to skip to the next route handler. For example:</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/a_route_behind_paywall',
+  function checkIfPaidSubscriber(req, res, next) {
+    if(!req.user.hasPaid) {
+
+      // continue handling this request
+      next('route');
+    }
+  }, function getPaidContent(req, res, next) {
+    PaidContent.find(function(err, doc) {
+      if(err) return next(err);
+      res.json(doc);
+    });
+  });
+</code></pre>
+<p>In this example, the <code>getPaidContent</code> handler will be skipped but any remaining handlers in <code>app</code> for <code>/a_route_behind_paywall</code> would continue to be executed.</p>
+<div class="doc-box doc-info">
+<p>Calls to <code>next()</code> and <code>next(err)</code> indicate that the current handler is complete and in what state. <code>next(err)</code> will skip all remaining handlers in the chain except for those that are set up to handle errors as described above.</p>
+</div>
+<h2 id="the-default-error-handler">The Default Error Handler</h2>
+<p>Express comes with an in-built error handler, which takes care of any errors that might be encountered in the app. This default error-handling middleware function is added at the end of the middleware function stack.</p>
+<p>If you pass an error to <code>next()</code> and you do not handle it in
+an error handler, it will be handled by the built-in error handler; the error will be written to the client with the
+stack trace. The stack trace is not included in the production environment.</p>
+<div class="doc-box doc-info">
+<p>Set the environment variable <code>NODE_ENV</code> to <code>production</code>, to run the app in production mode.</p>
+</div>
+<p>If you call <code>next()</code> with an error after you have started writing the
+response (for example, if you encounter an error while streaming the
+response to the client) the Express default error handler closes the
+connection and fails the request.</p>
+<p>So when you add a custom error handler, you will want to delegate to
+the default error handling mechanisms in Express, when the headers
+have already been sent to the client:</p>
+<pre><code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code></pre>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> проект <a href="https://openjsf.org">фонду OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Розмістіть веб-сайт на GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. та інших учасників expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Ліцензія Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Цей твір ліцензовано за <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">ліцензією Creative Commons Із Зазначенням Авторства - Поширення На Тих Самих Умовах 3.0 Сполучені Штати</a>.
+</div>
+</footer>
+<script type="8d93ae631bc0909d5f3629f0-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:uk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="8d93ae631bc0909d5f3629f0-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/uk/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

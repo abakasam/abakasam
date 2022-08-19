@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="uk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/uk/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>ЧАПи Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/uk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Початкова сторінка</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">Ознайомлення</a>
+<ul>
+<li>
+<a href="installing.html">
+Встановлення
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="generator.html">
+Генератор структури Express
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+Базова маршрутизація
+</a>
+</li>
+<li>
+<a href="static-files.html">
+Статичні файли
+</a>
+</li>
+<li>
+<a href="faq.html">
+ЧАПи
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Гід</a>
+<ul>
+<li><a href="../guide/routing.html">Маршрутизація</a>
+ </li>
+<li><a href="../guide/writing-middleware.html">Створення проміжних обробників</a>
+</li>
+<li><a href="../guide/using-middleware.html">Використання проміжних обробників</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Використання шаблонізаторів</a>
+</li>
+<li><a href="../guide/error-handling.html">Обробка помилок</a>
+</li>
+<li><a href="../guide/debugging.html">Зневадження</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express позаду проксі</a>
+</li>
+<li><a href="../guide/migrating-4.html">Перехід на Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Перехід на Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Інтеграція з базами даних</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Довідник API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (застаріла)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Додаткові можливості</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Шаблонізатори</a>
+</li>
+<li><a href="../advanced/pm.html">Використання менеджерів процесів</a>
+</li>
+<li><a href="../advanced/security-updates.html">Оновлення безпеки</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Кращі практики безпеки</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Кращі практики продуктивності</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ресурси</a>
+<ul>
+<li><a href="../resources/glossary.html">Голосарій</a>
+</li>
+<li><a href="../resources/middleware.html">Проміжний обробник</a>
+</li>
+<li><a href="../resources/community.html">Спільнота</a>
+</li>
+<li><a href="../resources/frameworks.html">Фреймворки</a>
+</li>
+<li><a href="../resources/learning.html">Додаткове навчання</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Цей документ може бути застарілим, в порівнянні з оригінальною <a href="../../index.html">англійською версією документації</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="часті-питання-чапи">Часті Питання (ЧАПи)</h1>
+<h2 id="яку-структуру-я-повинен-використовувати-для-свого-застосунку">Яку структуру я повинен використовувати для свого застосунку?</h2>
+<p>Немає єдиної відповіді на дане питання. Все залежить від
+розміру вашого застосунку та від команди, яка приймає участь у його розробці. Щоб бути на стільки гнучким,
+на скільки це можливо, Express не спирається на фіксовану структуру.</p>
+<p>Маршрути та інша логіка застосунку може розміщуватись у файлах довільної кількості,
+та поміщатись в каталоги будь-якої структури. Розгляньте наступні патерни проектування:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47">Списки маршрутів</a></li>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66">Карта маршрутів</a></li>
+<li><a href="https://github.com/expressjs/express/tree/master/examples/mvc">MVC-стиль контролерів</a></li>
+</ul>
+<p>Також, існують сторонні розширення для Express, які спрощують деякі з перелічених патернів проектування:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express-resource">Ресурсна маршрутизація</a></li>
+</ul>
+<h2 id="як-визначати-моделі">Як визначати моделі?</h2>
+<p>В Express немає засобів для роботи з базою даних. Їх надають деякі сторонні модулі
+Node.js, що дозволяють вам взаємодіяти практично з будь-якою базою даних.</p>
+<p>Ознайомтесь з <a href="http://loopback.io/">LoopBack</a> - цей фреймворк створено на базі Express,
+він зорієнтований на роботу з моделями.</p>
+<h2 id="яким-чином-можна-ідентифікувати-користувачів">Яким чином можна ідентифікувати користувачів?</h2>
+<p>Ідентифікація - це ще одна чутлива область, яку Express не ризикнув охопити. Ви можете використовувати будь-яку
+схему ідентифікації. Проста схема “логін / пароль”, представлена <a href="https://github.com/expressjs/express/tree/master/examples/auth">в цьому прикладі</a>.</p>
+<h2 id="які-шаблонізатори-підтримує-express">Які шаблонізатори підтримує Express?</h2>
+<p>Express підтримує будь-які шаблонізатори, що узгоджуються з сигнатурою <code>(path, locals, callback)</code>.
+Додаткову інформацію, стосовно нормалізації інтерфейсів шаблонізаторів та кешування, можна знайти в проекті
+<a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>. Цей список може й не містити певних шаблонізаторів,
+проте вони можуть все ж підтримувати сигнатуру Express.</p>
+<h2 id="як-можна-обробляти-404-ті-відповіді">Як можна обробляти 404-ті відповіді?</h2>
+<p>В Express, 404-ті відповіді не генеруються в результаті помилок, а тому
+проміжні обробники помилок не перехоплюють їх. Така поведінка існує оскільки 404-ту відповідь ми отримуємо
+через відсутність відповідної функції в переліку проміжних обробників при маршрутизації. Все що треба зробити
+в такому випадку, - це додати проміжну функцію в самий низ черги обробників, яка якраз і буде призначатись для
+формування 404-тої відповіді:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(req, res, next) {
+  res.status(404).send('Вибачте, такої сторінки не існує!');
+});
+</code></pre>
+<h2 id="як-можна-встановити-обробника-помилок">Як можна встановити обробника помилок?</h2>
+<p>Проміжні обробники помилок визначаються точно так само, як і інші проміжні обробники,
+тільки передається до них чотири параметра, а не три; точніше, вони мають таку сигнатуру <code>(err, req, res, next)</code>:</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Щось поламалось!');
+});
+</code></pre>
+<p>Більш детально, можна проглянути розділ <a href="../guide/error-handling.html">обробка помилок</a>.</p>
+<h2 id="як-можна-відмальовувати-простий-код-html">Як можна відмальовувати простий код HTML?</h2>
+<p>Не треба! Не потрібно “відмальовувати” HTML за допомогою функції <code>res.render()</code>.
+Якщо ви маєте окремий файл, скористайтесь функцією <code>res.sendFile()</code>.
+Якщо ви маєте великий набір файлів в певній директорії, використовуйте проміжну функцію <code>express.static()</code>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> проект <a href="https://openjsf.org">фонду OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Розмістіть веб-сайт на GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. та інших учасників expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Ліцензія Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Цей твір ліцензовано за <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">ліцензією Creative Commons Із Зазначенням Авторства - Поширення На Тих Самих Умовах 3.0 Сполучені Штати</a>.
+</div>
+</footer>
+<script type="e572979e9bdc56ecc5490c17-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:uk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="e572979e9bdc56ecc5490c17-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/uk/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

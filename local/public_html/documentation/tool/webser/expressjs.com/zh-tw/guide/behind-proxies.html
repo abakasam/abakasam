@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="zh-tw" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-tw/guide/behind-proxies.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>位於 Proxy 背後的 Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-tw.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">首頁</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入門</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安裝
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 產生器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+靜態檔案
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常見問題 (FAQ)
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">手冊</a>
+<ul>
+<li><a href="routing.html">路由</a>
+</li>
+<li><a href="writing-middleware.html">撰寫中介軟體</a>
+</li>
+<li><a href="using-middleware.html">使用中介軟體</a>
+</li>
+<li><a href="using-template-engines.html">使用範本引擎</a>
+</li>
+<li><a href="error-handling.html">錯誤處理</a>
+</li>
+<li><a href="debugging.html">除錯</a>
+</li>
+<li><a href="behind-proxies.html">位於 Proxy 背後的 Express</a>
+</li>
+<li><a href="migrating-4.html">移至 Express 4</a>
+</li>
+<li><a href="migrating-5.html">移至 Express 5</a>
+</li>
+<li><a href="database-integration.html">資料庫整合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 參照</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（已淘汰）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（已淘汰）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">進階主題</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">範本引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用程序管理程式</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳作法</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">效能最佳作法</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">資源</a>
+<ul>
+<li><a href="../resources/glossary.html">名詞解釋</a>
+</li>
+<li><a href="../resources/middleware.html">中介軟體</a>
+</li>
+<li><a href="../resources/community.html">社群</a>
+</li>
+<li><a href="../resources/learning.html">額外學習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>這個翻譯<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相對於英文版說明文件，本文件可能已不合時宜。如需最新的更新，請參閱<a href="../../index.html">英文版說明文件</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="位於-proxy-背後的-express">位於 Proxy 背後的 Express</h1>
+<p>當 Express 應用程式是在 Proxy 背後執行時，請使用 <a href="../4x/api.html#app.set">app.set()</a>，將 <code>trust proxy</code> 應用程式變數設為下表列出的其中一值。</p>
+<div class="doc-box doc-info">
+<p>雖然未設定 <code>trust proxy</code> 應用程式變數時，應用程式並不會無法執行，但除非配置 <code>trust proxy</code>，否則，它會將 Proxy 的 IP 位址登錄成錯誤的用戶端 IP 位址。</p>
+</div>
+<table class="doctable" border="1">
+<thead><tr><th>類型</th><th>值</th></tr></thead>
+<tbody>
+<tr>
+<td>布林</td>
+<td>
+<p>若為 <code>true</code>，會將用戶端的 IP 位址視為 <code>X-Forwarded-*</code> 標頭中的最左側項目。</p>
+<p>若為 <code>false</code>，會將應用程式視為直接面對網際網路，且用戶端的 IP 位址衍生自 <code>req.connection.remoteAddress</code>。這是預設值。</p>
+</td>
+</tr>
+<tr>
+<td>IP 位址</td>
+<td>
+<p>要信任的 IP 位址、子網路，或是 IP 位址與子網路陣列。下列清單顯示預先配置的子網路名稱：</p>
+<ul>
+<li>loopback - <code>127.0.0.1/8</code>、<code>::1/128</code></li>
+<li>linklocal - <code>169.254.0.0/16</code>、<code>fe80::/10</code></li>
+<li>uniquelocal - <code>10.0.0.0/8</code>、<code>172.16.0.0/12</code>、<code>192.168.0.0/16</code>、<code>fc00::/7</code></li>
+</ul>
+<p>您可以採下列任何方式來設定 IP 位址：</p>
+<pre><code class="language-js" translate="no">app.set('trust proxy', 'loopback') // specify a single subnet
+app.set('trust proxy', 'loopback, 123.123.123.123') // specify a subnet and an address
+app.set('trust proxy', 'loopback, linklocal, uniquelocal') // specify multiple subnets as CSV
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']) // specify multiple subnets as an array</code>
+</pre>
+<p>若有指定，位址判定程序中會排除 IP 位址或子網路，且會將最接近應用程式伺服器的未授信 IP 位址判斷為用戶端的 IP 位址。</p>
+</td>
+</tr>
+<tr>
+<td>號碼</td>
+<td>
+<p>信任來自正面 Proxy 伺服器的第 <code>n</code> 個躍點就是用戶端。</p>
+</td>
+</tr>
+<tr>
+<td>函數</td>
+<td>
+<p>自訂信任實作。只有在您清楚自己要做什麼時，才能使用此項。</p>
+<pre><code class="language-js" translate="no">app.set('trust proxy', function (ip) {
+  if (ip === '127.0.0.1' || ip === '123.123.123.123') return true; // trusted IPs
+  else return false;
+});</code>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>如果設定 <code>false</code> <code>trust proxy</code> 以外的值，會造成三項重要的變更：</p>
+<ul>
+<li>
+<p><a href="../api.html#req.hostname">req.hostname</a> 值會衍生自 <code>X-Forwarded-Host</code> 標頭中所設定的值，且該值可能由用戶端或 Proxy 所設定。</p>
+</li>
+<li>
+<p>反向 Proxy 可能設定 <code>X-Forwarded-Proto</code>，以告知應用程式它是 <code>https</code> 或 <code>http</code> 或甚至是無效的名稱。<a href="../api.html#req.protocol">req.protocol</a> 會反映此值。</p>
+</li>
+<li>
+<p><a href="../api.html#req.ip">req.ip</a> 和 <a href="../api.html#req.ips">req.ips</a> 值中會移入 <code>X-Forwarded-For</code> 中的位址清單。</p>
+</li>
+</ul>
+<p>會使用 <a href="https://www.npmjs.com/package/proxy-addr">proxy-addr</a> 套件來實作 <code>trust proxy</code> 設定。如需相關資訊，請參閱其說明文件。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金會的</a>一個項目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub 上的網站分支</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc. 與其他 expressjs.com 貢獻者。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本著作係採用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">創用 CC 姓名標示-相同方式分享 3.0 美國 授權條款</a>授權.
+</div>
+</footer>
+<script type="e224088fbe13f8a9a4401a93-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-tw'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="e224088fbe13f8a9a4401a93-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-tw/guide/behind-proxies.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

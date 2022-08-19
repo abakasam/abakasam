@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="sk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/sk/resources/middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express middleware</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/sk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Domov</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Začíname</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Inštalácia
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express generátor
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Základný routing
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statické súbory
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Príručka</a>
+<ul>
+<li><a href="../guide/routing.html">Routing</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Tvorba middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Použitie middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Použitie template enginov</a>
+</li>
+<li><a href="../guide/error-handling.html">Error handling</a>
+</li>
+<li><a href="../guide/debugging.html">Debuggovanie</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Použitie Express za proxy</a>
+</li>
+<li><a href="../guide/migrating-4.html">Prechod na Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Prechod na Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integrácia s databázou</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API referenčná príručka</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (zastaralé)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (zastaralé)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Pokročilé témy</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Templatovacie enginy</a>
+</li>
+<li><a href="../advanced/pm.html">Použitie správcov procesov</a>
+</li>
+<li><a href="../advanced/security-updates.html">Security - aktualizácie</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Security - osvedčené postupy</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Výkonnosť - osvedčené postupy</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="glossary.html" class="active">Zdroje</a>
+<ul>
+<li><a href="glossary.html">Glosár</a>
+</li>
+<li><a href="middleware.html">Middleware</a>
+</li>
+<li><a href="community.html">Komunita</a>
+</li>
+<li><a href="frameworks.html">Frameworky</a>
+</li>
+<li><a href="learning.html">Dodatočné vzdelávanie</a>
+</li>
+<li><a href="companies-using-express.html">Firmy používajúce Express</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Tento dokument môže byť v porovnaní s dokumentáciou v angličtine zastaralý. Aktuálne informácie nájdete v <a href="../../index.html">dokumentácii v angličtine</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+
+<h1 id="third-party-middleware">Third-party middleware</h1>
+<p>Tu je zoznam niektorých Express middleware modulov:</p>
+<ul>
+<li><a href="https://github.com/expressjs/body-parser">body-parser</a>: kedysi <code>express.bodyParser</code>, <code>json</code> a <code>urlencoded</code>.
+Pozrite sa taktiež na:</li>
+<li><a href="https://github.com/raynos/body">body</a></li>
+<li><a href="https://github.com/visionmedia/co-body">co-body</a></li>
+<li><a href="https://github.com/stream-utils/raw-body">raw-body</a></li>
+<li><a href="https://github.com/expressjs/compression">compression</a>: kedysi <code>express.compress</code></li>
+<li><a href="https://github.com/msemenistyi/connect-image-optimus">connect-image-optimus</a>: Connect/Express middleware moduly pre optimálne servovanie obrázkov. V prípade podpory transformuje obrázky na <code>.webp</code> príp. <code>.jxr</code>.</li>
+<li><a href="https://github.com/expressjs/timeout">connect-timeout</a>: kedysi <code>express.timeout</code></li>
+<li><a href="https://github.com/expressjs/cookie-parser">cookie-parser</a>: kedysi <code>express.cookieParser</code></li>
+<li><a href="https://github.com/expressjs/cookie-session">cookie-session</a>: kedysi <code>express.cookieSession</code></li>
+<li><a href="https://github.com/expressjs/csurf">csurf</a>: kedysi <code>express.csrf</code></li>
+<li><a href="https://github.com/expressjs/errorhandler">errorhandler</a>: kedysi <code>express.errorHandler</code></li>
+<li><a href="https://github.com/devoidfury/express-debug">express-debug</a>: nenápadný development tool, ktorý pridá panel s informáciami ohľadom template premenných, aktuálnej session, informácie o request dátach a ďalšie užitočné informácie.</li>
+<li><a href="https://github.com/nemtsov/express-partial-response">express-partial-response</a>: Express middleware modul slúžiaci k odfiltrovaniu častí JSON odpovedi na podľa hodnoty query parametra <code>fields</code>.</li>
+<li><a href="https://github.com/expressjs/session">express-session</a>: predtým <code>express.session</code></li>
+<li><a href="https://github.com/jamiesteven/express-simple-cdn">express-simple-cdn</a>: Express middleware modul pre používanie CDN na statické assety s podporou viacerých hostov (napr.: cdn1.host.com, cdn2.host.com).</li>
+<li><a href="https://github.com/ericf/express-slash">express-slash</a>: Express middleware modul pre ľudí ktorí to s trailing slashes myslia vážne.</li>
+<li><a href="https://github.com/stormpath/stormpath-express">express-stormpath</a>: Express middleware modul pre ukladanie, autentifikáciu, autorizáciu, SSO a bezpečnosť dát.</li>
+<li><a href="https://github.com/jamiesteven/express-uncapitalize">express-uncapitalize</a>: middleware modul slúžiaci na presmerovávanie HTTP requestov obsahujúcich uppercase na canonical lowercase formu.</li>
+<li><a href="https://github.com/helmetjs/helmet">helmet</a>: modul ktorý vám pomôže zabezpečiť vašu aplikáciu pomocou nastavenia rozličných HTTP hlavičiek.</li>
+<li><a href="https://github.com/coderaiser/join-io" title="join-io">join-io</a>: modul slúžiaci na spájanie súborov “on the fly” kvoli zredukovaniu počtu volaní.</li>
+<li><a href="https://github.com/expressjs/method-override">method-override</a>: kedysi <code>express.methodOverride</code></li>
+<li><a href="https://github.com/expressjs/morgan">morgan</a>: kedysi <code>logger</code></li>
+<li><a href="https://github.com/jaredhanson/passport">passport</a>: Express middleware modul slúžiaci na autentifikáciu.</li>
+<li><a href="https://github.com/expressjs/response-time">response-time</a>: kedysi <code>express.responseTime</code></li>
+<li><a href="https://github.com/expressjs/serve-favicon">serve-favicon</a>: kedysi <code>express.favicon</code></li>
+<li><a href="https://github.com/expressjs/serve-index">serve-index</a>: kedysi <code>express.directory</code></li>
+<li><a href="https://github.com/expressjs/serve-static">serve-static</a>: modul pre servovanie statického obsahu.</li>
+<li><a href="https://github.com/paulwalker/connect-static-expiry">static-expiry</a>: modul na tvorbu tzv. fingerprinted URL a caching hlavičiek pre statický obsah s podporou jednej i viacerých domén.</li>
+<li><a href="https://github.com/expressjs/vhost">vhost</a>: kedysi <code>express.vhost</code></li>
+<li><a href="https://github.com/madhums/node-view-helpers">view-helpers</a>: Express middleware modul poskytujúci bežné helper metódy pre views.</li>
+<li><a href="https://github.com/hdngr/siracha">sriracha-admin</a>: Express middleware modul ktorý dynamicky generuje admin stránky pre Mongoose.</li>
+</ul>
+<p>Niektoré middleware moduly, ktoré kedysi boli súčasťou Connect-u už viac nie sú podporované Connect/Express tímom. Tieto moduly boli, alebo by mali byť, nahradené alternatívnymi lepšími modulmi. Používajte niektoré z nasledujúcich alternatív:</p>
+<ul>
+<li>express.cookieParser
+<ul>
+<li><a href="https://github.com/jed/cookies">cookies</a> a <a href="https://github.com/jed/keygrip">keygrip</a></li>
+</ul>
+</li>
+<li>express.limit
+<ul>
+<li><a href="https://github.com/stream-utils/raw-body">raw-body</a></li>
+</ul>
+</li>
+<li>express.multipart
+<ul>
+<li><a href="https://github.com/mscdex/connect-busboy">connect-busboy</a></li>
+<li><a href="https://github.com/expressjs/multer">multer</a></li>
+<li><a href="https://github.com/superjoe30/connect-multiparty">connect-multiparty</a></li>
+</ul>
+</li>
+<li>express.query
+<ul>
+<li><a href="https://github.com/visionmedia/node-querystring">qs</a></li>
+</ul>
+</li>
+<li>express.staticCache
+<ul>
+<li><a href="https://github.com/isaacs/st">st</a></li>
+<li><a href="https://github.com/andrewrk/connect-static">connect-static</a></li>
+</ul>
+</li>
+</ul>
+<p>Ďalšie middleware moduly nájdete tu:</p>
+<ul>
+<li><a href="https://github.com/Raynos/http-framework/wiki/Modules">http-framework</a></li>
+<li><a href="https://github.com/expressjs">expressjs</a></li>
+</ul>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="https://ghbtns.com/github-btn.html?user=expressjs&repo=express&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> je projekt patriaci pod <a href="https://openjsf.org">Nadácie OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Editovať stránku na GitHub-e</a>.</div>
+<div>Copyright &copy; 2016 StrongLoop, IBM a ostatní expressjs.com prispievatelia.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script type="020185a57ea703d1d74e4bfb-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:sk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="020185a57ea703d1d74e4bfb-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/sk/resources/middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

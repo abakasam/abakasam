@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-cn/starter/generator.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 应用程序生成器</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-cn.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">主页</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">入门</a>
+<ul>
+<li>
+<a href="installing.html">
+安装
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="generator.html">
+Express 生成器
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="static-files.html">
+静态文件
+</a>
+</li>
+<li>
+<a href="faq.html">
+常见问题及解答
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">指南</a>
+<ul>
+<li><a href="../guide/routing.html">路由</a>
+</li>
+<li><a href="../guide/writing-middleware.html">编写中间件</a>
+</li>
+<li><a href="../guide/using-middleware.html">使用中间件</a>
+</li>
+<li><a href="../guide/using-template-engines.html">使用模板引擎</a>
+</li>
+<li><a href="../guide/error-handling.html">错误处理</a>
+</li>
+<li><a href="../guide/debugging.html">调试</a>
+</li>
+<li><a href="../guide/behind-proxies.html">代理背后的 Express</a>
+</li>
+<li><a href="../guide/migrating-4.html">迁移到 Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">迁移到 Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">数据库集成</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 参考</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（不推荐）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（不推荐）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高级主题</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">模板引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用进程管理器</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳实践</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">性能最佳实践</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">资源</a>
+<ul>
+<li><a href="../resources/glossary.html">词汇表</a>
+</li>
+<li><a href="../resources/middleware.html">中间件</a>
+</li>
+<li><a href="../resources/community.html">社区</a>
+</li>
+<li><a href="../resources/learning.html">额外学习</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>这个翻译<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相对于英文版的文档，本文档可能已过时。要了解最近的更新，请参阅<a href="../../index.html">英文版文档</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="express-应用程序生成器">Express 应用程序生成器</h1>
+<p>可使用应用程序生成器工具 (<code>express-generator</code>) 快速创建应用程序框架。</p>
+<p>您可以使用 <code>npx</code> 命令（在 Node.js 8.2.0 中可用）运行应用程序生成器。</p>
+<pre><code class="language-console">$ npx express-generator
+</code></pre>
+<p>对于早期的 Node 版本，可将应用程序生成器作为全局 npm 软件包安装，然后启动它。</p>
+<pre><code class="language-console">$ npm install -g express-generator
+$ express
+</code></pre>
+<p>使用 <code>-h</code> 选项显示命令选项：</p>
+<pre><code class="language-console">$ express -h
+
+  Usage: express [options][dir]
+
+  Options:
+
+    -h, --help          output usage information
+        --version       output the version number
+    -e, --ejs           add ejs engine support
+        --hbs           add handlebars engine support
+        --pug           add pug engine support
+    -H, --hogan         add hogan.js engine support
+        --no-view       generate without view engine
+    -v, --view &amp;lt;engine&amp;gt; add view &amp;lt;engine&amp;gt; support (ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)
+    -c, --css &amp;lt;engine&amp;gt;  add stylesheet &amp;lt;engine&amp;gt; support (less|stylus|compass|sass) (defaults to plain css)
+        --git           add .gitignore
+    -f, --force         force on non-empty directory
+</code></pre>
+<p>例如，以下语句在当前工作目录中创建名为 <em>myapp</em> 的 Express 应用程序并将视图引擎将设置为 <a href="https://pugjs.org/">Pug</a> ：</p>
+<pre><code class="language-console">$ express --view=pug myapp
+
+   create : myapp
+   create : myapp/package.json
+   create : myapp/app.js
+   create : myapp/public
+   create : myapp/public/javascripts
+   create : myapp/public/images
+   create : myapp/routes
+   create : myapp/routes/index.js
+   create : myapp/routes/users.js
+   create : myapp/public/stylesheets
+   create : myapp/public/stylesheets/style.css
+   create : myapp/views
+   create : myapp/views/index.pug
+   create : myapp/views/layout.pug
+   create : myapp/views/error.pug
+   create : myapp/bin
+   create : myapp/bin/www
+</code></pre>
+<p>然后安装依赖项：</p>
+<pre><code class="language-console">$ cd myapp
+$ npm install
+</code></pre>
+<p>在 MacOS 或 Linux 上，采用以下命令运行此应用程序：</p>
+<pre><code class="language-console">$ DEBUG=myapp:* npm start
+</code></pre>
+<p>在 Windows 命令提示符上，使用以下命令：</p>
+<pre><code class="language-console">&gt; set DEBUG=myapp:* &amp; npm start
+</code></pre>
+<p>在 Windows PowerShell 上，使用以下命令：</p>
+<pre><code class="language-console">PS&gt; $env:DEBUG='myapp:*'; npm start
+</code></pre>
+<p>然后在浏览器中输入 <code>http://localhost:3000/</code> 以访问此应用程序。</p>
+<p>生成的应用程序具有以下目录结构：</p>
+<pre><code class="language-console">.
+├── app.js
+├── bin
+│   └── www
+├── package.json
+├── public
+│   ├── images
+│   ├── javascripts
+│   └── stylesheets
+│       └── style.css
+├── routes
+│   ├── index.js
+│   └── users.js
+└── views
+    ├── error.pug
+    ├── index.pug
+    └── layout.pug
+
+7 directories, 9 files
+</code></pre>
+<div class="doc-box doc-info">
+<p>生成器创建的应用程序结构只是构造 Express 应用程序的众多方法之一。请随意使用此结构或者对其进行修改以最大程度满足自己的需求。</p>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金会的</a>一个项目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">在 GitHub 上派生出网站</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本作品采用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">知识共享署名-相同方式共享 3.0 美国许可协议</a>进行许可。
+</div>
+</footer>
+<script type="c723521c1dd476a7abe00cf0-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-cn'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="c723521c1dd476a7abe00cf0-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-cn/starter/generator.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

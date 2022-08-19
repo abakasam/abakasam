@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="tr" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/tr/starter/hello-world.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express "Merhaba Dünya" örneği</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/tr.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div style="text-align: center; background: #010101; color: #f1f1f1; padding: 16px; font-size: 16px; width: 100vw">
+Black Lives Matter. <a style="color: #5E80F7; text-decoration: none;" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Anasayfa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">Buradan Başlayın</a>
+<ul>
+<li>
+<a href="installing.html">
+Kurulum
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Merhaba Dünya
+</a>
+</li>
+<li>
+<a href="generator.html">
+Express Oluşturucu
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+Basit Yönlendirme
+</a>
+</li>
+<li>
+<a href="static-files.html">
+Statik Dosyalar
+</a>
+</li>
+<li>
+<a href="faq.html">
+SSS
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Kılavuz</a>
+<ul>
+<li><a href="../guide/routing.html">Yönlendirme</a>
+</li>
+<li><a href="../guide/writing-middleware.html">
+Middleware yazma</a>
+</li>
+<li><a href="../guide/using-middleware.html">Middleware kullanma</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Şablon motoru kullanma</a>
+</li>
+<li><a href="../guide/error-handling.html">Hata işleme</a>
+</li>
+<li><a href="../guide/debugging.html">Hata Ayıklama</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="../guide/migrating-4.html">Express 4 geçiş</a>
+</li>
+<li><a href="../guide/migrating-5.html">Express 5 geçiş</a>
+</li>
+<li><a href="../guide/database-integration.html">Database Entegrasyonu</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API Kaynak</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (Kullanımdan kaldırıldı)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (Kullanımdan kaldırıldı)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Gelişmiş konular</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Şablon motorları</a>
+</li>
+<li><a href="../advanced/pm.html">Proses yöneticisi kullanma</a>
+</li>
+<li><a href="../advanced/security-updates.html">Gğvenlik güncellemeleri</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">En iyi güvenlik uygulamaları</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">En iyi performans uygulamaları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Kaynaklar</a>
+<ul>
+<li>
+<a href="../resources/community.html">Topluluk</a>
+</li>
+<li>
+<a href="../resources/glossary.html">Terimler</a>
+</li>
+<li>
+<a href="../resources/middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../resources/utils.html">Yardımcı Modüller</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">Yapılar</a>
+</li>
+<li>
+<a href="../resources/learning.html">Ek öğrenme</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">Express kullanan şirket</a>
+</li>
+<li>
+<a href="../resources/contributing.html">Express'e katkıda bulunmak</a>
+</li>
+<li>
+<a href="../changelog/4x.html">Sürüm Notları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Bu doküman ingilizce dokümana göre eski olabilir. Son güncellemeler için lütfen <a href="../../index.html">İngilizce Dokümanı</a>. ziyaret edin
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="merhaba-dünya-örneği">Merhaba Dünya Örneği</h1>
+<div class="doc-box doc-info">
+<p>Aşağıda verilmiş olan, Express ile oluşturabileceğiniz en basit uygulamadır. Bu, birçok JavaScript dosyası, Jade şablonları ve çeşitli alt dizinler içeren <a href="generator.html">Express generator</a> ile oluşturacağınız projelerin aksine tek dosyadan oluşan bir projedir.</p>
+</div>
+<script src="https://embed.runkit.com" data-element-id="hello-example" data-mode="endpoint" async="" defer="" type="b63563cb10d31f244f039664-text/javascript"></script>
+<div id="hello-example"><pre><code class="language-js">
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) =&gt; {
+  res.send('Merhaba Dünya!')
+})
+
+app.listen(port, () =&gt; {
+  console.log(`Example app listening on port ${port}`)
+})
+</code></pre></div>
+<p>Bu uygulama bir sunucu çalıştırır ve gelen bağlantılar için 3000 portunu dinler. (<code>/</code>) kök dizinine gelen isteklere “Hello World!” ile yanıt verir. Bunun haricindeki tüm adreslere, <strong>404 Not Found</strong> hatası verecektir.</p>
+<p>Yukarıdaki örnek gerçekten de çalışmakta olan bir sunucudur: Yukarıda verilen adrese tıklayın. Gerçek zamanlı günlüklerle sunucunun bir cevap verdiğini göreceksiniz, ve yukarıda yapacağınız her değişiklik eş zamanlı olarak çalıştırılacaktır. Bu özellik arkada bir Node sistemine bağlı olup, tarayıcınızda bu sisteme bir arayüz sağlayan <a href="https://runkit.com">RunKit</a> sayesinde bulunmaktadır.</p>
+<div class="doc-box doc-info">
+<p>RunKit bir üçüncü parti uygulamasıdır ve Express projesi ile bir bağı yoktur.</p>
+</div>
+<h3 id="bilgisayarınızda-çalıştırmak">Bilgisayarınızda Çalıştırmak</h3>
+<p>İlk olarak <code>myapp</code> adında bir dizin oluşturun, o dizine geçin ve <code>npm init</code> komutunu çalıştırın. Sonra <code>express</code>i <a href="installing.html">bu sayfada</a> gösterildiği gibi bir bağımlılık olarak kurun.</p>
+<p><code>myapp</code> dizininde <code>app.js</code> adında bir dosya oluşturun ve yukarıdaki kodu bu dosyaya kopyalayın.</p>
+<div class="doc-box doc-notice">
+<p><code>req</code> (request/istek) ve <code>res</code> (response/cevap) objeleri Node’da bulunanlar ile birebir aynıdır, bu yüzden
+<code>req.pipe()</code>, <code>req.on('data', callback)</code>, gibi komutları Express dahil olmadan kullanabilirsiniz.</p>
+</div>
+<p>Uygulamayı aşağıdaki komutla çalıştırın:</p>
+<pre><code class="language-console">$ node app.js
+</code></pre>
+<p>Sonucu görmek için sunucunuzda <code>http://localhost:3000/</code> adresini ziyaret edin.</p>
+<h3 id="önceki-kurulum-sonraki-express-oluşturucu-"><a href="installing.html">Önceki: Kurulum </a>    <a href="generator.html">Sonraki: Express Oluşturucu </a></h3>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+<a href="../../../strongloop.com/index.html">StrongLoop/IBM</a> tarafından sağlanan belge çevirileri:
+<a href="../../fr/index.html">Fransızca</a>, <a href="../../de/index.html">Almanca</a>, <a href="../../es/index.html">İspanyolca</a>, <a href="../../it/index.html">İtalyanca</a>, <a href="../../ja/index.html">Japonca</a>, <a href="../../ru/index.html">Rusça</a>, <a href="../../zh-cn/index.html">Çince</a>, <a href="../../zh-tw/index.html">Klasik Çince</a>, <a href="../../ko/index.html">Korece</a>, <a href="../../pt-br/index.html">Portekizce</a>.
+<br>
+Topluluk çevirisi için: <a href="../../sk/index.html">Slovakça</a>, <a href="../../uk/index.html">Ukraynaca</a> and <a href="../../uz/index.html">Özbekçe</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bir <a href="https://openjsf.org">OpenJS Vakfı</a> projesidir.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Github'da Forkla</a>.</div>
+<div>Telif Hakkı &copy; 2017 StrongLoop, IBM, ve diğer expressjs.com katkıda bulunanlar.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Bu iş<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a> lisansı altındadır.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="b63563cb10d31f244f039664-text/javascript"></script>
+<script type="b63563cb10d31f244f039664-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:tr'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="b63563cb10d31f244f039664-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/tr/starter/hello-world.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

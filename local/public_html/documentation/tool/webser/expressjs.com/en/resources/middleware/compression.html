@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/en/resources/middleware/compression.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express compression middleware</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../../images/favicon.png" />
+<link rel="stylesheet" href="../../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../../css/dropit.css">
+<link rel="stylesheet" href="../../../css/prism.css">
+<link rel="stylesheet" href="../../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../../css/en.css">
+<link rel="stylesheet" href="../../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../../js/app.js"></script>
+<script data-cfasync="false" src="../../../js/retina.js"></script>
+<script data-cfasync="false" src="../../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../../../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../../starter/installing.html">Getting started</a>
+<ul>
+<li>
+<a href="../../starter/installing.html">
+Installing
+</a>
+</li>
+<li>
+<a href="../../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../../starter/generator.html">
+Express generator
+</a>
+</li>
+<li>
+<a href="../../starter/basic-routing.html">
+Basic routing
+</a>
+</li>
+<li>
+<a href="../../starter/static-files.html">
+Static files
+</a>
+</li>
+<li>
+<a href="../../starter/examples.html">
+More examples
+</a>
+</li>
+<li>
+<a href="../../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../../guide/routing.html">Guide</a>
+<ul>
+<li><a href="../../guide/routing.html">Routing</a>
+</li>
+<li><a href="../../guide/writing-middleware.html">Writing middleware</a>
+</li>
+<li><a href="../../guide/using-middleware.html">Using middleware</a>
+</li>
+<li><a href="../../guide/overriding-express-api.html">Overriding the Express API</a>
+</li>
+<li><a href="../../guide/using-template-engines.html">Using template engines</a>
+</li>
+<li><a href="../../guide/error-handling.html">Error handling</a>
+</li>
+<li><a href="../../guide/debugging.html">Debugging</a>
+</li>
+<li><a href="../../guide/behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="../../guide/migrating-4.html">Moving to Express 4</a>
+</li>
+<li><a href="../../guide/migrating-5.html">Moving to Express 5</a>
+</li>
+<li><a href="../../guide/database-integration.html">Database integration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../../4x/api.html">API reference</a>
+<ul>
+<li><a href="../../5x/api.html">5.x (beta)</a>
+</li>
+<li><a href="../../4x/api.html">4.x</a>
+</li>
+<li><a href="../../3x/api.html">3.x (deprecated)</a>
+</li>
+<li><a href="../../../2x/index.html">2.x (deprecated)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../../advanced/developing-template-engines.html">Advanced topics</a>
+<ul>
+<li><a href="../../advanced/developing-template-engines.html">Template engines</a>
+</li>
+<li><a href="../../advanced/pm.html">Process managers</a>
+</li>
+<li><a href="../../advanced/security-updates.html">Security updates</a>
+</li>
+<li><a href="../../advanced/best-practice-security.html">Security best practices</a>
+</li>
+<li><a href="../../advanced/best-practice-performance.html">Performance best practices</a>
+</li>
+<li><a href="../../advanced/healthcheck-graceful-shutdown.html">Health checks and graceful shutdown</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../glossary.html" class="active">Resources</a>
+<ul>
+<li>
+<a href="../community.html">Community</a>
+</li>
+<li>
+<a href="../glossary.html">Glossary</a>
+</li>
+<li>
+<a href="../template-engines.html">Template Engines</a>
+</li>
+<li>
+<a href="../middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../utils.html">Utility modules</a>
+ </li>
+<li>
+<a href="../frameworks.html">Frameworks</a>
+</li>
+<li>
+<a href="../companies-using-express.html">Companies using Express</a>
+</li>
+<li>
+<a href="../open-source-using-express.html">Open-source projects</a>
+</li>
+<li>
+<a href="../learning.html">Additional learning</a>
+</li>
+<li>
+<a href="../contributing.html">Contributing to Express</a>
+</li>
+<li>
+<a href="../../changelog/4x.html">Release Change Log</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="page-doc" markdown="1">
+<div id="mw-container">
+<div id="mw-list">
+<ul>
+<li><a href="../../../resources/middleware/body-parser.html">body-parser</a></li>
+<li><a href="../../../resources/middleware/compression.html">compression</a></li>
+<li><a href="../../../resources/middleware/connect-rid.html">connect-rid</a></li>
+<li><a href="../../../resources/middleware/cookie-parser.html">cookie-parser</a></li>
+<li><a href="../../../resources/middleware/cookie-session.html">cookie-session</a></li>
+<li><a href="../../../resources/middleware/cors.html">cors</a></li>
+<li><a href="../../../resources/middleware/csurf.html">csurf</a></li>
+<li><a href="../../../resources/middleware/errorhandler.html">errorhandler</a></li>
+<li><a href="../../../resources/middleware/method-override.html">method-override</a></li>
+<li><a href="../../../resources/middleware/morgan.html">morgan</a></li>
+<li><a href="../../../resources/middleware/multer.html">multer</a></li>
+<li><a href="../../../resources/middleware/response-time.html">response-time</a></li>
+<li><a href="../../../resources/middleware/serve-favicon.html">serve-favicon</a></li>
+<li><a href="../../../resources/middleware/serve-index.html">serve-index</a></li>
+<li><a href="../../../resources/middleware/serve-static.html">serve-static</a></li>
+<li><a href="../../../resources/middleware/session.html">session</a></li>
+<li><a href="../../../resources/middleware/timeout.html">timeout</a></li>
+<li><a href="../../../resources/middleware/vhost.html">vhost</a></li>
+</ul>
+</div>
+<div id="middleware-content">
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i>
+<b>Note:</b> This page was generated from the
+<a target="_blank" href="https://github.com/expressjs/compression">compression README</a>.
+</div>
+<h1 id="compression">compression</h1>
+<p><a href="https://npmjs.org/package/compression"><img src="https://img.shields.io/npm/v/compression.svg" alt="NPM Version" /></a>
+<a href="https://npmjs.org/package/compression"><img src="https://img.shields.io/npm/dm/compression.svg" alt="NPM Downloads" /></a>
+<a href="https://travis-ci.org/expressjs/compression"><img src="https://img.shields.io/travis/expressjs/compression/master.svg" alt="Build Status" /></a>
+<a href="https://coveralls.io/r/expressjs/compression?branch=master"><img src="https://img.shields.io/coveralls/expressjs/compression/master.svg" alt="Test Coverage" /></a></p>
+<p>Node.js compression middleware.</p>
+<p>The following compression codings are supported:</p>
+<ul>
+<li>deflate</li>
+<li>gzip</li>
+</ul>
+<h2 id="install">Install</h2>
+<p>This is a <a href="https://nodejs.org/en/">Node.js</a> module available through the
+<a href="https://www.npmjs.com/">npm registry</a>. Installation is done using the
+<a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm install</code> command</a>:</p>
+<pre><code class="language-bash">$ npm install compression
+</code></pre>
+<h2 id="api">API</h2>
+
+<pre><code class="language-js">var compression = require('compression')
+</code></pre>
+<h3 id="compressionoptions">compression([options])</h3>
+<p>Returns the compression middleware using the given <code>options</code>. The middleware
+will attempt to compress response bodies for all request that traverse through
+the middleware, based on the given <code>options</code>.</p>
+<p>This middleware will never compress responses that include a <code>Cache-Control</code>
+header with the <a href="https://tools.ietf.org/html/rfc7234#section-5.2.2.4"><code>no-transform</code> directive</a>,
+as compressing will transform the body.</p>
+<h4 id="options">Options</h4>
+<p><code>compression()</code> accepts these properties in the options object. In addition to
+those listed below, <a href="http://nodejs.org/api/zlib.html">zlib</a> options may be
+passed in to the options object.</p>
+<h5 id="chunksize">chunkSize</h5>
+<p>The default value is <code>zlib.Z_DEFAULT_CHUNK</code>, or <code>16384</code>.</p>
+<p>See <a href="http://nodejs.org/api/zlib.html#zlib_memory_usage_tuning">Node.js documentation</a>
+regarding the usage.</p>
+<h5 id="filter">filter</h5>
+<p>A function to decide if the response should be considered for compression.
+This function is called as <code>filter(req, res)</code> and is expected to return
+<code>true</code> to consider the response for compression, or <code>false</code> to not compress
+the response.</p>
+<p>The default filter function uses the <a href="https://www.npmjs.com/package/compressible">compressible</a>
+module to determine if <code>res.getHeader('Content-Type')</code> is compressible.</p>
+<h5 id="level">level</h5>
+<p>The level of zlib compression to apply to responses. A higher level will result
+in better compression, but will take longer to complete. A lower level will
+result in less compression, but will be much faster.</p>
+<p>This is an integer in the range of <code>0</code> (no compression) to <code>9</code> (maximum
+compression). The special value <code>-1</code> can be used to mean the “default
+compression level”, which is a default compromise between speed and
+compression (currently equivalent to level 6).</p>
+<ul>
+<li><code>-1</code> Default compression level (also <code>zlib.Z_DEFAULT_COMPRESSION</code>).</li>
+<li><code>0</code> No compression (also <code>zlib.Z_NO_COMPRESSION</code>).</li>
+<li><code>1</code> Fastest compression (also <code>zlib.Z_BEST_SPEED</code>).</li>
+<li><code>2</code></li>
+<li><code>3</code></li>
+<li><code>4</code></li>
+<li><code>5</code></li>
+<li><code>6</code> (currently what <code>zlib.Z_DEFAULT_COMPRESSION</code> points to).</li>
+<li><code>7</code></li>
+<li><code>8</code></li>
+<li><code>9</code> Best compression (also <code>zlib.Z_BEST_COMPRESSION</code>).</li>
+</ul>
+<p>The default value is <code>zlib.Z_DEFAULT_COMPRESSION</code>, or <code>-1</code>.</p>
+<p><strong>Note</strong> in the list above, <code>zlib</code> is from <code>zlib = require('zlib')</code>.</p>
+<h5 id="memlevel">memLevel</h5>
+<p>This specifies how much memory should be allocated for the internal compression
+state and is an integer in the range of <code>1</code> (minimum level) and <code>9</code> (maximum
+level).</p>
+<p>The default value is <code>zlib.Z_DEFAULT_MEMLEVEL</code>, or <code>8</code>.</p>
+<p>See <a href="http://nodejs.org/api/zlib.html#zlib_memory_usage_tuning">Node.js documentation</a>
+regarding the usage.</p>
+<h5 id="strategy">strategy</h5>
+<p>This is used to tune the compression algorithm. This value only affects the
+compression ratio, not the correctness of the compressed output, even if it
+is not set appropriately.</p>
+<ul>
+<li><code>zlib.Z_DEFAULT_STRATEGY</code> Use for normal data.</li>
+<li><code>zlib.Z_FILTERED</code> Use for data produced by a filter (or predictor).
+Filtered data consists mostly of small values with a somewhat random
+distribution. In this case, the compression algorithm is tuned to
+compress them better. The effect is to force more Huffman coding and less
+string matching; it is somewhat intermediate between <code>zlib.Z_DEFAULT_STRATEGY</code>
+and <code>zlib.Z_HUFFMAN_ONLY</code>.</li>
+<li><code>zlib.Z_FIXED</code> Use to prevent the use of dynamic Huffman codes, allowing
+for a simpler decoder for special applications.</li>
+<li><code>zlib.Z_HUFFMAN_ONLY</code> Use to force Huffman encoding only (no string match).</li>
+<li><code>zlib.Z_RLE</code> Use to limit match distances to one (run-length encoding).
+This is designed to be almost as fast as <code>zlib.Z_HUFFMAN_ONLY</code>, but give
+better compression for PNG image data.</li>
+</ul>
+<p><strong>Note</strong> in the list above, <code>zlib</code> is from <code>zlib = require('zlib')</code>.</p>
+<h5 id="threshold">threshold</h5>
+<p>The byte threshold for the response body size before compression is considered
+for the response, defaults to <code>1kb</code>. This is a number of bytes or any string
+accepted by the <a href="https://www.npmjs.com/package/bytes">bytes</a> module.</p>
+<p><strong>Note</strong> this is only an advisory setting; if the response size cannot be determined
+at the time the response headers are written, then it is assumed the response is
+<em>over</em> the threshold. To guarantee the response size can be determined, be sure
+set a <code>Content-Length</code> response header.</p>
+<h5 id="windowbits">windowBits</h5>
+<p>The default value is <code>zlib.Z_DEFAULT_WINDOWBITS</code>, or <code>15</code>.</p>
+<p>See <a href="http://nodejs.org/api/zlib.html#zlib_memory_usage_tuning">Node.js documentation</a>
+regarding the usage.</p>
+<h4 id="filter-1">.filter</h4>
+<p>The default <code>filter</code> function. This is used to construct a custom filter
+function that is an extension of the default function.</p>
+<pre><code class="language-js">var compression = require('compression')
+var express = require('express')
+
+var app = express()
+app.use(compression({ filter: shouldCompress }))
+
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
+</code></pre>
+<h3 id="resflush">res.flush</h3>
+<p>This module adds a <code>res.flush()</code> method to force the partially-compressed
+response to be flushed to the client.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="expressconnect">express/connect</h3>
+<p>When using this module with express or connect, simply <code>app.use</code> the module as
+high as you like. Requests that pass through the middleware will be compressed.</p>
+<pre><code class="language-js">var compression = require('compression')
+var express = require('express')
+
+var app = express()
+
+// compress all responses
+app.use(compression())
+
+// add all routes
+</code></pre>
+<h3 id="server-sent-events">Server-Sent Events</h3>
+<p>Because of the nature of compression this module does not work out of the box
+with server-sent events. To compress content, a window of the output needs to
+be buffered up in order to get good compression. Typically when using server-sent
+events, there are certain block of data that need to reach the client.</p>
+<p>You can achieve this by calling <code>res.flush()</code> when you need the data written to
+actually make it to the client.</p>
+<pre><code class="language-js">var compression = require('compression')
+var express = require('express')
+
+var app = express()
+
+// compress responses
+app.use(compression())
+
+// server-sent event stream
+app.get('/events', function (req, res) {
+  res.setHeader('Content-Type', 'text/event-stream')
+  res.setHeader('Cache-Control', 'no-cache')
+
+  // send a ping approx every 2 seconds
+  var timer = setInterval(function () {
+    res.write('data: ping\n\n')
+
+    // !!! this is the important part
+    res.flush()
+  }, 2000)
+
+  res.on('close', function () {
+    clearInterval(timer)
+  })
+})
+</code></pre>
+<h2 id="license">License</h2>
+<p><a href="LICENSE.html">MIT</a></p>
+</div>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+Documentation translations provided by <a href="../../../../strongloop.com/index.html">StrongLoop/IBM</a>:
+<a href="../../../fr/index.html">French</a>, <a href="../../../de/index.html">German</a>, <a href="../../../es/index.html">Spanish</a>, <a href="../../../it/index.html">Italian</a>, <a href="../../../ja/index.html">Japanese</a>, <a href="../../../ru/index.html">Russian</a>, <a href="../../../zh-cn/index.html">Chinese</a>, <a href="../../../zh-tw/index.html">Traditional Chinese</a>, <a href="../../../ko/index.html">Korean</a>, <a href="../../../pt-br/index.html">Portuguese</a>.
+<br>
+Community translation available for: <a href="../../../sk/index.html">Slovak</a>, <a href="../../../uk/index.html">Ukrainian</a>, <a href="../../../uz/index.html">Uzbek</a>, <a href="../../../tr/index.html">Turkish</a> and <a href="../../../th/index.html">Thai</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> is a project of the <a href="https://openjsf.org">OpenJS Foundation</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork the website on GitHub</a>.</div>
+<div>Copyright &copy; 2017 StrongLoop, IBM, and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="55fa7fbb18f8a00b01c5a059-text/javascript"></script>
+<script type="55fa7fbb18f8a00b01c5a059-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:en'] }
+})" async></script>
+<script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="55fa7fbb18f8a00b01c5a059-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/en/resources/middleware/compression.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

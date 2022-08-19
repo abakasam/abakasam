@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="tr" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/tr/guide/debugging.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express hata ayıklama</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/tr.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div style="text-align: center; background: #010101; color: #f1f1f1; padding: 16px; font-size: 16px; width: 100vw">
+Black Lives Matter. <a style="color: #5E80F7; text-decoration: none;" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Anasayfa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Buradan Başlayın</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Kurulum
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Merhaba Dünya
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Oluşturucu
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basit Yönlendirme
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statik Dosyalar
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+SSS
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Kılavuz</a>
+<ul>
+<li><a href="routing.html">Yönlendirme</a>
+</li>
+<li><a href="writing-middleware.html">
+Middleware yazma</a>
+</li>
+<li><a href="using-middleware.html">Middleware kullanma</a>
+</li>
+<li><a href="using-template-engines.html">Şablon motoru kullanma</a>
+</li>
+<li><a href="error-handling.html">Hata işleme</a>
+</li>
+<li><a href="debugging.html">Hata Ayıklama</a>
+</li>
+<li><a href="behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="migrating-4.html">Express 4 geçiş</a>
+</li>
+<li><a href="migrating-5.html">Express 5 geçiş</a>
+</li>
+<li><a href="database-integration.html">Database Entegrasyonu</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API Kaynak</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (Kullanımdan kaldırıldı)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (Kullanımdan kaldırıldı)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Gelişmiş konular</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Şablon motorları</a>
+</li>
+<li><a href="../advanced/pm.html">Proses yöneticisi kullanma</a>
+</li>
+<li><a href="../advanced/security-updates.html">Gğvenlik güncellemeleri</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">En iyi güvenlik uygulamaları</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">En iyi performans uygulamaları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Kaynaklar</a>
+<ul>
+<li>
+<a href="../resources/community.html">Topluluk</a>
+</li>
+<li>
+<a href="../resources/glossary.html">Terimler</a>
+</li>
+<li>
+<a href="../resources/middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../resources/utils.html">Yardımcı Modüller</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">Yapılar</a>
+</li>
+<li>
+<a href="../resources/learning.html">Ek öğrenme</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">Express kullanan şirket</a>
+</li>
+<li>
+<a href="../resources/contributing.html">Express'e katkıda bulunmak</a>
+</li>
+<li>
+<a href="../changelog/4x.html">Sürüm Notları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Bu doküman ingilizce dokümana göre eski olabilir. Son güncellemeler için lütfen <a href="../../index.html">İngilizce Dokümanı</a>. ziyaret edin
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="express-hata-ayıklama">Express hata ayıklama</h1>
+<p>Express, rota eşleştirmeleri, kullanımda olan ara yazılım fonksiyonları, uygulama modu, ve istek-yanıt döngüsü akışı ile ilgili bilgileri loglamak için dahili olarak <a href="https://www.npmjs.com/package/debug">debug</a> mödülünü kullanmaktadır.</p>
+<div class="doc-box doc-info">
+<p><code>debug</code>, <code>console.log</code> metodunun uzatılmış bir sürümü gibidir, ama <code>console.log</code> metodunun aksine, üretim kodunda <code>debug</code> ifadelerini yorum satırına almak zorunda değilsiniz. Loglama varsayılan olarak devre dışı bırakılmıştır ve şarta bağlı olarak <code>DEBUG</code> ortam değişkeni kullanılarak devreye alınabilir.</p>
+</div>
+<p>Express uygulamasında kullanılan ütün dahili logları görmek için, uygulamanızı başlatırken <code>DEBUG</code> ortam değikenini <code>express:*</code> olarak güncelleyin.</p>
+<pre><code class="language-console">$ DEBUG=express:* node index.js
+</code></pre>
+<p>Windows’ta aynı komutun karşılığını kullanın.</p>
+<pre><code class="language-console">&gt; set DEBUG=express:* &amp; node index.js
+</code></pre>
+<p><a href="../starter/generator.html">express generator</a> kullanılarak yaratılan varsayılan uygulamada bu komutu koşmak aşağıdakileri yazdıracak:</p>
+<pre><code class="language-console">$ DEBUG=express:* node ./bin/www
+  express:router:route new / +0ms
+  express:router:layer new / +1ms
+  express:router:route get / +1ms
+  express:router:layer new / +0ms
+  express:router:route new / +1ms
+  express:router:layer new / +0ms
+  express:router:route get / +0ms
+  express:router:layer new / +0ms
+  express:application compile etag weak +1ms
+  express:application compile query parser extended +0ms
+  express:application compile trust proxy false +0ms
+  express:application booting in development mode +1ms
+  express:router use / query +0ms
+  express:router:layer new / +0ms
+  express:router use / expressInit +0ms
+  express:router:layer new / +0ms
+  express:router use / favicon +1ms
+  express:router:layer new / +0ms
+  express:router use / logger +0ms
+  express:router:layer new / +0ms
+  express:router use / jsonParser +0ms
+  express:router:layer new / +1ms
+  express:router use / urlencodedParser +0ms
+  express:router:layer new / +0ms
+  express:router use / cookieParser +0ms
+  express:router:layer new / +0ms
+  express:router use / stylus +90ms
+  express:router:layer new / +0ms
+  express:router use / serveStatic +0ms
+  express:router:layer new / +0ms
+  express:router use / router +0ms
+  express:router:layer new / +1ms
+  express:router use /users router +0ms
+  express:router:layer new /users +0ms
+  express:router use / &amp;lt;anonymous&amp;gt; +0ms
+  express:router:layer new / +0ms
+  express:router use / &amp;lt;anonymous&amp;gt; +0ms
+  express:router:layer new / +0ms
+  express:router use / &amp;lt;anonymous&amp;gt; +0ms
+  express:router:layer new / +0ms
+</code></pre>
+<p>Ve uygulamaya bir istek yapıldığında, Express kodunda belirtilen logları göreceksiniz:</p>
+<pre><code class="language-console">  express:router dispatching GET / +4h
+  express:router query  : / +2ms
+  express:router expressInit  : / +0ms
+  express:router favicon  : / +0ms
+  express:router logger  : / +1ms
+  express:router jsonParser  : / +0ms
+  express:router urlencodedParser  : / +1ms
+  express:router cookieParser  : / +0ms
+  express:router stylus  : / +0ms
+  express:router serveStatic  : / +2ms
+  express:router router  : / +2ms
+  express:router dispatching GET / +1ms
+  express:view lookup "index.pug" +338ms
+  express:view stat "/projects/example/views/index.pug" +0ms
+  express:view render "/projects/example/views/index.pug" +1ms
+</code></pre>
+<p>Sadece yönlendirme implementasyonundan logları görmek için, <code>DEBUG</code> değişkenini <code>express:router</code> olarak ayarlayın. Aynı şekilde, sadece uygulama implementasyonundan logları görmek için <code>DEBUG</code> değişkenini <code>express:application</code> olarak ayarlayın, ve benzeri.</p>
+<h2 id="express-tarafından-yaratılan-uygulamalar"><code>express</code> tarafından yaratılan uygulamalar</h2>
+<p><code>express</code> komutu tarafından yaratılan bir uygulama da <code>debug</code> modülünü kullanır ve hata ayıklama isim alanı, uygulamanın isiminin kapsamı içine alınır.</p>
+<p>Örneğin, <code>$ express sample-app</code> ile bir uygulama yarattığınızda, debug ifadelerini aşağıdaki komutla etkinleştirebilirsiniz:</p>
+<pre><code class="language-console">$ DEBUG=sample-app:* node ./bin/www
+</code></pre>
+<p>Virgül ile ayrılmış bir isimler listesini atayarak birden fazla debug isim alanı belirtebilirsiniz:</p>
+<pre><code class="language-console">$ DEBUG=http,mail,express:* node index.js
+</code></pre>
+<h2 id="gelişmiş-seçenekler">Gelişmiş seçenekler</h2>
+<p>Node.js üzerinden koşulduğunda hata ayıklama loglamasının davranışını değiştirecek birkaç ortam değişkeni ayarlayabilirsiniz:</p>
+<table>
+<thead>
+<tr>
+<th>İsim</th>
+<th>Amaç</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEBUG</code></td>
+<td>Spesifik hata ayıklama isim alanlarını devre dışı bırakma veya etkinleştirme.</td>
+</tr>
+<tr>
+<td><code>DEBUG_COLORS</code></td>
+<td>Hata ayıklama çıktısında renk kullanıp kullanmama.</td>
+</tr>
+<tr>
+<td><code>DEBUG_DEPTH</code></td>
+<td>Nesne inceleme derinliği.</td>
+</tr>
+<tr>
+<td><code>DEBUG_FD</code></td>
+<td>Hata ayıklama çıktısının yazılacağı dosya tanımlayıcı.</td>
+</tr>
+<tr>
+<td><code>DEBUG_SHOW_HIDDEN</code></td>
+<td>İncelenen nesnelerde gizli özellikleri gösterme.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Not:</strong> <code>DEBUG_</code> ile başlayan ortam değişkenleri, <code>%o</code>/<code>%O</code> biçemleyicileriyle kullanılmak üzere bir Seçenekler nesnesine dönüştürülür.
+Tam listeyi görmek için Node.js’in <a href="https://nodejs.org/api/util.html#util_util_inspect_object_options"><code>util.inspect()</code></a> dökümantasyonuna bakınız.</p>
+<h2 id="kaynaklar">Kaynaklar</h2>
+<p><code>debug</code> ile ilgili daha fazla bilgi için bakınız <a href="https://www.npmjs.com/package/debug">debug</a>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+<a href="../../../strongloop.com/index.html">StrongLoop/IBM</a> tarafından sağlanan belge çevirileri:
+<a href="../../fr/index.html">Fransızca</a>, <a href="../../de/index.html">Almanca</a>, <a href="../../es/index.html">İspanyolca</a>, <a href="../../it/index.html">İtalyanca</a>, <a href="../../ja/index.html">Japonca</a>, <a href="../../ru/index.html">Rusça</a>, <a href="../../zh-cn/index.html">Çince</a>, <a href="../../zh-tw/index.html">Klasik Çince</a>, <a href="../../ko/index.html">Korece</a>, <a href="../../pt-br/index.html">Portekizce</a>.
+<br>
+Topluluk çevirisi için: <a href="../../sk/index.html">Slovakça</a>, <a href="../../uk/index.html">Ukraynaca</a> and <a href="../../uz/index.html">Özbekçe</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bir <a href="https://openjsf.org">OpenJS Vakfı</a> projesidir.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Github'da Forkla</a>.</div>
+<div>Telif Hakkı &copy; 2017 StrongLoop, IBM, ve diğer expressjs.com katkıda bulunanlar.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Bu iş<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a> lisansı altındadır.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="6c15edf0b668d004a44208ba-text/javascript"></script>
+<script type="6c15edf0b668d004a44208ba-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:tr'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="6c15edf0b668d004a44208ba-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/tr/guide/debugging.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+<html lang="pt-br" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/pt-br/advanced/best-practice-performance.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Melhores Práticas de Desempenho Usando o Express em Produção</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/pt-br.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Página Inicial</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Introdução</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Instalação
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Gerador do Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Roteamento Básico
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Arquivos Estáticos
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Perguntas mais frequentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Guia</a>
+<ul>
+<li><a href="../guide/routing.html">Roteamento</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Escrevendo o middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Usando o middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Usando o mecanismo de modelo</a>
+</li>
+<li><a href="../guide/error-handling.html">Manipulação de erros</a>
+</li>
+<li><a href="../guide/debugging.html">Depuração</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express atrás de proxies</a>
+</li>
+<li><a href="../guide/migrating-4.html">Migrando para o Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Migrando para o Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integração de Banco de dados</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referência da API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (descontinuada)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (descontinuada)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">Tópicos Avançados</a>
+<ul>
+<li><a href="developing-template-engines.html">Mecanismos de modelo</a>
+</li>
+<li><a href="pm.html">Usando gerenciadores de processos</a>
+</li>
+<li><a href="security-updates.html">Atualizações de segurança</a>
+</li>
+<li><a href="best-practice-security.html">Melhores práticas de segurança</a>
+</li>
+<li><a href="best-practice-performance.html">Melhores práticas de desempenho</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossário</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Comunidade</a>
+</li>
+<li><a href="../resources/learning.html">Aprendizagem adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta tradução fornecida pelo <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento pode estar desatualizado em relação à documentação em Inglês. Para obter as atualizações mais recentes, consulte a <a href="../../index.html">documentação em Inglês</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="melhores-práticas-de-produção-desempenho-e-confiabilidade">Melhores Práticas de Produção: desempenho e confiabilidade</h1>
+<h2 id="visão-geral">Visão Geral</h2>
+<p>Este artigo discute as melhores práticas de desempenho e de confiabilidade
+para aplicativos Express implementados para produção.</p>
+<p>Este tópico se enquadra claramente no mundo de “devops”, abordando o desenvolvimento tradicional e as operações. Assim, as informações são divididas em duas partes:</p>
+<ul>
+<li><a href="#code">Itens a fazer no seu código</a> (a parte do dev).</li>
+<li><a href="#env">Itens a fazer no seu ambiente / configuração</a> (a parte de ops).</li>
+</ul>
+<p><a name="code"></a></p>
+<h2 id="itens-a-fazer-no-seu-código">Itens a fazer no seu código</h2>
+<p>A seguir serão apresentados alguns itens que podem ser feitos no seu código
+para melhorar o desempenho dos aplicativos:</p>
+<ul>
+<li>Use a compactação gzip</li>
+<li>Não use funções síncronas</li>
+<li>Use o middleware para entregar arquivos estáticos</li>
+<li>Faça o registro de logs corretamente</li>
+<li>Lide com exceções adequadamente</li>
+</ul>
+<h3 id="use-a-compactação-gzip">Use a compactação gzip</h3>
+<p>A compactação Gzip pode diminuir bastante o tamanho do corpo de resposta e assim aumentar a velocidade de um aplicativo da web. Use o middleware <a href="https://www.npmjs.com/package/compression">compression</a> para fazer a compactação gzip no seu aplicativo do Express. Por exemplo:</p>
+<pre><code class="language-js">const compression = require('compression')
+const express = require('express')
+const app = express()
+app.use(compression())
+</code></pre>
+<p>Para um website com tráfego intenso na produção, a melhor maneira de colocar a compactação em prática, é implementá-la em um
+nível de proxy reverso (consulte <a href="#proxy">Use um proxy reverso</a>). Neste caso, não é necessário usar o middleware de compactação. Para obter detalhes sobre a ativação da compactação gzip no Nginx, consulte o <a href="http://nginx.org/en/docs/http/ngx_http_gzip_module.html">Módulo
+ngx_http_gzip_module</a> na documentação do Nginx.</p>
+<h3 id="não-use-funções-síncronas">Não use funções síncronas</h3>
+<p>Funções e métodos síncronos impedem o avanço da execução do processo até que eles retornem. Uma
+única chamada a uma função síncrona pode retornar em poucos microssegundos ou milissegundos, entretanto, em websites com tráfego
+intenso, essas chamadas se somam e reduzem o desempenho do
+aplicativo. Evite o uso delas na produção.</p>
+<p>Apesar de o Node e muitos módulos fornecerem versões síncronas e assíncronas de suas funções, sempre use as versões assíncronas na produção. O único momento em que o uso de uma função síncrona pode ser justificado é na primeira inicialização.</p>
+<p>Se estiver usando o Node.js 4.0+ ou o io.js 2.1.0+, é possível usar a sinalização <code>--trace-sync-io</code> da linha de comandos para imprimir um aviso e um rastreio de pilha sempre que o seu aplicativo usar uma API síncrona. Obviamente, não seria desejado usar isto na produção, mas sim antes, para garantir que seu código está pronto para produção. Consulte a <a href="https://nodejs.org/en/blog/weekly-updates/weekly-update.2015-05-22/#2-1-0">Atualização
+semanal para o io.js 2.1.0</a> para obter mais informações.</p>
+<h3 id="use-o-middleware-para-entregar-arquivos-estáticos">Use o middleware para entregar arquivos estáticos</h3>
+<p>No desenvolvimento, é possível usar a <a href="../4x/api.html#res.sendFile">res.sendFile()</a> para entregar arquivos estáticos. Mas
+não use isto na produção, pois esta função precisa ser lida a partir
+do sistema de arquivos para cada solicitação de arquivo, e portanto
+encontraria latência e afetaria o desempenho geral do aplicativo. Observe que a <code>res.sendFile()</code> <em>não</em> é implementada com a chamada de sistema <a href="http://linux.die.net/man/2/sendfile">sendfile</a> o que a tornaria muito mais eficiente.</p>
+<p>Ao invés disso, use o middleware <a href="https://www.npmjs.com/package/serve-static">serve-static</a>
+(ou algo equivalente), que é otimizado para a entrega de arquivos para os aplicativos do Express.</p>
+<p>Uma opção ainda melhor é usar um proxy reverso para entregar
+arquivos estáticos; consulte <a href="#proxy">Use um proxy
+reverso</a> para obter mais informações.</p>
+<h3 id="faça-o-registro-de-logs-corretamente">Faça o registro de logs corretamente</h3>
+<p>Em geral, existem duas razões para registrar logs em seu aplicativo: Para depuração e para registro de logs de atividade do aplicativo (essencialmente, todo o resto). Usar
+o <code>console.log()</code> ou o <code>console.err()</code> para imprimir mensagens de log no
+terminal é uma prática comum em desenvolvimento. Mas <a href="https://nodejs.org/api/console.html#console_console_1">essas
+funções são síncronas</a> quando o destino é um terminal ou um arquivo, portanto elas não são adequadas para produção, a não ser que
+a saída seja canalizada para outro programa.</p>
+<h4 id="para-depuração">Para depuração</h4>
+<p>Se estiver registrando logs com o propósito de depuração, então ao invés de usar o <code>console.log()</code>, use um módulo
+especial para depuração como o <a href="https://www.npmjs.com/package/debug">debug</a>. Este
+módulo permite que seja usada a variável de ambiente DEBUG para controlar quais mensagens de depuração são enviadas para o
+<code>console.err()</code>, se houver. Para manter o seu aplicativo puramente assíncrono, você deverá canalizar o
+<code>console.err()</code> para outro programa. Mas nesse ponto, você não fará a depuração na produção, não é?</p>
+<h4 id="para-atividade-do-aplicativo">Para atividade do aplicativo</h4>
+<p>Se estiver registrando logs de atividade do aplicativo (por
+exemplo, rastreamento de tráfico ou chamadas de API), ao invés de
+usar o <code>console.log()</code>, use uma biblioteca de
+registro de logs como <a href="https://www.npmjs.com/package/winston">Winston</a> ou <a href="https://www.npmjs.com/package/bunyan">Bunyan</a>. Para
+obter uma comparação detalhada dessas duas bibliotecas, consulte a postagem do blog do StrongLoop
+<a href="https://strongloop.com/strongblog/compare-node-js-logging-winston-bunyan/">Comparando o registro de logs no Node.js usando Winston e Bunyan</a>.</p>
+<p><a name="exceptions"></a></p>
+<h3 id="lide-com-exceções-adequadamente">Lide com exceções adequadamente</h3>
+<p>Aplicativos do Node caem ao encontrarem uma exceção não
+capturada. O não tratamento de exceções e a não tomada das ações
+apropriadas irão fazer com que o seu aplicativo do Express caia e
+fique off-line. Se seguir os conselhos em <a href="#restart">Assegurando que o seu aplicativo reinicie automaticamente</a>
+abaixo, então seu aplicativo se recuperará de uma queda. Felizmente, aplicativos Express tipicamente possuem um tempo curto de inicialização. Contudo,
+é desejável evitar quedas em primeiro lugar e, para fazer isso, é
+necessário tratar exceções adequadamente.</p>
+<p>Para garantir que está tratando todas as exceções, use as seguintes técnicas:</p>
+<ul>
+<li><a href="#try-catch">Use try-catch</a></li>
+<li><a href="#promises">Use promessas</a></li>
+</ul>
+<p>Antes de se aprofundar nestes tópicos, você deveria ter um
+entendimento básico de manipulação de erros do Node/Express: usando
+retornos de chamada erros-first, e propagação de erros no
+middleware. O Node usa uma convenção “retorno de chamada erros-first” para retorno de erros de funções assíncronas, onde o
+primeiro parâmetro para a função de retorno de chamada é o objeto de erro, seguido dos dados de resultado nos parâmetros subsequentes. Para indicar que não ocorreram erros, passe null como o primeiro parâmetro. A função de retorno de chamada deve correspondentemente seguir a
+convenção de retorno de chamada erros-first para tratar o erro de forma significativa. E no Express, a melhor prática é usar a função next() para propagar erros pela cadeia de middlewares.</p>
+<p>Para obter mais informações sobre os fundamentos de manipulação de erros, consulte:</p>
+<ul>
+<li><a href="https://www.joyent.com/developers/node/design/errors">Manipulação de Erros no Node.js</a></li>
+<li><a href="https://strongloop.com/strongblog/robust-node-applications-error-handling/">Construindo
+Aplicativos Node Robustos: Manipulação de Erros</a> (blog do StrongLoop)</li>
+</ul>
+<h4 id="o-que-não-fazer">O que não fazer</h4>
+<p>Uma coisa que <em>não</em> deveria fazer é escutar a eventos <code>uncaughtException</code>, emitidos quando uma exceção
+emerge regressando ao loop de eventos. Incluir um listener de eventos para <code>uncaughtException</code> irá mudar o comportamento
+padrão do processo que está encontrando uma exceção; o processo irá continuar a execução apesar da exceção. Essa pode parecer como uma boa maneira de prevenir que o seu
+aplicativo caia, mas continuar a execução do aplicativo após uma
+exceção não capturada é uma prática perigosa e não é recomendada, porque o estado do processo se torna não confiável e imprevisível.</p>
+<p>Adicionalmente, usar o <code>uncaughtException</code> é oficialmente reconhecido como <a href="https://nodejs.org/api/process.html#process_event_uncaughtexception">grosseiro</a>
+e existe uma <a href="https://github.com/nodejs/node-v0.x-archive/issues/2582">proposta</a>
+de removê-lo do núcleo. Portando escutar por um <code>uncaughtException</code> é simplesmente uma má ideia. É
+por isso que recomendamos coisas como múltiplos processos e
+supervisores: o processo de queda e reinicialização é frequentemente a
+forma mais confiável de se recuperar de um erro.</p>
+<p>Também não recomendamos o uso de <a href="https://nodejs.org/api/domain.html">domínios</a>. Ele
+geralmente não resolve o problema e é um módulo descontinuado.</p>
+<p><a name="try-catch"></a></p>
+<h4 id="use-try-catch">Use try-catch</h4>
+<p>Try-catch é uma construção da linguagem JavaScript que pode ser usada para capturar exceções em um código síncrono. Use try-catch, por exemplo, para tratar erros de análise sintática de JSON como mostrado abaixo.</p>
+<p>Use uma ferramenta como o <a href="http://jshint.com/">JSHint</a> ou o
+<a href="http://www.jslint.com/">JSLint</a> para ajudá-lo a localizar exceções implícitas como
+<a href="http://www.jshint.com/docs/options/#undef">erros de referência em variáveis indefinidas</a>.</p>
+<p>Aqui está um exemplo de uso de try-catch para tratar uma
+potencial exceção causadora de queda de processo.
+Esta função middleware aceita um parâmetro de campo de consulta chamado “params” que é um objeto JSON.</p>
+<pre><code class="language-js">app.get('/search', (req, res) =&gt; {
+  // Simulating async operation
+  setImmediate(() =&gt; {
+    const jsonStr = req.query.params
+    try {
+      const jsonObj = JSON.parse(jsonStr)
+      res.send('Success')
+    } catch (e) {
+      res.status(400).send('Invalid JSON string')
+    }
+  })
+})
+</code></pre>
+<p>Entretanto, o try-catch funciona apenas para códigos síncronos. Como
+a plataforma Node é a princípio assíncrona (particularmente em um ambiente de produção), o try-catch deixará de capturar muitas
+exceções.</p>
+<p><a name="promises"></a></p>
+<h4 id="use-promessas">Use promessas</h4>
+<p>Promessas irão tratar quaisquer exceções (ambas explícitas e implícitas) em blocos de códigos assíncronos que usem
+<code>then()</code>. Apenas inclua <code>.catch(next)</code> no final da cadeia de promessas. Por exemplo:</p>
+<pre><code class="language-js">app.get('/', (req, res, next) =&gt; {
+  // do some sync stuff
+  queryDb()
+    .then((data) =&gt; makeCsv(data)) // handle data
+    .then((csv) =&gt; { /* handle csv */ })
+    .catch(next)
+})
+
+app.use((err, req, res, next) =&gt; {
+  // handle error
+})
+</code></pre>
+<p>Agora todos os erros assíncronos e síncronos são propagados para o middleware de erros.</p>
+<p>Entretanto, existem dois alertas:</p>
+<ol>
+<li>Todo seu código assíncrono deve retornar promessas (exceto
+emissores). Se uma biblioteca em particular não retornar promessas,
+converta o objeto base através do uso de uma função auxiliar como
+<a href="http://bluebirdjs.com/docs/api/promise.promisifyall.html">Bluebird.promisifyAll()</a>.</li>
+<li>Emissores de eventos (como fluxos) podem ainda causar
+exceções não capturadas. Portanto certifique-se de que está tratando
+o evento de erro apropriadamente; por exemplo:</li>
+</ol>
+<pre><code class="language-js">const wrap = fn =&gt; (...args) =&gt; fn(...args).catch(args[2])
+
+app.get('/', wrap(async (req, res, next) =&gt; {
+  const company = await getCompanyById(req.query.id)
+  const stream = getLogoStreamById(company.id)
+  stream.on('error', next).pipe(res)
+}))
+</code></pre>
+<p>Para obter mais informações sobre o manipulação de erros usando
+promessas, consulte:</p>
+<ul>
+<li><a href="https://strongloop.com/strongblog/async-error-handling-expressjs-es7-promises-generators/">Manipulando Erros
+Assíncronos no Express com Promessas, Geradores e ES7</a></li>
+<li><a href="https://strongloop.com/strongblog/promises-in-node-js-with-q-an-alternative-to-callbacks/">Promessas no Node.js com o Q – Uma Alternativa a Retornos de Chamada</a></li>
+</ul>
+<p><a name="env"></a></p>
+<h2 id="coisa-a-se-fazer-no-seu-ambiente--configuração">Coisa a se fazer no seu ambiente / configuração</h2>
+<p>A seguir serão apresentados alguns itens que podem ser feitos no seu ambiente de sistema para melhorar o desempenho dos seus aplicativos:</p>
+<ul>
+<li>Configure o NODE_ENV para “produção”</li>
+<li>Assegure que o seu aplicativo reinicie automaticamente</li>
+<li>Execute seu aplicativo em um cluster</li>
+<li>Armazene em cache os resultados das solicitações</li>
+<li>Use um balanceador de carga</li>
+<li>Use um proxy reverso</li>
+</ul>
+<h3 id="configure-o-node_env-para-produção">Configure o NODE_ENV para “produção”</h3>
+<p>A variável de ambiente NODE_ENV especifica o ambiente no qual um aplicativo está executando (geralmente, desenvolvimento ou
+produção). Uma das coisas mais simples que podem ser feitas para
+melhorar o desempenho é configurar NODE_ENV para “produção”.</p>
+<p>Configurando NODE_ENV para “produção” faz com que o Express:</p>
+<ul>
+<li>Armazene em Cache os modelos de visualização.</li>
+<li>Armazene em Cache arquivos CSS gerados a partir de extensões CSS.</li>
+<li>Gere menos mensagens de erro detalhadas</li>
+</ul>
+<p><a href="http://apmblog.dynatrace.com/2015/07/22/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/">Testes
+indicam</a> que apenas fazendo isso pode melhorar o desempenho por um fator de três!</p>
+<p>Se precisar escrever código específico por ambiente, é possível verificar o valor de NODE_ENV com <code>process.env.NODE_ENV</code>. Esteja
+ciente de que verificar o valor de qualquer variável de ambiente incorre em perda de desempenho, e por isso deve ser feito raramente.</p>
+<p>Em desenvolvimento, você tipicamente configura variáveis de ambiente no seu shell interativo, por exemplo, usando o
+<code>export</code> ou o seu arquivo <code>.bash_profile</code>. Mas
+em geral você não deveria fazer isto em um servidor de produção; ao invés disso, use o sistema de inicialização do seu sistema
+operacional (systemd ou Upstart). A próxima seção fornece mais detalhes sobre a utilização do seu sistema de inicialização em geral,
+mas configurando NODE_ENV é tão importante para o desempenho (e fácil de fazer), que está destacado aqui.</p>
+<p>Com o Upstart, use a palavra-chave <code>env</code> no
+seu arquivo de tarefa. Por exemplo:</p>
+<pre><code class="language-sh" translate="no">
+# /etc/init/env.conf
+ env NODE_ENV=production
+</code>
+</pre>
+<p>Para obter mais informações, consulte o <a href="http://upstart.ubuntu.com/cookbook/#environment-variables">Introdução, Cookbook e Melhores Práticas para o Upstart</a>.</p>
+<p>Com o systemd, use a diretiva <code>Environment</code> no seu arquivo de unidade. Por exemplo:</p>
+<pre><code class="language-sh" translate="no">
+# /etc/systemd/system/myservice.service
+Environment=NODE_ENV=production
+</code>
+</pre>
+<p>Para obter mais informações, consulte <a href="https://coreos.com/os/docs/latest/using-environment-variables-in-systemd-units.html">Usando
+Variáveis de Ambiente em Unidades systemd</a>.</p>
+<p>Se estiver usando o StrongLoop Process Manager, é possível também
+<a href="https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-Setenvironmentvariables">configurar
+a variável de ambiente ao instalar o StrongLoop PM como um serviço</a>.</p>
+<h3 id="assegure-que-o-seu-aplicativo-reinicie-automaticamente">Assegure que o seu aplicativo reinicie automaticamente</h3>
+<p>Em produção, não é desejado que seu aplicativo fique off-line,
+nunca. Isto significa que é necessário certificar-se de que ele
+reinicie tanto se o aplicativo cair quanto se o próprio servidor
+cair. Apesar de se esperar que nenhum desses eventos ocorram,
+realisticamente você deve considerar ambas as eventualidades:</p>
+<ul>
+<li>Usando um gerenciador de processos para reiniciar o aplicativo (e o Node) quando ele cair.</li>
+<li>Usando o sistema de inicialização fornecido pelo seu sistema operacional para reiniciar o gerenciador de processos quando o
+sistema operacional cair. Também é possível usar o sistema de inicialização sem um gerenciador de processos.</li>
+</ul>
+<p>Aplicativos do Node caem se encontrarem uma exceção não
+capturada. A principal coisa que precisa ser feita é assegurar que o
+seu aplicativo esteja bem testado e trate todas as exceções (consulte
+<a href="#exceptions">tratar exceções adequadamente</a> para
+obter detalhes). Mas por segurança, posicione um mecanismo para
+assegurar que se e quando o seu aplicativo cair, ele irá
+automaticamente reiniciar.</p>
+<h4 id="use-um-gerenciador-de-processos">Use um gerenciador de processos</h4>
+<p>Em desenvolvimento, você iniciou o seu aplicativo de forma simples a partir da linha de comandos com o <code>node server.js</code> ou
+algo similar. Mas fazer isso na produção é uma receita para o desastre. Se o aplicativo cair, ele ficará off-line até ser reiniciado. Para
+assegurar que o seu aplicativo reinicie se ele cair, use um gerenciador de processos. Um
+gerenciador de processos é um “contêiner” para aplicativos que facilita a implementação, fornece alta disponibilidade, e permite o
+gerenciamento do aplicativo em tempo real.</p>
+<p>Em adição à reinicialização do seu aplicativo quando cai, um
+gerenciador de processos pode permitir que você:</p>
+<ul>
+<li>Ganhe insights sobre o desempenho em tempo de execução e o consumo de recursos.</li>
+<li>Modifique configurações dinamicamente para melhorar o desempenho.</li>
+<li>Controle a clusterização (StrongLoop PM e pm2).</li>
+</ul>
+<p>Os gerenciador de processos mais populares para o Node são os
+seguintes:</p>
+<ul>
+<li><a href="http://strong-pm.io/">StrongLoop Process Manager</a></li>
+<li><a href="https://github.com/Unitech/pm2">PM2</a></li>
+<li><a href="https://www.npmjs.com/package/forever">Forever</a></li>
+</ul>
+<p>Para uma comparação recurso por recurso dos três gerenciadores
+de processos, consulte <a href="http://strong-pm.io/compare/">http://strong-pm.io/compare/</a>. Para
+obter uma introdução mais detalhada para todos os três, consulte <a href="pm.html">Gerenciadores de Processos para aplicativos do
+Express</a>.</p>
+<p>Usando qualquer um desses gerenciadores de processos será o
+suficiente para manter seu aplicativo funcionando, mesmo se ele cair
+de tempos em tempos.</p>
+<p>Entretanto, o StrongLoop PM possui vários recursos que são especificamente destinados para a implementação na produção. É possível usá-lo e as ferramentas relacionadas do StrongLoop para:</p>
+<ul>
+<li>Construir e empacotar seu aplicativo localmente, em seguida
+implemente-o seguramente para o seu sistema de produção.</li>
+<li>Automaticamente reiniciar seu aplicativo se ele cair por qualquer razão.</li>
+<li>Gerenciar seus clusters remotamente.</li>
+<li>Visualizar perfis de CPU e captura instantânea de heap para
+otimizar o desempenho e diagnosticar fugas de memória.</li>
+<li>Visualizar métricas de desempenho para o seu aplicativo.</li>
+<li>Facilmente escalar para múltiplos hosts com controle integrado para o balanceador de carga Nginx.</li>
+</ul>
+<p>Como explicado abaixo, ao instalar o StrongLoop PM como um serviço do sistema operacional usando o seu sistema de
+inicialização, ele irá automaticamente reiniciar quando o sistema reiniciar. Assim, ele irá manter seus processos do aplicativo e clusters ativos para sempre.</p>
+<h4 id="use-um-sistema-de-inicialização">Use um sistema de inicialização</h4>
+<p>A próxima camada de confiabilidade é para assegurar que o seu
+aplicativo reinicie quando o servidor reiniciar. Os sistemas podem
+ainda assim cair por uma variedade de razões. Para assegurar que o
+seu aplicativo reinicie se o servidor cair, use o sistema de
+inicialização integrado no seu sistema operacional. Os dois
+principais sistemas de inicialização usados atualmente são o
+<a href="https://wiki.debian.org/systemd">systemd</a> e o <a href="http://upstart.ubuntu.com/">Upstart</a>.</p>
+<p>Existem duas formas de usar sistemas de inicialização com o seu aplicativo Express:</p>
+<ul>
+<li>Executar o seu aplicativo em um gerenciador de processos, e instalar o gerenciador de processos com o sistema de inicialização. O gerenciador de processos irá reiniciar seu aplicativo quando o
+aplicativo cair, e o sistema de inicialização irá reiniciar o
+gerenciador de processos quando o sistema operacional reiniciar. Esta é a abordagem recomendada.</li>
+<li>Executar o seu aplicativo (e Node) diretamente com o sistema
+de inicialização. Isto é de certa forma mais simples, mas você não
+obtém as vantagens adicionais do uso de um gerenciador de processos.</li>
+</ul>
+<h5 id="systemd">Systemd</h5>
+<p>O Systemd é um sistema Linux e gerenciador de serviço. A
+maioria das distribuições principais do Linux adotaram o systemd como
+sistema de inicialização padrão.</p>
+<p>Um arquivo de configuração de serviço do systemd é chamado
+de <em>arquivo de unidade</em>, com um nome de arquivo
+terminando em .service. Aqui está um exemplo de arquivo de unidade
+para gerenciar um aplicativo Node diretamente (substitua o texto em
+negrito com valores para o seu sistema e aplicativo):</p>
+<pre><code class="language-sh" translate="no">
+[Unit]
+Description=Awesome Express App
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/node /projects/myapp/index.js
+WorkingDirectory=/projects/myapp
+
+User=nobody
+Group=nogroup
+
+# Environment variables:
+Environment=NODE_ENV=production
+
+# Allow many incoming connections
+LimitNOFILE=infinity
+
+# Allow core dumps for debugging
+LimitCORE=infinity
+
+StandardInput=null
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+</code>
+</pre>
+<p>Para obter mais informações sobre o systemd, consulte a
+<a href="http://www.freedesktop.org/software/systemd/man/systemd.unit.html">referência
+do systemd (página do manual)</a>.</p>
+<h5 id="strongloop-pm-como-um-serviço-do-systemd">StrongLoop PM como um serviço do systemd</h5>
+<p>É possível facilmente instalar o StrongLoop Process Manager
+como um serviço do systemd. Após fazer isso, quando o servidor
+reiniciar, ele irá automaticamente reiniciar o StrongLoop PM, que irá
+então reiniciar todos os aplicativos que está gerenciando.</p>
+<p>Para instalar o StrongLoop PM como um serviço do systemd:</p>
+<pre><code class="language-console">$ sudo sl-pm-install --systemd
+</code></pre>
+<p>Em seguida inicie o serviço com:</p>
+<pre><code class="language-console">$ sudo /usr/bin/systemctl start strong-pm
+</code></pre>
+<p>Para obter mais informações, consulte
+<a href="https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHEL7+,Ubuntu15.04or15.10">Configurando
+um host de produção (documentação do StrongLoop)</a>.</p>
+<h5 id="upstart">Upstart</h5>
+<p>O Upstart é uma ferramenta de sistema disponível em muitas distribuições Linux para inicialização de tarefas e serviços durante
+a inicialização do sistema, parando-os durante o encerramento, e
+supervisionando-os. É possível configurar seu aplicativo Express ou
+gerenciador de processos como um serviço e em seguida o Upstart irá
+automaticamente reiniciá-lo quando ele cair.</p>
+<p>Um serviço do Upstart é definido em um arquivo de configuração de tarefa
+(também chamado de uma “tarefa”) com o nome do arquivo terminando com
+<code>.conf</code>. O seguinte exemplo mostra como criar uma
+tarefa chamada “myapp” para um aplicativo chamado “myapp” com o
+arquivo principal localizado em <code>/projects/myapp/index.js</code>.</p>
+<p>Crie um arquivo chamado <code>myapp.conf</code> em
+<code>/etc/init/</code> com o seguinte conteúdo (substitua o
+texto em negrito com os valores para o seu sistema e aplicativo):</p>
+<pre><code class="language-sh" translate="no">
+# When to start the process
+start on runlevel [2345]
+
+# When to stop the process
+stop on runlevel [016]
+
+# Increase file descriptor limit to be able to handle more requests
+limit nofile 50000 50000
+
+# Use production mode
+env NODE_ENV=production
+
+# Run as www-data
+setuid www-data
+setgid www-data
+
+# Run from inside the app dir
+chdir /projects/myapp
+
+# The process to start
+exec /usr/local/bin/node /projects/myapp/index.js
+
+# Restart the process if it is down
+respawn
+
+# Limit restart attempt to 10 times within 10 seconds
+respawn limit 10 10
+</code>
+</pre>
+<p>NOTA: Este script requer o Upstart 1.4 ou mais novo, suportado no Ubuntu 12.04-14.10.</p>
+<p>Como a tarefa está configurada para executar quando o sistema
+inicia, seu aplicativo será iniciado juntamente com o sistema
+operacional, e automaticamente reiniciado se o aplicativo ou o
+sistema cair.</p>
+<p>À parte da reinicialização automática do aplicativo, o Upstart
+permite que você use estes comandos:</p>
+<ul>
+<li><code>start myapp</code> – Inicia o aplicativo</li>
+<li><code>restart myapp</code> – Reinicia o aplicativo</li>
+<li><code>stop myapp</code> – Para o aplicativo</li>
+</ul>
+<p>Para obter mais informações sobre o Upstart, consulte a
+<a href="http://upstart.ubuntu.com/cookbook">Introdução, Cookbook,
+e Melhores Práticas para o Upstart</a>.</p>
+<h5 id="strongloop-pm-como-um-serviço-do-upstart">StrongLoop PM como um serviço do Upstart</h5>
+<p>É possível facilmente instalar o StrongLoop Process Manager
+como um serviço do Upstart. Após fazer isso, quando o servidor
+reiniciar, ele irá automaticamente reiniciar o StrongLoop PM, que irá
+então reiniciar todos os aplicativos que está gerenciando.</p>
+<p>Para instalar o StrongLoop PM como um serviço do Upstart 1.4:</p>
+<pre><code class="language-console">$ sudo sl-pm-install
+</code></pre>
+<p>Em seguida execute o serviço com:</p>
+<pre><code class="language-console">$ sudo /sbin/initctl start strong-pm
+</code></pre>
+<p>NOTA: Em sistemas que não suportam o Upstart 1.4, os comandos
+são ligeiramente diferentes. Consulte <a href="https://docs.strongloop.com/display/SLC/Setting+up+a+production+host#Settingupaproductionhost-RHELLinux5and6,Ubuntu10.04-.10,11.04-.10">Configurando
+um host de produção (documentação do StrongLoop)</a> para obter mais informações.</p>
+<h3 id="execute-seu-aplicativo-em-um-cluster">Execute seu aplicativo em um cluster</h3>
+<p>Em um sistema com múltiplos núcleos, é possível aumentar o
+desempenho de um aplicativo Node em muitas vezes ativando um cluster
+de processos. Um cluster executa múltiplas instâncias do aplicativo,
+idealmente uma instância em cada núcleo da CPU, assim distribuindo a carga e as
+tarefas entre as instâncias.</p>
+
+<p>IMPORTANTE: Como as instâncias do aplicativo são executadas em processos separados, elas não compartilham o mesmo espaço de memória. Isto é, os objetos são locais para cada instância do aplicativo. Portanto, não é possível manter o estado no código do aplicativo. Entretanto, é possível usar um armazenamento de dados em memória como o <a href="http://redis.io/">Redis</a> para armazenar dados
+relativos à sessão e ao estado. Este alerta aplica-se a essencialmente todas as formas de escalonamento horizontal, seja a
+clusterização com múltiplos processos ou múltiplos servidores físicos.</p>
+<p>Em aplicativos clusterizados, processos de trabalho podem cair individualmente sem afetar o restante dos processos. Fora as vantagens de desempenho, o isolamento de falhas é outra razão para executar um cluster de processos de aplicativos. Sempre que processo de trabalho cair, certifique-se de registrar os logs do evento e spawn um novo processo usando cluster.fork().</p>
+<h4 id="usando-o-módulo-de-cluster-do-node">Usando o módulo de cluster do Node</h4>
+<p>A clusterização é pode ser feita com o <a href="https://nodejs.org/docs/latest/api/cluster.html">módulo de
+cluster</a> do Node. Isto permite que um processo principal faça o
+spawn de processos de trabalho e distribua conexões recebidas entre
+os trabalhadores. Entretanto, em vez de usar este módulo diretamente,
+é muito melhor usar uma das muitas ferramentas que fazem isso
+automaticamente por você; por exemplo o <a href="https://www.npmjs.com/package/node-pm">node-pm</a> ou
+o <a href="https://www.npmjs.com/package/cluster-service">cluster-service</a>.</p>
+<h4 id="usando-o-strongloop-pm">Usando o StrongLoop PM</h4>
+<p>Se você implementar seu aplicativo no StrongLoop Process Manager
+(PM), então é possível tirar vantagem da clusterização
+<em>sem</em> modificar o código do seu aplicativo.</p>
+<p>Quando o StrongLoop Process Manager (PM) executa um aplicativo,
+ele automaticamente executa-o em um cluster com um número de
+trabalhadores igual ao número de núcleos de CPU do sistema. É
+possível manualmente alterar o número de processos de trabalho no
+cluster usando a ferramenta de linha de comandos slc sem parar o
+aplicativo.</p>
+<p>Por exemplo, assumindo que tenha implementado o seu aplicativo
+para prod.foo.com e o StrongLoop PM está escutando na porta 8701 (a
+padrão), em seguida configurar o tamanho do cluster para oito usando
+o slc:</p>
+<pre><code class="language-console">$ slc ctl -C http://prod.foo.com:8701 set-size my-app 8
+</code></pre>
+<p>Para obter mais informações sobre clusterização com o StrongLoop
+PM, consulte por <a href="https://docs.strongloop.com/display/SLC/Clustering">Clusterização</a>
+na documentação do StrongLoop.</p>
+<h3 id="armazene-em-cache-os-resultados-das-solicitações">Armazene em cache os resultados das solicitações</h3>
+<p>Outra estratégia para melhorar o desempenho na produção é
+armazenar em cache o resultado de solicitações, para que o seu
+aplicativo não repita a operação para entregar a mesma solicitação
+repetidamente.</p>
+<p>Use um servidor de armazenamento em cache como o
+<a href="https://www.varnish-cache.org/">Varnish</a> ou o
+<a href="https://www.nginx.com/resources/wiki/start/topics/examples/reverseproxycachingexample/">Nginx</a>
+(consulte também <a href="https://serversforhackers.com/nginx-caching/">Armazenamento
+em Cache no Nginx</a>) para melhorar imensamente a velocidade e o
+desempenho do seu aplicativo.</p>
+<h3 id="use-um-balanceador-de-carga">Use um balanceador de carga</h3>
+<p>Não importa o quão otimizado um aplicativo é, uma única
+instância pode manipular apenas uma quantidade limitada de carga e
+tráfego. Uma maneira de escalar um aplicativo é executar múltiplas
+instâncias do mesmo e distribuir o tráfego através de um balanceador
+de carga. Configurar um balanceador de carga pode melhorar o
+desempenho e velocidade do aplicativo, e permiti-lo escalar mais do
+que é possível com uma instância única.</p>
+<p>Um balanceador de carga é geralmente um proxy reverso que
+orquestra o tráfego para e de múltiplas instâncias de aplicativo e
+servidores. É possível facilmente configurar um balanceador de carga
+para o seu aplicativo usando o <a href="http://nginx.org/en/docs/http/load_balancing.html">Nginx</a>
+ou o <a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-haproxy-and-load-balancing-concepts">HAProxy</a>.</p>
+<p>Com o balanceamento de carga, você pode ter que garantir que
+solicitações que estão associadas com um ID de sessão em particular
+conectam ao processo que as originou. Isto é conhecido como
+<em>afinidade de sessão</em>, ou <em>sessões
+pegajosas</em>, e podem ser endereçadas pela sugestão acima para
+usar um armazenamento de dados como o Redis para os dados da sessão
+(dependendo do seu aplicativo). Para uma discussão, consulte por
+<a href="https://socket.io/docs/using-multiple-nodes">Usando
+múltiplos nós</a>.</p>
+<h4 id="usando-o-strongloop-pm-com-um-balanceador-de-carga-nginx">Usando o StrongLoop PM com um balanceador de carga Nginx</h4>
+<p>O <a href="http://strong-pm.io/">StrongLoop Process
+Manager</a> é integrado com um Controlador Nginx, tornando mais
+fácil a configurar configurações de ambientes de produção com
+múltiplos hosts. Para obter mais informações, consulte por
+<a href="https://docs.strongloop.com/display/SLC/Scaling+to+multiple+servers">Escalando
+para servidores múltiplos</a> (documentação do StrongLoop).
+<a name="proxy"></a></p>
+<h3 id="use-um-proxy-reverso">Use um proxy reverso</h3>
+<p>Um proxy reverso fica em frente a um aplicativo web e executa
+operações de suporte nas solicitações, fora o direcionamento de
+solicitações para o aplicativo. Ele pode lidar com páginas de erro,
+compactação, armazenamento em cache, entrega de arquivos, e
+balanceamento de carga entre outras coisas.</p>
+<p>Entregar tarefas que não requerem conhecimento do estado do
+aplicativo para um proxy reverso libera o Express para executar
+tarefas especializadas de aplicativos. Por esta razão, é recomendado
+executar o Express atrás de um proxy reverso como o
+<a href="https://www.nginx.com/">Nginx</a> ou o
+<a href="http://www.haproxy.org/">HAProxy</a> na produção.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> é um projeto da <a href="https://openjsf.org">Fundação Node.js</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Crie um Fork do website no GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., e outros contribuidores do expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Este obra está licenciado com uma Licença <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Atribuição-CompartilhaIgual 3.0 Estados Unidos</a>.
+</div>
+</footer>
+<script type="dc04ac3abfa84dcbdafd18b5-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:pt-br'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="dc04ac3abfa84dcbdafd18b5-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/pt-br/advanced/best-practice-performance.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-cn/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 错误处理</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-cn.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">主页</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入门</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安装
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 生成器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静态文件
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常见问题及解答
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">指南</a>
+<ul>
+<li><a href="routing.html">路由</a>
+</li>
+<li><a href="writing-middleware.html">编写中间件</a>
+</li>
+<li><a href="using-middleware.html">使用中间件</a>
+</li>
+<li><a href="using-template-engines.html">使用模板引擎</a>
+</li>
+<li><a href="error-handling.html">错误处理</a>
+</li>
+<li><a href="debugging.html">调试</a>
+</li>
+<li><a href="behind-proxies.html">代理背后的 Express</a>
+</li>
+<li><a href="migrating-4.html">迁移到 Express 4</a>
+</li>
+<li><a href="migrating-5.html">迁移到 Express 5</a>
+</li>
+<li><a href="database-integration.html">数据库集成</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 参考</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（不推荐）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（不推荐）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高级主题</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">模板引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用进程管理器</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳实践</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">性能最佳实践</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">资源</a>
+<ul>
+<li><a href="../resources/glossary.html">词汇表</a>
+</li>
+<li><a href="../resources/middleware.html">中间件</a>
+</li>
+<li><a href="../resources/community.html">社区</a>
+</li>
+<li><a href="../resources/learning.html">额外学习</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>这个翻译<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相对于英文版的文档，本文档可能已过时。要了解最近的更新，请参阅<a href="../../index.html">英文版文档</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="错误处理">错误处理</h1>
+<p>错误处理中间件函数的定义方式与其他中间件函数基本相同，差别在于错误处理函数有四个自变量而不是三个：<code>(err, req, res, next)</code>：例如：</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+<p>请在其他 <code>app.use()</code> 和路由调用之后，最后定义错误处理中间件，例如：</p>
+<pre><code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(function(err, req, res, next) {
+  // logic
+});
+</code>
+</pre>
+<p>中间件函数中的响应可以采用您首选的任何格式，例如，HTML 错误页、简单消息或 JSON 字符串。</p>
+<p>出于组织（和更高级框架）的目的，可以定义若干错误处理中间件函数，这和对常规中间件函数的处理很相似。例如，如果您希望为使用 <code>XHR</code> 发出的请求以及未使用此对象发出的请求定义错误处理程序，可以使用以下命令：</p>
+<pre><code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
+</code>
+</pre>
+<p>在此示例中，通用 <code>logErrors</code> 可能将请求和错误信息写入 <code>stderr</code>，例如：</p>
+<pre><code class="language-javascript" translate="no">
+function logErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
+</code>
+</pre>
+<p>也是在此示例中，<code>clientErrorHandler</code> 定义如下，错误会显式传递到下一项：</p>
+<pre><code class="language-javascript" translate="no">
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' });
+  } else {
+    next(err);
+  }
+}
+</code>
+</pre>
+<p>“catch-all”<code>errorHandler</code> 函数可以如下实现：</p>
+<pre><code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code>
+</pre>
+<p>如果将任何项传递到 <code>next()</code> 函数（除了字符串 <code>'route'</code>），那么 Express 会将当前请求视为处于错误状态，并跳过所有剩余的非错误处理路由和中间件函数。如果您希望以某种方式处理此错误，必须如下一节中所述创建一个错误处理路由。</p>
+<p>如果一个路由处理程序具有多个回调函数，那么可以使用 <code>route</code> 参数跳至下一个路由处理程序。例如：</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/a_route_behind_paywall',
+  function checkIfPaidSubscriber(req, res, next) {
+    if(!req.user.hasPaid) {
+
+      // continue handling this request
+      next('route');
+    }
+  }, function getPaidContent(req, res, next) {
+    PaidContent.find(function(err, doc) {
+      if(err) return next(err);
+      res.json(doc);
+    });
+  });
+</code>
+</pre>
+<p>在此示例中，将跳过 <code>getPaidContent</code> 处理程序，而将继续执行 <code>/a_route_behind_paywall</code> 的 <code>app</code> 中所有剩余的处理程序。</p>
+<div class="doc-box doc-info">
+<p>对 <code>next()</code> 和 <code>next(err)</code> 的调用会表明当前处理程序是否完整以及处于何种状态。<code>next(err)</code> 将跳过链中所有剩余的处理程序（设置为按上述方式处理错误的处理程序除外）。</p>
+</div>
+<h2 id="缺省错误处理程序">缺省错误处理程序</h2>
+<p>Express 随附一个内置的错误处理程序，负责处理应用程序中可能遇到的任何错误。这个缺省的错误处理中间件函数添加在中间件函数集的末尾。</p>
+<p>如果将错误传递到 <code>next()</code> 且未在错误处理程序中进行处理，那么该错误将由内置的错误处理程序处理；错误将写入客户机的堆栈跟踪内。堆栈跟踪不包含在生产环境中。</p>
+<div class="doc-box doc-info">
+<p>将环境变量 <code>NODE_ENV</code> 设置为 <code>production</code>，以生产方式运行此应用程序。</p>
+</div>
+<p>如果在开始写响应之后调用 <code>next()</code> 时出错（例如，如果在以流式方式将响应传输到客户机时遇到错误），Express 缺省错误处理程序会关闭连接并使请求失败。</p>
+<p>因此，在添加定制错误处理程序时，如果头已发送到客户机，您可能希望委托给 Express 中的缺省错误处理机制处理：</p>
+<pre><code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code>
+</pre>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金会的</a>一个项目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">在 GitHub 上派生出网站</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本作品采用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">知识共享署名-相同方式共享 3.0 美国许可协议</a>进行许可。
+</div>
+</footer>
+<script type="7e56641b4bdda48e613ff38f-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-cn'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="7e56641b4bdda48e613ff38f-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-cn/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

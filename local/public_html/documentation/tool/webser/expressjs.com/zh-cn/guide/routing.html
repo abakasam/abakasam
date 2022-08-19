@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-cn/guide/routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 路由</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-cn.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">主页</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入门</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安装
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 生成器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静态文件
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常见问题及解答
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">指南</a>
+<ul>
+<li><a href="routing.html">路由</a>
+</li>
+<li><a href="writing-middleware.html">编写中间件</a>
+ </li>
+<li><a href="using-middleware.html">使用中间件</a>
+</li>
+<li><a href="using-template-engines.html">使用模板引擎</a>
+</li>
+<li><a href="error-handling.html">错误处理</a>
+</li>
+<li><a href="debugging.html">调试</a>
+</li>
+<li><a href="behind-proxies.html">代理背后的 Express</a>
+</li>
+<li><a href="migrating-4.html">迁移到 Express 4</a>
+</li>
+<li><a href="migrating-5.html">迁移到 Express 5</a>
+</li>
+<li><a href="database-integration.html">数据库集成</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 参考</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（不推荐）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（不推荐）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高级主题</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">模板引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用进程管理器</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳实践</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">性能最佳实践</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">资源</a>
+<ul>
+<li><a href="../resources/glossary.html">词汇表</a>
+</li>
+<li><a href="../resources/middleware.html">中间件</a>
+</li>
+<li><a href="../resources/community.html">社区</a>
+</li>
+<li><a href="../resources/learning.html">额外学习</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>这个翻译<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相对于英文版的文档，本文档可能已过时。要了解最近的更新，请参阅<a href="../../index.html">英文版文档</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="路由">路由</h1>
+<p><em>路由</em>表示应用程序端点 (URI) 的定义以及端点响应客户机请求的方式。
+有关路由的简介，请参阅<a href="../starter/basic-routing.html">基本路由</a>。</p>
+<p>我们所使用的 app 与 HTTP 方法相对应的 Express 对象方法来定义路由，如 <code>app.get()</code> 用于处理 GET 请求，而 <code>app.post</code> 则用于处理 POST 请求。</p>
+<p>这些路由方法都指定了回调函数（或者：“处理程序函数”），当程序接收到指定的路由（端点）的时候（也就是说 HTTP 方法请求时被调用），来调用回调函数，换句话说就是应用程序监听与指定路由和方法匹配的请求，当检测到匹配时，他会调用对应的回调函数。</p>
+<p>以下代码是非常基本的路由示例。</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+// 当对主页发出 GET 请求时，响应“hello world”
+app.get('/', function(req, res) {
+  res.send('hello world');
+});
+</code>
+</pre>
+<h2 id="route-methods">路由方法</h2>
+<p>路由方法派生自 HTTP 方法之一，附加到 <code>express</code> 类的实例。</p>
+<p>以下代码是为访问应用程序根目录的 GET 和 POST 方法定义的路由示例。</p>
+<pre><code class="language-javascript" translate="no">
+// GET method route
+app.get('/', function (req, res) {
+  res.send('GET request to the homepage');
+});
+
+// POST method route
+app.post('/', function (req, res) {
+  res.send('POST request to the homepage');
+});
+</code>
+</pre>
+<p>Express 支持对应于 HTTP 方法的以下路由方法：<code>get</code>、<code>post</code>、<code>put</code>、<code>head</code>、<code>delete</code>、<code>options</code>、<code>trace</code>、<code>copy</code>、<code>lock</code>、<code>mkcol</code>、<code>move</code>、<code>purge</code>、<code>propfind</code>、<code>proppatch</code>、<code>unlock</code>、<code>report</code>、<code>mkactivity</code>、<code>checkout</code>、<code>merge</code>、<code>m-search</code>、<code>notify</code>、<code>subscribe</code>、<code>unsubscribe</code>、<code>patch</code>、<code>search</code> 和 <code>connect</code>。</p>
+<div class="doc-box doc-info">
+<p>要路由会转换为无效 JavaScript 变量名称的方法，请使用括号表示法。例如，<code>app['m-search']('/', function ...</code></p>
+</div>
+<p>有一种特殊路由方法：<code>app.all()</code>，它并非派生自 HTTP 方法。该方法用于在所有请求方法的路径中装入中间件函数。</p>
+<p>在以下示例中，无论您使用 GET、POST、PUT、DELETE 还是在 <a href="https://nodejs.org/api/http.html#http_http_methods">http 模块</a>中支持的其他任何 HTTP 请求方法，都将为针对“/secret”的请求执行处理程序。</p>
+<pre><code class="language-javascript" translate="no">
+app.all('/secret', function (req, res, next) {
+  console.log('Accessing the secret section ...');
+  next(); // pass control to the next handler
+});
+</code>
+</pre>
+<h2 id="route-paths">路由路径</h2>
+<p>路由路径与请求方法相结合，用于定义可以在其中提出请求的端点。路由路径可以是字符串、字符串模式或正则表达式。</p>
+<div class="doc-box doc-info">
+<p>Express 使用 <a href="https://www.npmjs.com/package/path-to-regexp">path-to-regexp</a> 来匹配路由路径；请参阅 path-to-regexp 文档以了解定义路由路径时所有的可能性。<a href="http://forbeslindesay.github.io/express-route-tester/">Express Route Tester</a> 是用于测试基本 Express 路由的便捷工具，但是它不支持模式匹配。</p>
+</div>
+<div class="doc-box doc-warn">
+<p>查询字符串不是路由路径的一部分。</p>
+</div>
+<p>以下是基于字符串的路由路径的一些示例。</p>
+<p>此路由路径将请求与根路由 <code>/</code> 匹配。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.send('root');
+});
+</code>
+</pre>
+<p>此路由路径将请求与 <code>/about</code> 匹配。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/about', function (req, res) {
+  res.send('about');
+});
+</code>
+</pre>
+<p>此路由路径将请求与 <code>/random.text</code> 匹配。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/random.text', function (req, res) {
+  res.send('random.text');
+});
+</code>
+</pre>
+<p>以下是基于字符串模式的路由路径的一些示例。</p>
+<p>此路由路径将匹配 <code>acd</code> 和 <code>abcd</code>。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab?cd', function(req, res) {
+  res.send('ab?cd');
+});
+</code>
+</pre>
+<p>此路由路径将匹配 <code>abcd</code>、<code>abbcd</code>、<code>abbbcd</code> 等。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab+cd', function(req, res) {
+  res.send('ab+cd');
+});
+</code>
+</pre>
+<p>此路由路径将匹配 <code>abcd</code>、<code>abxcd</code>、<code>abRABDOMcd</code>、<code>ab123cd</code> 等。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab*cd', function(req, res) {
+  res.send('ab*cd');
+});
+</code>
+</pre>
+<p>此路由路径将匹配 <code>/abe</code> 和 <code>/abcde</code>。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab(cd)?e', function(req, res) {
+ res.send('ab(cd)?e');
+});
+</code>
+</pre>
+<div class="doc-box doc-info">
+<p>字符 ?、+、* 和 () 是其正则表达式同应项的子集。基于字符串的路径按字面理解连字符 (-) 和点 (.)。</p>
+</div>
+<p>基于正则表达式的路由路径的示例：</p>
+<p>此路由路径将匹配名称中具有“a”的所有路由。</p>
+<pre><code class="language-javascript" translate="no">
+app.get(/a/, function(req, res) {
+  res.send('/a/');
+});
+</code>
+</pre>
+<p>此路由路径将匹配 <code>butterfly</code> 和 <code>dragonfly</code>，但是不匹配 <code>butterflyman</code>、<code>dragonfly man</code> 等。</p>
+<pre><code class="language-javascript" translate="no">
+app.get(/.*fly$/, function(req, res) {
+  res.send('/.*fly$/');
+});
+</code>
+</pre>
+<h2 id="route-handlers">路由处理程序</h2>
+<p>您可以提供多个回调函数，以类似于<a href="using-middleware.html">中间件</a>的行为方式来处理请求。唯一例外是这些回调函数可能调用 <code>next('route')</code> 来绕过剩余的路由回调。您可以使用此机制对路由施加先决条件，在没有理由继续执行当前路由的情况下，可将控制权传递给后续路由。</p>
+<p>路由处理程序的形式可以是一个函数、一组函数或者两者的结合，如以下示例中所示。</p>
+<p>单个回调函数可以处理一个路由。例如：</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/example/a', function (req, res) {
+  res.send('Hello from A!');
+});
+</code>
+</pre>
+<p>多个回调函数可以处理一个路由（确保您指定 <code>next</code> 对象）。例如：</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/example/b', function (req, res, next) {
+  console.log('the response will be sent by the next function ...');
+  next();
+}, function (req, res) {
+  res.send('Hello from B!');
+});
+</code>
+</pre>
+<p>一组回调函数可以处理一个路由。例如：</p>
+<pre><code class="language-javascript" translate="no">
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+var cb2 = function (req, res) {
+  res.send('Hello from C!');
+}
+
+app.get('/example/c', [cb0, cb1, cb2]);
+</code>
+</pre>
+<p>独立函数与一组函数的组合可以处理一个路由。例如：</p>
+<pre><code class="language-javascript" translate="no">
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+app.get('/example/d', [cb0, cb1], function (req, res, next) {
+  console.log('the response will be sent by the next function ...');
+  next();
+}, function (req, res) {
+  res.send('Hello from D!');
+});
+</code>
+</pre>
+<h2 id="response-methods">响应方法</h2>
+<p>下表中响应对象 (<code>res</code>) 的方法可以向客户机发送响应，并终止请求/响应循环。如果没有从路由处理程序调用其中任何方法，客户机请求将保持挂起状态。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../4x/api.html#res.download">res.download()</a></td>
+<td>提示将要下载文件。</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.end">res.end()</a></td>
+<td>结束响应进程。</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.json">res.json()</a></td>
+<td>发送 JSON 响应。</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.jsonp">res.jsonp()</a></td>
+<td>在 JSONP 的支持下发送 JSON 响应。</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.redirect">res.redirect()</a></td>
+<td>重定向请求。</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.render">res.render()</a></td>
+<td>呈现视图模板。</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.send">res.send()</a></td>
+<td>发送各种类型的响应。</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.sendFile">res.sendFile()</a></td>
+<td>以八位元流形式发送文件。</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.sendStatus">res.sendStatus()</a></td>
+<td>设置响应状态码并以响应主体形式发送其字符串表示。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="app-route">app.route()</h2>
+<p>您可以使用 <code>app.route()</code> 为路由路径创建可链接的路由处理程序。
+因为在单一位置指定路径，所以可以减少冗余和输入错误。有关路由的更多信息，请参阅 <a href="../4x/api.html#router">Router() 文档</a>。</p>
+<p>以下是使用 <code>app.route()</code> 定义的链式路由处理程序的示例。</p>
+<pre><code class="language-javascript" translate="no">
+app.route('/book')
+  .get(function(req, res) {
+    res.send('Get a random book');
+  })
+  .post(function(req, res) {
+    res.send('Add a book');
+  })
+  .put(function(req, res) {
+    res.send('Update the book');
+  });
+</code>
+</pre>
+<h2 id="express-router">express.Router</h2>
+<p>使用 <code>express.Router</code> 类来创建可安装的模块化路由处理程序。<code>Router</code> 实例是完整的中间件和路由系统；因此，常常将其称为“微型应用程序”。</p>
+<p>以下示例将路由器创建为模块，在其中装入中间件，定义一些路由，然后安装在主应用程序的路径中。</p>
+<p>在应用程序目录中创建名为 <code>birds.js</code> 的路由器文件，其中包含以下内容：</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var router = express.Router();
+
+// middleware that is specific to this router
+router.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+});
+// define the home page route
+router.get('/', function(req, res) {
+  res.send('Birds home page');
+});
+// define the about route
+router.get('/about', function(req, res) {
+  res.send('About birds');
+});
+
+module.exports = router;
+</code>
+</pre>
+<p>接着，在应用程序中装入路由器模块：</p>
+<pre><code class="language-javascript" translate="no">
+var birds = require('./birds');
+...
+app.use('/birds', birds);
+</code>
+</pre>
+<p>此应用程序现在可处理针对 <code>/birds</code> 和 <code>/birds/about</code> 的请求，调用特定于此路由的 <code>timeLog</code> 中间件函数。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金会的</a>一个项目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">在 GitHub 上派生出网站</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本作品采用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">知识共享署名-相同方式共享 3.0 美国许可协议</a>进行许可。
+</div>
+</footer>
+<script type="b9f288374d1db3fe0180d70c-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-cn'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="b9f288374d1db3fe0180d70c-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-cn/guide/routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

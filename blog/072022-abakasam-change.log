@@ -1,3 +1,531 @@
+#lines[${#lines[@]}]="${#lines[@]} $line"
+
+declare -A path
+
+path[heroku]=/heroku-7.60.2/bin
+
+Difficulty dealing with TODO
+ Need to handle duplicates
+  Going off the title
+   Add to Github
+
+TODO: Add method to run VSCode server
+
+export PASSWORD="password" && ./code-server --port 9999 --host 0.0.0.0
+
+TODO: Attach to one program running on Heroku log owl
+
+https://docs.logowl.io/docs/nodejs-adapter
+
+TODO: Install clang with cl.exe extension
+
+Install clang: https://www.cnblogs.com/lfri/p/15383628.html
+Use cl.exe: https://blog.csdn.net/u010087338/article/details/119141342
+
+https://clang.llvm.org/docs/UsersManual.html#objcxx
+
+wget https://github.com/cdr/code-server/releases/download/3.4.1/code-server-3.4.1-linux-x86_64.tar.gz 
+tar -xvzf code-server-3.4.1-linux-x86_64.tar.gz 
+ms-vscode.cpptools-1.12.0@linux-x64.vsix
+
+mv code-server-3.4.1-linux-x86_64.tar.gz code-server
+
+https://port-9999-drifty-abakasam720639.codeanyapp.com/
+
+/home/cabox/.local/share/code-server/extensions/
+https://code.visualstudio.com/docs/cpp/config-msvc
+http://m.oh100.com/kaoshi/caozuoxitong/604839.html
+https://code.visualstudio.com/docs/languages/cpp
+https://code.visualstudio.com/docs/cpp/config-msvc
+https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools
+https://releases.llvm.org/download.html
+https://clang.llvm.org/
+https://blog.csdn.net/WxqHUT/article/details/103944511
+https://www.cnblogs.com/bluestorm/p/10837564.html
+
+
+http://tiaocaoer.com/blog/centos_codeserver.html
+https://www.cnblogs.com/learnsth/p/14673115.html
+
+glibc-2.25-6.fc26.i686.rpm
+
+http://eleaction01.spaces.eepw.com.cn/articles/article/item/185831
+https://www.oschina.net/news/81653/glibc-2-25
+https://sourceware.org/glibc/wiki/Release/2.25
+https://download.csdn.net/download/jincieryigxp/10240234
+
+https://koji.fedoraproject.org/koji/buildinfo?buildID=495969
+https://koji.fedoraproject.org/koji/buildinfo?buildID=945509
+http://rpmfind.net/linux/rpm2html/search.php?query=glibc&submit=Search+...&system=&arch=
+
+tar -xvf glibc-2.25.tar.gz
+cd glibc-2.25
+mkdir build
+cd build
+../configure
+ --prefix=/usr
+ --disable-profile
+ --enable-add-ons
+ --with-headers=/usr/include
+ --with-binutils=/usr/bin
+make
+make install
+
+../configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin
+
+The program AS is required in version >= 2.24 for target x86_64
+
+https://blog.csdn.net/dm569263708/article/details/125201512
+
+tar -xvf glibc-2.25.tar.gz
+cd glibc-2.25
+mkdir build
+cd build
+../configure
+ --prefix=/usr
+ --disable-profile
+ --enable-add-ons
+ --with-headers=/usr/include
+ --with-binutils=/usr/bin
+make
+make install
+
+https://docs.microsoft.com/en-us/windows/wsl/
+
+https://www.npmjs.com/package/@aminya/windows-build-tools
+without wine
+npm
+
+TODO: OneDrive linux sync
+
+https://centos.pkgs.org/7/harbottle-main-x86_64/onedrive-2.4.19-1.el7.harbottle.x86_64.rpm.html
+https://github.com/abraunegg/onedrive
+https://abraunegg.github.io/
+
+TODO: Compile .c to .asm add .code32
+
+.c to .S AT&T assembly file
+ https://blog.csdn.net/weixin_26971157/article/details/116690307, https://blog.csdn.net/cdm_xu/article/details/4248576?locationNum=7&fps=1
+  gcc file.c -S -o file.S
+.c to .asm ? assembly
+ https://docs.microsoft.com/en-us/cpp/build/reference/fa-fa-listing-file?view=msvc-170, https://docs.microsoft.com/en-us/cpp/build/reference/compiler-command-line-syntax?view=msvc-170
+  cl /FA file.c  
+
+https://constexpr.org/innoextract/#use
+cl.exe is a tool that controls the Microsoft C++ (MSVC) C and C++ compilers and linker.
+
+https://github.com/appleseedhq/windows-deps/releases/download/v21/windows-deps-stage-win64-vc140-v21.zip
+https://social.msdn.microsoft.com/Forums/ar-SA/e0e541d9-5421-4297-8018-7c6a0f12ae62/compile-assembly-generated-by-cl?forum=whatforum
+
+https://blog.csdn.net/weixin_26971157/article/details/116690307
+https://my.oschina.net/simpower91/blog/1823965
+https://www.runoob.com/w3cnote/gcc-parameter-detail.html
+https://www.csdn.net/tags/MtTaIgwsMDAwNTItYmxvZwO0O0OO0O0O.html
+https://blog.csdn.net/qq_17691347/article/details/70258150
+
+make[2]: Entering directory `/home/cabox/workspace/desktop/gcc/mpc-0.8.1/mpfr-2.3.1/gmp-4.1.0/mpn'
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I.. -D__GMP_WITHIN_GMP -I.. -DOPERATION_`echo mul_fft | sed 's/_$//'`    -g -O2 -fomit-frame-pointer -c -o mul_fft.lo `test -f mul_fft.c || echo './'`mul_fft.c
+gcc -DHAVE_CONFIG_H -I. -I. -I.. -D__GMP_WITHIN_GMP -I.. -DOPERATION_mul_fft -g -O2 -fomit-frame-pointer -c mul_fft.c  -fPIC -DPIC -o .libs/mul_fft.o
+
+selinux
+
+https://gmplib.org/repo/gmp/file/bd5a4f71ba4f
+
+https://gmplib.org/devel/repo-usage
+https://gmplib.org/repo/gmp/
+
+host:		gmplib.org
+path:		repo/gmp
+revision:	bd5a4f71ba4f
+
+https://gmplib.org/repo/gmp#bd5a4f71ba4f
+
+indicates a changeset which can be specified as a changeset revision number, a tag, or a unique substring of the changeset hash value
+
+
+https://www.mercurial-scm.org/doc/hg.1.html#url-paths/
+https://gmplib.org/repo/gmp-6.2/
+https://gmplib.org/repo/gmp/rev/gmp-4_1
+
+local/filesystem/path[#revision]
+file://local/filesystem/path[#revision]
+http://[user[:pass]@]host[:port]/[path][#revision]
+https://[user[:pass]@]host[:port]/[path][#revision]
+ssh://[user@]host[:port]/[path][#revision]
+
+https://host
+
+host/path#revision
+
+https://gmplib.org/repo/gmp/file/gmp-4_1
+https://gmplib.org/devel/repo-usage
+
+http://www-cs-students.stanford.edu/~blynn/gitmagic/ch03.html 
+https://gmplib.org/repo/gmp/file/bd5a4f71ba4f
+
+BUG: dive_1.c:89 error: register type mismatch for bsf
+
+https://codeforwin.org/2016/01/c-program-to-count-trailing-zeros-in-binary-number-using-bitwise-operator.html
+https://blog.csdn.net/cunchi4221/article/details/107478205
+https://gcc.gnu.org/mirrors.html
+
+BUG: tmp-add_n.s:7: error: invalid instruction suffix for 'push'
+
+https://mpfr.loria.fr/mpfr-current/mpfr-2.3.1.tar.gz
+https://www.gnu.org/savannah-checkouts/gnu/autoconf/manual/autoconf-2.71/autoconf.html#Making-configure-Scripts
+add .code32
+https://blog.csdn.net/HMSIWTV/article/details/7710582
+
+TODO: Fix gmp-impl.h find (Complete)
+cp gmp-impl.h to /usr/local/include
+gmp 2.0.2
+
+TODO: configure: error: echo gmp-impl.h not found in gmp-2.0.2
+1499
+with_gmp_include
+
+/usr/local/include
+/usr/include
+
+
+
+/usr/lib/gcc/x86_64-redhat-linux/4.8.2/include
+
+https://blog.csdn.net/HMSIWTV/article/details/7710582
+https://ftp.gnu.org/gnu/gmp/
+
+ssh chromebook failure
+key generation
+and vi failure
+gcc recommend, then nano like editor
+
+# Servlet Introduction
+
+Skip to end of metadata
+Created by ASF Infrabot, last modified on Apr 23, 2012Go to start of metadata
+Using PHP With Tomcat
+This tutorial shows how to use PHP version 4 with Tomcat version 4 or later. The tutorial was originally written and sent to the tomcat-dev mailing list by Jean-Frederic Clere (on his vacation, no less (wink) ) and Henri Gomez.
+
+PHP version 5 is not currently supported as it does not include the necessary servlet code.
+
+## Prerequisites
+
+Download PHP (this tutorial uses PHP 4.3.5)
+Download Tomcat (this tutorial uses Tomcat 5.0.19)
+Define $JAVA_HOME for your JDK installation
+Define $TOMCAT_HOME for your Tomcat installation
+Define $PHP_HOME for your PHP installation
+Patch for PHP configure Script
+There is a patch required to compile PHP 4 to use Tomcat 5.
+
+Prior to version 2.4 of Servlet Specification, the name of the servlet jar file was servlet.jar. In version 2.4 of the Servlet Specification, this name was changed to servlet-api.jar. Tomcat 4 uses the name servlet.jar, whereas Tomcat 5 and later uses servlet-api.jar. This causes problems with PHP's configure script.
+
+This patch for PHP's configure script will fix this problem:
+
+--- configure.org       2004-04-07 11:20:24.000000000 +0200
++++ configure   2004-04-07 11:22:50.000000000 +0200
+      if test "$withval" = "yes"; then
+        SERVLET_CLASSPATH=.
+      else
++      if test -f $withval/common/lib/servlet-api.jar; then
++        SERVLET_CLASSPATH=$withval/common/lib/servlet-api.jar
++      fi
++
+        if test -f $withval/lib/servlet.jar; then
+          SERVLET_CLASSPATH=$withval/lib/servlet.jar
+       fi
+Patch for sapi/servlet/servlet.java
+enum is now a reserved word with Java 5, thus causing servlet.java to break the make process.
+
+--- servlet.java.orig   2005-09-26 22:25:55.000000000 -0400
++++ servlet.java        2005-09-26 22:26:11.000000000 -0400
+@@ -63,12 +63,12 @@
+     if (!request.getMethod().equals("POST")) {
+       result = request.getQueryString();
+     } else {
+-      Enumeration enum = request.getParameterNames();
++      Enumeration xenum = request.getParameterNames();
+       String concat = "";
+       result = "";
+
+-      while (enum.hasMoreElements()) {
+-        String name  = (String)enum.nextElement();
++      while (xenum.hasMoreElements()) {
++        String name  = (String)xenum.nextElement();
+         String value = request.getParameter(name);
+
+         try {
+		 
+## Installation
+
+Extract the source code to PHP in a work directory
+Patch if needed (that is, patch if building PHP to run with Tomcat version 5 or later)
+Run configure, then make in the top directory of the PHP sources:
+ ./configure --with-servlet=$TOMCAT_HOME --with-java=$JAVA_HOME
+ make
+A jar file and dynamic library are produced from the make: sapi/servlet/phpsrvlt.jar and libs/libphp4.so.
+Copy the jar file to your web application's class repository, or, alternately, to Tomcat's common class repository (as is shown here):
+ cp $PHP_HOME/sapi/servlet/phpsrvlt.jar $TOMCAT_HOME/common/lib
+
+Declare PHP servlet and servlet-mapping in the web applications web.xml file, or in Tomcat's shared web.xml file:
+Copy from $PHP_HOME/sapi/servlet/web.xml the servlet and servlet-mapping and paste into the file $TOMCAT_HOME/conf/web.xml.
+Modify your LD_LIBRARY_PATH to include the dynamic library produced in the first step above:
+ LD_LIBRARY_PATH=$PHP_HOME/libs
+ export LD_LIBRARY_PATH
+As an option, you can put libphp4.so someplace where java is already looking, any place in System.getProperty("java.library.path"), such as any of:
+  /usr/lib/jdk1.5.0_04/jre/lib/i386/client:/usr/lib/jdk1.5.0_04/jre/lib/i386:/usr/lib/jdk1.5.0_04/jre/../lib/i386
+
+Fedora Core 1 Issues with Tomcat 5.5.9, PHP 4.3.11 and jdk1.5.0_03
+This may have just been an issue with the particular system I was building, but I was unable to set $JAVA_HOME, $PHP_HOME, $TOMCAT_HOME, or $LD_LIBRARY_PATH at the command line. The workaround was to edit /etc/profile and add the variables there (i.e., and the line
+
+ JAVA_HOME=/usr/java/jdk1.5.0_03
+and add JAVA_HOME to the export variables).
+
+If make returns an error where javac is not a recognized command, you'll need to patch the Makefile produced by ./configure. Look for "&& javac" and replace it with the full path to javac (i.e., "
+ && /usr/java/jdk1.5.0_03/bin/javac
+").
+If make returns an error regarding "enum" while trying to build phpsrvlt.jar, you'll need to edit $PHP_HOME/sapi/servlet/servlet.java and replace enum with xenum.
+Start Tomcat
+ $TOMCAT_HOME/bin/startup.sh.
+Testing
+Verify the following is in your webapp's web.xml (creates the servlet entries and maps .php to that servlet and mentioned in the PHP installation steps above):
+
+    <servlet>
+        <servlet-name>php</servlet-name>
+        <servlet-class>net.php.servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>php-formatter</servlet-name>
+        <servlet-class>net.php.formatter</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>php</servlet-name>
+        <url-pattern>*.php</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>php-formatter</servlet-name>
+        <url-pattern>*.phps</url-pattern>
+    </servlet-mapping>
+
+Verify that phpsrvlt.jar is in you WEB-INF/lib directory, or the tomcat common/lib directory (as mentioned above in the PHP installation steps)
+
+Create a file named test.php in the docBase directory of your webapp.
+
+In that file, simply put:
+
+   <?php phpinfo(); ?>
+Point your browser at the file by navigating to http://localhost:8080/test.php
+
+If everything is working as it should, you will see an informational status page produced by PHP.
+
+
+# Connector Introduction
+
+https://dlcdn.apache.org/tomcat/tomcat-connectors/jk/
+https://tomcat.apache.org/connectors-doc/common_howto/quick.html
+https://tomcat.apache.org/connectors-doc/webserver_howto/apache.html
+
+
+configHome=TOMCAT_HOME
+jkCofing="conf/auto/mod_jk.conf"
+workersConfig="conf/workers.properties"
+modJk="libexec/mod_jk.so"
+jkLog="logs"
+jkDebug="emerg"
+forwardAll="true"
+noRoot="true"
+
+/lib/jvm/java-1.6.0/jre/
+/lib/jvm/java-1.6.0/
+
+CATALINA_HOME=/home/cabox/workspace/apache-tomcat-7.0.109
+JRE_HOME=/lib/jvm/java-1.6.0/
+JAVA_HOME=/lib/jvm/java-1.6.0/jre
+export CATALINA_HOME JRE_HOME JAVA_HOME
+
+https://tomcat.apache.org/tomcat-6.0-doc/api/org/apache/jk/config/ApacheConfig.html
+https://tomcat.apache.org/connectors-doc/webserver_howto/apache.html
+https://tomcat.apache.org/connectors-doc/common_howto/quick.html
+
+$CATALINA_BASE/conf/[enginename]/[hostname]/[webappname].xml
+$CATALINA_BASE/webapps/[webappname]/META-INF/context.xml
+
+https://dlcdn.apache.org/tomcat/tomcat-7/v7.0.19/bin/apache-tomcat-7.0.19-fulldocs.tar.gz
+
+apache-tomcat-[version]-fulldocs.tar.gz
+
+https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tomcat-7.0.109-fulldocs.tar.gz
+
+/home/cabox/workspace
+
+httpd.conf
+
+/lib/jvm/java-1.6.0/bin
+/lib/jvm/jre-1.6.0/bin
+
+		<Engine>
+			<Listener className="org.apache.jk.config.ApacheConfig"/>
+		</Engine>
+
+mod_jk for php might require httpd
+
+<Listener className="org.apache.ajp.tomcat4.config.ApacheConfig" />
+
+/home/cabox/workspace/apache-tomcat-7.0.109
+
+/lib/jvm/java-1.6.0/jre/
+/lib/jvm/java-1.6.0/
+
+org.apache.jk.config.ApacheConfig
+
+<Listener className="org.apache.jk.config.ApacheConfig"
+								configHome="/home/cabox/workspace/apache-tomcat-7.0.109"
+								jkCofing="conf/auto/mod_jk.conf"
+								workersConfig="conf/workers.properties"
+								modJk="libexec/mod_jk.so"
+								jkLog="logs"
+								jkDebug="emerg"
+								forwardAll="true"
+								noRoot="true" />
+
+<Listener className="org.apache.jk.config.ApacheConfig"
+          workersConfig="conf/workers.properties"
+          modJk="libexec/mod_jk.so"/>
+
+LoadModule php5_module ?libexec/libphp5.so
+AddModule ?mod_php5.c
+AddType application/x-httpd-php .php
+
+PHP_HOME/sapi/servlet/phpsrvlt.jar
+TOMCAT_HOME/common/lib
+
+./configure --with-servlet=tomcat/ --with-java=java/
+
+make
+
+https://www.oracle.com/java/technologies/downloads/archive/
+https://cwiki.apache.org/confluence/display/TOMCAT/UsingPhp
+
+https://port-xx-aquaogen-abakasam720639.codeanyapp.com/
+https://aquaogen-abakasam720639.codeanyapp.com/
+
+https://gitlab.gnome.org/GNOME/libxml2/-/tree/0bcc7f6ae97a8bd8615dfd9d3acf8188ab66580e
+
+https://archive.apache.org/dist/tomcat/tomcat-connectors/jk/binaries/linux/jk-1.2.6/
+https://tomcat.apache.org/connectors-doc/reference/workers.html
+https://tomcat.apache.org/connectors-doc/reference/apache.html
+https://tomcat.apache.org/connectors-doc/common_howto/workers.html
+
+https://www.csdn.net/tags/NtDaMg4sMTg1LWJsb2cO0O0O.html
+
+./configure
+--with-libxml-dir=libxml2
+--with-servlet=tomcat
+--with-java=java
+
+./configure --with-libxml-dir=libxml2 --with-servlet=tomcat --with-java=java
+
+https://gitlab.gnome.org/GNOME/libxml2/-/archive/LIBXML2.6.31/libxml2-LIBXML2.6.31.tar.gz
+
+# TODO: Test Apache Tomcat 7
+
+https://port-xx-aquaogen-abakasam720639.codeanyapp.com/
+java
+html
+
+php-5.0.4
+https://cwiki.apache.org/confluence/display/TOMCAT/UsingPhp
+https://gitlab.gnome.org/GNOME/libxml2/-/tree/v2.7.4/example
+
+# TODO: Install JRE6 for Apache Tomcat 7
+
+apache tomcat 7, markt
+7.0.109
+2011-01-14
+
+jre6
+2016-08-18
+
+# TODO: Set Apache Tomcat 7 environment variables
+
+ ./configure --with-servlet=$TOMCAT_HOME --with-java=$JAVA_HOME
+
+
+CATALINE_HOME
+JRE_HOME
+JAVA_HOME
+
+
+# TODO: Change terminal colors
+$ ls colors
+
+$  echo $LS_COLORS
+
+
+$ dircolors -b >> .bashrc
+$ vim ~/.bashrc
+$ source ~/.bashrc
+
+
+git remote set-url origin git+ssh://git@github.com/username/reponame.git
+
+
+https://www.cnblogs.com/zhugq02/p/12544705.html
+https://zhuanlan.zhihu.com/p/345915480
+https://git-scm.com/docs/git-config
+https://www.yiibai.com/bash/bash-split-string.html
+
+git remote set-url origin git+ssh://git@github.com:abakasam-development/ionic
+
+git@github.com:abakasam-development/ionic
+
+https://github.blog/2021-09-01-improving-git-protocol-security-github/
+https://git-scm.com/docs
+https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository
+https://www.cnblogs.com/zhugq02/p/12544705.html
+https://github.com/settings/keys
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+TODO: Set Github password automatically
+
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git
+
+login=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
+
+https://www.imangodoc.com/3d6e78c8.html
+
+
+https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git
+
+HTTrack3.49-2 launched on Fri, 11 Mar 2022 10:24:30 at https://ionicframework.com/docs/v1/
+(httrack https://ionicframework.com/docs/v1/ )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+10:25:31	Warning: 	Moved Permanently for https://ionicframework.com/docs/v1/cli/
+10:25:31	Warning: 	File has moved from https://ionicframework.com/docs/v1/cli/ to http://ionicframework.com/docs/cli/
+10:26:13	Error: 	"Not Found" (404) at link https://ionicframework.com/docs/v1/fonts/glyphicons-halflings-regular.eot (from https://ionicframework.com/docs/v1/css/site.css?v=0480c734724cdc68e9e5c2ada76a8e07)
+10:26:13	Error: 	"Not Found" (404) at link https://ionicframework.com/docs/v1/fonts/glyphicons-halflings-regular.eot? (from https://ionicframework.com/docs/v1/css/site.css?v=0480c734724cdc68e9e5c2ada76a8e07)
+10:26:13	Error: 	"Not Found" (404) at link https://ionicframework.com/docs/v1/fonts/glyphicons-halflings-regular.woff (from https://ionicframework.com/docs/v1/css/site.css?v=0480c734724cdc68e9e5c2ada76a8e07)
+10:26:13	Error: 	"Not Found" (404) at link https://ionicframework.com/docs/v1/fonts/glyphicons-halflings-regular.ttf (from https://ionicframework.com/docs/v1/css/site.css?v=0480c734724cdc68e9e5c2ada76a8e07)
+10:26:13	Error: 	"Not Found" (404) at link https://ionicframework.com/docs/v1/fonts/glyphicons-halflings-regular.svg (from https://ionicframework.com/docs/v1/css/site.css?v=0480c734724cdc68e9e5c2ada76a8e07)
+10:26:41	Error: 	"Not Found" (404) at link https://ionicframework.com/docs/v1//docs/v1/api/directive/ionFooterBar/ (from https://ionicframework.com/docs/v1/api/directive/keyboardAttach/)
+10:26:58	Error: 	"Not Found" (404) at link https://ionicframework.com/docs/v1/nightly/api/directive/ionSlide/ (from https://ionicframework.com/docs/v1/api/directive/ionSlide/)
+10:26:59	Error: 	"Not Found" (404) at link https://ionicframework.com/docs/v1//docs/v1/nightly/api/directive/ionFooterBar/ (from https://ionicframework.com/docs/v1/nightly/api/directive/keyboardAttach/)
+
+HTTrack Website Copier/3.49-2 mirror complete in 2 minutes 29 seconds : 234 links scanned, 224 files written (8173926 bytes overall) [3068136 bytes received at 20591 bytes/sec], 7459561 bytes transferred using HTTP compression in 195 files, ratio 24%, 26.8 requests per connection
+(8 errors, 2 warnings, 0 messages)
+
+
+i686-intel-linux
+
+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
+
 #path="/home/cabox/workspace/abakasam/scripts"
 #path=$(pwd)
 #container="abakasam"

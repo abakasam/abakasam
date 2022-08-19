@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html lang="sk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/sk/guide/routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express routing</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/sk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Domov</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Začíname</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Inštalácia
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express generátor
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Základný routing
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statické súbory
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Príručka</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+</li>
+<li><a href="writing-middleware.html">Tvorba middleware</a>
+</li>
+<li><a href="using-middleware.html">Použitie middleware</a>
+</li>
+<li><a href="using-template-engines.html">Použitie template enginov</a>
+</li>
+<li><a href="error-handling.html">Error handling</a>
+</li>
+<li><a href="debugging.html">Debuggovanie</a>
+</li>
+<li><a href="behind-proxies.html">Použitie Express za proxy</a>
+</li>
+<li><a href="migrating-4.html">Prechod na Express 4</a>
+</li>
+<li><a href="migrating-5.html">Prechod na Express 5</a>
+</li>
+<li><a href="database-integration.html">Integrácia s databázou</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API referenčná príručka</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (zastaralé)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (zastaralé)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Pokročilé témy</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Templatovacie enginy</a>
+</li>
+<li><a href="../advanced/pm.html">Použitie správcov procesov</a>
+</li>
+<li><a href="../advanced/security-updates.html">Security - aktualizácie</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Security - osvedčené postupy</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Výkonnosť - osvedčené postupy</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Zdroje</a>
+<ul>
+<li><a href="../resources/glossary.html">Glosár</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Komunita</a>
+</li>
+<li><a href="../resources/frameworks.html">Frameworky</a>
+</li>
+<li><a href="../resources/learning.html">Dodatočné vzdelávanie</a>
+</li>
+<li><a href="../resources/companies-using-express.html">Firmy používajúce Express</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Tento dokument môže byť v porovnaní s dokumentáciou v angličtine zastaralý. Aktuálne informácie nájdete v <a href="../../index.html">dokumentácii v angličtine</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+
+<h1 id="routing">Routing</h1>
+<p><em>Routing</em> definuje tzv. koncové body aplikácie (URI) a spôsob, akým odpovedajú na requesty klientov.
+Základné informácie o routing-u sa dozviete v sekcii <a href="../starter/basic-routing.html">Základný routing</a>.</p>
+<p>Tu je príklad, ako zadefinovať základný routing.</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/', function(req, res) {
+  res.send('hello world');
+});
+</code>
+</pre>
+<h2 id="route-methods">Route metódy</h2>
+<p>Route metóda je odvodená z niektorej HTTP metódy a pripojená k inštancii <code>express</code> triedy.</p>
+<p>Nasledujúci kód je ukážkou definície routing-u pre GET a POST metódy hlavnej stránky aplikácie.</p>
+<pre><code class="language-javascript" translate="no">
+// GET method route
+app.get('/', function (req, res) {
+  res.send('GET request to the homepage');
+});
+
+// POST method route
+app.post('/', function (req, res) {
+  res.send('POST request to the homepage');
+});
+</code>
+</pre>
+<p>Express podporuje tieto routing metódy korešpondujúce k HTTP metódam: <code>get</code>, <code>post</code>, <code>put</code>, <code>head</code>, <code>delete</code>, <code>options</code>, <code>trace</code>, <code>copy</code>, <code>lock</code>, <code>mkcol</code>, <code>move</code>, <code>purge</code>, <code>propfind</code>, <code>proppatch</code>, <code>unlock</code>, <code>report</code>, <code>mkactivity</code>, <code>checkout</code>, <code>merge</code>, <code>m-search</code>, <code>notify</code>, <code>subscribe</code>, <code>unsubscribe</code>, <code>patch</code>, <code>search</code> a <code>connect</code>.</p>
+<div class="doc-box doc-info">
+<p>Tie routing metódy, ktorých názov nie je validným názvom pre JavaScript premennú, zapisujte pomocou zátvorkovej notácie. Napr.:
+<code>app['m-search']('/', function ...</code></p>
+</div>
+<p>Existuje špeciálna routing metóda <code>app.all()</code>, ktorá nie je odvodená zo žiadnej HTTP metódy. Táto metóda sa používa ako middleware funkcia pre konkrétny koncový bod a všetky jej request metódy.</p>
+<p>Na nasledujúcom príklade je ukážka handler funkcie, ktorá bude vykonaná pri requeste na “/secret” bez ohľadu nato, či bude použitá GET, POST, PUT, DELETE, alebo akákoľvek iná HTTP request metóda podporovaná <a href="https://nodejs.org/api/http.html#http_http_methods">http modulom</a>.</p>
+<pre><code class="language-javascript" translate="no">
+app.all('/secret', function (req, res, next) {
+  console.log('Accessing the secret section ...');
+  next(); // pass control to the next handler
+});
+</code>
+</pre>
+<h2 id="route-paths">Route cesty</h2>
+<p>Route cesty (route paths) definujú v kombinácii s request metódami koncové body, voči ktorým je možné vykonať request. Route cesty je možné definovať ako stringy, stringové patterny, alebo ako regulárne výrazy.</p>
+<div class="doc-box doc-info">
+<p>Express používa pre spárovanie (matching) route cesty npm modul <a href="https://www.npmjs.com/package/path-to-regexp">path-to-regexp</a>; pre všetky možnosti definície route ciest si pozrite dokumentáciu k path-to-regexp modulu. <a href="http://forbeslindesay.github.io/express-route-tester/">Express Route Tester</a> je užitočný nástroj pre testovanie základných Express route ciest, hoci nepodporuje pattern matching.</p>
+</div>
+<div class="doc-box doc-warn">
+<p>Query stringy nie sú súčasťou route ciest.</p>
+</div>
+<p>Tu je niekoľko príkladov route ciest na základe stringov.</p>
+<p>Táto route cesta sa spáruje s requestom na hlavný route, <code>/</code>.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.send('root');
+});
+</code>
+</pre>
+<p>Táto route cesta sa spáruje s requestom na <code>/about</code>.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/about', function (req, res) {
+  res.send('about');
+});
+</code>
+</pre>
+<p>Táto route cesta sa spáruje s requestom na <code>/random.text</code>.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/random.text', function (req, res) {
+  res.send('random.text');
+});
+</code>
+</pre>
+<p>Tu je niekoľko príkladov route ciest na základe stringových patternov.</p>
+<p>Táto route cesta sa spáruje s requestom <code>acd</code> a <code>abcd</code>.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab?cd', function(req, res) {
+  res.send('ab?cd');
+});
+</code>
+</pre>
+<p>Táto route cesta sa spáruje s requestom <code>abcd</code>, <code>abbcd</code>, <code>abbbcd</code>, atď.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab+cd', function(req, res) {
+  res.send('ab+cd');
+});
+</code>
+</pre>
+<p>Táto route cesta sa spáruje s requestom <code>abcd</code>, <code>abxcd</code>, <code>abRANDOMcd</code>, <code>ab123cd</code>, atď.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab*cd', function(req, res) {
+  res.send('ab*cd');
+});
+</code>
+</pre>
+<p>Táto route cesta sa spáruje s requestom <code>/abe</code> a <code>/abcde</code>.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab(cd)?e', function(req, res) {
+ res.send('ab(cd)?e');
+});
+</code>
+</pre>
+<div class="doc-box doc-info">
+<p>Znaky ?, +, *, a () sú podmnožinami ich regulárnych výrazov. Pomlčka (-) a bodka (.) sa reprezentujú ako text.</p>
+</div>
+<p>Príklady definícií route ciest s využitím regulárnych výrazov:</p>
+<p>Táto route cesta bude spárovaná s každým requestom obsahujúcim “a”.</p>
+<pre><code class="language-javascript" translate="no">
+app.get(/a/, function(req, res) {
+  res.send('/a/');
+});
+</code>
+</pre>
+<p>Táto route cesta sa spáruje s requestom <code>butterfly</code> a <code>dragonfly</code>, ale nie <code>butterflyman</code>, <code>dragonfly man</code>, atď.</p>
+<pre><code class="language-javascript" translate="no">
+app.get(/.*fly$/, function(req, res) {
+  res.send('/.*fly$/');
+});
+</code>
+</pre>
+<h2 id="route-handlers">Route handler</h2>
+<p>Pre spracovanie requestu je možné zadefinovať viacero callback funkcií správajúcich sa ako <a href="using-middleware.html">middleware</a>. Jedinou výnimkou je, že tieto callback-y môžu samé vyvolať <code>next('route')</code> a tak vynechať zostávajúce definície callback-ov. Tento mechanizmus môžete použiť k stanoveniu podmienok spracovania a následne potom “odovzdať” riadenie ďalším route definíciám v prípade, že nie je dôvod ho ďalej spracovávať v aktuálnej route definícii.</p>
+<p>Route handler môže byť definovaný ako funkcia, pole funkcií či kombinácia oboch, ako na nasledujúcich príkladoch.</p>
+<p>Jedna callback funkcia pre obsluhu spracovania:</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/example/a', function (req, res) {
+  res.send('Hello from A!');
+});
+</code>
+</pre>
+<p>Môžete použiť aj viac ako jednu callback funkciu (nezabudnite špecifikovať <code>next</code> objekt). Napríklad:</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/example/b', function (req, res, next) {
+  console.log('the response will be sent by the next function ...');
+  next();
+}, function (req, res) {
+  res.send('Hello from B!');
+});
+</code>
+</pre>
+<p>Môžete použiť aj pole callback funkcií. Napr.:</p>
+<pre><code class="language-javascript" translate="no">
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+var cb2 = function (req, res) {
+  res.send('Hello from C!');
+}
+
+app.get('/example/c', [cb0, cb1, cb2]);
+</code>
+</pre>
+<p>Tu je ukážka kombinácia nezávislých funkcií a poľa funkcií:</p>
+<pre><code class="language-javascript" translate="no">
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+app.get('/example/d', [cb0, cb1], function (req, res, next) {
+  console.log('the response will be sent by the next function ...');
+  next();
+}, function (req, res) {
+  res.send('Hello from D!');
+});
+</code>
+</pre>
+<h2 id="response-methods">Response metódy</h2>
+<p>Metódy response objektu (<code>res</code>) v nasledujúcej tabuľke dokážu odoslať odpoveť klientovi a ukončiť request-response cyklus. Ak žiadna z týchto metód nebude zavolaná z route handler-a, request klienta zostane “visieť” nespracovaný.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../4x/api.html#res.download">res.download()</a></td>
+<td>Ponúkne súbor na stianutie.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.end">res.end()</a></td>
+<td>Ukončí proces odpovede.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.json">res.json()</a></td>
+<td>Odošle odpoveď ako JSON.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.jsonp">res.jsonp()</a></td>
+<td>Odošle JSON odpoveď s podporou JSONP.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.redirect">res.redirect()</a></td>
+<td>Presmeruje request.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.render">res.render()</a></td>
+<td>Vyrendruje view template.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.send">res.send()</a></td>
+<td>Odošle odpoveď rôzneho typu.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.sendFile">res.sendFile()</a></td>
+<td>Odošle súbor ako octet stream.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.sendStatus">res.sendStatus()</a></td>
+<td>Nastaví status kód odpovede a odošle jej textovú reprezentáciu ako telo odpovede.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="app-route">app.route()</h2>
+<p>Pomocou <code>app.route()</code> dokážete vytvoriť zreťaziteľné route handlery pre konkrétnu route cestu.
+Pretože je route cesta špecifikovaná na jednom mieste, tvorba takýchto routes je užitočná a znižuje redundanciu a preklepy. Pre viac informácií o použití route pozrite: <a href="../4x/api.html#router">Router() dokumentáciu</a>.</p>
+<p>Tu je príklad zreťazenia route handlerov definovaných pomocou <code>app.route()</code>.</p>
+<pre><code class="language-javascript" translate="no">
+app.route('/book')
+  .get(function(req, res) {
+    res.send('Get a random book');
+  })
+  .post(function(req, res) {
+    res.send('Add a book');
+  })
+  .put(function(req, res) {
+    res.send('Update the book');
+  });
+</code>
+</pre>
+<h2 id="express-router">express.Router</h2>
+<p>Ak chcete vytvoriť modulárne a zreťazitelné route handlery použite <code>express.Router</code> triedu. <code>Router</code> inštancia je kompletný middleware a routing systém; z tohto dôvodu sa často označuje ako “mini-app”.</p>
+<p>Nasledujúci príklad demonštruje vytvorenie router modulu, načítanie middleware funkcie, špecifikuje niekoľko route definícií a ukazuje pripojenie router modulu na cestu (path) v hlavnej aplikácii.</p>
+<p>V priečinku aplikácie vytvorte router súbor nazvaný <code>birds.js</code> s takýmto obsahom:</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var router = express.Router();
+
+// middleware that is specific to this router
+router.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+});
+// define the home page route
+router.get('/', function(req, res) {
+  res.send('Birds home page');
+});
+// define the about route
+router.get('/about', function(req, res) {
+  res.send('About birds');
+});
+
+module.exports = router;
+</code>
+</pre>
+<p>Následne načítajte tento router modul do aplikácie:</p>
+<pre><code class="language-javascript" translate="no">
+var birds = require('./birds');
+...
+app.use('/birds', birds);
+</code>
+</pre>
+<p>Aplikácia bude teraz schopná obslúžiť prichádzajúce požiadavky na ceste <code>/birds</code> a <code>/birds/about</code>, a taktiež vyvolať <code>timeLog</code> middleware funkciu, ktorá je špecifická pre tento route.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="https://ghbtns.com/github-btn.html?user=expressjs&repo=express&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> je projekt patriaci pod <a href="https://openjsf.org">Nadácie OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Editovať stránku na GitHub-e</a>.</div>
+<div>Copyright &copy; 2016 StrongLoop, IBM a ostatní expressjs.com prispievatelia.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script type="71cda3aae7b80a5243f601ec-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:sk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="71cda3aae7b80a5243f601ec-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/sk/guide/routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

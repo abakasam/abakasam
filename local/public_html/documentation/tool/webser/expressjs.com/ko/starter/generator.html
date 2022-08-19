@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html lang="ko" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ko/starter/generator.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 애플리케이션 생성기</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ko.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">홈</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">시작하기</a>
+<ul>
+<li>
+<a href="installing.html">
+설치
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="generator.html">
+Express 생성기
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+기본 라우팅
+</a>
+</li>
+<li>
+<a href="static-files.html">
+정적 파일
+</a>
+</li>
+<li>
+<a href="faq.html">
+자주 묻는 질문(FAQ)
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">안내서</a>
+<ul>
+<li><a href="../guide/routing.html">라우팅</a>
+</li>
+<li><a href="../guide/writing-middleware.html">미들웨어 작성</a>
+ </li>
+<li><a href="../guide/using-middleware.html">미들웨어 사용</a>
+</li>
+<li><a href="../guide/using-template-engines.html">템플리트 엔진 사용</a>
+</li>
+<li><a href="../guide/error-handling.html">오류 처리</a>
+</li>
+<li><a href="../guide/debugging.html">디버깅</a>
+</li>
+<li><a href="../guide/behind-proxies.html">프록시 환경에서 Express 사용</a>
+</li>
+<li><a href="../guide/migrating-4.html">Express 4로의 이전</a>
+</li>
+<li><a href="../guide/migrating-5.html">Express 5로의 이전</a>
+</li>
+<li><a href="../guide/database-integration.html">데이터베이스 통합</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 참조</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x(더 이상 사용되지 않음)</a>
+</li>
+<li><a href="../../2x/index.html">2.x(더 이상 사용되지 않음)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">고급 주제</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">템플리트 엔진</a>
+</li>
+<li><a href="../advanced/pm.html">프로세스 관리자 사용</a>
+</li>
+<li><a href="../advanced/security-updates.html">보안 업데이트</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">보안 우수 사례</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">성능 우수 사례</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">자원</a>
+<ul>
+<li><a href="../resources/glossary.html">용어집</a>
+</li>
+<li><a href="../resources/middleware.html">미들웨어</a>
+</li>
+<li><a href="../resources/community.html">커뮤니티</a>
+</li>
+<li><a href="../resources/learning.html">추가 학습</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>에 의해 제공이 번역.</p>
+이 문서는 영문판 문서에 비해 더 오래된 버전일 수도 있습니다. 최신 업데이트를 확인하려면 <a href="../../index.html">영문판 문서</a>를 참조하십시오.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+
+<div id="page-doc" markdown="1">
+<h1 id="express-애플리케이션-생성기">Express 애플리케이션 생성기</h1>
+<p>애플리케이션의 골격을 신속하게 작성하려면 애플리케이션 생성기 도구인 <code>express</code>를 사용하십시오.</p>
+<p>다음의 명령을 이용해 <code>express</code>를 설치하십시오.</p>
+<pre><code class="language-console">$ npm install express-generator -g
+</code></pre>
+<p>다음과 같이 <code>-h</code> 옵션을 이용해 명령의 옵션을 표시하십시오.</p>
+<pre><code class="language-console">$ express -h
+
+  Usage: express [options][dir]
+
+  Options:
+
+    -h, --help          output usage information
+        --version       output the version number
+    -e, --ejs           add ejs engine support
+        --hbs           add handlebars engine support
+        --pug           add pug engine support
+    -H, --hogan         add hogan.js engine support
+        --no-view       generate without view engine
+    -v, --view &amp;lt;engine&amp;gt; add view &amp;lt;engine&amp;gt; support (ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)
+    -c, --css &amp;lt;engine&amp;gt;  add stylesheet &amp;lt;engine&amp;gt; support (less|stylus|compass|sass) (defaults to plain css)
+        --git           add .gitignore
+    -f, --force         force on non-empty directory
+</code></pre>
+<p>예를 들면, 다음의 예에서는 _myapp_라는 이름의 Express 앱을 현재 작업 디렉토리에 작성합니다.</p>
+<pre><code class="language-console">$ express --view=pug myapp
+
+   create : myapp
+   create : myapp/package.json
+   create : myapp/app.js
+   create : myapp/public
+   create : myapp/public/javascripts
+   create : myapp/public/images
+   create : myapp/routes
+   create : myapp/routes/index.js
+   create : myapp/routes/users.js
+   create : myapp/public/stylesheets
+   create : myapp/public/stylesheets/style.css
+   create : myapp/views
+   create : myapp/views/index.pug
+   create : myapp/views/layout.pug
+   create : myapp/views/error.pug
+   create : myapp/bin
+   create : myapp/bin/www
+</code></pre>
+<p>이후 다음과 같이 종속 항목을 설치하십시오.</p>
+<pre><code class="language-console">$ cd myapp
+$ npm install
+</code></pre>
+<p>MacOS 또는 Linux에서는 다음 명령을 사용하여 앱을 실행하십시오.</p>
+<pre><code class="language-console">$ DEBUG=myapp:* npm start
+</code></pre>
+<p>Windows에서는 다음 명령을 사용하십시오.</p>
+<pre><code class="language-console">&gt; set DEBUG=myapp:* &amp; npm start
+</code></pre>
+<p>이후 브라우저에서 <code>http://localhost:3000/</code>을 로드하여 앱에 액세스하십시오.</p>
+<p>생성된 앱은 다음과 같은 디렉토리 구조를 갖습니다.</p>
+<pre><code class="language-console">.
+├── app.js
+├── bin
+│   └── www
+├── package.json
+├── public
+│   ├── images
+│   ├── javascripts
+│   └── stylesheets
+│       └── style.css
+├── routes
+│   ├── index.js
+│   └── users.js
+└── views
+    ├── error.pug
+    ├── index.pug
+    └── layout.pug
+
+7 directories, 9 files
+</code></pre>
+<div class="doc-box doc-info">
+<p>생성기에 의해 작성된 앱 구조는 Express 앱을 구조화하는 여러 방법 중 하나에 불과합니다. 이러한 구조를 사용하거나 사용자의 요구사항에 가장 적합하도록 구조를 수정하십시오.</p>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>는 <a href="https://openjsf.org">OpenJS 기반의</a> 프로젝트입니다.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub에서 웹사이트의 포크를 작성하십시오</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 이 저작물은 <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">크리에이티브 커먼즈 저작자표시-동일조건변경허락 3.0 미국 라이선스</a>에 따라 이용할 수 있습니다.
+</div>
+</footer>
+<script type="dc7b2d2eb444e5dfc445fb42-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ko'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="dc7b2d2eb444e5dfc445fb42-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ko/starter/generator.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

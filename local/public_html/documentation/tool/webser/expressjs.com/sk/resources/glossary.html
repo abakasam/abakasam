@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="sk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/sk/resources/glossary.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express slovník</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/sk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Domov</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Začíname</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Inštalácia
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express generátor
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Základný routing
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statické súbory
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Príručka</a>
+<ul>
+<li><a href="../guide/routing.html">Routing</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Tvorba middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Použitie middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Použitie template enginov</a>
+</li>
+<li><a href="../guide/error-handling.html">Error handling</a>
+</li>
+<li><a href="../guide/debugging.html">Debuggovanie</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Použitie Express za proxy</a>
+</li>
+<li><a href="../guide/migrating-4.html">Prechod na Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Prechod na Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integrácia s databázou</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API referenčná príručka</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (zastaralé)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (zastaralé)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Pokročilé témy</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Templatovacie enginy</a>
+</li>
+<li><a href="../advanced/pm.html">Použitie správcov procesov</a>
+</li>
+<li><a href="../advanced/security-updates.html">Security - aktualizácie</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Security - osvedčené postupy</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Výkonnosť - osvedčené postupy</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="glossary.html" class="active">Zdroje</a>
+<ul>
+<li><a href="glossary.html">Glosár</a>
+</li>
+<li><a href="middleware.html">Middleware</a>
+</li>
+<li><a href="community.html">Komunita</a>
+</li>
+<li><a href="frameworks.html">Frameworky</a>
+</li>
+<li><a href="learning.html">Dodatočné vzdelávanie</a>
+</li>
+<li><a href="companies-using-express.html">Firmy používajúce Express</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Tento dokument môže byť v porovnaní s dokumentáciou v angličtine zastaralý. Aktuálne informácie nájdete v <a href="../../index.html">dokumentácii v angličtine</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+
+<h1 id="slovník">Slovník</h1>
+<div class="doc-box doc-warn">Toto je pracovná verzia</div>
+<h3 id="aplikácia">aplikácia</h3>
+<p>Vo všeobecnosti je to jeden, či viacej programov navrhnutých k vykonávaniu operácií za špecifickým účelom. V kontexte Express-u je to program, používajúci Express API fungujúceho na Node.js platforme. Pozrite sa na <a href="../api.html#express">app object</a>.</p>
+<h3 id="api">API</h3>
+<p>Application programming interface. Hláskujte po písmenkách.</p>
+<h3 id="express">Express</h3>
+<p>Express je minimalistický, flexibilný, webový framework pre Node.js aplikácie. Vo všeobecnosti, názov “Express” je preferovaný pred “Express.js,” ktorý je ale taktiež zaužívaný a akceptovaný.</p>
+<h3 id="libuv">libuv</h3>
+<p>Multi-platformová knižnica zameriavajúca sa na asynchrónne I/O, primárne navrhnutá pre použitie s Node.js.</p>
+<h3 id="middleware">middleware</h3>
+<p>Je funkcia vyvolaná Express routing layer-om ešte pred zavolaním finálneho request handlera a preto “sedí” v strede medzi samotným requestom a routom. Zopár ďalších bodov terminológie týkajúcej sa middleware:</p>
+<ul>
+<li><code>var foo = require('middleware')</code> je zavolaný <em>requirnutím</em> alebo <em>použitím</em> Node.js modulu. Potom, výraz <code>var mw = foo()</code> typicky vracia middleware.</li>
+<li><code>app.use(mw)</code> je zavolaný <em>pridaním middlewaru do globálneho stacku spracovania</em>.</li>
+<li><code>app.get('/foo', mw, function (req, res) { ... })</code> je zavolaný pridaním middlewaru do stacku spracovania “GET /foo”_.</li>
+</ul>
+<h3 id="nodejs">Node.js</h3>
+<p>Sofvérová platforma používaná na budovanie škálovateľných aplikácií. Node.js používa JavaScript ako svoj skriptovací jazyk a dosahuje vysokú priepustnosť pomocou neblokujúcich I/O operácií a single-thread event loop-u. Pozrite sa na <a href="https://nodejs.org/en/">nodejs.org</a>. <strong>Pozn. používania</strong>: Pôvodne, “Node.js,” neskor už len “Node”.</p>
+<h3 id="open-source-open-source">open-source, open source</h3>
+<p>Keď je použitý vo význame prídavného mena, používa sa pomlčka; Napr.” Toto je open-source softvér”. Pozrite sa na <a href="http://en.wikipedia.org/wiki/Open-source_software">Open-source software on Wikipedia</a>. Pozn.: Hoci sa bežne pomlčka nepoužíva, v tejto dokumentácii sú použité pravidlá angličtiny, kde sa zložené prídavné mená spájajú pomlčkou.</p>
+<h3 id="request">request</h3>
+<p>HTTP request. Klient zašle HTTP request message na server, ktorý vráti response. Request musí používať niektorú z <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">request metód</a> ako je GET, POST a pod..</p>
+<h3 id="response">response</h3>
+<p>HTTP response. Server vracia klientovi HTTP response message. Response obsahuje informáciu o stave spracovania requestu a taktiež môže obsahovať message body.</p>
+<h3 id="route">route</h3>
+<p>Časť URL identifikujúca resource. Napr. v prípade <code>http://foo.com/products/id</code> je route “/products/id”.</p>
+<h3 id="router">router</h3>
+<p>Pozrite sa na definíciu <a href="../api.html#router">router</a> v API dokumentácii.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="https://ghbtns.com/github-btn.html?user=expressjs&repo=express&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> je projekt patriaci pod <a href="https://openjsf.org">Nadácie OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Editovať stránku na GitHub-e</a>.</div>
+<div>Copyright &copy; 2016 StrongLoop, IBM a ostatní expressjs.com prispievatelia.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script type="dbdcdd909b248e8380509ea7-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:sk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="dbdcdd909b248e8380509ea7-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/sk/resources/glossary.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

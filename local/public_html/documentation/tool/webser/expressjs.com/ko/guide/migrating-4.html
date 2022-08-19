@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+<html lang="ko" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ko/guide/migrating-4.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 4로의 마이그레이션</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ko.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">홈</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">시작하기</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+설치
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 생성기
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+기본 라우팅
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+정적 파일
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+자주 묻는 질문(FAQ)
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">안내서</a>
+<ul>
+<li><a href="routing.html">라우팅</a>
+</li>
+<li><a href="writing-middleware.html">미들웨어 작성</a>
+ </li>
+<li><a href="using-middleware.html">미들웨어 사용</a>
+</li>
+<li><a href="using-template-engines.html">템플리트 엔진 사용</a>
+</li>
+<li><a href="error-handling.html">오류 처리</a>
+</li>
+<li><a href="debugging.html">디버깅</a>
+</li>
+<li><a href="behind-proxies.html">프록시 환경에서 Express 사용</a>
+</li>
+<li><a href="migrating-4.html">Express 4로의 이전</a>
+</li>
+<li><a href="migrating-5.html">Express 5로의 이전</a>
+</li>
+<li><a href="database-integration.html">데이터베이스 통합</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 참조</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x(더 이상 사용되지 않음)</a>
+</li>
+<li><a href="../../2x/index.html">2.x(더 이상 사용되지 않음)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">고급 주제</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">템플리트 엔진</a>
+</li>
+<li><a href="../advanced/pm.html">프로세스 관리자 사용</a>
+</li>
+<li><a href="../advanced/security-updates.html">보안 업데이트</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">보안 우수 사례</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">성능 우수 사례</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">자원</a>
+<ul>
+<li><a href="../resources/glossary.html">용어집</a>
+</li>
+<li><a href="../resources/middleware.html">미들웨어</a>
+</li>
+<li><a href="../resources/community.html">커뮤니티</a>
+</li>
+<li><a href="../resources/learning.html">추가 학습</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>에 의해 제공이 번역.</p>
+이 문서는 영문판 문서에 비해 더 오래된 버전일 수도 있습니다. 최신 업데이트를 확인하려면 <a href="../../index.html">영문판 문서</a>를 참조하십시오.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+ <div id="page-doc" markdown="1">
+<h1 id="express-4로의-이전">Express 4로의 이전</h1>
+<h2 id="overview">개요</h2>
+<p>Express 4는 Express 3로부터 근본적으로 변경되었습니다. 따라서 기존 Express 3 앱의 종속 항목의 Express 버전을 업데이트하면 기존 Express 3 앱은 작동하지 않습니다.</p>
+<p>이 문서에서는 다음을 다룹니다.</p>
+<ul class="doclist">
+<li><a href="#changes">Express 4에서의 변경사항.</a></li>
+<li>Express 3 앱의 Express 4로의 마이그레이션의 <a href="#example-migration">예</a>.</li>
+<li><a href="#app-gen">Express 4 생성기로의 업그레이드.</a></li>
+</ul>
+<h2 id="changes">Express 4에서의 변경사항</h2>
+<p>Express 4에서는 여러 중요한 부분이 변경되었습니다.</p>
+<ul class="doclist">
+<li><a href="#core-changes">Express 코어 및 미들웨어 시스템에 대한 변경.</a> Connect 및 기본 제공 미들웨어에 대한 종속 항목이 제거되었으며, 따라서 사용자가 직접 미들웨어를 추가해야 합니다.
+</li>
+<li><a href="#routing">라우팅 시스템에 대한 변경.</a></li>
+<li><a href="#other-changes">기타 다양한 변경사항.</a></li>
+</ul>
+<p>또한 다음을 참조하십시오.</p>
+<ul>
+<li><a href="https://github.com/expressjs/express/wiki/New-features-in-4.x">New features in 4.x.</a></li>
+<li><a href="https://github.com/expressjs/express/wiki/Migrating-from-3.x-to-4.x">Migrating from 3.x to 4.x.</a></li>
+</ul>
+<h3 id="core-changes">
+Express 코어 및 미들웨어 시스템에 대한 변경
+</h3>
+<p>Express 4는 더 이상 Connect에 종속되지 않으며, <code>express.static</code> 함수를
+제외한 모든 기본 제공 미들웨어가 Express 4 코어에서 제거되었습니다. 따라서 Express는
+이제 독립적인 라우팅 및 미들웨어 웹 프레임워크가 되었으며, Express 버전화 및 릴리스는
+미들웨어 업데이트의 영향을 받지 않게 되었습니다.</p>
+<p>기본 제공 미들웨어가 없으므로 사용자는 앱을 실행하는 데 필요한
+모든 미들웨어를 명시적으로 추가해야 합니다. 이를 위해서는 다음 단계를 따르기만 하면 됩니다.</p>
+<ol>
+<li>모듈 설치: <code>npm install --save &lt;module-name&gt;</code></li>
+<li>앱 내에서, 모듈 요청: <code>require('module-name')</code></li>
+<li>해당 모듈의 문서에 따라 모듈 사용: <code>app.use( ... )</code></li>
+</ol>
+<p>다음 표에는 Express 3의 미들웨어 및 그에 대응하는 Express 4의 미들웨어가 나열되어 있습니다.</p>
+<table class="doctable" border="1">
+<tr><th>Express 3</th><th>Express 4</th></tr>
+<tr><td><code>express.bodyParser</code></td>
+<td><a href="https://github.com/expressjs/body-parser">body-parser</a> +
+<a href="https://github.com/expressjs/multer">multer</a></td></tr>
+<tr><td><code>express.compress</code></td>
+<td><a href="https://github.com/expressjs/compression">compression</a></td></tr>
+<tr><td><code>express.cookieSession</code></td>
+<td><a href="https://github.com/expressjs/cookie-session">cookie-session</a></td></tr>
+<tr><td><code>express.cookieParser</code></td>
+<td><a href="https://github.com/expressjs/cookie-parser">cookie-parser</a></td></tr>
+<tr><td><code>express.logger</code></td>
+<td><a href="https://github.com/expressjs/morgan">morgan</a></td></tr>
+<tr><td><code>express.session</code></td>
+<td><a href="https://github.com/expressjs/session">express-session</a></td></tr>
+<tr><td><code>express.favicon</code></td>
+<td><a href="https://github.com/expressjs/serve-favicon">serve-favicon</a></td></tr>
+<tr><td><code>express.responseTime</code></td>
+<td><a href="https://github.com/expressjs/response-time">response-time</a></td></tr>
+<tr><td><code>express.errorHandler</code></td>
+<td><a href="https://github.com/expressjs/errorhandler">errorhandler</a></td></tr>
+<tr><td><code>express.methodOverride</code></td>
+<td><a href="https://github.com/expressjs/method-override">method-override</a></td></tr>
+<tr><td><code>express.timeout</code></td>
+<td><a href="https://github.com/expressjs/timeout">connect-timeout</a></td></tr>
+<tr><td><code>express.vhost</code></td>
+<td><a href="https://github.com/expressjs/vhost">vhost</a></td></tr>
+<tr><td><code>express.csrf</code></td>
+<td><a href="https://github.com/expressjs/csurf">csurf</a></td></tr>
+<tr><td><code>express.directory</code></td>
+<td><a href="https://github.com/expressjs/serve-index">serve-index</a></td></tr>
+<tr><td><code>express.static</code></td>
+<td><a href="https://github.com/expressjs/serve-static">serve-static</a></td></tr>
+</table>
+<p>Express 4 미들웨어의 <a href="https://github.com/senchalabs/connect#middleware">전체 목록</a>을 참조하십시오.</p>
+<p>대부분의 경우 구버전인 버전 3의 미들웨어를 Express 4의 대응하는
+미들웨어로 대체할 수 있습니다. 상세 정보는 GitHub 모듈 문서를
+참조하십시오.</p>
+<h4 id="app-use"><code>app.use</code>가 매개변수를 수락</h4>
+<p>버전 4에서는 미들웨어 함수가 로드되는 경로를 정의하기 위하여 가변 매개변수를 사용할 수 있으며, 이후 라우트 핸들러로부터 매개변수의 값을 읽을 수 있습니다.
+예를 들면 다음과 같습니다.</p>
+<pre><code class="language-javascript" translate="no">
+app.use('/book/:id', function(req, res, next) {
+  console.log('ID:', req.params.id);
+  next();
+});
+</code>
+</pre>
+<h3 id="routing">
+라우팅 시스템
+</h3>
+<p>이제 앱은 라우팅 미들웨어를 암시적으로 로드하므로, 더 이상
+<code>router</code> 미들웨어에 대한 미들웨어 로드 순서에 대해
+걱정할 필요가 없습니다.</p>
+<p>라우트를 정의하는 방법은 변경되지 않았지만, 라우트의 구성을 돕기 위하여
+라우팅 시스템에는 다음과 같은 2개의 새로운 기능이 추가되었습니다.</p>
+<ul class="doclist">
+<li>라우트 경로에 대하여 체인 가능한 라우트 핸들러를 작성할 수 있는 새로운 메소드인 <code>app.route()</code>.</li>
+<li>모듈식 마운팅 가능한 라우트 핸들러를 작성할 수 있는 새로운 클래스인 <code>express.Router</code>.</li>
+</ul>
+<h4 id="app-route"><code>app.route()</code> 메소드</h4>
+<p>새롭게 추가된 <code>app.route()</code> 메소드를 이용하면 라우트 경로에 대하여 체인 가능한
+라우트 핸들러를 작성할 수 있습니다. 경로는 한 곳에 지정되어 있으므로, 모듈식 라우트를 작성하면 중복성과 오타가 감소하여 도움이 됩니다. 라우트에 대한
+자세한 정보는 <a href="../4x/api.html#router"><code>Router()</code> 문서</a>를 참조하십시오.</p>
+<p><code>app.route()</code> 함수를 사용하여 정의된 체인 라우트 핸들러의 예는 다음과 같습니다.</p>
+<pre><code class="language-javascript" translate="no">
+app.route('/book')
+  .get(function(req, res) {
+    res.send('Get a random book');
+  })
+  .post(function(req, res) {
+    res.send('Add a book');
+  })
+  .put(function(req, res) {
+    res.send('Update the book');
+  });
+</code>
+</pre>
+<h4 id="express-router"><code>express.Router</code> 클래스</h4>
+<p>라우트의 구성을 돕는 다른 기능은 새롭게 추가된 클래스인
+<code>express.Router</code>이며, 이를 이용해 모듈식 마운팅 가능한
+라우트 핸들러를 작성할 수 있습니다. <code>Router</code> 인스턴스는 완전한 미들웨어이자
+라우팅 시스템이며, 따라서 “미니 앱(mini-app)”이라고 불리는 경우가 많습니다.</p>
+<p>다음 예에서는 라우터를 모듈로서 작성하고, 라우터 모듈에서 미들웨어를 로드하고,
+몇몇 라우트를 정의하고, 기본 앱의 한 경로에 라우터 모듈을 마운트합니다.</p>
+<p>예를 들면, 다음의 내용이 입력된 <code>birds.js</code>라는 이름의 라우터 파일을
+앱 디렉토리에 작성할 수 있습니다.</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var router = express.Router();
+
+// middleware specific to this router
+router.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+});
+// define the home page route
+router.get('/', function(req, res) {
+  res.send('Birds home page');
+});
+// define the about route
+router.get('/about', function(req, res) {
+  res.send('About birds');
+});
+
+module.exports = router;
+</code>
+</pre>
+<p>이후 앱 내에서 다음과 같이 라우터 모듈을 로드하십시오.</p>
+<pre><code class="language-javascript" translate="no">
+var birds = require('./birds');
+...
+app.use('/birds', birds);
+</code>
+</pre>
+<p>앱은 이제 <code>/birds</code> 및 <code>/birds/about</code> 경로에 대한
+요청을 처리할 수 있게 되었으며, 해당 라우트에 대한 특정한 미들웨어인
+<code>timeLog</code>를 로드할 것입니다.</p>
+<h3 id="other-changes">
+기타 변경사항
+</h3>
+<p>다음 표에는 Express 4의 작지만 중요한 다른 변경사항이 나열되어 있습니다.</p>
+<table class="doctable" border="1">
+<tr>
+<th>오브젝트</th>
+<th>설명</th>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>Express 4에는 Node.js 0.10.x 이상이 필요하며 Node.js 0.8.x에 대한 지원은
+중단되었습니다.</td>
+</tr>
+<tr>
+<td>
+<p><code>http.createServer()</code></p>
+</td>
+<td>
+<p><code>http</code> 모듈을 이용해 직접 작업해야 하는 경우(socket.io/SPDY/HTTPS)를 제외하면, <code>http</code> 모듈이 더 이상 필요하지 않습니다. <code>app.listen()</code>
+함수를 이용해 앱을 시작할 수 있습니다.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>app.configure()</code></p>
+</td>
+<td>
+<p><code>app.configure()</code> 함수가 제거되었습니다. 환경을 발견하고
+그에 따라 앱을 구성하려면 <code>process.env.NODE_ENV</code>
+또는 <code>app.get('env')</code> 함수를 사용하십시오.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>json spaces</code></p>
+</td>
+<td>
+<p>Express 4에서는 기본적으로 <code>json spaces</code> 애플리케이션 특성을 사용하지 않습니다.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>req.accepted()</code></p>
+</td>
+<td>
+<p><code>req.accepts()</code>, <code>req.acceptsEncodings()</code>,
+<code>req.acceptsCharsets()</code> 및 <code>req.acceptsLanguages()</code>를 사용하십시오.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.location()</code></p>
+</td>
+<td>
+<p>더 이상 상대 URL을 분석하지 않습니다.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>req.params</code></p>
+</td>
+<td>
+<p>이전에는 배열이었지만 이제 오브젝트가 되었습니다.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.locals</code></p>
+</td>
+<td>
+<p>이전에는 함수였지만 이제 오브젝트가 되었습니다.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.headerSent</code></p>
+</td>
+<td>
+<p><code>res.headersSent</code>로 변경되었습니다.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>app.route</code></p>
+</td>
+<td>
+<p>이제 <code>app.mountpath</code>로 사용 가능합니다.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.on('header')</code></p>
+</td>
+<td>
+<p>제거되었습니다.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.charset</code></p>
+</td>
+<td>
+<p>제거되었습니다.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.setHeader('Set-Cookie', val)</code></p>
+</td>
+<td>
+<p>이제 기능이 기본 쿠키 값의 설정으로 제한되었습니다. 추가적인
+기능을 위해서는 <code>res.cookie()</code>를 사용하십시오.</p>
+</td>
+</tr>
+</table>
+<h2 id="example-migration">앱 마이그레이션의 예</h2>
+<p>여기서는 Express 3 애플리케이션을 Express 4로 마이그레이션하는 예를 살펴보겠습니다.
+대상 파일은 <code>app.js</code> 및 <code>package.json</code>입니다.</p>
+<h3>
+버전 3 앱
+</h3>
+<h4><code>app.js</code></h4>
+<p>다음과 같은 <code>app.js</code> 파일을 갖는 Express 버전 3 애플리케이션을 가정합니다.</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var http = require('http');
+var path = require('path');
+
+var app = express();
+
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.methodOverride());
+app.use(express.session({ secret: 'your secret here' }));
+app.use(express.bodyParser());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}
+
+app.get('/', routes.index);
+app.get('/users', user.list);
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+</code>
+</pre>
+<h4><code>package.json</code></h4>
+<p>동반되는 버전 3의 <code>package.json</code> 파일의 내용은
+다음과 같을 수 있습니다.</p>
+<pre><code class="language-javascript" translate="no">
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.12.0",
+    "pug": "*"
+  }
+}
+</code>
+</pre>
+<h3>
+프로세스
+</h3>
+<p>다음의 명령을 통해 Express 4에 필요한 미들웨어를 설치하고 Express 및 Pug를
+각각 최신 버전으로 업데이트하여 마이그레이션 프로세스를
+시작하십시오.</p>
+<pre><code class="language-console">$ npm install serve-favicon morgan method-override express-session body-parser multer errorhandler express@latest pug@latest --save
+</code></pre>
+<p><code>app.js</code>를 다음과 같이 변경하십시오.</p>
+<ol>
+<li>
+<p>기본 제공 Express 미들웨어 함수인 <code>express.favicon</code>,
+<code>express.logger</code>, <code>express.methodOverride</code>,
+<code>express.session</code>, <code>express.bodyParser</code> 및
+<code>express.errorHandler</code>는 더 이상 <code>express</code>
+오브젝트에 사용할 수 없습니다. 이들 함수의 대체 함수를 수동으로
+설치한 후 앱에서 로드해야 합니다.</p>
+</li>
+<li>
+<p><code>app.router</code> 함수는 이제 로드할 필요가 없습니다.
+이 함수는 유효한 Express 4 앱 오브젝트가 아니므로
+<code>app.use(app.router);</code> 코드를 제거하십시오.</p>
+</li>
+<li>
+<p>미들웨어 함수들이 올바른 순서로 로드되는지 확인하십시오(앱 라우트를 로드한 후 <code>errorHandler</code>를 로드).</p>
+</li>
+</ol>
+<h3>버전 4 앱</h3>
+<h4><code>package.json</code></h4>
+<p>위의 <code>npm</code> 명령을 실행하면 <code>package.json</code>이 다음과 같이 업데이트됩니다.</p>
+<pre><code class="language-javascript" translate="no">
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.5.2",
+    "errorhandler": "^1.1.1",
+    "express": "^4.8.0",
+    "express-session": "^1.7.2",
+    "pug": "^2.0.0-beta6",
+    "method-override": "^2.1.2",
+    "morgan": "^1.2.2",
+    "multer": "^0.1.3",
+    "serve-favicon": "^2.0.1"
+  }
+}
+</code>
+</pre>
+<h4><code>app.js</code></h4>
+<p>이후 올바르지 않은 코드를 제거하고, 필요한 미들웨어를 로드하고,
+필요에 따라 다른 변경을 실행하십시오. <code>app.js</code> 파일의 내용은 다음과 같습니다.</p>
+<pre><code class="language-javascript" translate="no">
+var http = require('http');
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var path = require('path');
+
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var methodOverride = require('method-override');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var errorHandler = require('errorhandler');
+
+var app = express();
+
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(methodOverride());
+app.use(session({ resave: true,
+                  saveUninitialized: true,
+                  secret: 'uwotm8' }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', routes.index);
+app.get('/users', user.list);
+
+// error handling middleware should be loaded after the loading the routes
+if ('development' == app.get('env')) {
+  app.use(errorHandler());
+}
+
+var server = http.createServer(app);
+server.listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+</code>
+</pre>
+<div class="doc-box doc-info">
+<p><code>http</code> 모듈을 이용해 직접 작업해야 하는 경우(socket.io/SPDY/HTTPS)를 제외하면 <code>http</code> 모듈을 로드할 필요가 없으며, 다음과 같은 방법으로 간단히 앱을 시작할 수 있습니다.</p>
+<pre><code class="language-js" translate="no">app.listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});</code>
+</pre>
+</div>
+<h3>앱 실행</h3>
+<p>마이그레이션 프로세스가 완료되었으며, 이제 앱은
+Express 4 앱이 되었습니다. 확인을 위하여, 다음의 명령을 이용해 앱을 시작하십시오.</p>
+<pre><code class="language-console">$ node .
+</code></pre>
+<p><a href="http://localhost:3000/">http://localhost:3000</a>을
+로드한 후 홈 페이지가 Express 4에 의해 렌더링되는 것을 확인하십시오.</p>
+<h2 id="app-gen">Express 4 앱 생성기로의 업그레이드</h2>
+<p>Express 앱을 생성하기 위한 명령행 도구는 여전히
+<code>express</code>이지만, 새 버전으로 업그레이드하려면
+Express 3 앱 생성기의 설치를 제거한 후 새로운
+<code>express-generator</code>를 설치해야 합니다.</p>
+<h3>설치 </h3>
+<p>Express 3 앱 생성기가 이미 시스템에 설치되어 있는 경우, 다음과 같이
+Express 3 앱 생성기의 설치를 제거해야 합니다.</p>
+<pre><code class="language-console">$ npm uninstall -g express
+</code></pre>
+<p>파일 및 디렉토리 권한이 구성된 방식에 따라서, 위의 명령은
+<code>sudo</code>를 이용해 실행해야 할 수도 있습니다.</p>
+<p>이제 다음과 같이 새 생성기를 설치하십시오.</p>
+<pre><code class="language-console">$ npm install -g express-generator
+</code></pre>
+<p>파일 및 디렉토리 권한이 구성된 방식에 따라서, 위의 명령은
+<code>sudo</code>를 이용해 실행해야 할 수도 있습니다.</p>
+<p>이제 시스템의 <code>express</code> 명령이 Express 4 생성기로
+업데이트되었습니다.</p>
+<h3>앱 생성기에 대한 변경사항 </h3>
+<p>다음을 제외하면, 명령의 옵션 및 용도는 대체로 동일하게 유지되었습니다.</p>
+<ul class="doclist">
+<li><code>--sessions</code> 옵션이 제거되었습니다.</li>
+<li><code>--jshtml</code> 옵션이 제거되었습니다.</li>
+<li><a href="http://twitter.github.io/hogan.js/">Hogan.js</a>를 지원하기 위한 <code>--hogan</code> 옵션이 추가되었습니다.</li>
+</ul>
+<h3>예</h3>
+<p>Express 4 앱을 작성하기 위하여 다음의 명령을 실행하십시오.</p>
+<pre><code class="language-console">$ express app4
+</code></pre>
+<p><code>app4/app.js</code> 파일의 내용을 살펴보면, 앱에 필요한 모든 미들웨어
+함수(<code>express.static</code> 제외)가 독립적인 모듈로서 로드되며
+<code>router</code> 미들웨어는 이제 앱에 명시적으로 로드되지 않는다는 것을
+알 수 있습니다.</p>
+<p>또한 이전에 <code>app.js</code> 파일은 구버전의 생성기에 의해 생성되는 독립형 앱이었지만, 이제는 Node.js의 모듈이 되었다는 것을 알 수 있습니다.</p>
+<p>종속 항목을 설치한 후, 다음의 명령을 이용해 앱을 시작하십시오.</p>
+<pre><code class="language-console">$ npm start
+</code></pre>
+<p><code>package.json</code> 파일 내의 npm 시작 스크립트를 살펴보면,
+Express 3에서는 <code>node app.js</code>를 이용해 앱을 시작했지만,
+이제 앱을 시작하는 실제 명령은 <code>node ./bin/www</code>라는 것을
+알 수 있습니다.</p>
+<p>Express 4 생성기에 의해 생성된 <code>app.js</code> 파일은 이제 Node.js의 모듈이므로,
+<code>app.js</code> 파일은 더 이상 하나의 앱으로서 독립적으로 시작될 수
+없습니다(코드를 수정하는 경우 제외). 이러한 모듈은 Node.js 파일에서 로드되어야 하며
+Node.js 파일을 통해 시작되어야 합니다. 이 경우에서 Node.js 파일은
+<code>./bin/www</code>입니다.</p>
+<p>이제는 Express 앱을 작성하거나 앱을 시작하는 데 있어 <code>bin</code> 디렉토리 또는
+확장자 없는 <code>www</code> 파일이 필수가 아닙니다. 이들은
+단지 생성기에 의한 추천사항이며, 따라서 필요사항에 맞추어 수정해도
+좋습니다.</p>
+<p><code>www</code> 디렉토리를 제거하고 “Express 3의 방식”을 유지하려면,
+<code>app.js</code> 파일의 끝에 있는 <code>module.exports = app;</code>가
+포함된 행을 삭제한 후 그 자리에 다음의 코드를 붙여넣으십시오.</p>
+<pre><code class="language-javascript" translate="no">
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+</code>
+</pre>
+<p><code>debug</code> 모듈은 다음의 코드를 이용하여 <code>app.js</code> 파일의 맨 위에서 로드되어야 합니다.</p>
+<pre><code class="language-javascript" translate="no">
+var debug = require('debug')('app4');
+</code>
+</pre>
+<p>다음으로, <code>package.json</code> 파일의 <code>"start": "node ./bin/www"</code>를 <code>"start": "node app.js"</code>로 변경하십시오.</p>
+<p>이제 <code>./bin/www</code>의 기능이 다시 <code>app.js</code>로
+이전되었습니다. 이러한 변경은 권장되지 않지만, 이러한 연습을 통해
+<code>./bin/www</code> 파일의 작동 원리를 이해하고 <code>app.js</code> 파일이
+더 이상 자체적으로 시작되지 않는 이유를 이해할 수 있습니다.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>는 <a href="https://openjsf.org">OpenJS 기반의</a> 프로젝트입니다.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub에서 웹사이트의 포크를 작성하십시오</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 이 저작물은 <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">크리에이티브 커먼즈 저작자표시-동일조건변경허락 3.0 미국 라이선스</a>에 따라 이용할 수 있습니다.
+</div>
+</footer>
+<script type="1ca0709af64b2154cc458f8f-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ko'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="1ca0709af64b2154cc458f8f-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ko/guide/migrating-4.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

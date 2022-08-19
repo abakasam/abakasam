@@ -1,0 +1,286 @@
+
+
+https://www.cnblogs.com/yeahle/p/12216516.html
+https://www.cnblogs.com/qrlozte/p/4175461.html
+https://my.oschina.net/sicilycorleone/blog/1631087
+express.application.all('*', function(request, response) {
+	var path = PUBLIC_HTML + request._parsedUrl.path
+	var fs = require('fs')
+	
+	fs.readFile(path,'utf-8',function(error, data) {
+		response.end(data);
+	})
+})
+https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+my-app
+|-- pom.xml
+`-- src
+    |-- main
+    |   `-- java
+    |       `-- com
+    |           `-- mycompany
+    |               `-- app
+    |                   `-- App.java
+    `-- test
+        `-- java
+            `-- com
+                `-- mycompany
+                    `-- app
+                        `-- AppTest.java
+
+com.mycompany.app.App
+
+https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
+src/main/java		Application/Library sources
+src/main/resources	Application/Library resources
+src/main/filters	Resource filter files
+src/main/webapp		Web application sources
+src/test/java		Test sources
+src/test/resources	Test resources
+src/test/filters	Test resource filter files
+src/it	Integration Tests (primarily for plugins)
+src/assembly		Assembly descriptors
+src/site			Site
+LICENSE.txt			Project's license
+NOTICE.txt			Notices and attributions required by libraries that the project depends on
+README.txt			Project's readme
+
+
+// TODO: Fix express callback with next in request
+express
+function(request, response, next) {
+	request.next = next
+	request.next()
+}
+
+// TODO: Parse URL parameters from slug
+MDN URL
+
+// TODO: Find public_html from command not code
+public_html	 (website)
+
+// TODO: Local node databases not system or linux
+database (local)
+ programming MongoDB
+ information MySQL
+
+Multer Upload Example
+
+const express = require('express')
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
+
+const app = express()
+app.get('/', function(req, res) { res.send('<form action="/profile" method="post" enctype="multipart/form-data"><input type="file" name="avatar" /><input type="submit"/></form>') })
+app.post('/profile', upload.single('avatar'), function (req, res, next) {res.send('hello')})
+app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {res.send('hello2')})
+
+const cpUpload = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'gallery', maxCount: 8 }])
+app.post('/cool-profile', cpUpload, function (req, res, next) {res.send('hello3')})
+
+app.listen(3000)
+
+var request = new XMLHttpRequest()
+
+request.addEventListener('load', function() {
+	var data = this.responseText
+	var xml = (new DOMParser()).parseFromString(data, 'text/xml')
+})
+
+request.open('GET', 'https://drifty-abakasam720639.codeanyapp.com/xmllist/list.xml')
+request.send()
+
+
+var makeWithdraw = function(balance) {
+	
+	(function(amount) {
+		balance = 20
+			
+	})(balance) 
+	
+	return balance
+}
+
+var balance = 100
+balance = makeWithdraw(100)
+console.log(balance)
+
+https://www.jb51.net/article/249975.htm
+
+return
+var xm
+l = {
+	document: 'hello'
+}
+
+alert(xml.document)
+alert(document.implementation) // DOMImplementation
+
+xml.document = document.implementation.createDocument(null, 'xml', null)
+
+alert(xml.document) // XMLDocument
+
+
+
+fetch('https://drifty-abakasam720639.codeanyapp.com/xmllist/list.xml').then(function(response) {
+	if(response.ok) {
+		return response.blob()
+	}
+}).then(function(data) {
+	xml.URL = URL.createObjectURL(data)
+}).catch(function(error) {
+	alert(error)
+})
+
+el.addEventListener("load", modifyText, false);
+
+
+
+https://blog.csdn.net/weixin_31473773/article/details/114124191
+
+https://docs.gradle.org/current/userguide/installation.html
+https://docs.gradle.org/2.14.1/dsl/org.gradle.api.tasks.wrapper.Wrapper.html#org.gradle.api.tasks.wrapper.Wrapper:distributionUrl
+https://docs.gradle.org/2.14.1/userguide/gradle_wrapper.html
+https://github.com/mozilla/rhino/tree/82ffb8f3e09e77e3b1f5782c35b621e7ca742b58
+https://blog.csdn.net/weixin_31473773/article/details/114124191
+
+https://github.com/mozilla/rhino/tree/82ffb8f3e09e77e3b1f5782c35b621e7ca742b58
+
+Set /tmp for npm
+
+npm config ls -l
+/home/cabox/workspace/abakasam/local/bin/iojs-3.3.1/cli-2.1.3/tmp
+
+https://www.cnblogs.com/JunkingBoy/p/15308476.html
+https://wenku.baidu.com/view/6b4cedf9770bf78a6529546e?pcf=2&fr=sogou&bfetype=new&bfetype=new
+https://www.jianshu.com/p/f41400a6e86d
+https://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServletRequest.html
+https://dev.java/learn/getting-started-with-java/#anchor_1
+https://github.com/in28minutes/JavaWebApplicationStepByStep
+https://www.amazon.com/_/dp/0596101066?tag=oreilly20-20
+
+https://github.com/in28minutes/JavaWebApplicationStepByStep/blob/master/Step01.md
+https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
+https://archive.apache.org/dist/maven/maven-3/3.2.1/binaries/
+
+Build Java Servlet
+
+https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+/vxheaven # Servlet name
+ (RESTful Java): POST/GET/PUT/DELTE
+ Process URL
+ Redirect
+
+Java Servlet request parameters
+https://port-8082-aquaogen-abakasam720639.codeanyapp.com/examples/servlets/reqparams.html
+
+index file not being identified
+ too much work to change each <a>
+
+server.xml or web.xml should have a tag to process slug
+https://www.jianshu.com/p/06cf19ab8e59
+https://www.iteye.com/blog/haokong-467369
+
+shows that tomcat can be configured with xml
+ the pattern would be annoying
+  javascript would be a chance
+
+
+
+configure:10862: gcc -o conftest -O2 -m64 -mtune=core2 -Igmp-4.2.4  -Lgmp-4.2.4/.libs -Lmpfr-2.3.2/.libs  conftest.c -lmpfr -lgmp  >&5
+mpfr-2.3.2/.libs/libmpfr.so: undefined reference to `__gmp_rand'
+
+4.1.4 2006-04-18
+https://gmplib.org/repo/gmp
+
+../../iojs-3.3.1/node ../../bin/ionic start tutorial https://github.com/beenotung/ionic-starter-tutorial
+
+ionic-starter-conference
+
+tabs
+blank
+sidemenu
+super
+conference
+tutorial
+aws
+
+ionic start <type> <type> --type="ionic-angular"
+
+start conference https://github.com/beenotung/ionic-starter-conference
+
+BUG: Ionic, cordova, SyntaxError: Unexpected Token { (Complete)
+
+todo needs to be stated for
+ issue getting issues together
+  work on keeping track of
+
+TODO: Check installations and documentation of abakasam-products
+
+
+
+
+TODO: Local cordova docs
+
+
+TODO: Check IO.js and npm documentation, fix npm documentation (Complete)
+
+TODO: Local cordova IO.js (Complete)
+
+npm install q@1.0.1, underscore@1.7.0, request@2.x - cordova-lib
+
+TODO: Local cordova plugins (Complete)
+
+https://cordova.apache.org/docs/en/4.0.0/
+
+
+TODO: Download starter templates IO.js (Complete)
+
+TODO: Download site: http://php-java-bridge.sourceforge.net/ (Complete)
+
+TODO: Download PHP Java Bridge (Complete)
+
+wget https://sourceforge.net/projects/php-java-bridge/files/Binary%20package/php-java-bridge_6.2.3/exploded/script-api.jar --no-check-certificate
+wget https://sourceforge.net/projects/php-java-bridge/files/Binary%20package/php-java-bridge_6.2.3/exploded/php-servlet.jar --no-check-certificate
+wget https://sourceforge.net/projects/php-java-bridge/files/Binary%20package/php-java-bridge_6.2.3/exploded/JavaBridge.jar --no-check-certificate
+wget https://sourceforge.net/projects/php-java-bridge/files/Binary%20package/php-java-bridge_6.2.3/exploded/php-script.jar --no-check-certificate
+wget https://sourceforge.net/projects/php-java-bridge/files/Binary%20package/php-java-bridge_6.2.3/exploded/Java.inc --no-check-certificate
+wget https://sourceforge.net/projects/php-java-bridge/files/Binary%20package/php-java-bridge_6.2.3/JavaBridgeTemplate623.war --no-check-certificate
+wget https://sourceforge.net/projects/php-java-bridge/files/Binary%20package/php-java-bridge_6.2.3/php-java-bridge_6.2.3_documentation.zip --no-check-certificate
+wget https://sourceforge.net/projects/php-java-bridge/files/src/php-java-bridge_6.2.3/php-java-bridge_6.2.3.tar.gz --no-check-certificate
+
+TODO: Configure PHP servlet for PHP Java Bridge (Complete)
+
+<web-app xmlns=... >
+
+<listener><listener-class>php.java.servlet.ContextLoaderListener</listener-class></listener>
+
++ <servlet><servlet-name>PhpJavaServlet</servlet-name><servlet-class>php.java.servlet.PhpJavaServlet</servlet-class>
++ </servlet>
++ <servlet><servlet-name>PhpCGIServlet</servlet-name><servlet-class>php.java.servlet.fastcgi.FastCGIServlet</servlet-class>
++ <init-param><param-name>prefer_system_php_exec</param-name><param-value>On</param-value></init-param>
++ <init-param><param-name>php_include_java</param-name><param-value>Off</param-value></init-param>
++ </servlet>
++ <servlet-mapping><servlet-name>PhpJavaServlet</servlet-name><url-pattern>*.phpjavabridge</url-pattern> </servlet-mapping>
++ <servlet-mapping><servlet-name>PhpCGIServlet</servlet-name><url-pattern>*.php</url-pattern></servlet-mapping>
+
+
+</web-app>
+
+https://www.php.net/manual/en/tutorial.firstpage.php
+
+BUG: INFO: JSR 356 WebSocket (Java WebSocket 1.1) support is not available when running on Java 6. To suppress this message, run Tomcat on Java 7, remove the WebSocket JARs from $CATALINA_HOME/lib or add the WebSocket JARs to the tomcat.util.scan.DefaultJarScanner.jarsToSkip property in $CATALINA_BASE/conf/catalina.properties. Note that the deprecated Tomcat 7 WebSocket API will be available. (Complete)
+
+https://www.java.com/en/download/help/java_7.html
+
+BUG: java.net.BindException: Address already in use (Bind failed) (Complete)
+
+Aug 5, 2022 5:29:34 PM org.apache.catalina.core.StandardServer await
+SEVERE: StandardServer.await: create[localhost:8005]: 
+
+ <Connector port="3000" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="zh-tw" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-tw/advanced/best-practice-security.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>正式作業中的 Express 安全最佳作法</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-tw.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">首頁</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入門</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安裝
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 產生器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+靜態檔案
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常見問題 (FAQ)
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">手冊</a>
+<ul>
+<li><a href="../guide/routing.html">路由</a>
+</li>
+<li><a href="../guide/writing-middleware.html">撰寫中介軟體</a>
+</li>
+<li><a href="../guide/using-middleware.html">使用中介軟體</a>
+</li>
+<li><a href="../guide/using-template-engines.html">使用範本引擎</a>
+</li>
+<li><a href="../guide/error-handling.html">錯誤處理</a>
+</li>
+<li><a href="../guide/debugging.html">除錯</a>
+</li>
+<li><a href="../guide/behind-proxies.html">位於 Proxy 背後的 Express</a>
+</li>
+<li><a href="../guide/migrating-4.html">移至 Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">移至 Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">資料庫整合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 參照</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（已淘汰）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（已淘汰）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">進階主題</a>
+<ul>
+<li><a href="developing-template-engines.html">範本引擎</a>
+</li>
+<li><a href="pm.html">使用程序管理程式</a>
+</li>
+<li><a href="security-updates.html">安全更新</a>
+</li>
+<li><a href="best-practice-security.html">安全最佳作法</a>
+</li>
+<li><a href="best-practice-performance.html">效能最佳作法</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">資源</a>
+<ul>
+<li><a href="../resources/glossary.html">名詞解釋</a>
+</li>
+<li><a href="../resources/middleware.html">中介軟體</a>
+</li>
+<li><a href="../resources/community.html">社群</a>
+</li>
+<li><a href="../resources/learning.html">額外學習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>這個翻譯<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相對於英文版說明文件，本文件可能已不合時宜。如需最新的更新，請參閱<a href="../../index.html">英文版說明文件</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="正式作業最佳作法安全">正式作業最佳作法：安全</h1>
+<h2 id="概觀">概觀</h2>
+<p>「<em>正式作業</em>」術語是指軟體生命週期中，應用程式或 API 通用於其一般使用者或消費者的階段。相對地，在「<em>開發</em>」階段，您仍在積極撰寫和測試程式碼，且應用程式尚未開放給外部存取。對應的系統環境分別稱為<em>正式作業</em>環境和<em>開發</em>環境。</p>
+<p>開發環境和正式作業環境的設定方式通常不同，且其需求差異頗大。適合用於開發中的，在正式作業中不見得合用。舉例來說，在開發環境中，您可能希望詳細記載錯誤以便除錯，而相同的行為在正式作業環境中卻可能成為安全隱憂。在開發中，您不必擔心可調整性、可靠性和效能，但在正式作業中這些顧慮相形重要。</p>
+<p>本文討論部署至正式作業之 Express 應用程式的一些安全最佳作法。</p>
+<h2 id="請勿使用已淘汰或有漏洞的-express-版本">請勿使用已淘汰或有漏洞的 Express 版本</h2>
+<p>Express 2.x 和 3.x 不再維護。不會修正這些版本中的安全與效能問題。請勿使用它們！如果您尚未移至第 4 版，請遵循<a href="../guide/migrating-4.html">移轉手冊</a>。</p>
+<p>另請確定您沒有使用<a href="security-updates.html">「安全更新」頁面</a>中列出的任何有漏洞的 Express 版本。若有使用，請更新為其中一個穩定版本，最好是最新版本。</p>
+<h2 id="使用-tls">使用 TLS</h2>
+<p>如果您的應用程式會處理或傳輸機密資料，請使用<a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">傳輸層安全</a> (TLS)，來保護連線和資料的安全。此技術會在資料從用戶端傳送至伺服器之前，先將資料加密，因此可阻止一些常見（和容易）的駭客攻擊。雖然 Ajax 和 POST 要求不見得明顯可見，且在瀏覽器中似乎是「隱藏的」，其網路資料流量卻容易遭到<a href="https://en.wikipedia.org/wiki/Packet_analyzer">封包探查</a>和<a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">中間人攻擊</a>。</p>
+<p>您可能熟悉 Secure Socket Layer (SSL) 加密。<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa380515(v=vs.85).aspx">TLS 就是 SSL 後繼的演進</a>。換句話說，如果您之前使用 SSL，請考量升級至 TLS。一般而言，我們建議由 Nginx 來處理 TLS。如需有關在 Nginx（和其他伺服器）上配置 TLS 的適當參考資料，請參閱 <a href="https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Server_Configurations">Recommended Server Configurations (Mozilla Wiki)</a>。</p>
+<p>此外，可方便您取得免費 TLS 憑證的工具是 <a href="https://letsencrypt.org/about/">Let’s Encrypt</a>，這是一個免費的自動化開放憑證管理中心 (CA)，由 <a href="https://letsencrypt.org/isrg/">Internet Security Research Group (ISRG)</a> 提供。</p>
+<h2 id="使用-helmet">使用 Helmet</h2>
+<p><a href="https://www.npmjs.com/package/helmet">Helmet</a> 會適當設定 HTTP 標頭，有助於防範您的應用程式出現已知的 Web 漏洞。</p>
+<p>Helmet 實際上只由 9 個小型中介軟體函數組成，這些函數會設定安全相關的 HTTP 標頭：</p>
+<ul>
+<li><a href="https://github.com/helmetjs/csp">csp</a> 會設定 <code>Content-Security-Policy</code> 標頭，以防範跨網站 Scripting 攻擊和其他跨網站注入。</li>
+<li><a href="https://github.com/helmetjs/hide-powered-by">hidePoweredBy</a> 會移除 <code>X-Powered-By</code> 標頭。</li>
+<li><a href="https://github.com/helmetjs/hsts">hsts</a> 會設定 <code>Strict-Transport-Security</code> 標頭，以施行安全的 (HTTP over SSL/TLS) 伺服器連線。</li>
+<li><a href="https://github.com/helmetjs/ienoopen">ieNoOpen</a> 會設定 <code>X-Download-Options</code>（適用於 IE8+）。</li>
+<li><a href="https://github.com/helmetjs/nocache">noCache</a> 會設定 <code>Cache-Control</code> 和 Pragma 標頭，以停用用戶端快取。</li>
+<li><a href="https://github.com/helmetjs/dont-sniff-mimetype">noSniff</a> 會設定 <code>X-Content-Type-Options</code>，以阻止瀏覽器對脫離所宣告內容類型的回應進行 MIME 探查。</li>
+<li><a href="https://github.com/helmetjs/frameguard">frameguard</a> 會設定 <code>X-Frame-Options</code> 標頭，以提供 <a href="https://www.owasp.org/index.php/Clickjacking">clickjacking</a> 保護。</li>
+<li><a href="https://github.com/helmetjs/x-xss-protection">xssFilter</a> 會設定 <code>X-XSS-Protection</code>，以便在最新的 Web 瀏覽器中啟用跨網站 Scripting (XSS) 過濾器。</li>
+</ul>
+<p>安裝 Helmet 等之類的其他任何模組：</p>
+<pre><code class="language-console">$ npm install --save helmet
+</code></pre>
+<p>然後在您的程式碼中使用它：</p>
+<pre><code class="language-javascript" translate="no">
+...
+var helmet = require('helmet');
+app.use(helmet());
+...
+</code>
+</pre>
+<h3 id="至少停用-x-powered-by-標頭">至少停用 X-Powered-By 標頭</h3>
+<p>如果您不想使用 Helmet，最起碼請停用 <code>X-Powered-By</code> 標頭。攻擊者可能使用這個標頭（依預設，會啟用），來偵測執行 Express 的應用程式，然後啟動特定目標的攻擊。</p>
+<p>因此最佳作法是使用 <code>app.disable()</code> 方法來關閉標頭：</p>
+<pre><code class="language-javascript" translate="no">
+app.disable('x-powered-by');
+</code>
+</pre>
+<p>如果您使用 <code>helmet.js</code>，自會為您處理此事。</p>
+<h2 id="安全地使用-cookie">安全地使用 Cookie</h2>
+<p>為了確保 Cookie 不會開啟您的應用程式進行惡意探索，請勿使用預設階段作業 Cookie 名稱，並適當設定 Cookie 安全選項。</p>
+<p>以下是兩個主要的中介軟體 Cookie 階段作業模組：</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/express-session">express-session</a>，取代了 Express 3.x 內建的 <code>express.session</code> 中介軟體。</li>
+<li><a href="https://www.npmjs.com/package/cookie-session">cookie-session</a>，取代了 Express 3.x 內建的 <code>express.cookieSession</code> 中介軟體。</li>
+</ul>
+<p>這兩個模組之間的主要差異是它們儲存 Cookie 階段作業資料的方式。<a href="https://www.npmjs.com/package/express-session">express-session</a> 中介軟體會將階段作業資料儲存在伺服器上；
+它只將階段作業 ID（而非階段作業資料）儲存在 Cookie 本身中。依預設，它使用記憶體內儲存體，且並非設計成用於正式作業環境。在正式作業中，您需要設定可調式階段作業儲存庫；
+請參閱<a href="https://github.com/expressjs/session#compatible-session-stores">相容的階段作業儲存庫</a>清單。</p>
+<p>相對地，<a href="https://www.npmjs.com/package/cookie-session">cookie-session</a> 中介軟體會實作以 Cookie 為基礎的儲存體：它會將整個階段作業序列化為 Cookie，而非只是一個階段作業金鑰。只有在階段作業資料相對較小，且易於編碼成基本值（而非物件）時，才使用此項。雖然瀏覽器對於每個 Cookie 理應可以支援至少
+4096 個位元組，為了確保您不會超出限制，對於每一個網域，請勿超過 4093 個位元組大小。此外要留意的是，用戶端可以看見 Cookie 資料，因此，若有任何原因需要保護該資料的安全或加以遮蔽，最好選擇 express-session。</p>
+<h3 id="請勿使用預設階段作業-cookie-名稱">請勿使用預設階段作業 Cookie 名稱</h3>
+<p>使用預設階段作業 Cookie 名稱可能開放您的應用程式遭受攻擊。引發的安全問題類似於 <code>X-Powered-By</code>：潛在的攻擊者可能用它來對伺服器進行指紋辨識，從而發動目標攻擊。</p>
+<p>為了避免發生此問題，請使用通用 Cookie 名稱；
+例如，使用 <a href="https://www.npmjs.com/package/express-session">express-session</a> 中介軟體：</p>
+<pre><code class="language-javascript" translate="no">
+var session = require('express-session');
+app.set('trust proxy', 1) // trust first proxy
+app.use( session({
+   secret : 's3Cur3',
+   name : 'sessionId',
+  })
+);
+</code>
+</pre>
+<h3 id="設定-cookie-安全選項">設定 Cookie 安全選項</h3>
+<p>設定下列 Cookie 選項來加強安全：</p>
+<ul>
+<li><code>secure</code> - 確保瀏覽器只透過 HTTPS 傳送 Cookie。</li>
+<li><code>httpOnly</code> - 確保只透過 HTTP(S) 傳送 Cookie，而不透過用戶端 JavaScript 傳送，如此有助於防範跨網站 Scripting 攻擊。</li>
+<li><code>domain</code> - 指出 Cookie 的網域；用來與發出 URL 要求之伺服器的網域相互比較。如果相符，接著會檢查路徑屬性。</li>
+<li><code>path</code> - 指出 Cookie 的路徑；用來與要求路徑相互比較。如果此項與網域相符，則會傳送要求中的 Cookie。</li>
+<li><code>expires</code> - 用來設定持續性 Cookie 的到期日。</li>
+</ul>
+<p>下列範例使用 <a href="https://www.npmjs.com/package/cookie-session">cookie-session</a> 中介軟體：</p>
+<pre><code class="language-javascript" translate="no">
+var session = require('cookie-session');
+var express = require('express');
+var app = express();
+
+var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+app.use(session({
+  name: 'session',
+  keys: ['key1', 'key2'],
+  cookie: { secure: true,
+            httpOnly: true,
+            domain: 'example.com',
+            path: 'foo/bar',
+            expires: expiryDate
+          }
+  })
+);
+</code>
+</pre>
+<h2 id="其他注意事項">其他注意事項</h2>
+<p>以下是優異的 <a href="https://blog.risingstack.com/node-js-security-checklist/">Node.js Security Checklist</a> 所提供的進一步建議。如需這些建議的所有詳細資料，請參閱該部落格文章：</p>
+<ul>
+<li>實作速率限制，以防對鑑別發動強制入侵攻擊。其中一個作法是使用 <a href="https://strongloop.com/node-js/api-gateway/">StrongLoop API Gateway</a> 來施行速率限制原則。或者，您可以使用 <a href="https://www.npmjs.com/package/express-limiter">express-limiter</a> 之類的中介軟體，但是如果這樣做，您需要稍微修改程式碼。</li>
+<li>使用 <a href="https://www.npmjs.com/package/csurf">csurf</a> 中介軟體，來防範偽造跨網站要求 (CSRF)。</li>
+<li>一律對使用者輸入進行過濾和消毒，來防範跨網站 Scripting (XSS) 和指令注入攻擊。</li>
+<li>使用參數化查詢或備妥陳述式，來防禦 SQL 注入攻擊。</li>
+<li>使用開放程式碼 <a href="http://sqlmap.org/">sqlmap</a> 工具，來偵測您應用程式中的 SQL 注入漏洞。</li>
+<li>使用 <a href="https://nmap.org/">nmap</a> 和 <a href="https://github.com/nabla-c0d3/sslyze">sslyze</a> 工具，來測試您 SSL 密碼、金鑰和重新協議的配置，以及測試您憑證的有效性。</li>
+<li>使用 <a href="https://www.npmjs.com/package/safe-regex">safe-regex</a>，確定您的正規表示式不易受到<a href="https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS">正規表示式阻斷服務</a>攻擊。</li>
+</ul>
+<h2 id="避免其他已知的漏洞">避免其他已知的漏洞</h2>
+<p>關注 <a href="https://npmjs.com/advisories">Node Security Project</a> 中有關可能影響您應用程式所用之 Express 或其他模組的公告。一般而言，Node Security Project 是一個絕佳的資源，它提供 Node 安全的相關知識和工具。</p>
+<p>最後，如同其他任何的 Web 應用程式，Express 應用程式仍可能遭到各種 Web 型攻擊。請多加熟悉已知的 <a href="https://www.owasp.org/index.php/Top_10_2013-Top_10">Web 漏洞</a>，並採取預防措施，來避免這些攻擊。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金會的</a>一個項目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub 上的網站分支</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc. 與其他 expressjs.com 貢獻者。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本著作係採用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">創用 CC 姓名標示-相同方式分享 3.0 美國 授權條款</a>授權.
+</div>
+</footer>
+<script type="200fdba7ae257f8d3abacc45-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-tw'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="200fdba7ae257f8d3abacc45-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-tw/advanced/best-practice-security.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

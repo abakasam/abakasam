@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/en/resources/middleware/morgan.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express morgan middleware</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../../images/favicon.png" />
+<link rel="stylesheet" href="../../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../../css/dropit.css">
+<link rel="stylesheet" href="../../../css/prism.css">
+<link rel="stylesheet" href="../../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../../css/en.css">
+<link rel="stylesheet" href="../../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../../js/app.js"></script>
+<script data-cfasync="false" src="../../../js/retina.js"></script>
+<script data-cfasync="false" src="../../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../../../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../../starter/installing.html">Getting started</a>
+<ul>
+<li>
+<a href="../../starter/installing.html">
+Installing
+</a>
+</li>
+<li>
+<a href="../../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../../starter/generator.html">
+Express generator
+</a>
+</li>
+<li>
+<a href="../../starter/basic-routing.html">
+Basic routing
+</a>
+</li>
+<li>
+<a href="../../starter/static-files.html">
+Static files
+</a>
+</li>
+<li>
+<a href="../../starter/examples.html">
+More examples
+</a>
+</li>
+<li>
+<a href="../../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../../guide/routing.html">Guide</a>
+<ul>
+<li><a href="../../guide/routing.html">Routing</a>
+</li>
+<li><a href="../../guide/writing-middleware.html">Writing middleware</a>
+</li>
+<li><a href="../../guide/using-middleware.html">Using middleware</a>
+</li>
+<li><a href="../../guide/overriding-express-api.html">Overriding the Express API</a>
+</li>
+<li><a href="../../guide/using-template-engines.html">Using template engines</a>
+</li>
+<li><a href="../../guide/error-handling.html">Error handling</a>
+</li>
+<li><a href="../../guide/debugging.html">Debugging</a>
+</li>
+<li><a href="../../guide/behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="../../guide/migrating-4.html">Moving to Express 4</a>
+</li>
+<li><a href="../../guide/migrating-5.html">Moving to Express 5</a>
+</li>
+<li><a href="../../guide/database-integration.html">Database integration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../../4x/api.html">API reference</a>
+<ul>
+<li><a href="../../5x/api.html">5.x (beta)</a>
+</li>
+<li><a href="../../4x/api.html">4.x</a>
+</li>
+<li><a href="../../3x/api.html">3.x (deprecated)</a>
+</li>
+<li><a href="../../../2x/index.html">2.x (deprecated)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../../advanced/developing-template-engines.html">Advanced topics</a>
+<ul>
+<li><a href="../../advanced/developing-template-engines.html">Template engines</a>
+</li>
+<li><a href="../../advanced/pm.html">Process managers</a>
+</li>
+<li><a href="../../advanced/security-updates.html">Security updates</a>
+</li>
+<li><a href="../../advanced/best-practice-security.html">Security best practices</a>
+</li>
+<li><a href="../../advanced/best-practice-performance.html">Performance best practices</a>
+</li>
+<li><a href="../../advanced/healthcheck-graceful-shutdown.html">Health checks and graceful shutdown</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../glossary.html" class="active">Resources</a>
+<ul>
+<li>
+<a href="../community.html">Community</a>
+</li>
+<li>
+<a href="../glossary.html">Glossary</a>
+</li>
+<li>
+<a href="../template-engines.html">Template Engines</a>
+</li>
+<li>
+<a href="../middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../utils.html">Utility modules</a>
+</li>
+<li>
+<a href="../frameworks.html">Frameworks</a>
+</li>
+<li>
+<a href="../companies-using-express.html">Companies using Express</a>
+</li>
+<li>
+<a href="../open-source-using-express.html">Open-source projects</a>
+</li>
+<li>
+<a href="../learning.html">Additional learning</a>
+</li>
+<li>
+<a href="../contributing.html">Contributing to Express</a>
+</li>
+<li>
+<a href="../../changelog/4x.html">Release Change Log</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="page-doc" markdown="1">
+<div id="mw-container">
+<div id="mw-list">
+<ul>
+<li><a href="../../../resources/middleware/body-parser.html">body-parser</a></li>
+<li><a href="../../../resources/middleware/compression.html">compression</a></li>
+<li><a href="../../../resources/middleware/connect-rid.html">connect-rid</a></li>
+<li><a href="../../../resources/middleware/cookie-parser.html">cookie-parser</a></li>
+<li><a href="../../../resources/middleware/cookie-session.html">cookie-session</a></li>
+<li><a href="../../../resources/middleware/cors.html">cors</a></li>
+<li><a href="../../../resources/middleware/csurf.html">csurf</a></li>
+<li><a href="../../../resources/middleware/errorhandler.html">errorhandler</a></li>
+<li><a href="../../../resources/middleware/method-override.html">method-override</a></li>
+<li><a href="../../../resources/middleware/morgan.html">morgan</a></li>
+<li><a href="../../../resources/middleware/multer.html">multer</a></li>
+<li><a href="../../../resources/middleware/response-time.html">response-time</a></li>
+<li><a href="../../../resources/middleware/serve-favicon.html">serve-favicon</a></li>
+<li><a href="../../../resources/middleware/serve-index.html">serve-index</a></li>
+<li><a href="../../../resources/middleware/serve-static.html">serve-static</a></li>
+<li><a href="../../../resources/middleware/session.html">session</a></li>
+<li><a href="../../../resources/middleware/timeout.html">timeout</a></li>
+<li><a href="../../../resources/middleware/vhost.html">vhost</a></li>
+</ul>
+</div>
+<div id="middleware-content">
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i>
+<b>Note:</b> This page was generated from the
+<a target="_blank" href="https://github.com/expressjs/morgan">morgan README</a>.
+</div>
+<h1 id="morgan">morgan</h1>
+<p><a href="https://npmjs.org/package/morgan"><img src="https://badgen.net/npm/v/morgan" alt="NPM Version" /></a>
+<a href="https://npmjs.org/package/morgan"><img src="https://badgen.net/npm/dm/morgan" alt="NPM Downloads" /></a>
+<a href="https://travis-ci.org/expressjs/morgan"><img src="https://badgen.net/travis/expressjs/morgan/master" alt="Build Status" /></a>
+<a href="https://coveralls.io/r/expressjs/morgan?branch=master"><img src="https://badgen.net/coveralls/c/github/expressjs/morgan/master" alt="Test Coverage" /></a></p>
+<p>HTTP request logger middleware for node.js</p>
+<blockquote>
+<p>Named after <a href="http://en.wikipedia.org/wiki/Dexter_Morgan">Dexter</a>, a show you should not watch until completion.</p>
+</blockquote>
+<h2 id="installation">Installation</h2>
+<p>This is a <a href="https://nodejs.org/en/">Node.js</a> module available through the
+<a href="https://www.npmjs.com/">npm registry</a>. Installation is done using the
+<a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm install</code> command</a>:</p>
+<pre><code class="language-sh">$ npm install morgan
+</code></pre>
+<h2 id="api">API</h2>
+
+<pre><code class="language-js">var morgan = require('morgan')
+</code></pre>
+<h3 id="morganformat-options">morgan(format, options)</h3>
+<p>Create a new morgan logger middleware function using the given <code>format</code> and <code>options</code>.
+The <code>format</code> argument may be a string of a predefined name (see below for the names),
+a string of a format string, or a function that will produce a log entry.</p>
+<p>The <code>format</code> function will be called with three arguments <code>tokens</code>, <code>req</code>, and <code>res</code>,
+where <code>tokens</code> is an object with all defined tokens, <code>req</code> is the HTTP request and <code>res</code>
+is the HTTP response. The function is expected to return a string that will be the log
+line, or <code>undefined</code> / <code>null</code> to skip logging.</p>
+<h4 id="using-a-predefined-format-string">Using a predefined format string</h4>
+
+<pre><code class="language-js">morgan('tiny')
+</code></pre>
+<h4 id="using-format-string-of-predefined-tokens">Using format string of predefined tokens</h4>
+
+<pre><code class="language-js">morgan(':method :url :status :res[content-length] - :response-time ms')
+</code></pre>
+<h4 id="using-a-custom-format-function">Using a custom format function</h4>
+
+<pre><code class="language-js">morgan(function (tokens, req, res) {
+  return [
+    tokens.method(req, res),
+    tokens.url(req, res),
+    tokens.status(req, res),
+    tokens.res(req, res, 'content-length'), '-',
+    tokens['response-time'](req, res), 'ms'
+  ].join(' ')
+})
+</code></pre>
+<h4 id="options">Options</h4>
+<p>Morgan accepts these properties in the options object.</p>
+<h5 id="immediate">immediate</h5>
+<p>Write log line on request instead of response. This means that a requests will
+be logged even if the server crashes, <em>but data from the response (like the
+response code, content length, etc.) cannot be logged</em>.</p>
+<h5 id="skip">skip</h5>
+<p>Function to determine if logging is skipped, defaults to <code>false</code>. This function
+will be called as <code>skip(req, res)</code>.</p>
+
+<pre><code class="language-js">// EXAMPLE: only log error responses
+morgan('combined', {
+  skip: function (req, res) { return res.statusCode &lt; 400 }
+})
+</code></pre>
+<h5 id="stream">stream</h5>
+<p>Output stream for writing log lines, defaults to <code>process.stdout</code>.</p>
+<h4 id="predefined-formats">Predefined Formats</h4>
+<p>There are various pre-defined formats provided:</p>
+<h5 id="combined">combined</h5>
+<p>Standard Apache combined log output.</p>
+<pre><code>:remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
+</code></pre>
+<h5 id="common">common</h5>
+<p>Standard Apache common log output.</p>
+<pre><code>:remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length]
+</code></pre>
+<h5 id="dev">dev</h5>
+<p>Concise output colored by response status for development use. The <code>:status</code>
+token will be colored green for success codes, red for server error codes,
+yellow for client error codes, cyan for redirection codes, and uncolored
+for information codes.</p>
+<pre><code>:method :url :status :response-time ms - :res[content-length]
+</code></pre>
+<h5 id="short">short</h5>
+<p>Shorter than default, also including response time.</p>
+<pre><code>:remote-addr :remote-user :method :url HTTP/:http-version :status :res[content-length] - :response-time ms
+</code></pre>
+<h5 id="tiny">tiny</h5>
+<p>The minimal output.</p>
+<pre><code>:method :url :status :res[content-length] - :response-time ms
+</code></pre>
+<h4 id="tokens">Tokens</h4>
+<h5 id="creating-new-tokens">Creating new tokens</h5>
+<p>To define a token, simply invoke <code>morgan.token()</code> with the name and a callback function.
+This callback function is expected to return a string value. The value returned is then
+available as “:type” in this case:</p>
+
+<pre><code class="language-js">morgan.token('type', function (req, res) { return req.headers['content-type'] })
+</code></pre>
+<p>Calling <code>morgan.token()</code> using the same name as an existing token will overwrite that
+token definition.</p>
+<p>The token function is expected to be called with the arguments <code>req</code> and <code>res</code>, representing
+the HTTP request and HTTP response. Additionally, the token can accept further arguments of
+it’s choosing to customize behavior.</p>
+<h5 id="dateformat">:date[format]</h5>
+<p>The current date and time in UTC. The available formats are:</p>
+<ul>
+<li><code>clf</code> for the common log format (<code>"10/Oct/2000:13:55:36 +0000"</code>)</li>
+<li><code>iso</code> for the common ISO 8601 date time format (<code>2000-10-10T13:55:36.000Z</code>)</li>
+<li><code>web</code> for the common RFC 1123 date time format (<code>Tue, 10 Oct 2000 13:55:36 GMT</code>)</li>
+</ul>
+<p>If no format is given, then the default is <code>web</code>.</p>
+<h5 id="http-version">:http-version</h5>
+<p>The HTTP version of the request.</p>
+<h5 id="method">:method</h5>
+<p>The HTTP method of the request.</p>
+<h5 id="referrer">:referrer</h5>
+<p>The Referrer header of the request. This will use the standard mis-spelled Referer header if exists, otherwise Referrer.</p>
+<h5 id="remote-addr">:remote-addr</h5>
+<p>The remote address of the request. This will use <code>req.ip</code>, otherwise the standard <code>req.connection.remoteAddress</code> value (socket address).</p>
+<h5 id="remote-user">:remote-user</h5>
+<p>The user authenticated as part of Basic auth for the request.</p>
+<h5 id="reqheader">:req[header]</h5>
+<p>The given <code>header</code> of the request. If the header is not present, the
+value will be displayed as <code>"-"</code> in the log.</p>
+<h5 id="resheader">:res[header]</h5>
+<p>The given <code>header</code> of the response. If the header is not present, the
+value will be displayed as <code>"-"</code> in the log.</p>
+<h5 id="response-timedigits">:response-time[digits]</h5>
+<p>The time between the request coming into <code>morgan</code> and when the response
+headers are written, in milliseconds.</p>
+<p>The <code>digits</code> argument is a number that specifies the number of digits to
+include on the number, defaulting to <code>3</code>, which provides microsecond precision.</p>
+<h5 id="status">:status</h5>
+<p>The status code of the response.</p>
+<p>If the request/response cycle completes before a response was sent to the
+client (for example, the TCP socket closed prematurely by a client aborting
+the request), then the status will be empty (displayed as <code>"-"</code> in the log).</p>
+<h5 id="total-timedigits">:total-time[digits]</h5>
+<p>The time between the request coming into <code>morgan</code> and when the response
+has finished being written out to the connection, in milliseconds.</p>
+<p>The <code>digits</code> argument is a number that specifies the number of digits to
+include on the number, defaulting to <code>3</code>, which provides microsecond precision.</p>
+<h5 id="url">:url</h5>
+<p>The URL of the request. This will use <code>req.originalUrl</code> if exists, otherwise <code>req.url</code>.</p>
+<h5 id="user-agent">:user-agent</h5>
+<p>The contents of the User-Agent header of the request.</p>
+<h3 id="morgancompileformat">morgan.compile(format)</h3>
+<p>Compile a format string into a <code>format</code> function for use by <code>morgan</code>. A format string
+is a string that represents a single log line and can utilize token syntax.
+Tokens are references by <code>:token-name</code>. If tokens accept arguments, they can
+be passed using <code>[]</code>, for example: <code>:token-name[pretty]</code> would pass the string
+<code>'pretty'</code> as an argument to the token <code>token-name</code>.</p>
+<p>The function returned from <code>morgan.compile</code> takes three arguments <code>tokens</code>, <code>req</code>, and
+<code>res</code>, where <code>tokens</code> is object with all defined tokens, <code>req</code> is the HTTP request and
+<code>res</code> is the HTTP response. The function will return a string that will be the log line,
+or <code>undefined</code> / <code>null</code> to skip logging.</p>
+<p>Normally formats are defined using <code>morgan.format(name, format)</code>, but for certain
+advanced uses, this compile function is directly available.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="expressconnect">express/connect</h3>
+<p>Sample app that will log all request in the Apache combined format to STDOUT</p>
+<pre><code class="language-js">var express = require('express')
+var morgan = require('morgan')
+
+var app = express()
+
+app.use(morgan('combined'))
+
+app.get('/', function (req, res) {
+  res.send('hello, world!')
+})
+</code></pre>
+<h3 id="vanilla-http-server">vanilla http server</h3>
+<p>Sample app that will log all request in the Apache combined format to STDOUT</p>
+<pre><code class="language-js">var finalhandler = require('finalhandler')
+var http = require('http')
+var morgan = require('morgan')
+
+// create "middleware"
+var logger = morgan('combined')
+
+http.createServer(function (req, res) {
+  var done = finalhandler(req, res)
+  logger(req, res, function (err) {
+    if (err) return done(err)
+
+    // respond to request
+    res.setHeader('content-type', 'text/plain')
+    res.end('hello, world!')
+  })
+})
+</code></pre>
+<h3 id="write-logs-to-a-file">write logs to a file</h3>
+<h4 id="single-file">single file</h4>
+<p>Sample app that will log all requests in the Apache combined format to the file
+<code>access.log</code>.</p>
+<pre><code class="language-js">var express = require('express')
+var fs = require('fs')
+var morgan = require('morgan')
+var path = require('path')
+
+var app = express()
+
+// create a write stream (in append mode)
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+
+// setup the logger
+app.use(morgan('combined', { stream: accessLogStream }))
+
+app.get('/', function (req, res) {
+  res.send('hello, world!')
+})
+</code></pre>
+<h4 id="log-file-rotation">log file rotation</h4>
+<p>Sample app that will log all requests in the Apache combined format to one log
+file per day in the <code>log/</code> directory using the
+<a href="https://www.npmjs.com/package/rotating-file-stream">rotating-file-stream module</a>.</p>
+<pre><code class="language-js">var express = require('express')
+var morgan = require('morgan')
+var path = require('path')
+var rfs = require('rotating-file-stream') // version 2.x
+
+var app = express()
+
+// create a rotating write stream
+var accessLogStream = rfs.createStream('access.log', {
+  interval: '1d', // rotate daily
+  path: path.join(__dirname, 'log')
+})
+
+// setup the logger
+app.use(morgan('combined', { stream: accessLogStream }))
+
+app.get('/', function (req, res) {
+  res.send('hello, world!')
+})
+</code></pre>
+<h3 id="split--dual-logging">split / dual logging</h3>
+<p>The <code>morgan</code> middleware can be used as many times as needed, enabling
+combinations like:</p>
+<ul>
+<li>Log entry on request and one on response</li>
+<li>Log all requests to file, but errors to console</li>
+<li>… and more!</li>
+</ul>
+<p>Sample app that will log all requests to a file using Apache format, but
+error responses are logged to the console:</p>
+<pre><code class="language-js">var express = require('express')
+var fs = require('fs')
+var morgan = require('morgan')
+var path = require('path')
+
+var app = express()
+
+// log only 4xx and 5xx responses to console
+app.use(morgan('dev', {
+  skip: function (req, res) { return res.statusCode &lt; 400 }
+}))
+
+// log all requests to access.log
+app.use(morgan('common', {
+  stream: fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+}))
+
+app.get('/', function (req, res) {
+  res.send('hello, world!')
+})
+</code></pre>
+<h3 id="use-custom-token-formats">use custom token formats</h3>
+<p>Sample app that will use custom token formats. This adds an ID to all requests and displays it using the <code>:id</code> token.</p>
+<pre><code class="language-js">var express = require('express')
+var morgan = require('morgan')
+var uuid = require('node-uuid')
+
+morgan.token('id', function getId (req) {
+  return req.id
+})
+
+var app = express()
+
+app.use(assignId)
+app.use(morgan(':id :method :url :response-time'))
+
+app.get('/', function (req, res) {
+  res.send('hello, world!')
+})
+
+function assignId (req, res, next) {
+  req.id = uuid.v4()
+  next()
+}
+</code></pre>
+<h2 id="license">License</h2>
+<p><a href="LICENSE.html">MIT</a></p>
+</div>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+Documentation translations provided by <a href="../../../../strongloop.com/index.html">StrongLoop/IBM</a>:
+<a href="../../../fr/index.html">French</a>, <a href="../../../de/index.html">German</a>, <a href="../../../es/index.html">Spanish</a>, <a href="../../../it/index.html">Italian</a>, <a href="../../../ja/index.html">Japanese</a>, <a href="../../../ru/index.html">Russian</a>, <a href="../../../zh-cn/index.html">Chinese</a>, <a href="../../../zh-tw/index.html">Traditional Chinese</a>, <a href="../../../ko/index.html">Korean</a>, <a href="../../../pt-br/index.html">Portuguese</a>.
+<br>
+Community translation available for: <a href="../../../sk/index.html">Slovak</a>, <a href="../../../uk/index.html">Ukrainian</a>, <a href="../../../uz/index.html">Uzbek</a>, <a href="../../../tr/index.html">Turkish</a> and <a href="../../../th/index.html">Thai</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> is a project of the <a href="https://openjsf.org">OpenJS Foundation</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork the website on GitHub</a>.</div>
+<div>Copyright &copy; 2017 StrongLoop, IBM, and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="13b6b2d1b78b68b646ee3d31-text/javascript"></script>
+<script type="13b6b2d1b78b68b646ee3d31-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:en'] }
+})" async></script>
+<script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="13b6b2d1b78b68b646ee3d31-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/en/resources/middleware/morgan.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

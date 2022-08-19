@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/en/resources/middleware/cookie-session.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express cookie-session middleware</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../../images/favicon.png" />
+<link rel="stylesheet" href="../../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../../css/dropit.css">
+<link rel="stylesheet" href="../../../css/prism.css">
+<link rel="stylesheet" href="../../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../../css/en.css">
+<link rel="stylesheet" href="../../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../../js/app.js"></script>
+<script data-cfasync="false" src="../../../js/retina.js"></script>
+<script data-cfasync="false" src="../../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../../../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../../starter/installing.html">Getting started</a>
+<ul>
+<li>
+<a href="../../starter/installing.html">
+Installing
+</a>
+</li>
+<li>
+<a href="../../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../../starter/generator.html">
+Express generator
+</a>
+</li>
+<li>
+<a href="../../starter/basic-routing.html">
+Basic routing
+</a>
+</li>
+<li>
+<a href="../../starter/static-files.html">
+Static files
+</a>
+</li>
+<li>
+<a href="../../starter/examples.html">
+More examples
+</a>
+</li>
+<li>
+<a href="../../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../../guide/routing.html">Guide</a>
+<ul>
+<li><a href="../../guide/routing.html">Routing</a>
+</li>
+<li><a href="../../guide/writing-middleware.html">Writing middleware</a>
+</li>
+<li><a href="../../guide/using-middleware.html">Using middleware</a>
+</li>
+<li><a href="../../guide/overriding-express-api.html">Overriding the Express API</a>
+</li>
+<li><a href="../../guide/using-template-engines.html">Using template engines</a>
+</li>
+<li><a href="../../guide/error-handling.html">Error handling</a>
+</li>
+<li><a href="../../guide/debugging.html">Debugging</a>
+</li>
+<li><a href="../../guide/behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="../../guide/migrating-4.html">Moving to Express 4</a>
+</li>
+<li><a href="../../guide/migrating-5.html">Moving to Express 5</a>
+</li>
+<li><a href="../../guide/database-integration.html">Database integration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../../4x/api.html">API reference</a>
+<ul>
+<li><a href="../../5x/api.html">5.x (beta)</a>
+</li>
+<li><a href="../../4x/api.html">4.x</a>
+</li>
+<li><a href="../../3x/api.html">3.x (deprecated)</a>
+</li>
+<li><a href="../../../2x/index.html">2.x (deprecated)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../../advanced/developing-template-engines.html">Advanced topics</a>
+<ul>
+<li><a href="../../advanced/developing-template-engines.html">Template engines</a>
+</li>
+<li><a href="../../advanced/pm.html">Process managers</a>
+</li>
+<li><a href="../../advanced/security-updates.html">Security updates</a>
+</li>
+<li><a href="../../advanced/best-practice-security.html">Security best practices</a>
+</li>
+<li><a href="../../advanced/best-practice-performance.html">Performance best practices</a>
+</li>
+<li><a href="../../advanced/healthcheck-graceful-shutdown.html">Health checks and graceful shutdown</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../glossary.html" class="active">Resources</a>
+<ul>
+<li>
+<a href="../community.html">Community</a>
+</li>
+<li>
+<a href="../glossary.html">Glossary</a>
+</li>
+<li>
+<a href="../template-engines.html">Template Engines</a>
+</li>
+<li>
+<a href="../middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../utils.html">Utility modules</a>
+ </li>
+<li>
+<a href="../frameworks.html">Frameworks</a>
+</li>
+<li>
+<a href="../companies-using-express.html">Companies using Express</a>
+</li>
+<li>
+<a href="../open-source-using-express.html">Open-source projects</a>
+</li>
+<li>
+<a href="../learning.html">Additional learning</a>
+</li>
+<li>
+<a href="../contributing.html">Contributing to Express</a>
+</li>
+<li>
+<a href="../../changelog/4x.html">Release Change Log</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="page-doc" markdown="1">
+<div id="mw-container">
+<div id="mw-list">
+<ul>
+<li><a href="../../../resources/middleware/body-parser.html">body-parser</a></li>
+<li><a href="../../../resources/middleware/compression.html">compression</a></li>
+<li><a href="../../../resources/middleware/connect-rid.html">connect-rid</a></li>
+<li><a href="../../../resources/middleware/cookie-parser.html">cookie-parser</a></li>
+<li><a href="../../../resources/middleware/cookie-session.html">cookie-session</a></li>
+<li><a href="../../../resources/middleware/cors.html">cors</a></li>
+<li><a href="../../../resources/middleware/csurf.html">csurf</a></li>
+<li><a href="../../../resources/middleware/errorhandler.html">errorhandler</a></li>
+<li><a href="../../../resources/middleware/method-override.html">method-override</a></li>
+<li><a href="../../../resources/middleware/morgan.html">morgan</a></li>
+<li><a href="../../../resources/middleware/multer.html">multer</a></li>
+<li><a href="../../../resources/middleware/response-time.html">response-time</a></li>
+<li><a href="../../../resources/middleware/serve-favicon.html">serve-favicon</a></li>
+<li><a href="../../../resources/middleware/serve-index.html">serve-index</a></li>
+<li><a href="../../../resources/middleware/serve-static.html">serve-static</a></li>
+<li><a href="../../../resources/middleware/session.html">session</a></li>
+<li><a href="../../../resources/middleware/timeout.html">timeout</a></li>
+<li><a href="../../../resources/middleware/vhost.html">vhost</a></li>
+</ul>
+</div>
+<div id="middleware-content">
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i>
+<b>Note:</b> This page was generated from the
+<a target="_blank" href="https://github.com/expressjs/cookie-session">cookie-session README</a>.
+</div>
+<h1 id="cookie-session">cookie-session</h1>
+<p><a href="https://npmjs.org/package/cookie-session"><img src="https://badgen.net/npm/v/cookie-session" alt="NPM Version" /></a>
+<a href="https://npmjs.org/package/cookie-session"><img src="https://badgen.net/npm/dm/cookie-session" alt="NPM Downloads" /></a>
+<a href="https://github.com/expressjs/cookie-session/actions?query=workflow%3Aci"><img src="https://badgen.net/github/checks/expressjs/cookie-session/master?label=ci" alt="Build Status" /></a>
+<a href="https://coveralls.io/r/expressjs/cookie-session?branch=master"><img src="https://badgen.net/coveralls/c/github/expressjs/cookie-session/master" alt="Test Coverage" /></a></p>
+<p>Simple cookie-based session middleware.</p>
+<p>A user session can be stored in two main ways with cookies: on the server or on
+the client. This module stores the session data on the client within a cookie,
+while a module like <a href="https://www.npmjs.com/package/express-session">express-session</a>
+stores only a session identifier on the client within a cookie and stores the
+session data on the server, typically in a database.</p>
+<p>The following points can help you choose which to use:</p>
+<ul>
+<li><code>cookie-session</code> does not require any database / resources on the server side,
+though the total session data cannot exceed the browser’s max cookie size.</li>
+<li><code>cookie-session</code> can simplify certain load-balanced scenarios.</li>
+<li><code>cookie-session</code> can be used to store a “light” session and include an identifier
+to look up a database-backed secondary store to reduce database lookups.</li>
+</ul>
+<h2 id="install">Install</h2>
+<p>This is a <a href="https://nodejs.org/en/">Node.js</a> module available through the
+<a href="https://www.npmjs.com/">npm registry</a>. Installation is done using the
+<a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm install</code> command</a>:</p>
+<pre><code class="language-sh">$ npm install cookie-session
+</code></pre>
+<h2 id="api">API</h2>
+<pre><code class="language-js">var cookieSession = require('cookie-session')
+var express = require('express')
+
+var app = express()
+
+app.use(cookieSession({
+  name: 'session',
+  keys: [/* secret keys */],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
+</code></pre>
+<h3 id="cookiesessionoptions">cookieSession(options)</h3>
+<p>Create a new cookie session middleware with the provided options. This middleware
+will attach the property <code>session</code> to <code>req</code>, which provides an object representing
+the loaded session. This session is either a new session if no valid session was
+provided in the request, or a loaded session from the request.</p>
+<p>The middleware will automatically add a <code>Set-Cookie</code> header to the response if the
+contents of <code>req.session</code> were altered. <em>Note</em> that no <code>Set-Cookie</code> header will be
+in the response (and thus no session created for a specific user) unless there are
+contents in the session, so be sure to add something to <code>req.session</code> as soon as
+you have identifying information to store for the session.</p>
+<h4 id="options">Options</h4>
+<p>Cookie session accepts these properties in the options object.</p>
+<h5 id="name">name</h5>
+<p>The name of the cookie to set, defaults to <code>session</code>.</p>
+<h5 id="keys">keys</h5>
+<p>The list of keys to use to sign &amp; verify cookie values, or a configured
+<a href="https://www.npmjs.com/package/keygrip"><code>Keygrip</code></a> instance. Set cookies are always
+signed with <code>keys[0]</code>, while the other keys are valid for verification, allowing
+for key rotation. If a <code>Keygrip</code> instance is provided, it can be used to
+change signature parameters like the algorithm of the signature.</p>
+<h5 id="secret">secret</h5>
+<p>A string which will be used as single key if <code>keys</code> is not provided.</p>
+<h5 id="cookie-options">Cookie Options</h5>
+<p>Other options are passed to <code>cookies.get()</code> and <code>cookies.set()</code> allowing you
+to control security, domain, path, and signing among other settings.</p>
+<p>The options can also contain any of the following (for the full list, see
+<a href="https://www.npmjs.org/package/cookies#readme">cookies module documentation</a>:</p>
+<ul>
+<li><code>maxAge</code>: a number representing the milliseconds from <code>Date.now()</code> for expiry</li>
+<li><code>expires</code>: a <code>Date</code> object indicating the cookie’s expiration date (expires at the end of session by default).</li>
+<li><code>path</code>: a string indicating the path of the cookie (<code>/</code> by default).</li>
+<li><code>domain</code>: a string indicating the domain of the cookie (no default).</li>
+<li><code>sameSite</code>: a boolean or string indicating whether the cookie is a “same site” cookie (<code>false</code> by default). This can be set to <code>'strict'</code>, <code>'lax'</code>, <code>'none'</code>, or <code>true</code> (which maps to <code>'strict'</code>).</li>
+<li><code>secure</code>: a boolean indicating whether the cookie is only to be sent over HTTPS (<code>false</code> by default for HTTP, <code>true</code> by default for HTTPS). If this is set to <code>true</code> and Node.js is not directly over a TLS connection, be sure to read how to <a href="https://expressjs.com/en/guide/behind-proxies.html">setup Express behind proxies</a> or the cookie may not ever set correctly.</li>
+<li><code>httpOnly</code>: a boolean indicating whether the cookie is only to be sent over HTTP(S), and not made available to client JavaScript (<code>true</code> by default).</li>
+<li><code>signed</code>: a boolean indicating whether the cookie is to be signed (<code>true</code> by default).</li>
+<li><code>overwrite</code>: a boolean indicating whether to overwrite previously set cookies of the same name (<code>true</code> by default).</li>
+</ul>
+<h3 id="reqsession">req.session</h3>
+<p>Represents the session for the given request.</p>
+<h4 id="ischanged">.isChanged</h4>
+<p>Is <code>true</code> if the session has been changed during the request.</p>
+<h4 id="isnew">.isNew</h4>
+<p>Is <code>true</code> if the session is new.</p>
+<h4 id="ispopulated">.isPopulated</h4>
+<p>Determine if the session has been populated with data or is empty.</p>
+<h3 id="reqsessionoptions">req.sessionOptions</h3>
+<p>Represents the session options for the current request. These options are a
+shallow clone of what was provided at middleware construction and can be
+altered to change cookie setting behavior on a per-request basis.</p>
+<h3 id="destroying-a-session">Destroying a session</h3>
+<p>To destroy a session simply set it to <code>null</code>:</p>
+<pre><code>req.session = null
+</code></pre>
+<h3 id="saving-a-session">Saving a session</h3>
+<p>Since the entire contents of the session is kept in a client-side cookie, the
+session is “saved” by writing a cookie out in a <code>Set-Cookie</code> response header.
+This is done automatically if there has been a change made to the session when
+the Node.js response headers are being written to the client and the session
+was not destroyed.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="simple-view-counter-example">Simple view counter example</h3>
+<pre><code class="language-js">var cookieSession = require('cookie-session')
+var express = require('express')
+
+var app = express()
+
+app.set('trust proxy', 1) // trust first proxy
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
+
+app.get('/', function (req, res, next) {
+  // Update views
+  req.session.views = (req.session.views || 0) + 1
+
+  // Write response
+  res.end(req.session.views + ' views')
+})
+
+app.listen(3000)
+</code></pre>
+<h3 id="per-user-sticky-max-age">Per-user sticky max age</h3>
+<pre><code class="language-js">var cookieSession = require('cookie-session')
+var express = require('express')
+
+var app = express()
+
+app.set('trust proxy', 1) // trust first proxy
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
+
+// This allows you to set req.session.maxAge to let certain sessions
+// have a different value than the default.
+app.use(function (req, res, next) {
+  req.sessionOptions.maxAge = req.session.maxAge || req.sessionOptions.maxAge
+  next()
+})
+
+// ... your logic here ...
+</code></pre>
+<h3 id="extending-the-session-expiration">Extending the session expiration</h3>
+<p>This module does not send a <code>Set-Cookie</code> header if the contents of the session
+have not changed. This means that to extend the expiration of a session in the
+user’s browser (in response to user activity, for example) some kind of
+modification to the session needs be made.</p>
+<pre><code class="language-js">var cookieSession = require('cookie-session')
+var express = require('express')
+
+var app = express()
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
+
+// Update a value in the cookie so that the set-cookie will be sent.
+// Only changes every minute so that it's not sent with every request.
+app.use(function (req, res, next) {
+  req.session.nowInMinutes = Math.floor(Date.now() / 60e3)
+  next()
+})
+
+// ... your logic here ...
+</code></pre>
+<h3 id="using-a-custom-signature-algorithm">Using a custom signature algorithm</h3>
+<p>This example shows creating a custom <code>Keygrip</code> instance as the <code>keys</code> option
+to provide keys and additional signature configuration.</p>
+<pre><code class="language-js">var cookieSession = require('cookie-session')
+var express = require('express')
+var Keygrip = require('keygrip')
+
+var app = express()
+
+app.use(cookieSession({
+  name: 'session',
+  keys: new Keygrip(['key1', 'key2'], 'SHA384', 'base64')
+}))
+
+// ... your logic here ...
+</code></pre>
+<h2 id="usage-limitations">Usage Limitations</h2>
+<h3 id="max-cookie-size">Max Cookie Size</h3>
+<p>Because the entire session object is encoded and stored in a cookie, it is
+possible to exceed the maximum cookie size limits on different browsers. The
+<a href="https://tools.ietf.org/html/rfc6265#section-6.1">RFC6265 specification</a>
+recommends that a browser <strong>SHOULD</strong> allow</p>
+<blockquote>
+<p>At least 4096 bytes per cookie (as measured by the sum of the length of
+the cookie’s name, value, and attributes)</p>
+</blockquote>
+<p>In practice this limit differs slightly across browsers. See a list of
+<a href="http://browsercookielimits.squawky.net/">browser limits here</a>. As a rule
+of thumb <strong>don’t exceed 4093 bytes per domain</strong>.</p>
+<p>If your session object is large enough to exceed a browser limit when encoded,
+in most cases the browser will refuse to store the cookie. This will cause the
+following requests from the browser to either a) not have any session
+information or b) use old session information that was small enough to not
+exceed the cookie limit.</p>
+<p>If you find your session object is hitting these limits, it is best to
+consider if data in your session should be loaded from a database on the
+server instead of transmitted to/from the browser with every request. Or
+move to an <a href="https://github.com/expressjs/session#compatible-session-stores">alternative session strategy</a></p>
+<h2 id="license">License</h2>
+<p><a href="LICENSE.html">MIT</a></p>
+</div>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+Documentation translations provided by <a href="../../../../strongloop.com/index.html">StrongLoop/IBM</a>:
+<a href="../../../fr/index.html">French</a>, <a href="../../../de/index.html">German</a>, <a href="../../../es/index.html">Spanish</a>, <a href="../../../it/index.html">Italian</a>, <a href="../../../ja/index.html">Japanese</a>, <a href="../../../ru/index.html">Russian</a>, <a href="../../../zh-cn/index.html">Chinese</a>, <a href="../../../zh-tw/index.html">Traditional Chinese</a>, <a href="../../../ko/index.html">Korean</a>, <a href="../../../pt-br/index.html">Portuguese</a>.
+<br>
+Community translation available for: <a href="../../../sk/index.html">Slovak</a>, <a href="../../../uk/index.html">Ukrainian</a>, <a href="../../../uz/index.html">Uzbek</a>, <a href="../../../tr/index.html">Turkish</a> and <a href="../../../th/index.html">Thai</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> is a project of the <a href="https://openjsf.org">OpenJS Foundation</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork the website on GitHub</a>.</div>
+<div>Copyright &copy; 2017 StrongLoop, IBM, and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="d23e04c9ef209e137cf9001d-text/javascript"></script>
+<script type="d23e04c9ef209e137cf9001d-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:en'] }
+})" async></script>
+<script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="d23e04c9ef209e137cf9001d-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/en/resources/middleware/cookie-session.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

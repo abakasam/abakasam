@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html lang="ko" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ko/advanced/security-updates.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 보안 업데이트</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ko.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">홈</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">시작하기</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+설치
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 생성기
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+기본 라우팅
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+정적 파일
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+자주 묻는 질문(FAQ)
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">안내서</a>
+<ul>
+<li><a href="../guide/routing.html">라우팅</a>
+</li>
+<li><a href="../guide/writing-middleware.html">미들웨어 작성</a>
+ </li>
+<li><a href="../guide/using-middleware.html">미들웨어 사용</a>
+</li>
+<li><a href="../guide/using-template-engines.html">템플리트 엔진 사용</a>
+</li>
+<li><a href="../guide/error-handling.html">오류 처리</a>
+</li>
+<li><a href="../guide/debugging.html">디버깅</a>
+</li>
+<li><a href="../guide/behind-proxies.html">프록시 환경에서 Express 사용</a>
+</li>
+<li><a href="../guide/migrating-4.html">Express 4로의 이전</a>
+</li>
+<li><a href="../guide/migrating-5.html">Express 5로의 이전</a>
+</li>
+<li><a href="../guide/database-integration.html">데이터베이스 통합</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 참조</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x(더 이상 사용되지 않음)</a>
+</li>
+<li><a href="../../2x/index.html">2.x(더 이상 사용되지 않음)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">고급 주제</a>
+<ul>
+<li><a href="developing-template-engines.html">템플리트 엔진</a>
+</li>
+<li><a href="pm.html">프로세스 관리자 사용</a>
+</li>
+<li><a href="security-updates.html">보안 업데이트</a>
+</li>
+<li><a href="best-practice-security.html">보안 우수 사례</a>
+</li>
+<li><a href="best-practice-performance.html">성능 우수 사례</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">자원</a>
+<ul>
+<li><a href="../resources/glossary.html">용어집</a>
+</li>
+<li><a href="../resources/middleware.html">미들웨어</a>
+</li>
+<li><a href="../resources/community.html">커뮤니티</a>
+</li>
+<li><a href="../resources/learning.html">추가 학습</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>에 의해 제공이 번역.</p>
+이 문서는 영문판 문서에 비해 더 오래된 버전일 수도 있습니다. 최신 업데이트를 확인하려면 <a href="../../index.html">영문판 문서</a>를 참조하십시오.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="보안-업데이트">보안 업데이트</h1>
+<div class="doc-box doc-notice">
+<p>Node.js 취약성은 Express에 직접 영향을 미칩니다. 따라서 <a href="http://blog.nodejs.org/vulnerability/">Node.js 취약성을 항상 주시해야 하며</a>, 반드시 안정적인 최신 버전의 Node.js를 사용해야 합니다.</p>
+</div>
+<p>아래의 목록에는 지정된 버전 업데이트에서 수정된 Express 취약성이 열거되어 있습니다.</p>
+<h2 id="4x">4.x</h2>
+<ul>
+<li>4.16.0
+<ul>
+<li>의존성 <code>forwarded</code>가 <a href="https://npmjs.com/advisories/527">발견된 취약점</a>에 따라 업데이트되었습니다. <code>req.host</code>, <code>req.hostname</code>, <code>req.ip</code>, <code>req.ips</code>, <code>req.protocol</code>을 사용하는 애플리케이션에 영향을 끼칠 수 있습니다.</li>
+<li>의존성 <code>mime</code>이 <a href="https://npmjs.com/advisories/535">발견된 취약점</a>에 따라 업데이트되었으나, Express에 영향을 끼치지는 않습니다.</li>
+<li>의존성 <code>send</code>가 <a href="https://nodejs.org/en/blog/vulnerability/september-2017-path-validation/">Node.js 8.5.0의 취약점</a>에 대응하기 위해 업데이트되었습니다. Node.js 버전 8.5.0에서 실행되는 Express에만 영향을 끼칩니다.</li>
+</ul>
+</li>
+<li>4.15.5
+<ul>
+<li>의존성 <code>debug</code>가 <a href="https://snyk.io/vuln/npm:debug:20170905">발견된 취약점</a>에 따라 업데이트되었으나, Express에 영향을 끼치지는 않습니다.</li>
+<li>의존성 <code>fresh</code>가 <a href="https://npmjs.com/advisories/526">발견된 취약점</a>에 따라 업데이트되었습니다. <code>express.static</code>, <code>req.fresh</code>, <code>res.json</code>, <code>res.jsonp</code>, <code>res.send</code>, <code>res.sendfile</code> <code>res.sendFile</code>, <code>res.sendStatus</code>를 사용하고 있는 애플리케이션에 영향을 끼칩니다.</li>
+</ul>
+</li>
+<li>4.15.3
+<ul>
+<li>의존성 <code>ms</code>가 <a href="https://snyk.io/vuln/npm:ms:20170412">발견된 취약점</a>에 따라 업데이트되었습니다. 애플리케이션이 <code>express.static</code>, <code>res.sendfile</code>, <code>res.sendFile</code>의 <code>maxAge</code> 옵션에 Untrusted 문자열을 입력받고 있으면 영향을 끼칠 수 있습니다.</li>
+</ul>
+</li>
+<li>4.15.2
+<ul>
+<li>의존성 <code>qs</code>가 <a href="https://snyk.io/vuln/npm:qs:20170213">발견된 취약점</a>에 따라 업데이트되었으나, Express에 영향을 끼치지는 않습니다. 4.15.2로 업데이트하는 것을 권장하나, 취약점을 막는 업데이트는 아닙니다..</li>
+</ul>
+</li>
+<li>4.11.1
+<ul>
+<li><code>express.static</code>, <code>res.sendfile</code> 및 <code>res.sendFile</code>의 루트 경로 노출 취약성을 수정했습니다.</li>
+</ul>
+</li>
+<li>4.10.7
+<ul>
+<li><code>express.static</code>의 개방된 경로 재지정 취약성을 수정했습니다(<a href="https://npmjs.com/advisories/35">보안 권고문</a>, <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164">CVE-2015-1164</a>).</li>
+</ul>
+</li>
+<li>4.8.8
+<ul>
+<li><code>express.static</code>의 디렉토리 조회 취약성을 수정했습니다(<a href="http://npmjs.com/advisories/32">보안 권고문</a>, <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6394">CVE-2014-6394</a>).</li>
+</ul>
+</li>
+<li>4.8.4
+<ul>
+<li>Node.js 0.10 이용 시, 특정한 상황에서 <code>fd</code> 누수가 발생할 수 있으며, 이는 <code>express.static</code> 및 <code>res.sendfile</code>에 영향을 미칩니다. 악성 요청은 <code>fd</code> 누수를 발생시킬 수 있으며, 결국 <code>EMFILE</code> 오류와 서버 무응답을 초래할 수 있습니다.</li>
+</ul>
+</li>
+<li>4.8.0
+<ul>
+<li>조회 문자열에서 극단적으로 높은 인덱스를 갖는 스파스 배열은 프로세스가 메모리 부족을 발생시키고 서버에서 충돌이 발생하도록 하는 원인이 될 수 있습니다.</li>
+<li>극단적인 수준으로 중첩된 조회 문자열 오브젝트는 프로세스가 서버를 차단하고 일시적으로 서버를 무응답 상태로 만드는 원인이 될 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="3x">3.x</h2>
+<ul>
+<li>3.19.1
+<ul>
+<li><code>express.static</code>, <code>res.sendfile</code> 및 <code>res.sendFile</code>의 루트 경로 노출 취약성을 수정했습니다.</li>
+</ul>
+</li>
+<li>3.19.0
+<ul>
+<li><code>express.static</code>의 개방된 경로 재지정 취약성을 수정했습니다(<a href="https://npmjs.com/advisories/35">보안 권고문</a>, <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164">CVE-2015-1164</a>).</li>
+</ul>
+</li>
+<li>3.16.10
+<ul>
+<li><code>express.static</code>의 디렉토리 조회 취약성을 수정했습니다.</li>
+</ul>
+</li>
+<li>3.16.6
+<ul>
+<li>Node.js 0.10 이용 시, 특정한 상황에서 <code>fd</code> 누수가 발생할 수 있으며, 이는 <code>express.static</code> 및 <code>res.sendfile</code>에 영향을 미칩니다. 악성 요청은 <code>fd</code> 누수를 발생시킬 수 있으며, 결국 <code>EMFILE</code> 오류와 서버 무응답을 초래할 수 있습니다.</li>
+</ul>
+</li>
+<li>3.16.0
+<ul>
+<li>조회 문자열에서 극단적으로 높은 인덱스를 갖는 스파스 배열은 프로세스가 메모리 부족을 발생시키고 서버에서 충돌이 발생하도록 하는 원인이 될 수 있습니다.</li>
+<li>극단적인 수준으로 중첩된 조회 문자열 오브젝트는 프로세스가 서버를 차단하고 일시적으로 서버를 무응답 상태로 만드는 원인이 될 수 있습니다.</li>
+</ul>
+</li>
+<li>3.3.0
+<ul>
+<li>지원되지 않는 메소드 대체 시도의 404 응답은 XSS(Cross-site scripting) 공격을 받기 쉬웠습니다.</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>는 <a href="https://openjsf.org">OpenJS 기반의</a> 프로젝트입니다.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub에서 웹사이트의 포크를 작성하십시오</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 이 저작물은 <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">크리에이티브 커먼즈 저작자표시-동일조건변경허락 3.0 미국 라이선스</a>에 따라 이용할 수 있습니다.
+</div>
+</footer>
+<script type="5325318a308edd3526e54011-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ko'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="5325318a308edd3526e54011-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ko/advanced/security-updates.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

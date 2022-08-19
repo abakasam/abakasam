@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ja/guide/using-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express ミドルウェアの使用</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ja.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">ホーム</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">概説</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+インストール
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express ジェネレーター
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本的なルーティング
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静的ファイル
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">ガイド</a>
+<ul>
+<li><a href="routing.html">ルーティング</a>
+</li>
+<li><a href="writing-middleware.html">ミドルウェアの作成</a>
+</li>
+<li><a href="using-middleware.html">ミドルウェアの使用</a>
+</li>
+<li><a href="using-template-engines.html">テンプレート・エンジンの使用</a>
+</li>
+<li><a href="error-handling.html">エラー処理</a>
+</li>
+<li><a href="debugging.html">デバッグ</a>
+</li>
+<li><a href="behind-proxies.html">プロキシーの背後の Express</a>
+</li>
+<li><a href="migrating-4.html">Express 4 への移行</a>
+</li>
+<li><a href="migrating-5.html">Express 5 への移行</a>
+</li>
+<li><a href="database-integration.html">データベースの統合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API リファレンス</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (非推奨)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (非推奨)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高度なトピック</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">テンプレート・エンジン</a>
+</li>
+<li><a href="../advanced/pm.html">プロセス・マネージャーの使用</a>
+</li>
+<li><a href="../advanced/security-updates.html">セキュリティー更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">セキュリティーに関するベスト・プラクティス</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">パフォーマンスに関するベスト・プラクティス</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">リソース</a>
+<ul>
+<li><a href="../resources/glossary.html">用語集</a>
+</li>
+<li><a href="../resources/middleware.html">ミドルウェア</a>
+</li>
+<li><a href="../resources/community.html">コミュニティー</a>
+</li>
+<li><a href="../resources/learning.html">追加学習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>によって提供されるこの翻訳.</p>
+本書は、英語の資料と比較すると古くなっている可能性があります。最新の更新については、<a href="../../index.html">英語版の資料</a>を参照してください。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="ミドルウェアの使用">ミドルウェアの使用</h1>
+<p>Express は、それ自体では最小限の機能を備えたルーティングとミドルウェアの Web フレームワークです。Express アプリケーションは基本的に一連のミドルウェア関数呼び出しです。</p>
+<p><em>ミドルウェア</em> 関数は、<a href="../4x/api.html#req">requestオブジェクト</a> (<code>req</code>)、<a href="../4x/api.html#res">responseオブジェクト</a> (<code>res</code>)、およびアプリケーションのリクエストレスポンスサイクルにおける次のミドルウェア関数に対するアクセス権限を持つ関数です。次のミドルウェア関数は一般的に、<code>next</code> という変数で表されます。</p>
+<p>ミドルウェア関数は以下のタスクを実行できます。</p>
+<ul>
+<li>任意のコードを実行する。</li>
+<li>リクエストオブジェクトとレスポンスオブジェクトを変更する。</li>
+<li>リクエストレスポンスサイクルを終了する。</li>
+<li>スタック内の次のミドルウェア関数を呼び出す。</li>
+</ul>
+<p>現在のミドルウェア関数がリクエストレスポンスサイクルを終了しない場合は、<code>next()</code> を呼び出して、次のミドルウェア関数に制御を渡す必要があります。そうしないと、リクエストはハングしたままになります。</p>
+<p>Express アプリケーションは、以下のタイプのミドルウェアを使用できます。</p>
+<ul>
+<li><a href="#middleware.application">アプリケーション・レベルのミドルウェア</a></li>
+<li><a href="#middleware.router">ルーター・レベルのミドルウェア</a></li>
+<li><a href="#middleware.error-handling">エラー処理ミドルウェア</a></li>
+<li><a href="#middleware.built-in">標準装備のミドルウェア</a></li>
+<li><a href="#middleware.third-party">サード・パーティー・ミドルウェア</a></li>
+</ul>
+<p>アプリケーション・レベルとルーター・レベルのミドルウェアは、オプションのマウント・パスを指定してロードできます。
+また、一連のミドルウェア関数を一緒にロードできます。こうすると、マウント・ポイントにミドルウェア・システムのサブスタックが作成されます。</p>
+<h2 id="middleware.application">アプリケーション・レベルのミドルウェア</h2>
+<p><code>app.use()</code> 関数と <code>app.METHOD()</code> 関数を使用して、アプリケーション・レベルのミドルウェアを <a href="../4x/api.html#app">appオブジェクト</a> のインスタンスにバインドします。ここで、<code>METHOD</code> は、ミドルウェア関数が小文字で処理するリクエスト (GET、PUT、POST など) の HTTP メソッドです。</p>
+<p>次の例は、マウント・パスを指定しないミドルウェア関数を示しています。この関数は、アプリケーションがリクエストを受け取るたびに実行されます。</p>
+<pre><code class="language-js">const app = express()
+
+app.use((req, res, next) =&gt; {
+  console.log('Time:', Date.now())
+  next()
+})
+</code></pre>
+<p>次の例は、<code>/user/:id</code> パスにマウントされたミドルウェア関数を示しています。この関数は、<code>/user/:id</code> パスに対するすべてのタイプの HTTP リクエストで実行されます。</p>
+<pre><code class="language-js">app.use('/user/:id', (req, res, next) =&gt; {
+  console.log('Request Type:', req.method)
+  next()
+})
+</code></pre>
+<p>次の例は、ルートとそのハンドラー関数 (ミドルウェア・システム) を示しています。この関数は、<code>/user/:id</code> パスへの GET リクエストを処理します。</p>
+<pre><code class="language-js">app.get('/user/:id', (req, res, next) =&gt; {
+  res.send('USER')
+})
+</code></pre>
+<p>次に、マウント・パスを指定して、一連のミドルウェア関数をマウント・ポイントにロードする例を示します。
+<code>/user/:id</code> パスへのすべてのタイプの HTTP リクエストに関するリクエスト情報を出力するミドルウェア・サブスタックを示しています。</p>
+<pre><code class="language-js">app.use('/user/:id', (req, res, next) =&gt; {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}, (req, res, next) =&gt; {
+  console.log('Request Type:', req.method)
+  next()
+})
+</code></pre>
+<p>ルート・ハンドラーを使用すると、パスに複数のルートを定義できます。下記の例では、<code>/user/:id</code> パスへの GET リクエストに 2 つのルートを定義しています。2 番目のルートは、問題を発生させるものではありませんが、最初のルートがリクエストレスポンスサイクルを終了するため、呼び出されることはありません。</p>
+<p>次の例は、<code>/user/:id</code> パスへの GET リクエストを処理するミドルウェア・サブスタックを示しています。</p>
+<pre><code class="language-js">app.get('/user/:id', (req, res, next) =&gt; {
+  console.log('ID:', req.params.id)
+  next()
+}, (req, res, next) =&gt; {
+  res.send('User Info')
+})
+
+// handler for the /user/:id path, which prints the user ID
+app.get('/user/:id', (req, res, next) =&gt; {
+  res.end(req.params.id)
+})
+</code></pre>
+<p>ルーター・ミドルウェア・スタックの残りのミドルウェア関数をスキップするには、<code>next('route')</code> を呼び出して、次のルートに制御を渡します。
+<strong>注</strong>: <code>next('route')</code> は、<code>app.METHOD()</code> 関数または <code>router.METHOD()</code> 関数を使用してロードされたミドルウェア関数でのみ機能します。</p>
+<p>次の例は、<code>/user/:id</code> パスへの GET リクエストを処理するミドルウェア・サブスタックを示しています。</p>
+<pre><code class="language-js">app.get('/user/:id', (req, res, next) =&gt; {
+  // if the user ID is 0, skip to the next route
+  if (Number(req.params.id) === 0) next('route')
+  // otherwise pass the control to the next middleware function in this stack
+  else next()
+}, (req, res, next) =&gt; {
+  // render a regular page
+  res.render('regular')
+})
+
+// handler for the /user/:id path, which renders a special page
+app.get('/user/:id', (req, res, next) =&gt; {
+  res.render('special')
+})
+</code></pre>
+<h2 id="middleware.router">ルーター・レベルのミドルウェア</h2>
+<p>ルーター・レベルのミドルウェアは、<code>express.Router()</code> のインスタンスにバインドされる点を除き、アプリケーション・レベルのミドルウェアと同じように動作します。</p>
+<pre><code class="language-js">const router = express.Router()
+</code></pre>
+<p><code>router.use()</code> 関数と <code>router.METHOD()</code> 関数を使用して、ルーター・レベルのミドルウェアをロードします。</p>
+<p>次のコードの例では、ルーター・レベルのミドルウェアを使用して、上記のアプリケーション・レベルのミドルウェアで示されているミドルウェア・システムを複製します。</p>
+<pre><code class="language-js">const app = express()
+const router = express.Router()
+
+// a middleware function with no mount path. This code is executed for every request to the router
+router.use((req, res, next) =&gt; {
+  console.log('Time:', Date.now())
+  next()
+})
+
+// a middleware sub-stack shows request info for any type of HTTP request to the /user/:id path
+router.use('/user/:id', (req, res, next) =&gt; {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}, (req, res, next) =&gt; {
+  console.log('Request Type:', req.method)
+  next()
+})
+
+// a middleware sub-stack that handles GET requests to the /user/:id path
+router.get('/user/:id', (req, res, next) =&gt; {
+  // if the user ID is 0, skip to the next router
+  if (Number(req.params.id) === 0) next('route')
+  // otherwise pass control to the next middleware function in this stack
+  else next()
+}, (req, res, next) =&gt; {
+  // render a regular page
+  res.render('regular')
+})
+
+// handler for the /user/:id path, which renders a special page
+router.get('/user/:id', (req, res, next) =&gt; {
+  console.log(req.params.id)
+  res.render('special')
+})
+
+// mount the router on the app
+app.use('/', router)
+</code></pre>
+<p>ルータのミドルウェア機能の残りの部分をスキップするには、<code>next('router')</code>を呼び出してルータインスタンスから制御を戻します。</p>
+<p>この例は、<code>/user/:id</code>パスに対するGET要求を処理するミドルウェアサブスタックを示しています。</p>
+<pre><code class="language-js">const app = express()
+const router = express.Router()
+
+// predicate the router with a check and bail out when needed
+router.use((req, res, next) =&gt; {
+  if (!req.headers['x-auth']) return next('router')
+  next()
+})
+
+router.get('/', (req, res) =&gt; {
+  res.send('hello, user!')
+})
+
+// use the router and 401 anything falling through
+app.use('/admin', router, (req, res) =&gt; {
+  res.sendStatus(401)
+})
+</code></pre>
+<h2 id="middleware.error-handling">エラー処理ミドルウェア</h2>
+<div class="doc-box doc-notice">
+<p>エラー処理ミドルウェアは常に <em>4つ</em> の引数を使用します。エラー処理ミドルウェア関数として識別されるように 4 つの引数を指定する必要があります。<code>next</code> オブジェクトは、使用する必要がない場合でも、シグニチャーを維持するために指定する必要があります。指定しないと、<code>next</code> オブジェクトは通常のミドルウェアとして解釈され、エラーを処理できなくなります。</p>
+</div>
+<p>エラー処理ミドルウェア関数は、その他のミドルウェア関数と同じ方法で定義しますが、例外として、シグニチャーで3つではなく4つの引数 <code>(err、req、res、next)</code>) を明示的に指定します。</p>
+<pre><code class="language-js">app.use((err, req, res, next) =&gt; {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+</code></pre>
+<p>エラー処理ミドルウェアについて詳しくは、<a href="error-handling.html">エラー処理</a>を参照してください。</p>
+<h2 id="middleware.built-in">標準装備のミドルウェア</h2>
+<p>バージョン 4.x 以降、Express は <a href="https://github.com/senchalabs/connect">Connect</a> に依存しなくなりました。以前に Express に組み込まれていたすべてのミドルウェア関数は個別のモジュールになりました。<a href="https://github.com/senchalabs/connect#middleware">ミドルウェア関数のリスト</a>を参照してください。</p>
+<p>Expressには、次のミドルウェア機能が組み込まれています。</p>
+<ul>
+<li><a href="../../en/4x/api.html#express.static">express.static</a> は、HTMLファイルや画像などの静的リソースを提供します</li>
+<li><a href="../../en/4x/api.html#express.json">express.json</a> はJSONペイロードで受信したリクエストを解析します。<strong>注：Express 4.16.0以降で利用可能</strong></li>
+<li><a href="../../en/4x/api.html#express.urlencoded">express.urlencoded</a> は、URLエンコードされたペイロードで受信したリクエストを解析します。<strong>注：Express 4.16.0以降で利用可能</strong></li>
+</ul>
+<h2 id="middleware.third-party">サード・パーティー・ミドルウェア</h2>
+<p>Express アプリケーションに機能を追加するには、サード・パーティー・ミドルウェアを使用します。</p>
+<p>必要な機能を提供する Node.js モジュールをインストールして、アプリケーションにアプリケーション・レベルまたはルーター・レベルでロードします。</p>
+<p>次の例は、Cookie 解析ミドルウェア関数 <code>cookie-parser</code> のインストールおよびロードを示しています。</p>
+<pre><code class="language-console">$ npm install cookie-parser
+</code></pre>
+<pre><code class="language-js">const express = require('express')
+const app = express()
+const cookieParser = require('cookie-parser')
+
+// load the cookie-parsing middleware
+app.use(cookieParser())
+</code></pre>
+<p>Express で一般的に使用されているサード・パーティー・ミドルウェア関数の一部のリストについては、<a href="../resources/middleware.html">サード・パーティー・ミドルウェア</a>を参照してください。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>は、<a href="https://openjsf.org">OpenJSの財団</a>のプロジェクトです。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub で Web サイトを fork します</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc.、およびその他の expressjs.com コントリビューター。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> この 作品 は <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">クリエイティブ・コモンズ 表示 - 継承 3.0 アメリカ合衆国 ライセンスの下に提供されています。</a>
+</div>
+</footer>
+<script type="9cbf9393fe9d4bbc50d63c67-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ja'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="9cbf9393fe9d4bbc50d63c67-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ja/guide/using-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

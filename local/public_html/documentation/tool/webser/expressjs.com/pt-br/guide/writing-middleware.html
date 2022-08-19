@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="pt-br" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/pt-br/guide/writing-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Escrevendo middlewares para uso em aplicativos do Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/pt-br.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Página Inicial</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Introdução</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Instalação
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Gerador do Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Roteamento Básico
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Arquivos Estáticos
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Perguntas mais frequentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Guia</a>
+<ul>
+<li><a href="routing.html">Roteamento</a>
+</li>
+ <li><a href="writing-middleware.html">Escrevendo o middleware</a>
+</li>
+<li><a href="using-middleware.html">Usando o middleware</a>
+</li>
+<li><a href="using-template-engines.html">Usando o mecanismo de modelo</a>
+</li>
+<li><a href="error-handling.html">Manipulação de erros</a>
+</li>
+<li><a href="debugging.html">Depuração</a>
+</li>
+<li><a href="behind-proxies.html">Express atrás de proxies</a>
+</li>
+<li><a href="migrating-4.html">Migrando para o Express 4</a>
+</li>
+<li><a href="migrating-5.html">Migrando para o Express 5</a>
+</li>
+<li><a href="database-integration.html">Integração de Banco de dados</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referência da API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (descontinuada)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (descontinuada)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Tópicos Avançados</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Mecanismos de modelo</a>
+</li>
+<li><a href="../advanced/pm.html">Usando gerenciadores de processos</a>
+</li>
+<li><a href="../advanced/security-updates.html">Atualizações de segurança</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Melhores práticas de segurança</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Melhores práticas de desempenho</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossário</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Comunidade</a>
+</li>
+<li><a href="../resources/learning.html">Aprendizagem adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta tradução fornecida pelo <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento pode estar desatualizado em relação à documentação em Inglês. Para obter as atualizações mais recentes, consulte a <a href="../../index.html">documentação em Inglês</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="escrevendo-middlewares-pra-uso-em-aplicativos-do-express">Escrevendo middlewares pra uso em aplicativos do Express</h1>
+<h2>Visão Geral</h2>
+<p>Funções de <em>Middleware</em> são funções que tem acesso
+ao <a href="../4x/api.html#req">objeto de solicitação</a>
+(<code>req</code>), o <a href="../4x/api.html#res">objeto de resposta</a>
+(<code>res</code>), e a próxima função de middleware no ciclo
+solicitação-resposta do aplicativo. A próxima função middleware é
+comumente denotada por uma variável chamada <code>next</code>.</p>
+<p>Funções de middleware podem executar as seguintes tarefas:</p>
+<ul>
+<li>Executar qualquer código.</li>
+<li>Fazer mudanças nos objetos de solicitação e resposta.</li>
+<li>Encerrar o ciclo de solicitação-resposta.</li>
+<li>Chamar o próximo middleware na pilha.</li>
+</ul>
+<p>Se a atual função de middleware não terminar o ciclo de
+solicitação-resposta, ela precisa chamar <code>next()</code>
+para passar o controle para a próxima função de middleware. Caso
+contrário, a solicitação ficará suspensa.</p>
+<p>O exemplo a seguir mostra os elementos de uma chamada de função de middleware:</p>
+<table id="mw-fig">
+<tr><td id="mw-fig-imgcell">
+<img src="../../images/express-mw.png" id="mw-fig-img" />
+</td>
+<td class="mw-fig-callouts">
+<div class="callout" id="callout1">O método HTTP para o qual a função de middleware é aplicada.</div>
+<div class="callout" id="callout2">Caminho (rota) para o qual a função de middleware é aplicada.</div>
+<div class="callout" id="callout3">A função de middleware.</div>
+<div class="callout" id="callout4">Argumento de retorno de chamada para a função de middleware, chamado de "next" por convenção.</div>
+<div class="callout" id="callout5">Argumento de <a href="../4x/api.html#res">resposta</a> HTTP para a função de middleware, chamado de "res" por convenção.</div>
+<div class="callout" id="callout6">Argumento de <a href="../4x/api.html#req">solicitação</a> HTTP para a função de middleware, chamado de "req" por convenção.</div>
+</td></tr>
+</table>
+<p>Aqui está um exemplo de um simples aplicativo “Hello World” do
+Express, para o qual serão definidas duas funções de middleware:</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code>
+</pre>
+<h2>Desenvolvimento</h2>
+<p>Aqui está um exemplo simples de uma função de middleware chamada “myLogger”. Esta
+função apenas imprime “LOGGED” quando uma solicitação para o aplicativo passa por ela. A
+função de middleware é designada para uma variável chamada <code>myLogger</code>.</p>
+<pre><code class="language-javascript" translate="no">
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+</code>
+</pre>
+<div class="doc-box doc-notice">
+<p>Observe a chamada acima para <code>next()</code>. A chamada
+desta função chama a próxima função de middleware no aplicativo.
+A função <code>next()</code> não faz parte do Node.js
+ou da API Express, mas é o terceiro argumento que é passado para a
+função de middleware. A função <code>next()</code> poderia ter
+qualquer nome, mas por convenção ela é sempre chamada de “next”. Para
+evitar confusão, sempre use esta convenção.</p>
+</div>
+<p>Para carregar a função de middleware, chame <code>app.use()</code>, especificando a função de middleware.
+Por exemplo, o código a seguir carrega a função de middleware do <code>myLogger</code> antes da rota para o caminho raiz (/).</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+
+app.use(myLogger);
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code>
+</pre>
+<p>Sempre que o aplicativo recebe uma chamada, ele imprime a mensagem “LOGGED” no terminal.</p>
+<p>A ordem de carregamento do middleware é importante: funções de middleware que são carregadas primeiro também são executadas primeiro.</p>
+<p>Se <code>myLogger</code> é carregada após a rota para o
+caminho raiz, a chamada nunca chegará a ela e o aplicativo não
+imprimirá “LOGGED”, pois o manipulador de rota do caminho raiz
+encerra o ciclo de solicitação-resposta.</p>
+<p>A função de middleware <code>myLogger</code> simplesmente imprime uma mensagem, e em seguida passa a solicitação para a próxima
+função de middleware na pilha chamando a função <code>next()</code>.</p>
+<p>O próximo exemplo inclui uma propriedade chamada
+<code>requestTime</code> ao objeto da solicitação. Iremos
+chamar esta função de middleware de “requestTime”.</p>
+<pre><code class="language-javascript" translate="no">
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+</code>
+</pre>
+<p>O aplicativo agora usa a função de middleware <code>requestTime</code>. Além
+disso, a função de retorno de chamada do caminho raiz usa a
+propriedade que a função de middleware inclui no
+<code>req</code> (o objeto da solicitação).</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+
+app.use(requestTime);
+
+app.get('/', function (req, res) {
+  var responseText = 'Hello World!<br />';
+  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
+  res.send(responseText);
+});
+
+app.listen(3000);
+</code>
+</pre>
+<p>Ao fazer uma solicitação para a raiz do aplicativo, o
+aplicativo agora exibe o registro de data e hora da sua solicitação
+no navegador.</p>
+<p>Como você tem acesso ao objeto da solicitação, ao objeto de
+resposta, à próxima função de middleware na pilha, e à API completa do
+Node.js, as possibilidades com as funções de middleware são ilimitadas.</p>
+<p>Para obter mais informações sobre middlewares no Express,
+consulte: <a href="using-middleware.html">Usando
+middlewares no Express</a>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> é um projeto da <a href="https://openjsf.org">Fundação Node.js</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Crie um Fork do website no GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., e outros contribuidores do expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Este obra está licenciado com uma Licença <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Atribuição-CompartilhaIgual 3.0 Estados Unidos</a>.
+</div>
+</footer>
+<script type="5763f4e16031d947b1381118-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:pt-br'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="5763f4e16031d947b1381118-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/pt-br/guide/writing-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

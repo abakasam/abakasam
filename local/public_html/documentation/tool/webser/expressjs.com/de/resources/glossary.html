@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="de" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/de/resources/glossary.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express-Glossar</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/de.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Einführung</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Installation
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Generator
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basisrouting
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statische Dateien
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Häufig gestellte Fragen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Leitfaden</a>
+<ul>
+<li><a href="../guide/routing.html">Routing</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Middleware schreiben</a>
+</li>
+<li><a href="../guide/using-middleware.html">Middleware verwenden</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Template-Engines verwenden</a>
+</li>
+<li><a href="../guide/error-handling.html">Fehlerbehandlung</a>
+</li>
+<li><a href="../guide/debugging.html">Debugging</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express hinter Proxys</a>
+</li>
+<li><a href="../guide/migrating-4.html">Wechsel zu Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Wechsel zu Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Datenbankintegration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API-Referenz</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (veraltet)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (veraltet)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Themen für Fortgeschrittene</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Template-Engines</a>
+</li>
+<li><a href="../advanced/pm.html">Process Manager verwenden</a>
+</li>
+<li><a href="../advanced/security-updates.html">Sicherheitsupdates</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Sicherheitsspezifische Best Practices</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Leistungsspezifische Best Practices</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="glossary.html" class="active">Ressourcen</a>
+<ul>
+<li><a href="glossary.html">Glossar</a>
+</li>
+<li><a href="middleware.html">Middleware</a>
+</li>
+<li><a href="community.html">Community</a>
+</li>
+<li><a href="learning.html">Zusätzliches Lernen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Diese Übersetzung zur Verfügung gestellt von <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Dieses Dokument kann im Vergleich zur englischen Dokumentation veraltet sein. Aktuelle Updates finden Sie in der <a href="../../index.html">englischen Dokumentation</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="glossar">Glossar</h1>
+<h3 id="anforderung">Anforderung</h3>
+<p>Eine HTTP-Anforderung. Ein Client übergibt eine HTTP-Anforderungsnachricht an einen Server, der wiederum eine Antwort zurückgibt. Bei der Anforderung muss eine der <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">Anforderungsmethoden</a> wie GET, POST usw. verwendet werden.</p>
+<h3 id="antwort">Antwort</h3>
+<p>Eine HTTP-Antwort. Ein Server gibt eine HTTP-Antwortnachricht an den Client zurück. Die Antwort enthält Informationen zum Beendigungsstatus in Bezug auf die Anforderung und kann im Nachrichtenhauptteil auch angeforderten Inhalt enthalten.</p>
+<h3 id="anwendung">Anwendung</h3>
+<p>Im Allgemeinen besteht eine Anwendung aus einem oder mehreren Programmen, über die Operationen für bestimmte Zwecke ausgeführt werden. Im Zusammenhang mit Express ist eine Anwendung ein Programm, das die auf der Node.js-Plattform laufende Express-API nutzt. Wird auch als <a href="../api.html#express">Anwendungsobjekt</a> bezeichnet.</p>
+<h3 id="api">API</h3>
+<p>Anwendungsprogrammierschnittstelle (Application Programming Interface). Abkürzung bei der ersten Verwendung ausschreiben.</p>
+<h3 id="express">Express</h3>
+<p>Schnelles, offenes, unkompliziertes Web-Framework für Node.js-Anwendungen. Im Allgemeinen wird der Name “Express” eher verwendet als “Express.js”, auch wenn “Express.js” ebenfalls verwendet werden kann.</p>
+<h3 id="libuv">libuv</h3>
+<p>Eine plattformübergreifende Unterstützungsbibliothek, bei der die asynchrone Ein-/Ausgabe im Mittelpunkt steht. Sie wurde in erster Linie für die Verwendung in Node.js entwickelt.</p>
+<h3 id="middleware">Middleware</h3>
+<p>Eine Funktion, die über die Weiterleitungsebene in Express vor dem letzten Anforderungshandler aufgerufen wird. Deshalb befindet sich diese Funktion in der Mitte zwischen einer unformatierten Anforderung und der endgültigen beabsichtigten Weiterleitung. Nachfolgend finden Sie einige Details zur Middlewareterminologie:</p>
+<ul>
+<li><code>var foo = require('middleware')</code> bedeutet, dass ein Node.js-Modul <em>benötigt</em> oder <em>verwendet</em> wird. Dann gibt die Anweisung <code>var mw = foo()</code> in der Regel die Middleware zurück.</li>
+<li><code>app.use(mw)</code> bedeutet, dass die <em>Middleware dem globalen Verarbeitungsstack hinzugefügt wird</em>.</li>
+<li><code>app.get('/foo', mw, function (req, res) { ... })</code> bedeutet, dass die <em>Middleware dem “GET /foo”-Verarbeitungsstack hinzugefügt wird</em>.</li>
+</ul>
+<h3 id="nodejs">Node.js</h3>
+<p>Eine Softwareplattform, die für die Erstellung skalierbarer Netzanwendungen verwendet wird. Node.js verwendet JavaScript als Scripting-Sprache und erzielt den hohen Durchsatz durch nicht blockierende Ein-/Ausgabe und eine Ereignisschleife mit einem Thread. Siehe auch <a href="http://nodejs.org/">nodejs.org</a>. <strong>Hinweis</strong>: Der ursprüngliche Name lautet “Node.js”. Mittlerweile ist die Bezeichnung “Node” geläufig.</p>
+<h3 id="open-source">Open-Source</h3>
+<p>Bei Verwendung als Adjektiv muss dieser Begriff mit Bindestrichen gekoppelt werden: Beispiel: “Dies ist eine Open-Source-Software.” Siehe auch <a href="http://en.wikipedia.org/wiki/Open-source_software">Open-Source-Software in Wikipedia</a>.</p>
+<h3 id="router">Router</h3>
+<p>Siehe <a href="../4x/api.html#router">Router</a> in der API-Referenz.</p>
+<h3 id="weiterleitung-route">Weiterleitung (Route)</h3>
+<p>Teil einer URL, die eine Ressource angibt. Beispiel: In <code>http://foo.com/products/id</code> ist “/products/id” die Weiterleitung.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> ist ein Projekt der <a href="https://openjsf.org">Stiftung OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Website auf GitHub forken</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. und andere Mitwirkende an expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Dieses Werk ist lizenziert unter einer <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Vereinigte Staaten von Amerika Lizenz</a>.
+</div>
+</footer>
+<script type="4cb5a6dbd4afc116e90b875e-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:de'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="4cb5a6dbd4afc116e90b875e-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/de/resources/glossary.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

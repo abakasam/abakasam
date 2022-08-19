@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html lang="pt-br" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/pt-br/advanced/best-practice-security.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Melhores Práticas de Segurança para o Express em Produção</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/pt-br.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Página Inicial</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Introdução</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Instalação
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Gerador do Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Roteamento Básico
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Arquivos Estáticos
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Perguntas mais frequentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Guia</a>
+<ul>
+<li><a href="../guide/routing.html">Roteamento</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Escrevendo o middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Usando o middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Usando o mecanismo de modelo</a>
+</li>
+<li><a href="../guide/error-handling.html">Manipulação de erros</a>
+</li>
+<li><a href="../guide/debugging.html">Depuração</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express atrás de proxies</a>
+</li>
+<li><a href="../guide/migrating-4.html">Migrando para o Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Migrando para o Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integração de Banco de dados</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referência da API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (descontinuada)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (descontinuada)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">Tópicos Avançados</a>
+<ul>
+<li><a href="developing-template-engines.html">Mecanismos de modelo</a>
+</li>
+<li><a href="pm.html">Usando gerenciadores de processos</a>
+</li>
+<li><a href="security-updates.html">Atualizações de segurança</a>
+</li>
+<li><a href="best-practice-security.html">Melhores práticas de segurança</a>
+</li>
+<li><a href="best-practice-performance.html">Melhores práticas de desempenho</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossário</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Comunidade</a>
+</li>
+<li><a href="../resources/learning.html">Aprendizagem adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta tradução fornecida pelo <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento pode estar desatualizado em relação à documentação em Inglês. Para obter as atualizações mais recentes, consulte a <a href="../../index.html">documentação em Inglês</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="melhores-práticas-em-produção-segurança">Melhores Práticas em Produção: Segurança</h1>
+<h2 id="visão-geral">Visão Geral</h2>
+<p>O termo <em>“produção”</em> refere-se ao estágio no ciclo de vida do software onde um aplicativo ou API está geralmente
+disponível para os seus usuários finais ou consumidores. Em contrapartida, no estágio de <em>“desenvolvimento”</em>,
+você ainda está ativamente escrevendo e testando o código, e o aplicativo não está aberto para acesso externo. Os ambiente de sistema correspondentes são conhecidos como ambientes de <em>produção</em> e <em>desenvolvimento</em>,
+respectivamente.</p>
+<p>Os ambientes de desenvolvimento e produção são geralmente
+configurados de forma diferente e possuem requisitos completamente
+diferentes. O que é bom em desenvolvimento pode não ser aceitável na produção. Por exemplo, em um ambiente de desenvolvimento você pode
+desejar registros detalhados de erros para depuração, enquanto o
+mesmo comportamento pode se tornar um risco de segurança em um
+ambiente de produção. E em desenvolvimento, você não precisa se
+preocupar com a escalabilidade, confiabilidade, e desempenho,
+enquanto estas preocupações se tornam críticas na produção.</p>
+<p>Este artigo discute algumas melhores práticas de segurança para
+aplicativos do Express implementadas na produção.</p>
+<h2 id="não-use-versões-descontinuadas-ou-vulneráveis-do-express">Não use versões descontinuadas ou vulneráveis do Express</h2>
+<p>Os Express 2.x e 3.x não são mais mantidos. Problemas de
+segurança e desempenho nestas versões não serão corrigidos. Não use-as! Se
+não tiver migrado para a versão 4, siga o <a href="../guide/migrating-4.html">guia de migração</a>.</p>
+<p>Assegure-se também de que não esteja usando nenhuma das versões
+vulneráveis do Express listadas na <a href="security-updates.html">Página de
+atualizações de segurança</a>. Se estiver, atualize para uma das
+liberações estáveis, preferivelmente a mais recente.</p>
+<h2 id="use-tls">Use TLS</h2>
+<p>Se o seu aplicativo negocia com ou transmite dados sensíveis,
+use a <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">Segurança
+da Camada de Transporte</a> (TLS) para proteger a conexão e os
+dados. Esta tecnologia criptografa os dados antes deles serem
+enviados do cliente para o servidor, assim evitando alguns ataques
+comuns (e fáceis). Apesar de solicitações Ajax e POST não parecerem
+visivelmente óbvias e parecerem “ocultas” em navegadores, o seu
+tráfego de rede é vulnerável a <a href="https://en.wikipedia.org/wiki/Packet_analyzer">sniffing de pacotes</a> e
+<a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">ataques man-in-the-middle </a>.</p>
+<p>Você pode estar familiarizado com a criptografia Secure Sockets Layer(SSL). <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa380515(v=vs.85).aspx">O
+TLS é simplesmente a próxima progressão do</a>. Em outras palavras, se você estava usando o SSL antes, considere fazer o
+upgrade para o TLS. Em geral, recomendamos o Nginx para lidar com o TLS. Para
+obter uma boa referência para configurar o TLS no Nginx (e outros servidores), consulte
+<a href="https://wiki.mozilla.org/Security/Server_Side_TLS#Recommended_Server_Configurations">Configurações
+Recomendadas de Servidores (Mozilla Wiki)</a>.</p>
+<p>Além disso, uma ferramenta útil para obter um certificado TLS
+gratuito é a <a href="https://letsencrypt.org/about/">Let’s
+Encrypt</a>, uma autoridade de certificação (CA) gratuita,
+automatizada, e aberta fornecida pelo
+<a href="https://letsencrypt.org/isrg/">Grupo de Pesquisas de
+Segurança da Internet (ISRG)</a>.</p>
+<h2 id="use-helmet">Use Helmet</h2>
+<p>O <a href="https://www.npmjs.com/package/helmet">Helmet</a> pode
+ajudar a proteger o seu aplicativo de algumas vulnerabilidades da web
+bastante conhecidas configurando os cabeçalhos HTTP adequadamente.</p>
+<p>O Helmet é na realidade apenas uma coleção de nove funções de
+middlewares menores que configuram cabeçalhos HTTP relacionados à
+segurança:</p>
+<ul>
+<li>A <a href="https://github.com/helmetjs/csp">csp</a> configura o cabeçalho <code>Content-Security-Policy</code> para ajudar a evitar ataques de cross-site scripting e outras injeções cross-site.</li>
+<li>A <a href="https://github.com/helmetjs/hide-powered-by">hidePoweredBy</a> remove o cabeçalho <code>X-Powered-By</code>.</li>
+<li>A <a href="https://github.com/helmetjs/hsts">hsts</a> configura o cabeçalho <code>Strict-Transport-Security</code>
+que impinge conexões seguras (HTTP sobre SSL/TLS) com o servidor.</li>
+<li>A <a href="https://github.com/helmetjs/ienoopen">ieNoOpen</a> configura o <code>X-Download-Options</code> para o IE8+.</li>
+<li>A <a href="https://github.com/helmetjs/nocache">noCache</a> configura os cabeçalhos <code>Cache-Control</code> e Pragma
+para desativar o armazenamento em cache no lado do cliente.</li>
+<li>A <a href="https://github.com/helmetjs/dont-sniff-mimetype">noSniff</a>
+configura o <code>X-Content-Type-Options</code> para evitar que os navegadores procurem por MIME uma resposta a partir do
+content-type declarado.</li>
+<li>A <a href="https://github.com/helmetjs/frameguard">frameguard</a>
+configura o cabeçalho <code>X-Frame-Options</code> para fornecer proteção <a href="https://www.owasp.org/index.php/Clickjacking">clickjacking</a>.</li>
+<li>A <a href="https://github.com/helmetjs/x-xss-protection">xssFilter</a>
+configura o <code>X-XSS-Protection</code> para ativar o filtro
+de Cross-site scripting (XSS) nos navegadores da web mais recentes.</li>
+</ul>
+<p>Instale o Helmet como qualquer outro módulo:</p>
+<pre><code class="language-console">$ npm install --save helmet
+</code></pre>
+<p>Em seguida use-o no seu código:</p>
+<pre><code class="language-javascript" translate="no">
+...
+var helmet = require('helmet');
+app.use(helmet());
+...
+</code>
+</pre>
+<h3 id="no-mínimo-desative-o-cabeçalho-x-powered-by">No mínimo, desative o cabeçalho X-Powered-By</h3>
+<p>Se não desejar usar o Helmet, então pelo menos desative o
+cabeçalho <code>X-Powered-By</code>. Invasores podem utilizar
+este cabeçalho (que fica ativado por padrão) para detectar
+aplicativos executando o Express e então iniciar ataques
+especificamente direcionados a eles.</p>
+<p>Portanto, a melhor prática é desligar o cabeçalho com o método
+<code>app.disable()</code>:</p>
+<pre><code class="language-javascript" translate="no">
+app.disable('x-powered-by');
+</code>
+</pre>
+<p>Se usar o <code>helmet.js</code>, ele cuida disso por você.</p>
+<h2 id="use-cookies-de-maneira-segura">Use cookies de maneira segura</h2>
+<p>Para assegurar que os cookies não deixem o seu aplicativo
+aberto a ataques, não use o cookie de sessão padrão e configure as
+opções de segurança de cookies adequadamente.</p>
+<p>Existem dois módulos de middleware principais para sessão de
+cookies:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/express-session">express-session</a>
+que substitui o middleware <code>express.session</code>
+integrado no Express 3.x.</li>
+<li><a href="https://www.npmjs.com/package/cookie-session">cookie-session</a>
+que substitui o middleware <code>express.cookieSession</code> integrado no Express 3.x.</li>
+</ul>
+<p>A principal diferença entre esses dois módulos é como eles salvam os dados de cookies de sessão. O middleware <a href="https://www.npmjs.com/package/express-session">express-session</a>
+armazena os dados da sessão no servidor; ele salva apenas o ID da
+sessão no cookie, não os dados da sessão. Por padrão, ele usa
+armazenamento em memória e não é projetado para um ambiente de
+produção. Em produção, será necessário configurar um armazenamento de
+sessão escalável; consulte a lista de <a href="https://github.com/expressjs/session#compatible-session-stores">armazenamentos
+de sessão compatíveis</a>.</p>
+<p>Em contrapartida, o middleware <a href="https://www.npmjs.com/package/cookie-session">cookie-session</a>
+implementa um armazenamento apoiado em cookies: ele serializa a sessão inteira para o cookie, ao invés de apenas a chave da sessão. Use apenas quando os dados da sessão são relativamente pequenos e facilmente codificados como números primitivos(ao invés de objetos). Apesar de navegadores supostamente suportarem pelo menos 4096 bytes por cookie, para assegurar que você não exceda o limite, não exceda
+um tamanho de 4093 bytes por domínio. Além disso, esteja ciente de que os dados do cookie serão visíveis para o cliente, portanto se
+houver razão para mantê-los seguros ou obscuros, então o express-session pode ser uma escolha melhor.</p>
+<h3 id="não-use-o-nome-do-cookie-da-sessão-padrão">Não use o nome do cookie da sessão padrão</h3>
+<p>Usando o nome do cookie da sessão padrão pode deixar o seu
+aplicativo aberto a ataques. O problema de segurança levantado é
+parecido ao do <code>X-Powered-By</code>: um invasor em
+potencial poderia usá-lo para identificar o servidor e direcionar
+ataques de acordo com ele.</p>
+<p>Para evitar este problema, use nomes de cookie genéricos; por
+exemplo usando o middleware <a href="https://www.npmjs.com/package/express-session">express-session</a>:</p>
+<pre><code class="language-javascript" translate="no">
+var session = require('express-session');
+app.set('trust proxy', 1) // trust first proxy
+app.use( session({
+   secret : 's3Cur3',
+   name : 'sessionId',
+  })
+);
+</code>
+</pre>
+<h3 id="configure-as-opções-de-segurança-de-cookie">Configure as opções de segurança de cookie</h3>
+<p>Configure as seguintes opções de cookie para aprimorar a
+segurança:</p>
+<ul>
+<li><code>secure</code> - Assegura que o navegador só envie o cookie por HTTPS.</li>
+<li><code>httpOnly</code> - Assegura que o cookie seja enviado apenas por HTTP(S), não por cliente JavaScript, ajudando
+assim a se proteger contra ataques de cross-site scripting.</li>
+<li><code>domain</code> - indica o domínio do cookie; use-o para comparação contra o domínio do servidor em que a URL está
+sendo solicitada. Se elas corresponderem, verifique o atributo de caminho em seguida.</li>
+<li><code>path</code> - indica o caminho do cookie; use-o para comparação contra o caminho da solicitação. Se este e o domínio corresponderem, então envie o cookie na solicitação.</li>
+<li><code>expires</code> - use para configurar uma data de
+expiração para cookies persistentes.</li>
+</ul>
+<p>Aqui está um exemplo usando o middleware <a href="https://www.npmjs.com/package/cookie-session">cookie-session</a>:</p>
+<pre><code class="language-javascript" translate="no">
+var session = require('cookie-session');
+var express = require('express');
+var app = express();
+
+var expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+app.use(session({
+  name: 'session',
+  keys: ['key1', 'key2'],
+  cookie: { secure: true,
+            httpOnly: true,
+            domain: 'example.com',
+            path: 'foo/bar',
+            expires: expiryDate
+          }
+  })
+);
+</code>
+</pre>
+<h2 id="considerações-adicionais">Considerações adicionais</h2>
+<p>Aqui estão algumas recomendações adicionais da excelente <a href="https://blog.risingstack.com/node-js-security-checklist/">Lista
+de Verificação de Segurança do Node.js</a>. Refira-se a esta postagem do blog para obter todos os detalhes destas recomendações:</p>
+<ul>
+<li>Implemente limitações de tráfego para evitar ataques de força
+bruta contra a autenticação. Uma forma de fazer isso é usar o <a href="https://strongloop.com/node-js/api-gateway/">Gateway
+da API do StrongLoop</a> para impingir políticas de limitação de tráfego. Alternativamente,
+é possível usar um middleware como o <a href="https://www.npmjs.com/package/express-limiter">express-limiter</a>,
+mas fazer isso irá requerer que você modifique seu código de alguma forma.</li>
+<li>Use o middleware <a href="https://www.npmjs.com/package/csurf">csurf</a> para se proteger contra falsificações de solicitação cross-site (CSRF).</li>
+<li>Sempre filtrar e limpar a entrada do usuário para se proteger de ataques de cross-site scripting (XSS) e injeção de comando.</li>
+<li>Proteja-se contra ataques de injeção de SQLs usando consultas parametrizadas ou instruções preparadas.</li>
+<li>Use a ferramenta de software livre <a href="http://sqlmap.org/">sqlmap</a> para detectar
+vulnerabilidades de injeção de SQL no seu aplicativo.</li>
+<li>Use as ferramentas <a href="https://nmap.org/">nmap</a> e <a href="https://github.com/nabla-c0d3/sslyze">sslyze</a> para
+testar a configuração das suas cifras SSL, chaves, e renegociação, bem como a validade do seu certificado.</li>
+<li>Use o <a href="https://www.npmjs.com/package/safe-regex">safe-regex</a> para assegurar que suas expressões regulares não estejam suscetíveis
+a ataques <a href="https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS">negação de serviço de expressões regulares</a>.</li>
+</ul>
+<h2 id="evitar-outras-vulnerabilidades-conhecidas">Evitar outras vulnerabilidades conhecidas</h2>
+<p>Fique atento às recomendações do
+<a href="https://npmjs.com/advisories">Node Security
+Project</a> que podem afetar o Express ou outros módulos usados
+pelo seu aplicativo. Em geral, o Node Security Project é um excelente
+recurso para conhecimento e ferramentas sobre segurança do Node.</p>
+<p>Finalmente, os aplicativos do Express - como outros aplicativos web - podem estar vulneráveis a uma variedade de ataques baseados na
+web. Familiarize-se com <a href="https://www.owasp.org/index.php/Top_10_2013-Top_10">vulnerabilidades web</a> conhecidas e tome precauções para evitá-las.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> é um projeto da <a href="https://openjsf.org">Fundação Node.js</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Crie um Fork do website no GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., e outros contribuidores do expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Este obra está licenciado com uma Licença <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Atribuição-CompartilhaIgual 3.0 Estados Unidos</a>.
+</div>
+</footer>
+<script type="6d89fe57cd251b48f37fdd08-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:pt-br'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="6d89fe57cd251b48f37fdd08-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/pt-br/advanced/best-practice-security.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

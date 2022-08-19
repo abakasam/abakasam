@@ -1,0 +1,19 @@
+
+	commentcode, abakasam @ 2022
+	Create a TODO file, 0.0.1
+
+	Usage:
+
+		./commentcode.sh [language] [working directory] [list file]
+
+	Examples:
+
+		./commentcodes.sh js /workspace/abakasam/scripts/code TODO
+		./commentcodes.sh js . TODO
+
+	Options:
+
+		--help
+		--languages
+		--version
+

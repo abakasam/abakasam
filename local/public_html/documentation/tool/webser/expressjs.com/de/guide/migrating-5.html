@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="de" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/de/guide/migrating-5.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Migration auf Express 5</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/de.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Einführung</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Installation
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Generator
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basisrouting
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statische Dateien
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Häufig gestellte Fragen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Leitfaden</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+</li>
+<li><a href="writing-middleware.html">Middleware schreiben</a>
+</li>
+<li><a href="using-middleware.html">Middleware verwenden</a>
+</li>
+<li><a href="using-template-engines.html">Template-Engines verwenden</a>
+</li>
+<li><a href="error-handling.html">Fehlerbehandlung</a>
+</li>
+<li><a href="debugging.html">Debugging</a>
+</li>
+<li><a href="behind-proxies.html">Express hinter Proxys</a>
+</li>
+<li><a href="migrating-4.html">Wechsel zu Express 4</a>
+</li>
+<li><a href="migrating-5.html">Wechsel zu Express 5</a>
+</li>
+<li><a href="database-integration.html">Datenbankintegration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API-Referenz</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (veraltet)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (veraltet)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Themen für Fortgeschrittene</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Template-Engines</a>
+</li>
+<li><a href="../advanced/pm.html">Process Manager verwenden</a>
+</li>
+<li><a href="../advanced/security-updates.html">Sicherheitsupdates</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Sicherheitsspezifische Best Practices</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Leistungsspezifische Best Practices</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ressourcen</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossar</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Community</a>
+</li>
+<li><a href="../resources/learning.html">Zusätzliches Lernen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Diese Übersetzung zur Verfügung gestellt von <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Dieses Dokument kann im Vergleich zur englischen Dokumentation veraltet sein. Aktuelle Updates finden Sie in der <a href="../../index.html">englischen Dokumentation</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="wechsel-zu-express-5">Wechsel zu Express 5</h1>
+<h2 id="overview">Überblick</h2>
+<p>Express 5.0 befindet sich noch in der Alpha-Release-Phase. Hier finden Sie jedoch bereits eine Vorschau zu den Änderungen in diesem Release und zur Migration Ihrer Express 4-Anwendung auf Express 5.</p>
+<p>Express 5 unterscheidet sich nicht allzu sehr von Express 4: Die Änderungen an der API sind nicht so signifikant wie von 3.0 zu 4.0. Auch wenn die Basis-API unverändert bleibt, wird es doch einige grundlegende Veränderungen geben. In anderen Worten: Ein vorhandenes Express 4-Programm funktioniert möglicherweise nicht mehr, wenn Sie es für Express 5 aktualisieren.</p>
+<p>Zum Installieren der aktuellen Alpha-Version und zur Vorschau von Express 5 geben Sie den folgenden Befehl im Stammverzeichnis Ihrer Anwendung ein:</p>
+<pre><code class="language-console">$ npm install express@5.0.0-alpha.2 --save
+</code></pre>
+<p>Sie können Ihre automatisierten Tests ausführen, um zu sehen, was fehlschlägt, und Probleme gemäß den folgenden Updates beheben. Nachdem Sie alle Testfehler behoben haben, führen Sie Ihre Anwendung aus, um zu sehen, welche Fehler noch auftreten. Sie werden sofort feststellen, ob die Anwendung Methoden oder Eigenschaften verwendet, die nicht unterstützt werden.</p>
+<h2 id="changes">Änderungen in Express 5</h2>
+<p>Nachfolgend finden Sie eine Liste mit Änderungen (Stand: Alpha-2-Release), die sich auf Sie als Express-Benutzer auswirken werden. Siehe hierzu auch die <a href="https://github.com/expressjs/express/pull/2237">Pull-Anforderung</a> mit einer Liste aller geplanten Features und Funktionen.</p>
+<p><strong>Entfernte Methoden und Eigenschaften</strong></p>
+<ul class="doclist">
+<li><a href="#app.del">app.del()</a></li>
+<li><a href="#app.param">app.param(fn)</a></li>
+<li><a href="#plural">Pluralisierte Methodennamen</a></li>
+<li><a href="#leading">Führender Doppelpunkt im Namensargument für app.param(name, fn)</a></li>
+<li><a href="#req.param">req.param(name)</a></li>
+<li><a href="#res.json">res.json(obj, status)</a></li>
+<li><a href="#res.jsonp">res.jsonp(obj, status)</a></li>
+<li><a href="#res.send.body">res.send(body, status)</a></li>
+<li><a href="#res.send.status">res.send(status)</a></li>
+<li><a href="#res.sendfile">res.sendfile()</a></li>
+</ul>
+<p><strong>Geändert</strong></p>
+<ul class="doclist">
+<li><a href="#app.router">app.router</a></li>
+<li><a href="#req.host">req.host</a></li>
+<li><a href="#req.query">req.query</a></li>
+</ul>
+<p><strong>Verbesserungen</strong></p>
+<ul class="doclist">
+<li><a href="#res.render">res.render()</a></li>
+</ul>
+<h3>Entfernte Methoden und Eigenschaften</h3>
+<p>Wenn Sie eine dieser Methoden oder Eigenschaften in Ihrer Anwendung verwenden, stürzt die Anwendung ab. Sie müssen also Ihre Anwendung ändern, wenn Sie auf Version 5 umgestellt haben.</p>
+<h4 id="app.del">app.del()</h4>
+<p>Express 5 unterstützt die Funktion <code>app.del()</code> nicht mehr. Wenn Sie diese Funktion verwenden, wird ein Fehler ausgelöst. Für die Registrierung von HTTP DELETE-Weiterleitungen verwenden Sie stattdessen die Funktion <code>app.delete()</code>.</p>
+<p>Anfänglich wurde <code>del</code> statt <code>delete</code> verwendet, weil <code>delete</code> in JavaScript ein reserviertes Schlüsselwort ist. Ab ECMAScript 6 jedoch können <code>delete</code> und andere reservierte Schlüsselwörter legal als Eigenschaftsnamen verwendet werden. Lesen hier auch die Diskussion, die zur Einstellung der Unterstützung der Funktion <code>app.del</code> geführt hat.</p>
+<h4 id="app.param">app.param(fn)</h4>
+<p>Die Signatur <code>app.param(fn)</code> wurde für die Änderung der Verhaltensweise der Funktion <code>app.param(name, fn)</code> verwendet. Seit v4.11.0 wurde sie nicht mehr verwendet. In Express 5 wird sie überhaupt nicht mehr unterstützt.</p>
+<h4 id="plural">Pluralisierte Methodennamen</h4>
+<p>Die folgenden Methodennamen wurden pluralisiert. In Express 4 wurde bei Verwendung der alten Methoden eine Warnung zur Einstellung der Unterstützung ausgegeben. Express 5 unterstützt diese Methoden nicht mehr.</p>
+<p><code>req.acceptsCharset()</code> wird durch <code>req.acceptsCharsets()</code> ersetzt.</p>
+<p><code>req.acceptsEncoding()</code> wird durch <code>req.acceptsEncodings()</code> ersetzt.</p>
+<p><code>req.acceptsLanguage()</code> wird durch <code>req.acceptsLanguages()</code> ersetzt.</p>
+<h4 id="leading">Führender Doppelpunkt (:) im Namen für app.param(name, fn)</h4>
+<p>Ein führendes Doppelpunktzeichen (:) im Namen für die Funktion <code>app.param(name, fn)</code> ist ein Überbleibsel aus Express 3. Aus Gründen der Abwärtskompatibilität wurde dieser Name in Express 4 mit einem Hinweis zu veralteten Versionen weiter unterstützt. In Express 5 wird dieser Name stillschwiegend ignoriert und der Namensparameter ohne einen vorangestellten Doppelpunkt verwendet.</p>
+<p>Dies dürfte keine Auswirkungen auf Ihren Code haben, wenn Sie die Express 4-Dokumentation zu <a href="../4x/api.html#app.param">app.param</a> befolgen, da dort der führende Doppelpunkt nicht erwähnt wird.</p>
+<h4 id="req.param">req.param(name)</h4>
+<p>Dieses potenziell verwirrende und durchaus riskante Verfahren des Abrufens von Formulardaten wurde entfernt. Sie müssen nun ganz speziell nach dem übergebenen Parameternamen im Objekt <code>req.params</code>, <code>req.body</code> oder <code>req.query</code> suchen.</p>
+<h4 id="res.json">res.json(obj, status)</h4>
+<p>Express 5 unterstützt die Signatur <code>res.json(obj, status)</code> nicht mehr. Stattdessen müssen Sie den Status festlegen und diesen dann mit <code>res.json()</code>-Methoden wie dieser verketten: <code>res.status(status).json(obj)</code>.</p>
+<h4 id="res.jsonp">res.jsonp(obj, status)</h4>
+<p>Express 5 unterstützt die Signatur <code>res.jsonp(obj, status)</code> nicht mehr. Stattdessen müssen Sie den Status festlegen und diesen dann mit <code>res.jsonp()</code>-Methoden wie dieser verketten: <code>res.status(status).jsonp(obj)</code>.</p>
+<h4 id="res.send.body">res.send(body, status)</h4>
+<p>Express 5 unterstützt die Signatur <code>res.send(obj, status)</code> nicht mehr. Stattdessen müssen Sie den Status festlegen und diesen dann mit <code>res.send()</code>-Methoden wie dieser verketten: <code>res.status(status).send(obj)</code>.</p>
+<h4 id="res.send.status">res.send(status)</h4>
+<p>Express 5 unterstützt die Signatur <code>res.send(<em>status</em>)</code>, nicht mehr, wobei <em><code>status</code></em> für eine Zahl steht. Verwenden Sie stattdessen die Funktion <code>res.sendStatus(statusCode)</code>, mit der der Statuscode für den HTTP-Antwort-Header festgelegt und die Textversion des Codes gesendet wird: “Not Found” (Nicht gefunden), “Internal Server Error” (Interner Serverfehler) usw. Wenn Sie eine Zahl senden und hierfür die Funktion <code>res.send()</code> verwenden müssen, müssen Sie die Zahl in Anführungszeichen setzen, um diese in eine Zeichenfolge zu konvertieren. Dadurch interpretiert Express diese Zahl nicht als Versuch, die nicht mehr unterstützte alte Signatur zu verwenden.</p>
+<h4 id="res.sendfile">res.sendfile()</h4>
+<p>Die Funktion <code>res.sendfile()</code> wurde durch eine Version in Camel-Schreibweise von <code>res.sendFile()</code> in Express 5 ersetzt.</p>
+<h3>Geändert</h3>
+<h4 id="app.router">app.router</h4>
+<p>Das Objekt <code>app.router</code>, das in Express 4 entfernt wurde, ist in Express 5 wieder verfügbar. In der neuen Version fungiert dieses Objekt nur als Referenz zum Express-Basisrouter – im Gegensatz zu Express 3, wo die Anwendung dieses Objekt explizit laden musste.</p>
+<h4 id="req.host">req.host</h4>
+<p>In Express 4 übergab die Funktion <code>req.host</code> nicht ordnungsgemäß eine eventuell vorhandene Portnummer. In Express 5 wird die Portnummer beibehalten.</p>
+<h4 id="req.query">req.query</h4>
+<p>In Express 4.7 und ab Express 5 kann die Abfrageparser-Option <code>false</code> akzeptieren, um das Parsing von Abfragezeichenfolgen zu deaktivieren, wenn Sie Ihre eigene Funktion für die Parsinglogik bei Abfragezeichenfolgen verwenden wollen.</p>
+<h3>Verbesserungen</h3>
+<h4 id="res.render">res.render()</h4>
+<p>Diese Methode erzwingt nun asynchrones Verhalten für alle View-Engines, sodass durch View-Engines mit synchroner Implementierung verursachte Fehler vermieden werden, durch die die empfohlene Schnittstelle nicht verwendet werden konnte.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> ist ein Projekt der <a href="https://openjsf.org">Stiftung OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Website auf GitHub forken</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. und andere Mitwirkende an expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Dieses Werk ist lizenziert unter einer <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Vereinigte Staaten von Amerika Lizenz</a>.
+</div>
+</footer>
+<script type="1ef0bba32bc6cd6da4b7a387-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:de'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="1ef0bba32bc6cd6da4b7a387-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/de/guide/migrating-5.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

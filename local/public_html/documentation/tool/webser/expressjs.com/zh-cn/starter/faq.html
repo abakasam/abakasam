@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-cn/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 常见问题及解答</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-cn.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">主页</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">入门</a>
+<ul>
+<li>
+<a href="installing.html">
+安装
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="generator.html">
+Express 生成器
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="static-files.html">
+静态文件
+</a>
+</li>
+<li>
+<a href="faq.html">
+常见问题及解答
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">指南</a>
+<ul>
+<li><a href="../guide/routing.html">路由</a>
+</li>
+<li><a href="../guide/writing-middleware.html">编写中间件</a>
+</li>
+<li><a href="../guide/using-middleware.html">使用中间件</a>
+</li>
+<li><a href="../guide/using-template-engines.html">使用模板引擎</a>
+</li>
+<li><a href="../guide/error-handling.html">错误处理</a>
+</li>
+<li><a href="../guide/debugging.html">调试</a>
+</li>
+<li><a href="../guide/behind-proxies.html">代理背后的 Express</a>
+</li>
+<li><a href="../guide/migrating-4.html">迁移到 Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">迁移到 Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">数据库集成</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 参考</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（不推荐）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（不推荐）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高级主题</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">模板引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用进程管理器</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳实践</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">性能最佳实践</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">资源</a>
+<ul>
+<li><a href="../resources/glossary.html">词汇表</a>
+</li>
+<li><a href="../resources/middleware.html">中间件</a>
+</li>
+<li><a href="../resources/community.html">社区</a>
+</li>
+<li><a href="../resources/learning.html">额外学习</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>这个翻译<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相对于英文版的文档，本文档可能已过时。要了解最近的更新，请参阅<a href="../../index.html">英文版文档</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="常见问题及解答">常见问题及解答</h1>
+<h2 id="如何构造自己的应用程序">如何构造自己的应用程序？</h2>
+<p>这个问题没有固定答案。具体取决于您的应用程序以及参与团队的规模。为了实现尽可能的灵活性，Express 在结构方面不作任何假设。</p>
+<p>路由和其他特定于应用程序的逻辑可以存在于您首选的任何目录结构的任意数量的文件中。请查看以下示例以获取灵感：</p>
+<ul>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-47">路由列表</a></li>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66">路由图</a></li>
+<li><a href="https://github.com/expressjs/express/tree/master/examples/mvc">MVC 样式控制器</a></li>
+</ul>
+<p>另外还有针对 Express 的第三方扩展，这有助于简化某些模式：</p>
+<ul>
+<li><a href="https://github.com/expressjs/express-resource">资源丰富的路由</a></li>
+</ul>
+<h2 id="如何定义模型">如何定义模型？</h2>
+<p>Express 没有数据库概念。此概念留给第三方 Node 模块实现，因此可以接入几乎任何数据库。</p>
+<p>请参阅 <a href="http://loopback.io/">LoopBack</a> 以了解处于模型中心的基于 Express 的框架。</p>
+<h2 id="如何对用户进行认证">如何对用户进行认证？</h2>
+<p>认证是 Express 没有涉足的另一严格领域。您可使用所希望的任何认证方案。
+要了解简单的“用户名/密码”方案，请参阅<a href="https://github.com/expressjs/express/tree/master/examples/auth">此示例</a>。</p>
+<h2 id="express-支持哪些模板引擎">Express 支持哪些模板引擎？</h2>
+<p>Express 支持符合 <code>(path, locals, callback)</code> 特征符的任何模板引擎。
+为了使模板引擎接口和高速缓存实现标准化，请参阅 <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a> 项目以获得支持。未列出的模板引擎可能也支持 Express 特征符。</p>
+<h2 id="如何处理-404-响应">如何处理 404 响应？</h2>
+<p>在 Express 中，404 响应不是错误的结果，所以错误处理程序中间件不会将其捕获。此行为是因为 404 响应只是表明缺少要执行的其他工作；换言之，Express 执行了所有中间件函数和路由，且发现它们都没有响应。您需要做的只是在堆栈的最底部（在其他所有函数之下）添加一个中间件函数来处理 404 响应：</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(req, res, next) {
+  res.status(404).send('Sorry cant find that!');
+});
+</code>
+</pre>
+<h2 id="如何设置错误处理程序">如何设置错误处理程序？</h2>
+<p>错误处理中间件的定义方式与其他中间件基本相同，差别在于错误处理中间件有四个自变量而不是三个，专门具有特征符 <code>(err, req, res, next)</code>：</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+<p>有关更多信息，请参阅<a href="../guide/error-handling.html">错误处理</a>。</p>
+<h2 id="如何呈现纯-html">如何呈现纯 HTML？</h2>
+<p>您不必这么做！无需使用 <code>res.render()</code> 函数来“呈现”HTML。
+如果您具有特定文件，请使用 <code>res.sendFile()</code> 函数。
+如果您希望从目录提供许多资产，请使用 <code>express.static()</code> 中间件函数。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金会的</a>一个项目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">在 GitHub 上派生出网站</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本作品采用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">知识共享署名-相同方式共享 3.0 美国许可协议</a>进行许可。
+</div>
+</footer>
+<script type="fd10af5c23dfbda609500816-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-cn'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="fd10af5c23dfbda609500816-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-cn/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

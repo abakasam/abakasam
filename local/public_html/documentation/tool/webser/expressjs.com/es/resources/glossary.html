@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="es" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/es/resources/glossary.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Glosario de Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/es.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Inicio</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Cómo empezar</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Instalación
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Generador de Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Direccionamiento básico
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Archivos estáticos
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Preguntas más frecuentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Guía</a>
+<ul>
+<li><a href="../guide/routing.html">Direccionamiento</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Escritura de middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Utilización del middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Utilización de motores de plantilla</a>
+</li>
+<li><a href="../guide/error-handling.html">Manejo de errores</a>
+</li>
+<li><a href="../guide/debugging.html">Depuración</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express detrás de proxies</a>
+</li>
+<li><a href="../guide/migrating-4.html">Migración a Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Migración a Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integración de la base de datos</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referencia de API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (en desuso)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (en desuso)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Temas avanzados</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Motores de plantilla</a>
+</li>
+<li><a href="../advanced/pm.html">Utilización de gestores de procesos</a>
+</li>
+<li><a href="../advanced/security-updates.html">Actualizaciones de seguridad</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Mejores prácticas de seguridad</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Mejores prácticas de rendimiento</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="glossary.html" class="active">Recursos</a>
+<ul>
+<li><a href="glossary.html">Glosario</a>
+</li>
+<li><a href="middleware.html">Middleware</a>
+</li>
+<li><a href="community.html">Comunidad</a>
+</li>
+<li><a href="learning.html">Aprendizaje adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta traducción proporcionada por <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento puede estar desfasado respecto a la documentación en inglés. Para ver las últimas actualizaciones, consulte la <a href="../../index.html">documentación en inglés</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="glosario">Glosario</h1>
+<h3 id="api">API</h3>
+<p>Interfaz de programación de aplicaciones. Explique la abreviatura la primera vez que la utilice.</p>
+<h3 id="aplicación">aplicación</h3>
+<p>En general, uno o varios programas diseñados para realizar operaciones para un determinado propósito. En el contexto de Express, un programa que utiliza la API de Express que se ejecuta en la plataforma Node.js. También puede hacer referencia a un <a href="../api.html#express">objeto de aplicación</a>.</p>
+<h3 id="código-abierto">código abierto</h3>
+<p>Consulte <a href="http://en.wikipedia.org/wiki/Open-source_software">Open source software en la Wikipedia</a>.</p>
+<h3 id="direccionador">direccionador</h3>
+<p>Consulte <a href="../4x/api.html#router">direccionador</a> en la referencia de API.</p>
+<h3 id="express">Express</h3>
+<p>Una infraestructura web rápida, minimalista y flexible para las aplicaciones Node.js. En general, se prefiere “Express” a “Express.js”, aunque esta también se acepta.</p>
+<h3 id="libuv">libuv</h3>
+<p>Una biblioteca de soporte multiplataforma que se centra en la E/S asíncrona, desarrollada principalmente para su uso en Node.js.</p>
+<h3 id="middleware">middleware</h3>
+<p>Una función invocada por la capa de direccionamiento de Express antes del manejador de la última solicitud, por lo que se sitúa en medio de una solicitud sin formato y la última ruta prevista. Algunos puntos delicados de terminología relacionados con el middleware:</p>
+<ul>
+<li><code>var foo = require('middleware')</code> significa que <em>requiere</em> o <em>utiliza</em> un módulo Node.js. A continuación, la sentencia <code>var mw = foo()</code> normalmente devuelve el middleware.</li>
+<li><code>app.use(mw)</code> significa que <em>se añade el middleware a la pila de procesos global</em>.</li>
+<li><code>app.get('/foo', mw, function (req, res) { ... })</code> significa que <em>se añade el middleware a la pila de procesos “GET /foo”</em>.</li>
+</ul>
+<h3 id="nodejs">Node.js</h3>
+<p>Una plataforma de software que se utiliza para crear aplicaciones de red escalables. Node.js utiliza JavaScript como lenguaje de script y consigue un elevado rendimiento mediante E/S sin bloqueo y un bucle de sucesos de una sola hebra. Consulte <a href="http://nodejs.org/">nodejs.org</a>. <strong>Nota de uso</strong>: inicialmente, “Node.js”, posteriormente “Node”.</p>
+<h3 id="respuesta">respuesta</h3>
+<p>Una respuesta HTTP. Un servidor devuelve un mensaje de respuesta HTTP al cliente. La respuesta contiene información de estado de finalización sobre la solicitud y también puede contener contenido de la solicitud en el cuerpo del mensaje.</p>
+<h3 id="ruta">ruta</h3>
+<p>Parte de un URL que identifica un recurso. Por ejemplo, en <code>http://foo.com/products/id</code>, “/products/id” es la ruta.</p>
+<h3 id="solicitud">solicitud</h3>
+<p>Una solicitud HTTP. Un cliente envía un mensaje de solicitud HTTP a un servidor, que devuelve una respuesta. La solicitud debe utilizar uno de los <a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">métodos de solicitud</a> como, por ejemplo, GET, POST, etc.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> es un proyecto de la <a href="https://openjsf.org">Fundación OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Bifurque el sitio web en GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. y otros colaboradores de expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Esta obra está bajo una <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Licencia Creative Commons Atribución-CompartirIgual 3.0 Estados Unidos de América</a>.
+</div>
+</footer>
+<script type="463762bb52686a90a76222c3-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:es'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="463762bb52686a90a76222c3-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/es/resources/glossary.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

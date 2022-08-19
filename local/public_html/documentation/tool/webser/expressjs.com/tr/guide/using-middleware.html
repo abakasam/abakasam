@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html lang="tr" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/tr/guide/using-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express ara yazılımı kullanmak</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/tr.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div style="text-align: center; background: #010101; color: #f1f1f1; padding: 16px; font-size: 16px; width: 100vw">
+Black Lives Matter. <a style="color: #5E80F7; text-decoration: none;" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Anasayfa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Buradan Başlayın</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Kurulum
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Merhaba Dünya
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Oluşturucu
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basit Yönlendirme
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statik Dosyalar
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+SSS
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Kılavuz</a>
+<ul>
+<li><a href="routing.html">Yönlendirme</a>
+</li>
+<li><a href="writing-middleware.html">
+Middleware yazma</a>
+</li>
+<li><a href="using-middleware.html">Middleware kullanma</a>
+</li>
+<li><a href="using-template-engines.html">Şablon motoru kullanma</a>
+</li>
+<li><a href="error-handling.html">Hata işleme</a>
+</li>
+<li><a href="debugging.html">Hata Ayıklama</a>
+</li>
+<li><a href="behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="migrating-4.html">Express 4 geçiş</a>
+</li>
+<li><a href="migrating-5.html">Express 5 geçiş</a>
+</li>
+<li><a href="database-integration.html">Database Entegrasyonu</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API Kaynak</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (Kullanımdan kaldırıldı)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (Kullanımdan kaldırıldı)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Gelişmiş konular</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Şablon motorları</a>
+</li>
+<li><a href="../advanced/pm.html">Proses yöneticisi kullanma</a>
+</li>
+<li><a href="../advanced/security-updates.html">Gğvenlik güncellemeleri</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">En iyi güvenlik uygulamaları</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">En iyi performans uygulamaları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Kaynaklar</a>
+<ul>
+<li>
+<a href="../resources/community.html">Topluluk</a>
+</li>
+<li>
+<a href="../resources/glossary.html">Terimler</a>
+</li>
+<li>
+<a href="../resources/middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../resources/utils.html">Yardımcı Modüller</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">Yapılar</a>
+</li>
+<li>
+<a href="../resources/learning.html">Ek öğrenme</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">Express kullanan şirket</a>
+</li>
+<li>
+<a href="../resources/contributing.html">Express'e katkıda bulunmak</a>
+</li>
+<li>
+<a href="../changelog/4x.html">Sürüm Notları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Bu doküman ingilizce dokümana göre eski olabilir. Son güncellemeler için lütfen <a href="../../index.html">İngilizce Dokümanı</a>. ziyaret edin
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<div id="page-doc">
+<h1 id="ara-yazlm-kullanmak">Ara yazılım kullanmak</h1>
+<p>Express, kendine özgü minimal bir işlevselliği olan bir yönlendirme ve ara yazılım web çatısıdır: Bir Express uygulaması aslında bir dizi ara yazılım fonksiyon çağrısıdır.</p>
+<p><em>Middleware</em> fonksiyonları, uygulamanın istek-yanıt döngüsündeki <a href="../4x/api.html#req">istek objesi</a> (<code>req</code>), <a href="../4x/api.html#res">yanıt objesi</a> (<code>res</code>), ve bir sonraki ara yazılım fonksiyonuna erişebilen fonksiyonlardır. Bir sonraki ara yazılım fonksiyonu çoğunlukla <code>next</code> isimli bir değişken ile tanımlanır.</p>
+<p>Ara yazılım fonksiyonları aşağıdaki görevleri yapabilir:</p>
+<ul>
+<li>Herhangi bir kodu koşma</li>
+<li>İstek ve yanıt objelerine değişiklik yapma</li>
+<li>İstek-yanıt döngüsünü bitirme</li>
+<li>Kümedeki bir sonraki ara yazılım fonksiyonunu çağırma</li>
+</ul>
+<p>Şimdiki ara yazılım fonksiyonu istek-yanıt döngüsünü bitirmezse, bir sonraki ara yazılım fonksiyonuna kontrol vermek için <code>next()</code> metodunu çağırmalı. Aksi takdirde istek boşta asılı kalacaktır.</p>
+<p>Bir Express uygulaması aşağıdaki ara yazılım türlerini kullanabilir:</p>
+<ul>
+<li><a href="#middleware.application">Uygulama-düzeyi ara yazılım</a></li>
+<li><a href="#middleware.router">Rota-düzeyi ara yazılım</a></li>
+<li><a href="#middleware.error-handling">Hata-işleme ara yazılım</a></li>
+<li><a href="#middleware.built-in">Gömülü ara yazılım</a></li>
+<li><a href="#middleware.third-party">Üçüncü-parti ara yazılım</a></li>
+</ul>
+<p>Uygulama-düzeyi ve yönlendirici-düzeyi ara yazılımı bir opsiyonlu hedef yol ile yükleyebilirsiniz.
+Hedef bir yolda, bir ara katman yazılımı alt kümesi oluşturacak bir ara yazılım fonksiyonlar dizisi de yükleyebilirsiniz.</p>
+<h2 id="middleware.application">Uygulama-düzeyi ara yazılımı</h2>
+<p>Uygulama-düzeyi ara yazılımı <code>app.use()</code> ve <code>app.METHOD()</code> fonksiyonları kullanarak bir <a href="../4x/api.html#app">uygulama objesi</a> örneğine bağlanır; <code>METHOD</code> ise, küçük harflerle, ara yazılım fonksiyonunun işlediği isteğin HTTP metodunun ismidir (örneğin GET, PUT, veya POST).</p>
+<p>Bu örnek, hedef yolu bulunmayan bir ara yazılım fonksiyonunu gösteriyor. Fonksiyon uygulama her istek aldığında çalışır.</p>
+<pre><code class="language-js">const app = express()
+
+app.use((req, res, next) =&gt; {
+  console.log('Time:', Date.now())
+  next()
+})
+</code></pre>
+<p>Bu örnek, <code>/user/:id</code> yoluna yerleştirilmiş bir ara yazılım fonksiyonu gösterir. Bu fonksiyon <code>/user/:id</code> yoluna yapılan herhangi bir HTTP isteğinde çalışır.</p>
+<pre><code class="language-js">app.use('/user/:id', (req, res, next) =&gt; {
+  console.log('Request Type:', req.method)
+  next()
+})
+</code></pre>
+<p>Bu örnek bir rotayı ve işleyici fonksiyonunu gösterir (ara yazılım sistemi). Fonksiyon <code>/user/:id</code> yoluna yapılan GET isteklerini karşılıyor.</p>
+<pre><code class="language-js">app.get('/user/:id', (req, res, next) =&gt; {
+  res.send('USER')
+})
+</code></pre>
+<p>Bu örnek, hedef bir yol ile, yerleştirilmiş bir noktada bir dizi ara yazılım fonksiyonları yükler.
+<code>/user/:id</code> yoluna yapılan herhangi bir tipte HTTP isteğinin istek bilgilerini yazdıran bir ara yazılım alt kümesini gösterir.</p>
+<pre><code class="language-js">app.use('/user/:id', (req, res, next) =&gt; {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}, (req, res, next) =&gt; {
+  console.log('Request Type:', req.method)
+  next()
+})
+</code></pre>
+<p>Rota işleyicileri bir yol için birden fazla rota tanımlamaya olanak sağlar. Aşağıdaki örnek <code>/user/:id</code> yoluna yapılan GET istekleri için iki rota tanımlıyor. İkinci rota herhangi bir problem yaratmayacak, ancak ilk rota istek-yanıt döngüsünü bitirdiği için ikinci rota hiç bir zaman çağrılmayacak.</p>
+<p>Bu örnek <code>/user/:id</code> yoluna yapılan GET isteklerini işleyen ara yazılım alt kümesini gösterir.</p>
+<pre><code class="language-js">app.get('/user/:id', (req, res, next) =&gt; {
+  console.log('ID:', req.params.id)
+  next()
+}, (req, res, next) =&gt; {
+  res.send('User Info')
+})
+
+// kullanıcı ID'sini yazdıran, /user/:id yolunun işleyicisi
+app.get('/user/:id', (req, res, next) =&gt; {
+  res.end(req.params.id)
+})
+</code></pre>
+<p>Geriye kalan ara yazılım fonksiyonlarını yönlendirici ara yazılım kümesinden es geçmek için, <code>next('route')</code> metodunu çağırarak bir sonraki rotaya kontrolu verin.
+<strong>NOT</strong>: <code>next('route')</code> metodu sadece <code>app.METHOD()</code> veya <code>router.METHOD()</code> fonksiyonlarını kullanarak yüklenen ara yazılım fonksiyonları için geçerlidir.</p>
+<p>Bu örnek <code>/user/:id</code> yolu için yapılan GET isteklerini işleyen bir ara yazılım alt-kümesini gösterir.</p>
+<pre><code class="language-js">app.get('/user/:id', (req, res, next) =&gt; {
+  // kullanıcı ID'si 0 ise, bir sonraki rotaya geç
+  if (req.params.id === '0') next('route')
+  // aksi takdirde kontrolü bu kümedeki bir sonraki ara yazılım fonksiyonuna ver
+  else next()
+}, (req, res, next) =&gt; {
+  // normal bir sayfa göster
+  res.render('regular')
+})
+
+// özel bir sayfa gösteren, /user/:id yolunun işleyicisi
+app.get('/user/:id', (req, res, next) =&gt; {
+  res.render('special')
+})
+</code></pre>
+<h2 id="middleware.router">Yönlendirici-düzeyi ara yazılım</h2>
+<p>Yönlendirici-düzeyi ara yazılımı, uygulama-düzeyi ara yazılımı ile aynı şekilde çalışır; ama <code>express.Router()</code> sınıfının bir örneğine bağlıdır.</p>
+<pre><code class="language-js">const router = express.Router()
+</code></pre>
+<p><code>router.use()</code> ve <code>router.METHOD()</code> fonksiyonlarını kullanarak yönlendirici-düzeyi ara yazılımı yükle.</p>
+<p>Aşağıdaki örnek kod, yukarıda uygulama-düzeyi ara yazılım için gösterilen ara yazılım sistemini, yönlendirici-düzeyi ara yazılım kullanarak kopyalar:</p>
+<pre><code class="language-js">const app = express()
+const router = express.Router()
+
+// hedef yolu olmayan bir ara yazılım fonksiyonu. Bu kod yönlendiriciye yapılan her istekte çalışır
+router.use((req, res, next) =&gt; {
+  console.log('Time:', Date.now())
+  next()
+})
+
+// /user/:id yolu için yapılan herhangi bir HTTP tipi isteğinin istek bilgilerini gösteren bir ara yazılım alt-kümesi
+router.use('/user/:id', (req, res, next) =&gt; {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}, (req, res, next) =&gt; {
+  console.log('Request Type:', req.method)
+  next()
+})
+
+// /user/:id yoluna yapılan GET isteklerini işleyen bir ara yazılım alt-kümesi
+router.get('/user/:id', (req, res, next) =&gt; {
+  // kullanıcı ID'si 0 ise, bir sonraki yönlendiriciye geç
+  if (req.params.id === '0') next('route')
+  // aksi takdirde kontrolü bu kümedeki bir sonraki ara yazılıma ver
+  else next()
+}, (req, res, next) =&gt; {
+  // normal bir sayfa göster
+  res.render('regular')
+})
+
+// özel bir sayfa gösteren /user/:id yolu işleyicisi
+router.get('/user/:id', (req, res, next) =&gt; {
+  console.log(req.params.id)
+  res.render('special')
+})
+
+// yönlendiriciyi uygulamaya yerleştir
+app.use('/', router)
+</code></pre>
+<p>Yönlendiricinin kalan ara yazılım fonksiyonlarını geçmek için, yönlendirici örneğinden kontrolü almak için <code>next('router')</code> metodunu çağırın.</p>
+<p>Bu örnek, <code>/user/:id</code> yoluna yapılan GET isteklerini işleyen bir ara yazılım alt-kümesini gösterir.</p>
+<pre><code class="language-js">const app = express()
+const router = express.Router()
+
+// yönlendiriciyi bir kontrol ile doğrula ve gerektiğinde bir sonraki yönlendiriciye geçerek kurtul
+router.use((req, res, next) =&gt; {
+  if (!req.headers['x-auth']) return next('router')
+  next()
+})
+
+router.get('/', (req, res) =&gt; {
+  res.send('hello, user!')
+})
+
+// geçen herhangi bir şey için yönlendiriciyı ve 401'i kullan
+app.use('/admin', router, (req, res) =&gt; {
+  res.sendStatus(401)
+})
+</code></pre>
+<h2 id="middleware.error-handling">Hata-işleyici ara yazılım</h2>
+<div class="doc-box doc-notice">
+<p>Hata-işleyici ara yazılımı her zaman <em>dört</em> argüman alır. Bir hata-işleyici ara yazılım fonksiyonunu tanımlayabilmek için dört argüman sağlamalısınız. <code>next</code> objesini kullanmaya ihtiyacınız yoksa bile, metod imzasını koruyabilmek için tanımlamalısınız. Aksi takdirde, <code>next</code> objesi normal bir ara yazılım gibi değerlendirilecek ve hataları işlemede başarısız olacaktır.</p>
+</div>
+<p>Hata-işleme ara yazılım fonksiyonlarını diğer ara yazılım fonksiyonları gibi tanımla, ancak istisna olarak üç argüman yerine 4 ile, özellikle <code>(err, req, res, next)</code> imzasıyla:</p>
+<pre><code class="language-js">app.use((err, req, res, next) =&gt; {
+  console.error(err.stack)
+  res.status(500).send('Bir şeyler bozuk!')
+})
+</code></pre>
+<p>Hata-işleyici ara yazılım hakkında daha fazla detay için bakınız <a href="error-handling.html">Hata-işleme</a>.</p>
+<h2 id="middleware.built-in">Gömülü ara yazılım</h2>
+<p>4.x sürümünden başlayarak, Express <a href="https://github.com/senchalabs/connect">Connect</a> ara yazılımına bağımlı değil.
+<code>express.static</code> hariç, Express ile daha önce dahil edilen tüm ara katman yazılımı fonksiyonları artık ayrı modüllerde. Lütfen bakınız <a href="https://github.com/senchalabs/connect#middleware">ara yazılım fonksiyonları listesi</a>.</p>
+<p>Express’teki tek gömülü ara yazılım fonksiyonu <code>express.static</code> fonksiyonudur. Bu fonksiyon <a href="https://github.com/expressjs/serve-static">serve-static</a>‘e dayanır, ve HTML dosyaları, görüntüler vb. gibi statik dosyaları sunmaktan sorumludur.</p>
+<p>Fonksiyon imzası böyledir:</p>
+<pre><code class="language-js">express.static(root, [options])
+</code></pre>
+<p><code>root</code> argümanı statik dosyaların sunulacağı kök dizini belirtir.</p>
+<p><code>options</code> argümanı ve bu ara yazılım fonksiyonu hakkında daha detaylı bilgi için, bakınız <a href="../../en/4x/api.html#express.static">express.static</a>.</p>
+<p>Bu örnek <code>express.static</code> ara yazılım fonksiyonunu ayrıntılı bir seçenekler objesiyle kullanımını gösterir:</p>
+<pre><code class="language-js">const options = {
+  dotfiles: 'ignore',
+  etag: false,
+  extensions: ['htm', 'html'],
+  index: false,
+  maxAge: '1d',
+  redirect: false,
+  setHeaders (res, path, stat) {
+    res.set('x-timestamp', Date.now())
+  }
+}
+
+app.use(express.static('public', options))
+</code></pre>
+<p>Her bir uygulama için birden fazla statik dizine sahip olabilirsiniz:</p>
+<pre><code class="language-js">app.use(express.static('public'))
+app.use(express.static('uploads'))
+app.use(express.static('files'))
+</code></pre>
+<p><code>serve-static</code> fonksiyonu ve seçenekleri hakkında daha detaylı bilgi için, <a href="https://github.com/expressjs/serve-static">serve-static</a> dökümantasyonuna bakınız.</p>
+<h2 id="middleware.third-party">Üçüncü-parti ara yazılım</h2>
+<p>Express uygulamalarına işlevsellik katmak için üçüncü-parti ara yazılım kullan.</p>
+<p>Gerekli işlevsellik için Node.js modülünü indir, ve daha sonra uygulamana uygulama-düzeyinde veya yönlendirici-düzeyinde yükle.</p>
+<p>Aşağıdaki örnek <code>cookie-parser</code> çerez-ayrıştırma ara yazılım fonksiyonunu indirme ve yüklemeyi gösterir.</p>
+<pre><code class="language-console">$ npm install cookie-parser
+</code></pre>
+<pre><code class="language-js">const express = require('express')
+const app = express()
+const cookieParser = require('cookie-parser')
+
+// çerez-ayrıştırıcı ara yazılımı yükle
+app.use(cookieParser())
+</code></pre>
+<p>Express ile yaygın olarak kullanılan üçüncü-parti ara yazılım fonksiyonlarının kısmi bir listesi için, bakınız: <a href="../resources/middleware.html">Üçüncü-parti ara yazılım</a>.</p>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+<a href="../../../strongloop.com/index.html">StrongLoop/IBM</a> tarafından sağlanan belge çevirileri:
+<a href="../../fr/index.html">Fransızca</a>, <a href="../../de/index.html">Almanca</a>, <a href="../../es/index.html">İspanyolca</a>, <a href="../../it/index.html">İtalyanca</a>, <a href="../../ja/index.html">Japonca</a>, <a href="../../ru/index.html">Rusça</a>, <a href="../../zh-cn/index.html">Çince</a>, <a href="../../zh-tw/index.html">Klasik Çince</a>, <a href="../../ko/index.html">Korece</a>, <a href="../../pt-br/index.html">Portekizce</a>.
+<br>
+Topluluk çevirisi için: <a href="../../sk/index.html">Slovakça</a>, <a href="../../uk/index.html">Ukraynaca</a> and <a href="../../uz/index.html">Özbekçe</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bir <a href="https://openjsf.org">OpenJS Vakfı</a> projesidir.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Github'da Forkla</a>.</div>
+<div>Telif Hakkı &copy; 2017 StrongLoop, IBM, ve diğer expressjs.com katkıda bulunanlar.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Bu iş<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a> lisansı altındadır.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="bfa93154e0aca847a5c9124d-text/javascript"></script>
+<script type="bfa93154e0aca847a5c9124d-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:tr'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="bfa93154e0aca847a5c9124d-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/tr/guide/using-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-cn/resources/middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 中间件</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-cn.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">主页</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入门</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安装
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 生成器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静态文件
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常见问题及解答
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">指南</a>
+<ul>
+<li><a href="../guide/routing.html">路由</a>
+</li>
+<li><a href="../guide/writing-middleware.html">编写中间件</a>
+ </li>
+<li><a href="../guide/using-middleware.html">使用中间件</a>
+</li>
+<li><a href="../guide/using-template-engines.html">使用模板引擎</a>
+</li>
+<li><a href="../guide/error-handling.html">错误处理</a>
+</li>
+<li><a href="../guide/debugging.html">调试</a>
+</li>
+<li><a href="../guide/behind-proxies.html">代理背后的 Express</a>
+</li>
+<li><a href="../guide/migrating-4.html">迁移到 Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">迁移到 Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">数据库集成</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 参考</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（不推荐）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（不推荐）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高级主题</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">模板引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用进程管理器</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳实践</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">性能最佳实践</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="glossary.html" class="active">资源</a>
+<ul>
+<li><a href="glossary.html">词汇表</a>
+</li>
+<li><a href="middleware.html">中间件</a>
+</li>
+<li><a href="community.html">社区</a>
+</li>
+<li><a href="learning.html">额外学习</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>这个翻译<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相对于英文版的文档，本文档可能已过时。要了解最近的更新，请参阅<a href="../../index.html">英文版文档</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="第三方中间件">第三方中间件</h1>
+<p>以下是一些 Express 中间件模块：</p>
+<ul>
+<li><a href="https://github.com/expressjs/body-parser">body-parser</a>：先前为 <code>express.bodyParser</code>、<code>json</code> 和 <code>urlencoded</code>。另请参阅：
+<ul>
+<li><a href="https://github.com/raynos/body">body</a></li>
+<li><a href="https://github.com/visionmedia/co-body">co-body</a></li>
+<li><a href="https://github.com/stream-utils/raw-body">raw-body</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/expressjs/compression">compression</a>：先前为 <code>express.compress</code>。</li>
+<li><a href="https://github.com/msemenistyi/connect-image-optimus">connect-image-optimus</a>：用于提供最优映像的 Connect/Express 中间件模块。如有可能，可将映像切换为 <code>.webp</code> 或 <code>.jxr</code>。</li>
+<li><a href="https://github.com/expressjs/timeout">connect-timeout</a>：先前为 <code>express.timeout</code>。</li>
+<li><a href="https://github.com/expressjs/cookie-parser">cookie-parser</a>：先前为 <code>express.cookieParser</code>。</li>
+<li><a href="https://github.com/expressjs/cookie-session">cookie-session</a>：先前为 <code>express.cookieSession</code>。</li>
+<li><a href="https://github.com/expressjs/csurf">csurf</a>：先前为 <code>express.csrf</code>。</li>
+<li><a href="https://github.com/expressjs/errorhandler">errorhandler</a>：先前为 <code>express.errorHandler</code>。</li>
+<li><a href="https://github.com/devoidfury/express-debug">express-debug</a>：不引人注目的开发工具，用于向应用程序添加一个选项卡，其中包含有关模板变量（本地）、当前会话、有用请求数据等方面的信息。</li>
+<li><a href="https://github.com/nemtsov/express-partial-response">express-partial-response</a>：Express 中间件模块，使用 Google API 的 Partial Response，根据 <code>fields</code> 查询字符串过滤掉 JSON 响应的各个部分。</li>
+<li><a href="https://github.com/expressjs/session">express-session</a>：先前为 <code>express.session</code>。</li>
+<li><a href="https://github.com/jamiesteven/express-simple-cdn">express-simple-cdn</a>：Express 中间件模块，将 CDN 用于静态资产，具有多主机支持（例如：cdn1.host.com、cdn2.host.com）。</li>
+<li><a href="https://github.com/ericf/express-slash">express-slash</a>：Express 中间件模块，适用于对末尾斜杠有很严格要求的人员。</li>
+<li><a href="https://github.com/stormpath/stormpath-express">express-stormpath</a>：实现用户存储、认证、授权、SSO 和数据安全性的 Express 中间件模块。</li>
+<li><a href="https://github.com/jamiesteven/express-uncapitalize">express-uncapitalize</a>：中间件模块，用于将包含大写字母的 HTTP 请求转换为标准的小写形式。</li>
+<li><a href="https://github.com/helmetjs/helmet">helmet</a>：一个模块，用于通过设置各种 HTTP 头来帮助保护应用程序。</li>
+<li><a href="https://github.com/coderaiser/join-io" title="join-io">join-io</a>：一个模块，用于实时联接文件以减少请求数目。</li>
+<li><a href="https://github.com/expressjs/method-override">method-override</a>：先前为 <code>express.methodOverride</code>。</li>
+<li><a href="https://github.com/expressjs/morgan">morgan</a>：先前为 <code>logger</code>。</li>
+<li><a href="https://github.com/jaredhanson/passport">passport</a>：用于认证的 Express 中间件模块。</li>
+<li><a href="https://github.com/expressjs/response-time">response-time</a>：先前为 <code>express.responseTime</code>。</li>
+<li><a href="https://github.com/expressjs/serve-favicon">serve-favicon</a>：先前为 <code>express.favicon</code>。</li>
+<li><a href="https://github.com/expressjs/serve-index">serve-index</a>：先前为 <code>express.directory</code>。</li>
+<li><a href="https://github.com/expressjs/serve-static">serve-static</a>：用于提供静态内容的模块。</li>
+<li><a href="https://github.com/paulwalker/connect-static-expiry">static-expiry</a>：静态资产的指纹式 URL 或高速缓存头，包含对一个或多个外部域的支持。</li>
+<li><a href="https://github.com/expressjs/vhost">vhost</a>：先前为 <code>express.vhost</code>。</li>
+<li><a href="https://github.com/madhums/node-view-helpers">view-helpers</a>：Express 中间件模块，用于向视图提供常见助手方法。</li>
+<li><a href="https://github.com/hdngr/siracha">sriracha-admin</a>：Express 中间件模块，为 Mongoose 动态生成管理站点。</li>
+</ul>
+<p>Connect 先前随附的一些中间件模块不再受到 Connect/Express 团队的支持。这些模块由替代模块所取代，或者应该被更好的模块取代。请使用以下替代模块之一：</p>
+<ul>
+<li>express.cookieParser
+<ul>
+<li><a href="https://github.com/jed/cookies">cookies</a> 和 <a href="https://github.com/jed/keygrip">keygrip</a></li>
+</ul>
+</li>
+<li>express.limit
+<ul>
+<li><a href="https://github.com/stream-utils/raw-body">raw-body</a></li>
+</ul>
+</li>
+<li>express.multipart
+<ul>
+<li><a href="https://github.com/mscdex/connect-busboy">connect-busboy</a></li>
+<li><a href="https://github.com/expressjs/multer">multer</a></li>
+<li><a href="https://github.com/superjoe30/connect-multiparty">connect-multiparty</a></li>
+</ul>
+</li>
+<li>express.query
+<ul>
+<li><a href="https://github.com/visionmedia/node-querystring">qs</a></li>
+</ul>
+</li>
+<li>express.staticCache
+<ul>
+<li><a href="https://github.com/isaacs/st">st</a></li>
+<li><a href="https://github.com/andrewrk/connect-static">connect-static</a></li>
+</ul>
+</li>
+</ul>
+<p>有关更多中间件模块，请参阅：</p>
+<ul>
+<li><a href="https://github.com/Raynos/http-framework/wiki/Modules">http-framework</a></li>
+<li><a href="https://github.com/expressjs">expressjs</a></li>
+</ul>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金会的</a>一个项目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">在 GitHub 上派生出网站</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本作品采用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">知识共享署名-相同方式共享 3.0 美国许可协议</a>进行许可。
+</div>
+</footer>
+<script type="9bf08218e6f93caad356390b-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-cn'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="9bf08218e6f93caad356390b-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-cn/resources/middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="ko" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ko/advanced/pm.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 앱용 프로세스 관리자</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ko.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">홈</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">시작하기</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+설치
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 생성기
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+기본 라우팅
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+정적 파일
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+자주 묻는 질문(FAQ)
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">안내서</a>
+<ul>
+<li><a href="../guide/routing.html">라우팅</a>
+</li>
+<li><a href="../guide/writing-middleware.html">미들웨어 작성</a>
+ </li>
+<li><a href="../guide/using-middleware.html">미들웨어 사용</a>
+</li>
+<li><a href="../guide/using-template-engines.html">템플리트 엔진 사용</a>
+</li>
+<li><a href="../guide/error-handling.html">오류 처리</a>
+</li>
+<li><a href="../guide/debugging.html">디버깅</a>
+</li>
+<li><a href="../guide/behind-proxies.html">프록시 환경에서 Express 사용</a>
+</li>
+<li><a href="../guide/migrating-4.html">Express 4로의 이전</a>
+</li>
+<li><a href="../guide/migrating-5.html">Express 5로의 이전</a>
+</li>
+<li><a href="../guide/database-integration.html">데이터베이스 통합</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 참조</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x(더 이상 사용되지 않음)</a>
+</li>
+<li><a href="../../2x/index.html">2.x(더 이상 사용되지 않음)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">고급 주제</a>
+<ul>
+<li><a href="developing-template-engines.html">템플리트 엔진</a>
+</li>
+<li><a href="pm.html">프로세스 관리자 사용</a>
+</li>
+<li><a href="security-updates.html">보안 업데이트</a>
+</li>
+<li><a href="best-practice-security.html">보안 우수 사례</a>
+</li>
+<li><a href="best-practice-performance.html">성능 우수 사례</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">자원</a>
+<ul>
+<li><a href="../resources/glossary.html">용어집</a>
+</li>
+<li><a href="../resources/middleware.html">미들웨어</a>
+</li>
+<li><a href="../resources/community.html">커뮤니티</a>
+</li>
+<li><a href="../resources/learning.html">추가 학습</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>에 의해 제공이 번역.</p>
+이 문서는 영문판 문서에 비해 더 오래된 버전일 수도 있습니다. 최신 업데이트를 확인하려면 <a href="../../index.html">영문판 문서</a>를 참조하십시오.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+
+<div id="page-doc" markdown="1">
+<h1 id="express-앱용-프로세스-관리자">Express 앱용 프로세스 관리자</h1>
+<div class="doc-box doc-warn">
+<p><b>Warning</b>:
+This information refers to third-party sites,
+products, or modules that are not maintained by the Expressjs team. Listing here does not constitute
+an endorsement or recommendation from the Expressjs project team.</p>
+</div>
+<p>프로덕션 환경을 위한 Express를 실행할 때 <em>프로세스 관리자</em>를 사용하면 다음과 같은 태스크를 달성하는 데 도움이 됩니다.</p>
+<ul>
+<li>앱에서 충돌이 발생할 경우 앱을 자동으로 다시 시작.</li>
+<li>런타임 성능 및 자원 소비에 대한 통찰력을 획득.</li>
+<li>성능 향상을 위해 설정을 동적으로 수정.</li>
+<li>클러스터링을 제어.</li>
+</ul>
+<p>프로세스 관리자는 애플리케이션 서버와 약간 비슷합니다. 프로세스 관리자는 애플리케이션을 위한 “컨테이너”이며, 배치 작업을 용이하게 하고,
+높은 가용성을 제공하고, 런타임 시에 애플리케이션을 관리할 수 있도록 합니다.</p>
+<p>가장 널리 사용되는 Express 및 기타 Node.js 애플리케이션용 프로세스 관리자는 다음과 같습니다.</p>
+<ul>
+<li><strong><a href="https://github.com/foreverjs/forever" target="_blank">Forever</a></strong>: 주어진 스크립트가 지속적으로(영원히) 실행되도록 하는 간단한 명령행 인터페이스 도구입니다. Forever는 간단한 인터페이스를 갖추고 있으므로 소규모 배치의 Node.js 앱 및 스크립트를 실행하는 데 가장 적합합니다.</li>
+<li><strong><a href="https://github.com/Unitech/pm2" target="_blank">PM2</a></strong>: Node.js 애플리케이션용 프로덕션 프로세스 관리자이며, 여기에는 기본 제공 로드 밸런서가 포함되어 있습니다. PM2를 이용하면 앱을 항상 작동 상태로 유지하고, 시스템 가동 중단 없이 앱을 다시 로드할 수 있으며, 일반적인 시스템 관리 태스크를 쉽게 처리할 수 있습니다. 또한 PM2를 이용하면 애플리케이션 로깅, 모니터링 및 클러스터링을 관리할 수 있습니다.</li>
+<li><strong><a href="http://strong-pm.io/">StrongLoop Process Manager (Strong-PM)</a></strong>: Node.js 애플리케이션용 프로덕션 프로세스 관리자입니다. 기본 제공 로드 밸런싱, 모니터링, 멀티호스트 배치 및 그래픽 콘솔을 제공합니다. 로컬이나 리모트 시스템에 Node.js 애플리케이션을 빌드, 패키징, 배포하기 위한 CLI를 포함하고 있습니다.</li>
+<li><strong>SystemD</strong>: 모던 리눅스 배포판의 기본 프로세스 매니저입니다. Node.js 애플리케이션을 서비스로 돌리기 간단하게 만들어 줍니다. 추가 정보는 다음을 참고하세요. <a href="https://www.axllent.org/docs/view/nodejs-service-with-systemd/">“Run node.js service with systemd” by Ralph Slooten (@axllent)</a></li>
+</ul>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>는 <a href="https://openjsf.org">OpenJS 기반의</a> 프로젝트입니다.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub에서 웹사이트의 포크를 작성하십시오</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="크리에이티브 커먼즈 라이선스" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 이 저작물은 <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">크리에이티브 커먼즈 저작자표시-동일조건변경허락 3.0 미국 라이선스</a>에 따라 이용할 수 있습니다.
+</div>
+</footer>
+<script type="647154747fca38e0cb0f7ab1-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ko'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="647154747fca38e0cb0f7ab1-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ko/advanced/pm.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

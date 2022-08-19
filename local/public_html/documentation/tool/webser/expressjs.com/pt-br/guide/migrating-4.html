@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+<html lang="pt-br" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/pt-br/guide/migrating-4.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Migrando para o Express 4</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/pt-br.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Página Inicial</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Introdução</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Instalação
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Gerador do Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Roteamento Básico
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Arquivos Estáticos
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Perguntas mais frequentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Guia</a>
+<ul>
+<li><a href="routing.html">Roteamento</a>
+</li>
+<li><a href="writing-middleware.html">Escrevendo o middleware</a>
+</li>
+<li><a href="using-middleware.html">Usando o middleware</a>
+</li>
+<li><a href="using-template-engines.html">Usando o mecanismo de modelo</a>
+</li>
+<li><a href="error-handling.html">Manipulação de erros</a>
+</li>
+<li><a href="debugging.html">Depuração</a>
+</li>
+<li><a href="behind-proxies.html">Express atrás de proxies</a>
+</li>
+<li><a href="migrating-4.html">Migrando para o Express 4</a>
+</li>
+<li><a href="migrating-5.html">Migrando para o Express 5</a>
+</li>
+<li><a href="database-integration.html">Integração de Banco de dados</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referência da API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (descontinuada)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (descontinuada)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Tópicos Avançados</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Mecanismos de modelo</a>
+</li>
+<li><a href="../advanced/pm.html">Usando gerenciadores de processos</a>
+</li>
+<li><a href="../advanced/security-updates.html">Atualizações de segurança</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Melhores práticas de segurança</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Melhores práticas de desempenho</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossário</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Comunidade</a>
+</li>
+<li><a href="../resources/learning.html">Aprendizagem adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta tradução fornecida pelo <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento pode estar desatualizado em relação à documentação em Inglês. Para obter as atualizações mais recentes, consulte a <a href="../../index.html">documentação em Inglês</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="migrando-para-o-express-4">Migrando para o Express 4</h1>
+<h2 id="overview">Visão Geral</h2>
+<p>Express 4 é uma alteração de ruptura do Express 3. Isso significa que um aplicativo Express 3 existente não irá funcionar
+se você atualizar a versão do Express nas suas dependências.</p>
+<p>Este artigo cobre:</p>
+<ul class="doclist">
+<li><a href="#changes">Mudanças no Express 4.</a></li>
+<li><a href="#example-migration">Um exemplo</a> de migração de um aplicativo do Express 3 para o Express 4.</li>
+<li><a href="#app-gen">Fazendo o upgrade para o gerador de aplicativos do Express 4.</a></li>
+</ul>
+<h2 id="changes">Mudanças no Express 4</h2>
+<p>Existem várias mudanças significativas no Express 4:</p>
+<ul class="doclist">
+<li><a href="#core-changes">Mudanças no núcleo e sistemas middleware do Express.</a> As
+dependências no Connect e middlewares integrados foram removidos, de forma que você mesmo deve incluir os middlewares.
+</li>
+<li><a href="#routing">Mudanças no sistema de roteamento.</a></li>
+<li><a href="#other-changes">Várias outras mudanças.</a></li>
+</ul>
+<p>Consulte também:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express/wiki/New-features-in-4.x">Novos recursos no 4.x.</a></li>
+<li><a href="https://github.com/expressjs/express/wiki/Migrating-from-3.x-to-4.x">Migrando do 3.x para o 4.x.</a></li>
+</ul>
+<h3 id="core-changes">
+Mudanças no núcleo e sistemas middleware do Express
+</h3>
+<p>O Express 4 não depende mais do Connect, e remove todos os
+middlewares integrados do seu núcleo, exceto pela função
+<code>express.static</code>. Isso significa que o
+Express é agora um framework web de middleware e roteamento
+independente, e que o versionamento e as liberações do Express não
+são mais afetadas por atualizações nos middlewares.</p>
+<p>Sem os middlewares integrados, você deve incluir explicitamente todos os middlewares necessários para a execução do seu aplicativo. Simplesmente siga esses passos:</p>
+<ol>
+<li>Instale o módulo: <code>npm install --save &lt;module-name&gt;</code></li>
+<li>No seu aplicativo, solicite o módulo: <code>require('module-name')</code></li>
+<li>Use o módulo de acordo com sua documentação: <code>app.use( ... )</code></li>
+</ol>
+<p>A tabela a seguir lista os middlewares do Express 3 e suas contrapartes no Express 4.</p>
+<table class="doctable" border="1">
+<tr><th>Express 3</th><th>Express 4</th></tr>
+<tr><td><code>express.bodyParser</code></td>
+<td><a href="https://github.com/expressjs/body-parser">body-parser</a> +
+<a href="https://github.com/expressjs/multer">multer</a></td></tr>
+<tr><td><code>express.compress</code></td>
+<td><a href="https://github.com/expressjs/compression">compression</a></td></tr>
+<tr><td><code>express.cookieSession</code></td>
+<td><a href="https://github.com/expressjs/cookie-session">cookie-session</a></td></tr>
+<tr><td><code>express.cookieParser</code></td>
+<td><a href="https://github.com/expressjs/cookie-parser">cookie-parser</a></td></tr>
+<tr><td><code>express.logger</code></td>
+<td><a href="https://github.com/expressjs/morgan">morgan</a></td></tr>
+<tr><td><code>express.session</code></td>
+<td><a href="https://github.com/expressjs/session">express-session</a></td></tr>
+<tr><td><code>express.favicon</code></td>
+<td><a href="https://github.com/expressjs/serve-favicon">serve-favicon</a></td></tr>
+<tr><td><code>express.responseTime</code></td>
+<td><a href="https://github.com/expressjs/response-time">response-time</a></td></tr>
+<tr><td><code>express.errorHandler</code></td>
+<td><a href="https://github.com/expressjs/errorhandler">errorhandler</a></td></tr>
+<tr><td><code>express.methodOverride</code></td>
+<td><a href="https://github.com/expressjs/method-override">method-override</a></td></tr>
+<tr><td><code>express.timeout</code></td>
+<td><a href="https://github.com/expressjs/timeout">connect-timeout</a></td></tr>
+<tr><td><code>express.vhost</code></td>
+<td><a href="https://github.com/expressjs/vhost">vhost</a></td></tr>
+<tr><td><code>express.csrf</code></td>
+<td><a href="https://github.com/expressjs/csurf">csurf</a></td></tr>
+<tr><td><code>express.directory</code></td>
+<td><a href="https://github.com/expressjs/serve-index">serve-index</a></td></tr>
+<tr><td><code>express.static</code></td>
+<td><a href="https://github.com/expressjs/serve-static">serve-static</a></td></tr>
+</table>
+<p>Aqui está a <a href="https://github.com/senchalabs/connect#middleware">lista completa</a> de middlewares do Express 4.</p>
+<p>Na maioria dos casos, é possível simplesmente substituir a antiga versão 3 do middleware pela sua contraparte do Express4. Para obter detalhes, consulte a documentação do módulo no GitHub.</p>
+<h4 id="app-use">O <code>app.use</code> aceita parâmetros</h4>
+<p>Na versão 4 é possível utilizar uma variável de parâmetro para
+definir o caminho onde as funções do middleware estão carregadas, e
+em seguida ler o valor do parâmetro a partir do manipulador de rota.
+Por exemplo:</p>
+<pre><code class="language-javascript" translate="no">
+app.use('/book/:id', function(req, res, next) {
+  console.log('ID:', req.params.id);
+  next();
+});
+</code>
+</pre>
+<h3 id="routing">
+O sistema de roteamento
+</h3>
+<p>Os aplicativos agora carregam implicitamente middlewares de
+roteamento, para que não seja mais necessário se preocupar com a
+ordem em que os middlewares são carregados no que diz respeito ao
+middleware <code>router</code>.</p>
+<p>A forma como as rotas são definidas são as mesmas, mas o
+sistema de roteamento possui dois novos recursos para ajudá-lo a
+organizar suas rotas:</p>
+<ul class="doclist">
+<li>Um novo método, <code>app.route()</code>, para criar
+manipuladores de rotas encadeáveis para um caminho de rota.</li>
+<li>Uma nova classe, <code>express.Router</code>, para
+criar manipuladores de rotas modulares montáveis</li>
+</ul>
+<h4 id="app-route">O método <code>app.route()</code></h4>
+<p>O novo método <code>app.route()</code> permite que sejam
+criados manipuladores de rotas encadeáveis para um caminho de rota. Como o caminho é especificado em uma localização única, criar rotas
+modulares é útil, já que reduz redundâncias e erros tipográficos. Para
+obter mais informações sobre rotas, consulte a <a href="../4x/api.html#router"><code>documentação do Router()</code> </a>.</p>
+<p>Aqui está um exemplo de manipuladores de rotas encadeáveis que
+são definidos usando a função <code>app.route()</code>.</p>
+<pre><code class="language-javascript" translate="no">
+app.route('/book')
+  .get(function(req, res) {
+    res.send('Get a random book');
+  })
+  .post(function(req, res) {
+    res.send('Add a book');
+  })
+  .put(function(req, res) {
+    res.send('Update the book');
+  });
+</code>
+</pre>
+<h4 id="express-router">classe <code>express.Router</code></h4>
+<p>O outro recurso que ajuda na organização das rotas é uma nova
+classe, <code>express.Router</code>, que pode ser usada para
+criar manipuladores de rotas modulares montáveis. Uma instância de <code>Router</code> é um middleware e sistema
+de roteamento completo; por essa razão ela é frequentemente referida
+como um “mini-aplicativo”</p>
+<p>O seguinte exemplo cria um roteador como um módulo, carrega o
+middleware nele, define algumas rotas, e monta-o em um caminho no
+aplicativo principal.</p>
+<p>Por exemplo, cria um arquivo roteador chamado
+<code>birds.js</code> no diretório do aplicativo, com o
+conteúdo a seguir:</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var router = express.Router();
+
+// middleware specific to this router
+router.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+});
+// define the home page route
+router.get('/', function(req, res) {
+  res.send('Birds home page');
+});
+// define the about route
+router.get('/about', function(req, res) {
+  res.send('About birds');
+});
+
+module.exports = router;
+</code>
+</pre>
+<p>Em seguida, carregue o módulo roteador no aplicativo:</p>
+<pre><code class="language-javascript" translate="no">
+var birds = require('./birds');
+...
+app.use('/birds', birds);
+</code>
+</pre>
+<p>O aplicativo será agora capaz de manipular solicitações aos
+caminhos <code>/birds</code> e <code>/birds/about</code>,
+e irá chamar o middleware <code>timeLog</code>
+que é específico para a rota.</p>
+<h3 id="other-changes">
+Outras mudanças
+</h3>
+<p>A seguinte tabela lista outras pequenas, porém importantes, mudanças no Express 4:</p>
+<table class="doctable" border="1">
+<tr>
+<th>Objeto</th>
+<th>Descrição</th>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>O Express 4 requer o Node.js 0.10.x ou posterior e descartou o
+suporte ao Node.js 0.8.x.</td>
+</tr>
+<tr>
+<td>
+<p><code>http.createServer()</code></p>
+</td>
+<td>
+<p>O módulo <code>http</code> não é mais necessário, a não ser
+que você precise trabalhar diretamente com ele (socket.io/SPDY/HTTPS). O
+aplicativo pode ser iniciado usando a função <code>app.listen()</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>app.configure()</code></p>
+</td>
+<td>
+<p>A função <code>app.configure()</code> foi removida. Use a função <code>process.env.NODE_ENV</code> ou
+<code>app.get('env')</code> para detectar o ambiente e
+configurar o aplicativo de acordo com ele.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>json spaces</code></p>
+</td>
+<td>
+<p>A propriedade de aplicativo <code>json spaces</code> está
+desativada por padrão no Express 4.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>req.accepted()</code></p>
+</td>
+<td>
+<p>Use <code>req.accepts()</code>, <code>req.acceptsEncodings()</code>,
+<code>req.acceptsCharsets()</code>, e <code>req.acceptsLanguages()</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.location()</code></p>
+</td>
+<td>
+<p>Não resolve mais URLs relativas.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>req.params</code></p>
+</td>
+<td>
+<p>Era uma matriz; agora é um objeto.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.locals</code></p>
+</td>
+<td>
+<p>Era uma função; agora é um objeto.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.headerSent</code></p>
+</td>
+<td>
+<p>Mudado para <code>res.headersSent</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>app.route</code></p>
+</td>
+<td>
+<p>Agora disponível como <code>app.mountpath</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.on('header')</code></p>
+</td>
+<td>
+<p>Removido.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.charset</code></p>
+</td>
+<td>
+<p>Removido.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code>res.setHeader('Set-Cookie', val)</code></p>
+</td>
+<td>
+<p>A funcionalidade é agora limitada a configurar o valor básico do
+cookie. Use <code>res.cookie()</code> para funcionalidades
+adicionais.</p>
+</td>
+</tr>
+</table>
+<h2 id="example-migration">Exemplo de migração de aplicativo</h2>
+<p>Aqui está um eemplo de migração de um aplicativo Express 3 para
+o Express 4.
+Os arquivos de interesse são <code>app.js</code> e <code>package.json</code>.</p>
+<h3>
+Aplicativo da Versão 3
+</h3>
+<h4><code>app.js</code></h4>
+<p>Considere um aplicativo do Express v.3 com o seguinte arquivo <code>app.js</code>:</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var http = require('http');
+var path = require('path');
+
+var app = express();
+
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.methodOverride());
+app.use(express.session({ secret: 'your secret here' }));
+app.use(express.bodyParser());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}
+
+app.get('/', routes.index);
+app.get('/users', user.list);
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+</code>
+</pre>
+<h4><code>package.json</code></h4>
+<p>O arquivo <code>package.json</code> que acompanha a
+versão 3 pode parecer com algo assim:</p>
+<pre><code class="language-javascript" translate="no">
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.12.0",
+    "pug": "*"
+  }
+}
+</code>
+</pre>
+<h3>
+Processo
+</h3>
+<p>Comece o processo de migração instalando os middlewares
+necessários para o aplicativo Express 4 e atualizando o Express e o
+Pug para as suas respectivas versões mais recentes com o seguinte
+comando:</p>
+<pre><code class="language-console">$ npm install serve-favicon morgan method-override express-session body-parser multer errorhandler express@latest pug@latest --save
+</code></pre>
+<p>Faça as seguintes alterações no <code>app.js</code>:</p>
+<ol>
+<li>
+<p>As funções de middleware integradas do Express <code>express.favicon</code>,
+<code>express.logger</code>, <code>express.methodOverride</code>,
+<code>express.session</code>, <code>express.bodyParser</code> e
+<code>express.errorHandler</code> não estão mais disponíveis no objeto <code>express</code>. É
+preciso instalar manualmente as alternativas e carregá-las no aplicativo.</p>
+</li>
+<li>
+<p>Não é mais necessário carregar a função <code>app.router</code>.
+Ela não é um objeto válido para aplicativos Express 4, portanto
+remova o código do <code>app.use(app.router);</code>.</p>
+</li>
+<li>
+<p>Certifique-se deque as funções de middleware sejam carregadas na ordem correta - carregar a
+<code>errorHandler</code> após carregar as rotas de aplicativo.</p>
+</li>
+</ol>
+<h3>Aplicativo da Versão 4</h3>
+<h4><code>package.json</code></h4>
+<p>A execução do comando <code>npm</code> acima irá
+atualizar o <code>package.json</code> como a seguir:</p>
+<pre><code class="language-javascript" translate="no">
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.5.2",
+    "errorhandler": "^1.1.1",
+    "express": "^4.8.0",
+    "express-session": "^1.7.2",
+    "pug": "^2.0.0-beta6",
+    "method-override": "^2.1.2",
+    "morgan": "^1.2.2",
+    "multer": "^0.1.3",
+    "serve-favicon": "^2.0.1"
+  }
+}
+</code>
+</pre>
+<h4><code>app.js</code></h4>
+<p>Em seguida, remova o código inválido, carregue o middleware
+necessário e faça outras alterações conforme necessárias. O arquivo <code>app.js</code> irá parecer com isso:</p>
+<pre><code class="language-javascript" translate="no">
+var http = require('http');
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var path = require('path');
+
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var methodOverride = require('method-override');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var errorHandler = require('errorhandler');
+
+var app = express();
+
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(methodOverride());
+app.use(session({ resave: true,
+                  saveUninitialized: true,
+                  secret: 'uwotm8' }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', routes.index);
+app.get('/users', user.list);
+
+// error handling middleware should be loaded after the loading the routes
+if ('development' == app.get('env')) {
+  app.use(errorHandler());
+}
+
+var server = http.createServer(app);
+server.listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+</code>
+</pre>
+<div class="doc-box doc-info">
+<p>A não ser que precise trabalhar diretamente com
+o módulo <code>http</code> (socket.io/SPDY/HTTPS),
+carregá-lo não é necessário, e o aplicativo pode ser iniciado
+simplesmente desta forma:</p>
+<pre><code class="language-js" translate="no">app.listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});</code>
+</pre>
+</div>
+<h3>Execute o aplicativo</h3>
+<p>O processo de migração está concluído, e o aplicativo é agora
+um aplicativo Express 4. Para confirmar, inicie o aplicativo usando o
+seguinte comando:</p>
+<pre><code class="language-console">$ node .
+</code></pre>
+<p>Carregue <a href="http://localhost:3000/">http://localhost:3000</a>
+e veja a página inicial sendo renderizada pelo Express 4.</p>
+<h2 id="app-gen">Fazendo o upgrade para o gerador de aplicativos do
+Express 4</h2>
+<p>A ferramenta de linha de comandos para gerar um aplicativo
+Express ainda é a <code>express</code>, mas para fazer o
+upgrade para a nova versão , é preciso desinstalar o gerador de
+aplicativos Express 3 e, em seguida, instalar o novo <code>express-generator</code>.</p>
+<h3>Instalação </h3>
+<p>Se já tiver o gerador de aplicativos do Express 3 instalado no
+seu sistema, é preciso desinstalá-lo:</p>
+<pre><code class="language-console">$ npm uninstall -g express
+</code></pre>
+<p>Dependendo de como os seus privilégios de arquivos e diretórios estão
+configurados, pode ser necessário executar este comando com <code>sudo</code>.</p>
+<p>Agora instale o novo gerador:</p>
+<pre><code class="language-console">$ npm install -g express-generator
+</code></pre>
+<p>Dependendo de como os seus privilégios de arquivos e diretórios
+estão configurados, pode ser necessário executar este comando com
+<code>sudo</code>.</p>
+<p>Agora o comando <code>express</code> no seu sistema está
+atualizado para o gerador do Express 4.</p>
+<h3>Mudanças no gerador de aplicativos </h3>
+<p>As opções e o uso do comando permanecem em grande parte as
+mesmas, com as seguintes exceções:</p>
+<ul class="doclist">
+<li>Foi removida a opção <code>--sessions</code>.</li>
+<li>Foi removida a opção <code>--jshtml</code>.</li>
+<li>Foi incluída a opção <code>--hogan</code> para
+suportar o <a href="http://twitter.github.io/hogan.js/">Hogan.js</a>.</li>
+</ul>
+<h3>Exemplo</h3>
+<p>Execute o seguinte comando para criar um aplicativo do Express 4:</p>
+<pre><code class="language-console">$ express app4
+</code></pre>
+<p>Se olhar o conteúdo do arquivo <code>app4/app.js</code>,
+você verá que todas as funções de middleware (exceto
+<code>express.static</code>) que são requeridas pelo aplicativo
+estão a carregadas como módulos independentes, e o middleware de
+<code>router</code> não está mais explicitamente carregado no
+aplicativo.</p>
+<p>Você irá também notar que o arquivo <code>app.js</code> é
+agora um módulo do Node.js, ao invés do aplicativo independente
+gerado pelo antigo gerador.</p>
+<p>Após instalar as dependências, inicie o aplicativo usando o
+seguinte comando:</p>
+<pre><code class="language-console">$ npm start
+</code></pre>
+<p>Se olhar o script de inicialização npm no arquivo
+<code>package.json</code>, você irá notar que o comando real
+que inicia o aplicativo é o <code>node ./bin/www</code>, que
+antes era <code>node app.js</code> no Express 3.</p>
+<p>Como o arquivo <code>app.js</code> que foi gerado pelo
+gerador do Express 4 é agora um módulo do Node.js, ele não pode mais
+ser iniciado independentemente como um aplicativo
+(a não ser que modifique o código). O módulo deve ser carregado em um
+arquivo Node.js e iniciado através do arquivo Node.js. O arquivo
+Node.js é <code>./bin/www</code>
+neste caso.</p>
+<p>Nem o diretório <code>bin</code> e nem o arquivo sem
+extensão <code>www</code> são obrigatórios para a criação ou
+inicialização de um aplicativo Express. Eles são apenas sugestões
+feitas pelo gerador, portanto fique a vontade para modificá-los para
+adequá-los às suas necessidades.</p>
+<p>Se livre do diretório <code>www</code> e mantenha as
+coisas “da maneira do Express 3”, exclua a linha que diz
+<code>module.exports = app;</code> no final do arquivo
+<code>app.js</code>, em seguida cole o seguinte código em seu
+lugar:</p>
+<pre><code class="language-javascript" translate="no">
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+</code>
+</pre>
+<p>Assegure-se de carregar o módulo <code>debug</code> em
+cima do arquivo <code>app.js</code> usando o seguinte código:</p>
+<pre><code class="language-javascript" translate="no">
+var debug = require('debug')('app4');
+</code>
+</pre>
+<p>Em seguida, mude o <code>"start": "node ./bin/www"</code>
+no arquivo <code>package.json</code> para <code>"start": "node
+app.js"</code>.</p>
+<p>Você agora moveu a funcionalidade do
+<code>./bin/www</code> de volta para o
+<code>app.js</code>. Esta mudança não é recomendada, mas o
+exercício ajuda você a entender como o arquivo
+<code>./bin/www</code> funciona, e porque o arquivo
+<code>app.js</code> não é mais iniciado por conta própria.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> é um projeto da <a href="https://openjsf.org">Fundação Node.js</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Crie um Fork do website no GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., e outros contribuidores do expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Este obra está licenciado com uma Licença <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Atribuição-CompartilhaIgual 3.0 Estados Unidos</a>.
+</div>
+</footer>
+<script type="6f4b368bf844a301d76be006-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:pt-br'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="6f4b368bf844a301d76be006-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/pt-br/guide/migrating-4.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

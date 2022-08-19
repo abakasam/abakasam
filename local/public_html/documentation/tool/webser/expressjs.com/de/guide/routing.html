@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html lang="de" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/de/guide/routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Weiterleitung in Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/de.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Einführung</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Installation
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Generator
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basisrouting
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statische Dateien
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Häufig gestellte Fragen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Leitfaden</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+</li>
+<li><a href="writing-middleware.html">Middleware schreiben</a>
+</li>
+<li><a href="using-middleware.html">Middleware verwenden</a>
+</li>
+<li><a href="using-template-engines.html">Template-Engines verwenden</a>
+</li>
+<li><a href="error-handling.html">Fehlerbehandlung</a>
+</li>
+<li><a href="debugging.html">Debugging</a>
+</li>
+<li><a href="behind-proxies.html">Express hinter Proxys</a>
+</li>
+<li><a href="migrating-4.html">Wechsel zu Express 4</a>
+</li>
+<li><a href="migrating-5.html">Wechsel zu Express 5</a>
+</li>
+<li><a href="database-integration.html">Datenbankintegration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API-Referenz</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (veraltet)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (veraltet)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Themen für Fortgeschrittene</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Template-Engines</a>
+</li>
+<li><a href="../advanced/pm.html">Process Manager verwenden</a>
+</li>
+<li><a href="../advanced/security-updates.html">Sicherheitsupdates</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Sicherheitsspezifische Best Practices</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Leistungsspezifische Best Practices</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ressourcen</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossar</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Community</a>
+</li>
+<li><a href="../resources/learning.html">Zusätzliches Lernen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Diese Übersetzung zur Verfügung gestellt von <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Dieses Dokument kann im Vergleich zur englischen Dokumentation veraltet sein. Aktuelle Updates finden Sie in der <a href="../../index.html">englischen Dokumentation</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="weiterleitung-routing">Weiterleitung (Routing)</h1>
+<p>Der Begriff <em>Weiterleitung</em> (Routing) bezieht sich auf die Definition von Anwendungsendpunkten (URIs) und deren Antworten auf Clientanforderungen. Eine Einführung in dieses Routing siehe <a href="../starter/basic-routing.html">Basisrouting</a>.</p>
+<p>Der folgende Code ist ein Beispiel für ein sehr einfaches Basisrouting.</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/', function(req, res) {
+  res.send('hello world');
+});
+</code>
+</pre>
+<h2 id="route-methods">Weiterleitungsmethoden</h2>
+<p>Eine Weiterleitungsmethode wird von einer HTTP-Methode abgeleitet und an eine Instanz der Klasse <code>express</code> angehängt.</p>
+<p>Der folgende Code ist ein Beispiel für Weiterleitungen, die für die Methoden GET und POST zum Stamm (Root) der Anwendung definiert werden.</p>
+<pre><code class="language-javascript" translate="no">
+// GET method route
+app.get('/', function (req, res) {
+  res.send('GET request to the homepage');
+});
+
+// POST method route
+app.post('/', function (req, res) {
+  res.send('POST request to the homepage');
+});
+</code>
+</pre>
+<p>Express unterstützt die folgenden Weiterleitungsmethoden, die den HTTP-Methoden entsprechen: <code>get</code>, <code>post</code>, <code>put</code>, <code>head</code>, <code>delete</code>, <code>options</code>, <code>trace</code>, <code>copy</code>, <code>lock</code>, <code>mkcol</code>, <code>move</code>, <code>purge</code>, <code>propfind</code>, <code>proppatch</code>, <code>unlock</code>, <code>report</code>, <code>mkactivity</code>, <code>checkout</code>, <code>merge</code>, <code>m-search</code>, <code>notify</code>, <code>subscribe</code>, <code>unsubscribe</code>, <code>patch</code>, <code>search</code> und <code>connect</code>.</p>
+<div class="doc-box doc-info">
+<p>Verwenden Sie zum Weiterleiten von Methoden, die zu den JavaScript-Variablennamen führen, die Notation “Eckige Klammer”. Beispiel: <code>app['m-search']('/', function ...</code></p>
+</div>
+<p>Es gibt eine spezielle Weiterleitungsmethode, <code>app.all()</code>, die nicht von einer HTTP-Methode abgeleitet wird. Diese Methode wird zum Laden von Middlewarefunktionen bei einem Pfad für alle Anforderungsmethoden verwendet.</p>
+<p>Im folgenden Beispiel wird der Handler für Anforderungen zur Weiterleitung “/secret” ausgeführt, um herauszufinden, ob Sie GET-, POST-, PUT-, DELETE- oder andere HTTP-Anforderungsmethoden verwenden, die im <a href="https://nodejs.org/api/http.html#http_http_methods">HTTP-Modul</a> unterstützt werden.</p>
+<pre><code class="language-javascript" translate="no">
+app.all('/secret', function (req, res, next) {
+  console.log('Accessing the secret section ...');
+  next(); // pass control to the next handler
+});
+</code>
+</pre>
+<h2 id="route-paths">Weiterleitungspfade</h2>
+<p>Über Weiterleitungspfade werden in Kombination mit einer Anforderungsmethode die Endpunkte definiert, bei denen Anforderungen erfolgen können. Weiterleitungspfade können Zeichenfolgen, Zeichenfolgemuster oder reguläre Ausdrücke sein.</p>
+<div class="doc-box doc-info">
+<p>Express verwendet für den Abgleich der Weiterleitungspfade <a href="https://www.npmjs.com/package/path-to-regexp">path-to-regexp</a>. In der Dokumentation zu “path-to-regexp” finden Sie alle Möglichkeiten zum Definieren von Weiterleitungspfaden. <a href="http://forbeslindesay.github.io/express-route-tester/">Express Route Tester</a> ist ein handliches Tool zum Testen von Express-Basisweiterleitungen, auch wenn dieses Tool keine Musterabgleiche unterstützt.</p>
+</div>
+<div class="doc-box doc-warn">
+<p>Abfragezeichenfolgen sind nicht Teil des Weiterleitungspfads.</p>
+</div>
+<p>Dies sind einige Beispiele für Weiterleitungspfade auf Basis von Zeichenfolgen.</p>
+<p>Dieser Weiterleitungspfad gleicht Weiterleitungsanforderungen zum Stammverzeichnis (<code>/</code>) ab.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.send('root');
+});
+</code>
+</pre>
+<p>Dieser Weiterleitungspfad gleicht Anforderungen mit <code>/about</code> ab.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/about', function (req, res) {
+  res.send('about');
+});
+</code>
+</pre>
+<p>Dieser Weiterleitungspfad gleicht Anforderungen mit <code>/random.text</code> ab.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/random.text', function (req, res) {
+  res.send('random.text');
+});
+</code>
+</pre>
+<p>Dies sind einige Beispiele für Weiterleitungspfade auf Basis von Zeichenfolgemustern.</p>
+<p>Dieser Weiterleitungspfad gleicht <code>acd</code> und <code>abcd</code> ab.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab?cd', function(req, res) {
+  res.send('ab?cd');
+});
+</code>
+</pre>
+<p>Dieser Weiterleitungspfad gleicht <code>abcd</code>, <code>abbcd</code>, <code>abbbcd</code> usw. ab.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab+cd', function(req, res) {
+  res.send('ab+cd');
+});
+</code>
+</pre>
+<p>Dieser Weiterleitungspfad gleicht <code>abcd</code>, <code>abxcd</code>, <code>abRABDOMcd</code>, <code>ab123cd</code> usw. ab.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab*cd', function(req, res) {
+  res.send('ab*cd');
+});
+</code>
+</pre>
+<p>Dieser Weiterleitungspfad gleicht <code>/abe</code> und <code>/abcde</code> ab.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/ab(cd)?e', function(req, res) {
+ res.send('ab(cd)?e');
+});
+</code>
+</pre>
+<div class="doc-box doc-info">
+<p>Die Zeichen ?, +, * und () sind Subsets ihrer Entsprechungen in regulären Ausdrücken. Der Bindestrich (-) und der Punkt (.) werden von zeichenfolgebasierten Pfaden förmlich interpretiert.</p>
+</div>
+<p>Beispiele für Weiterleitungspfade auf Basis regulärer Ausdrücke:</p>
+<p>Dieser Weiterleitungspfad gleicht alle Weiterleitungsnamen ab, die den Buchstaben “a” enthalten.</p>
+<pre><code class="language-javascript" translate="no">
+app.get(/a/, function(req, res) {
+  res.send('/a/');
+});
+</code>
+</pre>
+<p>Dieser Weiterleitungspfad gleicht <code>butterfly</code> und <code>dragonfly</code>, jedoch nicht <code>butterflyman</code>, <code>dragonfly man</code> usw. ab.</p>
+<pre><code class="language-javascript" translate="no">
+app.get(/.*fly$/, function(req, res) {
+  res.send('/.*fly$/');
+});
+</code>
+</pre>
+<h2 id="route-handlers">Routenhandler (Weiterleitungsroutinen)</h2>
+<p>Sie können mehrere Callback-Funktionen angeben, die sich wie <a href="using-middleware.html">Middleware</a> verhalten, um eine Anforderung zu verarbeiten. Die einzige Ausnahme hierbei ist, dass diese Callbacks möglicherweise <code>next('route')</code> aufrufen, um die verbleibenden Weiterleitungs-Callbacks zu umgehen. Mit diesem Verfahren können Sie Vorabbedingungen für eine Weiterleitung festlegen und dann die Steuerung an nachfolgende Weiterleitungen übergeben, wenn kein Grund vorliegt, mit der aktuellen Weiterleitung fortzufahren.</p>
+<p>Routenhandler können eine Funktion und/oder ein Funktionsarray sein, wie in den folgenden Beispielen zu sehen ist.</p>
+<p>Eine einzelne Callback-Funktion kann eine Weiterleitung verarbeiten. Beispiel:</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/example/a', function (req, res) {
+  res.send('Hello from A!');
+});
+</code>
+</pre>
+<p>Mehrere Callback-Funktionen können eine Weiterleitung verarbeiten (achten Sie darauf, dass Sie das Objekt <code>next</code> angeben). Beispiel:</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/example/b', function (req, res, next) {
+  console.log('the response will be sent by the next function ...');
+  next();
+}, function (req, res) {
+  res.send('Hello from B!');
+});
+</code>
+</pre>
+<p>Ein Array von Callback-Funktionen kann eine Weiterleitung verarbeiten. Beispiel:</p>
+<pre><code class="language-javascript" translate="no">
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+var cb2 = function (req, res) {
+  res.send('Hello from C!');
+}
+
+app.get('/example/c', [cb0, cb1, cb2]);
+</code>
+</pre>
+<p>Eine Kombination aus unabhängigen Funktionen und Funktionsarrays kann eine Weiterleitung verarbeiten. Beispiel:</p>
+<pre><code class="language-javascript" translate="no">
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+app.get('/example/d', [cb0, cb1], function (req, res, next) {
+  console.log('the response will be sent by the next function ...');
+  next();
+}, function (req, res) {
+  res.send('Hello from D!');
+});
+</code>
+</pre>
+<h2 id="response-methods">Antwortmethoden</h2>
+<p>Über die Methoden für das Antwortobjekt (<code>res</code>) in der folgenden Tabelle kann eine Antwort an den Client gesendet und der Anforderung/Antwort-Zyklus beendet werden. Wenn keine dieser Methoden über einen Routenhandler aufgerufen wird, bleibt die Clientanforderung im Status “blockiert”.</p>
+<table>
+<thead>
+<tr>
+<th>Methode</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../4x/api.html#res.download">res.download()</a></td>
+<td>Gibt eine Eingabeaufforderung zum Herunterladen einer Datei aus.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.end">res.end()</a></td>
+<td>Beendet den Prozess “Antwort”.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.json">res.json()</a></td>
+<td>Sendet eine JSON-Antwort.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.jsonp">res.jsonp()</a></td>
+<td>Sendet eine JSON-Antwort mit JSONP-Unterstützung.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.redirect">res.redirect()</a></td>
+<td>Leitet eine Anforderung um.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.render">res.render()</a></td>
+<td>Gibt eine Anzeigevorlage aus.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.send">res.send()</a></td>
+<td>Sendet eine Antwort mit unterschiedlichen Typen.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.sendFile">res.sendFile</a></td>
+<td>Sendet eine Datei als Oktett-Stream.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.sendStatus">res.sendStatus()</a></td>
+<td>Legt den Antwortstatuscode fest und sendet dessen Zeichenfolgedarstellung als Antworthauptteil.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="app-route">app.route()</h2>
+<p>Sie können mithilfe von <code>app.route()</code> verkettbare Routenhandler für einen Weiterleitungspfad erstellen. Da der Pfad an einer einzelnen Position angegeben wird, ist das Erstellen modularer Weiterleitungen hilfreich, da Redundanzen und Schreibfehler reduziert werden. Weitere Informationen zu Weiterleitungen finden Sie in der Dokumentation zu <a href="../4x/api.html#router">Router()</a>.</p>
+<p>Dies ist ein Beispiel für verkettete Routenhandler, die mit der Funktion <code>app.route()</code> definiert werden.</p>
+<pre><code class="language-javascript" translate="no">
+app.route('/book')
+  .get(function(req, res) {
+    res.send('Get a random book');
+  })
+  .post(function(req, res) {
+    res.send('Add a book');
+  })
+  .put(function(req, res) {
+    res.send('Update the book');
+  });
+</code>
+</pre>
+<h2 id="express-router">express.Router</h2>
+<p>Mit der Klasse <code>express.Router</code> lassen sich modular einbindbare Routenhandler erstellen. Eine <code>Router</code>-Instanz ist ein vollständiges Middleware- und Routingsystem. Aus diesem Grund wird diese Instanz oft auch als “Mini-App” bezeichnet.</p>
+<p>Im folgenden Beispiel wird ein Router als Modul erstellt, eine Middlewarefunktion in das Modul geladen, es werden Weiterleitungen definiert und das Modul letztendlich in einen Pfad in der Hauptanwendung eingebunden.</p>
+<p>Erstellen Sie eine Routerdatei namens <code>birds.js</code> mit dem folgenden Inhalt im Anwendungsverzeichnis:</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var router = express.Router();
+
+// middleware that is specific to this router
+router.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+});
+// define the home page route
+router.get('/', function(req, res) {
+  res.send('Birds home page');
+});
+// define the about route
+router.get('/about', function(req, res) {
+  res.send('About birds');
+});
+
+module.exports = router;
+</code>
+</pre>
+<p>Laden Sie dann das Routermodul in die Anwendung:</p>
+<pre><code class="language-javascript" translate="no">
+var birds = require('./birds');
+...
+app.use('/birds', birds);
+</code>
+</pre>
+<p>Die Anwendung kann nun Anforderungen an die Pfade <code>/birds</code> und <code>/birds/about</code> bearbeiten und ruft die Middlewarefunktion <code>timeLog</code> auf, die speziell für diese Weiterleitung bestimmt ist.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> ist ein Projekt der <a href="https://openjsf.org">Stiftung OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Website auf GitHub forken</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. und andere Mitwirkende an expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Dieses Werk ist lizenziert unter einer <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Vereinigte Staaten von Amerika Lizenz</a>.
+</div>
+</footer>
+<script type="8a473073bd0e3d23ee6b16f1-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:de'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="8a473073bd0e3d23ee6b16f1-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/de/guide/routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

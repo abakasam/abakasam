@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="tr" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/tr/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express Sıkça Sorulan Sorular</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/tr.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div style="text-align: center; background: #010101; color: #f1f1f1; padding: 16px; font-size: 16px; width: 100vw">
+Black Lives Matter. <a style="color: #5E80F7; text-decoration: none;" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Anasayfa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">Buradan Başlayın</a>
+<ul>
+<li>
+<a href="installing.html">
+Kurulum
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Merhaba Dünya
+</a>
+</li>
+<li>
+<a href="generator.html">
+Express Oluşturucu
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+Basit Yönlendirme
+</a>
+</li>
+<li>
+<a href="static-files.html">
+Statik Dosyalar
+</a>
+</li>
+<li>
+<a href="faq.html">
+SSS
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Kılavuz</a>
+<ul>
+<li><a href="../guide/routing.html">Yönlendirme</a>
+</li>
+<li><a href="../guide/writing-middleware.html">
+Middleware yazma</a>
+</li>
+<li><a href="../guide/using-middleware.html">Middleware kullanma</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Şablon motoru kullanma</a>
+</li>
+<li><a href="../guide/error-handling.html">Hata işleme</a>
+</li>
+<li><a href="../guide/debugging.html">Hata Ayıklama</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="../guide/migrating-4.html">Express 4 geçiş</a>
+</li>
+<li><a href="../guide/migrating-5.html">Express 5 geçiş</a>
+</li>
+<li><a href="../guide/database-integration.html">Database Entegrasyonu</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API Kaynak</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (Kullanımdan kaldırıldı)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (Kullanımdan kaldırıldı)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Gelişmiş konular</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Şablon motorları</a>
+</li>
+<li><a href="../advanced/pm.html">Proses yöneticisi kullanma</a>
+</li>
+<li><a href="../advanced/security-updates.html">Gğvenlik güncellemeleri</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">En iyi güvenlik uygulamaları</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">En iyi performans uygulamaları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Kaynaklar</a>
+<ul>
+<li>
+<a href="../resources/community.html">Topluluk</a>
+</li>
+<li>
+<a href="../resources/glossary.html">Terimler</a>
+</li>
+<li>
+<a href="../resources/middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../resources/utils.html">Yardımcı Modüller</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">Yapılar</a>
+</li>
+<li>
+<a href="../resources/learning.html">Ek öğrenme</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">Express kullanan şirket</a>
+</li>
+<li>
+<a href="../resources/contributing.html">Express'e katkıda bulunmak</a>
+</li>
+<li>
+<a href="../changelog/4x.html">Sürüm Notları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Bu doküman ingilizce dokümana göre eski olabilir. Son güncellemeler için lütfen <a href="../../index.html">İngilizce Dokümanı</a>. ziyaret edin
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="sıkça-sorulan-sorular">Sıkça Sorulan Sorular</h1>
+<h2 id="uygulamamın-yapısı-nasıl-olmalı">Uygulamamın yapısı nasıl olmalı?</h2>
+<p>Bu soruya verilebilecek kesin bir cevap yoktur. Cevap, uygulamanızın boyutuna ve uygulamaya dahil ekibe göre değişir. En üst seviyede esneklik için Express uygulama yapısı için herhangi bir varsayım yapmaz.</p>
+<p>Yollar ve diğer uygulamaya özel mantık istediğiniz yapıda, istediğiniz kadar dosyanın içinde barınabilir. Örnek olarak şunlara göz atabilirsiniz:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-separation/index.js#L32-L47">Route listings</a></li>
+<li><a href="https://github.com/expressjs/express/blob/4.13.1/examples/route-map/index.js#L52-L66">Route map</a></li>
+<li><a href="https://github.com/expressjs/express/tree/master/examples/mvc">MVC style controllers</a></li>
+</ul>
+<p>Ayrıca, bu dizaynlardan bazılarını basitleştiren, üçüncü parti bir Express uzantısı bulunmaktadır:</p>
+<ul>
+<li><a href="https://github.com/expressjs/express-resource">Resourceful routing</a></li>
+</ul>
+<h2 id="nasıl-model-tanımlarım">Nasıl model tanımlarım?</h2>
+<p>Express’te veritabanı kavramı bulunmamaktadır. Bu konsept diğer üçüncü parti modüllerine bırakılmıştır, bu sayede neredeyse herhangi bir veritabanına bağlantı sağlayabilirsiniz.</p>
+<p>Model üzerine Express tabanlı bir framework için <a href="http://loopback.io/">LoopBack</a> adresini ziyaret edin.</p>
+<h2 id="kimlik-doğrulamasını-nasıl-sağlarım">Kimlik doğrulamasını nasıl sağlarım?</h2>
+<p>Kimlik doğrulama Express’in bulundurmayı tercih etmediği başka bir konu. İstediğiniz herhangi bir kimlik doğrulama planını kullanabilirsiniz. Basit kullanıcı adı / şifre planı için <a href="https://github.com/expressjs/express/tree/master/examples/auth">bu örneğe</a> göz atın.</p>
+<h2 id="express-hangi-görünüm-view-motorlarını-destekliyor">Express hangi görünüm (view) motorlarını destekliyor?</h2>
+<p>Express <code>(path, locals, callback)</code> kalıbını sağlayan herhangi bir görünüm motorunu destekler. Şablon motoru arayüzlerini ve önbelleklemeyi normalleştirmek için, <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>‘e göz atın. Listelenmeyen görünüm motorları da Express’in yapısına uygun olabilir.</p>
+<p>Daha fazla bilgi için, <a href="../guide/using-template-engines.html">Express ile görünüm motorlarını kullanmak</a>.</p>
+<h2 id="404-cevapları-ile-nasıl-başa-çıkarım">404 cevapları ile nasıl başa çıkarım?</h2>
+<p>Express’te 404 cevapları bir hatanın sonucu olarak ortaya çıkmaz, bu yüzden hata işleyici ara katman bunları yakalamaz. Bunun sebebi 404 cevabı sadece yapılacak ekstra işin eksik olduğunu belirtir; başka bir sözle, Express tüm ara katman fonksiyonlarını ve yolları çalıştırdı, ve bunların hiçbirinin cevap döndürmediğini fark etti. Tek yapmanız gereken, bu yığının (tüm fonksiyonların) en sonuna 404’ü işleyen bir ara katman fonksiyonu yazmak:</p>
+<pre><code class="language-js">app.use((req, res, next) =&gt; {
+  res.status(404).send('Üzgünüm, dosyayı bulamadım!')
+})
+</code></pre>
+<p>Yolları dinamik olarak <code>express.Router()</code>‘ın bir örneği üzerine tanımlayın, böylece tanımlarınızın yerine ara katman fonksiyonları geçmez.</p>
+<h2 id="hata-işleyici-fonksiyonları-nasıl-kullanabilirim">Hata işleyici fonksiyonları nasıl kullanabilirim?</h2>
+<p>Hata ile ilgili ara katman fonksiyonları da tıpkı diğer ara katman fonksiyonları gibi tanımlanır. Aradaki tek fark üç argüman yerine şu şekilde dört argüman kullanılmasıdır <code>(err, req, res, next)</code>:</p>
+<pre><code class="language-js">app.use((err, req, res, next) =&gt; {
+  console.error(err.stack)
+  res.status(500).send('Bir hata oluştu!')
+})
+</code></pre>
+<p>Daha fazla bilgi için, <a href="../guide/error-handling.html">Hata işleme</a>.</p>
+<h2 id="yalın-html-dosyalarını-nasıl-işlerim">Yalın HTML dosyalarını nasıl işlerim?</h2>
+<p>Yalın HTML için <code>res.render()</code> fonksiyonun kullanmak zorunda değilsiniz. Eğer dosyanız belirli ise, <code>res.sendFile()</code> fonksiyonunu kullanın. Eğer bir dizinden birden çok içerik sunuyorsanız, <code>express.static()</code> ara katman fonksiyonunu kullanın.</p>
+<h3 id="önceki-statik-dosyalar-"><a href="static-files.html">Önceki: Statik Dosyalar </a></h3>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+<a href="../../../strongloop.com/index.html">StrongLoop/IBM</a> tarafından sağlanan belge çevirileri:
+<a href="../../fr/index.html">Fransızca</a>, <a href="../../de/index.html">Almanca</a>, <a href="../../es/index.html">İspanyolca</a>, <a href="../../it/index.html">İtalyanca</a>, <a href="../../ja/index.html">Japonca</a>, <a href="../../ru/index.html">Rusça</a>, <a href="../../zh-cn/index.html">Çince</a>, <a href="../../zh-tw/index.html">Klasik Çince</a>, <a href="../../ko/index.html">Korece</a>, <a href="../../pt-br/index.html">Portekizce</a>.
+<br>
+Topluluk çevirisi için: <a href="../../sk/index.html">Slovakça</a>, <a href="../../uk/index.html">Ukraynaca</a> and <a href="../../uz/index.html">Özbekçe</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bir <a href="https://openjsf.org">OpenJS Vakfı</a> projesidir.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Github'da Forkla</a>.</div>
+<div>Telif Hakkı &copy; 2017 StrongLoop, IBM, ve diğer expressjs.com katkıda bulunanlar.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Bu iş<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a> lisansı altındadır.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="a7518bdfb141944c675ad84e-text/javascript"></script>
+<script type="a7518bdfb141944c675ad84e-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:tr'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="a7518bdfb141944c675ad84e-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/tr/starter/faq.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="sk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/sk/advanced/pm.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Použitie správcov procesov pre Express aplikácie</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/sk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Domov</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Začíname</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Inštalácia
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express generátor
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Základný routing
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statické súbory
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Príručka</a>
+<ul>
+<li><a href="../guide/routing.html">Routing</a>
+</li>
+ <li><a href="../guide/writing-middleware.html">Tvorba middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Použitie middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Použitie template enginov</a>
+</li>
+<li><a href="../guide/error-handling.html">Error handling</a>
+</li>
+<li><a href="../guide/debugging.html">Debuggovanie</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Použitie Express za proxy</a>
+</li>
+<li><a href="../guide/migrating-4.html">Prechod na Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Prechod na Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integrácia s databázou</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API referenčná príručka</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (zastaralé)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (zastaralé)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">Pokročilé témy</a>
+<ul>
+<li><a href="developing-template-engines.html">Templatovacie enginy</a>
+</li>
+<li><a href="pm.html">Použitie správcov procesov</a>
+</li>
+<li><a href="security-updates.html">Security - aktualizácie</a>
+</li>
+<li><a href="best-practice-security.html">Security - osvedčené postupy</a>
+</li>
+<li><a href="best-practice-performance.html">Výkonnosť - osvedčené postupy</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Zdroje</a>
+<ul>
+<li><a href="../resources/glossary.html">Glosár</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Komunita</a>
+</li>
+<li><a href="../resources/frameworks.html">Frameworky</a>
+</li>
+<li><a href="../resources/learning.html">Dodatočné vzdelávanie</a>
+</li>
+<li><a href="../resources/companies-using-express.html">Firmy používajúce Express</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Tento dokument môže byť v porovnaní s dokumentáciou v angličtine zastaralý. Aktuálne informácie nájdete v <a href="../../index.html">dokumentácii v angličtine</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+
+<h1 id="použitie-správcov-procesov-pre-express-aplikácie">Použitie správcov procesov pre Express aplikácie</h1>
+<p>Ak vaša Express aplikácia pobeží v produkcii, môže byť k dosiahnutiu nasledujúcich úloh vhodné použiť <em>správcu processov (process manager)</em>:</p>
+<ul>
+<li>Reštart aplikácie v prípade pádu.</li>
+<li>Získanie prehľadu o spotrebe zdrojov a výkonnosti aplikácie.</li>
+<li>Dynamická zmena nastavení k zlepšeniu výkonnosti.</li>
+<li>Kontrola nad clustering-om.</li>
+</ul>
+<p>Správca procesov je čiastočne akoby aplikačný server: je to “kontainer” pre aplikácie uľahčujúci ich deployment,
+poskytujúci vysokú dostupnosť a umožňujúci správu aplikácie v runtime.</p>
+<p>Najpopulárnejšie s pomedzi správcov procesov pre Express i ostatné Node.js aplikácie patria:</p>
+<ul>
+<li><a href="#sl">StrongLoop Process Manager</a></li>
+<li><a href="#pm2">PM2</a></li>
+<li><a href="#forever">Forever</a></li>
+</ul>
+<p>Použitie ktoréhokoľvek z hore spomenutých nástrojov môže byť veľmi nápomocné, avšak StrongLoop Process Manager je jediným nástrojom poskytujúcim obsiahle runtime a deployment riešenie adresujúce celý životný cyklus Node.js aplikácie pomocou nástrojov pre každý krok pred a po nasadení do produkcie a to v jednotnom rozhraní.</p>
+<p>Tu je jednoduchý náhľad na každý z týchto nástrojov. Pre detailnejšie porovnanie sa pozrite na <a href="http://strong-pm.io/compare/">http://strong-pm.io/compare/</a>.</p>
+<h2 id="strongloop-process-manager"><a id="sl">StrongLoop Process Manager</a></h2>
+<p>StrongLoop Process Manager (StrongLoop PM) je produkčný správca procesov pre Node.js aplikácie. StrongLoop PM má vstavaný load balancing, monitoring, multi-host deployment a grafickú konzolu.
+StrongLoop PM môžete využiť na tieto úlohy:</p>
+<ul>
+<li>Build, package, a deploy vašej Node.js aplikácie na lokálny alebo remote systém.</li>
+<li>Zobrazenie CPU profilov and heap snapshotov pre optimalizáciu výkonnosti a diagnostiku memory leakov.</li>
+<li>Udržovanie procesov a clusterov vždy nažive.</li>
+<li>Zobrazenie výkonnostných metrík vašej aplikácie.</li>
+<li>Jednoduchá správa multi-host deploymentov s Nginx integráciou.</li>
+<li>Unifikácia viacerých StrongLoop PM do distribuovaného runtime-u mikro servisov spravovateľných pomocou Arc.</li>
+</ul>
+<p>So StrongLoop PM dokážete pracovať pomocou výkonného command-line interface nástroja nazývaného <code>slc</code>, prípadne grafického nástroja nazývaného Arc. Arc je open source s profesonálnou podporou od StrongLoop-u.</p>
+<p>Pre viac informácií si pozrite <a href="http://strong-pm.io/">http://strong-pm.io/</a>.</p>
+<p>Celá dokumentácia:</p>
+<ul>
+<li><a href="http://docs.strongloop.com/display/SLC">Operating Node apps (StrongLoop documentation)</a></li>
+<li><a href="http://docs.strongloop.com/display/SLC/Using+Process+Manager">Using StrongLoop Process Manager</a>.</li>
+</ul>
+<h3 id="inštalácia">Inštalácia</h3>
+<pre><code class="language-console">$ [sudo] npm install -g strongloop
+</code></pre>
+<h3 id="základné-použitie">Základné použitie</h3>
+<pre><code class="language-console">$ cd my-app
+$ slc start
+</code></pre>
+<p>Zobrazenie stavu správcu procesov a všetkých deploynutých aplikácií:</p>
+<pre><code class="language-console">$ slc ctl
+Service ID: 1
+Service Name: my-app
+Environment variables:
+  No environment variables defined
+Instances:
+    Version  Agent version  Cluster size
+     4.1.13      1.5.14           4
+Processes:
+        ID      PID   WID  Listening Ports  Tracking objects?  CPU profiling?
+    1.1.57692  57692   0
+    1.1.57693  57693   1     0.0.0.0:3001
+    1.1.57694  57694   2     0.0.0.0:3001
+    1.1.57695  57695   3     0.0.0.0:3001
+    1.1.57696  57696   4     0.0.0.0:3001
+</code></pre>
+<p>Vypísanie zoznamu všetkých aplikácií (servisov) pod správou:</p>
+<pre><code class="language-console">$ slc ctl ls
+Id          Name         Scale
+ 1          my-app       1
+</code></pre>
+<p>Stopnutie aplikácie:</p>
+<pre><code class="language-console">$ slc ctl stop my-app
+</code></pre>
+<p>Reštart aplikácie:</p>
+<pre><code class="language-console">$ slc ctl restart my-app
+</code></pre>
+<p>Môžete taktiež vykonať “mäkký reštart”, ktorý dá worker procesom dostatok času na uzatvorenie existujúcich pripojení a následne reštartuje aplikáciu:</p>
+<pre><code class="language-console">$ slc ctl soft-restart my-app
+</code></pre>
+<p>Odstránenie aplikácie zo správy:</p>
+<pre><code class="language-console">$ slc ctl remove my-app
+</code></pre>
+<h2 id="pm2"><a id="pm2">PM2</a></h2>
+<p>PM2 je produkčný správca procesov pre Node.js aplikácie so vstavaným load balancerom. PM2 dokáže udržať aplikáciu nažive a vykonať jej prípadný reload bez výpadku a umožní vykonávať bežné system admin úlohy. PM2 taktiež umožňuje spravovať logovanie, monitoring a clustering aplikácií.</p>
+<p>Pre viac informácií sa pozrite na <a href="https://github.com/Unitech/pm2">https://github.com/Unitech/pm2</a>.</p>
+<h3 id="inštalácia-1">Inštalácia</h3>
+<pre><code class="language-console">$ [sudo] npm install pm2 -g
+</code></pre>
+<h3 id="základné-použitie-1">Základné použitie</h3>
+<p>Pre naštartovanie aplikácie pomocou <code>pm2</code> príkazu musíte špecifikovať cestu k aplikácii. Avšak pre stop, reštart, alebo odstránenie aplikácie zo správy, postačuje špecifikovať len jej názov alebo ID.</p>
+<pre><code class="language-console">$ pm2 start npm --name my-app -- start
+[PM2] restartProcessId process id 0
+┌──────────┬────┬──────┬───────┬────────┬─────────┬────────┬─────────────┬──────────┐
+│ App name │ id │ mode │ pid   │ status │ restart │ uptime │ memory      │ watching │
+├──────────┼────┼──────┼───────┼────────┼─────────┼────────┼─────────────┼──────────┤
+│ my-app   │ 0  │ fork │ 64029 │ online │ 1       │ 0s     │ 17.816 MB   │ disabled │
+└──────────┴────┴──────┴───────┴────────┴─────────┴────────┴─────────────┴──────────┘
+ Use the `pm2 show &lt;id|name&gt;` command to get more details about an app.
+</code></pre>
+<p>Po naštartovaní aplikácie pomocou <code>pm2</code> príkazu sa aplikácia automaticky spustí na backgrounde (pozadí). Background aplikáciu môžete ovládať z príkazového riadka pomocou rozličných <code>pm2</code> príkazov.</p>
+<p>Potom, ako je aplikácia naštartovaná pomocou <code>pm2</code> príkazu, je zaregistrovaná do zoznamu PM2 procesov pod konkrétnym ID. Preto dokážete spravovať aplikácie s rovnakým názvom z rôznych priečinkov, použitím ich ID.</p>
+<p>Pozn., ak Vám beží viac ako jedna aplikácia s rovnakým názvom, vykonanie <code>pm2</code> príkazu ich ovplyvní všetky. Preto pre správu konkrétnej aplikácie používajte namiesto názvu radšej jej ID.</p>
+<p>Vypísanie zoznamu všetkých bežiacich procesov:</p>
+<pre><code class="language-console">$ pm2 list
+</code></pre>
+<p>Stopnutie aplikácie:</p>
+<pre><code class="language-console">$ pm2 stop 0
+</code></pre>
+<p>Reštart aplikácie:</p>
+<pre><code class="language-console">$ pm2 restart 0
+</code></pre>
+<p>Pre zobrazenie detailných informácií o aplikácii:</p>
+<pre><code class="language-console">$ pm2 show 0
+</code></pre>
+<p>Odstránenie aplikácie z PM2 registra:</p>
+<pre><code class="language-console">$ pm2 delete 0
+</code></pre>
+<h2 id="forever"><a id="forever">Forever</a></h2>
+<p>Forever je jednoduchý command-line nástroj slúžiaci na udržanie vášho skriptu nažive. Jednoduché rozhranie nástroja Forever ho robí ideálnym pre správu menších deploymentov Node.js aplikácií a skriptov.</p>
+<p>Pre viac informácií sa pozrite na <a href="https://github.com/foreverjs/forever">https://github.com/foreverjs/forever</a>.</p>
+<h3 id="inštalácia-2">Inštalácia</h3>
+<pre><code class="language-console">$ [sudo] npm install forever -g
+</code></pre>
+<h3 id="základné-použitie-2">Základné použitie</h3>
+<p>Pre naštartovanie použite príkaz <code>forever start</code> a špecifikujte cestu k skriptu:</p>
+<pre><code class="language-console">$ forever start script.js
+</code></pre>
+<p>Tento príkaz spustí skript v tzv. daemon móde (na pozadí).</p>
+<p>Pre priame spistenie skriptu v termináli vynechajte <code>start</code>:</p>
+<pre><code class="language-console">$ forever script.js
+</code></pre>
+<p>Je dobrým zvykom logovať výstup z nástroja Forever a skriptu pomocou prepínača <code>-l</code>, <code>-o</code> a <code>-e</code>, ako je uvedené v príklade nižšie:</p>
+<pre><code class="language-console">$ forever start -l forever.log -o out.log -e err.log script.js
+</code></pre>
+<p>Pre zobrazenie zoznamu skriptov, ktoré boli naštartované pomocou Forever použite:</p>
+<pre><code class="language-console">$ forever list
+</code></pre>
+<p>Pre stopnutie skriptu naštartovaného pomocou Forever použite príkaz <code>forever stop</code> a špecifikujte index procesu (podľa výpisu z <code>forever list</code> príkazu).</p>
+<pre><code class="language-console">$ forever stop 1
+</code></pre>
+<p>Taktiež to môžete vykonať pomocou špecifikovania cesty k skriptu:</p>
+<pre><code class="language-console">$ forever stop script.js
+</code></pre>
+<p>Pre stopnutie všetkých skriptov, ktoré boli naštartované pomocou Forever príkazu použite:</p>
+<pre><code class="language-console">$ forever stopall
+</code></pre>
+<p>Nástroj Forever má veľa možností a taktiež poskytuje programové API.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="https://ghbtns.com/github-btn.html?user=expressjs&repo=express&type=star&count=true" frameborder="0" scrolling="0" width="200px" height="20px"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> je projekt patriaci pod <a href="https://openjsf.org">Nadácie OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Editovať stránku na GitHub-e</a>.</div>
+<div>Copyright &copy; 2016 StrongLoop, IBM a ostatní expressjs.com prispievatelia.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script type="f863424748cc7df45b20ff70-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:sk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="f863424748cc7df45b20ff70-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/sk/advanced/pm.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

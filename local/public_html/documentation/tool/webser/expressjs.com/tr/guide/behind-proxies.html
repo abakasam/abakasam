@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html lang="tr" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/tr/guide/behind-proxies.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Proxy arkasında Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/tr.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div style="text-align: center; background: #010101; color: #f1f1f1; padding: 16px; font-size: 16px; width: 100vw">
+Black Lives Matter. <a style="color: #5E80F7; text-decoration: none;" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Anasayfa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Buradan Başlayın</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Kurulum
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Merhaba Dünya
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Oluşturucu
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basit Yönlendirme
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statik Dosyalar
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+SSS
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Kılavuz</a>
+<ul>
+<li><a href="routing.html">Yönlendirme</a>
+</li>
+<li><a href="writing-middleware.html">
+Middleware yazma</a>
+</li>
+<li><a href="using-middleware.html">Middleware kullanma</a>
+</li>
+<li><a href="using-template-engines.html">Şablon motoru kullanma</a>
+</li>
+<li><a href="error-handling.html">Hata işleme</a>
+</li>
+<li><a href="debugging.html">Hata Ayıklama</a>
+</li>
+<li><a href="behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="migrating-4.html">Express 4 geçiş</a>
+</li>
+<li><a href="migrating-5.html">Express 5 geçiş</a>
+</li>
+<li><a href="database-integration.html">Database Entegrasyonu</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API Kaynak</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (Kullanımdan kaldırıldı)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (Kullanımdan kaldırıldı)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Gelişmiş konular</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Şablon motorları</a>
+</li>
+<li><a href="../advanced/pm.html">Proses yöneticisi kullanma</a>
+</li>
+<li><a href="../advanced/security-updates.html">Gğvenlik güncellemeleri</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">En iyi güvenlik uygulamaları</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">En iyi performans uygulamaları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Kaynaklar</a>
+<ul>
+<li>
+<a href="../resources/community.html">Topluluk</a>
+</li>
+<li>
+<a href="../resources/glossary.html">Terimler</a>
+</li>
+<li>
+<a href="../resources/middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../resources/utils.html">Yardımcı Modüller</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">Yapılar</a>
+</li>
+<li>
+<a href="../resources/learning.html">Ek öğrenme</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">Express kullanan şirket</a>
+</li>
+<li>
+<a href="../resources/contributing.html">Express'e katkıda bulunmak</a>
+</li>
+<li>
+<a href="../changelog/4x.html">Sürüm Notları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Bu doküman ingilizce dokümana göre eski olabilir. Son güncellemeler için lütfen <a href="../../index.html">İngilizce Dokümanı</a>. ziyaret edin
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="proxy-arkasında-express">Proxy arkasında Express</h1>
+<p>Bir proxy’nin arkasında bir Express uygulaması koşulduğunda, (<a href="../4x/api.html#app.set">app.set()</a> kullanarak) <code>trust proxy</code> uygulama değişkenine aşağıdaki tabloda listelenen değerlerden birini verin.</p>
+<div class="doc-box doc-info">
+<p><code>trust proxy</code> uygulama değişkeni ayarlanmadığında uygulama başarısız olmayacağına rağmen, <code>trust proxy</code> ayarlanmadıkça istemci IP adresini proxy IP adresiyle hatalı olarak kaydedecektir.</p>
+</div>
+<table class="doctable" border="1">
+<thead><tr><th>Tip</th><th>Değer</th></tr></thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>
+<p><code>true</code> olduğunda, istemci IP adresi <code>X-Forwarded-*</code> başlığında en soldaki giriş olarak değerlendirilir.</p>
+<p><code>false</code> olduğunda, uygulama direkt olarak Internete dönük olacak ve istemci IP adresi ise <code>req.connection.remoteAddress</code> alanından alınmış olacak. Bu varsayılan ayardır.</p>
+</td>
+</tr>
+<tr>
+<td>IP adresleri</td>
+<td>
+<p>Güvenilecek bir IP adresi, alt ağ, veya bir IP adresleri ve alt ağlar dizisi. Aşağıdaki liste önceden yapılandırılmış alt ağlar isimlerini gösteriyor:</p>
+<ul>
+<li>loopback - <code>127.0.0.1/8</code>, <code>::1/128</code></li>
+<li>linklocal - <code>169.254.0.0/16</code>, <code>fe80::/10</code></li>
+<li>uniquelocal - <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>, <code>fc00::/7</code></li>
+</ul>
+<p>IP adreslerini aşağıdaki yöntemlerden herhangi biriyle ayarlayabilirsiniz:</p>
+<pre><code class="language-js">app.set('trust proxy', 'loopback') // tek bir alt ağ tanımla
+app.set('trust proxy', 'loopback, 123.123.123.123') // bir adres ve bir alt ağ tanımla
+app.set('trust proxy', 'loopback, linklocal, uniquelocal') // birden çok alt ağları CVS olarak tanımla
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']) // bir dizi olarak birden çok alt ağ tanımla
+</code></pre>
+<p>Belirtildiğinde, IP adresleri veya alt ağlar adres belirleme işleminin dışında bırakılır ve uygulama sunucusuna en yakın güvenilmeyen IP adresi, istemcinin IP adresi olarak belirlenir.</p>
+</td>
+</tr>
+<tr>
+<td>Sayı</td>
+<td>
+<p>İstemci olarak ön proxy sunucusundan <code>n</code>‘ci atlayışına güvenin.</p>
+</td>
+</tr>
+<tr>
+<td>Fonksiyon</td>
+<td>
+<p>Özel güven implementasyonu. Bunu sadece ne yaptığınızı biliyorsanız kullanın.</p>
+<pre><code class="language-js">app.set('trust proxy', (ip) =&gt; {
+  if (ip === '127.0.0.1' || ip === '123.123.123.123') return true // güvenilen IP'ler
+  else return false
+})
+</code></pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p><code>trust proxy</code> ayarını etkinleştirmenin etkileri aşağıdaki gibidir:</p>
+<ul>
+<li>
+<p><a href="../api.html#req.hostname">req.hostname</a> alanının değeri, istemci veya proxy tarafından ayarlanabilen <code>X-Forwarded-Host</code> başlığındaki değerler kümesinden alınacak.</p>
+</li>
+<li>
+<p><code>X-Forwarded-Proto</code> değeri; <code>https</code>, <code>http</code> veya geçersiz bir ad olduğunu uygulamaya belirtmesi için ters proxy tarafından ayarlanabilir. Bu değer, <a href="../api.html#req.protocol">req.protocol</a> tarafından yansıtılır.</p>
+</li>
+<li>
+<p><a href="../api.html#req.ip">req.ip</a> ve <a href="../api.html#req.ips">req.ips</a> alanlarının değerleri, <code>X-Forwarded-For</code> başlığındaki adres listesi ile doldurulur.</p>
+</li>
+</ul>
+<p><code>trust proxy</code> ayarı <a href="https://www.npmjs.com/package/proxy-addr">proxy-addr</a> paketi kullanılarak uygulanmıştır. Daha fazla bilgi için, dökümantasyonuna bakınız.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+<a href="../../../strongloop.com/index.html">StrongLoop/IBM</a> tarafından sağlanan belge çevirileri:
+<a href="../../fr/index.html">Fransızca</a>, <a href="../../de/index.html">Almanca</a>, <a href="../../es/index.html">İspanyolca</a>, <a href="../../it/index.html">İtalyanca</a>, <a href="../../ja/index.html">Japonca</a>, <a href="../../ru/index.html">Rusça</a>, <a href="../../zh-cn/index.html">Çince</a>, <a href="../../zh-tw/index.html">Klasik Çince</a>, <a href="../../ko/index.html">Korece</a>, <a href="../../pt-br/index.html">Portekizce</a>.
+<br>
+Topluluk çevirisi için: <a href="../../sk/index.html">Slovakça</a>, <a href="../../uk/index.html">Ukraynaca</a> and <a href="../../uz/index.html">Özbekçe</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bir <a href="https://openjsf.org">OpenJS Vakfı</a> projesidir.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Github'da Forkla</a>.</div>
+<div>Telif Hakkı &copy; 2017 StrongLoop, IBM, ve diğer expressjs.com katkıda bulunanlar.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Bu iş<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a> lisansı altındadır.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="4ca0201e0fff251a44c50b0a-text/javascript"></script>
+<script type="4ca0201e0fff251a44c50b0a-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:tr'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="4ca0201e0fff251a44c50b0a-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/tr/guide/behind-proxies.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

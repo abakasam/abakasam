@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="uz" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/uz/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express error handling</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/uz.html">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Bosh sahifa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Boshlang'ich ishlar</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+O'rnatish
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express generator
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Oddiy routing
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statik fayllar
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Qo'llanma</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+</li>
+<li><a href="writing-middleware.html">Middleware yozish</a>
+</li>
+<li><a href="using-middleware.html">Middleware ishlatish</a>
+</li>
+<li><a href="using-template-engines.html">Template engine ishlatish</a>
+</li>
+<li><a href="error-handling.html">Xatolarni qayta ishlash</a>
+</li>
+<li><a href="debugging.html">Debug qilish</a>
+</li>
+<li><a href="behind-proxies.html">Express proksilar bilan</a>
+</li>
+<li><a href="migrating-4.html">Express 4ga o'tish</a>
+</li>
+<li><a href="migrating-5.html">Express 5ga o'tish</a>
+</li>
+<li><a href="database-integration.html">Ma'lumotlar omboriga ulash</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API qo'llanma</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (eskirgan)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (eskirgan)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Advanced topics</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Template engines</a>
+</li>
+<li><a href="../advanced/pm.html">Using process managers</a>
+</li>
+<li><a href="../advanced/security-updates.html">Security updates</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Security best practices</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Performance best practices</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Resources</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossary</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Community</a>
+</li>
+<li><a href="../resources/learning.html">Additional learning</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="../../index.html">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="error-handling">Error handling</h1>
+<p>Define error-handling middleware like other middleware,
+except with four arguments instead of three, specifically with the signature
+<code>(err, req, res, next)</code>):</p>
+<pre><code class="language-javascript" translate="no">
+app.use(function(err, req, res, next){
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code></pre>
+<p>You define error-handling middleware last, after other <code>app.use()</code> and routes calls;
+For example:</p>
+<pre><code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(function(err, req, res, next){
+  // logic
+});
+</code></pre>
+<p>Responses from within the middleware are completely arbitrary. You may
+wish to respond with an HTML error page, a simple message, a JSON string,
+or anything else you prefer.</p>
+<p>For organizational (and higher-level framework) purposes, you may define
+several error-handling middleware, much like you would with
+regular middleware. For example suppose you wanted to define an error-handler
+for requests made via XHR, and those without, you might do:</p>
+<pre><code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
+</code></pre>
+<p>Where the more generic <code>logErrors</code> may write request and
+error information to stderr, loggly, or similar services:</p>
+<pre><code class="language-javascript" translate="no">
+function logErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
+</code></pre>
+<p>Where <code>clientErrorHandler</code> is defined as the following (note
+that the error is explicitly passed along to the next):</p>
+<pre><code class="language-javascript" translate="no">
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something blew up!' });
+  } else {
+    next(err);
+  }
+}
+</code></pre>
+<p>The following <code>errorHandler</code> “catch-all” implementation may be defined as:</p>
+<pre><code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code></pre>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bu <a href="https://openjsf.org">OpenJS fondining</a> loyihasi.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork the website on GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script type="3306674887aa38fd321d3212-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:uz'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="3306674887aa38fd321d3212-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/uz/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

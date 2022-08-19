@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="es" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/es/starter/generator.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Generador de aplicaciones Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/es.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Inicio</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">Cómo empezar</a>
+<ul>
+<li>
+<a href="installing.html">
+Instalación
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="generator.html">
+Generador de Express
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+Direccionamiento básico
+</a>
+</li>
+<li>
+<a href="static-files.html">
+Archivos estáticos
+</a>
+</li>
+<li>
+<a href="faq.html">
+Preguntas más frecuentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Guía</a>
+<ul>
+<li><a href="../guide/routing.html">Direccionamiento</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Escritura de middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Utilización del middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Utilización de motores de plantilla</a>
+</li>
+<li><a href="../guide/error-handling.html">Manejo de errores</a>
+</li>
+<li><a href="../guide/debugging.html">Depuración</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express detrás de proxies</a>
+</li>
+<li><a href="../guide/migrating-4.html">Migración a Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Migración a Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integración de la base de datos</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referencia de API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (en desuso)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (en desuso)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Temas avanzados</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Motores de plantilla</a>
+</li>
+<li><a href="../advanced/pm.html">Utilización de gestores de procesos</a>
+</li>
+<li><a href="../advanced/security-updates.html">Actualizaciones de seguridad</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Mejores prácticas de seguridad</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Mejores prácticas de rendimiento</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="../resources/glossary.html">Glosario</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Comunidad</a>
+</li>
+<li><a href="../resources/learning.html">Aprendizaje adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta traducción proporcionada por <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento puede estar desfasado respecto a la documentación en inglés. Para ver las últimas actualizaciones, consulte la <a href="../../index.html">documentación en inglés</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="generador-de-aplicaciones-express">Generador de aplicaciones Express</h1>
+<p>Utilice la herramienta de generador de aplicaciones, <code>express</code>, para crear rápidamente un esqueleto de aplicación.</p>
+<p>Instale <code>express</code> con el siguiente mandato:</p>
+<pre><code class="language-console">$ npm install express-generator -g
+</code></pre>
+<p>Muestre las opciones de mandato con la opción <code>-h</code>:</p>
+<pre><code class="language-console">$ express -h
+
+  Usage: express [options][dir]
+
+  Options:
+
+    -h, --help          output usage information
+        --version       output the version number
+    -e, --ejs           add ejs engine support
+        --hbs           add handlebars engine support
+        --pug           add pug engine support
+    -H, --hogan         add hogan.js engine support
+        --no-view       generate without view engine
+    -v, --view &amp;lt;engine&amp;gt; add view &amp;lt;engine&amp;gt; support (ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)
+    -c, --css &amp;lt;engine&amp;gt;  add stylesheet &amp;lt;engine&amp;gt; support (less|stylus|compass|sass) (defaults to plain css)
+        --git           add .gitignore
+    -f, --force         force on non-empty directory
+</code></pre>
+<p>Por ejemplo, el código siguiente crea una aplicación Express denominada <em>myapp</em>. La aplicación será creada en una carpeta llamada <em>myapp</em> en el directorio de trabajo actual y el motor de vistas será asignado a <a href="https://pugjs.org/" target="_blank" title="Documentación de Pug">Pug</a>:</p>
+<pre><code class="language-console">$ express --view=pug myapp
+
+   create : myapp
+   create : myapp/package.json
+   create : myapp/app.js
+   create : myapp/public
+   create : myapp/public/javascripts
+   create : myapp/public/images
+   create : myapp/routes
+   create : myapp/routes/index.js
+   create : myapp/routes/users.js
+   create : myapp/public/stylesheets
+   create : myapp/public/stylesheets/style.css
+   create : myapp/views
+   create : myapp/views/index.pug
+   create : myapp/views/layout.pug
+   create : myapp/views/error.pug
+   create : myapp/bin
+   create : myapp/bin/www
+</code></pre>
+<p>A continuación, instale las dependencias:</p>
+<pre><code class="language-console">$ cd myapp
+$ npm install
+</code></pre>
+<p>En MacOS o Linux, ejecute la aplicación con este mandato:</p>
+<pre><code class="language-console">$ DEBUG=myapp:* npm start
+</code></pre>
+<p>En Windows, utilice este mandato:</p>
+<pre><code class="language-console">&gt; set DEBUG=myapp:* &amp; npm start
+</code></pre>
+<p>A continuación, cargue <code>http://localhost:3000/</code> en el navegador para acceder a la aplicación.</p>
+<p>La aplicación generada tiene la siguiente estructura de directorios:</p>
+<pre><code class="language-console">.
+├── app.js
+├── bin
+│   └── www
+├── package.json
+├── public
+│   ├── images
+│   ├── javascripts
+│   └── stylesheets
+│       └── style.css
+├── routes
+│   ├── index.js
+│   └── users.js
+└── views
+    ├── error.pug
+    ├── index.pug
+    └── layout.pug
+
+7 directories, 9 files
+</code></pre>
+<div class="doc-box doc-info">
+<p>La estructura de la aplicación creada por el generador es sólo una de las muchas formas de estructurar las aplicaciones Express. Puede utilizar esta estructura o modificarla según sus necesidades.</p>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> es un proyecto de la <a href="https://openjsf.org">Fundación OpenJS</a>.</div>
+ <div id="fork"><a href="https://github.com/expressjs/expressjs.com">Bifurque el sitio web en GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. y otros colaboradores de expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Esta obra está bajo una <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Licencia Creative Commons Atribución-CompartirIgual 3.0 Estados Unidos de América</a>.
+</div>
+</footer>
+<script type="09743e48f1db6a05cc9ddcfc-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:es'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="09743e48f1db6a05cc9ddcfc-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/es/starter/generator.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

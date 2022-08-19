@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ja/advanced/security-updates.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:33 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express のセキュリティー更新</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ja.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">ホーム</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">概説</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+インストール
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express ジェネレーター
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本的なルーティング
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静的ファイル
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">ガイド</a>
+<ul>
+<li><a href="../guide/routing.html">ルーティング</a>
+</li>
+<li><a href="../guide/writing-middleware.html">ミドルウェアの作成</a>
+</li>
+<li><a href="../guide/using-middleware.html">ミドルウェアの使用</a>
+</li>
+<li><a href="../guide/using-template-engines.html">テンプレート・エンジンの使用</a>
+</li>
+<li><a href="../guide/error-handling.html">エラー処理</a>
+</li>
+<li><a href="../guide/debugging.html">デバッグ</a>
+</li>
+<li><a href="../guide/behind-proxies.html">プロキシーの背後の Express</a>
+</li>
+<li><a href="../guide/migrating-4.html">Express 4 への移行</a>
+</li>
+<li><a href="../guide/migrating-5.html">Express 5 への移行</a>
+</li>
+<li><a href="../guide/database-integration.html">データベースの統合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API リファレンス</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (非推奨)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (非推奨)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">高度なトピック</a>
+<ul>
+<li><a href="developing-template-engines.html">テンプレート・エンジン</a>
+</li>
+<li><a href="pm.html">プロセス・マネージャーの使用</a>
+</li>
+<li><a href="security-updates.html">セキュリティー更新</a>
+</li>
+<li><a href="best-practice-security.html">セキュリティーに関するベスト・プラクティス</a>
+</li>
+<li><a href="best-practice-performance.html">パフォーマンスに関するベスト・プラクティス</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">リソース</a>
+<ul>
+<li><a href="../resources/glossary.html">用語集</a>
+</li>
+<li><a href="../resources/middleware.html">ミドルウェア</a>
+</li>
+<li><a href="../resources/community.html">コミュニティー</a>
+</li>
+<li><a href="../resources/learning.html">追加学習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>によって提供されるこの翻訳.</p>
+本書は、英語の資料と比較すると古くなっている可能性があります。最新の更新については、<a href="../../index.html">英語版の資料</a>を参照してください。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="セキュリティー更新">セキュリティー更新</h1>
+<div class="doc-box doc-notice">
+<p>Node.js の脆弱性は Express に直接影響を与えます。そのため、<a href="http://blog.nodejs.org/vulnerability/">Node.js の脆弱性の監視を続けて</a>、必ず、安定した最新バージョンの Node.js を使用してください。</p>
+</div>
+<p>次のリストに、示されているバージョンの更新で修正された Express の脆弱性を列挙します。</p>
+<p><strong>注意</strong>: Expressでセキュリティ上の脆弱性を発見したと思われる場合は、<a href="../resources/contributing.html#security-policies-and-procedures">セキュリティポリシーと手順</a>を参照してください。</p>
+<h2 id="4x">4.x</h2>
+<ul>
+<li>4.16.0
+<ul>
+<li>依存関係<code>forwarded</code>は、<a href="https://npmjs.com/advisories/527">脆弱性</a>に対処するために更新されました。これは、<code>req.host</code>、<code>req.hostname</code>、<code>req.ip</code>、<code>req.ips</code>、<code>req.protocol</code>のAPIが使用されている場合、アプリケーションに影響を与える可能性があります。</li>
+<li>依存関係<code>mime</code>は<a href="https://npmjs.com/advisories/535">脆弱性</a>に対処するために更新されましたが、この問題はExpressには影響しません。</li>
+<li>依存関係<code>send</code>が更新され、<a href="https://nodejs.org/en/blog/vulnerability/september-2017-path-validation/">Node.js 8.5.0の脆弱性</a>に対する保護が提供されています。これは特定のNode.jsバージョン8.5.0でExpressを実行する場合にのみ影響します。</li>
+</ul>
+</li>
+<li>4.15.5
+<ul>
+<li>依存関係<code>debug</code>は<a href="https://snyk.io/vuln/npm:debug:20170905">脆弱性</a>に対処するために更新されましたが、この問題はExpressには影響しません。</li>
+<li>依存関係<code>fresh</code>は、<a href="https://npmjs.com/advisories/526">脆弱性</a>に対処するために更新されました。これは、次のAPIが使用されている場合、アプリケーションに影響します：<code>express.static</code>、<code>req.fresh</code>、<code>res.json</code>、<code>res.jsonp</code>、<code>res.send</code>、<code>res.sendfile</code>、<code>res.sendFile</code>、<code>res.sendStatus</code></li>
+</ul>
+</li>
+<li>4.15.3
+<ul>
+<li>依存関係<code>ms</code>は、<a href="https://snyk.io/vuln/npm:ms:20170412">脆弱性</a>に対処するために更新されました。<code>express.static</code>、<code>res.sendfile</code>、および<code>res.sendFile</code>のAPIで、信頼できない文字列が入力され<code>maxAge</code>オプションに渡されると、アプリケーションに影響を与える可能性があります。</li>
+</ul>
+</li>
+<li>4.15.2
+<ul>
+<li>依存関係<code>qs</code>は<a href="https://snyk.io/vuln/npm:qs:20170213">脆弱性</a>に対処するために更新されましたが、この問題はExpressには影響しません。4.15.2へのアップデートは良い習慣ですが、この脆弱性に対処する必要はありません。</li>
+</ul>
+</li>
+<li>4.11.1
+<ul>
+<li><code>express.static</code>、<code>res.sendfile</code>、および <code>res.sendFile</code> のルート・パス開示の脆弱性を修正しました。</li>
+</ul>
+</li>
+<li>4.10.7
+<ul>
+<li><code>express.static</code> のオープン・リダイレクトの脆弱性を修正しました (<a href="https://npmjs.com/advisories/35">アドバイザリー</a>、<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164">CVE-2015-1164</a>)。</li>
+</ul>
+</li>
+<li>4.8.8
+<ul>
+<li><code>express.static</code> のディレクトリー・トラバーサルの脆弱性を修正しました (<a href="http://npmjs.com/advisories/32">アドバイザリー</a>、<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6394">CVE-2014-6394</a>)。</li>
+</ul>
+</li>
+<li>4.8.4
+<ul>
+<li>Node.js 0.10 は、特定の状況で <code>fd</code> をリークして、<code>express.static</code> および <code>res.sendfile</code> に影響を及ぼす可能性があります。悪意ある要求によって <code>fd</code> がリークされ、最終的に <code>EMFILE</code> エラーが発生したり、サーバーが応答しなくなったりする可能性があります。</li>
+</ul>
+</li>
+<li>4.8.0
+<ul>
+<li>クエリストリングに極めて多数の索引が含まれる疎な配列により、プロセスがメモリー不足になり、サーバーが異常終了する可能性があります。</li>
+<li>過度にネストされたクエリストリング・オブジェクトにより、プロセスがサーバーをブロックして、サーバーが一時的に応答できなくなる可能性があります。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3x">3.x</h2>
+<div class="doc-box doc-warn">
+<p><strong>Express 3.x はもうメンテナンスされていません</strong></p>
+<p>3.xの既知および未知のセキュリティ問題は、最終更新（2015年8月1日）以降は対処されていません。3.x系を使用することは安全であると見なされるべきではありません。</p>
+</div>
+<ul>
+<li>3.19.1
+<ul>
+<li><code>express.static</code>、<code>res.sendfile</code>、および <code>res.sendFile</code> のルート・パス開示の脆弱性を修正しました。</li>
+</ul>
+</li>
+<li>3.19.0
+<ul>
+<li><code>express.static</code> のオープン・リダイレクトの脆弱性を修正しました (<a href="https://npmjs.com/advisories/35">アドバイザリー</a>、<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164">CVE-2015-1164</a>)。</li>
+</ul>
+</li>
+<li>3.16.10
+<ul>
+<li><code>express.static</code> のディレクトリー・トラバーサルの脆弱性を修正しました。</li>
+</ul>
+</li>
+<li>3.16.6
+<ul>
+<li>Node.js 0.10 は、特定の状況で <code>fd</code> をリークして、<code>express.static</code> および <code>res.sendfile</code> に影響を及ぼす可能性があります。悪意ある要求によって <code>fd</code> がリークされ、最終的に <code>EMFILE</code> エラーが発生したり、サーバーが応答しなくなったりする可能性があります。</li>
+</ul>
+</li>
+<li>3.16.0
+<ul>
+<li>クエリストリングに極めて多数の索引が含まれる疎配列により、プロセスがメモリー不足になり、サーバーが異常終了する可能性があります。</li>
+<li>過度にネストされたクエリストリング・オブジェクトにより、プロセスがサーバーをブロックして、サーバーが一時的に応答できなくなる可能性があります。</li>
+</ul>
+</li>
+<li>3.3.0
+<ul>
+<li>サポートされていないメソッドのオーバーライドの 404 応答は、クロスサイト・スクリプティングの攻撃を受ける可能性がありました。</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>は、<a href="https://openjsf.org">OpenJSの財団</a>のプロジェクトです。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub で Web サイトを fork します</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc.、およびその他の expressjs.com コントリビューター。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> この 作品 は <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">クリエイティブ・コモンズ 表示 - 継承 3.0 アメリカ合衆国 ライセンスの下に提供されています。</a>
+</div>
+</footer>
+<script type="eb0911ced46af4dd89fed51d-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ja'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="eb0911ced46af4dd89fed51d-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ja/advanced/security-updates.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

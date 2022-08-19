@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html lang="es" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/es/guide/debugging.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Depuración de Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/es.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Inicio</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Cómo empezar</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Instalación
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Generador de Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Direccionamiento básico
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Archivos estáticos
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Preguntas más frecuentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Guía</a>
+<ul>
+<li><a href="routing.html">Direccionamiento</a>
+</li>
+<li><a href="writing-middleware.html">Escritura de middleware</a>
+</li>
+<li><a href="using-middleware.html">Utilización del middleware</a>
+</li>
+<li><a href="using-template-engines.html">Utilización de motores de plantilla</a>
+</li>
+<li><a href="error-handling.html">Manejo de errores</a>
+</li>
+<li><a href="debugging.html">Depuración</a>
+</li>
+<li><a href="behind-proxies.html">Express detrás de proxies</a>
+</li>
+<li><a href="migrating-4.html">Migración a Express 4</a>
+</li>
+<li><a href="migrating-5.html">Migración a Express 5</a>
+</li>
+<li><a href="database-integration.html">Integración de la base de datos</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referencia de API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (en desuso)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (en desuso)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Temas avanzados</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Motores de plantilla</a>
+</li>
+<li><a href="../advanced/pm.html">Utilización de gestores de procesos</a>
+</li>
+<li><a href="../advanced/security-updates.html">Actualizaciones de seguridad</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Mejores prácticas de seguridad</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Mejores prácticas de rendimiento</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="../resources/glossary.html">Glosario</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Comunidad</a>
+</li>
+<li><a href="../resources/learning.html">Aprendizaje adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta traducción proporcionada por <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento puede estar desfasado respecto a la documentación en inglés. Para ver las últimas actualizaciones, consulte la <a href="../../index.html">documentación en inglés</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="depuración-de-express">Depuración de Express</h1>
+<p>Express utiliza el módulo <a href="https://www.npmjs.com/package/debug">debug</a> internamente para registrar información sobre las coincidencias de rutas, las funciones de middleware que se están utilizando, la modalidad de aplicación y el flujo del ciclo de solicitud/respuestas.</p>
+<div class="doc-box doc-info">
+<p><code>debug</code> es como una versión aumentada de <code>console.log</code>, aunque a diferencia de <code>console.log</code>, no tiene que comentar los registros <code>debug</code> en el código de producción. El registro está desactivado de forma predeterminada y puede activarse condicionalmente utilizando la variable de entorno <code>DEBUG</code>.</p>
+</div>
+<p>Para ver todos los registros internos utilizados en Express, establezca la variable de entorno <code>DEBUG</code> en <code>express:*</code> cuando inicie la aplicación.</p>
+<pre><code class="language-console">$ DEBUG=express:* node index.js
+</code></pre>
+<p>En Windows, utilice el mandato correspondiente.</p>
+<pre><code class="language-console">&gt; set DEBUG=express:* &amp; node index.js
+</code></pre>
+<p>La ejecución de este mandato en la aplicación predeterminada generada por el <a href="../starter/generator.html">generador de Express</a> imprime la siguiente salida:</p>
+<pre><code class="language-console">$ DEBUG=express:* node ./bin/www
+  express:router:route new / +0ms
+  express:router:layer new / +1ms
+  express:router:route get / +1ms
+  express:router:layer new / +0ms
+  express:router:route new / +1ms
+  express:router:layer new / +0ms
+  express:router:route get / +0ms
+  express:router:layer new / +0ms
+  express:application compile etag weak +1ms
+  express:application compile query parser extended +0ms
+  express:application compile trust proxy false +0ms
+  express:application booting in development mode +1ms
+  express:router use / query +0ms
+  express:router:layer new / +0ms
+  express:router use / expressInit +0ms
+  express:router:layer new / +0ms
+  express:router use / favicon +1ms
+  express:router:layer new / +0ms
+  express:router use / logger +0ms
+  express:router:layer new / +0ms
+  express:router use / jsonParser +0ms
+  express:router:layer new / +1ms
+  express:router use / urlencodedParser +0ms
+  express:router:layer new / +0ms
+  express:router use / cookieParser +0ms
+  express:router:layer new / +0ms
+  express:router use / stylus +90ms
+  express:router:layer new / +0ms
+  express:router use / serveStatic +0ms
+  express:router:layer new / +0ms
+  express:router use / router +0ms
+  express:router:layer new / +1ms
+  express:router use /users router +0ms
+  express:router:layer new /users +0ms
+  express:router use / &amp;lt;anonymous&amp;gt; +0ms
+  express:router:layer new / +0ms
+  express:router use / &amp;lt;anonymous&amp;gt; +0ms
+  express:router:layer new / +0ms
+  express:router use / &amp;lt;anonymous&amp;gt; +0ms
+  express:router:layer new / +0ms
+</code></pre>
+<p>Cuando se realiza una solicitud a la aplicación, verá los registros especificados en el código de Express:</p>
+<pre><code class="language-console">  express:router dispatching GET / +4h
+  express:router query  : / +2ms
+  express:router expressInit  : / +0ms
+  express:router favicon  : / +0ms
+  express:router logger  : / +1ms
+  express:router jsonParser  : / +0ms
+  express:router urlencodedParser  : / +1ms
+  express:router cookieParser  : / +0ms
+  express:router stylus  : / +0ms
+  express:router serveStatic  : / +2ms
+  express:router router  : / +2ms
+  express:router dispatching GET / +1ms
+  express:view lookup "index.pug" +338ms
+  express:view stat "/projects/example/views/index.pug" +0ms
+  express:view render "/projects/example/views/index.pug" +1ms
+</code></pre>
+<p>Para ver sólo los registros de la implementación de direccionador, establezca el valor de <code>DEBUG</code> en <code>express:router</code>. De la misma forma, para ver sólo los registros de la implementación de aplicación, establezca el valor de <code>DEBUG</code> en <code>express:application</code>, etc.</p>
+<h2 id="aplicaciones-generadas-por-express">Aplicaciones generadas por <code>express</code></h2>
+<p>Una aplicación generada por el mandato <code>express</code> también utiliza el módulo <code>debug</code>, y el ámbito de su espacio de nombres de depuración se establece en el nombre de la aplicación.</p>
+<p>Por ejemplo, si ha generado la aplicación con <code>$ express sample-app</code>, puede habilitar las sentencias de depuración con el siguiente mandato:</p>
+<pre><code class="language-console">$ DEBUG=sample-app:* node ./bin/www
+</code></pre>
+<p>Puede especificar más de un espacio de nombres de depuración asignando una lista separada por comas de nombres:</p>
+<pre><code class="language-console">$ DEBUG=http,mail,express:* node index.js
+</code></pre>
+<p>Para obtener más información sobre <code>debug</code>, consulte <a href="https://www.npmjs.com/package/debug">debug</a>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> es un proyecto de la <a href="https://openjsf.org">Fundación OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Bifurque el sitio web en GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. y otros colaboradores de expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Esta obra está bajo una <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Licencia Creative Commons Atribución-CompartirIgual 3.0 Estados Unidos de América</a>.
+</div>
+</footer>
+<script type="9c49f2c2868292a62ceb355f-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:es'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="9c49f2c2868292a62ceb355f-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/es/guide/debugging.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

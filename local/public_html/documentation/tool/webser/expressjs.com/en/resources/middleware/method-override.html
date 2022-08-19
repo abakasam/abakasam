@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/en/resources/middleware/method-override.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express method-override middleware</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../../images/favicon.png" />
+<link rel="stylesheet" href="../../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../../css/dropit.css">
+<link rel="stylesheet" href="../../../css/prism.css">
+<link rel="stylesheet" href="../../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../../css/en.css">
+<link rel="stylesheet" href="../../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../../js/app.js"></script>
+<script data-cfasync="false" src="../../../js/retina.js"></script>
+<script data-cfasync="false" src="../../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../../../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../../starter/installing.html">Getting started</a>
+<ul>
+<li>
+<a href="../../starter/installing.html">
+Installing
+</a>
+</li>
+<li>
+<a href="../../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../../starter/generator.html">
+Express generator
+</a>
+</li>
+<li>
+<a href="../../starter/basic-routing.html">
+Basic routing
+</a>
+</li>
+<li>
+<a href="../../starter/static-files.html">
+Static files
+</a>
+</li>
+<li>
+<a href="../../starter/examples.html">
+More examples
+</a>
+</li>
+<li>
+<a href="../../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../../guide/routing.html">Guide</a>
+<ul>
+<li><a href="../../guide/routing.html">Routing</a>
+</li>
+<li><a href="../../guide/writing-middleware.html">Writing middleware</a>
+</li>
+<li><a href="../../guide/using-middleware.html">Using middleware</a>
+</li>
+<li><a href="../../guide/overriding-express-api.html">Overriding the Express API</a>
+</li>
+<li><a href="../../guide/using-template-engines.html">Using template engines</a>
+</li>
+<li><a href="../../guide/error-handling.html">Error handling</a>
+</li>
+<li><a href="../../guide/debugging.html">Debugging</a>
+</li>
+<li><a href="../../guide/behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="../../guide/migrating-4.html">Moving to Express 4</a>
+</li>
+<li><a href="../../guide/migrating-5.html">Moving to Express 5</a>
+</li>
+<li><a href="../../guide/database-integration.html">Database integration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../../4x/api.html">API reference</a>
+<ul>
+<li><a href="../../5x/api.html">5.x (beta)</a>
+</li>
+<li><a href="../../4x/api.html">4.x</a>
+</li>
+<li><a href="../../3x/api.html">3.x (deprecated)</a>
+</li>
+<li><a href="../../../2x/index.html">2.x (deprecated)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../../advanced/developing-template-engines.html">Advanced topics</a>
+<ul>
+<li><a href="../../advanced/developing-template-engines.html">Template engines</a>
+</li>
+<li><a href="../../advanced/pm.html">Process managers</a>
+</li>
+<li><a href="../../advanced/security-updates.html">Security updates</a>
+</li>
+<li><a href="../../advanced/best-practice-security.html">Security best practices</a>
+</li>
+<li><a href="../../advanced/best-practice-performance.html">Performance best practices</a>
+</li>
+<li><a href="../../advanced/healthcheck-graceful-shutdown.html">Health checks and graceful shutdown</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../glossary.html" class="active">Resources</a>
+<ul>
+<li>
+<a href="../community.html">Community</a>
+</li>
+<li>
+<a href="../glossary.html">Glossary</a>
+</li>
+<li>
+<a href="../template-engines.html">Template Engines</a>
+</li>
+<li>
+<a href="../middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../utils.html">Utility modules</a>
+ </li>
+<li>
+<a href="../frameworks.html">Frameworks</a>
+</li>
+<li>
+<a href="../companies-using-express.html">Companies using Express</a>
+</li>
+<li>
+<a href="../open-source-using-express.html">Open-source projects</a>
+</li>
+<li>
+<a href="../learning.html">Additional learning</a>
+</li>
+<li>
+<a href="../contributing.html">Contributing to Express</a>
+</li>
+<li>
+<a href="../../changelog/4x.html">Release Change Log</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="page-doc" markdown="1">
+<div id="mw-container">
+<div id="mw-list">
+<ul>
+<li><a href="../../../resources/middleware/body-parser.html">body-parser</a></li>
+<li><a href="../../../resources/middleware/compression.html">compression</a></li>
+<li><a href="../../../resources/middleware/connect-rid.html">connect-rid</a></li>
+<li><a href="../../../resources/middleware/cookie-parser.html">cookie-parser</a></li>
+<li><a href="../../../resources/middleware/cookie-session.html">cookie-session</a></li>
+<li><a href="../../../resources/middleware/cors.html">cors</a></li>
+<li><a href="../../../resources/middleware/csurf.html">csurf</a></li>
+<li><a href="../../../resources/middleware/errorhandler.html">errorhandler</a></li>
+<li><a href="../../../resources/middleware/method-override.html">method-override</a></li>
+<li><a href="../../../resources/middleware/morgan.html">morgan</a></li>
+<li><a href="../../../resources/middleware/multer.html">multer</a></li>
+<li><a href="../../../resources/middleware/response-time.html">response-time</a></li>
+<li><a href="../../../resources/middleware/serve-favicon.html">serve-favicon</a></li>
+<li><a href="../../../resources/middleware/serve-index.html">serve-index</a></li>
+<li><a href="../../../resources/middleware/serve-static.html">serve-static</a></li>
+<li><a href="../../../resources/middleware/session.html">session</a></li>
+<li><a href="../../../resources/middleware/timeout.html">timeout</a></li>
+<li><a href="../../../resources/middleware/vhost.html">vhost</a></li>
+</ul>
+</div>
+<div id="middleware-content">
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i>
+<b>Note:</b> This page was generated from the
+<a target="_blank" href="https://github.com/expressjs/method-override">method-override README</a>.
+</div>
+<h1 id="method-override">method-override</h1>
+<p><a href="https://npmjs.org/package/method-override"><img src="https://img.shields.io/npm/v/method-override.svg" alt="NPM Version" /></a>
+<a href="https://npmjs.org/package/method-override"><img src="https://img.shields.io/npm/dm/method-override.svg" alt="NPM Downloads" /></a>
+<a href="https://travis-ci.org/expressjs/method-override"><img src="https://img.shields.io/travis/expressjs/method-override/master.svg" alt="Build Status" /></a>
+<a href="https://coveralls.io/r/expressjs/method-override?branch=master"><img src="https://img.shields.io/coveralls/expressjs/method-override/master.svg" alt="Test Coverage" /></a></p>
+<p>Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn’t support it.</p>
+<h2 id="install">Install</h2>
+<p>This is a <a href="https://nodejs.org/en/">Node.js</a> module available through the
+<a href="https://www.npmjs.com/">npm registry</a>. Installation is done using the
+<a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm install</code> command</a>:</p>
+<pre><code class="language-sh">$ npm install method-override
+</code></pre>
+<h2 id="api">API</h2>
+<p><strong>NOTE</strong> It is very important that this module is used <strong>before</strong> any module that
+needs to know the method of the request (for example, it <em>must</em> be used prior to
+the <code>csurf</code> module).</p>
+<h3 id="methodoverridegetter-options">methodOverride(getter, options)</h3>
+<p>Create a new middleware function to override the <code>req.method</code> property with a new
+value. This value will be pulled from the provided <code>getter</code>.</p>
+<ul>
+<li><code>getter</code> - The getter to use to look up the overridden request method for the request. (default: <code>X-HTTP-Method-Override</code>)</li>
+<li><code>options.methods</code> - The allowed methods the original request must be in to check for a method override value. (default: <code>['POST']</code>)</li>
+</ul>
+<p>If the found method is supported by node.js core, then <code>req.method</code> will be set to
+this value, as if it has originally been that value. The previous <code>req.method</code>
+value will be stored in <code>req.originalMethod</code>.</p>
+<h4 id="getter">getter</h4>
+<p>This is the method of getting the override value from the request. If a function is provided,
+the <code>req</code> is passed as the first argument, the <code>res</code> as the second argument and the method is
+expected to be returned. If a string is provided, the string is used to look up the method
+with the following rules:</p>
+<ul>
+<li>If the string starts with <code>X-</code>, then it is treated as the name of a header and that header
+is used for the method override. If the request contains the same header multiple times, the
+first occurrence is used.</li>
+<li>All other strings are treated as a key in the URL query string.</li>
+</ul>
+<h4 id="optionsmethods">options.methods</h4>
+<p>This allows the specification of what methods(s) the request <em>MUST</em> be in in order to check for
+the method override value. This defaults to only <code>POST</code> methods, which is the only method the
+override should arrive in. More methods may be specified here, but it may introduce security
+issues and cause weird behavior when requests travel through caches. This value is an array
+of methods in upper-case. <code>null</code> can be specified to allow all methods.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="override-using-a-header">override using a header</h3>
+<p>To use a header to override the method, specify the header name
+as a string argument to the <code>methodOverride</code> function. To then make
+the call, send a <code>POST</code> request to a URL with the overridden method
+as the value of that header. This method of using a header would
+typically be used in conjunction with <code>XMLHttpRequest</code> on implementations
+that do not support the method you are trying to use.</p>
+<pre><code class="language-js">var express = require('express')
+var methodOverride = require('method-override')
+var app = express()
+
+// override with the X-HTTP-Method-Override header in the request
+app.use(methodOverride('X-HTTP-Method-Override'))
+</code></pre>
+<p>Example call with header override using <code>XMLHttpRequest</code>:</p>
+
+<pre><code class="language-js">var xhr = new XMLHttpRequest()
+xhr.onload = onload
+xhr.open('post', '/resource', true)
+xhr.setRequestHeader('X-HTTP-Method-Override', 'DELETE')
+xhr.send()
+
+function onload () {
+  alert('got response: ' + this.responseText)
+}
+</code></pre>
+<h3 id="override-using-a-query-value">override using a query value</h3>
+<p>To use a query string value to override the method, specify the query
+string key as a string argument to the <code>methodOverride</code> function. To
+then make the call, send a <code>POST</code> request to a URL with the overridden
+method as the value of that query string key. This method of using a
+query value would typically be used in conjunction with plain HTML
+<code>&lt;form&gt;</code> elements when trying to support legacy browsers but still use
+newer methods.</p>
+<pre><code class="language-js">var express = require('express')
+var methodOverride = require('method-override')
+var app = express()
+
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'))
+</code></pre>
+<p>Example call with query override using HTML <code>&lt;form&gt;</code>:</p>
+<pre><code class="language-html">&lt;form method="POST" action="/resource?_method=DELETE"&gt;
+  &lt;button type="submit"&gt;Delete resource&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+<h3 id="multiple-format-support">multiple format support</h3>
+<pre><code class="language-js">var express = require('express')
+var methodOverride = require('method-override')
+var app = express()
+
+// override with different headers; last one takes precedence
+app.use(methodOverride('X-HTTP-Method')) //          Microsoft
+app.use(methodOverride('X-HTTP-Method-Override')) // Google/GData
+app.use(methodOverride('X-Method-Override')) //      IBM
+</code></pre>
+<h3 id="custom-logic">custom logic</h3>
+<p>You can implement any kind of custom logic with a function for the <code>getter</code>. The following
+implements the logic for looking in <code>req.body</code> that was in <code>method-override@1</code>:</p>
+<pre><code class="language-js">var bodyParser = require('body-parser')
+var express = require('express')
+var methodOverride = require('method-override')
+var app = express()
+
+// NOTE: when using req.body, you must fully parse the request body
+//       before you call methodOverride() in your middleware stack,
+//       otherwise req.body will not be populated.
+app.use(bodyParser.urlencoded())
+app.use(methodOverride(function (req, res) {
+  if (req.body &amp;&amp; typeof req.body === 'object' &amp;&amp; '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
+</code></pre>
+<p>Example call with query override using HTML <code>&lt;form&gt;</code>:</p>
+<pre><code class="language-html">&lt;!-- enctype must be set to the type you will parse before methodOverride() --&gt;
+&lt;form method="POST" action="/resource" enctype="application/x-www-form-urlencoded"&gt;
+  &lt;input type="hidden" name="_method" value="DELETE"&gt;
+  &lt;button type="submit"&gt;Delete resource&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+<h2 id="license">License</h2>
+<p><a href="LICENSE.html">MIT</a></p>
+</div>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+Documentation translations provided by <a href="../../../../strongloop.com/index.html">StrongLoop/IBM</a>:
+<a href="../../../fr/index.html">French</a>, <a href="../../../de/index.html">German</a>, <a href="../../../es/index.html">Spanish</a>, <a href="../../../it/index.html">Italian</a>, <a href="../../../ja/index.html">Japanese</a>, <a href="../../../ru/index.html">Russian</a>, <a href="../../../zh-cn/index.html">Chinese</a>, <a href="../../../zh-tw/index.html">Traditional Chinese</a>, <a href="../../../ko/index.html">Korean</a>, <a href="../../../pt-br/index.html">Portuguese</a>.
+<br>
+Community translation available for: <a href="../../../sk/index.html">Slovak</a>, <a href="../../../uk/index.html">Ukrainian</a>, <a href="../../../uz/index.html">Uzbek</a>, <a href="../../../tr/index.html">Turkish</a> and <a href="../../../th/index.html">Thai</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> is a project of the <a href="https://openjsf.org">OpenJS Foundation</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork the website on GitHub</a>.</div>
+<div>Copyright &copy; 2017 StrongLoop, IBM, and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="23c83a0d1ec5b927aea3144d-text/javascript"></script>
+<script type="23c83a0d1ec5b927aea3144d-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:en'] }
+})" async></script>
+<script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="23c83a0d1ec5b927aea3144d-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/en/resources/middleware/method-override.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

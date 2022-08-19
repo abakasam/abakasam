@@ -1,37 +1,41 @@
-Webser - Simple node web server
+# Webser
 
-DEBUG=express:* ../iojs-3.3.1/node web.js
+Simple node web server
 
-// TODO: Fix express callback with next in request
-express
-function(request, response, next) {
-	request.next = next
-	request.next()
-}
+## Running
 
-// TODO: Parse URL parameters from slug
-MDN URL
+	PUBLIC_HTML=/home/cabox/workspace/abakasam/local/public_html
+	export PUBLIC_HTML
+	node web.js
 
-// TODO: Find public_html from command not code
-public_html	 (website)
+## Debug
 
-// TODO: Local node databases not system or linux
-database (local)
- programming MongoDB
- information MySQL
+	DEBUG=express:* ../iojs-3.3.1/node web.js
 
-Multer Upload Example
+## Features
 
-const express = require('express')
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+Iniatiate mutliple features by configuration files per application
 
-const app = express()
-app.get('/', function(req, res) { res.send('<form action="/profile" method="post" enctype="multipart/form-data"><input type="file" name="avatar" /><input type="submit"/></form>') })
-app.post('/profile', upload.single('avatar'), function (req, res, next) {res.send('hello')})
-app.post('/photos/upload', upload.array('photos', 12), function (req, res, next) {res.send('hello2')})
+### Set headers
+### Serve directory
+### URL path
+### Not Found
+### Display file
+### Download file
+### Query database
+### Query metadata
+### Process form
+### Upload file
+### Default public_html 
 
-const cpUpload = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'gallery', maxCount: 8 }])
-app.post('/cool-profile', cpUpload, function (req, res, next) {res.send('hello3')})
+## Documentation
 
-app.listen(3000)
+	PUBLIC_HTML=/home/cabox/workspace/abakasam/local/public_html
+	export PUBLIC_HTML
+	cp express.docs.zip $PUBLIC_HTML
+	cd $PUBLIC_HTML
+	mkdir express
+	mv express.docs.zip express
+	cd express
+	unzip express.docs.zip
+	http://localhost:3000/express/expressjs.com

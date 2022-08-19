@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html lang="uz" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/uz/guide/routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express routerlar</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/uz.html">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Bosh sahifa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Boshlang'ich ishlar</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+O'rnatish
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express generator
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Oddiy routing
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statik fayllar
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Qo'llanma</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+</li>
+<li><a href="writing-middleware.html">Middleware yozish</a>
+</li>
+<li><a href="using-middleware.html">Middleware ishlatish</a>
+</li>
+<li><a href="using-template-engines.html">Template engine ishlatish</a>
+</li>
+<li><a href="error-handling.html">Xatolarni qayta ishlash</a>
+</li>
+<li><a href="debugging.html">Debug qilish</a>
+</li>
+<li><a href="behind-proxies.html">Express proksilar bilan</a>
+</li>
+<li><a href="migrating-4.html">Express 4ga o'tish</a>
+</li>
+<li><a href="migrating-5.html">Express 5ga o'tish</a>
+</li>
+<li><a href="database-integration.html">Ma'lumotlar omboriga ulash</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API qo'llanma</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (eskirgan)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (eskirgan)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Advanced topics</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Template engines</a>
+</li>
+<li><a href="../advanced/pm.html">Using process managers</a>
+</li>
+<li><a href="../advanced/security-updates.html">Security updates</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Security best practices</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Performance best practices</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Resources</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossary</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Community</a>
+</li>
+<li><a href="../resources/learning.html">Additional learning</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="../../index.html">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="routerlar">Routerlar</h1>
+<p>Routing refers to the definition of end points (URIs) to an application and how it responds to client requests.</p>
+<p>A route is a combination of a URI, a HTTP request method (GET, POST, and so on), and one or more handlers for the endpoint. It takes the following structure <code>app.METHOD(path, [callback...], callback)</code>, where <code>app</code> is an instance of <code>express</code>, <code>METHOD</code> is an <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP request method</a>, <code>path</code> is a path on the server, and <code>callback</code> is the function executed when the route is matched.</p>
+<p>The following is an example of a very basic route.</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express')
+var app = express()
+
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/', function(req, res) {
+  res.send('hello world')
+})
+</code></pre>
+<h2 id="route-methods">Route methods</h2>
+<p>A route method is derived from one of the HTTP methods, and is attached to an instance of <code>express</code>.</p>
+<p>The following is an example of routes defined for the GET and the POST methods to the root of the app.</p>
+<pre><code class="language-javascript" translate="no">
+// GET method route
+app.get('/', function (req, res) {
+  res.send('GET request to the homepage')
+})
+
+// POST method route
+app.post('/', function (req, res) {
+  res.send('POST request to the homepage')
+})
+
+</code></pre>
+<p>Express supports the following routing methods corresponding to HTTP methods: <code>get</code>, <code>post</code>, <code>put</code>, <code>head</code>, <code>delete</code>, <code>options</code>, <code>trace</code>, <code>copy</code>, <code>lock</code>, <code>mkcol</code>, <code>move</code>, <code>purge</code>, <code>propfind</code>, <code>proppatch</code>, <code>unlock</code>, <code>report</code>, <code>mkactivity</code>, <code>checkout</code>, <code>merge</code>, <code>m-search</code>, <code>notify</code>, <code>subscribe</code>, <code>unsubscribe</code>, <code>patch</code>, <code>search</code>, and <code>connect</code>.</p>
+<div class="doc-box doc-info">
+<p>To route methods which translate to invalid JavaScript variable names, use the bracket notation. For example,
+<code>app['m-search']('/', function ...</code></p>
+</div>
+<p>There is a special routing method, <code>app.all()</code>, which is not derived from any HTTP method. It is used for loading middleware at a path for all request methods.</p>
+<p>In the following example, the handler will be executed for requests to “/secret” whether using GET, POST, PUT, DELETE, or any other HTTP request method.</p>
+<pre><code class="language-javascript" translate="no">
+app.all('/secret', function (req, res, next) {
+  console.log('Accessing the secret section ...')
+  next() // pass control to the next handler
+})
+</code></pre>
+<h2 id="route-paths">Route paths</h2>
+<p>Route paths, in combination with a request method, define the endpoints at which requests can be made to. They can be strings, string patterns, or regular expressions.</p>
+<div class="doc-box doc-warn">
+<p>Query strings are not a part of the route path.</p>
+</div>
+<p>Examples of route paths based on strings:</p>
+<pre><code class="language-javascript" translate="no">
+// with match request to the root
+app.get('/', function (req, res) {
+  res.send('root')
+})
+
+// will match requests to /about
+app.get('/about', function (req, res) {
+  res.send('about')
+})
+
+// will match request to /random.text
+app.get('/random.text', function (req, res) {
+  res.send('random.text')
+})
+</code></pre>
+<p>Examples of route paths based on string patterns:</p>
+<pre><code class="language-javascript" translate="no">
+// will match acd and abcd
+app.get('/ab?cd', function(req, res) {
+  res.send('ab?cd')
+})
+
+// will match abcd, abbcd, abbbcd, and so on
+app.get('/ab+cd', function(req, res) {
+  res.send('ab+cd')
+})
+
+// will match abcd, abxcd, abRABDOMcd, ab123cd, and so on
+app.get('/ab*cd', function(req, res) {
+  res.send('ab*cd')
+})
+
+// will match /abe and /abcde
+app.get('/ab(cd)?e', function(req, res) {
+ res.send('ab(cd)?e')
+})
+</code></pre>
+<div class="doc-box doc-info">
+<p>The characters ?, +, *, and () are subsets of their Regular Expression counterparts. The hyphen (-) and the dot (.) are interpreted literally by string-based paths.</p>
+</div>
+<p>Examples of route paths based on regular expressions:</p>
+<pre><code class="language-javascript" translate="no">
+// will match anything with an a in the route name:
+app.get(/a/, function(req, res) {
+  res.send('/a/')
+})
+
+// will match butterfly, dagonfly; but not butterflyman, dragonfly man, and so on
+app.get(/.*fly$/, function(req, res) {
+  res.send('/.*fly$/')
+})
+</code></pre>
+<h2 id="route-handlers">Route handlers</h2>
+<p>You can provide multiple callback functions that behave just like <a href="../../guide/using-middleware.html">middleware</a> to handle a request. The only exception is that these callbacks may invoke <code>next('route')</code> to bypass the remaining route callback(s). You can use this mechanism to impose pre-conditions on a route, then pass control to subsequent routes if there’s no reason to proceed with the current route.</p>
+<p>Route handlers can come in the form of a function, an array of functions, or various combinations of both, as shown the following examples.</p>
+<p>A route can be handled using a single callback function:</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/example/a', function (req, res) {
+  res.send('Hello from A!')
+})
+</code></pre>
+<p>A route can be handled using a more than one callback function (make sure to specify the <code>next</code> object):</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/example/b', function (req, res, next) {
+  console.log('response will be sent by the next function ...')
+  next()
+}, function (req, res) {
+  res.send('Hello from B!')
+})
+</code></pre>
+<p>A route can be handled using an array of callback functions:</p>
+<pre><code class="language-javascript" translate="no">
+var cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
+}
+
+var cb2 = function (req, res) {
+  res.send('Hello from C!')
+}
+
+app.get('/example/c', [cb0, cb1, cb2])
+</code></pre>
+<p>A route can be handled using a combination of array of functions and independent functions:</p>
+<pre><code class="language-javascript" translate="no">
+var cb0 = function (req, res, next) {
+  console.log('CB0')
+  next()
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1')
+  next()
+}
+
+app.get('/example/d', [cb0, cb1], function (req, res, next) {
+  console.log('response will be sent by the next function ...')
+  next()
+}, function (req, res) {
+  res.send('Hello from D!')
+})
+</code></pre>
+<h2 id="response-methods">Response methods</h2>
+<p>The methods on the response object (<code>res</code>) in the following table can send a response to the client and terminate the request response cycle. If none of them is called from a route handler, the client request will be left hanging.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../4x/api.html#res.download">res.download()</a></td>
+<td>Prompt a file to be downloaded.</td>
+</tr>
+<tr>
+<td><a href="../../4x/api.html#res.end">res.end()</a></td>
+<td>End the response process.</td>
+</tr>
+<tr>
+<td><a href="../../4x/api.html#res.json">res.json()</a></td>
+<td>Send a JSON response.</td>
+</tr>
+<tr>
+<td><a href="../../4x/api.html#res.jsonp">res.jsonp()</a></td>
+<td>Send a JSON response with JSONP support.</td>
+</tr>
+<tr>
+<td><a href="../../4x/api.html#res.redirect">res.redirect()</a></td>
+<td>Redirect a request.</td>
+</tr>
+<tr>
+<td><a href="../../4x/api.html#res.render">res.render()</a></td>
+<td>Render a view template.</td>
+</tr>
+<tr>
+<td><a href="../../4x/api.html#res.send">res.send()</a></td>
+<td>Send a response of various types.</td>
+</tr>
+<tr>
+<td><a href="../../4x/api.html#res.sendFile">res.sendFile</a></td>
+<td>Send a file as an octet stream.</td>
+</tr>
+<tr>
+<td><a href="../../4x/api.html#res.sendStatus">res.sendStatus()</a></td>
+<td>Set the response status code and send its string representation as the response body.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="app-route">app.route()</h2>
+<p>Chainable route handlers for a route path can be created using <code>app.route()</code>.
+Since the path is specified at a single location, it
+helps to create modular routes and reduce redundancy and typos. For more
+information on routes, see <a href="../../4x/api.html#router">Router() documentation</a>.</p>
+<p>Here is an example of chained route handlers defined using <code>app.route()</code>.</p>
+<pre><code class="language-javascript" translate="no">
+app.route('/book')
+  .get(function(req, res) {
+    res.send('Get a random book');
+  })
+  .post(function(req, res) {
+    res.send('Add a book');
+  })
+  .put(function(req, res) {
+    res.send('Update the book');
+  })
+</code></pre>
+<h2 id="express-router">express.Router</h2>
+<p>The <code>express.Router</code> class can be used to create modular mountable
+route handlers. A <code>Router</code> instance is a complete middleware and
+routing system; for this reason it is often referred to as a “mini-app”.</p>
+<p>The following example creates a router as a module, loads a middleware in
+it, defines some routes, and mounts it on a path on the main app.</p>
+<p>Create a router file named <code>birds.js</code> in the app directory,
+with the following content:</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var router = express.Router();
+
+// middleware specific to this router
+router.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+})
+// define the home page route
+router.get('/', function(req, res) {
+  res.send('Birds home page');
+})
+// define the about route
+router.get('/about', function(req, res) {
+  res.send('About birds');
+})
+
+module.exports = router;
+</code></pre>
+<p>Then, load the router module in the app:</p>
+<pre><code class="language-javascript" translate="no">
+var birds = require('./birds');
+...
+app.use('/birds', birds);
+</code></pre>
+<p>The app will now be able to handle requests to <code>/birds</code> and
+<code>/birds/about</code>, along with calling the <code>timeLog</code>
+middleware specific to the route.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bu <a href="https://openjsf.org">OpenJS fondining</a> loyihasi.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork the website on GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script type="a54bf14f210e2de4dc197458-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:uz'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="a54bf14f210e2de4dc197458-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/uz/guide/routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:42 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

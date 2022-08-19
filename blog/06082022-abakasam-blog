@@ -1,3 +1,23 @@
 06082022 Configure SSH Login Codeanywhere
 
 http://www.maths.utas.edu.au/People/Hill/ssh-config.html
+
+server
+	authorized_keys
+	config
+	known_hosts
+
+client
+	id_rsa
+	id_rsa.pub
+
+client
+	ssh-keygen -t rsa
+	id_rsa 
+	id_rsa.pub
+
+server
+	cat id_rsa.pub >> ~/.ssh/authorized_keys
+
+client
+	ssh <username>@<server> -p <port> # ssh cabox@host30.codeanyhost.com -p 42293

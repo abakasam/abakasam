@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="ja" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ja/guide/using-template-engines.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express でのテンプレート・エンジンの使用</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ja.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">ホーム</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">概説</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+インストール
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express ジェネレーター
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本的なルーティング
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静的ファイル
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">ガイド</a>
+<ul>
+<li><a href="routing.html">ルーティング</a>
+</li>
+<li><a href="writing-middleware.html">ミドルウェアの作成</a>
+</li>
+<li><a href="using-middleware.html">ミドルウェアの使用</a>
+</li>
+<li><a href="using-template-engines.html">テンプレート・エンジンの使用</a>
+</li>
+<li><a href="error-handling.html">エラー処理</a>
+</li>
+<li><a href="debugging.html">デバッグ</a>
+</li>
+<li><a href="behind-proxies.html">プロキシーの背後の Express</a>
+</li>
+<li><a href="migrating-4.html">Express 4 への移行</a>
+</li>
+<li><a href="migrating-5.html">Express 5 への移行</a>
+</li>
+<li><a href="database-integration.html">データベースの統合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API リファレンス</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (非推奨)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (非推奨)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高度なトピック</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">テンプレート・エンジン</a>
+</li>
+<li><a href="../advanced/pm.html">プロセス・マネージャーの使用</a>
+</li>
+<li><a href="../advanced/security-updates.html">セキュリティー更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">セキュリティーに関するベスト・プラクティス</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">パフォーマンスに関するベスト・プラクティス</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">リソース</a>
+<ul>
+<li><a href="../resources/glossary.html">用語集</a>
+</li>
+<li><a href="../resources/middleware.html">ミドルウェア</a>
+</li>
+<li><a href="../resources/community.html">コミュニティー</a>
+</li>
+<li><a href="../resources/learning.html">追加学習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p><a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>によって提供されるこの翻訳.</p>
+本書は、英語の資料と比較すると古くなっている可能性があります。最新の更新については、<a href="../../index.html">英語版の資料</a>を参照してください。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="express-でのテンプレートエンジンの使用">Express でのテンプレート・エンジンの使用</h1>
+<p><em>テンプレートエンジン</em> を使用すると、アプリケーションで静的なテンプレートファイルを使用できます。実行時に、テンプレートエンジンはテンプレートファイルの変数を実際の値に置き換え、テンプレートをクライアントに送信するHTMLファイルに変換します。このアプローチにより、HTMLページの設計が容易になります。</p>
+<p>Expressで動作する一般的なテンプレートエンジンには、<a href="https://pugjs.org/api/getting-started.html">Pug</a>、<a href="https://www.npmjs.com/package/mustache">Mustache</a>、<a href="https://www.npmjs.com/package/ejs">EJS</a>があります。<a href="../starter/generator.html">Expressアプリケーションジェネレータ</a>は<a href="https://www.npmjs.com/package/jade">Jade</a>をデフォルトとして使用しますが、いくつかの他のものもサポートしています。</p>
+<p>Expressで使用できるテンプレートエンジンのリストについては、<a href="https://github.com/expressjs/express/wiki#template-engines">テンプレートエンジン (Express wiki)</a>を参照してください。また、<a href="https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/">JavaScript テンプレートエンジンの比較: Jade, Mustache, Dust など</a>も参照してください。</p>
+<div class="doc-box doc-notice">
+<p><strong>注</strong>：Jadeは<a href="https://www.npmjs.com/package/pug">Pug</a>に改名されました。あなたはアプリで引き続きJadeを使うことができ、うまく動くでしょう。しかしながら、テンプレートエンジンを最新のバージョンにアップデートしたい場合は、アプリでJadeをPugに置き換える必要があります。</p>
+</div>
+<p>テンプレートファイルをレンダリングするには、次の<a href="../4x/api.html#app.set">アプリケーション設定プロパティ</a>を設定し、ジェネレータで作成されたデフォルトアプリの<code>app.js</code>にセットします。</p>
+<ul>
+<li><code>views</code>はテンプレートファイルが置かれているディレクトリ。例：<code>app.set('views', './views')</code>。これは、デフォルトではアプリケーションのルートディレクトリ内の<code>views</code>ディレクトリになります</li>
+<li><code>view engine</code>は使用するテンプレートエンジン。たとえば、Pugテンプレートエンジンを使用するには、<code>app.set('view engine', 'pug')</code>を使用します</li>
+</ul>
+<p>次に、対応するテンプレートエンジンnpmパッケージをインストールします。たとえばPugをインストールするには：</p>
+<pre><code class="language-console">$ npm install pug --save
+</code></pre>
+<div class="doc-box doc-notice">
+<p>Pug などの Express 対応テンプレート・エンジンは、<code>__express(filePath, options, callback)</code> という関数をエクスポートします。この関数は、テンプレート・コードをレンダリングするために <code>res.render()</code> 関数によって呼び出されます。
+一部のテンプレート・エンジンは、この規則に従いません。<a href="https://www.npmjs.org/package/consolidate">Consolidate.js</a> ライブラリーは、すべての一般的な Node.js テンプレート・エンジンをマップすることで、この規則に従います。そのため、Express 内でシームレスに動作します。</p>
+</div>
+<p>ビュー・エンジンが設定された後は、アプリケーションでエンジンを指定したり、テンプレート・エンジンをロードしたりする必要はありません。(上記の例に対応した) 下記のように、Express がモジュールを内部的にロードします。</p>
+<pre><code class="language-js">app.set('view engine', 'pug')
+</code></pre>
+<p>以下の内容で <code>index.pug</code> という Pug テンプレート・ファイルを <code>views</code> ディレクトリーに作成します。</p>
+<pre><code class="language-pug">html
+  head
+    title= title
+  body
+    h1= message
+</code></pre>
+<p>次に、<code>index.pug</code> ファイルをレンダリングするためのルートを作成します。<code>view engine</code> プロパティーが設定されていない場合は、<code>view</code> ファイルの拡張子を指定する必要があります。そうでない場合は、省略できます。</p>
+<pre><code class="language-js">app.get('/', (req, res) =&gt; {
+  res.render('index', { title: 'Hey', message: 'Hello there!' })
+})
+</code></pre>
+<p>ホーム・ページに要求すると、<code>index.pug</code> ファイルは HTML としてレンダリングされます。</p>
+<p>注：view engine のキャッシュは、テンプレートの出力内容をキャッシュしません。基本となるテンプレート自体だけです。このビューは、キャッシュがオンの場合でも、すべてのリクエストで再レンダリングされます。</p>
+<p>Express でのテンプレート・エンジンの動作について詳しくは、<a href="../advanced/developing-template-engines.html">Express 用のテンプレート・エンジンの開発</a>を参照してください。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>は、<a href="https://openjsf.org">OpenJSの財団</a>のプロジェクトです。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub で Web サイトを fork します</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc.、およびその他の expressjs.com コントリビューター。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> この 作品 は <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">クリエイティブ・コモンズ 表示 - 継承 3.0 アメリカ合衆国 ライセンスの下に提供されています。</a>
+</div>
+</footer>
+<script type="6c4d044c96fe04688eb5faf2-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ja'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="6c4d044c96fe04688eb5faf2-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ja/guide/using-template-engines.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

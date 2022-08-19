@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="zh-tw" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-tw/starter/basic-routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 基本路由</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-tw.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">首頁</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="installing.html" class="active">入門</a>
+<ul>
+<li>
+<a href="installing.html">
+安裝
+</a>
+</li>
+<li>
+<a href="hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="generator.html">
+Express 產生器
+</a>
+</li>
+<li>
+<a href="basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="static-files.html">
+靜態檔案
+</a>
+</li>
+<li>
+<a href="faq.html">
+常見問題 (FAQ)
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">手冊</a>
+<ul>
+<li><a href="../guide/routing.html">路由</a>
+</li>
+<li><a href="../guide/writing-middleware.html">撰寫中介軟體</a>
+</li>
+<li><a href="../guide/using-middleware.html">使用中介軟體</a>
+</li>
+<li><a href="../guide/using-template-engines.html">使用範本引擎</a>
+</li>
+<li><a href="../guide/error-handling.html">錯誤處理</a>
+</li>
+<li><a href="../guide/debugging.html">除錯</a>
+</li>
+<li><a href="../guide/behind-proxies.html">位於 Proxy 背後的 Express</a>
+</li>
+<li><a href="../guide/migrating-4.html">移至 Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">移至 Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">資料庫整合</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 參照</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（已淘汰）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（已淘汰）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">進階主題</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">範本引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用程序管理程式</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳作法</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">效能最佳作法</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">資源</a>
+<ul>
+<li><a href="../resources/glossary.html">名詞解釋</a>
+</li>
+<li><a href="../resources/middleware.html">中介軟體</a>
+</li>
+<li><a href="../resources/community.html">社群</a>
+</li>
+<li><a href="../resources/learning.html">額外學習</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>這個翻譯<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相對於英文版說明文件，本文件可能已不合時宜。如需最新的更新，請參閱<a href="../../index.html">英文版說明文件</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="基本路由">基本路由</h1>
+<p><em>路由</em>是指判斷應用程式如何回應用戶端對特定端點的要求，而這個特定端點是一個 URI（或路徑）與一個特定的 HTTP 要求方法（GET、POST 等）。</p>
+<p>每一個路由可以有一或多個處理程式函數，當路由相符時，就會執行這些函數。</p>
+<p>路由定義的結構如下：</p>
+<pre><code class="language-javascript" translate="no">
+app.METHOD(PATH, HANDLER)
+</code>
+</pre>
+<p>其中：</p>
+<ul>
+<li><code>app</code> 是 <code>express</code> 的實例。</li>
+<li><code>METHOD</code> 是 <a href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">HTTP 要求方法</a>。</li>
+<li><code>PATH</code> 是伺服器上的路徑。</li>
+<li><code>HANDLER</code> 是當路由相符時要執行的函數。</li>
+</ul>
+<div class="doc-box doc-notice">
+<p>這項指導教學假設已建立名稱為 <code>app</code> 的 <code>express</code> 實例，且伺服器正在執行。如果您不熟悉如何建立和啟動應用程式，請參閱 <a href="hello-world.html">Hello world 範例</a>。</p>
+</div>
+<p>下列範例說明如何定義簡單的路由。</p>
+<p>首頁中以 <code>Hello World!</code> 回應。</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+</code>
+</pre>
+<p>對根路由 (<code>/</code>)（應用程式的首頁）發出 POST 要求時的回應：</p>
+<pre><code class="language-javascript" translate="no">
+app.post('/', function (req, res) {
+  res.send('Got a POST request');
+});
+</code>
+</pre>
+<p>對 <code>/user</code> 路由發出 PUT 要求時的回應：</p>
+<pre><code class="language-javascript" translate="no">
+app.put('/user', function (req, res) {
+  res.send('Got a PUT request at /user');
+});
+</code>
+</pre>
+<p>對 <code>/user</code> 路由發出 DELETE 要求時的回應：</p>
+<pre><code class="language-javascript" translate="no">
+app.delete('/user', function (req, res) {
+  res.send('Got a DELETE request at /user');
+});
+</code>
+</pre>
+<p>如需路由的詳細資料，請參閱<a href="../guide/routing.html">路由手冊</a>。</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金會的</a>一個項目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">GitHub 上的網站分支</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc. 與其他 expressjs.com 貢獻者。</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="創用 CC 授權條款" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本著作係採用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">創用 CC 姓名標示-相同方式分享 3.0 美國 授權條款</a>授權.
+</div>
+</footer>
+<script type="efa4add1ee71d09f7dffaa3b-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-tw'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="efa4add1ee71d09f7dffaa3b-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-tw/starter/basic-routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

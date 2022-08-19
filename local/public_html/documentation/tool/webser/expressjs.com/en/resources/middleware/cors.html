@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/en/resources/middleware/cors.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express cors middleware</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../../images/favicon.png" />
+<link rel="stylesheet" href="../../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../../css/dropit.css">
+<link rel="stylesheet" href="../../../css/prism.css">
+<link rel="stylesheet" href="../../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../../css/en.css">
+<link rel="stylesheet" href="../../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../../js/app.js"></script>
+<script data-cfasync="false" src="../../../js/retina.js"></script>
+<script data-cfasync="false" src="../../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../../../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../../starter/installing.html">Getting started</a>
+<ul>
+<li>
+<a href="../../starter/installing.html">
+Installing
+</a>
+</li>
+<li>
+<a href="../../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../../starter/generator.html">
+Express generator
+</a>
+</li>
+<li>
+<a href="../../starter/basic-routing.html">
+Basic routing
+</a>
+</li>
+<li>
+<a href="../../starter/static-files.html">
+Static files
+</a>
+</li>
+<li>
+<a href="../../starter/examples.html">
+More examples
+</a>
+</li>
+<li>
+<a href="../../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../../guide/routing.html">Guide</a>
+<ul>
+<li><a href="../../guide/routing.html">Routing</a>
+</li>
+<li><a href="../../guide/writing-middleware.html">Writing middleware</a>
+</li>
+<li><a href="../../guide/using-middleware.html">Using middleware</a>
+</li>
+<li><a href="../../guide/overriding-express-api.html">Overriding the Express API</a>
+</li>
+<li><a href="../../guide/using-template-engines.html">Using template engines</a>
+</li>
+<li><a href="../../guide/error-handling.html">Error handling</a>
+</li>
+<li><a href="../../guide/debugging.html">Debugging</a>
+</li>
+<li><a href="../../guide/behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="../../guide/migrating-4.html">Moving to Express 4</a>
+</li>
+<li><a href="../../guide/migrating-5.html">Moving to Express 5</a>
+</li>
+<li><a href="../../guide/database-integration.html">Database integration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../../4x/api.html">API reference</a>
+<ul>
+<li><a href="../../5x/api.html">5.x (beta)</a>
+</li>
+<li><a href="../../4x/api.html">4.x</a>
+</li>
+<li><a href="../../3x/api.html">3.x (deprecated)</a>
+</li>
+<li><a href="../../../2x/index.html">2.x (deprecated)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../../advanced/developing-template-engines.html">Advanced topics</a>
+<ul>
+<li><a href="../../advanced/developing-template-engines.html">Template engines</a>
+</li>
+<li><a href="../../advanced/pm.html">Process managers</a>
+</li>
+<li><a href="../../advanced/security-updates.html">Security updates</a>
+</li>
+<li><a href="../../advanced/best-practice-security.html">Security best practices</a>
+</li>
+<li><a href="../../advanced/best-practice-performance.html">Performance best practices</a>
+</li>
+<li><a href="../../advanced/healthcheck-graceful-shutdown.html">Health checks and graceful shutdown</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../glossary.html" class="active">Resources</a>
+<ul>
+<li>
+<a href="../community.html">Community</a>
+</li>
+<li>
+<a href="../glossary.html">Glossary</a>
+</li>
+<li>
+<a href="../template-engines.html">Template Engines</a>
+</li>
+<li>
+<a href="../middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../utils.html">Utility modules</a>
+</li>
+<li>
+<a href="../frameworks.html">Frameworks</a>
+</li>
+<li>
+<a href="../companies-using-express.html">Companies using Express</a>
+</li>
+<li>
+<a href="../open-source-using-express.html">Open-source projects</a>
+</li>
+<li>
+<a href="../learning.html">Additional learning</a>
+</li>
+<li>
+<a href="../contributing.html">Contributing to Express</a>
+</li>
+<li>
+<a href="../../changelog/4x.html">Release Change Log</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="page-doc" markdown="1">
+<div id="mw-container">
+<div id="mw-list">
+<ul>
+<li><a href="../../../resources/middleware/body-parser.html">body-parser</a></li>
+<li><a href="../../../resources/middleware/compression.html">compression</a></li>
+<li><a href="../../../resources/middleware/connect-rid.html">connect-rid</a></li>
+<li><a href="../../../resources/middleware/cookie-parser.html">cookie-parser</a></li>
+<li><a href="../../../resources/middleware/cookie-session.html">cookie-session</a></li>
+<li><a href="../../../resources/middleware/cors.html">cors</a></li>
+<li><a href="../../../resources/middleware/csurf.html">csurf</a></li>
+<li><a href="../../../resources/middleware/errorhandler.html">errorhandler</a></li>
+<li><a href="../../../resources/middleware/method-override.html">method-override</a></li>
+<li><a href="../../../resources/middleware/morgan.html">morgan</a></li>
+<li><a href="../../../resources/middleware/multer.html">multer</a></li>
+<li><a href="../../../resources/middleware/response-time.html">response-time</a></li>
+<li><a href="../../../resources/middleware/serve-favicon.html">serve-favicon</a></li>
+<li><a href="../../../resources/middleware/serve-index.html">serve-index</a></li>
+<li><a href="../../../resources/middleware/serve-static.html">serve-static</a></li>
+<li><a href="../../../resources/middleware/session.html">session</a></li>
+<li><a href="../../../resources/middleware/timeout.html">timeout</a></li>
+<li><a href="../../../resources/middleware/vhost.html">vhost</a></li>
+</ul>
+</div>
+<div id="middleware-content">
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i>
+<b>Note:</b> This page was generated from the
+<a target="_blank" href="https://github.com/expressjs/cors">cors README</a>.
+</div>
+<h1 id="cors">cors</h1>
+<p><a href="https://npmjs.org/package/cors"><img src="https://img.shields.io/npm/v/cors.svg" alt="NPM Version" /></a>
+<a href="https://npmjs.org/package/cors"><img src="https://img.shields.io/npm/dm/cors.svg" alt="NPM Downloads" /></a>
+<a href="https://github.com/expressjs/cors?query=workflow%3Aci"><img src="https://img.shields.io/github/workflow/status/expressjs/cors/ci/master?label=ci" alt="Build Status" /></a>
+<a href="https://coveralls.io/r/expressjs/cors?branch=master"><img src="https://img.shields.io/coveralls/expressjs/cors/master.svg" alt="Test Coverage" /></a></p>
+<p>CORS is a node.js package for providing a <a href="http://www.senchalabs.org/connect/">Connect</a>/<a href="../../../index.html">Express</a> middleware that can be used to enable <a href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a> with various options.</p>
+<p><strong><a href="https://twitter.com/intent/user?screen_name=troygoode">Follow me (@troygoode) on Twitter!</a></strong></p>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#simple-usage-enable-all-cors-requests">Simple Usage</a></li>
+<li><a href="#enable-cors-for-a-single-route">Enable CORS for a Single Route</a></li>
+<li><a href="#configuring-cors">Configuring CORS</a></li>
+<li><a href="#configuring-cors-w-dynamic-origin">Configuring CORS w/ Dynamic Origin</a></li>
+<li><a href="#enabling-cors-pre-flight">Enabling CORS Pre-Flight</a></li>
+<li><a href="#configuring-cors-asynchronously">Configuring CORS Asynchronously</a></li>
+</ul>
+</li>
+<li><a href="#configuration-options">Configuration Options</a></li>
+<li><a href="#demo">Demo</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#author">Author</a></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>This is a <a href="https://nodejs.org/en/">Node.js</a> module available through the
+<a href="https://www.npmjs.com/">npm registry</a>. Installation is done using the
+<a href="https://docs.npmjs.com/getting-started/installing-npm-packages-locally"><code>npm install</code> command</a>:</p>
+<pre><code class="language-sh">$ npm install cors
+</code></pre>
+<h2 id="usage">Usage</h2>
+<h3 id="simple-usage-enable-all-cors-requests">Simple Usage (Enable <em>All</em> CORS Requests)</h3>
+<pre><code class="language-javascript">var express = require('express')
+var cors = require('cors')
+var app = express()
+
+app.use(cors())
+
+app.get('/products/:id', function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
+})
+
+app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
+</code></pre>
+<h3 id="enable-cors-for-a-single-route">Enable CORS for a Single Route</h3>
+<pre><code class="language-javascript">var express = require('express')
+var cors = require('cors')
+var app = express()
+
+app.get('/products/:id', cors(), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for a Single Route'})
+})
+
+app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
+</code></pre>
+<h3 id="configuring-cors">Configuring CORS</h3>
+<pre><code class="language-javascript">var express = require('express')
+var cors = require('cors')
+var app = express()
+
+var corsOptions = {
+  origin: 'http://example.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.get('/products/:id', cors(corsOptions), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for only example.com.'})
+})
+
+app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
+</code></pre>
+<h3 id="configuring-cors-w-dynamic-origin">Configuring CORS w/ Dynamic Origin</h3>
+<p>This module supports validating the origin dynamically using a function provided
+to the <code>origin</code> option. This function will be passed a string that is the origin
+(or <code>undefined</code> if the request has no origin), and a <code>callback</code> with the signature
+<code>callback(error, origin)</code>.</p>
+<p>The <code>origin</code> argument to the callback can be any value allowed for the <code>origin</code>
+option of the middleware, except a function. See the
+<a href="#configuration-options">configuration options</a> section for more information on all
+the possible value types.</p>
+<p>This function is designed to allow the dynamic loading of allowed origin(s) from
+a backing datasource, like a database.</p>
+<pre><code class="language-javascript">var express = require('express')
+var cors = require('cors')
+var app = express()
+
+var corsOptions = {
+  origin: function (origin, callback) {
+    // db.loadOrigins is an example call to load
+    // a list of origins from a backing database
+    db.loadOrigins(function (error, origins) {
+      callback(error, origins)
+    })
+  }
+}
+
+app.get('/products/:id', cors(corsOptions), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for an allowed domain.'})
+})
+
+app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
+</code></pre>
+<h3 id="enabling-cors-pre-flight">Enabling CORS Pre-Flight</h3>
+<p>Certain CORS requests are considered ‘complex’ and require an initial
+<code>OPTIONS</code> request (called the “pre-flight request”). An example of a
+‘complex’ CORS request is one that uses an HTTP verb other than
+GET/HEAD/POST (such as DELETE) or that uses custom headers. To enable
+pre-flighting, you must add a new OPTIONS handler for the route you want
+to support:</p>
+<pre><code class="language-javascript">var express = require('express')
+var cors = require('cors')
+var app = express()
+
+app.options('/products/:id', cors()) // enable pre-flight request for DELETE request
+app.del('/products/:id', cors(), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
+})
+
+app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
+</code></pre>
+<p>You can also enable pre-flight across-the-board like so:</p>
+<pre><code class="language-javascript">app.options('*', cors()) // include before other routes
+</code></pre>
+<p>NOTE: When using this middleware as an application level middleware (for
+example, <code>app.use(cors())</code>), pre-flight requests are already handled for all
+routes.</p>
+<h3 id="configuring-cors-asynchronously">Configuring CORS Asynchronously</h3>
+<pre><code class="language-javascript">var express = require('express')
+var cors = require('cors')
+var app = express()
+
+var allowlist = ['http://example1.com', 'http://example2.com']
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (allowlist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
+
+app.get('/products/:id', cors(corsOptionsDelegate), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for an allowed domain.'})
+})
+
+app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
+</code></pre>
+<h2 id="configuration-options">Configuration Options</h2>
+<ul>
+<li><code>origin</code>: Configures the <strong>Access-Control-Allow-Origin</strong> CORS header. Possible values:
+<ul>
+<li><code>Boolean</code> - set <code>origin</code> to <code>true</code> to reflect the <a href="http://tools.ietf.org/html/draft-abarth-origin-09">request origin</a>, as defined by <code>req.header('Origin')</code>, or set it to <code>false</code> to disable CORS.</li>
+<li><code>String</code> - set <code>origin</code> to a specific origin. For example if you set it to <code>"http://example.com"</code> only requests from “http://example.com” will be allowed.</li>
+<li><code>RegExp</code> - set <code>origin</code> to a regular expression pattern which will be used to test the request origin. If it’s a match, the request origin will be reflected. For example the pattern <code>/example\.com$/</code> will reflect any request that is coming from an origin ending with “example.com”.</li>
+<li><code>Array</code> - set <code>origin</code> to an array of valid origins. Each origin can be a <code>String</code> or a <code>RegExp</code>. For example <code>["http://example1.com", /\.example2\.com$/]</code> will accept any request from “http://example1.com” or from a subdomain of “example2.com”.</li>
+<li><code>Function</code> - set <code>origin</code> to a function implementing some custom logic. The function takes the request origin as the first parameter and a callback (called as <code>callback(err, origin)</code>, where <code>origin</code> is a non-function value of the <code>origin</code> option) as the second.</li>
+</ul>
+</li>
+<li><code>methods</code>: Configures the <strong>Access-Control-Allow-Methods</strong> CORS header. Expects a comma-delimited string (ex: ‘GET,PUT,POST’) or an array (ex: <code>['GET', 'PUT', 'POST']</code>).</li>
+<li><code>allowedHeaders</code>: Configures the <strong>Access-Control-Allow-Headers</strong> CORS header. Expects a comma-delimited string (ex: ‘Content-Type,Authorization’) or an array (ex: <code>['Content-Type', 'Authorization']</code>). If not specified, defaults to reflecting the headers specified in the request’s <strong>Access-Control-Request-Headers</strong> header.</li>
+<li><code>exposedHeaders</code>: Configures the <strong>Access-Control-Expose-Headers</strong> CORS header. Expects a comma-delimited string (ex: ‘Content-Range,X-Content-Range’) or an array (ex: <code>['Content-Range', 'X-Content-Range']</code>). If not specified, no custom headers are exposed.</li>
+<li><code>credentials</code>: Configures the <strong>Access-Control-Allow-Credentials</strong> CORS header. Set to <code>true</code> to pass the header, otherwise it is omitted.</li>
+<li><code>maxAge</code>: Configures the <strong>Access-Control-Max-Age</strong> CORS header. Set to an integer to pass the header, otherwise it is omitted.</li>
+<li><code>preflightContinue</code>: Pass the CORS preflight response to the next handler.</li>
+<li><code>optionsSuccessStatus</code>: Provides a status code to use for successful <code>OPTIONS</code> requests, since some legacy browsers (IE11, various SmartTVs) choke on <code>204</code>.</li>
+</ul>
+<p>The default configuration is the equivalent of:</p>
+<pre><code class="language-json">{
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+}
+</code></pre>
+<p>For details on the effect of each CORS header, read <a href="https://web.dev/cross-origin-resource-sharing/">this</a> article on web.dev.</p>
+<h2 id="demo">Demo</h2>
+<p>A demo that illustrates CORS working (and not working) using React is available here: <a href="https://node-cors-client.netlify.com">https://node-cors-client.netlify.com</a></p>
+<p>Code for that demo can be found here:</p>
+<ul>
+<li>Client: <a href="https://github.com/troygoode/node-cors-client">https://github.com/troygoode/node-cors-client</a></li>
+<li>Server: <a href="https://github.com/troygoode/node-cors-server">https://github.com/troygoode/node-cors-server</a></li>
+</ul>
+<h2 id="license">License</h2>
+<p><a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></p>
+<h2 id="author">Author</h2>
+<p><a href="https://github.com/TroyGoode">Troy Goode</a> (<a href="mailto:troygoode@gmail.com">troygoode@gmail.com</a>)</p>
+</div>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+Documentation translations provided by <a href="../../../../strongloop.com/index.html">StrongLoop/IBM</a>:
+<a href="../../../fr/index.html">French</a>, <a href="../../../de/index.html">German</a>, <a href="../../../es/index.html">Spanish</a>, <a href="../../../it/index.html">Italian</a>, <a href="../../../ja/index.html">Japanese</a>, <a href="../../../ru/index.html">Russian</a>, <a href="../../../zh-cn/index.html">Chinese</a>, <a href="../../../zh-tw/index.html">Traditional Chinese</a>, <a href="../../../ko/index.html">Korean</a>, <a href="../../../pt-br/index.html">Portuguese</a>.
+<br>
+Community translation available for: <a href="../../../sk/index.html">Slovak</a>, <a href="../../../uk/index.html">Ukrainian</a>, <a href="../../../uz/index.html">Uzbek</a>, <a href="../../../tr/index.html">Turkish</a> and <a href="../../../th/index.html">Thai</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> is a project of the <a href="https://openjsf.org">OpenJS Foundation</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork the website on GitHub</a>.</div>
+<div>Copyright &copy; 2017 StrongLoop, IBM, and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> This work is licensed under a <a rel="license" href="../../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a>.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="0d1f592ab6582fdab18ddf07-text/javascript"></script>
+<script type="0d1f592ab6582fdab18ddf07-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:en'] }
+})" async></script>
+<script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="0d1f592ab6582fdab18ddf07-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/en/resources/middleware/cors.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

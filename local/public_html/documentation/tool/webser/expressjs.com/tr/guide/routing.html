@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html lang="tr" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/tr/guide/routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express yönlendirmesi</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/tr.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div style="text-align: center; background: #010101; color: #f1f1f1; padding: 16px; font-size: 16px; width: 100vw">
+Black Lives Matter. <a style="color: #5E80F7; text-decoration: none;" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Anasayfa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Buradan Başlayın</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Kurulum
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Merhaba Dünya
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Oluşturucu
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basit Yönlendirme
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statik Dosyalar
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+SSS
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Kılavuz</a>
+<ul>
+<li><a href="routing.html">Yönlendirme</a>
+</li>
+<li><a href="writing-middleware.html">
+Middleware yazma</a>
+</li>
+<li><a href="using-middleware.html">Middleware kullanma</a>
+</li>
+<li><a href="using-template-engines.html">Şablon motoru kullanma</a>
+</li>
+<li><a href="error-handling.html">Hata işleme</a>
+</li>
+<li><a href="debugging.html">Hata Ayıklama</a>
+</li>
+<li><a href="behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="migrating-4.html">Express 4 geçiş</a>
+</li>
+<li><a href="migrating-5.html">Express 5 geçiş</a>
+</li>
+<li><a href="database-integration.html">Database Entegrasyonu</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API Kaynak</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (Kullanımdan kaldırıldı)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (Kullanımdan kaldırıldı)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Gelişmiş konular</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Şablon motorları</a>
+</li>
+<li><a href="../advanced/pm.html">Proses yöneticisi kullanma</a>
+</li>
+<li><a href="../advanced/security-updates.html">Gğvenlik güncellemeleri</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">En iyi güvenlik uygulamaları</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">En iyi performans uygulamaları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Kaynaklar</a>
+<ul>
+<li>
+<a href="../resources/community.html">Topluluk</a>
+</li>
+<li>
+<a href="../resources/glossary.html">Terimler</a>
+</li>
+<li>
+<a href="../resources/middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../resources/utils.html">Yardımcı Modüller</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">Yapılar</a>
+</li>
+<li>
+<a href="../resources/learning.html">Ek öğrenme</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">Express kullanan şirket</a>
+</li>
+<li>
+<a href="../resources/contributing.html">Express'e katkıda bulunmak</a>
+</li>
+<li>
+<a href="../changelog/4x.html">Sürüm Notları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Bu doküman ingilizce dokümana göre eski olabilir. Son güncellemeler için lütfen <a href="../../index.html">İngilizce Dokümanı</a>. ziyaret edin
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<div id="page-doc">
+<h1 id="ynlendirme">Yönlendirme</h1>
+<p><em>Routing</em> uygulama bitiş noktalarının tanımını (URI’ler) ve istemci isteklerine nasıl yanıt verdiklerini ifade eder.
+Yönlendirme’ye giriş için, [Temel yönlendirme] sayfasına bakınız.(/tr/starter/basic-routing.html).</p>
+<p>HTTP metod isimlerine karşılık gelen Express <code>app</code> objesinin metodlarını kullanarak yönlendirmeleri tanımlayabilirsiniz; örneğin, GET isteklerini işlemek için <code>app.get()</code> ve POST isteklerini işlemek için de <code>app.post()</code> kullanmak gibi. Tam liste için bakınız <a href="../4x/api.html#app.METHOD">app.METHOD</a>. Bütün HTTP metodlarını işlemek için <a href="../4x/api.html#app.all">app.all()</a>, ve geri çağırma fonksiyonu olarak da ara yazılım tanımlamak için <a href="../4x/api.html#app.use">app.use()</a> kullanabilirsiniz (Daha fazla detay için bakınız <a href="using-middleware.html">Ara yazılım kullanmak</a>).</p>
+<p>Bu yönlendirme metodları, uygulamanın belirtilen bir rotaya (bitiş noktası) ve HTTP metoduna aldığı isteklerde çağrılan bir geri çağırma fonksiyonu belirtirler (bazen “işleyici fonksiyonlar” olarak isimlendirilirler). Başka bir deyişle, uygulama, belirtilen rota(lar) ve metod(lar) ile eşleşen istekleri “dinler”, ve bir eşleşme algıladığında, ilgili geri çağırma fonksiyonunu çağırır.</p>
+<p>Aslında yönlendirme metodları birden fazla geri çağırma fonksiyonunu argüman olarak alabilir. Birden fazla geri çağırma fonksiyonu olduğunda, bir sonraki fonksiyona kontrolü vermek için geri çağırma fonksiyonuna <code>next</code>’ argümanını verip, geri çağırma fonksiyonunun içinde <code>next()</code> metodunu çağırmak önemlidir.</p>
+<p>Aşağıdaki kod çok temel bir rota örneğidir.</p>
+<pre><code class="language-js">const express = require('express')
+const app = express()
+
+// anasayfaya bir GET isteği yapıldığında "merhaba dünya" ile yanıt verir
+app.get('/', (req, res) =&gt; {
+  res.send('merhaba dünya')
+})
+</code></pre>
+<h2 id="route-methods">Rota metodları</h2>
+<p>Bir rota metodu, HTTP metodlarının birinden türetilir ve <code>express</code> sınıfının bir örneğine eklenir.</p>
+<p>Aşağıdaki kod uygulamanın köküne GET ve POST metodları için tanımlanan rotalara bir örnektir.</p>
+<pre><code class="language-js">// GET metodu rotası
+app.get('/', (req, res) =&gt; {
+  res.send('anasayfaya GET isteği')
+})
+
+// POST metodu rotası
+app.post('/', (req, res) =&gt; {
+  res.send('anasayfaya POST isteği')
+})
+</code></pre>
+<p>Express, HTTP metodlarına karşılık gelen bu yönlendirme metodlarını destekler: <code>get</code>, <code>post</code>, <code>put</code>, <code>head</code>, <code>delete</code>, <code>options</code>, <code>trace</code>, <code>copy</code>, <code>lock</code>, <code>mkcol</code>, <code>move</code>, <code>purge</code>, <code>propfind</code>, <code>proppatch</code>, <code>unlock</code>, <code>report</code>, <code>mkactivity</code>, <code>checkout</code>, <code>merge</code>, <code>m-search</code>, <code>notify</code>, <code>subscribe</code>, <code>unsubscribe</code>, <code>patch</code>, <code>search</code>, ve <code>connect</code>.</p>
+<div class="doc-box doc-info">
+<p>Geçersiz JavaScript değişken adlarına denk gelen metodları yönlendirmek için köşeli parantez notasyonunu kullanınız. Örneğin,
+<code>app['m-search']('/', function ...</code></p>
+</div>
+<p>Hiçbir HTTP metodundan türemeyen özel bir yönlendirme metodu olan <code>app.all()</code> mevcut. bu metod, tüm istek metodları için bir yolda ara katman yazılım(middleware) fonksiyonlarını yüklemek için kullanılır.</p>
+<p>Bir sonraki örnekte, “/secret” rotasına yapılan isteklerde, GET, POST, PUT, DELETE veya <a href="https://nodejs.org/api/http.html#http_http_methods">http modülü</a>‘nde desteklenen herhangi bir HTTP istek metodu farketmeksizin bu işleyici çalıştırılacak.</p>
+<pre><code class="language-js">app.all('/secret', (req, res, next) =&gt; {
+  console.log('Gizli bölümlere erişiliyor...')
+  next() // bir sonraki işleyiciye kontrolü verir
+})
+</code></pre>
+<h2 id="route-paths">Rota yolları</h2>
+<p>Rota yolları, bir istek metoduyla birlikte, isteklerin yapılabileceği bitiş noktalarını tanımlar. Rota yolları karakter dizini, karakter dizin modeli veya düzenli ifadeler(reqular expression) olabilir.</p>
+<p><code>?</code>, <code>+</code>, <code>*</code>, ve <code>()</code> karakterleri düzenli ifade karşılıklarının alt kümeleridir. Tire (<code>-</code>) ve nokta (<code>.</code>) karakter-dizisi tabanlı yollar tarafından oldukları gibi değerlendirilir.</p>
+<p>Eğer dolar karakterini (<code>$</code>) bir karakter dizini yolunda kullanma ihtiyacınız olursa, <code>([</code> ve <code>])</code> karakterlerinin içinde kullanınız. Örneğin, “<code>/data/$book</code>” istekleri için dizin yolu bu şekilde olur: “<code>/data/([\$])book</code>”.</p>
+<div class="doc-box doc-info">
+<p>Express, rota yollarını eşleştirmek için <a href="https://www.npmjs.com/package/path-to-regexp">path-to-regexp</a> kullanır; rota tanımlamadaki bütün olasılıkları öğrenmek için path-to-regexp dökümantasyonuna bakınız. Basit Express rotalarını test etmek için <a href="http://forbeslindesay.github.io/express-route-tester/">Express Route Tester</a> kullanışlı bir araçtır, ancak bu araç model eşleştirmeyi desteklememektedir.</p>
+</div>
+<div class="doc-box doc-warn">
+<p>Sorgu dizeleri rota yolunun bir parçası değillerdir.</p>
+</div>
+<p>Karakter dizininlerine dayalı bazı rota yolları örnekleri.</p>
+<p>Bu rota yolu, istekleri kök rotaya eşleştirecek, <code>/</code>.</p>
+<pre><code class="language-js">app.get('/', (req, res) =&gt; {
+  res.send('root')
+})
+</code></pre>
+<p>Bu rota yolu istekleri <code>/about</code> ile eşleştirecek</p>
+<pre><code class="language-js">app.get('/about', (req, res) =&gt; {
+  res.send('about')
+})
+</code></pre>
+<p>Bu rota yolu istekleri <code>/random.text</code> ile eşleştirecek</p>
+<pre><code class="language-js">app.get('/random.text', (req, res) =&gt; {
+  res.send('random.text')
+})
+</code></pre>
+<p>Aşağıda, dizin modellerine dayalı rota yollarının bazı örnekleri verilmiştir.</p>
+<p>Bu rota yolu, <code>acd</code> ve <code>abcd</code> ile eşleşecek.</p>
+<pre><code class="language-js">app.get('/ab?cd', (req, res) =&gt; {
+  res.send('ab?cd')
+})
+</code></pre>
+<p>Bu rota yolu, <code>abcd</code>, <code>abbcd</code>, <code>abbbcd</code> vb. ile eşleşecek.</p>
+<pre><code class="language-js">app.get('/ab+cd', (req, res) =&gt; {
+  res.send('ab+cd')
+})
+</code></pre>
+<p>Bu rota yolu, <code>abcd</code>, <code>abxcd</code>, <code>abRANDOMcd</code>, <code>ab123cd</code> vb. ile eşleşecek.</p>
+<pre><code class="language-js">app.get('/ab*cd', (req, res) =&gt; {
+  res.send('ab*cd')
+})
+</code></pre>
+<p>Bu rota yolu, <code>/abe</code> ve <code>/abcde</code> ile eşleşecek.</p>
+<pre><code class="language-js">app.get('/ab(cd)?e', (req, res) =&gt; {
+  res.send('ab(cd)?e')
+})
+</code></pre>
+<p>Düzenli ifadelere dayalı rota yolları örnekleri:</p>
+<p>Bu rota yolu, rota isminde “a” karakteri olan herhangi bir şey ile eşleşecek.</p>
+<pre><code class="language-js">app.get(/a/, (req, res) =&gt; {
+  res.send('/a/')
+})
+</code></pre>
+<p>Bu rota yolu <code>butterfly</code> ve <code>dragonfly</code> ile eşleşir, ancak <code>butterflyman</code>, <code>dragonflyman</code> vb. ile değil.</p>
+<pre><code class="language-js">app.get(/.*fly$/, (req, res) =&gt; {
+  res.send('/.*fly$/')
+})
+</code></pre>
+<h3 id="route-parameters">Rota parametreleri</h3>
+<p>Rota parametreleri, URL’deki konumlarında belirtilen değerleri yakalamak için kullanılan adlandırılmış URL bölümleridir. Yakalanan değerler, yolda belirtilen rota parameterlerinin ilgili isimlerini alarak <code>req.params</code> objesinde tutulur.</p>
+<pre><code>Rota yolu: /users/:userId/books/:bookId
+İStek URL'i: http://localhost:3000/users/34/books/8989
+req.params: { "userId": "34", "bookId": "8989" }
+</code></pre>
+<p>Parametreli rota tanımlamak için, aşağıda gösterildiği gibi rota parametrelerini rotanın yolunda belirtmeniz yeterlidir.</p>
+<pre><code class="language-js">app.get('/users/:userId/books/:bookId', (req, res) =&gt; {
+  res.send(req.params)
+})
+</code></pre>
+<div class="doc-box doc-notice">
+<p>Rota parametrelerinin isimleri sadece “kelime karakterleri” içermelidir ([A-Za-z0-9_]).</p>
+</div>
+<p>Tire (<code>-</code>) ve nokta (<code>.</code>) oldukları gibi değerlendirildikleri için, kullanışlı amaçlar için rota parametrelerinde kullanılabilirler.</p>
+<pre><code>Rota yolu: /flights/:from-:to
+İtek URL'i: http://localhost:3000/flights/LAX-SFO
+req.params: { "from": "LAX", "to": "SFO" }
+</code></pre>
+<pre><code>Rota yolu: /plantae/:genus.:species
+İstek URL'i: http://localhost:3000/plantae/Prunus.persica
+req.params: { "genus": "Prunus", "species": "persica" }
+</code></pre>
+<p>Bir rota parametresiyle eşleşen dizin üzerinde daha fazla kontrole sahip olmak için, parantez içinde (<code>()</code>) düzenli ifade ekleyebilirsiniz:</p>
+<pre><code>Rota yolu: /user/:userId(\d+)
+İstek URL'i: http://localhost:3000/user/42
+req.params: {"userId": "42"}
+</code></pre>
+<div class="doc-box doc-warn">
+<p>Düzenli ifadeler genellikle tam bir dizenin parçaları oldukları için, <code>\</code> karakterlerinden ek olarak ters eğik çizgi ile kaçtığınızdan emin olun, örneğin <code>\\d+</code>.</p>
+</div>
+<div class="doc-box doc-warn">
+<p>Express 4.x’te, <a href="https://github.com/expressjs/express/issues/2495">düzenli ifadelerdeki <code>*</code> karakteri normal durumlardaki gibi değerlendirilmiyor</a>. Geçici çözüm olarak, <code>*</code> karakteri yerine<code>{0,}</code> karakterini kullanınız. Bu muhtemelen Express 5’te düzeltilecektir.</p>
+</div>
+<h2 id="route-handlers">Rota işleyicileri</h2>
+<p>Bir isteği işlemek için, <a href="using-middleware.html">ara-katman</a> gibi davranan birden fazla geri çağırma fonksiyonu sağlayabilirsiniz. Bunun tek istisnası, bu geri çağırmalar, arda kalan rota metodlarını atlatmak için <code>next('route')</code> metodunu çağırabilir. Bir rotaya ön koşullar uygulamak için bu mekanizmayı kullanabilirsiniz, ve sonra geçerli rotaya devam etmek için bir neden yoksa kontrolü sonraki rotalara aktarabilirsiniz.</p>
+<p>Rota işleyicileri, aşağıdaki örneklerde gösterildiği gibi bir fonksiyon, fonksiyonlar dizisi veya her ikisinin birleşimi biçiminde olabilir.</p>
+<p>Bir geri çağırma fonksiyonu, bir rotayı işleyebilir. Örneğin:</p>
+<pre><code class="language-js">app.get('/example/a', (req, res) =&gt; {
+  res.send('A\'dan merhaba')
+})
+</code></pre>
+<p>Birden fazla geri çağırma fonksiyonu bir rotayı işleyebilir (<code>next</code> objesini belirttiğinizden emin olun). Örneğin:</p>
+<pre><code class="language-js">app.get('/example/b', (req, res, next) =&gt; {
+  console.log('yanıt bir sonraki fonksiyon tarafından gönderilecek')
+  next()
+}, (req, res) =&gt; {
+  res.send('B\'den merhaba')
+})
+</code></pre>
+<p>Geri çağırma fonksiyonları dizini bir rotayı işleyebilir. Örneğin:</p>
+<pre><code class="language-js">const cb0 = function (req, res, next) {
+  console.log('Geri çağırma 0')
+  next()
+}
+
+const cb1 = function (req, res, next) {
+  console.log('Geri çağırma 1')
+  next()
+}
+
+const cb2 = function (req, res) {
+  res.send('C\'den merhaba')
+}
+
+app.get('/example/c', [cb0, cb1, cb2])
+</code></pre>
+<p>Bağımsız fonksiyonlar ve fonksiyon dizilerinin bir kombinasyonu bir rotayı işleyebilir. Örneğin:</p>
+<pre><code class="language-js">const cb0 = function (req, res, next) {
+  console.log('Geri çağırma 0')
+  next()
+}
+
+const cb1 = function (req, res, next) {
+  console.log('Geri çağırma 1')
+  next()
+}
+
+app.get('/example/d', [cb0, cb1], (req, res, next) =&gt; {
+  console.log('yanıt bir sonraki fonksiyon tarafından gönderilecek')
+  next()
+}, (req, res) =&gt; {
+  res.send('D\'den merhaba')
+})
+</code></pre>
+<h2 id="response-methods">Yanıt metodları</h2>
+<p>Aşağıdaki tabloda yanıt nesnesindeki (<code>res</code>) metodlar istemciye yanıt gönderebilir ve istek-yanıt döngüsünü sonlandırabilir. Bu metodlardan hiçbiri bir rota işleyiciden çağrılmazsa, istemci isteği asılı kalır.</p>
+<table>
+<thead>
+<tr>
+<th>Metod</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../4x/api.html#res.download">res.download()</a></td>
+<td>Bir dosyanın indirilmesini iste.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.end">res.end()</a></td>
+<td>Yanıt sürecini sonlandır.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.json">res.json()</a></td>
+<td>JSON yanıtı gönder.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.jsonp">res.jsonp()</a></td>
+<td>JSONP destekli bir JSON yanıtı gönder</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.redirect">res.redirect()</a></td>
+<td>Bir isteği yeniden yönlendir.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.render">res.render()</a></td>
+<td>Bir görünüm şablonu görüntüle.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.send">res.send()</a></td>
+<td>Çeşitli tiplerde yanıt gönder.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.sendFile">res.sendFile()</a></td>
+<td>Dosyayı sekizli akış olarak gönder.</td>
+</tr>
+<tr>
+<td><a href="../4x/api.html#res.sendStatus">res.sendStatus()</a></td>
+<td>Yanıt durum kodunu ayarla ve karakter dize temsilini yanıt gövdesi olarak gönder.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="app-route">app.route()</h2>
+<p>Bir rota yolu için <code>app.route()</code> kullanarak zincirlenebilir rota işleyicileri oluşturabilirsiniz.
+Yol tek bir konumda belirtildiğinden, fazlalık ve yazım hatalarını azaltmak için modüler rotalar oluşturmak yararlıdır. Rotalar hakkında daha fazla bilgi için, bakınız: <a href="../4x/api.html#router">Router() dökümantasyonu</a>.</p>
+<p>Burada <code>app.route()</code> kullanılarak tanımlanan zincirleme rota işleyicilerine bir örnek verilmiştir.</p>
+<pre><code class="language-js">app.route('/book')
+  .get((req, res) =&gt; {
+    res.send('Rastgele bir kitap getir')
+  })
+  .post((req, res) =&gt; {
+    res.send('Bir kitap ekle')
+  })
+  .put((req, res) =&gt; {
+    res.send('Kitabı güncelle')
+  })
+</code></pre>
+<h2 id="express-router">express.Router</h2>
+<p>Modüler, monte edilebilir rota işleyicileri oluşturmak için <code>express.Router</code> sınıfını kullanın. Bir <code>Router</code> sınıfı örneği tam bir ara katman yazılım ve yönlendirme sistemidir; bu nedenle, sıklıkla “mini-uygulama” olarak bilinir.</p>
+<p>Aşağıdaki örnek, bir yönlendiriciyi modül olarak oluşturur, içine bir ara katman yazılımı fonksiyonu yükler, bazı rotaları tanımlar ve yönlendirici modülünü ana uygulamadaki bir yola bağlar.</p>
+<p>Uygulama dizininde aşağıdaki içeriğe sahip <code>birds.js</code> adlı bir yönlendirici dosyası oluşturun:</p>
+<pre><code class="language-js">const express = require('express')
+const router = express.Router()
+
+// bu yönlendiriciye özel ara katman yazılım
+router.use((req, res, next) =&gt; {
+  console.log('Time: ', Date.now())
+  next()
+})
+// anasayfa rotası tanımla
+router.get('/', (req, res) =&gt; {
+  res.send('Birds home page')
+})
+// define the about route
+router.get('/about', (req, res) =&gt; {
+  res.send('About birds')
+})
+
+module.exports = router
+</code></pre>
+<p>Daha sonra, yönlendirici modülünü uygulamada yükle:</p>
+<pre><code class="language-js">const birds = require('./birds')
+
+// ...
+
+app.use('/birds', birds)
+</code></pre>
+<p>Uygulama artık <code>/birds</code> ve <code>/birds/about</code> isteklerini işleyebileceği gibi, rotaya özgü <code>timeLog</code> ara katman yazılımı fonksiyonunu da çağırabilecektir.</p>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+<a href="../../../strongloop.com/index.html">StrongLoop/IBM</a> tarafından sağlanan belge çevirileri:
+<a href="../../fr/index.html">Fransızca</a>, <a href="../../de/index.html">Almanca</a>, <a href="../../es/index.html">İspanyolca</a>, <a href="../../it/index.html">İtalyanca</a>, <a href="../../ja/index.html">Japonca</a>, <a href="../../ru/index.html">Rusça</a>, <a href="../../zh-cn/index.html">Çince</a>, <a href="../../zh-tw/index.html">Klasik Çince</a>, <a href="../../ko/index.html">Korece</a>, <a href="../../pt-br/index.html">Portekizce</a>.
+<br>
+Topluluk çevirisi için: <a href="../../sk/index.html">Slovakça</a>, <a href="../../uk/index.html">Ukraynaca</a> and <a href="../../uz/index.html">Özbekçe</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bir <a href="https://openjsf.org">OpenJS Vakfı</a> projesidir.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Github'da Forkla</a>.</div>
+<div>Telif Hakkı &copy; 2017 StrongLoop, IBM, ve diğer expressjs.com katkıda bulunanlar.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Bu iş<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a> lisansı altındadır.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="00ccbe0729e8be1ae2cda742-text/javascript"></script>
+<script type="00ccbe0729e8be1ae2cda742-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:tr'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="00ccbe0729e8be1ae2cda742-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/tr/guide/routing.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html lang="th" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/th/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express error handling</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/th.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">หน้าแรก</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">เริ่มกันเลย</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+การติดตั้ง
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+เครื่องมือสร้าง Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+เส้นทางเบื้องต้น
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+บริการไฟล์คงที่
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+คำถามที่พบบ่อย
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">แนะนำ</a>
+<ul>
+<li><a href="routing.html">การใช้งานเราเตอร์</a>
+</li>
+<li><a href="writing-middleware.html">การเขียนมิดเดิลแวร์</a>
+</li>
+<li><a href="using-middleware.html">การใช้งานมิดเดิลแวร์</a>
+</li>
+<li><a href="using-template-engines.html">การใช้งานเครื่องสร้างโครงแบบ</a>
+</li>
+<li><a href="error-handling.html">การจักการความผิดพลาด</a>
+</li>
+<li><a href="debugging.html">การแก้จุดบกพร่อง</a>
+</li>
+<li><a href="behind-proxies.html">Express เบื่องหลังพร็อกซี</a>
+</li>
+<li><a href="migrating-4.html">การย้ายไป Express 4</a>
+</li>
+<li><a href="migrating-5.html">การย้ายไป Express 5</a>
+</li>
+<li><a href="database-integration.html">การเชื่อมโยงกับฐานข้อมูล</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">การอ้างอิง API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (เลิกใช้)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (เลิกใช้)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">หัวข้อขั้นสูง</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">เครื่องสร้างโครงแบบ</a>
+</li>
+<li><a href="../advanced/pm.html">การใช้กระบวนการจัดการ</a>
+</li>
+<li><a href="../advanced/security-updates.html">ความปลอดภัยล่าสุด</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">แนวทางปฏิบัติความปลอดภัย</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">แนวทางปฏิบัติประสิทธิภาพ</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">แหล่งข้อมูลอื่น</a>
+<ul>
+<li>
+<a href="../resources/community.html">ชุมชน</a>
+</li>
+<li>
+<a href="../resources/glossary.html">ศัพย์</a>
+</li>
+<li>
+<a href="../resources/middleware.html">มิลเดิลแวร์</a>
+</li>
+<li>
+<a href="../resources/utils.html">โมดูลที่มีประโยชน์</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">เฟรมเวอร์ค</a>
+</li>
+<li>
+<a href="../resources/learning.html">การเรียนรู้เพิ่มเติม</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">บริษัทที่ใช้ Express</a>
+</li>
+<li>
+<a href="../resources/contributing.html">มีส่วนร่วมกับ Express</a>
+</li>
+<li>
+<a href="../changelog/4x.html">บันทึกการเปลี่ยนแปลง</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>ในเอกสารนี้อาจจะเก่าไปแล้วที่เกี่ยวเนื่องกับรุ่นของเอกสารในภาษาอังกฤษ สำหรับรุ่นล่าสุดโปรดอ้างอิงจาก <a href="../../index.html">เอกสารในภาษาอังกฤษ</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="error-handling">Error handling</h1>
+<p>Define error-handling middleware functions in the same way as other middleware functions,
+except error-handling functions have four arguments instead of three:
+<code>(err, req, res, next)</code>. For example:</p>
+<pre><code class="language-js">app.use((err, req, res, next) =&gt; {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+</code></pre>
+<p>You define error-handling middleware last, after other <code>app.use()</code> and routes calls; for example:</p>
+<pre><code class="language-js">const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(bodyParser.json())
+app.use(methodOverride())
+app.use((err, req, res, next) =&gt; {
+  // logic
+})
+</code></pre>
+<p>Responses from within a middleware function can be in any format that you prefer, such as an HTML error page, a simple message, or a JSON string.</p>
+<p>For organizational (and higher-level framework) purposes, you can define
+several error-handling middleware functions, much like you would with
+regular middleware functions. For example, if you wanted to define an error-handler
+for requests made by using <code>XHR</code>, and those without, you might use the following commands:</p>
+<pre><code class="language-js">const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(bodyParser.json())
+app.use(methodOverride())
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
+</code></pre>
+<p>In this example, the generic <code>logErrors</code> might write request and
+error information to <code>stderr</code>, for example:</p>
+<pre><code class="language-js">function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
+}
+</code></pre>
+<p>Also in this example, <code>clientErrorHandler</code> is defined as follows; in this case, the error is explicitly passed along to the next one.</p>
+<p>Notice that when <em>not</em> calling “next” in an error-handling function, you are responsible for writing (and ending) the response. Otherwise those requests will “hang” and will not be eligible for garbage collection.</p>
+<pre><code class="language-js">function clientErrorHandler (err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' })
+  } else {
+    next(err)
+  }
+}
+</code></pre>
+<p>The “catch-all” <code>errorHandler</code> function might be implemented as follows:</p>
+<pre><code class="language-js">function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
+}
+</code></pre>
+<p>If you pass anything to the <code>next()</code> function (except the string <code>'route'</code>), Express regards the current request as being an error and will skip any remaining non-error handling routing and middleware functions. If you want to handle that error in some way, you’ll have to create an error-handling route as described in the next section.</p>
+<p>If you have a route handler with multiple callback functions you can use the <code>route</code> parameter to skip to the next route handler. For example:</p>
+<pre><code class="language-js">app.get('/a_route_behind_paywall',
+  (req, res, next) =&gt; {
+    if (!req.user.hasPaid) {
+      // continue handling this request
+      next('route')
+    } else {
+      next()
+    }
+  }, (req, res, next) =&gt; {
+    PaidContent.find((err, doc) =&gt; {
+      if (err) return next(err)
+      res.json(doc)
+    })
+  })
+</code></pre>
+<p>In this example, the <code>getPaidContent</code> handler will be skipped but any remaining handlers in <code>app</code> for <code>/a_route_behind_paywall</code> would continue to be executed.</p>
+<div class="doc-box doc-info">
+<p>Calls to <code>next()</code> and <code>next(err)</code> indicate that the current handler is complete and in what state. <code>next(err)</code> will skip all remaining handlers in the chain except for those that are set up to handle errors as described above.</p>
+</div>
+<h2 id="the-default-error-handler">The Default Error Handler</h2>
+<p>Express comes with a built-in error handler, which takes care of any errors that might be encountered in the app. This default error-handling middleware function is added at the end of the middleware function stack.</p>
+<p>If you pass an error to <code>next()</code> and you do not handle it in
+an error handler, it will be handled by the built-in error handler; the error will be written to the client with the
+stack trace. The stack trace is not included in the production environment.</p>
+<div class="doc-box doc-info">
+<p>Set the environment variable <code>NODE_ENV</code> to <code>production</code>, to run the app in production mode.</p>
+</div>
+<p>If you call <code>next()</code> with an error after you have started writing the
+response (for example, if you encounter an error while streaming the
+response to the client) the Express default error handler closes the
+connection and fails the request.</p>
+<p>So when you add a custom error handler, you will want to delegate to
+the default error handling mechanisms in Express, when the headers
+have already been sent to the client:</p>
+<pre><code class="language-js">function errorHandler (err, req, res, next) {
+  if (res.headersSent) {
+    return next(err)
+  }
+  res.status(500)
+  res.render('error', { error: err })
+}
+</code></pre>
+<p>Note that the default error handler can get triggered if you call <code>next()</code> with an error
+in your code more than once, even if custom error handling middleware is in place.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> เป็นโครงการของ <a href="https://openjsf.org">มูลนิธิ OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Fork เว็บไซต์บน GitHub</a>.</div>
+<div>Copyright &copy; 2017 StrongLoop, IBM, และผู้มีส่วนร่วมอื่นๆ ของ expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> เว็บไซต์นี้อยู่ภายใต้สัญญาอนุญาตของ <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">สัญญาอนุญาติครีเอทีฟคอมมอนส์ แบบแสดงที่มา-อนุญาตแบบเดียวกัน 3.0 สหรัฐอเมริกา</a>.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="a19409a639cad5c3238a505a-text/javascript"></script>
+<script type="a19409a639cad5c3238a505a-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:th'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="a19409a639cad5c3238a505a-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/th/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html lang="tr" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/tr/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express hata işleme</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/tr.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div style="text-align: center; background: #010101; color: #f1f1f1; padding: 16px; font-size: 16px; width: 100vw">
+Black Lives Matter. <a style="color: #5E80F7; text-decoration: none;" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Anasayfa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Buradan Başlayın</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Kurulum
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Merhaba Dünya
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Oluşturucu
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basit Yönlendirme
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statik Dosyalar
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+SSS
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Kılavuz</a>
+<ul>
+<li><a href="routing.html">Yönlendirme</a>
+</li>
+<li><a href="writing-middleware.html">
+Middleware yazma</a>
+</li>
+<li><a href="using-middleware.html">Middleware kullanma</a>
+</li>
+<li><a href="using-template-engines.html">Şablon motoru kullanma</a>
+</li>
+<li><a href="error-handling.html">Hata işleme</a>
+</li>
+<li><a href="debugging.html">Hata Ayıklama</a>
+</li>
+<li><a href="behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="migrating-4.html">Express 4 geçiş</a>
+</li>
+<li><a href="migrating-5.html">Express 5 geçiş</a>
+</li>
+<li><a href="database-integration.html">Database Entegrasyonu</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API Kaynak</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (Kullanımdan kaldırıldı)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (Kullanımdan kaldırıldı)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Gelişmiş konular</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Şablon motorları</a>
+</li>
+<li><a href="../advanced/pm.html">Proses yöneticisi kullanma</a>
+</li>
+<li><a href="../advanced/security-updates.html">Gğvenlik güncellemeleri</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">En iyi güvenlik uygulamaları</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">En iyi performans uygulamaları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Kaynaklar</a>
+<ul>
+<li>
+<a href="../resources/community.html">Topluluk</a>
+</li>
+<li>
+<a href="../resources/glossary.html">Terimler</a>
+</li>
+<li>
+<a href="../resources/middleware.html">Middleware</a>
+</li>
+<li>
+<a href="../resources/utils.html">Yardımcı Modüller</a>
+</li>
+<li>
+<a href="../resources/frameworks.html">Yapılar</a>
+</li>
+<li>
+<a href="../resources/learning.html">Ek öğrenme</a>
+</li>
+<li>
+<a href="../resources/companies-using-express.html">Express kullanan şirket</a>
+</li>
+<li>
+<a href="../resources/contributing.html">Express'e katkıda bulunmak</a>
+</li>
+<li>
+<a href="../changelog/4x.html">Sürüm Notları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Bu doküman ingilizce dokümana göre eski olabilir. Son güncellemeler için lütfen <a href="../../index.html">İngilizce Dokümanı</a>. ziyaret edin
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="hata-i̇şleme">Hata İşleme</h1>
+<p><em>Error Handling</em>, senkron ve asenkron olarak meydana gelen hataların Express tarafından nasıl yakalandığına ve işlendiğine değinir. Express varsayılan olarak bir hata işleyiciyle gelir, bu nedenle hata işlemeye başlamak için kendinizin yazmanıza gerek yoktur.</p>
+<h2 id="hataları-yakalamak">Hataları Yakalamak</h2>
+<p>Express tarafından, rota işleyicileri ve ara yazılımları koşarken oluşan hataların yakalanmasının sağlanması önemlidir.
+Rota işleyicilerinde ve ara yazılımlarda senkron kodda oluşan hataları yakalamak için ek birşey yapmaka gerek yoktur. Eğer senkron kod bir hata fırlatırsa, Express onu yakalayıp işleyecektir. Örneğin:</p>
+<pre><code class="language-js">app.get('/', (req, res) =&gt; {
+  throw new Error('BROKEN') // Express bunu kendi kendine yakalayacak
+})
+</code></pre>
+<p>Rota işleyicileri ve ara yazılım tarafından çağrılan asenkron fonksiyonlardan dönen hataları Express’in yakalayp işleyeceği <code>next()</code> fonksiyonuna vermelisiniz. Örnek olarak:</p>
+<pre><code class="language-js">app.get('/', (req, res, next) =&gt; {
+  fs.readFile('/file-does-not-exist', (err, data) =&gt; {
+    if (err) {
+      next(err) // Hataları Express'e ver
+    } else {
+      res.send(data)
+    }
+  })
+})
+</code></pre>
+<p>Express 5 ile başlayarak, Promise döndüren rota işleyicileri ve ara yazılımlar ret verdiklerinde (reject) veya hata fırlattıklarında otomatik olarak <code>next(value)</code> fonksiyonunu çağıracaklar. Örneğin:</p>
+<pre><code class="language-js">app.get('/user/:id', async (req, res, next) =&gt; {
+  const user = await getUserById(req.params.id)
+  res.send(user)
+})
+</code></pre>
+<p><code>getUserById</code> bir hata fırlattığında veya ret verdiğinde, <code>next</code> fonksiyonu ya fırlatılan hatayla ya da ret verilen değer ile çağrılacaktır. Eğer herhangi bir ret değeri verilmediyse, <code>next</code> fonksiyonu Express yönlendiricisi tarafından sağlanan varsayılan Error objesiyle çağrılacak.</p>
+<p>Eğer <code>next()</code> fonksiyonuna herhangi birşey verdiğinizde (<code>'route'</code> karakter dizisi hariç), Express şimdiki isteği bir hata olarak sayıp hata işlemeyen yönlendirici ve ara yazılım fonksiyonlarını es geçecektir.</p>
+<p>Eğer bir dizideki geri çağırma fonksiyonu veri sağlamıyorsa, sadece hataları veriyorsa, kodu bu şekilde basitleştirebilirsiniz:</p>
+<pre><code class="language-js">app.get('/', [
+  function (req, res, next) {
+    fs.writeFile('/erişilemez-yol', 'data', next)
+  },
+  function (req, res) {
+    res.send('OK')
+  }
+])
+</code></pre>
+<p>Yukarıdaki örnekte <code>next</code>, hata veya hatasız olarak çağrılan <code>fs.writeFile</code> için geri çağırma fonksiyonu olarak verlidi. Eğer hata yok ise ikinci işleyici çalışacak, aksi takdirde Express hatayı yakalayıp işler.</p>
+<p>Rota işleyicileri ve ara yazılımlar tarafından çağrılan asenkron kodda oluşan hataları yakalayıp işlemesi için Express’e geçmelisiniz. Örnek olarak:</p>
+<pre><code class="language-js">app.get('/', (req, res, next) =&gt; {
+  setTimeout(() =&gt; {
+    try {
+      throw new Error('BROKEN')
+    } catch (err) {
+      next(err)
+    }
+  }, 100)
+})
+</code></pre>
+<p>Yukarıdaki örnek asenkron kodda hataları yakalamak için bir <code>try...catch</code> bloku kullanıyor. Eğer <code>try...catch</code> bloku olmaz ise, işleyici senkron kodun bir parçası olmadığı için Express hatayı yakalamayacak.</p>
+<p><code>try..catch</code> blokunun yükünden kaçınmak için promise veya promise döndüren fonksiyonlar kullanın. Örnek olarak:</p>
+<pre><code class="language-js">app.get('/', (req, res, next) =&gt; {
+  Promise.resolve().then(() =&gt; {
+    throw new Error('BROKEN')
+  }).catch(next) // Hatalar Express'e geçer
+})
+</code></pre>
+<p>Promise’lar otomatik olarak senkron hatalarını ve ret edilen promise’ları yakaladığından, sonuncu yakalama işleyicisi olarak <code>next</code> fonksiyonunu verebilirsiniz ve Express hataları yakalar, çünkü yakalama işleyicisine birinci argüman olarak hata verimiştir.</p>
+<p>Senkron hata yakalamaya güvenmek için asenkron kodu basite indirgeyerek bir işleyiciler zincirini de kullanabilirsiniz. Örnek olarak:</p>
+<pre><code class="language-js">app.get('/', [
+  function (req, res, next) {
+    fs.readFile('/maybe-valid-file', 'utf-8', (err, data) =&gt; {
+      res.locals.data = data
+      next(err)
+    })
+  },
+  function (req, res) {
+    res.locals.data = res.locals.data.split(',')[1]
+    res.send(res.locals.data)
+  }
+])
+</code></pre>
+<p>Yukarıdaki örnek <code>readFile</code> çağrısından birkaç basit ifadeye sahip. <code>readFile</code> bir hata alırsa, bu hatayı Express’e verir, aksi takdirde hızlı bir şekilde zincirdeki bir sonraki işleyicide asenkron hata işleme dünyasına dönersiniz. Ve, yukarıdaki örnek veriyi işlemeyi gösterir. Bu işlem hata verirse, onu senkron hata işleyicisi yakalayacak. Eğer bu işlemleri <code>readFile</code> geri çağırma fonksiyonunun içinde yaptıysanız uygulama kapanabilir ve Express hata işleyicileri çalışmaz.</p>
+<p>Hangi yöntemi kullanırsanız kullanın, Express hata işleyicilerinin çağrılmasını ve uygulamanın hayatta kalmasını istiyorsanız, Express’in hatayı aldığından emin olmalısınız.</p>
+<h2 id="varsayılan-hata-işleyicisi">Varsayılan hata işleyicisi</h2>
+<p>Express, uygulamada oluşabilecek herhangi bir hatayla ilgilenecek gömülü bir hata işleyicisiyle gelir. Bu varsayıla hata işleyici ara yazılım fonksiyonu, ara yazlım fonksiyon yığınının en sonuna eklenir.</p>
+<p><code>next()</code> fonksiyonuna bir hata verip özel bir hata işleyicisinde işlemezseniz, bu hata gömülü hata işleyicisi tarafından işlenir; hata istemcide stack-trace ile beraber yazdırılır. Stack-trace üretim (production) ortamında dahil değildir.</p>
+<div class="doc-box doc-info">
+<p>Uygulamayı üretim modunda koşmak için <code>NODE_ENV</code> ortam değişkeninin değerini <code>production</code> olarak ayarlayın.</p>
+</div>
+<p>Bir hata yazdırıldığında, aşağıdaki bilgiler yanıta eklenir:</p>
+<ul>
+<li><code>res.statusCode</code> alanının değeri <code>err.status</code> alanından gelir (veya <code>err.statusCode</code>). Eğer bu değer 4xx veya 5xx’in aralığında değilse, 500 olarak ayarlanacak.</li>
+<li><code>res.statusMessage</code> alanı statü koduna göre ayarlanır.</li>
+<li>Üretim modunda ise, gövde (body) statü kodu mesajının HTML’i olur, aksi takdirde ise <code>err.stack</code>.</li>
+<li><code>err.headers</code> objesinde belirtilen herhangi bir başlık (header).</li>
+</ul>
+<p><code>next()</code> fonksiyonunu yanıtı yazmaya başladıktan sonra bir hata ile çağırırsanız (örneğin, istemciye yanıtı aktarma esnasında bir hata ile karşılaşırsanız) varsayılan Express hata işleyicisi bağlantıyı kapatıp isteği başarısız kılar.</p>
+<p>Özel bir hata işleyicisi eklediğiniz zaman başlıklar (header) halihazırda istemciye gönderilmiş ise varsayılan Express hata işleyicisine yetki vermelisiniz:</p>
+<pre><code class="language-js">function errorHandler (err, req, res, next) {
+  if (res.headersSent) {
+    return next(err)
+  }
+  res.status(500)
+  res.render('error', { error: err })
+}
+</code></pre>
+<p>Kodunuzda <code>next()</code> fonksiyonunu bir hata ile birden fazla kez çağırdığınızda varsayılan hata işleyicisi tetiklenebilir, özel hata işleyici ara yazılımı yerinde olsa bile.</p>
+<h2 id="hata-işleyicileri-yazmak">Hata işleyicileri yazmak</h2>
+<p>Hata işleyici ara yazılım fonksiyonlarını diğer ara yazılım fonksiyonları gibi tanımlayınız, bundan farklı olarak hata işleyici fonksiyonlar üç yerine dört argümana sahipler: <code>(err, req, res, next)</code>. Örneğin:</p>
+<pre><code class="language-js">app.use((err, req, res, next) =&gt; {
+  console.error(err.stack)
+  res.status(500).send('Birşeyler bozuldu')
+})
+</code></pre>
+<p>Hata işleyici ara yazılımları diğer <code>app.use()</code> ve rotaların çağrılarından sonra, en son tanımlanır; örnek olarak:</p>
+<pre><code class="language-js">const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(bodyParser.json())
+app.use(methodOverride())
+app.use((err, req, res, next) =&gt; {
+  // iş mantığı
+})
+</code></pre>
+<p>Ara yazılımdaki yanıtlar HTML hata sayfası, basit bir mesaj veya bir JSON karakter dizisi gibi herhangi bir biçimde olabilir.</p>
+<p>Organizasyonel (ve daha üst-düzey çatı) amaçlar için, normal ara yazılım fonksiyonları gibi, birden fazla hata-işleyici ara yazılım fonksiyonu tanımlayabilirsiniz. Örnek olarak, <code>XHR</code> kullanılan ve <code>XHR</code> kullanılmayan istekler için bir hata işleyici tanımlamak gibi:</p>
+<pre><code class="language-js">const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+app.use(bodyParser.json())
+app.use(methodOverride())
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
+</code></pre>
+<p>Bu örnekte, jenerik <code>logErrors</code>, <code>stderr</code>‘a istek ve hata bilgileri yazabilir, örneğin:</p>
+<pre><code class="language-js">function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
+}
+</code></pre>
+<p>Ayrıca bu örnekte, <code>clientErrorHandler</code>aşağıdaki gibi tanımlanır; bu durumda, hata açıkça bir sonrakine aktarılır.</p>
+<p>Bir hata işleme fonksiyonunda “next” <em>çağrılmadığında</em>, yanıtın yazılmasından (ve sonlandırılmasından) siz sorumlusunuz. Aksi takdirde o istekler “havada” kalır ve çöp toplama (garbage collection) için geçerli olmayacaktır.</p>
+<pre><code class="language-js">function clientErrorHandler (err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Birşeyler ters gitti' })
+  } else {
+    next(err)
+  }
+}
+</code></pre>
+<p>“Hepsini-yakala” <code>errorHandler</code> fonksiyonunu aşağıdaki gibi tanımlayın:</p>
+<pre><code class="language-js">function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
+}
+</code></pre>
+<p>Birden fazla geri çağırma fonksiyonu olan bir rota işleyiciniz var ise bir sonraki rota işleyicisine geçmek için <code>route</code> parametresini kullanabilirsiniz. Örnek:</p>
+<pre><code class="language-js">app.get('/a_route_behind_paywall',
+  (req, res, next) =&gt; {
+    if (!req.user.hasPaid) {
+      // bu isteği işlemeye devam et
+      next('route')
+    } else {
+      next()
+    }
+  }, (req, res, next) =&gt; {
+    PaidContent.find((err, doc) =&gt; {
+      if (err) return next(err)
+      res.json(doc)
+    })
+  })
+</code></pre>
+<p>Bu örnekte, <code>getPaidContent</code> işleyicisi es geçilecek ama <code>app</code> uygulaması <code>/a_route_behind_paywall</code> yolu için geriye kalan herhangi bir işleyici çalışmaya devam edecek.</p>
+<div class="doc-box doc-info">
+<p><code>next()</code> ve <code>next(err)</code> fonksiyonlarına yapılacak çağrılar şimdiki işleyicinin tamamlandığını ve hangi durumda tamamlandıklarını belirtir. <code>next(err)</code> çağrısı, yukarıda gösterildiği gibi hata işlemek için kurulanlar hariç, zincirde geriye kalan bütün işleyicileri es geçer.</p>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+<a href="../../../strongloop.com/index.html">StrongLoop/IBM</a> tarafından sağlanan belge çevirileri:
+<a href="../../fr/index.html">Fransızca</a>, <a href="../../de/index.html">Almanca</a>, <a href="../../es/index.html">İspanyolca</a>, <a href="../../it/index.html">İtalyanca</a>, <a href="../../ja/index.html">Japonca</a>, <a href="../../ru/index.html">Rusça</a>, <a href="../../zh-cn/index.html">Çince</a>, <a href="../../zh-tw/index.html">Klasik Çince</a>, <a href="../../ko/index.html">Korece</a>, <a href="../../pt-br/index.html">Portekizce</a>.
+<br>
+Topluluk çevirisi için: <a href="../../sk/index.html">Slovakça</a>, <a href="../../uk/index.html">Ukraynaca</a> and <a href="../../uz/index.html">Özbekçe</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bir <a href="https://openjsf.org">OpenJS Vakfı</a> projesidir.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Github'da Forkla</a>.</div>
+<div>Telif Hakkı &copy; 2017 StrongLoop, IBM, ve diğer expressjs.com katkıda bulunanlar.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Bu iş<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a> lisansı altındadır.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="e99121d03de30aee6264523e-text/javascript"></script>
+<script type="e99121d03de30aee6264523e-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:tr'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="e99121d03de30aee6264523e-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/tr/guide/error-handling.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

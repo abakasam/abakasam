@@ -1,11 +1,10 @@
 06122022 Checking for Element in Array
 
 https://www.jianshu.com/p/23ec989d722e
+https://www.jianshu.com/p/8d0ea71a2740
 
 array=(1 2 3 1)
 echo ${array[@]/1/b}
 
 a=([name]=xiaogp [age]=13)
 echo ${!a[@]}
-
-https://www.jianshu.com/p/8d0ea71a2740

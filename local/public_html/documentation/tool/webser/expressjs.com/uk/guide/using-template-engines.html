@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="uk" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/uk/guide/using-template-engines.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Використання шаблонізаторів в Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/uk.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Початкова сторінка</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Ознайомлення</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Встановлення
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Генератор структури Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Базова маршрутизація
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Статичні файли
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+ЧАПи
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Гід</a>
+<ul>
+<li><a href="routing.html">Маршрутизація</a>
+</li>
+<li><a href="writing-middleware.html">Створення проміжних обробників</a>
+</li>
+<li><a href="using-middleware.html">Використання проміжних обробників</a>
+</li>
+<li><a href="using-template-engines.html">Використання шаблонізаторів</a>
+</li>
+<li><a href="error-handling.html">Обробка помилок</a>
+</li>
+<li><a href="debugging.html">Зневадження</a>
+</li>
+<li><a href="behind-proxies.html">Express позаду проксі</a>
+</li>
+<li><a href="migrating-4.html">Перехід на Express 4</a>
+</li>
+<li><a href="migrating-5.html">Перехід на Express 5</a>
+</li>
+<li><a href="database-integration.html">Інтеграція з базами даних</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Довідник API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (застаріла)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Додаткові можливості</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Шаблонізатори</a>
+</li>
+<li><a href="../advanced/pm.html">Використання менеджерів процесів</a>
+</li>
+<li><a href="../advanced/security-updates.html">Оновлення безпеки</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Кращі практики безпеки</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Кращі практики продуктивності</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ресурси</a>
+<ul>
+<li><a href="../resources/glossary.html">Голосарій</a>
+</li>
+<li><a href="../resources/middleware.html">Проміжний обробник</a>
+</li>
+<li><a href="../resources/community.html">Спільнота</a>
+</li>
+<li><a href="../resources/frameworks.html">Фреймворки</a>
+</li>
+<li><a href="../resources/learning.html">Додаткове навчання</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Цей документ може бути застарілим, в порівнянні з оригінальною <a href="../../index.html">англійською версією документації</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="використання-шаблонізаторів-в-express">Використання шаблонізаторів в Express</h1>
+<p>A <em>template engine</em> enables you to use static template files in your application. At runtime, the template engine replaces
+variables in a template file with actual values, and transforms the template into an HTML file sent to the client.
+This approach makes it easier to design an HTML page.</p>
+<p>Some popular template engines that work with Express are <a href="https://pugjs.org/api/getting-started.html">Pug</a>,
+<a href="https://www.npmjs.com/package/mustache">Mustache</a>, and <a href="https://www.npmjs.com/package/ejs">EJS</a>.
+The <a href="../starter/generator.html">Express application generator</a> uses Pug as its default, but it also supports several others.</p>
+<p>See <a href="https://github.com/expressjs/express/wiki#template-engines">Template Engines (Express wiki)</a>
+for a list of template engines you can use with Express.
+See also <a href="https://strongloop.com/strongblog/compare-javascript-templates-jade-mustache-dust/">Comparing JavaScript Templating Engines: Jade, Mustache, Dust and More</a>.</p>
+<p>To render template files, set the following <a href="../4x/api.html#app.set">application setting properties</a>:</p>
+<ul>
+<li><code>views</code>, the directory where the template files are located. Eg: <code>app.set('views', './views')</code>.
+This defaults to the <code>views</code> directory in the application root directory.</li>
+<li><code>view engine</code>, the template engine to use. For example, to use the Pug template engine: <code>app.set('view engine', 'pug')</code>.</li>
+</ul>
+<p>Then install the corresponding template engine npm package; for example to install Pug:</p>
+<pre><code class="language-console">$ npm install pug --save
+</code></pre>
+<div class="doc-box doc-notice">
+<p>Express-compliant template engines such as Pug export a function named <code>__express(filePath, options, callback)</code>,
+which is called by the <code>res.render()</code> function to render the template code.</p>
+<p>Some template engines do not follow this convention. The <a href="https://www.npmjs.org/package/consolidate">Consolidate.js</a>
+library follows this convention by mapping all of the popular Node.js template engines, and therefore works seamlessly within Express.</p>
+</div>
+<p>After the view engine is set, you don’t have to specify the engine or load the template engine module in your app;
+Express loads the module internally, as shown below (for the above example).</p>
+<pre><code class="language-javascript" translate="no">
+app.set('view engine', 'pug');
+</code></pre>
+<p>Create a Pug template file named <code>index.pug</code> in the <code>views</code> directory, with the following content:</p>
+<pre><code class="language-javascript" translate="no">
+html
+  head
+    title= title
+  body
+    h1= message
+</code></pre>
+<p>Then create a route to render the <code>index.pug</code> file. If the <code>view engine</code> property is not set,
+you must specify the extension of the <code>view</code> file. Otherwise, you can omit it.</p>
+<pre><code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
+});
+</code></pre>
+<p>When you make a request to the home page, the <code>index.pug</code> file will be rendered as HTML.</p>
+<p>To learn more about how template engines work in Express, see:
+<a href="../advanced/developing-template-engines.html">“Developing template engines for Express”</a>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> проект <a href="https://openjsf.org">фонду OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Розмістіть веб-сайт на GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. та інших учасників expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Ліцензія Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Цей твір ліцензовано за <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">ліцензією Creative Commons Із Зазначенням Авторства - Поширення На Тих Самих Умовах 3.0 Сполучені Штати</a>.
+</div>
+</footer>
+<script type="026ebc40468f3a26087bd15b-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:uk'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="026ebc40468f3a26087bd15b-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/uk/guide/using-template-engines.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

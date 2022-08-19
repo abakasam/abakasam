@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="tr" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/tr/resources/middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express middleware</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/tr.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div style="text-align: center; background: #010101; color: #f1f1f1; padding: 16px; font-size: 16px; width: 100vw">
+Black Lives Matter. <a style="color: #5E80F7; text-decoration: none;" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search" />
+<ul id="navmenu">
+<li><a href="../../index.html" id="home-menu">Anasayfa</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Buradan Başlayın</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Kurulum
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Merhaba Dünya
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Oluşturucu
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basit Yönlendirme
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statik Dosyalar
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+SSS
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Kılavuz</a>
+<ul>
+<li><a href="../guide/routing.html">Yönlendirme</a>
+</li>
+<li><a href="../guide/writing-middleware.html">
+Middleware yazma</a>
+</li>
+<li><a href="../guide/using-middleware.html">Middleware kullanma</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Şablon motoru kullanma</a>
+</li>
+<li><a href="../guide/error-handling.html">Hata işleme</a>
+</li>
+<li><a href="../guide/debugging.html">Hata Ayıklama</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express behind proxies</a>
+</li>
+<li><a href="../guide/migrating-4.html">Express 4 geçiş</a>
+</li>
+<li><a href="../guide/migrating-5.html">Express 5 geçiş</a>
+</li>
+<li><a href="../guide/database-integration.html">Database Entegrasyonu</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API Kaynak</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (Kullanımdan kaldırıldı)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (Kullanımdan kaldırıldı)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Gelişmiş konular</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Şablon motorları</a>
+</li>
+<li><a href="../advanced/pm.html">Proses yöneticisi kullanma</a>
+</li>
+<li><a href="../advanced/security-updates.html">Gğvenlik güncellemeleri</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">En iyi güvenlik uygulamaları</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">En iyi performans uygulamaları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="glossary.html" class="active">Kaynaklar</a>
+<ul>
+<li>
+<a href="community.html">Topluluk</a>
+</li>
+<li>
+<a href="glossary.html">Terimler</a>
+</li>
+<li>
+<a href="middleware.html">Middleware</a>
+</li>
+<li>
+<a href="utils.html">Yardımcı Modüller</a>
+</li>
+<li>
+<a href="frameworks.html">Yapılar</a>
+</li>
+<li>
+<a href="learning.html">Ek öğrenme</a>
+</li>
+<li>
+<a href="companies-using-express.html">Express kullanan şirket</a>
+</li>
+<li>
+<a href="contributing.html">Express'e katkıda bulunmak</a>
+</li>
+<li>
+<a href="../changelog/4x.html">Sürüm Notları</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p>Bu doküman ingilizce dokümana göre eski olabilir. Son güncellemeler için lütfen <a href="../../index.html">İngilizce Dokümanı</a>. ziyaret edin
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<div id="page-doc">
+<h2 id="express-middleware">Express middleware</h2>
+<p>The Express middleware modules listed here are maintained by the
+<a href="https://github.com/orgs/expressjs/people">Expressjs team</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Middleware module</th>
+<th>Description</th>
+<th>Replaces built-in function (Express 3)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../resources/middleware/body-parser.html">body-parser</a></td>
+<td>Parse HTTP request body. See also: <a href="https://github.com/raynos/body">body</a>, <a href="https://github.com/visionmedia/co-body">co-body</a>, and <a href="https://github.com/stream-utils/raw-body">raw-body</a>.</td>
+<td>express.bodyParser</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/compression.html">compression</a></td>
+<td>Compress HTTP responses.</td>
+<td>express.compress</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/connect-rid.html">connect-rid</a></td>
+<td>Generate unique request ID.</td>
+<td>NA</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/cookie-parser.html">cookie-parser</a></td>
+<td>Parse cookie header and populate <code>req.cookies</code>. See also <a href="https://github.com/jed/cookies">cookies</a> and <a href="https://github.com/jed/keygrip">keygrip</a>.</td>
+<td>express.cookieParser</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/cookie-session.html">cookie-session</a></td>
+<td>Establish cookie-based sessions.</td>
+<td>express.cookieSession</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/cors.html">cors</a></td>
+<td>Enable cross-origin resource sharing (CORS) with various options.</td>
+<td>NA</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/csurf.html">csurf</a></td>
+<td>Protect from CSRF exploits.</td>
+<td>express.csrf</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/errorhandler.html">errorhandler</a></td>
+<td>Development error-handling/debugging.</td>
+<td>express.errorHandler</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/method-override.html">method-override</a></td>
+<td>Override HTTP methods using header.</td>
+<td>express.methodOverride</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/morgan.html">morgan</a></td>
+<td>HTTP request logger.</td>
+<td>express.logger</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/multer.html">multer</a></td>
+<td>Handle multi-part form data.</td>
+<td>express.bodyParser</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/response-time.html">response-time</a></td>
+<td>Record HTTP response time.</td>
+<td>express.responseTime</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/serve-favicon.html">serve-favicon</a></td>
+<td>Serve a favicon.</td>
+<td>express.favicon</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/serve-index.html">serve-index</a></td>
+<td>Serve directory listing for a given path.</td>
+<td>express.directory</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/serve-static.html">serve-static</a></td>
+<td>Serve static files.</td>
+<td>express.static</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/session.html">session</a></td>
+<td>Establish server-based sessions (development only).</td>
+<td>express.session</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/timeout.html">timeout</a></td>
+<td>Set a timeout period for HTTP request processing.</td>
+<td>express.timeout</td>
+</tr>
+<tr>
+<td><a href="../../resources/middleware/vhost.html">vhost</a></td>
+<td>Create virtual domains.</td>
+<td>express.vhost</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="additional-middleware-modules">Additional middleware modules</h2>
+<p>These are some additional popular middleware modules.</p>
+<table>
+<thead>
+<tr>
+<th>Middleware module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/msemenistyi/connect-image-optimus">connect-image-optimus</a></td>
+<td>Optimize image serving. Switches images to <code>.webp</code> or <code>.jxr</code>, if possible.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/devoidfury/express-debug">express-debug</a></td>
+<td>Development tool that adds information about template variables (locals), current session, and so on.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/nemtsov/express-partial-response">express-partial-response</a></td>
+<td>Filters out parts of JSON responses based on the <code>fields</code> query-string; by using Google API’s Partial Response.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jamiesteven/express-simple-cdn">express-simple-cdn</a></td>
+<td>Use a CDN for static assets, with multiple host support.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ericf/express-slash">express-slash</a></td>
+<td>Handles routes with and without trailing slashes.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/stormpath/stormpath-express">express-stormpath</a></td>
+<td>User storage, authentication, authorization, SSO, and data security.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jamiesteven/express-uncapitalize">express-uncapitalize</a></td>
+<td>Redirects HTTP requests containing uppercase to a canonical lowercase form.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/helmetjs/helmet">helmet</a></td>
+<td>Helps secure your apps by setting various HTTP headers.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/coderaiser/join-io">join-io</a></td>
+<td>Joins files on the fly to reduce the requests count.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jaredhanson/passport">passport</a></td>
+<td>Authentication using “strategies” such as OAuth, OpenID and many others. See <a href="http://passportjs.org/">http://passportjs.org/</a> for more information.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paulwalker/connect-static-expiry">static-expiry</a></td>
+<td>Fingerprint URLs or caching headers for static assets.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/madhums/node-view-helpers">view-helpers</a></td>
+<td>Common helper methods for views.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/hdngr/siracha">sriracha-admin</a></td>
+<td>Dynamically generate an admin site for Mongoose.</td>
+</tr>
+</tbody>
+</table>
+<p>For more middleware modules, see <a href="https://github.com/Raynos/http-framework/wiki/Modules">http-framework</a>.</p>
+</div>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<section id="doc-langs">
+<a href="../../../strongloop.com/index.html">StrongLoop/IBM</a> tarafından sağlanan belge çevirileri:
+<a href="../../fr/index.html">Fransızca</a>, <a href="../../de/index.html">Almanca</a>, <a href="../../es/index.html">İspanyolca</a>, <a href="../../it/index.html">İtalyanca</a>, <a href="../../ja/index.html">Japonca</a>, <a href="../../ru/index.html">Rusça</a>, <a href="../../zh-cn/index.html">Çince</a>, <a href="../../zh-tw/index.html">Klasik Çince</a>, <a href="../../ko/index.html">Korece</a>, <a href="../../pt-br/index.html">Portekizce</a>.
+<br>
+Topluluk çevirisi için: <a href="../../sk/index.html">Slovakça</a>, <a href="../../uk/index.html">Ukraynaca</a> and <a href="../../uz/index.html">Özbekçe</a>.
+</section>
+<div id="footer-content">
+<div id="github">
+<a class="github-button" href="https://github.com/expressjs/expressjs.com" data-icon="octicon-star" aria-label="Star expressjs/expressjs.com on GitHub">Star</a>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> bir <a href="https://openjsf.org">OpenJS Vakfı</a> projesidir.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Github'da Forkla</a>.</div>
+<div>Telif Hakkı &copy; 2017 StrongLoop, IBM, ve diğer expressjs.com katkıda bulunanlar.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Bu iş<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Attribution-ShareAlike 3.0 United States License</a> lisansı altındadır.
+</div>
+</footer>
+<script async defer src="https://buttons.github.io/buttons.js" type="b144bfd72d241f7f13d5c321-text/javascript"></script>
+<script type="b144bfd72d241f7f13d5c321-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:tr'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="b144bfd72d241f7f13d5c321-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/tr/resources/middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

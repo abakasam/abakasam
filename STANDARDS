@@ -1,54 +1,61 @@
-programming
-abakasam Virus Writing			(Drifty)
-Asail    Game Development		helix > github > azure > everhour > wikidot > godaddy > sites
-Aquaogen Software Engineering	(Drifty)
-Drifty   Web Development		github > codeanywhere > codetree > office > onedrive > mediafire > wikidot > codeproject > sites
-Sunsoft  Robotics Engineering	(Microsoft)
-Whisper	 Cryptography			(Netgear)
+user interface
+ style
+  reports
+   programming
+    gifts
 
-abakasam programming Monogame	GitHub
-Aquaogen programming OnePlus	LinkedIn
-Drifty   programming Ionic		LinkedIn
-Whisper  programming Netgear	LinkedIn
-Runflash running	 Starbucks	Facebook
-Firestar racing		 Toyota		LinkedIn
-?		 racing 	 Greddy	 	LinkedIn
-Starbuck racing		 Camden		LinkedIn	
-Gabet    gaming		 Microsoft	Facebook
-Sunsoft  gaming 	 SHADE		LinkedIn
-Asail	 gaming		 SHADE		Facebook
-
-gifts
-Firestar	Vamos							https://sourceforge.net/projects/vamos
-Aquaogen	Metro UI (Windows 9)			https://reactos.org
-Aquaogen	Cyanogenmod						https://cyanogenmodroms.com
-Aquaogen	Aquaogenlock					https://redns.aquauogen.net
-Aquaogen	ChromeOS (ARM, Power, i686)		https://www.chromium.org/chromium-projects (Use of Android (.apk and .rs) instead of Gentoo)
-Drifty		Clisp							https://clisp.sourceforge.io
-Asail		PowerQuest						https://robocup.org
-Asail		TI-83+ (Z80, GBZ80)				https://gamelate.aquaogen.net
-abakasam	VXHeaven						https://vxheaven.aquaogen.net
-abakasam	Corewar							https://www.corewar.io
-abakasam	Encfs							https://vgough.github.io/encfs
-
-reports
-NEWS				  u
-code report           f
- comment
- map
- see
- interface
-project report
- programming meeting  u
- project portfolio    u
- progress report      f
-document
- change.log           usf
- blog                 usf
- code project		  s
- wikidot			  u
+user interface
+ Database		Datagrip
+ Code			GitHub
+ Error			Log Owl
+ Issue			Codetree
+ Clock			Everhour
+ Commit			GitDailies
+ Branch			Hound
+ Release		NextRelease
+ Documentation	Webser, Apifox
+ Stack			Stackshare
+ Customer		Waitlyst
+ Deploy			Heroku
 
 style
  no abbreviations
  use change log
  only use developer comments
+
+reports
+ NEWS				  u
+ code report          f
+ project report
+  programming meeting u
+  project portfolio   u
+  progress report     f
+ document
+  change.log          usf
+  blog                usf
+  code project		  s
+  wikidot			  u
+  documentation		  f
+  site				  f
+
+programming
+ abakasam Virus Writing			
+ Asail    Game Development		
+ Aquaogen Software Engineering	
+ Drifty   Web Development	
+ Sunsoft  Robotics Engineering	
+ Whisper  Cryptography			
+
+gifts
+ Firestar	Vamos							https://vamos       .firestar.it				Write book on Vamos
+ Aquaogen	Metro UI (Windows 9)			https://windows     .aquoagen.net				Use Metro UI on ReactOS
+ Aquaogen	Cyanogenmod						https://cyanogenmod .aquaogen.net				Use Metro UI on mobile Windows 9 with Android
+ Aquaogen	Aquaogenlock					https://redns       .aquauogen.net				Admin tool to control network
+ Aquaogen	Chromium OS						https://chromium    .aquaogen.net				Use of Android (.apk and .rs, not .deb and .sh)
+ Aquaogen	selinux							https://selinux     .aquaogen.net				Improve documentation of selinux
+ Drifty		Clisp							https://drifty      .aquaogen.net				Write book on Clisp for game development
+ Asail 		TI-83+ (Z80, GBZ80)				https://gamelate    .asail.co					Port C Gameboy game to Z80
+ Asail		PowerQuest						https://robocup     .asail.co					Use RC car in Robocup
+ abakasam	VXHeaven						https://vxheaven    .aquaogen.net				Maintain site AS-IS
+ abakasam	Corewar							https://abakasam    .githbu.io/corewar			Add logic and archtiecture display, and improve documentation
+ abakasam	Encfs							https://vgough      .github.io/encfs			Write book on encfs, specifically math

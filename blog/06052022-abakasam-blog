@@ -1,7 +1,22 @@
 06052022 Installing X Windows System on CentOS
 
-centos.pkgs.org
-https://centos.pkgs.org/7/centos-x86_64/xorg-x11-server-Xdmx-1.20.4-10.el7.x86_64.rpm.html
-
+https://www.jianshu.com/p/e6b45bb9c2e9
 https://blog.csdn.net/weixin_42360788/article/details/116686598
 https://blog.csdn.net/Kingairy/article/details/123546762
+
+/etc/ssh/sshd_config
+	X11Forwarding yes
+	#X11DisplayOffset 10
+
+	service sshd restart	
+	yum install xorg-x11-xauth
+	xauth add $(xauth -f !test/.Xauthority list|tail -1)
+	mv .Xauthority old.Xauthority
+
+touch ~/.Xauthority
+	HOST=https://port-0-drifty-abakasam720639.codeanyapp.com/
+	export HOST
+	xauth generate :0 . trusted
+	xauth add $HOST:0 . $(xxd -l 16 -p /dev/urandom)
+	export DISPLAY=$HOST:0.0
+	xauth add

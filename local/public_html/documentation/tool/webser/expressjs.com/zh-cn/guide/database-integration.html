@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/zh-cn/guide/database-integration.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express 数据库集成</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/zh-cn.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">主页</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">入门</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+安装
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express 生成器
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+基本路由
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+静态文件
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+常见问题及解答
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">指南</a>
+<ul>
+<li><a href="routing.html">路由</a>
+</li>
+<li><a href="writing-middleware.html">编写中间件</a>
+</li>
+<li><a href="using-middleware.html">使用中间件</a>
+</li>
+<li><a href="using-template-engines.html">使用模板引擎</a>
+</li>
+<li><a href="error-handling.html">错误处理</a>
+</li>
+<li><a href="debugging.html">调试</a>
+</li>
+<li><a href="behind-proxies.html">代理背后的 Express</a>
+</li>
+<li><a href="migrating-4.html">迁移到 Express 4</a>
+</li>
+<li><a href="migrating-5.html">迁移到 Express 5</a>
+</li>
+<li><a href="database-integration.html">数据库集成</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API 参考</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x（不推荐）</a>
+</li>
+<li><a href="../../2x/index.html">2.x（不推荐）</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">高级主题</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">模板引擎</a>
+</li>
+<li><a href="../advanced/pm.html">使用进程管理器</a>
+</li>
+<li><a href="../advanced/security-updates.html">安全更新</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">安全最佳实践</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">性能最佳实践</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">资源</a>
+<ul>
+<li><a href="../resources/glossary.html">词汇表</a>
+</li>
+<li><a href="../resources/middleware.html">中间件</a>
+</li>
+<li><a href="../resources/community.html">社区</a>
+</li>
+<li><a href="../resources/learning.html">额外学习</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>这个翻译<a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>提供.</p>
+相对于英文版的文档，本文档可能已过时。要了解最近的更新，请参阅<a href="../../index.html">英文版文档</a>。
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="数据库集成">数据库集成</h1>
+<p>要将数据库连接到 Express 应用程序，只需在该应用程序中为数据库装入相应的 Node.js 驱动程序。本文档简要说明如何在 Express 应用程序中为数据库系统添加和使用某些最流行的 Node.js 模块：</p>
+<ul>
+<li><a href="#cassandra">Cassandra</a></li>
+<li><a href="#couchbase">Couchbase</a></li>
+<li><a href="#couchdb">CouchDB</a></li>
+<li><a href="#leveldb">LevelDB</a></li>
+<li><a href="#mysql">MySQL</a></li>
+<li><a href="#mongodb">MongoDB</a></li>
+<li><a href="#neo4j">Neo4j</a></li>
+<li><a href="#oracle">Oracle</a></li>
+<li><a href="#postgresql">PostgreSQL</a></li>
+<li><a href="#redis">Redis</a></li>
+<li><a href="#sql-server">SQL Server</a></li>
+<li><a href="#sqlite">SQLite</a></li>
+<li><a href="#elasticsearch">Elasticsearch</a></li>
+</ul>
+<div class="doc-box doc-notice">
+<p>这些数据库驱动程序是众多可用数据库驱动程序的一部分。要了解其他选项，请在 <a href="https://www.npmjs.com/">npm</a> 站点上搜索。</p>
+</div>
+<h2 id="cassandra">Cassandra</h2>
+<p><strong>模块</strong>：<a href="https://github.com/datastax/nodejs-driver">cassandra-driver</a></p>
+<h3 id="安装">安装</h3>
+<pre><code class="language-console">$ npm install cassandra-driver
+</code></pre>
+<h3 id="示例">示例</h3>
+<pre><code class="language-js">const cassandra = require('cassandra-driver')
+const client = new cassandra.Client({ contactPoints: ['localhost'] })
+
+client.execute('select key from system.local', (err, result) =&gt; {
+  if (err) throw err
+  console.log(result.rows[0])
+})
+</code></pre>
+<h2 id="couchbase">Couchbase</h2>
+<p><strong>模块</strong>: <a href="https://github.com/couchbase/couchnode">couchnode</a></p>
+<h3 id="安装-1">安装</h3>
+<pre><code class="language-console">$ npm install couchbase
+</code></pre>
+<h3 id="示例-1">示例</h3>
+<pre><code class="language-js">const couchbase = require('couchbase')
+const bucket = (new couchbase.Cluster('http://localhost:8091')).openBucket('bucketName')
+
+// add a document to a bucket
+bucket.insert('document-key', { name: 'Matt', shoeSize: 13 }, (err, result) =&gt; {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(result)
+  }
+})
+
+// get all documents with shoe size 13
+const n1ql = 'SELECT d.* FROM `bucketName` d WHERE shoeSize = $1'
+const query = N1qlQuery.fromString(n1ql)
+bucket.query(query, [13], (err, result) =&gt; {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(result)
+  }
+})
+</code></pre>
+<h2 id="couchdb">CouchDB</h2>
+<p><strong>模块</strong>：<a href="https://github.com/dscape/nano">nano</a></p>
+<h3 id="安装-2">安装</h3>
+<pre><code class="language-console">$ npm install nano
+</code></pre>
+<h3 id="示例-2">示例</h3>
+<pre><code class="language-js">const nano = require('nano')('http://localhost:5984')
+nano.db.create('books')
+const books = nano.db.use('books')
+
+// Insert a book document in the books database
+books.insert({ name: 'The Art of war' }, null, (err, body) =&gt; {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(body)
+  }
+})
+
+// Get a list of all books
+books.list((err, body) =&gt; {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(body.rows)
+  }
+})
+</code></pre>
+<h2 id="leveldb">LevelDB</h2>
+<p><strong>模块</strong>：<a href="https://github.com/rvagg/node-levelup">levelup</a></p>
+<h3 id="安装-3">安装</h3>
+<pre><code class="language-console">$ npm install level levelup leveldown
+</code></pre>
+<h3 id="示例-3">示例</h3>
+<pre><code class="language-js">const levelup = require('levelup')
+const db = levelup('./mydb')
+
+db.put('name', 'LevelUP', (err) =&gt; {
+  if (err) return console.log('Ooops!', err)
+
+  db.get('name', (err, value) =&gt; {
+    if (err) return console.log('Ooops!', err)
+
+    console.log(`name=${value}`)
+  })
+})
+</code></pre>
+<h2 id="mysql">MySQL</h2>
+<p><strong>模块</strong>：<a href="https://github.com/felixge/node-mysql/">mysql</a></p>
+<h3 id="安装-4">安装</h3>
+<pre><code class="language-console">$ npm install mysql
+</code></pre>
+<h3 id="示例-4">示例</h3>
+<pre><code class="language-js">const mysql = require('mysql')
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'dbuser',
+  password: 's3kreee7',
+  database: 'my_db'
+})
+
+connection.connect()
+
+connection.query('SELECT 1 + 1 AS solution', (err, rows, fields) =&gt; {
+  if (err) throw err
+
+  console.log('The solution is: ', rows[0].solution)
+})
+
+connection.end()
+</code></pre>
+<h2 id="mongodb">MongoDB</h2>
+<p><strong>模块</strong>：<a href="https://github.com/mongodb/node-mongodb-native">mongodb</a></p>
+<h3 id="安装-5">安装</h3>
+<pre><code class="language-console">$ npm install mongodb
+</code></pre>
+<h3 id="示例v2">示例（v2.*）</h3>
+<pre><code class="language-js">const MongoClient = require('mongodb').MongoClient
+
+MongoClient.connect('mongodb://localhost:27017/animals', (err, db) =&gt; {
+  if (err) throw err
+
+  db.collection('mammals').find().toArray((err, result) =&gt; {
+    if (err) throw err
+
+    console.log(result)
+  })
+})
+</code></pre>
+<h3 id="示例v3">示例（v3.*）</h3>
+<pre><code class="language-js">const MongoClient = require('mongodb').MongoClient
+
+MongoClient.connect('mongodb://localhost:27017/animals', (err, client) =&gt; {
+  if (err) throw err
+
+  const db = client.db('animals')
+
+  db.collection('mammals').find().toArray((err, result) =&gt; {
+    if (err) throw err
+
+    console.log(result)
+  })
+})
+</code></pre>
+<p>如果您需要 MongoDB 的对象模型驱动程序，请查看 <a href="https://github.com/LearnBoost/mongoose">Mongoose</a>。</p>
+<h2 id="neo4j">Neo4j</h2>
+<p><strong>模块</strong>：<a href="https://github.com/hacksparrow/apoc">apoc</a></p>
+<h3 id="安装-6">安装</h3>
+<pre><code class="language-console">$ npm install apoc
+</code></pre>
+<h3 id="示例-5">示例</h3>
+<pre><code class="language-js">const apoc = require('apoc')
+
+apoc.query('match (n) return n').exec().then(
+  (response) =&gt; {
+    console.log(response)
+  },
+  (fail) =&gt; {
+    console.log(fail)
+  }
+)
+</code></pre>
+<h2 id="oracle">Oracle</h2>
+<p><strong>模块</strong>: <a href="https://github.com/oracle/node-oracledb">oracledb</a></p>
+<h3 id="安装-7">安装</h3>
+<p>注意: <a href="https://github.com/oracle/node-oracledb#-installation">See installation prerequisites</a>.</p>
+<pre><code class="language-console">$ npm install oracledb
+</code></pre>
+<h3 id="示例-6">示例</h3>
+<pre><code class="language-js">const oracledb = require('oracledb')
+const config = {
+  user: '&lt;your db user&gt;',
+  password: '&lt;your db password&gt;',
+  connectString: 'localhost:1521/orcl'
+}
+
+async function getEmployee (empId) {
+  let conn
+
+  try {
+    conn = await oracledb.getConnection(config)
+
+    const result = await conn.execute(
+      'select * from employees where employee_id = :id',
+      [empId]
+    )
+
+    console.log(result.rows[0])
+  } catch (err) {
+    console.log('Ouch!', err)
+  } finally {
+    if (conn) { // conn assignment worked, need to close
+      await conn.close()
+    }
+  }
+}
+
+getEmployee(101)
+</code></pre>
+<h2 id="postgresql">PostgreSQL</h2>
+<p><strong>模块</strong>：<a href="https://github.com/brianc/node-postgres">pg</a></p>
+<h3 id="安装-8">安装</h3>
+<pre><code class="language-console">$ npm install pg-promise
+</code></pre>
+<h3 id="示例-7">示例</h3>
+<pre><code class="language-js">const pgp = require('pg-promise')(/* options */)
+const db = pgp('postgres://username:password@host:port/database')
+
+db.one('SELECT $1 AS value', 123)
+  .then((data) =&gt; {
+    console.log('DATA:', data.value)
+  })
+  .catch((error) =&gt; {
+    console.log('ERROR:', error)
+  })
+</code></pre>
+<h2 id="redis">Redis</h2>
+<p><strong>模块</strong>：<a href="https://github.com/mranney/node_redis">redis</a></p>
+<h3 id="安装-9">安装</h3>
+<pre><code class="language-console">$ npm install redis
+</code></pre>
+<h3 id="示例-8">示例</h3>
+<pre><code class="language-js">const redis = require('redis')
+const client = redis.createClient()
+
+client.on('error', (err) =&gt; {
+  console.log(`Error ${err}`)
+})
+
+client.set('string key', 'string val', redis.print)
+client.hset('hash key', 'hashtest 1', 'some value', redis.print)
+client.hset(['hash key', 'hashtest 2', 'some other value'], redis.print)
+
+client.hkeys('hash key', (err, replies) =&gt; {
+  console.log(`${replies.length} replies:`)
+
+  replies.forEach((reply, i) =&gt; {
+    console.log(`    ${i}: ${reply}`)
+  })
+
+  client.quit()
+})
+</code></pre>
+<h2 id="sql-server">SQL Server</h2>
+<p><strong>模块</strong>: <a href="https://github.com/tediousjs/tedious">tedious</a></p>
+<h3 id="安装-10">安装</h3>
+<pre><code class="language-console">$ npm install tedious
+</code></pre>
+<h3 id="示例-9">示例</h3>
+<pre><code class="language-js">const Connection = require('tedious').Connection
+const Request = require('tedious').Request
+
+const config = {
+  server: 'localhost',
+  authentication: {
+    type: 'default',
+    options: {
+      userName: 'your_username', // update me
+      password: 'your_password' // update me
+    }
+  }
+}
+
+const connection = new Connection(config)
+
+connection.on('connect', (err) =&gt; {
+  if (err) {
+    console.log(err)
+  } else {
+    executeStatement()
+  }
+})
+
+function executeStatement () {
+  request = new Request("select 123, 'hello world'", (err, rowCount) =&gt; {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(`${rowCount} rows`)
+    }
+    connection.close()
+  })
+
+  request.on('row', (columns) =&gt; {
+    columns.forEach((column) =&gt; {
+      if (column.value === null) {
+        console.log('NULL')
+      } else {
+        console.log(column.value)
+      }
+    })
+  })
+
+  connection.execSql(request)
+}
+</code></pre>
+<h2 id="sqlite">SQLite</h2>
+<p><strong>模块</strong>：<a href="https://github.com/mapbox/node-sqlite3">sqlite3</a></p>
+<h3 id="安装-11">安装</h3>
+<pre><code class="language-console">$ npm install sqlite3
+</code></pre>
+<h3 id="示例-10">示例</h3>
+<pre><code class="language-js">const sqlite3 = require('sqlite3').verbose()
+const db = new sqlite3.Database(':memory:')
+
+db.serialize(() =&gt; {
+  db.run('CREATE TABLE lorem (info TEXT)')
+  const stmt = db.prepare('INSERT INTO lorem VALUES (?)')
+
+  for (let i = 0; i &lt; 10; i++) {
+    stmt.run(`Ipsum ${i}`)
+  }
+
+  stmt.finalize()
+
+  db.each('SELECT rowid AS id, info FROM lorem', (err, row) =&gt; {
+    console.log(`${row.id}: ${row.info}`)
+  })
+})
+
+db.close()
+</code></pre>
+<h2 id="elasticsearch">ElasticSearch</h2>
+<p><strong>模块</strong>：<a href="https://github.com/elastic/elasticsearch-js">elasticsearch</a></p>
+<h3 id="安装-12">安装</h3>
+<pre><code class="language-console">$ npm install elasticsearch
+</code></pre>
+<h3 id="示例-11">示例</h3>
+<pre><code class="language-js">const elasticsearch = require('elasticsearch')
+const client = elasticsearch.Client({
+  host: 'localhost:9200'
+})
+
+client.search({
+  index: 'books',
+  type: 'book',
+  body: {
+    query: {
+      multi_match: {
+        query: 'express js',
+        fields: ['title', 'description']
+      }
+    }
+  }
+}).then((response) =&gt; {
+  const hits = response.hits.hits
+}, (error) =&gt; {
+  console.trace(error.message)
+})
+</code></pre>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a>是<a href="https://openjsf.org">OpenJS的基金会的</a>一个项目。</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">在 GitHub 上派生出网站</a>。</div>
+<div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> 本作品采用<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">知识共享署名-相同方式共享 3.0 美国许可协议</a>进行许可。
+</div>
+</footer>
+<script type="78444ee7f3df23b9d41bb8be-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:zh-cn'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="78444ee7f3df23b9d41bb8be-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/zh-cn/guide/database-integration.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

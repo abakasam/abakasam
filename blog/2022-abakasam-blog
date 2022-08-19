@@ -11,6 +11,7 @@ Date Title Language Description Platform Technology Topic Subtopic Subsection Ty
 06112022 ...code Code Standard Expected Output
 06122022 Bash Checking for Element in Array
 06132022 sed Replace line
+
 06142022 Bash try catch
 06152022 Bash Redirection and Output
 06162022 User Blog and Change Log
@@ -18,6 +19,95 @@ Date Title Language Description Platform Technology Topic Subtopic Subsection Ty
 06182022 Bash getopt Flags or Options
 06192022 Git Basic Use
 06202022 CentOS yum localinstall [y/d/N]:d
+06212022 Install OpenSSH
+06222022
+06232022
+06242022
+06252022
+06262022
+06272022
+06282022
+06292022
+06302022
+06312022
+07012022
+07022022
+07032022
+07042022
+07052022
+07062022
+07072022
+07082022
+07092022
+07102022
+07112022
+07122022
+07132022
+07142022
+07152022
+07162022
+07172022
+07182022
+07192022
+07202202
+07212022
+07222022
+07232022
+07242022
+07252022
+07262022
+07272022
+07282022
+07292022
+07302022
+07312022
+08012022
+08022022
+08032022
+08042022
+08052022
+08062022
+08072022
+08082022
+08092022
+08102022
+08112022
+08122022
+08132022
+08142022
+08152022
+08162022
+08172022
+08182022
+08192022
+
+Scripts		articleupload.sh
+			codeproject.sh
+			codeproject-blog-template-0.0.1.zip
+Scripts		mapcode.sh
+			mapcode.help
+			commentcode.sh
+			commentcode-index.js
+			commentcode.help
+			commentcode.langauges
+			commentcode-examples/
+			code.md
+Scripts		bin.sh
+			github.sh
+			github.help
+			index.sh
+			save-github.sh
+			setup-environment.sh
+			workspace-my.config
+			workspace.md
+Document	LICENSE
+Document	COPYING
+Document	README.md
+Document	NEWS
+Document	STANDARDS
+Document	abakasam-products
+Document	Aquaogen-products
+
 
 NOTES
 
@@ -25,32 +115,35 @@ Apress		Google
 Manning		not Google 
 O'Reilly	Programming 
 Dover		Math 
+Wiley		Logic
 Penguin		Novels 
 Symantec	Theoretical 
 
+Apache Tomcat			
+	PHP					PHP: In A Nutshell, by Paul Hudson
+	SQL					
+	MongoDB				MongoDB: The Definitive Guide, by Kristina Chodorow
 
-Apache Tomcat			?O'Reilly
-	PHP					O'Reilly
-	SQL					SQL In A Nutshell, by Kevin Kline
-	HTML				O'Reilly
-	CSS					O'Reilly
-	Javascript			O'Reilly
-	XML					HTML and XHTML: The Definitive Guide, by Chuck Musciano
-	Bootstrap			?Manning
-	Angular				Apress
-	JQuery				Manning
-Android					?Apress
-	Cyanogenmod			CyanogenMod: Installation und Praxis, by Christian Immler
-Ionic					Mobile App Development with Ionic: Cross-Platform Apps with Ionic, Angular, and Cordova, by Chris Griffith
-Heroku					Heroku: Up and Running: Effortless Application Deployment and Scaling, by Neil Middleton
-CentOS					
-	Bash				Learning the bash Shell: Unix Shell Programming, by Cameron Newham
-Node					Manning?Apress
-	
-React					
-Perl					O'Reilly
-Python				
-Git						O'Reilly
-C						Practical C Programming, by Steve Oualline
-C++						Practical C++ Programming, by Steve Oualline
-Powershell				Microsoft Windows PowerShell: Step By Step, by Ed Wilson
+Bash					bash Cookbook, by Carl Albing
+	Git					Version Control with Git, by Jon Loeliger
+	Regular Expressions	Mastering Regular Expression, by Jeffrey Friedl
+	C++
+
+Ionic					Mobile App Development with Ionic 2, by Chris Griffith
+	Node				
+	HTML 				Dynamic HTML: The Definitive Reference, by Danny Goodman
+	CSS					Dynamic HTML: The Definitive Reference, by Danny Goodman
+	Javascript			Javascript: The Definitive Guide, by David Flanagan
+	XML					Dynamic HTML: The Definitive Reference, by Danny Goodman
+	Bootstrap			
+	Angular				Pro AngularJS, by Adam Freeman
+	JQuery				JQuery In Action, by Bibeault Katz
+
+Geometry				Geometry: A Comprehensive Course
+	Proofs				How to Read and Do Proofs, by Daniel Solow
+	Graphviz
+	GAP
+	Macaulay2
+	Maxima
+	Latex
+	Vamos

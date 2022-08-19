@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="es" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/es/advanced/pm.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Gestores de procesos para las aplicaciones Express</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/es.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Inicio</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Cómo empezar</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Instalación
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Generador de Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Direccionamiento básico
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Archivos estáticos
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Preguntas más frecuentes
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="../guide/routing.html">Guía</a>
+<ul>
+<li><a href="../guide/routing.html">Direccionamiento</a>
+</li>
+<li><a href="../guide/writing-middleware.html">Escritura de middleware</a>
+</li>
+<li><a href="../guide/using-middleware.html">Utilización del middleware</a>
+</li>
+<li><a href="../guide/using-template-engines.html">Utilización de motores de plantilla</a>
+</li>
+<li><a href="../guide/error-handling.html">Manejo de errores</a>
+</li>
+<li><a href="../guide/debugging.html">Depuración</a>
+</li>
+<li><a href="../guide/behind-proxies.html">Express detrás de proxies</a>
+</li>
+<li><a href="../guide/migrating-4.html">Migración a Express 4</a>
+</li>
+<li><a href="../guide/migrating-5.html">Migración a Express 5</a>
+</li>
+<li><a href="../guide/database-integration.html">Integración de la base de datos</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">Referencia de API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (en desuso)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (en desuso)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="developing-template-engines.html" class="active">Temas avanzados</a>
+<ul>
+<li><a href="developing-template-engines.html">Motores de plantilla</a>
+</li>
+<li><a href="pm.html">Utilización de gestores de procesos</a>
+</li>
+<li><a href="security-updates.html">Actualizaciones de seguridad</a>
+</li>
+<li><a href="best-practice-security.html">Mejores prácticas de seguridad</a>
+</li>
+<li><a href="best-practice-performance.html">Mejores prácticas de rendimiento</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Recursos</a>
+<ul>
+<li><a href="../resources/glossary.html">Glosario</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Comunidad</a>
+</li>
+<li><a href="../resources/learning.html">Aprendizaje adicional</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Esta traducción proporcionada por <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Este documento puede estar desfasado respecto a la documentación en inglés. Para ver las últimas actualizaciones, consulte la <a href="../../index.html">documentación en inglés</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="gestores-de-procesos-para-las-aplicaciones-express">Gestores de procesos para las aplicaciones Express</h1>
+<p>Cuando ejecuta aplicaciones Express en producción, es muy útil utilizar un <em>gestor de procesos</em> para realizar las siguientes tareas:</p>
+<ul>
+<li>Reiniciar la aplicación automáticamente si se bloquea.</li>
+<li>Obtener información útil sobre el rendimiento en tiempo de ejecución y el consumo de recursos.</li>
+<li>Modificar dinámicamente los valores para mejorar el rendimiento.</li>
+<li>Controlar la agrupación en clúster.</li>
+</ul>
+<p>Un gestor de procesos es una especie de servidor de aplicaciones: un “contenedor” de aplicaciones que facilita el despliegue, proporciona una alta disponibilidad y permite gestionar la aplicación en el tiempo de ejecución.</p>
+<p>Los gestores de procesos más conocidos para Express y otras aplicaciones Node.js son los siguientes:</p>
+<ul>
+<li><a href="#sl">StrongLoop Process Manager</a></li>
+<li><a href="#pm2">PM2</a></li>
+<li><a href="#forever">Forever</a></li>
+</ul>
+<p>El uso de estas tres herramientas puede ser muy útil, aunque StrongLoop Process Manager es la única que proporciona una solución completa de despliegue y tiempo de ejecución que gestiona el ciclo de vida completo de la aplicación Node.js, con herramientas para cada paso antes y después de la producción, en una interfaz unificada.</p>
+<p>A continuación, se describe brevemente cada una de estas herramientas.
+Para ver una comparación detallada, consulte <a href="http://strong-pm.io/compare/">http://strong-pm.io/compare/</a>.</p>
+<h2 id="strongloop-process-manager"><a id="sl">StrongLoop Process Manager</a></h2>
+<p>StrongLoop Process Manager (StrongLoop PM) es un gestor de procesos de producción para las aplicaciones Node.js. StrongLoop PM tiene incorporado un despliegue de equilibrio de carga, supervisión y varios hosts, así como una consola gráfica.
+Puede utilizar StrongLoop PM para las siguientes tareas:</p>
+<ul>
+<li>Crear, empaquetar y desplegar la aplicación Node.js en un sistema local o remoto.</li>
+<li>Ver perfiles de CPU e instantáneas de almacenamiento dinámico para optimizar el rendimiento y diagnosticar fugas de memoria.</li>
+<li>Mantener activos siempre los clústeres y los procesos.</li>
+<li>Ver medidas de rendimiento sobre la aplicación.</li>
+<li>Gestionar fácilmente los despliegues de varios hosts con la integración de Nginx.</li>
+<li>Unificar varios StrongLoop PM en un tiempo de ejecución de microservicios distribuidos que se gestiona desde Arc.</li>
+</ul>
+<p>Puede trabajar con StrongLoop PM utilizando una potente herramienta de interfaz de línea de mandatos denominada <code>slc</code> o una herramienta gráfica denominada Arc. Arc es de código abierto, con soporte profesional proporcionado por StrongLoop.</p>
+<p>Para obtener más información, consulte <a href="http://strong-pm.io/">http://strong-pm.io/</a>.</p>
+<p>Documentación completa:</p>
+<ul>
+<li><a href="http://docs.strongloop.com/display/SLC">Operating Node apps (documentación de StrongLoop)</a></li>
+<li><a href="http://docs.strongloop.com/display/SLC/Using+Process+Manager">Using StrongLoop Process Manager</a>.</li>
+</ul>
+<h3 id="instalación">Instalación</h3>
+<pre><code class="language-console">$ [sudo] npm install -g strongloop
+</code></pre>
+<h3 id="uso-básico">Uso básico</h3>
+<pre><code class="language-console">$ cd my-app
+$ slc start
+</code></pre>
+<p>Vea el estado del gestor de procesos y todas las aplicaciones desplegadas:</p>
+<pre><code class="language-console">$ slc ctl
+Service ID: 1
+Service Name: my-app
+Environment variables:
+  No environment variables defined
+Instances:
+    Version  Agent version  Cluster size
+     4.1.13      1.5.14           4
+Processes:
+        ID      PID   WID  Listening Ports  Tracking objects?  CPU profiling?
+    1.1.57692  57692   0
+    1.1.57693  57693   1     0.0.0.0:3001
+    1.1.57694  57694   2     0.0.0.0:3001
+    1.1.57695  57695   3     0.0.0.0:3001
+    1.1.57696  57696   4     0.0.0.0:3001
+</code></pre>
+<p>Liste todas las aplicaciones (servicios) que se están gestionando:</p>
+<pre><code class="language-console">$ slc ctl ls
+Id          Name         Scale
+ 1          my-app       1
+</code></pre>
+<p>Detenga una aplicación:</p>
+<pre><code class="language-console">$ slc ctl stop my-app
+</code></pre>
+<p>Reinicie una aplicación:</p>
+<pre><code class="language-console">$ slc ctl restart my-app
+</code></pre>
+<p>También puede realizar un “reinicio suave”, que da a los procesos de trabajador un periodo de gracia para cerrar las conexiones existentes y, a continuación, reinicia la aplicación actual:</p>
+<pre><code class="language-console">$ slc ctl soft-restart my-app
+</code></pre>
+<p>Para eliminar una aplicación de la gestión:</p>
+<pre><code class="language-console">$ slc ctl remove my-app
+</code></pre>
+<h2 id="pm2"><a id="pm2">PM2</a></h2>
+<p>PM2 es un gestor de procesos de producción para las aplicaciones Node.js que tiene un equilibrador de carga incorporado. PM2 permite mantener siempre activas las aplicaciones y volver a cargarlas sin ningún tiempo de inactividad, a la vez que facilita tareas comunes de administrador del sistema. PM2 también permite gestionar el registro de aplicaciones, la supervisión y la agrupación en clúster.</p>
+<p>Para obtener más información, consulte <a href="https://github.com/Unitech/pm2">https://github.com/Unitech/pm2</a>.</p>
+<h3 id="instalación-1">Instalación</h3>
+<pre><code class="language-console">$ [sudo] npm install pm2 -g
+</code></pre>
+<h3 id="uso-básico-1">Uso básico</h3>
+<p>Cuando inicia una aplicación utilizando el mandato <code>pm2</code>, debe especificar la vía de acceso de la aplicación. No obstante, cuando detiene, reinicia o suprime una aplicación, sólo puede especificar el nombre o el ID de la aplicación.</p>
+<pre><code class="language-console">$ pm2 start npm --name my-app -- start
+[PM2] restartProcessId process id 0
+┌──────────┬────┬──────┬───────┬────────┬─────────┬────────┬─────────────┬──────────┐
+│ App name │ id │ mode │ pid   │ status │ restart │ uptime │ memory      │ watching │
+├──────────┼────┼──────┼───────┼────────┼─────────┼────────┼─────────────┼──────────┤
+│ my-app   │ 0  │ fork │ 64029 │ online │ 1       │ 0s     │ 17.816 MB   │ disabled │
+└──────────┴────┴──────┴───────┴────────┴─────────┴────────┴─────────────┴──────────┘
+ Use the `pm2 show &lt;id|name&gt;` command to get more details about an app.
+</code></pre>
+<p>Cuando inicia una aplicación utilizando el mandato <code>pm2</code>, la aplicación se envía inmediatamente al segundo plano. Puede controlar la aplicación en segundo plano desde la línea de mandatos utilizando varios mandatos <code>pm2</code>.</p>
+<p>Cuando se inicia una aplicación utilizando el mandato <code>pm2</code>, se registra en la lista de procesos de PM2 con un ID. Por lo tanto, puede gestionar las aplicaciones con el mismo nombre de distintos directorios en el sistema utilizando su ID.</p>
+<p>Tenga en cuenta que si se ejecuta más de una aplicación con el mismo nombre, los mandatos <code>pm2</code> se aplican en todas ellas. Por lo tanto, utilice ID en lugar de nombres para gestionar aplicaciones individuales.</p>
+<p>Liste todos los procesos en ejecución:</p>
+<pre><code class="language-console">$ pm2 list
+</code></pre>
+<p>Detenga una aplicación:</p>
+<pre><code class="language-console">$ pm2 stop 0
+</code></pre>
+<p>Reinicie una aplicación:</p>
+<pre><code class="language-console">$ pm2 restart 0
+</code></pre>
+<p>Para ver información detallada sobre una aplicación:</p>
+<pre><code class="language-console">$ pm2 show 0
+</code></pre>
+<p>Para eliminar una aplicación del registro de PM2:</p>
+<pre><code class="language-console">$ pm2 delete 0
+</code></pre>
+<h2 id="forever"><a id="forever">Forever</a></h2>
+<p>Forever es una herramienta de interfaz de línea de mandatos simple que permite garantizar la ejecución continua (forever/siempre) de un determinado script. La sencilla interfaz de Forever hace que sea ideal para ejecutar los despliegues más pequeños de scripts y aplicaciones Node.js.</p>
+<p>Para obtener más información, consulte <a href="https://github.com/foreverjs/forever">https://github.com/foreverjs/forever</a>.</p>
+<h3 id="instalación-2">Instalación</h3>
+<pre><code class="language-console">$ [sudo] npm install forever -g
+</code></pre>
+<h3 id="uso-básico-2">Uso básico</h3>
+<p>Para iniciar un script, utilice el mandato <code>forever start</code> y especifique la vía de acceso del script:</p>
+<pre><code class="language-console">$ forever start script.js
+</code></pre>
+<p>Este mandato ejecutará el script en modalidad daemon (en segundo plano).</p>
+<p>Para ejecutar el script para que se adjunte al terminal, omita <code>start</code>:</p>
+<pre><code class="language-console">$ forever script.js
+</code></pre>
+<p>Se recomienda registrar la salida de la herramienta Forever y el script utilizando las opciones de registro <code>-l</code>, <code>-o</code> y <code>-e</code>, como se muestra en este ejemplo:</p>
+<pre><code class="language-console">$ forever start -l forever.log -o out.log -e err.log script.js
+</code></pre>
+<p>Para ver la lista de scripts que ha iniciado Forever:</p>
+<pre><code class="language-console">$ forever list
+</code></pre>
+<p>Para detener un script iniciado por Forever, utilice el mandato <code>forever stop</code> y especifique el índice de procesos (como se lista con el mandato <code>forever list</code>).</p>
+<pre><code class="language-console">$ forever stop 1
+</code></pre>
+<p>De manera alternativa, puede especificar la vía de acceso del archivo:</p>
+<pre><code class="language-console">$ forever stop script.js
+</code></pre>
+<p>Para detener todos los scripts que ha iniciado Forever:</p>
+<pre><code class="language-console">$ forever stopall
+</code></pre>
+<p>Forever tiene más opciones y también proporciona una API mediante programación.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> es un proyecto de la <a href="https://openjsf.org">Fundación OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Bifurque el sitio web en GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. y otros colaboradores de expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Esta obra está bajo una <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Licencia Creative Commons Atribución-CompartirIgual 3.0 Estados Unidos de América</a>.
+</div>
+</footer>
+<script type="1d0092d36eff81624bfdc044-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:es'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="1d0092d36eff81624bfdc044-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/es/advanced/pm.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:30 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

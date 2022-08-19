@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="ru" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/ru/guide/behind-proxies.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Express за прокси</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/ru.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Главная</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Начало работы</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Установка
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello world
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Генератор приложений Express
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Основы маршрутизации
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Статические файлы
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+FAQ
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Руководство</a>
+<ul>
+<li><a href="routing.html">Маршрутизация</a>
+ </li>
+<li><a href="writing-middleware.html">Написание кода промежуточных обработчиков</a>
+</li>
+<li><a href="using-middleware.html">Использование промежуточных обработчиков</a>
+</li>
+<li><a href="using-template-engines.html">Использование шаблонизаторов</a>
+</li>
+<li><a href="error-handling.html">Обработка ошибок</a>
+</li>
+<li><a href="debugging.html">Отладка</a>
+</li>
+<li><a href="behind-proxies.html">Express за прокси</a>
+</li>
+<li><a href="migrating-4.html">Переход к Express 4</a>
+</li>
+<li><a href="migrating-5.html">Переход к Express 5</a>
+</li>
+<li><a href="database-integration.html">Интеграция с базами данных</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (устарел)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (устарел)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Расширенные возможности</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Шаблонизаторы</a>
+</li>
+<li><a href="../advanced/pm.html">Работа с диспетчерами процессов</a>
+</li>
+<li><a href="../advanced/security-updates.html">Обновления системы безопасности</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Лучшие практические методы в области защиты</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Лучшие практические методы улучшения производительности</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ресурсы</a>
+<ul>
+<li><a href="../resources/glossary.html">Глоссарий</a>
+</li>
+<li><a href="../resources/middleware.html">Промежуточный обработчик</a>
+</li>
+<li><a href="../resources/community.html">Сообщество</a>
+</li>
+<li><a href="../resources/learning.html">Дополнительное обучение</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Этот перевод обеспечивается <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Этот документ может быть устаревшим по отношению к документации на английском языке. Последние обновления содержатся в <a href="../../index.html">документации на английском языке</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="express-за-прокси">Express за прокси</h1>
+<p>При запуске приложения Express за прокси-сервером, необходимо указать (с помощью <a href="../4x/api.html#app.set">app.set()</a>) для переменной приложения <code>trust proxy</code> одно из значений, приведенных в таблице ниже.</p>
+<div class="doc-box doc-info">
+<p>Хотя приложение будет запущено и без указания значения переменной приложения <code>trust proxy</code>, отсутствие заданного значения <code>trust proxy</code> приведет к некорректной регистрации IP-адреса прокси в качестве клиентского IP-адреса.</p>
+</div>
+<table class="doctable" border="1">
+<thead><tr><th>Тип</th><th>Значение</th></tr></thead>
+<tbody>
+<tr>
+<td>Булевский</td>
+<td>
+<p>Если указано значение <code>true</code>, клиентским IP-адресом считается первая слева запись в заголовке <code>X-Forwarded-*</code>.</p>
+<p>Если указано значение <code>false</code>, приложение считается имеющим прямой выход в Интернет, и IP-адрес клиента будет производным от <code>req.connection.remoteAddress</code>. Это значение используется по умолчанию.</p>
+</td>
+</tr>
+<tr>
+<td>IP-адреса</td>
+<td>
+<p>IP-адрес, подсеть или массив IP-адресов и подсетей, считающихся надежными. В приведенном ниже списке перечислены предварительно заданные имена подсетей:</p>
+<ul>
+<li>loopback - <code>127.0.0.1/8</code>, <code>::1/128</code></li>
+<li>linklocal - <code>169.254.0.0/16</code>, <code>fe80::/10</code></li>
+<li>uniquelocal - <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>, <code>fc00::/7</code></li>
+</ul>
+<p>IP-адреса можно задать любым из указанных ниже способов:</p>
+<pre><code class="language-js" translate="no">app.set('trust proxy', 'loopback') // specify a single subnet
+app.set('trust proxy', 'loopback, 123.123.123.123') // specify a subnet and an address
+app.set('trust proxy', 'loopback, linklocal, uniquelocal') // specify multiple subnets as CSV
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']) // specify multiple subnets as an array</code>
+</pre>
+<p>Если IP-адреса или подсети указаны, они исключаются из процесса определения адреса, и незащищенный IP-адрес, ближайший к серверу приложений, будет определен как IP-адрес клиента.</p>
+</td>
+</tr>
+<tr>
+<td>Число</td>
+<td>
+<p>Считать защищенным <code>n</code>-й элемент пути от прокси-сервера со стороны клиента, в качестве клиента.</p>
+</td>
+</tr>
+<tr>
+<td>Функция</td>
+<td>
+<p>Реализация нестандартного механизма защиты. Используйте этот метод, только если вы уверены в своих знаниях.</p>
+<pre><code class="language-js" translate="no">app.set('trust proxy', function (ip) {
+  if (ip === '127.0.0.1' || ip === '123.123.123.123') return true; // trusted IPs
+  else return false;
+});</code>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Установка значения, отличного от <code>false</code>, для <code>trust proxy</code> ведет к трем существенным изменениям:</p>
+<ul>
+<li>
+<p>Значение <a href="../api.html#req.hostname">req.hostname</a> является производным от значения, указанного в заголовке <code>X-Forwarded-Host</code>, который может быть задан клиентом или прокси.</p>
+</li>
+<li>
+<p>Заголовок <code>X-Forwarded-Proto</code> может быть задан обратным прокси-сервером и указывает приложению на использование протокола <code>https</code>, или <code>http</code>, или даже недопустимого имени. Это значение отражается в <a href="../api.html#req.protocol">req.protocol</a>.</p>
+</li>
+<li>
+<p>Значения <a href="../api.html#req.ip">req.ip</a> и <a href="../api.html#req.ips">req.ips</a> заполняются собой списком адресов, взятых из <code>X-Forwarded-For</code>.</p>
+</li>
+</ul>
+<p>Параметр <code>trust proxy</code> реализуется с помощью пакета <a href="https://www.npmjs.com/package/proxy-addr">proxy-addr</a>. Дополнительная информация приведена в документации к нему.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> проект <a href="https://openjsf.org">фонда OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Создайте клон веб-сайта на GitHub</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. и других участников expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Лицензия Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Это произведение доступно по <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">лицензии Creative Commons «Attribution-ShareAlike» («Атрибуция — На тех же условиях») 3.0 США</a>.
+</div>
+</footer>
+<script type="4cf85849bd7bae8c1b495fac-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:ru'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="4cf85849bd7bae8c1b495fac-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/ru/guide/behind-proxies.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>

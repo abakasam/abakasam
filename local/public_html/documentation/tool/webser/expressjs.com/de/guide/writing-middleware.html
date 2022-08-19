@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="de" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from expressjs.com/de/guide/writing-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>Middleware für die Verwendung in Express-Anwendungen schreiben</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="og:image" content="https://expressjs.com/images/express-facebook-share.png">
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<link rel="stylesheet" href="../../css/style2984.css?_=1655417538">
+<link rel="stylesheet" href="../../css/dropit.css">
+<link rel="stylesheet" href="../../css/prism.css">
+<link rel="stylesheet" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" href="../../../fonts.googleapis.com/css2a1d.css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+<link rel="stylesheet" href="../../css/de.css">
+<link rel="stylesheet" href="../../css/nodeinteractive.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script data-cfasync="false" src="../../../ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script data-cfasync="false" src="../../js/ismobile.js"></script>
+<script data-cfasync="false" src="../../js/app.js"></script>
+<script data-cfasync="false" src="../../js/retina.js"></script>
+<script data-cfasync="false" src="../../js/dropit.js"></script>
+<script data-cfasync="false" src="../../js/prism.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+</head>
+<body class="non-en-doc">
+<section class="page content">
+<header>
+<div id="blm-banner">
+Black Lives Matter. <br>
+<a id="blm-donate" href="https://support.eji.org/give/153413/#!/donation/checkout">Support the Equal Justice Initiative</a>.
+</div>
+<div id="mobile-menu">
+<div id="nav-button" class="fa fa-bars fa-2x button"></div>
+</div>
+<section id="logo"><a href="../../index.html" class="express">Express</a>
+</section>
+<div id="navbar">
+<input id="q" placeholder="🔎 search">
+<ul id="navmenu">
+<li><a href="../index.html" id="home-menu">Home</a></li>
+<li>
+<ul id="getting-started-menu" class="menu">
+<li><a href="../starter/installing.html">Einführung</a>
+<ul>
+<li>
+<a href="../starter/installing.html">
+Installation
+</a>
+</li>
+<li>
+<a href="../starter/hello-world.html">
+Hello World
+</a>
+</li>
+<li>
+<a href="../starter/generator.html">
+Express Generator
+</a>
+</li>
+<li>
+<a href="../starter/basic-routing.html">
+Basisrouting
+</a>
+</li>
+<li>
+<a href="../starter/static-files.html">
+Statische Dateien
+</a>
+</li>
+<li>
+<a href="../starter/faq.html">
+Häufig gestellte Fragen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="guide-menu" class="menu">
+<li><a href="routing.html" class="active">Leitfaden</a>
+<ul>
+<li><a href="routing.html">Routing</a>
+</li>
+<li><a href="writing-middleware.html">Middleware schreiben</a>
+ </li>
+<li><a href="using-middleware.html">Middleware verwenden</a>
+</li>
+<li><a href="using-template-engines.html">Template-Engines verwenden</a>
+</li>
+<li><a href="error-handling.html">Fehlerbehandlung</a>
+</li>
+<li><a href="debugging.html">Debugging</a>
+</li>
+<li><a href="behind-proxies.html">Express hinter Proxys</a>
+</li>
+<li><a href="migrating-4.html">Wechsel zu Express 4</a>
+</li>
+<li><a href="migrating-5.html">Wechsel zu Express 5</a>
+</li>
+<li><a href="database-integration.html">Datenbankintegration</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="application-menu" class="menu">
+<li><a href="../4x/api.html">API-Referenz</a>
+<ul>
+<li><a href="../4x/api.html">4.x</a>
+</li>
+<li><a href="../3x/api.html">3.x (veraltet)</a>
+</li>
+<li><a href="../../2x/index.html">2.x (veraltet)</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="advanced-topics-menu" class="menu">
+<li><a href="../advanced/developing-template-engines.html">Themen für Fortgeschrittene</a>
+<ul>
+<li><a href="../advanced/developing-template-engines.html">Template-Engines</a>
+</li>
+<li><a href="../advanced/pm.html">Process Manager verwenden</a>
+</li>
+<li><a href="../advanced/security-updates.html">Sicherheitsupdates</a>
+</li>
+<li><a href="../advanced/best-practice-security.html">Sicherheitsspezifische Best Practices</a>
+</li>
+<li><a href="../advanced/best-practice-performance.html">Leistungsspezifische Best Practices</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul id="resources-menu" class="menu">
+<li><a href="../resources/glossary.html">Ressourcen</a>
+<ul>
+<li><a href="../resources/glossary.html">Glossar</a>
+</li>
+<li><a href="../resources/middleware.html">Middleware</a>
+</li>
+<li><a href="../resources/community.html">Community</a>
+</li>
+<li><a href="../resources/learning.html">Zusätzliches Lernen</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</header>
+<div id="overlay"></div>
+<div id="i18n-notice-box" class="doc-box doc-warn">
+<p><p>Diese Übersetzung zur Verfügung gestellt von <a href="../../../strongloop.com/index.html">StrongLoop / IBM</a>.</p>
+Dieses Dokument kann im Vergleich zur englischen Dokumentation veraltet sein. Aktuelle Updates finden Sie in der <a href="../../index.html">englischen Dokumentation</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+</div>
+<div id="page-doc" markdown="1">
+<h1 id="middleware-für-die-verwendung-in-express-anwendungen-schreiben">Middleware für die Verwendung in Express-Anwendungen schreiben</h1>
+<h2>Überblick</h2>
+<p><em>Middlewarefunktionen</em> sind Funktionen, die Zugriff auf das <a href="../4x/api.html#req">Anforderungsobjekt</a> (<code>req</code>), das <a href="../4x/api.html#res">Antwortobjekt</a> (<code>res</code>) und die nächste Middlewarefunktion im Anforderung/Antwort-Zyklus der Anwendung haben. Die nächste Middlewarefunktion wird im Allgemeinen durch die Variable <code>next</code> bezeichnet.</p>
+<p>Über Middlewarefunktionen lassen sich die folgenden Tasks ausführen:</p>
+<ul>
+<li>Ausführen von Code</li>
+<li>Vornehmen von Änderungen an der Anforderung und an Antwortobjekten</li>
+<li>Beenden des Anforderung/Antwort-Zyklus</li>
+<li>Aufrufen der nächsten Middleware im Stack</li>
+</ul>
+<p>Wenn über die aktuelle Middlewarefunktion der Anforderung/Antwort-Zyklus nicht beendet werden kann, muss <code>next()</code> aufgerufen werden, um die Steuerung an die nächste Middlewarefunktion zu übergeben. Andernfalls geht die Anforderung in den Status “Blockiert” über.</p>
+<p>Das folgende Beispiel zeigt die Elemente eines Middlewarefunktionsaufrufs:</p>
+<table style="padding: 0; border: 0; width: 960px; margin-bottom: 10px;">
+<tr><td style="margin: 0; padding: 0px; border: 0; width: 410px;">
+<img src="../../images/express-mw.png" style="margin: 0px; padding: 0px; width: 410px; height: 308px;" />
+</td>
+<td style="margin: 0; padding: 0 0 0 5px; border: 0; width: 550px;">
+<div class="callout" id="callout1">HTTP-Methode, für die die Middlewarefunktion angewendet wird.</div>
+<div class="callout" id="callout2">Pfad (Weiterleitung), für den die Middlewarefunktion angewendet wird.</div>
+<div class="callout" id="callout3">Die Middlewarefunktion.</div>
+<div class="callout" id="callout4">Callback-Argument zur Middlewarefunktion, die nach der geltenden Konvention als "next" bezeichnet wird.</div>
+<div class="callout" id="callout5">HTTP-<a href="../4x/api.html#res">Antwort</a>argument zur Middlewarefunktion, die nach der geltenden Konvention als "res" bezeichnet wird.</div>
+<div class="callout" id="callout6">HTTP-<a href="../4x/api.html#req">Anforderungs</a>argument zur Middlewarefunktion, die nach der geltenden Konvention als "req" bezeichnet wird.</div>
+</td></tr>
+</table>
+<p>Dies ist ein Beispiel einer einfachen Express-Anwendung namens “Hello World”, für die Sie zwei Middlewarefunktionen definieren:</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code></pre>
+<h2>Entwicklung</h2>
+<p>Dies ist ein einfaches Beispiel einer Middlewarefunktion namens “myLogger”. Diese Funktion gibt lediglich “LOGGED” aus, wenn eine Anforderung zur Anwendung über diese Funktion läuft. Die Middlewarefunktion ist der Variablen <code>myLogger</code> zugeordnet.</p>
+<pre><code class="language-javascript" translate="no">
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+</code>
+</pre>
+<div class="doc-box doc-notice">
+<p>Beachten Sie den Aufruf oben zu <code>next()</code>. Durch den Aufruf dieser Funktion wird die nächste Middlewarefunktion in der Anwendung aufgerufen. Die Funktion <code>next()</code> ist nicht Teil der Node.js- oder Express-API, sondern das dritte Argument, das an die Middlewarefunktion übergeben wird. Die Funktion <code>next()</code> kann jeden beliebigen Namen haben, per Konvention erhält sie jedoch immer den Namen “next”. Um Unklarheiten zu vermeiden, sollten Sie immer diese Konvention verwenden.</p>
+</div>
+<p>Zum Laden der Middlewarefunktion rufen Sie <code>app.use()</code> auf und geben die Middlewarefunktion an. Beispiel: Durch den folgenden Code wird die Middlewarefunktion <code>myLogger</code> vor der Weiterleitung zum Stammverzeichnispfad (/) geladen.</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+
+app.use(myLogger);
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code>
+</pre>
+<p>Sobald die Anwendung eine Anforderung erhält, gibt sie die Nachricht “LOGGED” an das Terminal aus.</p>
+<p>Die Reihenfolge beim Laden der Middleware ist wichtig: Middlewarefunktionen, die zuerst geladen werden, werden auch zuerst ausgeführt.</p>
+<p>Wenn <code>myLogger</code> nach der Weiterleitung zum Stammverzeichnispfad geladen wird, erreicht die Weiterleitung die Middlewarefunktion nicht. Die Anwendung gibt “LOGGED” nicht aus, weil der Routenhandler für den Stammverzeichnispfad den Anforderung/Antwort-Zyklus beendet.</p>
+<p>Die Middlewarefunktion <code>myLogger</code> gibt einfach eine Nachricht aus und übergibt dann die Anforderung zur nächsten Middlewarefunktion im Stack durch Aufruf der Funktion <code>next()</code>.</p>
+<p>Im nächsten Beispiel wird die Eigenschaft <code>requestTime</code> zum Anforderungsobjekt hinzugefügt. Diese Middlewarefunktion erhält den Namen “requestTime”.</p>
+<pre><code class="language-javascript" translate="no">
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+</code>
+</pre>
+<p>Die Anwendung verwendet nun die Middlewarefunktion <code>requestTime</code>. Außerdem verwendet die Callback-Funktion der Weiterleitung zum Stammverzeichnispfad die Eigenschaft, die die Middlewarefunktion zu <code>req</code> (dem Anforderungsobjekt) hinzufügt.</p>
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+
+app.use(requestTime);
+
+app.get('/', function (req, res) {
+  var responseText = 'Hello World!<br />';
+  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
+  res.send(responseText);
+});
+
+app.listen(3000);
+</code>
+</pre>
+<p>Wenn Sie eine Anforderung zum Stammverzeichnis der Anwendung einleiten, zeigt die Anwendung nun die Zeitmarke Ihrer Anforderung im Browser an.</p>
+<p>Da Sie Zugriff auf das Anforderungsobjekt, das Antwortobjekt, die nächste Middlewarefunktion im Stack und die gesamte Node.js-API haben, sind die Möglichkeiten, die Sie mit Middlewarefunktionen haben, nahezu unendlich.</p>
+<p>Weitere Informationen zur Verwendung von Middleware in Express siehe <a href="using-middleware.html"> Express-Middleware verwenden</a>.</p>
+</div>
+</section>
+<a id="top" href="#"><img src="../../images/arrow.png"></a>
+<footer>
+<div id="footer-content">
+<div id="github">
+<iframe src="http://ghbtns.com/github-btn.html?user=expressjs&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+</div>
+<div id="sponsor"><a href="https://expressjs.com">Express</a> ist ein Projekt der <a href="https://openjsf.org">Stiftung OpenJS</a>.</div>
+<div id="fork"><a href="https://github.com/expressjs/expressjs.com">Website auf GitHub forken</a>.</div>
+<div>Copyright &copy; StrongLoop, Inc. und andere Mitwirkende an expressjs.com.</div>
+</div>
+<div id="license">
+<a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html"><img alt="Creative Commons Lizenzvertrag" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/us/80x15.png" /></a> Dieses Werk ist lizenziert unter einer <a rel="license" href="../../../creativecommons.org/licenses/by-sa/3.0/us/index.html">Creative Commons Namensnennung - Weitergabe unter gleichen Bedingungen 3.0 Vereinigte Staaten von Amerika Lizenz</a>.
+</div>
+</footer>
+<script type="b7deb6559e75be5c2d1a95e9-text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" onload="docsearch({
+  apiKey: '7164e33055faa6ecddefd9e08fc59f5d',
+  indexName: 'expressjs',
+  inputSelector: '#q',
+  algoliaOptions: { 'facetFilters': ['lang:de'] }
+})" async></script>
+<script src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="b7deb6559e75be5c2d1a95e9-|49" defer=""></script></body>
+
+<!-- Mirrored from expressjs.com/de/guide/writing-middleware.html by HTTrack Website Copier/3.x [XR&CO'2010], Sun, 26 Jun 2022 14:49:28 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+</html>
