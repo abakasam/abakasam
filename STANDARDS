@@ -48,14 +48,15 @@ programming
 
 gifts
  Firestar	Vamos							https://vamos       .firestar.it				Write book on Vamos
- Aquaogen	Metro UI (Windows 9)			https://windows     .aquoagen.net				Use Metro UI on ReactOS
+ Aquaogen	Metro UI (Windows 9)			                https://windows     .aquoagen.net				Use Metro UI on ReactOS
  Aquaogen	Cyanogenmod						https://cyanogenmod .aquaogen.net				Use Metro UI on mobile Windows 9 with Android
- Aquaogen	Aquaogenlock					https://redns       .aquauogen.net				Admin tool to control network
+ Aquaogen	Aquaogenlock					        https://redns       .aquauogen.net				Admin tool to control network
  Aquaogen	Chromium OS						https://chromium    .aquaogen.net				Use of Android (.apk and .rs, not .deb and .sh)
  Aquaogen	selinux							https://selinux     .aquaogen.net				Improve documentation of selinux
+ Aquapgen       behaviac                                                http://behaviac.com
  Drifty		Clisp							https://drifty      .aquaogen.net				Write book on Clisp for game development
- Asail 		TI-83+ (Z80, GBZ80)				https://gamelate    .asail.co					Port C Gameboy game to Z80
+ Asail 		TI-83+ (Z80, GBZ80)				        https://gamelate    .asail.co					Port C Gameboy game to Z80
  Asail		PowerQuest						https://robocup     .asail.co					Use RC car in Robocup
  abakasam	VXHeaven						https://vxheaven    .aquaogen.net				Maintain site AS-IS
- abakasam	Corewar							https://abakasam    .githbu.io/corewar			Add logic and archtiecture display, and improve documentation
- abakasam	Encfs							https://vgough      .github.io/encfs			Write book on encfs, specifically math
+ abakasam	Corewar							https://abakasam    .githbu.io/corewar			        Add logic and archtiecture display, and improve documentation
+ abakasam	Encfs							https://vgough      .github.io/encfs			        Write book on encfs, specifically math
