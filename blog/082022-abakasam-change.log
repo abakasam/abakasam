@@ -1,4 +1,468 @@
 
+files=($(find / -name "*bash_profile*" | xargs ls -F))
+
+for file in ${files[@]}
+do
+	sed -i "1c PATH=$PATH" $file
+done
+
+/usr/bin
+/usr/local/bin
+
+/usr/local/sbin
+/usr/sbin
+
+
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+export PATH
+
+ircii-20141122
+openssl-1.1.0
+
+http://ircii.warped.com/old/
+http://ftp.fi.muni.cz/pub/openssl/source/old/1.1.0/openssl-1.1.0-pre1.tar.gz
+
+PATH=/home/cabox/workspace/local/bin:/home/cabox/workspace/local:/home/cabox/.gvm/pkgsets/go1.11.1/global/bin:/home/cabox/.gvm/gos/go1.11.1/bin:/home/cabox/.gvm/pkgsets/go1.11.1/global/overlay/bin:/home/cabox/.gvm/bin:/home/cabox/.gvm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cabox/.local/bin:/home/cabox/bin
+export PATH
+echo $PATH
+
+C_INCLUDE_PATH=/home/cabox/workspace/local/include
+export C_INCLUDE_PATH
+echo $C_INCLUDE_PATH
+
+CPLUS_INCLUDE_PATH 
+OBJC_INCLUDE_PATH
+
+ircii
+./configure
+--with-openssl=openssl-OpenSSL_1_0_2u
+--prefix=/home/cabox/workspace/local
+
+ld --verbose -lssl
+./configure --with-openssl=openssl-fips-ecp-2.0.9 --prefix=/home/cabox/workspace/local
+
+openssl
+./config
+--prefix=/home/cabox/workspace/local
+
+./config --prefix=/home/cabox/workspace/local
+
+https://github.com/openssl/openssl/releases/tag/OpenSSL_1_0_2u
+
+
+https://gitlab.gnome.org/GNOME/glib/-/tree/GLIB_2_0_7/glib
+
+CLI
+ircll/irssi
+unix/linux
+http://www.eterna.com.au/ircii/
+https://en.wikipedia.org/wiki/IrcII
+https://www.irchelp.org/
+https://www.irchelp.org/clients/unix/ircii/
+https://www.irchelp.org/clients/unix/ircii/commands/
+
+GUI
+xchat
+oidentd
+
+https://blog.csdn.net/w36680130/article/details/105933958
+https://www.zhihu.com/question/266787434/answer/333007196
+https://www.techpaste.com/2012/12/arithmetic-operators-calculate-bash/
+
+	`gawk -v x=2.45 -v y=3.123 'BEGIN {printf "%.2f\n",x>y}'`
+	
+	#product=`gawk -v x=2.45 -v y=3.123 'BEGIN {printf "%.2f\n",x*y}'`
+	#echo $product
+bash condtional expression decimal
+
+https://www.cnblogs.com/emanlee/p/3835451.html
+https://www.linuxidc.com/Linux/2018-03/151445.htm
+
+$n=`echo "scale=3;13/2" | bc`
+$echo $n
+6.500
+
+product=`gawk -v x=2.45 -v y=3.123 'BEGIN {printf "%.2f\n",x*y}'`
+echo $product
+7.65
+
+https://www.jianshu.com/p/13a65a70773e
+
+~/local/(lib | include)
+
+C_INCLUDE_PATH 
+CPATH
+CPLUS_INCLUDE_PATH 
+DEPENDENCIES_OUTPUT
+OBJC_INCLUDE_PATH
+SUNPRO_DEPENDENCIESs
+
+https://www.cnblogs.com/softfair/p/hello-from-a-glibc-free-world.html
+
+|       printf("\n*** 'pkg-config --modversion glib-2.0' returned %d.%d.%d, but GLIB (%d.%d.%d)\n",
+|              2, 0, 3,
+|              glib_major_version, glib_minor_version, glib_micro_version);
+|       printf ("*** was found! If pkg-config was correct, then it is best\n");
+|       printf ("*** to remove the old version of GLib. You may also be able to fix the error\n");
+|       printf("*** by modifying your LD_LIBRARY_PATH enviroment variable, or by editing\n");
+|       printf("*** /etc/ld.so.conf. Make sure you have run ldconfig if that is\n");
+|       printf("*** required on your system.\n");
+|       printf("*** If pkg-config was wrong, set the environment variable PKG_CONFIG_PATH\n");
+|       printf("*** to point to the correct configuration files\n");
+
+C_INCLUDE_PATH=/usr/include/libxml2:/MyLib
+
+C_INCLUDE_PATH=/home/cabox/workspace/xchat-2.8.8/glib-2.0.3/glib
+export C_INCLUDE_PATH
+echo $C_INCLUDE_PATH
+
+trying to avoid <glib.h>: /usr/local/include
+ wanted user maintained local
+
+./configure 
+CFLAGS='-L/home/cabox/workspace/xchat-2.8.8/glib-2.0.3/glib' 
+LIBS='-L/home/cabox/workspace/xchat-2.8.8/glib-2.0.3/glib/.libs'
+
+./configure --libdir="/home/cabox/workspace/xchat-2.8.8/glib-2.0.3/glib/.libs" --includedir="/home/cabox/workspace/xchat-2.8.8/glib-2.0.3/glib"
+
+
+LD_LIBRARY_PATH=/home/cabox/workspace/xchat-2.8.8/glib-2.0.3/glib
+
+./configure --exec-prefix=/home/cabox/workspace/local
+									   /lib
+									   /include
+./configure --prefix=/home/cabox/workspace/local --exec-prefix=/usr/local
+
+
+/home/cabox/workspace/local
+	cd /home/cabox/workspace/xchat-2.8.8/glib-2.0.3/glib
+	cp * /home/cabox/workspace/local/include
+	cd /home/cabox/workspace/xchat-2.8.8/glib-2.0.3/glib/.libs
+	cp * /home/cabox/workspace/local/lib
+
+undefined reference
+ glib-2.0.3
+   _doprnt
+   sys_errlist
+   sys_nerr
+   strlcpy
+   strlcat
+   dlopen
+   NSLinkModule
+   pthread_create
+   ptread_join
+
+
+https://gcc.gnu.org/onlinedocs/gcc-4.8.5/cpp/Search-Path.html#Search-Path
+
+https://zhuanlan.zhihu.com/p/78943079
+https://wenku.baidu.com/view/d7cc8f6548d7c1c708a145ae.html?fr=sogou
+
+https://blog.csdn.net/mayue_web/article/details/103988629
+https://www.iteye.com/blog/liujickson-1045227
+
+/configure 
+--prefix=/usr 
+--mandir=/usr/share/man 
+--infodir=/usr/share/info 
+--enable-shared 
+--enable-threads=posix 
+--enable-checking=release 
+--with-system-zlib 
+--enable-__cxa_atexit 
+--disable-libunwind-exceptions 
+--enable-libgcj-multifile 
+--enable-languages=c,c++,objc,obj-c++,java,fortran,ada 
+--enable-java-awt=gtk 
+--disable-dssi 
+--enable-plugin 
+--with-java-home=/usr/lib/jvm/java-1.4.2-gcj-1.4.2.0/jre 
+--with-cpu=generic 
+--host=i386-redhat-linux
+
+https://www.cnblogs.com/alaska1131/articles/1643204.html
+https://www.cnblogs.com/songbingyu/p/3765724.html
+
+The following is a list of the environment variables that can be set to pass instructions
+to the preprocessor.
+
+ ld --verbose | grep SEARCH
+SEARCH_DIR("/usr/i486-linux-gnu/lib32"); SEARCH_DIR("/usr/local/lib32"); SEARCH_DIR("/lib32"); SEARCH_DIR("/usr/lib32"); SEARCH_DIR("/usr/i486-linux-gnu/lib"); SEARCH_DIR("/usr/local/lib"); SEARCH_DIR("/lib"); SEARCH_DIR("/usr/lib");
+
+C_INCLUDE_PATH, CPATH, CPLUS_INCLUDE_PATH, DEPENDENCIES_OUTPUT,
+OBJC_INCLUDE_PATH, SUNPRO_DEPENDENCIES
+
+/etc/profile
+	.bashrc
+	.bash_profile
+
+export PATH =$PATH:$HOME/bin
+
+C_INCLUDE_PATH=/usr/include/libxml2:/MyLib
+export C_INCLUDE_PATH
+
+CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/include/libxml2:/MyLib
+export CPLUS_INCLUDE_PATH
+
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/MyLib
+export LD_LIBRARY_PATH
+
+LIBRARY_PATH=$LIBRARY_PATH:/MyLib
+export LIBRARY_PATH
+
+ 
+
+aquaogen
+ drifty (es->video games) -> asail
+ siban
+  drifty (es->ipa) *burn
+  ridgey (pwa)
+
+xchat
+
+BUG: xchat: configure error: "Cannot find glib"
+
+checking for GLIB - version >= 2.0.3
+http://ftp.acc.umu.se/pub/GNOME/sources/glib/2.0/
+
+pkg-config
+https://blog.csdn.net/newchenxf/article/details/51750239
+sudo su -c "find / -name "*.pc""
+/usr/lib64/pkgconfig/zlib.pc
+cp glib-2.0.pc /usr/lib64/pkgconfig/
+
+/home/cabox/workspace/xchat-2.8.8/glib-2.0.3
+
+execution: 	/home/cabox/workspace/xchat-2.8.8/glib-2.0.3
+include: 	/home/cabox/workspace/xchat-2.8.8/glib-2.0.3/glib
+library: 	/home/cabox/workspace/xchat-2.8.8/glib-2.0.3/glib
+
+https://www.bilibili.com/read/cv5651011
+https://zhuanlan.zhihu.com/p/417285806
+https://blog.csdn.net/weixin_34268169/article/details/92082342
+
+https://bugs.php.net/bug.php?id=42630
+https://docs.gtk.org/glib
+https://docs.gtk.org/glib/building.html
+https://blog.csdn.net/weixin_34268169/article/details/92082342
+https://wiki.gnome.org/Projects/GLib
+
+https://opensource.apple.com/tarballs/dyld/
+https://en.wikipedia.org/wiki/Dynamic_linker
+8/27/2001
+dyld
+https://www.jianshu.com/p/ceb33cff30f6
+https://opensource.apple.com/tarballs/dyld/
+https://linker.iecc.com/
+
+Xserver
+https://www.jianshu.com/p/e6b45bb9c2e9
+https://blog.csdn.net/kingairy/article/details/123546762
+
+IRC
+http://xchat.org/files/source/2.8/
+https://www.dadclab.com/archives/6007.jiecao
+https://wiki.centos.org/irc
+https://www.cnblogs.com/yjbjingcha/p/6999472.html
+
+What is (Core) ISO CentOS 7
+http://archive.kernel.org/centos-vault/7.2.1511/isos/x86_64/0_README.txt
+https://www.jianshu.com/p/13e4c7c2f9f2
+http://aiezu.com/m/article/24.html
+https://blog.51cto.com/mannerwang/1852804
+https://www.cnblogs.com/nineep/p/8393865.html
+https://www.cnblogs.com/webnote/p/5748122.html
+https://vault.centos.org/7.2.1511/isos/x86_64/
+
+https://blog.csdn.net/qq_29166863/article/details/103147244
+https://www.itzgeek.com/how-tos/mini-howtos/how-to-list-installed-packages-on-centos-rhel-fedora.html
+https://www.zhihu.com/tardis/sogou/art/22438350
+https://wiki.centos.org/action/show/Manuals/ReleaseNotes/CentOS7.2009?action=show&redirect=Manuals%2FReleaseNotes%2FCentOS7
+
+command('ls ' + blogs + '/*-' + user + '-blog', function(err, stdout, stderr) {	
+		var blogs = (stdout).split('\n')
+
+		for(var index in blogs) {
+			var blog = blogs[index].split('-')
+			var date = blog[0].split('/').pop()
+
+
+			return
+
+			feed.item({
+				title:  'abakasam',
+				description: 'GitHub Blog',
+				url: 'https://drifty-abakasam720639.codeanyapp.com/' + blog,
+				categories: [
+					'Shell Programming', 
+					'String Manipulation', 
+					'General Programming', 
+					'Strings', 
+					'Tip' 
+				],
+				author: user,
+				date: date
+			})
+		}
+	})
+
+https://zhuanlan.zhihu.com/p/36906654
+
+feed.item({
+			title:  'abakasam',
+			description: 'GitHub Blog',
+			url: 'https://drifty-abakasam720639.codeanyapp.com/' + blog,
+			categories: [
+				'Shell Programming', 
+				'String Manipulation', 
+				'General Programming', 
+				'Strings', 
+				'Tip' 
+			],
+			author: 'Sam W',
+			date: 'June 10 2022'
+		})
+
+https://mongoosejs.com/docs/index.html
+https://www.cnblogs.com/simonbaker/p/3752705.html
+
+// TODO: Route failure without any debug info (Complete)
+
+// TODO: Set headers for express globally https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers (Complete)
+
+express.application.get('/hello', function(request, response) {
+	response.send('Hello')
+})
+express.application.get('/404', function(request, response) {
+	response.status(404).end()
+})
+express.application.set('Content-Type', 'text/html')
+express.application.get('/', function(request, response) {
+	response.sendFile('/home/cabox/workspace/abakasam/local/public_html/index.html')
+})
+express.application.get('/download', function(request, response) {
+	response.download('/home/cabox/workspace/abakasam/local/bin/webser-0.0.1/file')
+})
+express.application.get('/query', function(request, response) {
+	var mysql = require("mysql")
+
+	var configuration = {
+		provider: 'https://cleardb.com',
+		host: 'us-cdbr-east-04.cleardb.com',
+		user: 'b8f3dd1d8d9c29',
+		password: '0611b499',
+		database: 'heroku_23ebff43a942f06',
+		multipleStatements: true
+	}
+
+	var connection = mysql.createConnection(configuration)
+
+	var SQL = 'SHOW TABLES'
+	connection.query(SQL, [], function(errors, results, fields) {
+		response.send(results)
+	})
+
+	connection.end()
+})
+//express.application.get('/store', function(request, response) { MongoDB })
+
+https://www.jianshu.com/p/53b5bd0f1d44
+
+https://www.wallpaperama.com/forums/linking-files-with-symbolic-links-linux-unix-shell-command-tutorial-guides-t479.html
+
+
+feed.item({
+    title:  'abakasam',
+    description: 'GitHub Blog',
+    url: 'https://drifty-abakasam720639.codeanyapp.com/' + blog,
+    categories: [
+		'Shell Programming', 
+		'String Manipulation', 
+		'General Programming', 
+		'Strings', 
+		'Tip' 
+	],
+    author: 'Sam W',
+    date: 'June 6 2022'
+})
+ 
+//for blog in ?
+//do
+//done
+
+var xml = feed.xml()
+console.log(xml)
+
+
+
+declare -a lines
+
+file="TODO"
+while read line
+do
+	lines[${#lines[@]}]="$line"
+	echo $line
+done < $file
+	
+for line in "${lines[@]}"
+do
+	line=${line%(*}
+
+	IFS=" "
+	read -ra segment <<< $line
+	
+	echo "Filepath   "${segment[0]}
+	echo "Linenumber "${segment[1]}
+	echo "Operator   "${segment[2]}
+	echo "Type       "${segment[3]}
+	echo "Message    "${segment[@]:4}
+done
+
+
+# TODO: GitHub get an issue
+// Octokit.js
+// https://github.com/octokit/core.js#readme
+const octokit = new Octokit({
+  auth: 'personal-access-token123'
+})
+
+await octokit.request('GET /repos/{owner}/{repo}/issues/{issue_number}', {
+  owner: 'OWNER',
+  repo: 'REPO',
+  issue_number: 'ISSUE_NUMBER'
+})
+
+# TODO: Create an issue
+// Octokit.js
+// https://github.com/octokit/core.js#readme
+const octokit = new Octokit({
+  auth: 'personal-access-token123'
+})
+
+await octokit.request('POST /repos/{owner}/{repo}/issues', {
+  owner: 'OWNER',
+  repo: 'REPO',
+  title: 'Found a bug',
+  body: 'I\'m having a problem with this.',
+  assignees: [
+    'octocat'
+  ],
+  milestone: 1,
+  labels: [
+    'bug'
+  ]
+})
+
 
 https://www.cnblogs.com/yeahle/p/12216516.html
 https://www.cnblogs.com/qrlozte/p/4175461.html

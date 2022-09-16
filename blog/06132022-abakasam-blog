@@ -1,0 +1,37 @@
+06132022 sed Replace line
+
+https://www.cnblogs.com/wangqiguo/p/6718512.html
+
+file
+
+11 aa
+22 bb
+33 cc
+23 dd
+55 2e
+
+sed -i '1a hello world' file
+
+11 aa
+hello world
+22 bb
+33 cc
+23 dd
+55 2e
+
+sed -i '1i hello world' file
+
+hello world
+11 aa
+22 bb
+33 cc
+23 dd
+55 2e
+
+sed -i '1c hello world' file
+
+hello world
+22 bb
+33 cc
+23 dd
+55 2e

@@ -1,6 +1,24 @@
 06152022 Bash Redirection and Output
 
 https://www.nhooo.com/note/qa5cxa.html
-https://www.jianshu.com/p/24a5230460fd
-https://www.jianshu.com/p/e20b1875822d
-https://www.jianshu.com/p/8958b9f8c4ca
+
+/dev/stderr
+/dev/stdin
+/dev/stdout
+/dev/null
+
+file descriptor
+0 stdin
+1 stdout
+2 stderr
+n file
+
+echo 'hello' > /dev/null 2>&1
+echo 'hello' 'goodbye' > /dev/null 2>&1
+
+exec 3> /tmp/filedescriptorthree
+echo "This is a test" >&3
+date >&3
+cat /tmp/filedescriptorthree
+exec 3<&-
+echo "File /tmp/filedescriptorthree closed"

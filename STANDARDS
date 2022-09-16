@@ -1,62 +1,35 @@
-user interface
- style
-  reports
-   programming
-    gifts
-
-user interface
- Database		Datagrip
- Code			GitHub
- Error			Log Owl
- Issue			Codetree
- Clock			Everhour
- Commit			GitDailies
- Branch			Hound
- Release		NextRelease
- Documentation	Webser, Apifox
- Stack			Stackshare
- Customer		Waitlyst
- Deploy			Heroku
-
 style
  no abbreviations
  use change log
  only use developer comments
 
-reports
- NEWS				  u
- code report          f
- project report
-  programming meeting u
-  project portfolio   u
-  progress report     f
- document
-  change.log          usf
-  blog                usf
-  code project		  s
-  wikidot			  u
-  documentation		  f
-  site				  f
+healthly programming
+ project: owner/owner until Codetree
+ check NEWS
+ create a blog topic before you start code
+ always know what TODO you are working off
 
-programming
+reports
+ code
+  products				sf
+  todo					sf
+  changelog				sf
+ project
+  programming meeting	f
+  project portfolio		u
+  progress report		u
+ document
+  blog					u
+  news					s
+  codeproject			u
+  wikidot				u
+  documentation			u
+  site					u
+
+organizations
  abakasam Virus Writing			
  Asail    Game Development		
  Aquaogen Software Engineering	
- Drifty   Web Development	
+!Drifty   Web Development	
  Sunsoft  Robotics Engineering	
  Whisper  Cryptography			
-
-gifts
- Firestar	Vamos							https://vamos       .firestar.it				Write book on Vamos
- Aquaogen	Metro UI (Windows 9)			                https://windows     .aquoagen.net				Use Metro UI on ReactOS
- Aquaogen	Cyanogenmod						https://cyanogenmod .aquaogen.net				Use Metro UI on mobile Windows 9 with Android
- Aquaogen	Aquaogenlock					        https://redns       .aquauogen.net				Admin tool to control network
- Aquaogen	Chromium OS						https://chromium    .aquaogen.net				Use of Android (.apk and .rs, not .deb and .sh)
- Aquaogen	selinux							https://selinux     .aquaogen.net				Improve documentation of selinux
- Aquapgen       behaviac                                                http://behaviac.com
- Drifty		Clisp							https://drifty      .aquaogen.net				Write book on Clisp for game development
- Asail 		TI-83+ (Z80, GBZ80)				        https://gamelate    .asail.co					Port C Gameboy game to Z80
- Asail		PowerQuest						https://robocup     .asail.co					Use RC car in Robocup
- abakasam	VXHeaven						https://vxheaven    .aquaogen.net				Maintain site AS-IS
- abakasam	Corewar							https://abakasam    .githbu.io/corewar			        Add logic and archtiecture display, and improve documentation
- abakasam	Encfs							https://vgough      .github.io/encfs			        Write book on encfs, specifically math

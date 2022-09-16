@@ -1,5 +1,7 @@
 # TODO: Create options (Complete)
 
+# BUG: cat: commentcode.help: No such file or directory
+
 if [[ $1 == "--version" ]]; 
 then :
     #cat commentcode.version

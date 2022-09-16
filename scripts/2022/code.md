@@ -11,12 +11,12 @@ Add developer comment and add issues to GitHub
 
 	Developer Comment Types
 	
-		1	TODO
-		1a	IMPROVE	
-		1b	REDO	
-		2	BUG		
-		2a	MEMORY	
-		2b	LEGACY	
+		1	TODO		
+		1a	IMPROVE		
+		1b	REDO		
+		2	BUG			
+		2a	MEMORY		
+		2b	LEGACY		
 
 	Developer Comment Status
 	

@@ -1,0 +1,666 @@
+TODO: Rebuild abakasam to commit to git for main
+
+BUG: ![remote rejected] main -> main (pre-recieve hook declined)
+
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-git-lfs-objects-in-archives-of-your-repository
+https://git-lfs.github.com/
+
+working organization			Sammight=abakasam-development
+Github account					abakasam
+organization/user repository	*
+
+abakasam -> development
+working -> working
+fork -> production
+
+TODO: Setup git lfs (Complete)
+
+https://git-lfs.github.com/
+https://m.youtube.com/watch?v=uLR1RNqJ1Mw
+https://github.com/Microsoft/VFSForGit
+
+git lfs track local/bin/mongosh-1.5.4/bin/mongosh_crypt_v1.so
+git lfs track local/bin/mongosh-1.5.4/bin/mongosh
+git add .gitattributes
+git add .
+git commit -m "hello"
+git push
+
+git lfs track mongosh-1.5.4/bin/mongosh_crypt_v1.so
+git lfs track mongosh-1.5.4/bin/mongosh
+git add .gitattributes
+git add .
+git commit -m "hello"
+git push
+
+collection = client.db("test").collection("testtest");
+  collection.insertOne({"waka":"flocka"}) // works!
+  client.close();
+
+BUG: Heroku fix sudo
+
+heroku-22: command not found # su installed
+heroku-20: /usr/bin/sudo must be owned by uid 0 and have the setuid bit set
+
+9781565920170 X Window System In A Nutshell 
+9780935230000 Operating Systems: Concepts and Principles 
+9783645604147 Cyanogenmod 
+9780470509494 Operating System Concepts With Java 
+
+TODO: Setup desktop sync with OneDrive and rclone
+
+https://rclone.org
+
+
+BUG: MongoServerSelectionError: connection <monitor> to 40.79.16.158:27017 close
+
+https://fastdl.mongodb.org/linux/mongodb-linux-i386-1.6.0.tgz
+
+https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.6.tgz
+mongodb://abakasam:fd0giUk0NM5ZbbOx@cluster0.zm8a2.azure.mongodb.net:27017
+
+shard0 = connect("mongodb://abakasam:fd0giUk0NM5ZbbOx@cluster0.zm8a2.azure.mongodb.net:27017")
+shard0 = connect("cluster0.zm8a2.azure.mongodb.net:27017")
+
+BUG: Assertion failure: 1oldfp=>dormantNext, at jsinterp.c:1620
+
+BUG: -bash: bin/mongo: /lib/ld-linux.so.2: bad ELF interpreter: No such file or directory (Complete)
+
+https://www.cnblogs.com/91key/articles/15892747.html
+
+[root@tomcat01 ~]# yum install glibc.i686 -i
+[root@tomcat01 ~]# java -version
+java version "1.8.0_321"
+Java(TM) SE Runtime Environment (build 1.8.0_321-b07)
+Java HotSpot(TM) Client VM (build 25.321-b07, mixed mode)
+[root@tomcat01 ~]# rpm -qa glibc
+glibc-2.17-325.el7_9.x86_64
+glibc-2.17-325.el7_9.i686
+[root@tomcat01 ~]# 
+
+sudo su -c "yum install glibc.i686 --downloadonly --downloaddir=".""
+sudo su -c "yum install *.rpm"
+
+BUG: bin/mongo: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory
+
+https://www.cnblogs.com/deepalley/p/14423292.html
+https://centos.pkgs.org/7/centos-x86_64/libstdc++-4.8.5-44.el7.x86_64.rpm.html
+
+libstdc++6_4.7.2-5_i386.deb
+https://centos.pkgs.org/7/centos-updates-x86_64/glibc-2.17-326.el7_9.x86_64.rpm.html
+
+bin/mongo: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory
+
+http://ftp.gnu.org/gnu/glibc/
+GLIBC_2.18
+http://ftp.gnu.org/gnu/glibc/glibc-2.18.tar.gz
+
+wget http://ftp.de.debian.org/debian/pool/main/g/gcc-4.7/libstdc++6_4.7.2-5_i386.deb
+strings /usr/lib/libstdc++.so.6 | grep GLIBCXX
+ar -x libstdc++6_4.7.2-5_i386.deb && tar xvf data.tar.gz
+
+https://www.cnblogs.com/sprinng/p/6516521.html
+原因是没有GLIBCXX_3.4.15版本，或是更高的版本。
+
+一、查看并下载
+    32位系统: [root@localhost ~]# strings /usr/lib/libstdc++.so.6 | grep GLIBCXX
+    下载新版本，地址：http://ftp.de.debian.org/debian/pool/main/g/gcc-4.7/libstdc++6_4.7.2-5_i386.deb
+
+    64位系统: [root@localhost ~]# strings /usr/lib64/libstdc++.so.6 | grep GLIBCXX
+    下载新版本，地址：http://ftp.de.debian.org/debian/pool/main/g/gcc-4.7/libstdc++6_4.7.2-5_amd64.deb
+
+    解压文件:
+    ar -x libstdc++6_4.7.2-5_i386.deb && tar xvf data.tar.gz
+
+二、解压
+    32位系统:
+    [root@localhost software]# cd  /data0/software/usr/lib/i380-linux-gun
+    [root@localhost i386-linux-gnu]# cp libstdc++.so.6.0.17 /usr/lib
+    [root@localhost i386-linux-gnu]# /usr/lib
+    [root@localhost lib]# rm libstdc++.so.6
+    [root@localhost lib]# ln libstdc++.so.6.0.17 libstdc++.so.6
+
+    64位系统:
+    [root@localhost software]# cd  /data0/software/usr/lib/x86_64-linux-gnu
+    [root@localhost x86_64-linux-gnu]# cp libstdc++.so.6.0.17 /usr/lib64
+    [root@localhost x86_64-linux-gnu]# /usr/lib
+    [root@localhost lib64]# rm libstdc++.so.6
+    [root@localhost lib64]# ln libstdc++.so.6.0.17 libstdc++.so.6
+
+三、检查(重复一)
+
+
+
+
+
+Drifty/abakasam/local/bin/iojs-3.3.1/cli-2.1.3/node_modules/node-gyp/lib/install.js@244/245
+
+https://iojs.org/download/release/v3.3.1/
+https://nodejs.org/en/download/releases/
+https://www.npmjs.com/package/mongodb/v/2.0.29
+https://iojs.org/download/release/v3.3.1/iojs-v3.3.1.tar.gz
+https://nodejs.org/dist/v3.3.1/node-v3.3.1.tar.gz
+
+
+return
+
+var MongoClient = require('mongodb').MongoClient
+
+var options = { 
+	useNewUrlParser: true, 
+	useUnifiedTopology: true 
+}
+
+var URL = 'mongodb://abakasam:fd0giUk0NM5ZbbOx@cluster0.zm8a2.azure.mongodb.net/myFirstDatabase' // mongodb://user:pass@host:port/dbname
+
+var client = new MongoClient()
+
+client.connect(URL, options, function() {
+	var database = client.Db("myFirstDatabase");
+
+	console.log('hello')
+})
+
+
+
+40.79.16.210
+
+
+docs.mongodb.com/mongodb-shell
+mongosh "mongodb://mongodb0.example.com:28015"
+
+mongosh "mongodb+srv://cluster0.zm8a2.azure.mongodb.net/myFirstDatabase" --apiVersion 1 --username abakasam
+
+./mongosh "mongodb://cluster0.zm8a2.azure.mongodb.net:27017"
+
+./mongosh "mongodb://cluster0.zm8a2.azure.mongodb.net:27071"
+
+--host cluster0.zm8a2.azure.mongodb.net
+--port 27017
+--username abakasam
+--password fd0giUk0NM5ZbbOx
+
+https://www.mongodb.com/docs/mongodb-shell/connect/#std-label-mdb-shell-connect
+
+./mongosh "mongodb+srv://cluster0.zm8a2.azure.mongodb.net/myFirstDatabase" --apiVersion 1 --username abakasam --password fd0giUk0NM5ZbbOx
+
+./mongosh --host cluster0-shard-00-01.zm8a2.azure.mongodb.net --port 27017 --username abakasam --password fd0giUk0NM5ZbbOx
+
+https://www.mongodb.com/try/download/shell
+https://www.mongodb.com/docs/v4.2/installation/
+https://www.mongodb.com/docs/v4.2/mongo/#download-the-mongo-shell
+https://www.mongodb.com/try/download
+https://www.mongodb.com/docs/mongodb-shell/write-scripts/#std-label-mdb-shell-write-scripts
+
+security > database/network access
+
+mongodb
+fd0giUk0NM5ZbbOx
+172.55.100.41/32
+40.79.16.158
+
+https://github.com/typeorm/typeorm/issues/7009
+
+mongodb://user:pass@host:port/dbname
+
+TODO: Map software to issues types (Complete)
+
+		0	EXPLAIN		Viezly
+		0a	TEST		TestQuality
+		1	TODO		Codetree
+		1a	IMPROVE		Codiga
+		1b	REDO		Threatrix
+		2	BUG			Bugzilla
+		2a	MEMORY		BuildJet
+		2b	LEGACY		Deadpendency
+		1				CodeProject
+		2	(Complete)	LogOwl
+		3	(Review)	Wikidot
+		4	(Reviewed)	Docusaurus
+
+TODO: Finding testing and CI software (Complete)
+
+CI							Jenkins Spring Cloud (spring.io) https://www.iocoder.cn/Spring-Cloud/Jenkins/?github
+install dependencies		Deadpendency (deadpendency.com)
+progress					Viezly (viezly.com)
+static analysis				Codiga (codiga.io)
+test						TestQuality (acceptance, system, integration, unit) (https://www.testquality.com/)
+lint						AnyLint (https://github.com/FlineDev/AnyLint)
+
+
+https://www.csdn.net/tags/MtTakgwsNjY0MTgtYmxvZwO0O0OO0O0O.html
+
+BUG: ../mpfr-2.4.2/.libs/libmpfr.so: undefined reference to `__gmp_rand'
+
+gcc-4.6.4/config.log:
+	configure:5539: gcc -o conftest -g -O2 -I../gmp-4.3.2 -I../mpfr-2.4.2 -I../mpc-0.8.1/src    conftest.c  -L../gmp-4.3.2/.libs -L../mpfr-2.4.2/.libs -L../mpc-0.8.1/src/.libs -lmpc -lmpfr -lgmp >&5
+	../mpfr-2.4.2/.libs/libmpfr.so: undefined reference to `__gmp_rand'
+	../mpfr-2.4.2/.libs/libmpfr.so: undefined reference to `__gmpn_sqr_n'
+
+LIBS="-L/home/cabox/workspace/desktop/gcc2/mpc-0.8.1/gmp-4.2/.libs": __gmpn_sqr_n
+
+__gmp_rand found in gmp-impl.h
+
+mpfr-2.4.2/gmp-4.1.4
+	mpfr-impl.h:60
+	MPFR_HAVE_GMP_IMPL
+	mpfr-gmp.c:29
+
+	libmpfr.so
+
+https://wenku.baidu.com/view/6f2c2b41f6335a8102d276a20029bd64783e627b?pcf=2&fr=sogou&bfetype=new&bfetype=new
+make check
+
+
+#define _gmp_rand __gmp_rand
+__GMP_DECLSPEC void _gmp_rand _PROTO ((mp_ptr, gmp_randstate_t, unsigned long int));
+
+(.h)
+mpfr-impl
+mpfr-gmp
+mpfr
+
+gmp.h
+gmp-impl.h
+gmpxx.h
+
+gmp-4.1.4/gmp-impl.h:696
+
+TODO: Add #define for gmp_rand to mpfr-gmp.h before make
+
+#define _gmp_rand __gmp_rand
+__GMP_DECLSPEC void _gmp_rand _PROTO ((mp_ptr, gmp_randstate_t, unsigned long int));
+
+mpfr-2.4.2/mpfr-gmp.h:228
+
+mpfr-2.4.2/mpfr-gmp.h:260
+
+#define _gmp_rand __gmp_rand
+__MPFR_DECLSPEC void _gmp_rand _PROTO ((mp_ptr, gmp_randstate_t, unsigned long int));
+
+BUG: configure:5062: cc -O2 -fomit-frame-pointer -c conftest.c >&5
+
+conftest.c:4:14: error: size of array 'test_array' is negative
+
+BUG: ../gmp-impl.h:3089:64: error: 'strlen' was not declared in this scope (Complete)
+
+gmp-impl.h add #include <string.h>
+
+BUG: ../..gmpxx.h:2096:59: error: 'strlen' was not declared in this scope (Complete)
+
+gmpxx.h add #include <string.h>
+
+
+
+--enable-cxx
+strlen <string.h>
+.code32 when .S
+ALIGN(3) to .align 8
+C_INCLUDE_PATH (.h)
+LD_LIBRARY_PATH (.a)
+4.1.x equivalents allowed
+no "make install"
+ld --verbose -lmpfr
+i486-pc-linux-gnu
+
+http://en.verysource.com/code/17102536_1/random2.c.html
+ftp.gnu.org/gnu/gmp: gmp-4.2.2
+
+	isl
+	zlib
+
+./configure --prefix=/workspace/gitpod/gcc/lib --with-gmp-build=/workspace/gitpod/gcc/ppl-0.11/gmp-4.1.3
+
+  gmp     4.1.3  ./configure --enable-cxx
+ cloog    0.15.0 ./configure --prefix=/workspace/gitpod/gcc/lib --with-polylib-builddir=/workspace/gitpod/gcc/cloog-ppl-0.15.11/polylib5.11 --with-gmp-include=/workspace/gitpod/gcc/cloog-ppl-0.15.11/gmp-2.0.2 --with-ppl=/workspace/gitpod/gcc/ppl-0.11
+  polylib 5.11.0 ./configure --host=i686-intel-linux --with-gmp=/workspace/gitpod/gcc/polylib5.11/gmp-2.0.2
+   gmp    2.0.2  ./configure
+  ppl     0.10.0 ./configure --prefix=/workspace/gitpod/gcc/lib --with-libgmp-prefix=/workspace/gitpod/gcc/ppl-0.11/gmp-4.1.3
+
+--with-ppl=../ppl-0.11/src 
+
+LD_LIBRARY_PATH=$COMPILE_PATH/mpfr-2.4.2/.libs; export LD_LIBRARY_PATH
+
+isl			0.11.1 ./configure --with-gmp-builddir=../gmp-4.3.2 --with-gmp=build
+
+https://www.cnblogs.com/pbblogs/p/9887110.html
+https://blog.51cto.com/u_2716255/1965617
+
+--with-isl-include=/usr/local/isl/include --with-isl-lib=/usr/local/isl/lib/
+--with-isl-lib=../isl-0.11.1/.libs --with-isl-include=../isl-0.11.1/include
+
+configure:5539: gcc -o conftest -g -O2 -I../gmp-4.3.2 -I../mpfr-2.4.2 -I../mpc-0.8.1/src   -L/home/cabox/workspace/desktop/gcc2/mpfr-2.4.2/.libs -L/home/cabox/workspace/desktop/gcc2/mpc-0.8.1/src/.libs conftest.c  -lmpc -lmpfr -lgmp >&5
+/home/cabox/workspace/desktop/gcc2/mpc-0.8.1/src/.libs/libmpc.so: undefined reference to `__gmp_get_memory_functions'
+collect2: error: ld returned 1 exit status
+
+gcc-4.8.0.tar.gz       http://ftp.gnu.org/gnu/gcc/gcc-4.8.0/                          
+mpc-1.0.3.tar.gz       http://ftp.heanet.ie/mirrors/gnu/mpc/            
+cloog-0.18.1.tar.gz    ftp://gcc.gnu.org/pub/gcc/infrastructure/         
+gmp-5.1.3.tar.gz       http://ftp.yz.yamagata-u.ac.jp/pub/GNU/gmp/          
+mpfr-3.1.3.tar.gz      http://ftp.gnu.org/gnu/mpfr/ 
+
+boost_1_60_0.tar.gz    http://www.boost.org/users/history/version_1_60_0.html 
+libelf-0.8.13.tar.gz   http://www.mr511.de/software/english.html     
+isl-0.11.1.tar.gz      http://isl.gforge.inria.fr/   
+
+LDFLAGS="-L$COMPILE_PATH/mpfr-2.4.2/.libs -L$COMPILE_PATH/mpc-0.8.1/src/.libs" 
+ --with-ppl=../ppl-0.11/src
+
+./configure 
+LDFLAGS="-L$COMPILE_PATH/mpfr-2.4.2/.libs -L$COMPILE_PATH/mpc-0.8.1/src/.libs" 
+--enable-cxx 
+--with-gmp-include=../gmp-4.3.2 
+--with-mpfr-include=../mpfr-2.4.2 
+--with-mpc-include=../mpc-0.8.1/src 
+
+
+C_INCLUDE_PATH=/home/cabox/workspace/desktop/gcc2/mpfr
+LIBRARY_PATH=/home/cabox/workspace/desktop/gcc2/gmp-4.3.2/.libs
+LD_LIBRARY_PATH=/home/cabox/workspace/desktop/gcc2/gmp-4.3.2/.libs
+LD_RUN_PATH=/home/cabox/workspace/desktop/gcc2/gmp-4.3.2/.libs
+export C_INCLUDE_PATH LIBRARY_PATH LD_LIBRARY_PATH LD_RUN_PATH
+
+/home/cabox/workspace/desktop/gcc2/gmp-4.3.2
+
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=40833
+https://gcc.gnu.org/legacy-ml/gcc-bugs/2009-07/msg01825.html
+
+https://gcc.gnu.org/legacy-ml/gcc-bugs/2009-07/msg01825.html
+
+https://www.mpfr.org/faq.html#undef_ref1
+
+https://repo.or.cz/isl.git
+
+/etc/ld.so.conf.d
+touch gcc.conf
+
+/home/cabox/workspace/desktop/gcc2/mpc-0.8.1/mpfr-2.3.1/.libs
+
+https://github.com/yuhangwang/ISL
+https://www.cnblogs.com/MMingzhao/p/10285396.html
+https://www.cnblogs.com/pbblogs/p/9887110.html
+2010-01-07
+ http://isl.gforge.inria.fr/ 
+
+
+https://m.sogou.com/web/searchList.jsp?from=index&pid=sogou-waps-7880d7226e872b77&t=1662737842114&s_t=1662737851133&s_from=index&pg=webSearchList&inter_index=&keyword=.%2Fconfigure+LIBS&suguuid=7e1541be-0efe-4495-81d4-c70c0b1b45a7&sugsuv=AAEZhlu7PwAAAAqgMih1GgAAQQc&sugtime=1662737851133
+https://m.sogou.com/web/searchList.jsp?keyword=.%2Fconfigure%20LIBS&insite=blog.csdn.net&rcer=gNz_a8U1sUAKzX9o&lastuuid=ba138bc6-35c8-49f2-8ee9-a89093d46215&s_from=vrid_30010187&dp=1
+https://blog.csdn.net/zhang421412170/article/details/110949006
+https://blog.csdn.net/liufuchun111/article/details/81508987
+
+i486-pc-linux-gnu
+
+LIBS="/home/cabox/workspace/desktop/gcc2/ppl-0.11/gmp-4.1.3/.libs"
+
+
+2143179221
+Tyler Groskopf:IT Sourcing Specialist
+software engineer
+6 months unpaid internship
+website 2-3 years, portals, admin interfaces, fullstack: javascript, react, nodejs
+electronic forms 2-3 years
+mobile application 2 years
+docker, kubernetics
+
+https://mp.weixin.qq.com/s?src=11&timestamp=1662732860&ver=4034&signature=CqmD5-R31XtqP7h3LQPEksE-tK-PK8VLY8M3a7TUerhLtEtPoYdlNDESyYhxUSHc6DUwGlTPyV*LA7Tym2kNveIxGwQxxwU7WIodhVH68-2MxuIElqda3B8PfFQT2KvI&new=1
+
+unfair
+ many words are broken
+  only to be free of pain
+   and told sorry
+    needing to fix by below
+	 and then cheated on earth
+
+can not see what projects to move back to and forth
+
+gifts
+ Firestar	Vamos							https://vamos       .firestar.it				Write book on Vamos
+ Aquaogen	Metro UI (Windows 9)			https://windows     .aquoagen.net				Use Metro UI on ReactOS
+ Aquaogen	Cyanogenmod						https://cyanogenmod .aquaogen.net				Use Metro UI on mobile Windows 9 with Android
+ Aquaogen	Aquaogenlock					https://redns       .aquauogen.net				Admin tool to control network
+ Aquaogen	Chromium OS						https://chromium    .aquaogen.net				Use of Android (.apk and .rs, not .deb and .sh)
+ Aquaogen	selinux							https://selinux     .aquaogen.net				Improve documentation of selinux
+ Aquapgen   behaviac                        http://behaviac.com								Written in clisp
+ Drifty		Clisp							https://drifty      .aquaogen.net				Write book on clisp for game development
+ Asail 		TI-83+ (Z80, GBZ80)				https://gamelate    .asail.co					Port C Gameboy game to Z80
+ Asail		PowerQuest						https://robocup     .asail.co					Use RC car in Robocup
+ abakasam	VXHeaven						https://vxheaven    .aquaogen.net				Maintain site AS-IS
+ abakasam	Corewar							https://abakasam    .githbu.io/corewar			Add logic and archtiecture display, and improve documentation
+ abakasam	Encfs							https://vgough      .github.io/encfs			Write book on encfs, specifically math
+
+
+user interface
+ Metadata		MongoDB Atlas
+ Database		Datagrip
+ Code			GitHub
+ Error			Log Owl
+ Clock			Everhour
+ Documentation	Webser
+ Localization	Localazy
+ Network		Apifox
+ Stack			Stackshare
+ Customer		Waitlyst
+ Badges			Shields 
+
+
+github ui
+	Commit					GitDailies
+	Pull Request			Hound
+	Tags,Release,Changelog	NextRelease
+	Notification			Octobox
+	Wikis					Wikidot
+	Issues					Codetree
+	Sponsorship				?
+	Dicussions				?
+	Projects				?Microsoft
+	Branch					Mergebase 
+	Actions					Meercode 
+	Security				Hackerone
+	Insights				Caribou
+	Deploy					Heroku
+
+/usr/local/include
+/usr/include
+/usr/lib/gcc
+
+ld --verbose -lgmp
+ld --verbose -llibgmp
+
+/usr/local/lib
+/usr/local/lib64
+/lib
+/lib64
+/usr/lib
+/usr/lib64
+/usr/x86_64-redhat-linux/lib64
+/usr/x86_64-redhat-linux/lib
+
+branch (SemVer: version.feature.bugs::major.minor.patch)
+	main 				tracked
+	major breaking		version
+	minor enhancement	feature
+	patch bug			bugs
+
+	use EXACT versions when compiling, fix bugs without patch
+
+CHANGELOG
+ 1 Mockup
+ 2 Animated
+ 3 Chatbot
+ 4 Cordova
+ 5 Styled
+
+RELEASE
+0.0.1 Configuring Node.js
+0.0.2 Structuring Application
+0.0.3 Modeling Ionic Framework
+0.0.4 Setting Environments Instead of Local
+0.1.0 Mockup
+1.0.0 Hosting Database 
+1.1.0 Admin Interface Including Item List
+
+changelog 	https://github.com/MicrosoftSiban/coachshake/tags
+
+1.1.0 on Jul 15, 2021  4be660b
+1.0.0 on Dec 31, 2021  da771e0
+0.1   on Jul 23, 2021  226ee62
+
+release 	https://github.com/MicrosoftSiban/coachshake/releases
+
+July 2022 Latest
+@abakasam abakasam released this Jul 15, 2022
+ 1.1.0
+ 4be660b 
+Current Release: July 2022
+Working Features
+ Hosted on Heroku with a ClearDB database
+ Local IO.js and Ionic
+ Updated README and easy to read
+ List updated from XML
+Possible Features
+ Admin interface to send texts and confirm orders
+ Easy to configure for environment
+ Applications and queries fed to database
+ Obvious and ease use from clear labels
+Next Release: September 2022
+
+
+
+
+
+
+
+
+how many projects
+which one is worked on
+what is the version like
+
+nextrelease.io
+
+alpha
+beta
+candidate
+release
+post
+
+version.feature.patch
+
+
+how many projects
+which one is worked on
+what is the version like
+
+nextrelease.io
+
+alpha
+beta
+candidate
+release
+post
+
+version.feature.patch
+
+major version
+minor feature
+patch bug
+
+--with-mpfr-include=../mpfr-2.4.2 
+--with-mpc-include=../mpc-0.8.1 
+--enable-build-with-cxx 
+--enable-objc-gc
+
+gmp-2.0.2.tar.gz
+
+ppl      0.11.0 ./configure --prefix=/workspace/gitpod/gcc/lib --with-gmp-build=/workspace/gitpod/gcc/ppl-0.11/gmp-4.1.3
+  gmp     4.1.3  ./configure --enable-cxx
+ cloog    0.15.0 ./configure --prefix=/workspace/gitpod/gcc/lib --with-polylib-builddir=/workspace/gitpod/gcc/cloog-ppl-0.15.11/polylib5.11 --with-gmp-include=/workspace/gitpod/gcc/cloog-ppl-0.15.11/gmp-2.0.2 --with-ppl=/workspace/gitpod/gcc/ppl-0.11
+  polylib 5.11.0 ./configure --host=i686-intel-linux --with-gmp=/workspace/gitpod/gcc/polylib5.11/gmp-2.0.2
+   gmp    2.0.2  ./configure
+  ppl     0.10.0 ./configure --prefix=/workspace/gitpod/gcc/lib --with-libgmp-prefix=/workspace/gitpod/gcc/ppl-0.11/gmp-4.1.3
+ 
+ 
+ g++      ?
+gcc       11.2.0
+
+Figure 4.55 Simplified view of ret instruction processing
+
+gmp-4.1/mpn
+/bin/sh ../libtool --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I.. -D__GMP_WITHIN_GMP -I.. -DOPERATION_ `echo dive_1 | sed 's/_$//'` -g -O2 -c -o dive_1.lo `test -f dive_1.c || echo './' `dive_1.c
+
+dive_1.c: Assembler messages:
+
+Error: incorrect register `%r12d' used with `q' suffix
+
+/bin/sh ./libtool --mode=install /usr/bin/install -c 'libgmpxx.la' '/home/cabox/workspace/abakasam/local/lib/libgmpxx.la'
+
+./configure --prefix=$PREFIX_ALL/local $OPTIONS_ALL
+
+a lot of prefix issues.
+compiling openssl (libssl libcrypto) for ircii
+
+#include <gmp.h>
+#include <stdio.h>
+#include <time.h>
+
+int main() {
+	clock_t time = clock();
+	gmp_randstate_t grt;
+	gmp_randinit_default(grt);
+	gmp_randseed_ui(grt, time);
+	
+	return 0;
+}
+
+./configure --prefix=/home/cabox/workspace/abakasam/tmp/local --with-gmp-include=../gmp-4.3.2 --with-mpfr-include=../mpfr-2.4.2; make; make install
+
+gmp		4.2.0  ./configure --prefix=/home/cabox/workspace/abakasam/local --enable-cxx; make; make install
+ 
+ 
+  gmp     4.2.4  ./configure --enable-cxx; make
+  
+ *!mpfr   2.3.1  ./configure --with-gmp-include=gmp-4.1.4 --with-gmp-lib=gmp-4.1.4/.libs; make # No Makefile.in
+  mpfr   2.3.2  ./configure --with-gmp-include=gmp-4.1.4 --with-gmp-lib=gmp-4.1.4/.libs --build=i686-pc-linux-gnu ; make
+  *!gmp   4.1.0  ./configure --enable-cxx; make # Lack x86_64 support
+   gmp    4.1.4  ./configure --enable-cxx; make 
+   
+   Missing refrence to __gmp_rand
+   mpfr 2.3.x wanted
+
+https://www.cnblogs.com/tankblog/p/6096681.html
+https://www.w3cschool.cn/doc_cpp/cpp-header-cstdio.html?lang=en
+https://cloud.tencent.com/developer/ask/sof/766017/answer/1115624
+https://ftp.gnu.org/gnu/gmp/
+https://gmplib.org/list-archives/gmp-bugs/2007-December/000893.html
+
+https://m.xpwin7.com/jiaocheng/1915.html
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=48713
+error: invalid instruction suffix for 'push'
+
+https://m.2cto.com/linux/201905/253276.html
+
+linux error: alignment not a power of 2
+
+boot/head.s: Assembler messages:
+boot/head.s:231: Error: alignment not a power of 2
+make: *** [boot/head.o] Error 1
+ align n -> align 2^n
+
+
+sed -i 's/align 2/align 4/g' boot/head.s
+sed -i 's/align 3/align 8/g' boot/head.s
+
+https://www.cnblogs.com/ztguang/p/12648136.html
+
+mpfr_urandomb
+
+.align 2 应该改为 .align 4
+
+.align 3 应该改为 .align 8
+
+./configure --with-gmp-include=/home/cabox/workspace/abakasam/local/tmp/gmp-2.0.2/include --with-gmp-lib=/home/cabox/workspace/abakasam/local/tmp/gmp-2.0.2/libc
+
+--with-mpfr-include=mpfr-2.3.2 
+--with-mpfr-lib=mpfr-2.3.2/.libs
+make
+make install
+

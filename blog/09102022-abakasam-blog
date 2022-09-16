@@ -1,0 +1,7 @@
+09102022 GCC Makefile and Makefile Creation
+
+(Environment Variables)
+./configure (Option(al)s)
+./configure --help
+make
+make check

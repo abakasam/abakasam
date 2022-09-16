@@ -1,0 +1,2 @@
+local/bin/mongosh-1.5.4/bin/mongosh_crypt_v1.so filter=lfs diff=lfs merge=lfs -text
+local/bin/mongosh-1.5.4/bin/mongosh filter=lfs diff=lfs merge=lfs -text

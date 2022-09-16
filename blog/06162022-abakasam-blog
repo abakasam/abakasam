@@ -2,11 +2,18 @@
 
 <username> (abakasam/abakasam: GitHub)
     README.md
-    blog
+    blog/
         mmyyyy-<username>-change.log 
         mmddyyyy-<username>-blog
         mmyyyy-<username>-blog 
-    products
+    products/
 		<owner>-product
-    scripts
-	local
+    scripts/
+	local/
+		/bin		binary
+		/dev		device
+		/etc		configuration
+		/include	header
+		/lib		libraries
+		/sbin		superuser binary
+		/tmp		temporary files

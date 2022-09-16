@@ -1,0 +1,7 @@
+06142022 Basg try catch
+
+{
+	echo 'try'
+} || {
+	echo 'catch'
+}

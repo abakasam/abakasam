@@ -1,27 +1,55 @@
-declare -A path
+user="abakasam"
 
-path[heroku]=/heroku-7.60.2/bin
-path[httrack]=/httrack-3.45.1/src
-path[iojs]=/iojs-3.3.1
-path[npm]=/cli-2.1.3
-path[ionic]=/ionic-1.3.4/bin
-path[php]=/php-5.6.5/sapi/cli
-path[python]=/python-2.7.5
+echo "Loading software"
+declare -A software
 
-pathed=""
-for binary in "${path[@]}"
+software[abakasam-scripts]=abakasam-scripts
+software[iojs]=iojs-3.3.1
+software[npm]=cli-2.1.3
+software[ionic]=ionic-1.3.4/bin
+software[mongosh]=mongosh-1.5.4/bin
+
+LOCAL_PATH=""
+
+for directory in "${software[@]}"
 do
-	pathed+=":"$(pwd)$binary
+	echo "Loading $directory"
+	LOCAL_PATH+="$(pwd)/$user/$directory:"
 done
 
-#PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin" # CodeAnywhere CentOS 7.2.1511
-#PATH="${PATH}:${pathed}"
-PATH=$pathed
+echo "Setting environment variables"
+variables=("user shell lockup" $LOCAL_PATH LOCAL_PATH)
+variables+=("gcc C include path" $HOME/local C_INCLUDE_PATH)
+#variables+=("g++ C++ include path" $HOME/local CPLUS_INCLUDE_PATH)
+#variables+=("clang Obj-C include path" $HOME/local OBJC_INCLUDE_PATH)
+#variables+=("shell lookup" $PATH PATH)
+#variables+=("user directory" $HOME HOME)
+#variables+=("OS shell executable" $SHELL SHELL)
+#variables+=("mail storage directory" $MAIL MAIL)
+#variables+=("commands recorded" $HISTSIZE HISTSIZE)
+#variables+=("current username" $LOGNAME LOGNAME)
+#variables+=("computer name" $HOSTNAME HOSTNAME)
+
+for((index=0; $index < ${#variables[@]}; index++))
+do
+	description=${variables[$index]}
+	path=${variables[$index + 1]}
+	variable=${variables[$index + 2]}
+	index+=2
+	
+	echo $variable
+	echo $path
+	echo $description
+done
+
 exit
 
-files=($(find / -name "*bash_profile*" | xargs ls -F))
-
-for file in ${files[@]}
-do
-	sed -i "1c PATH=$PATH" $file
-done
+echo "Adding environment variables (.bash_profile)"
+cd $HOME
+CONTENT=$(cat $HOME/.bash_profile)
+CONTENT=$(cat $HOME/.bash_profile_old)
+mv .bash_profile .bash_profile_old
+rm .bash_profile
+touch .bash_profile
+echo $VARIABLES >> .bash_profile
+echo $CONTENT >> .bash_profile

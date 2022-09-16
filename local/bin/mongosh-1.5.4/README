@@ -1,0 +1,25 @@
+This package contains `mongosh`, the mongo shell.
+Additionally, it includes a shared library, `mongosh_crypt_v1`, as well as a
+manual page `mongosh.1.gz` that can be viewed using the `man` command line
+utility, and their respective licensing files.
+
+Extract them to a suitable location.
+
+For licensing information:
+
+- mongosh: See LICENSE-mongosh
+- mongosh_crypt_v1: See LICENSE-crypt-library
+
+
+MongoDB Atlas/Security/Database Access
+MongoDB Atlas/Security/Network Access
+
+mongodb+srv://
+	cluster0.zm8a2.azure.mongodb.net/myFirstDatabase
+
+--apiVersion 1 
+--username abakasam 
+--password gofPJZyKVcG1EC7H
+
+./mongosh "mongodb+srv://cluster0.zm8a2.azure.mongodb.net/myFirstDatabase" --apiVersion 1 --username abakasam
+MongoServerSelectionError: connection <monitor> to 40.79.16.158:27017 closed

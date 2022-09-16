@@ -1,16 +1,37 @@
 06052022 Installing X Windows System on CentOS
 
 https://www.jianshu.com/p/e6b45bb9c2e9
-https://blog.csdn.net/weixin_42360788/article/details/116686598
-https://blog.csdn.net/Kingairy/article/details/123546762
+
+CentOS	Operating System	
+SSH		Network Protocol	openssh-6.6.1p1-25.el7_2.x86_64
+X11		X Windows System	
+XOrg	Display Server		
+XAuth	Authorization		xorg-x11-xauth-1.0.9-1.el7.x86_64
+
+https://en.m.wikibooks.org/wiki/Guide_to_X11
+https://en.m.wikibooks.org/wiki/X_Window_Programming
+
+1 Install
+2 Configure
+3 Remote
+4
+
+https://github.com/freedesktop?q=x&type=all&language=&sort=
+https://gitlab.freedesktop.org/xorg
+https://blog.51cto.com/lanlfeng/123104
+
+sudo su -c "yum groupinstall 'X Window System'"
 
 /etc/ssh/sshd_config
 	X11Forwarding yes
-	#X11DisplayOffset 10
+	
+	service sshd restart
 
-	service sshd restart	
-	yum install xorg-x11-xauth
+	yum install --downloadonly --downloaddir="." xorg-x11-xauth
+	yum install *.rpm
+
 	xauth add $(xauth -f !test/.Xauthority list|tail -1)
+	
 	mv .Xauthority old.Xauthority
 
 touch ~/.Xauthority

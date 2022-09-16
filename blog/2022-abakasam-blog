@@ -1,8 +1,19 @@
 
 BLOGS
-Date Title Language Description Platform Technology Topic Subtopic Subsection Type Abstract
+Date Laguage Title Description=Language Platform Technology=Language Topic Subtopic Subsection Type Abstract
 
-06052022 Installing X Windows System on CentOS
+06052022 
+Bash
+InstallingXWindowsSystemWithRFBOnCentos
+Bash
+Linux
+Bash
+HostedServices
+WebHosting
+Microservices
+Tip
+?
+
 06062022 CentOS Subdomains
 06072022 Virtualize CentOS
 06082022 Configure SSH Login Codeanywhere
@@ -11,7 +22,6 @@ Date Title Language Description Platform Technology Topic Subtopic Subsection Ty
 06112022 ...code Code Standard Expected Output
 06122022 Bash Checking for Element in Array
 06132022 sed Replace line
-
 06142022 Bash try catch
 06152022 Bash Redirection and Output
 06162022 User Blog and Change Log
@@ -80,6 +90,29 @@ Date Title Language Description Platform Technology Topic Subtopic Subsection Ty
 08172022
 08182022
 08192022
+08202022
+08212022
+08222022
+08232022
+08242022
+08252022
+08262022
+08272022
+08282022
+08292022
+08302022
+08312022
+09012022
+09022022
+09032022
+09042022
+09052022
+09062022
+09072022
+09082022
+09092022 GCC Environmental Variables
+09102022 GCC Makefile and Makefile Creation
+09112022 Downloading MongoDB
 
 Scripts		articleupload.sh
 			codeproject.sh
@@ -128,6 +161,14 @@ Bash					bash Cookbook, by Carl Albing
 	Git					Version Control with Git, by Jon Loeliger
 	Regular Expressions	Mastering Regular Expression, by Jeffrey Friedl
 	C++
+	X Windows System	X Window System In A Nutshell, by Ellie Cutler
+	System Programming	Operating System: Concepts With Java by Abraham Silberschatz
+	Operating System	Operating System: Concepts and Principles by John Zarrel
+	
+ReactOS
+	Cyanogenmod			
+	Linux Kernel
+	Android Hardware
 
 Ionic					Mobile App Development with Ionic 2, by Chris Griffith
 	Node				
@@ -147,3 +188,35 @@ Geometry				Geometry: A Comprehensive Course
 	Maxima
 	Latex
 	Vamos
+
+abakasam				VIRUS WRITING: STRING THEORY (COMPUTER PATHOLOGY) > GENTIC CIRCUITS > SYNTHETIC BIOLOGY (INFLUENZA VIRUS)
+ encfs					Windows EFS for linux
+ vx						Logic in graph and string theory of algorithms
+ redcore				Assembly language for corewar
+ clisp					Translate for game ai
+ selinux				Replace sudo
+ corewar				Computer memory for virus writing
+
+Asail					GAME DEVELOPMENT: SI (SYNTHEIC INTELLIGENCE)
+ drifty					expert system for video games
+  behaviac				drifty written in behaviac
+ underhood				parting a car
+ vamos					basic physics for a car
+ Startit				distance between cars for game
+  Body					simple physics for racer perception
+  Manual-Transmission	simple physics for power distribution
+  Engine				simple physics for engine comprehension
+ gamelate				understanding low level programming
+  vba					emulators for GameBoy
+ ofthe					Zone of the Enders inspired video game
+
+Aquaogen				SOFTWARE ENGINEERING: NUI
+ vxheaven				vx database
+ ionic					ionic v1 for purejs
+ metro					nui for ionic
+ chromiumos				developing with Google with ungoogled-chromium
+ cyanogenmod			basic OS for custom ui including nui
+
+Sunsoft
+Whisper
+ redns					Admin spy, basic firewall, custom dns
