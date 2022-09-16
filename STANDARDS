@@ -7,7 +7,7 @@ healthly programming
  check Codetree for repository
  check NEWS for repository
  create blog topic before coding
- ALWAYS know developer comment you are working on
+ ALWAYS know developer comment you are working on and use in git commit
 
 reports
  code
@@ -33,7 +33,7 @@ organizations
 !Drifty   Web Development
  Sunsoft  Robotics Engineering
  Whisper  Cryptography
-
+ 
 workspace
  user|organization/  > user program files        > sync with github
  desktop/            > user workspace            > sync with rclone to onedrive
