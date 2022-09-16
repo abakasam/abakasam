@@ -4,10 +4,10 @@ style
  only use developer comments
 
 healthly programming
- project: owner/owner until Codetree
- check NEWS
- create a blog topic before you start code
- always know what TODO you are working off
+ check Codetree for repository
+ check NEWS for repository
+ create blog topic before coding
+ ALWAYS know developer comment you are working on
 
 reports
  code
@@ -27,9 +27,19 @@ reports
   site					u
 
 organizations
- abakasam Virus Writing			
- Asail    Game Development		
- Aquaogen Software Engineering	
-!Drifty   Web Development	
- Sunsoft  Robotics Engineering	
- Whisper  Cryptography			
+ abakasam Virus Writing
+ Asail    Game Development
+ Aquaogen Software Engineering
+!Drifty   Web Development
+ Sunsoft  Robotics Engineering
+ Whisper  Cryptography
+
+workspace
+ user|organization/  > user program files        > sync with github
+ desktop/            > user workspace            > sync with rclone to onedrive
+ downloads/          > user for system temporary > no sync, local
+ products/           > user repository           > apache-ftpserver
+ 
+ apache-ftpserver    > binary and source share   > no sync, semver
+ mediafire           > file share                > no sync
+ onedrive            > file share (large)        > no sync

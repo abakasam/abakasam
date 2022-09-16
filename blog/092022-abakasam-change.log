@@ -1,6 +1,123 @@
-TODO: Rebuild abakasam to commit to git for main
+TODO: Fix product check (Complete)
 
-BUG: ![remote rejected] main -> main (pre-recieve hook declined)
+acquire								Download software with README.md
+	compiled						Compile and run without make install
+		binaries					Check on an clean OS install
+			documentation			Download documentation
+				versioned			BRANCH SEMVER:software name
+										-version:codename=(NextRelease) 
+										-feature:?=(Averta Feature Request) 
+										-bug:ID=(Mozilla Bugzilla)
+									SOFTWARE SEMVER: name-version(count)-feature(count)-bug(count)
+					archived		Compile into *.tar.gz with folder
+						backedup	Store binary or source on Apache Tomcat and store file on OneDrive or MediaFire
+							listed	Stackshare
+
+TODO: Create SemVer to software (Complete)
+
+branch (SemVer: version.feature.bugs::major.minor.patch)
+	main 				tracked
+	major breaking		version
+	minor enhancement	feature
+	patch bug			bugs
+
+Sematic versioning of file 
+
+name-version-feature-bug
+name-version-feature-patch
+name-version-feature-bug
+
+name:type=(GitHub Branches) -version:codename=(NextRelease) -feature:?=(Averta Feature Request) -bug:ID=(Mozilla Bugzilla)
+types: main, documentation, pages
+Branch source: (main, documentation, pages)
+type=(GitHub Branches)
+
+translate count to number
+ codename
+ feature
+ bug
+Averta Feature Request https://wordpress.org/plugins/feature-request/
+
+Compile into *.tar.gz with folder
+Store on file server
+Stackshare
+
+development
+staging
+demo
+production
+
+type        main, documentation, pages
+version     
+feature     
+bugs        
+
+TODO: Change to blank containers
+
+TODO: Define syncnig policy for workspace (Complete)
+
+abakasam/        > user program files        > sync with github
+desktop/         > user workspace            > sync with rclone to onedrive
+downloads/       > user for system temporary > no sync, local
+products/        > user repository           > apache-ftpserver
+apache-ftpserver > binary and source share   > no sync, semver
+mediafire        > file share
+onedrive         > file share (large)
+
+https://port-8982-aquaogen-abakasam720639.codeanyapp.com/
+
+TODO: Request server size increase
+
+10GB / 20GB  
+15GB / 100GB 
+20GB / 250GB 
+
+network?
+onedrive - documents / media (pictures, videos, music, recording)
+mediafire - large files
+github - code
+ftpserver?
+
+TODO: Create http ftp server
+
+https://blog.51cto.com/u_10803382/1925034
+https://downloads.apache.org/mina/ftpserver/1.2.0
+https://tomcat.apache.org/tomcat-7.0-doc/building.html
+https://port-8982-aquaogen-abakasam720639.codeanyapp.com/docs/
+apache tomcat ftp server
+
+TODO: Improve healthy programming (Complete)
+
+check Codetree for repository
+check NEWS for repository
+create blog topic before coding
+ALWAYS know developer comment you are working on
+
+TODO: Find blank container on Codeanywhere (Complete)
+
+	Blank container
+		N	.NET
+		Y	C/C++
+		N	Firehose
+		N	Go
+		N	HTML
+		N	Java
+		N	Node.js
+		N	PHP
+		N	Python
+		N	Ruby
+		N	Rust
+		N	Hexapod
+		N	Wordpress
+
+TODO: Rebuild abakasam to commit to git for main (Complete)
+
+Reclone .git aft git-lfs install
+.git corrupted
+
+BUG: ![remote rejected] main -> main (pre-recieve hook declined) (Complete)
+
+"TODO: Rebuild abakasam to commit to git for main (Complete)"
 
 https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-git-lfs-objects-in-archives-of-your-repository
 https://git-lfs.github.com/
@@ -81,7 +198,7 @@ glibc-2.17-325.el7_9.i686
 sudo su -c "yum install glibc.i686 --downloadonly --downloaddir=".""
 sudo su -c "yum install *.rpm"
 
-BUG: bin/mongo: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory
+BUG: bin/mongo: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory (Complete)
 
 https://www.cnblogs.com/deepalley/p/14423292.html
 https://centos.pkgs.org/7/centos-x86_64/libstdc++-4.8.5-44.el7.x86_64.rpm.html
@@ -205,7 +322,7 @@ mongodb://user:pass@host:port/dbname
 
 TODO: Map software to issues types (Complete)
 
-		0	EXPLAIN		Viezly
+		0	EXPLAIN		UML
 		0a	TEST		TestQuality
 		1	TODO		Codetree
 		1a	IMPROVE		Codiga
@@ -214,10 +331,11 @@ TODO: Map software to issues types (Complete)
 		2a	MEMORY		BuildJet
 		2b	LEGACY		Deadpendency
 		1				CodeProject
-		2	(Complete)	LogOwl
-		3	(Review)	Wikidot
-		4	(Reviewed)	Docusaurus
-
+		2	echo		LogOwl
+		3	(Complete)	Viezly
+		4	(Review)	Wikidot
+		5	(Reviewed)	Docusaurus
+		
 TODO: Finding testing and CI software (Complete)
 
 CI							Jenkins Spring Cloud (spring.io) https://www.iocoder.cn/Spring-Cloud/Jenkins/?github
