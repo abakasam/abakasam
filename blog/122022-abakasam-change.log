@@ -1,0 +1,1124 @@
+
+
+
+
+post request
+https://www.php.net/manual/en/context.http.php
+	Example #1 Fetch a page and send POST data
+
+
+
+fwrite for header
+https://m.php.cn/article/395833.html
+fwrite fails over context needing to extract socket
+
+
+$customerkey = "&lt;219048&gt;";
+$apikey = "&lt;2Phi7nbn1WmAoZXlOKLYixiO9Ox0SVg0gt;";
+$timestamp = round(microtime(true) * 1000);
+
+$hash = hash("sha512", $customerkey . number_format ( $timestamp, 0, '', '' ) . $apikey);
+
+$headercustomerkey = "Customer-Key: " . $customerkey;
+$headertimestamp = "Timestamp: " . $timestamp;
+$headerauthorization = "Authorization: " . $hash;
+
+$postdata = http_build_query(
+	array(
+	"customerKey" => 219048,
+	"batchSize" => 500,
+	"batchNo" => 1
+	)
+);
+
+$options = array(
+	"http" => array(
+        "method" => "POST",
+        "header" => "Content-type: application/x-www-form-urlencoded".
+					 $headercustomerkey.
+					 $headertimestamp.
+					 $headerauthorization,
+        "content" => $postdata
+    )
+);
+
+$context = stream_context_create($options);
+
+$URL = "https://login.xecurify.com/moas/api/admin/users/getall";
+//$result = fopen($URL, false, $context);
+
+fopen('http://www.example.com/',false,$context);
+
+method for mutliple headers
+$options = array(
+  'http'=>array(
+    'method'=>"POST",
+    'header'=>
+      "Accept-language: en\r\n".
+      "Content-type: application/x-www-form-urlencoded\r\n",
+    'content'=>http_build_query(array('foo'=>'bar'))
+));
+
+$context = stream_context_create($options);
+
+fopen('http://www.example.com/',false,$context);
+
+//$header = "POST / HTTP/1.1\r\r\n";
+//$header .= "Host: " . $URL . "\n";
+//$header .= "Content-Type: application/json\n";
+
+
+$postdata = array(
+	"customerKey" => 219048,
+	"batchSize" => 500,
+	"batchNo" => 1
+);
+
+echo $header;
+return;
+
+$query = http_build_query($postdata);
+	
+$options = array(
+	"http" => array(
+		"method" => "POST",
+		"header" => $header,
+		"content" => $postdata
+	)
+);
+
+$context = stream_context_create($options);
+
+$protocol = "https://";
+
+$result = file_get_contents($protocol . $URL . $path, false, $context);
+
+
+ /* The customer Key provided to you */
+    $customerKey = "&lt;YOUR_CUSTOMER_KEY&gt;";
+    /* The customer API Key provided to you */
+    $apiKey = "&lt;YOUR_API_KEY&gt;";
+    /* Current time in milliseconds since midnight, January 1, 1970 UTC. */
+    $currentTimeInMillis = round(microtime(true) * 1000);
+    /* Creating the Hash using SHA-512 algorithm */
+    $stringToHash = $customerKey . number_format ( $currentTimeInMillis, 0, '', '' ) . $apiKey;
+    $hashValue = hash("sha512", $stringToHash);
+    $customerKeyHeader = "Customer-Key: " . $customerKey;
+    $timestampHeader = "Timestamp: " . number_format ( $currentTimeInMillis, 0, '', '' );
+    $authorizationHeader = "Authorization: " . $hashValue;
+    /* Add $customerKeyHeader,$timestampHeader and $authorizationHeader
+    in the httpheader */
+
+
+
+
+
+
+./configure --with-openssl=openssl-OpenSSL_1_0_0p --with-libxml-dir=libxml2-2.9.14
+//$query = "customerKey=219048&batchSize=500&batchNo=1";
+//$slug = $path . "?" . $query;
+
+$query = http_build_query($parameters);
+	
+$options = array(
+	"http" => array(
+		"method" => "POST",
+		"header" => $header,
+		"content" => $parameters,
+		"timeout" => 900
+	)
+);
+$context = stream_context_create($options);
+
+$protocol = "https://";
+$result = file_get_contents($protocol . $URL, false, $context);
+echo $result;
+
+return;
+
+
+build of php requires Drifty, containing python
+ pending use systemc
+
+will have to fake data
+ not able to make an account
+  that would host fake data
+   sample responses exist for each module/program
+
+// fsockopen
+
+$filepointer = fsockopen($URL, $port, $errorcode, $errormessage, $timeout);
+
+if (!$filepointer) {
+    echo "$errormessage ($errorcode)<br />\n";
+} else {
+		
+    fwrite($filepointer, $out);
+    
+	while (!feof($filepointer)) {
+        echo fgets($filepointer, 128);
+    }
+    fclose($filepointer);
+}
+
+https://www.cnblogs.com/villa/p/4813187.html
+
+
+
+$filepointer = fsockopen($URL, $port, $errorcode, $errormessage, $timeout);
+
+if (!$filepointer) {
+    echo "$errormessage ($errorcode)<br />\n";
+} else {
+	
+	$slug = $path . "?" . $query
+		
+	$customerkey = "&lt;219048&gt;";
+    $apikey = "&lt;2Phi7nbn1WmAoZXlOKLYixiO9Ox0SVg0&gt;";
+	$hash = hash("sha512", $customerkey . number_format ( $timestamp, 0, '', '' ) . $apikey);
+	
+	$out = "POST " . $slug . " HTTPS/1.1\r\r";
+	$out .= "Host: " . $URL;
+	$out .= "Content-Type: application/json");
+	$out .= "Customer-Key: " . $customerkey;
+	$out .= "Timestamp: " . $timestamp;
+	$out .= "Authorization: " . $hash;
+	
+    fwrite($filepointer, $out);
+    while (!feof($filepointer)) {
+        echo fgets($filepointer, 128);
+    }
+    fclose($filepointer);
+}
+
+
+<?php
+
+    $customerkey = "&lt;219048&gt;";
+    $apikey = "&lt;2Phi7nbn1WmAoZXlOKLYixiO9Ox0SVg0&gt;";
+    $timestamp = round(microtime(true) * 1000);
+    $hash = hash("sha512", $customerkey . number_format ( $timestamp, 0, '', '' ) . $apikey);
+    $headercustomerkey = "Customer-Key: " . $customerkey;
+    $headertimestamp = "Timestamp: " . number_format ( $timestamp, 0, '', '' );
+    $headerauthorization = "Authorization: " . $hash;
+
+	//$socket = fsockopen("login.xecurify.com", "/moas/api/admin/users/getall", "customerKey=219048&batchSize=500&batchNo=1");
+
+	$
+
+	echo $socket;
+return;
+// $post_string = "app=socket&version=beta"; -query
+// request_by_socket('chajia8.com', '/restServer.php', $post_string);
+// request_by_socket($URL, $path, $query)
+
+function request_by_socket($URL, $path, $query, $port = 80, $timeout = 30) {
+
+	$socket = fsockopen($URL, $port, $errorcode, $errormessage, $timeout);
+	
+	if (!$socket) die("$errormessage($errorcode)");
+
+	$slug = $path . "?" . $query;
+
+	//echo $slug;
+	echo $URL;
+	//echo $headercustomerkey;
+	//echo $headertimestamp;
+	//echo $headerauthorization;
+	
+	fwrite($socket, "POST $slug HTTPS/1.0");
+	fwrite($socket, "Host: $URL");
+	fwrite($socket, "Content-Type: application/json");
+	fwrite($socket, $headercustomerkey);
+    fwrite($socket, $headertimestamp);
+	fwrite($socket, $headerauthorization);
+
+	echo $socket;
+	
+	$header = "";
+
+	while ($string = trim(fgets($socket, 4096))) {
+		$header .= $string;
+	}
+
+	$data = "";
+
+	while (!feof($socket)) {
+		$data .= fgets($socket, 4096);
+	}
+
+	//return $data;
+echo $data;
+}
+
+request_by_socket("login.xecurify.com", "/moas/api/admin/users/getall", "customerKey=219048&batchSize=500&batchNo=1");
+
+?>
+
+<?php
+
+$fp = fsockopen("www.example.com", 80, $errno, $errstr, 30); // https://www.php.net/manual/en/function.fsockopen.php
+if (!$fp) {
+    echo "$errstr ($errno)<br />\n";
+} else {
+    $out = "GET / HTTP/1.1\r\n";
+    $out .= "Host: www.example.com\r\n";
+    $out .= "Connection: Close\r\n\r\n";
+    fwrite($fp, $out);
+    while (!feof($fp)) {
+        echo fgets($fp, 128);
+    }
+    fclose($fp);
+}
+
+echo "hello"
+	
+?>
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+
+Host
+Content-Type
+Customer-Key
+Timestamp
+Authorization
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+
+POST
+
+https://www.tutsplanet.com/php-get-post-method/
+https://www.thecodingguys.net/tutorials/php/php-post
+http://www.west999.com/www/info/13759-1.htm
+
+
+
+/* The customer Key provided to you */
+    $customerKey = "&lt;YOUR_CUSTOMER_KEY&gt;";
+    /* The customer API Key provided to you */
+    $apiKey = "&lt;YOUR_API_KEY&gt;";
+    /* Current time in milliseconds since midnight, January 1, 1970 UTC. */
+    $currentTimeInMillis = round(microtime(true) * 1000);
+    /* Creating the Hash using SHA-512 algorithm */
+    $stringToHash = $customerKey . number_format ( $currentTimeInMillis, 0, '', '' ) . $apiKey;
+    $hashValue = hash("sha512", $stringToHash);
+    $customerKeyHeader = "Customer-Key: " . $customerKey;
+    $timestampHeader = "Timestamp: " . number_format ( $currentTimeInMillis, 0, '', '' );
+    $authorizationHeader = "Authorization: " . $hashValue;
+    /* Add $customerKeyHeader,$timestampHeader and $authorizationHeader
+    in the httpheader */
+
+
+https://developers.miniorange.com/docs/idp/api/user-api-guide
+
+https://login.xecurify.com/moas/admin/customer/customerpreferences
+https://blog.csdn.net/Sheep000000/article/details/119643409
+
+https://developers.miniorange.com/docs/idp/api/oauth-api
+
+Node
+https://www.miniorange.com/integrations/
+https://www.miniorange.com/node-js-single-sign-on-sso
+https://www.miniorange.com/step-by-step-guide-to-setup-sso-into-nodejs-app
+
+View user directory
+Manage > Users > User List
+Create password field
+Manage > Users Profile Fields > Add an Attribute
+
+https://stripe.com/docs/testing
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+https://port-xx-drifty-abakasam720639.codeanyapp.com/
+https://stripe.com/docs/billing/prices-guide#create-prices
+https://port-4242-drifty-abakasam720639.codeanyapp.com/
+/**
+
+ * 发送post请求
+
+ * @param string $url 请求地址
+
+ * @param array $post_data post键值对数据
+
+ * @return string
+
+ */
+
+function send_post($url, $post_data) {
+
+  
+
+  $postdata = http_build_query($post_data);
+
+  $options = array(
+
+    'http' => array(
+
+      'method' => 'POST',
+
+      'header' => 'Content-type:application/x-www-form-urlencoded',
+
+      'content' => $postdata,
+
+      'timeout' => 15 * 60 // 超时时间（单位:s）
+
+    )
+
+  );
+
+  $context = stream_context_create($options);
+
+  $result = file_get_contents($url, false, $context);
+
+  
+
+  return $result;
+
+}
+
+  
+
+//使用方法
+
+$post_data = array(
+
+  'username' => 'stclair2201',
+
+  'password' => 'handan'
+
+);
+
+send_post('http://www.jb51.net', $post_data);
+
+https://www.cnblogs.com/villa/p/4813187.html
+
+
+
+$filepointer = fsockopen($URL, $port, $errorcode, $errormessage, $timeout);
+
+if (!$filepointer) {
+    echo "$errormessage ($errorcode)<br />\n";
+} else {
+	
+	$slug = $path . "?" . $query
+		
+	$customerkey = "&lt;219048&gt;";
+    $apikey = "&lt;2Phi7nbn1WmAoZXlOKLYixiO9Ox0SVg0&gt;";
+	$hash = hash("sha512", $customerkey . number_format ( $timestamp, 0, '', '' ) . $apikey);
+	
+	$out = "POST " . $slug . " HTTPS/1.1\r\r";
+	$out .= "Host: " . $URL;
+	$out .= "Content-Type: application/json");
+	$out .= "Customer-Key: " . $customerkey;
+	$out .= "Timestamp: " . $timestamp;
+	$out .= "Authorization: " . $hash;
+	
+    fwrite($filepointer, $out);
+    while (!feof($filepointer)) {
+        echo fgets($filepointer, 128);
+    }
+    fclose($filepointer);
+}
+
+
+<?php
+
+    $customerkey = "&lt;219048&gt;";
+    $apikey = "&lt;2Phi7nbn1WmAoZXlOKLYixiO9Ox0SVg0&gt;";
+    $timestamp = round(microtime(true) * 1000);
+    $hash = hash("sha512", $customerkey . number_format ( $timestamp, 0, '', '' ) . $apikey);
+    $headercustomerkey = "Customer-Key: " . $customerkey;
+    $headertimestamp = "Timestamp: " . number_format ( $timestamp, 0, '', '' );
+    $headerauthorization = "Authorization: " . $hash;
+
+	//$socket = fsockopen("login.xecurify.com", "/moas/api/admin/users/getall", "customerKey=219048&batchSize=500&batchNo=1");
+
+	$
+
+	echo $socket;
+return;
+// $post_string = "app=socket&version=beta"; -query
+// request_by_socket('chajia8.com', '/restServer.php', $post_string);
+// request_by_socket($URL, $path, $query)
+
+function request_by_socket($URL, $path, $query, $port = 80, $timeout = 30) {
+
+	$socket = fsockopen($URL, $port, $errorcode, $errormessage, $timeout);
+	
+	if (!$socket) die("$errormessage($errorcode)");
+
+	$slug = $path . "?" . $query;
+
+	//echo $slug;
+	echo $URL;
+	//echo $headercustomerkey;
+	//echo $headertimestamp;
+	//echo $headerauthorization;
+	
+	fwrite($socket, "POST $slug HTTPS/1.0");
+	fwrite($socket, "Host: $URL");
+	fwrite($socket, "Content-Type: application/json");
+	fwrite($socket, $headercustomerkey);
+    fwrite($socket, $headertimestamp);
+	fwrite($socket, $headerauthorization);
+
+	echo $socket;
+	
+	$header = "";
+
+	while ($string = trim(fgets($socket, 4096))) {
+		$header .= $string;
+	}
+
+	$data = "";
+
+	while (!feof($socket)) {
+		$data .= fgets($socket, 4096);
+	}
+
+	//return $data;
+echo $data;
+}
+
+request_by_socket("login.xecurify.com", "/moas/api/admin/users/getall", "customerKey=219048&batchSize=500&batchNo=1");
+
+?>
+
+<?php
+
+$fp = fsockopen("www.example.com", 80, $errno, $errstr, 30); // https://www.php.net/manual/en/function.fsockopen.php
+if (!$fp) {
+    echo "$errstr ($errno)<br />\n";
+} else {
+    $out = "GET / HTTP/1.1\r\n";
+    $out .= "Host: www.example.com\r\n";
+    $out .= "Connection: Close\r\n\r\n";
+    fwrite($fp, $out);
+    while (!feof($fp)) {
+        echo fgets($fp, 128);
+    }
+    fclose($fp);
+}
+
+echo "hello"
+	
+?>
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+
+Host
+Content-Type
+Customer-Key
+Timestamp
+Authorization
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
+
+POST
+
+https://www.tutsplanet.com/php-get-post-method/
+https://www.thecodingguys.net/tutorials/php/php-post
+http://www.west999.com/www/info/13759-1.htm
+
+
+
+/* The customer Key provided to you */
+    $customerKey = "&lt;YOUR_CUSTOMER_KEY&gt;";
+    /* The customer API Key provided to you */
+    $apiKey = "&lt;YOUR_API_KEY&gt;";
+    /* Current time in milliseconds since midnight, January 1, 1970 UTC. */
+    $currentTimeInMillis = round(microtime(true) * 1000);
+    /* Creating the Hash using SHA-512 algorithm */
+    $stringToHash = $customerKey . number_format ( $currentTimeInMillis, 0, '', '' ) . $apiKey;
+    $hashValue = hash("sha512", $stringToHash);
+    $customerKeyHeader = "Customer-Key: " . $customerKey;
+    $timestampHeader = "Timestamp: " . number_format ( $currentTimeInMillis, 0, '', '' );
+    $authorizationHeader = "Authorization: " . $hashValue;
+    /* Add $customerKeyHeader,$timestampHeader and $authorizationHeader
+    in the httpheader */
+
+
+https://developers.miniorange.com/docs/idp/api/user-api-guide
+
+https://login.xecurify.com/moas/admin/customer/customerpreferences
+https://blog.csdn.net/Sheep000000/article/details/119643409
+
+https://developers.miniorange.com/docs/idp/api/oauth-api
+
+Node
+https://www.miniorange.com/integrations/
+https://www.miniorange.com/node-js-single-sign-on-sso
+https://www.miniorange.com/step-by-step-guide-to-setup-sso-into-nodejs-app
+
+View user directory
+Manage > Users > User List
+Create password field
+Manage > Users Profile Fields > Add an Attribute
+
+https://stripe.com/docs/testing
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+https://port-xx-drifty-abakasam720639.codeanyapp.com/
+https://stripe.com/docs/billing/prices-guide#create-prices
+https://port-4242-drifty-abakasam720639.codeanyapp.com/
+
+REST
+https://developers.miniorange.com/docs/idp/api/user-api-guide
+
+https://login.xecurify.com/moas/admin/customer/customerpreferences
+https://blog.csdn.net/Sheep000000/article/details/119643409
+
+https://developers.miniorange.com/docs/idp/api/oauth-api
+
+Node
+https://www.miniorange.com/integrations/
+https://www.miniorange.com/node-js-single-sign-on-sso
+https://www.miniorange.com/step-by-step-guide-to-setup-sso-into-nodejs-app
+
+View user directory
+Manage > Users > User List
+Create password field
+Manage > Users Profile Fields > Add an Attribute
+
+https://stripe.com/docs/testing
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+https://port-xx-drifty-abakasam720639.codeanyapp.com/
+https://stripe.com/docs/billing/prices-guide#create-prices
+https://port-4242-drifty-abakasam720639.codeanyapp.com/
+
+
+return
+
+var parameters = {
+	customerKey: 219048,
+	username: 'a',
+	email: 'a',
+	firstName: 'a',
+	lastName: 'a',
+	password: 'a'
+}
+
+var query = ''
+for (var key in parameters) {
+	query = query + key + '=' + parameters[key] + '&'
+}
+query = query.substring(0, query.length - 1)
+
+var crypt = require('crypto')
+var sum = crypt.createHash('sha512')
+var hash = sum.digest('hex');
+
+var options = {
+	host: 'login.xecurify.com',
+	port: 80,
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json',
+		'Customer-Key': 219048,
+		'Timestamp': Date.UTC(),
+		'Authorization': hash
+	},
+	path: '/moas/api/admin/users/create?' + query
+}
+
+var http = require('http') // https://iojs.org/dist/v3.3.1/docs/api/http.html#http_http
+
+options = {
+	method: 'GET',
+	host: 'www.google.com',
+	path: '/index.html'
+}
+
+http.request(options, function(res) {
+  console.log("Got response: " + res.statusCode);
+}).on('error', function(e) {
+  console.log("Got error: " + e.message);
+});
+
+Have to build fast
+ Built presentation to draft design
+ 
+https://stripe.com/docs/checkout/quickstart
+ 
+ 
+# Accept a Payment with Stripe Checkout
+
+Stripe Checkout is the fastest way to get started with payments. Included are some basic build and run scripts you can use to start up the application.
+
+## Running the sample
+
+1. Build the server
+
+~~~
+npm install
+~~~
+
+2. Run the server
+
+~~~
+npm start
+~~~
+
+3. Go to [http://localhost:4242/checkout.html](http://localhost:4242/checkout.html)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+TODO: Moving to stripe application then building there with ionic
+
+BUG: Object spread property
+
+https://blog.csdn.net/CO_LA_/article/details/119220382
+
+console.log('TODO: Connect to database')
+
+var mysql = require("mysql")
+
+var configuration = {
+	host: 'SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com',
+	user: 'sam',
+	password: 'vM6r7p2#6djskla',
+	database: 'jflksjds-df'
+}
+
+var connection
+connection = mysql.createConnection(configuration)
+connection.connect()
+
+var query = 'CREATE TABLE IF NOT EXISTS tasks (task_id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255) NOT NULL,start_date DATE,due_date DATE,status TINYINT NOT NULL,priority TINYINT NOT NULL,description TEXT,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);'
+
+connection.query(query, function(errors, results, fields) {
+	console.log(results)
+	console.log(fields)
+})
+
+TODO: Use mysql to test scalegrid
+
+172.55.100.41/32	
+
+mysql -u sgroot -p -P 3306 -h SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com
+
+mysql -u sgroot -P 3306 -h SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com
+
+Stuck at, 
+Enter password:
+
+vM6r7p2#6djskla
+
+ERROR 2003 (HY000)
+在Mysql的配置文件中（一般是
+
+/etc/my.cnf
+/etc/mysql/mysql.conf.d/mysql.conf 
+） 我的是在
+
+可以找一下
+
+
+CREATE TABLE IF NOT EXISTS tasks (
+    task_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    start_date DATE,
+    due_date DATE,
+    status TINYINT NOT NULL,
+    priority TINYINT NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS tasks (task_id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255) NOT NULL,start_date DATE,due_date DATE,status TINYINT NOT NULL,priority TINYINT NOT NULL,description TEXT,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+--user=sgroot
+--password=u9fu1rhRJSA^zqXg
+--port=3306
+--host=SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com
+
+mysql --user=sgroot --password=u9fu1rhRJSA^zqXg --port=3306 
+mysql --host SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com --port 3306
+
+https://www.npmjs.com/package/mysql/v/2.18.1#introduction
+https://www.mysqltutorial.org/mysql-create-table/
+https://www.jb51.net/article/216538.htm
+
+IMPROVE: Unknown to source instead of maintained OS packages
+
+Needing to fix Codetree
+Milestones to be used
+None in planning
+Effort used to be defined?
+Went to just memory
+
+BUG: False fail on connection check without wait/timeout app.js 58
+
+TODO: Connect to a database
+
+mysql -u sgroot -p -P 3306 -h SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com
+mysql -u sgroot -p -P 3306 -h SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com
+
+sgroot
+u9fu1rhRJSA^zqXg
+
+sam
+jflksjds-df
+vM6r7p2#6djskla
+
+var connection = mysql.createConnection('mysql://user:pass@host/db?debug=true&charset=BIG5_CHINESE_CI&timezone=-0700');
+jdbc:mysql://SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com:3306/jflksjds-df
+connection = mysql.createConnection('mysql://SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com:3306/jflksjds-df')
+
+mysql://user:pass@host/db?debug=true&charset=BIG5_CHINESE_CI&timezone=-0700
+mysql://sam:vM6r7p2#6djskla
+@SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com:3306/jflksjds-df
+
+
+connection = mysql.createConnection('mysql://SG-nifty-beanie-1588-7015-mysql-master.servers.mongodirector.com:3306/jflksjds-df')
+
+https://www.jianshu.com/p/f6c7233649be
+172.55.100.41/32
+ip address
+172.55.100.41/32
+
+
+https://en.wikipedia.org/wiki/Key%E2%80%93value_database
+https://redis.com/redis-enterprise/redis-insight/
+redissgroot
+
+application.use(express.static('public'))
+
+var YOUR_DOMAIN = 'http://localhost:4242'
+
+application.post('/create-checkout-session', function(request, response) {
+	
+  var session = stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price: '{{PRICE_ID}}', // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: `${YOUR_DOMAIN}/success.html`,
+    cancel_url: `${YOUR_DOMAIN}/cancel.html`
+  })
+
+  response.redirect(303, session.url)
+})
+
+BUG: ENOTDIR @types/node/pakcage.json
+
+https://blog.csdn.net/qq_46071321/article/details/118468412
+
+TODO: List data to get from social networks (Complete)
+
+curl --request GET 'https://api.twitter.com/2/tweets/search/recent?query=from:twitterdev' --header 'Authorization: Bearer $BEARER_TOKEN'
+wget "https://api.twitter.com/2/tweets/search/recent?query=from:twitterdev" --header "Authorization: Bearer $BEARER_TOKEN"
+
+https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/user
+https://developer.twitter.com/en/docs/tutorials/step-by-step-guide-to-making-your-first-request-to-the-twitter-api-v2
+https://developer.twitter.com/en/docs/twitter-api/data-dictionary/introduction
+id
+name
+username
+created_at
+description
+entities
+location
+pinned_tweet_id
+profile_image_url
+protected
+public_metrics
+url
+verified
+withheld
+
+https://developers.facebook.com/docs/graph-api/reference/user
+id
+first_name
+last_name
+middle_name
+name
+name_format
+picture
+short_name
+
+TODO: Identify foundatiion organization (Complete)
+
+ abakasam Virus Writing			
+ Asail    Game Development		
+ Aquaogen Software Engineering	
+ Drifty   Web Development		
+ Sunsoft  Robotics Engineering	
+ Whisper  Cryptography			
+
+abakasam    -> Norton		vxheaven.org
+Asail 		-> Shade		1995-present (27 years), D3 Publisher
+Aquaogen	-> Cyanogen		
+Sunsoft		-> Microsoft	
+Whisper 	-> Netgear		
+Drifty 		-> Ionic		
+
+suppose to be working before being isolated from jealous and hateful
+doctors
+shade
+cyanogen
+microsoft
+netgear
+ionic
+
+these are small projects, the other projects have been lost
+
+Diploma Istituto Tecnico e Professionale
+
+TODO: Identify integrations and code needed (Complete)
+
+TODO: Mock with ionic, profilezip
+
+purejs, no angular
+	login
+	register
+	search
+	view
+	pay
+	
+	
+exist on dry erase board
+
+Identified fields, wanting to do what is only online
+
+TODO: Register as Facebook developer (Complete)
+
+https://developers.facebook.com/async/registration/dialog/
+
+TODO: Create a Facebook app (Complete)
+
+https://developers.facebook.com/docs/development/create-an-app
+https://developers.facebook.com/apps
+
+Not feeling too good
+ Might program another time
+
+https://developers.facebook.com/apps/1278255309623496/dashboard/
+
+TODO: HTTP name and id from Facebook (Complete)
+
+curl -X GET -G -d 'access_token=<ACCESS_TOKEN>' https://graph.facebook.com/v15.0/{person-id}/
+
+-X, --request COMMAND	Specify request command to use
+-G, --get     	     	Send the -d data with a HTTP GET (H)
+-d, --data DATA     	HTTP POST data (H)
+
+wget--post-data "user=foo" http://127.0.0.1:8333/test.php
+
+wget --debug --post-data "access_token=EAASKkQGpkMgBAD3EXdovGRDnrHiyatQQGcSn615IbO8DZBHBxRbBeDoVWyOVhhRZAP4kZCzoFsy2I6IAlr9ZAIeGZBNbGIiMgOEj3L48bdhwyEfBU4VxmkZCu3lElJ01JIL3D64ZA5XNTPvZALcxp64YjSxvgkjFhykdJhySQdgkbmi8SlnZAmkoHMdTYmQkrisngzEyVzWEjJojqcKK7NpZAv1BrM4XbjbmOUvBbOEak6ZCtZACZAE5nenFUPZAm4vMZAwUngBa7meH0lG4wZDZD" https://graph.facebook.com/v15.0/{person-id}/
+
+-X, --request COMMAND  Specify request command to use
+
+ ?, --post-data=STRING use the POST method; send STRING as the data.
+
+
+https://developers.facebook.com/docs/graph-api/reference
+https://developers.facebook.com/docs/graph-api/reference/user
+
+User Access Token
+EAASKkQGpkMgBAD3EXdovGRDnrHiyatQQGcSn615IbO8DZBHBxRbBeDoVWyOVhhRZAP4kZCzoFsy2I6IAlr9ZAIeGZBNbGIiMgOEj3L48bdhwyEfBU4VxmkZCu3lElJ01JIL3D64ZA5XNTPvZALcxp64YjSxvgkjFhykdJhySQdgkbmi8SlnZAmkoHMdTYmQkrisngzEyVzWEjJojqcKK7NpZAv1BrM4XbjbmOUvBbOEak6ZCtZACZAE5nenFUPZAm4vMZAwUngBa7meH0lG4wZDZD
+
+https://developers.facebook.com/docs/facebook-login/guides/access-tokens#apptokens
+https://developers.facebook.com/docs/graph-api/overview#nodes
+
+https://developers.facebook.com/tools/explorer
+
+curl -i -X GET \
+ "https://graph.facebook.com/v15.0/me?fields=id%2Cname&access_token=EAASKkQGpkMgBAD3EXdovGRDnrHiyatQQGcSn615IbO8DZBHBxRbBeDoVWyOVhhRZAP4kZCzoFsy2I6IAlr9ZAIeGZBNbGIiMgOEj3L48bdhwyEfBU4VxmkZCu3lElJ01JIL3D64ZA5XNTPvZALcxp64YjSxvgkjFhykdJhySQdgkbmi8SlnZAmkoHMdTYmQkrisngzEyVzWEjJojqcKK7NpZAv1BrM4XbjbmOUvBbOEak6ZCtZACZAE5nenFUPZAm4vMZAwUngBa7meH0lG4wZDZD"
+
+wget "https://graph.facebook.com/v15.0/me?fields=id%2Cname&access_token=EAASKkQGpkMgBAD3EXdovGRDnrHiyatQQGcSn615IbO8DZBHBxRbBeDoVWyOVhhRZAP4kZCzoFsy2I6IAlr9ZAIeGZBNbGIiMgOEj3L48bdhwyEfBU4VxmkZCu3lElJ01JIL3D64ZA5XNTPvZALcxp64YjSxvgkjFhykdJhySQdgkbmi8SlnZAmkoHMdTYmQkrisngzEyVzWEjJojqcKK7NpZAv1BrM4XbjbmOUvBbOEak6ZCtZACZAE5nenFUPZAm4vMZAwUngBa7meH0lG4wZDZD"
+
+TODO: Create node application for Facebook Graph API
+
+wget "tinyurl.com/2p94cmxv" --output-document=wgetlog
+
+https://graph.facebook.com/v15.0/me?fields=id%2Cname&access_token=EAASKkQGpkMgBAD3EXdovGRDnrHiyatQQGcSn615IbO8DZBHBxRbBeDoVWyOVhhRZAP4kZCzoFsy2I6IAlr9ZAIeGZBNbGIiMgOEj3L48bdhwyEfBU4VxmkZCu3lElJ01JIL3D64ZA5XNTPvZALcxp64YjSxvgkjFhykdJhySQdgkbmi8SlnZAmkoHMdTYmQkrisngzEyVzWEjJojqcKK7NpZAv1BrM4XbjbmOUvBbOEak6ZCtZACZAE5nenFUPZAm4vMZAwUngBa7meH0lG4wZDZD" --output-document=wgetlog
+
+tinyurl.com
+
+wget https://tinyurl.com/3dndhn5v --output-document=
+
+curl -i -X GET \
+ "https://graph.facebook.com/v15.0/me?fields=id%2Cname&access_token=EAASKkQGpkMgBAA7v2L8APfZCRQcGOfdA35GGGM62mDyZA4L5vmALBMraCGOSxla2cRShbZA5hKqxaMtbmqJfEGP6XZBgrb7RzVR1cap6ph2Wqfw32kV9Yqy4UJ7Dm5dBGxo4wUJF0buqmgxH6GYm7OZBEzcig84m9rx05TR026VfwN9KOl7FWbLjMrAdHquwvjmxB3jNX4U5Wi5USt6GA28r4AGaxIljpIdBRdo8SZA1P9A4UcYpIqPIXZAjBvxcm0ZD"
+
+var child = exec('wget https://tinyurl.com/3dndhn5v --output-document=' + id,
+  function (error, stdout, stderr) {
+	
+    console.log('stdout: ' + stdout)wget 
+    console.log('stderr: ' + stderr)
+	
+    if (error !== null) {
+      console.log('exec error: ' + error);
+    }
+})
+
+const readline = require('readline');
+const fs = require('fs');
+
+let file = fs.createReadStream('./fs.js');
+let out = fs.createWriteStream('./anotherFs.js');
+let index = 1;
+out.write('/*line' + index.toString() + ": */");
+let rl = readline.createInterface({
+  input: file,
+  output: out,
+  terminal: true
+});
+
+rl.on('line', (line) => {
+  if (line === '') {
+    rl.close();
+  } else {
+    index++;
+    out.write('/*line' + index.toString() + ': */');
+  }
+});
+
+https://mp.weixin.qq.com/s?src=11&timestamp=1671214115&ver=4230&signature=bkAxUK51qtKEVjsvqrfOmpS3eBnZzUeknkUPZbznnj-pFGX*wT2fiZ1OfICm4UbrPDJewocUDgujeRUw-L9wMqQdinaYF03nO1yAVajAC8XvfNpJj9S4jf1rb7yGM73S&new=1
+https://nodejs.org/docs/latest-v4.x/api/fs.html#fs_fs_read_fd_buffer_offset_length_position_callback
+https://nodejs.org/docs/latest-v4.x/api/fs.html#fs_fs_read_fd_buffer_offset_length_position_callback
+https://www.jianshu.com/p/374f59ed48ff
+https://my.oschina.net/u/4609891/blog/4777171
+https://www.php1.cn/detail/Node-jsreadline__416b0c3c.html
+https://github.com/golyshevd/unique-id/blob/master/unique-id.js
+
+https://nodejs.org/docs/v4.0.0/doc/api/child_process.html#child_process_child_process_exec_command_options_callback
+http://m.biancheng.net/view/9368.html
+
+setTimeout(function() {
+	reader.on('data', function(data) { console.log(data) }	
+}), 3000)
+
+while (ran == false) { console.log(ran) }
+
+console.log('hello')
+
+TODO: Only output from wget
+
+curl -i -X GET \
+
+echo $(wget "https://graph.facebook.com/v15.0/me?fields=id%2Cname&access_token=EAASKkQGpkMgBAFO5o8ZCQjKFIetSkAJWG774FI2kApXVWH7B8TNqMlylD0p8HVZCBRayAC5ySKJLJedOjxC9taKkXYBcMDQf5TZAIqHZAWtBjJLuWlNTEzgxLeZArAJoGb4UgkebjU08bgRnWiojsXWwdhZBXLlpsbRDk1ZBZAHjOqjYIwOyNuVH6dFO9RS3Klc7QDfgMLQvdel7URul1m8CrGPmvcXsc5992Y8emGwbPBIntWZBqCDFx0XmKN9IkEtxaEXJUC10vBAZDZD")
+
+FACEBOOKTOKEN=EAASKkQGpkMgBAFO5o8ZCQjKFIetSkAJWG774FI2kApXVWH7B8TNqMlylD0p8HVZCBRayAC5ySKJLJedOjxC9taKkXYBcMDQf5TZAIqHZAWtBjJLuWlNTEzgxLeZArAJoGb4UgkebjU08bgRnWiojsXWwdhZBXLlpsbRDk1ZBZAHjOqjYIwOyNuVH6dFO9RS3Klc7QDfgMLQvdel7URul1m8CrGPmvcXsc5992Y8emGwbPBIntWZBqCDFx0XmKN9IkEtxaEXJUC10vBAZDZD
+export FACEBOOKTOKEN
+echo $FACEBOOKTOKEN
+
+wget "https://graph.facebook.com/v15.0/me?fields=id%2Cname&access_token=${FACEBOOKTOKEN}"
+https://lists.gnu.org/archive/html/bug-wget/2013-06/msg00068.html
+https://bitly.com/
+https://en.wikipedia.org/wiki/URL_shortening
+https://tinyurl.com/app/features/howit
+
+BUG: wget File name too long (Complete)
+
+https://blog.csdn.net/qq_39128254/article/details/107418126
+
+wget --help
+--output-document
+
+TODO: Create access token for Facebook app
+
+App Access Tokens
+
+
+TODO: Fix profilezip fork and copy forking to STANDARDS (Complete)
+
+@Aquaogen Aquaogen / webser		organization live
+ @Sammight Sammight / webser	organization working
+  @abakasam abakasam / webser	organization developer
+
+WRONG
+@Aquaogen Aquaogen / iojs		organization live?
+ @abakasam abakasam / iojs		user		 developer!
+
+organization
+ organization
+  user
+
+live
+working
+developer
+
+TODO: Check ionic and node for project (Complete)
+
+https://github.com/abakasam/ionic
+https://drifty-abakasam720639.codeanyapp.com/
+https://port-8100-drifty-abakasam720639.codeanyapp.com/#/tab/dash
+
+TODO: Check okta or miniorange for works (Complete)
+
+com_miniorange_oauth        OAuth Miniorange PHP 
+connect                     Authentication Middleware for Connect https://github.com/ciaranj/connect-auth
+node-oauth-example-master   OAuth Node Explained https://github.com/sohamkamani/node-oauth-example
+node-oauth-master           OAuth Node https://github.com/ciaranj/node-oauth
+
+Azure AD OIDC Node 			AppModelv2
+Miniorange Express SAML 	express-saml-free
+Okta Express 				sample-nodejs-express
+
+com_miniorange_oauth        OAuth Miniorange PHP 
+connect                     Authentication Middleware for Connect https://github.com/ciaranj/connect-auth
+node-oauth-example-master   OAuth Node Explained https://github.com/sohamkamani/node-oauth-example
+node-oauth-master           OAuth Node https://github.com/ciaranj/node-oauth
+
+Azure AD OIDC Node 			AppModelv2
+Miniorange Express SAML 	express-saml-free
+Okta Express 				sample-nodejs-express
+
+OAuth miniOrange PHP
+Authentication Middleware for Connect
+OAuth Node Explained
+OAuth Node
+Azure AD OIDC Node
+miniOrange Express SAML
+Okta Express
+
+TODO: Gather documentation and examples for miniorange (Complete)
+
+TODO: Extend miniorange trial
+
+TODO: Look at design and powerpoint
+
+TODO: Create repository for profilezip (Complete)
+
+/home/cabox/workspace/desktop/profilezip
+
+TODO: Prepare Codetree for profilezip (Complete)
+
+Points (hours): 1,5,10,15,20,25,30
+
+codetree is setup by user then organization
+
+Naming to project unvailable, 24/mo needed
+
+			 repositories milestones issues
+			 
+user (Me) 	 repository   goal       task
+organziation projects     milestone  issue
+
+TODO: Fix invoice for August (Complete)
+
+tab-dash.html
+    <h2>Welcome to Ionic</h2>
+    <p>
+    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
+    </p>
+    <p>
+      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
+    </p>
+    <p>
+    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
+    </p>
+    <p>
+      <b>Psst!</b> - Try <a href="http://view.ionic.io/">Ionic View</a> to easily share and test your app with clients and co-workers.
+    </p>

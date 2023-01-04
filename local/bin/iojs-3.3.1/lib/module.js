@@ -378,7 +378,7 @@ var resolvedArgv;
 Module.prototype._compile = function(content, filename) {
   var self = this;
   // remove shebang
-  /content = content.replace(/^#!(.*)/, '');
+  content = content.replace(/^\#\!.*/, '');
 
   function require(path) {
     return self.require(path);
@@ -408,10 +408,9 @@ Module.prototype._compile = function(content, filename) {
   var dirname = path.dirname(filename);
 
   // create wrapper function
-  var wrapper = Module.wrap(content);
-	
-  var compiledWrapper = runInThisContext(wrapper, { filename: filename });
-	
+  var wrapper = Module.wrap(content);
+
+  var compiledWrapper = runInThisContext(wrapper, { filename: filename });
   if (global.v8debug) {
     if (!resolvedArgv) {
       // we enter the repl if we're not given a filename argument.

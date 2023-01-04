@@ -11,7 +11,7 @@ srcdir := ..
 abs_srcdir := $(abspath $(srcdir))
 
 # The name of the builddir.
-builddir_name ?= /home/cabox/workspace/iojs/out
+builddir_name ?= /home/cabox/workspace/desktop/iojs/iojs-v3.3.1/out
 
 # The V=1 flag on command line makes us verbosely print command lines.
 ifdef V
@@ -510,8 +510,8 @@ ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
-cmd_regen_makefile = cd $(srcdir); ./tools/gyp_node.py -fmake --ignore-environment "--toplevel-dir=." -I/home/cabox/workspace/iojs/common.gypi -I/home/cabox/workspace/iojs/config.gypi "--depth=." "-Goutput_dir=/home/cabox/workspace/iojs/out" "--generator-output=/home/cabox/workspace/iojs/out" "-Dcomponent=static_library" "-Dlibrary=static_library" node.gyp
-Makefile: $(srcdir)/deps/cares/cares.gyp $(srcdir)/common.gypi $(srcdir)/deps/openssl/openssl.gypi $(srcdir)/deps/uv/uv.gyp $(srcdir)/deps/http_parser/http_parser.gyp $(srcdir)/deps/zlib/zlib.gyp $(srcdir)/deps/openssl/openssl.gyp $(srcdir)/deps/v8/tools/gyp/v8.gyp $(srcdir)/deps/openssl/openssl-cli.gypi $(srcdir)/node.gyp $(srcdir)/deps/openssl/masm_compile.gypi $(srcdir)/deps/v8/build/features.gypi $(srcdir)/deps/v8/build/toolchain.gypi $(srcdir)/config.gypi $(srcdir)/deps/gtest/gtest.gyp
+cmd_regen_makefile = cd $(srcdir); ./tools/gyp_node.py -fmake --ignore-environment "--toplevel-dir=." -I/home/cabox/workspace/desktop/iojs/iojs-v3.3.1/common.gypi -I/home/cabox/workspace/desktop/iojs/iojs-v3.3.1/config.gypi "--depth=." "-Goutput_dir=/home/cabox/workspace/desktop/iojs/iojs-v3.3.1/out" "--generator-output=/home/cabox/workspace/desktop/iojs/iojs-v3.3.1/out" "-Dcomponent=static_library" "-Dlibrary=static_library" node.gyp
+Makefile: $(srcdir)/deps/openssl/openssl.gypi $(srcdir)/deps/cares/cares.gyp $(srcdir)/common.gypi $(srcdir)/deps/gtest/gtest.gyp $(srcdir)/deps/uv/uv.gyp $(srcdir)/deps/http_parser/http_parser.gyp $(srcdir)/deps/zlib/zlib.gyp $(srcdir)/deps/openssl/openssl.gyp $(srcdir)/deps/v8/tools/gyp/v8.gyp $(srcdir)/deps/openssl/openssl-cli.gypi $(srcdir)/node.gyp $(srcdir)/deps/openssl/masm_compile.gypi $(srcdir)/deps/v8/build/features.gypi $(srcdir)/deps/v8/build/toolchain.gypi $(srcdir)/config.gypi
 	$(call do_cmd,regen_makefile)
 
 # "all" is a concatenation of the "all" targets from all the included

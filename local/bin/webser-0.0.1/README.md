@@ -4,8 +4,9 @@ Simple node web server
 
 ## Running
 
+Set PUBLIC_HTML in web.js
 	PUBLIC_HTML=/home/cabox/workspace/abakasam/local/public_html
-	export PUBLIC_HTML
+
 	node web.js
 
 ## Debug
@@ -14,28 +15,18 @@ Simple node web server
 
 ## Features
 
-Iniatiate mutliple features by configuration files per application
+### Default public_html
 
-### Set headers
-### Serve directory
-### URL path
-### Not Found
-### Display file
+	web.js: PUBLIC_HTML=/home/cabox/workspace/abakasam/local/public_html
+
+### Set environmental variables
 ### Download file
+### Upload file
+### Process form
+### Set headers
+### Not Found
+### URL path
+### Display media
+### Serve seperate directory
 ### Query database
 ### Query metadata
-### Process form
-### Upload file
-### Default public_html 
-
-## Documentation
-
-	PUBLIC_HTML=/home/cabox/workspace/abakasam/local/public_html
-	export PUBLIC_HTML
-	cp express.docs.zip $PUBLIC_HTML
-	cd $PUBLIC_HTML
-	mkdir express
-	mv express.docs.zip express
-	cd express
-	unzip express.docs.zip
-	http://localhost:3000/express/expressjs.com

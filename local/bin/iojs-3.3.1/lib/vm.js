@@ -50,8 +50,8 @@ exports.runInNewContext = function(code, sandbox, options) {
 };
 
 exports.runInThisContext = function(code, options) {
-  var script = new Script(code, options);
-  return script.runInThisContext(options);
+  var script = new Script(code, options);
+  return script.runInThisContext(options);
 };
 
 exports.isContext = binding.isContext;

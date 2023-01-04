@@ -9,11 +9,37 @@ healthly programming
  create blog topic before coding
  ALWAYS know developer comment you are working on and use in git commit
 
+forking (https://github.com/abakasam/webser/network/members)
+@Aquaogen		organization live
+ @Sammight 		organization working
+  @abakasam 	user         developer
+
+developer comments
+		EXPLAIN		UML 
+	0a	TEST		TestQuality 
+	0b	FEATURE		Growthflags 
+	1	TODO		Codetree
+	1a	IMPROVE		Codiga 
+	1b	REDO		Threatrix 
+	2	BUG			Bugzilla
+	2a	MEMORY		BuildJet 
+	2b	LEGACY		Deadpendency 
+	
+developer comment status (Example: TODO: message (Complete))
+	1	blog		CodeProject (rss) 
+	2	log			LogOwl (echo) 
+	3	(Complete)	Viezly 
+	4	(Review)	Wikidot 
+	5	(Reviewed)	Docusaurus 
+	6	executable	MSBuild, Gradle, Maven, PWA 
+
+
 reports
  code
-  products				sf
-  todo					sf
-  changelog				sf
+  products				f
+  todo					s
+  changelog				s
+  locality				f
  project
   programming meeting	f
   project portfolio		u
@@ -23,23 +49,13 @@ reports
   news					s
   codeproject			u
   wikidot				u
-  documentation			u
-  site					u
+  docusaurus			u
+  google site			u
 
 organizations
  abakasam Virus Writing
  Asail    Game Development
  Aquaogen Software Engineering
-!Drifty   Web Development
+ Drifty   Web Development
  Sunsoft  Robotics Engineering
  Whisper  Cryptography
- 
-workspace
- user|organization/  > user program files        > sync with github
- desktop/            > user workspace            > sync with rclone to onedrive
- downloads/          > user for system temporary > no sync, local
- products/           > user repository           > apache-ftpserver
- 
- apache-ftpserver    > binary and source share   > no sync, semver
- mediafire           > file share                > no sync
- onedrive            > file share (large)        > no sync

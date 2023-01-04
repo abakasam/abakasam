@@ -1,1 +1,0 @@
-cmd_/home/cabox/workspace/iojs/out/Release/libuv.a := ln -f "/home/cabox/workspace/iojs/out/Release/obj.target/deps/uv/libuv.a" "/home/cabox/workspace/iojs/out/Release/libuv.a" 2>/dev/null || (rm -rf "/home/cabox/workspace/iojs/out/Release/libuv.a" && cp -af "/home/cabox/workspace/iojs/out/Release/obj.target/deps/uv/libuv.a" "/home/cabox/workspace/iojs/out/Release/libuv.a")

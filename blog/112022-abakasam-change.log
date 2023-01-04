@@ -1,0 +1,168 @@
+blockchain gaming and NFTs https://hackernoon.com/how-blockchain-technology-affects-ownership-in-the-gaming-industry?utm_medium=email&utm_source=newsletter&utm_campaign=HT
+
+https://verfy.co/
+
+TODO: Forward hosting of vxheaven for codeanywhere (Complete)
+
+https://port-8982-aquaogen-abakasam720639.codeanyapp.com/vxheaven/
+
+vxheaven.org
+vx.netlux.org
+vxheaven.aquoagen.net
+
+
+
+
+
+TODO: List developer comments in STANDARDS (Complete)
+
+		0	EXPLAIN		UML
+		0a	TEST		TestQuality
+		1	TODO		Codetree
+		1a	IMPROVE		Codiga
+		1b	REDO		Threatrix
+		2	BUG			Bugzilla
+		2a	MEMORY		BuildJet
+		2b	LEGACY		Deadpendency
+		1				CodeProject
+		2	echo		LogOwl
+		3	(Complete)	Viezly
+		4	(Review)	Wikidot
+		5	(Reviewed)	Docusaurus
+
+	EXPLAIN	UML 
+
+0a	TEST		TestQuality 
+
+0b	FEATURE	Growthflags 
+
+1	TODO		Codetree 
+
+1a	IMPROVE	Codiga 
+
+1b	REDO		Threatrix 
+
+2	BUG		Bugzilla 
+
+2a	MEMORY	BuildJet 
+
+2b	LEGACY		Deadpendency 
+
+1	blog		CodeProject (rss) 
+
+2	log		LogOwl (echo) 
+
+3	(Complete)	Viezly 
+
+4	(Review)	Wikidot 
+
+5	(Reviewed)	Docusaurus 
+
+6	executable	MSBuild, Gradle, Maven, PWA 
+
+
+
+
+
+
+
+TODO: Identify which products are being built (Complete)
+
+abakasam
+	ayoupawn	pawn online store
+	redcore		corewar simulator with string theory
+	vamos		geometric automotive physics engine
+
+aquaogen
+	ionic		node web application
+	iojs		javascript runtime environment
+	webser		node web server
+	drifty		lisp expert system
+
+drifty
+	database	SQL database by web applications
+	card match	flashcard memory game
+	coachshake	delivery and schedule diet plan
+	(facebook)	contact database for social networks
+
+
+TODO: Match social network to identity (Complete)
+
+github		the body   	japanese	international	https://github.co.jp/
+linkedin	the body	english		national		https://www.linkedin.com/
+facebook	birth  	 	italian		international	https://it-it.facebook.com/
+
+TODO: Fix touchscreen for HP Envy x360 on Windows 8.1
+
+https://support.hp.com/us-en/drivers/selfservice/hp-envy-15-cp0000-x360-convertible-pc/20270303/model/27103413?sku=6EH45UA&serialnumber=8CG9378FJ2
+
+https://h30434.www3.hp.com/t5/Notebook-Hardware-and-Upgrade-Questions/Touchscreen-driver-HP-stream-x360/m-p/5355102
+ intel serial io
+ intel vertual buttons
+
+amd high definition graphics driver - raven ridge
+ microsoft basic display adapter
+ generic pnp monitor
+ https://www.amd.com/en/support/apu/amd-ryzen-processors/amd-ryzen-5-mobile-processors-radeon-vega-graphics/amd-ryzen-5
+
+driverscollection.com / hardware ids
+
+PCI\VEN_1022&DEV_15E2&SUBSYS_8497103C&REV_00 audio driver
+PCI\VEN_1022&DEV_15D1&SUBSYS_8497103C&REV_00 audio driver
+PCI\VEN_1022&DEV_15E4&SUBSYS_8497103C&REV_00 audio driver
+PCI\VEN_10EC&DEV_522A&SUBSYS_8497103C&REV_01 realtek driver
+ACPI\VEN_USB&DEV_C000 intel chipset device
+ACPI\VEN_HPIC&DEV_0003 hp protectsmart harddrive protection
+ACPI\VEN_HPQ&DEV_6007 ftp.hp.com/pub/softpaq/sp64501-65000/sp64934.exe
+
+https://support.hp.com/in-en/document/c01007591
+
+windows 10
+amd radeon vega 8 graphics
+
+elan eztouchfilter ACPI\VEN_ELAN&DEV_0732
+gpio laptop or slate indicator driver ACPI\VEN_AMDI&DEV_0081
+hid compliant device HID\VEN_ELAN&DEV_0732&Col02
+hid compliant pen HID\VEN_ELAN&DEV_0732&Col06
+hid compliant touch screen HID\VEN_ELAN&DEV_0732&Col01
+hid compliant vendor defined device HID\VEN_ELAN&DEV_0732&Col07
+                                    HID\VEN_ELAN&DEV_0732&Col05
+                                    HID\VEN_ELAN&DEV_0732&Col04
+                                    HID\VEN_ELAN&DEV_0732&Col03
+hid compliant wireless radio controls HID\VEN_HPQ&DEV_6001
+hp wireless button driver ACPI\VEN_HPQ&DEV_6001
+
+hp application enabling
+hp command center
+hp device health
+
+
+Windows 8.1 Pro
+Product Part No.: 
+[Blue]res
+Installed from 'Full Packaged Product' media.
+Product ID: 00260-00749-89370-AA999  match to CD Key data
+CD Key: VHXN8-477YP-4KWWQ-8R3HW-WB32Y
+Computer Name: MOTH
+Registered Owner: Windows User
+Registered Organization:
+
+
+
+
+
+
+
+
+
+workspace
+ user|organization/  > developing source code  > sync with github (git)
+ desktop/            > user workspace          > sync with onedrive (rclone)
+ downloads/          > trash                   > local only
+ products/           > software                > local only
+ apache-ftpserver    > archived source code    > no sync
+ mediafire           > file share              > no sync
+ onedrive            > file share (large)      > no sync
+
+
+

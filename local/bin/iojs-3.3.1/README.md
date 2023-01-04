@@ -1,63 +1,94 @@
+# Google IO.js
 
-io.js
-=====
+Tool for runtime execution of node applications using Javascript.
 
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/nodejs/io.js?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+## Naming
 
-This repository began as a GitHub fork of
-[joyent/node](https://github.com/joyent/node).
+	io.js		Software
+	iojs.org	Website
 
-io.js contributions, releases, and contributorship are under an
-[open governance model](./GOVERNANCE.md).
-We intend to land, with increasing regularity, releases which are
-compatible with the npm ecosystem that has been built to date for
-Node.js.
+## Build
 
-## Is it io.js or IO.js or iojs or IOjs or iOjS?
+### Environment Variables (CentOS 7.2.1511)
 
-The official name is **io.js**, which should never be capitalized,
-especially not at the start of a sentence, unless it is being
-displayed in a location that is customarily all-caps (such as
-the title of man pages).
+	GNU GCC				PATH > /usr/bin/gcc
+	PYTHON				PATH > /usr/bin/python
+	CLANG				?
+	GNU Make			PATH > /usr/bin/make
+	libexecinfo (BSD)	?
 
-## Download
+### Install Python
 
-Binaries, installers, and source tarballs are available at
-<https://iojs.org>.
+	cd /path/to/python
+	export PYTHON=/path/to/python
+	$PYTHON ./configure
+	make
 
-**Releases** are available at <https://iojs.org/dist/>, listed under
-their version string. The <https://iojs.org/dist/latest/> symlink
-will point to the latest release directory.
+### Install io.js
 
-**Nightly** builds are available at
-<https://iojs.org/download/nightly/>, listed under their version
-string which includes their date (in UTC time) and the commit SHA at
-the HEAD of the release.
 
-**API documentation** is available in each release and nightly
-directory under _docs_. <https://iojs.org/api/> points to the latest version.
+	cd /path/to/iojs
+	./configure
+	make	
+	make check
+	make test
+	make doc
+	man doc/iojs.1
+	iojs -e "console.log('Hello from io.js ' + process.version)"
 
-### Verifying Binaries
+## Contents
 
-Release and nightly download directories all contain a *SHASUM256.txt*
-file that lists the SHA checksums for each file available for
-download. To check that a downloaded file matches the checksum, run
-it through `sha256sum` with a command such as:
+### Markdowns
+
+- AUTHORS
+- CHANGELOG
+- COLLABORATOR_GUIDE
+- CONTRIBUTING
+- GOVERNANCE
+- LICENSE
+- ROADMAP
+- README.md
+- WORKING_GROUPS
+
+### Directory
+
+	.			io.js Source
+	benchmark	?
+	deps		?
+	deps/npm	Node Package Manager
+	dist		?
+	doc			Documentation
+	doc/api		API Documentation
+	lib			Library
+	out			?
+	src			Source Code
+	test		Source Code Test
+	tools		?
+
+### Files
+
+	Releases: 		dist/
+	Source:			iojs-v3.3.1.tar.gz
+	Documentation
+		API			all.html, doc/api
+		Command		make doc; man doc/iojs.1
+		io.js		?
+
+## Download Verification
+
+
+### Checksum
+
+To check that a downloaded file matches the checksum, run it through `sha256sum` with a command such as:
 
 ```
 $ grep iojs-vx.y.z.tar.gz SHASUMS256.txt | sha256sum -c -
 ```
 
-_(Where "iojs-vx.y.z.tar.gz" is the name of the file you have
-downloaded)_
+### GPG keys
 
-Additionally, releases (not nightlies) have GPG signed copies of
-SHASUM256.txt files available as SHASUM256.txt.asc. You can use `gpg`
-to verify that the file has not been tampered with.
+To verify a SHASUM256.txt.asc, import all GPG keys of individuals authorized to create releases. GPG keys are listed at [Release Team](#release-team).
 
-To verify a SHASUM256.txt.asc, you will first need to import all of
-the GPG keys of individuals authorized to create releases. They are
-listed at the bottom of this README under [Release Team](#release-team).
 Use a command such as this to import the keys:
 
 ```
@@ -65,95 +96,9 @@ $ gpg --keyserver pool.sks-keyservers.net \
   --recv-keys DD8F2338BAE7501E3DD5AC78C273792F7D83545D
 ```
 
-_(See the bottom of this README for a full script to import active
-release keys)_
+## Configuration
 
-You can then use `gpg --verify SHASUMS256.txt.asc` to verify that the
-file has been signed by an authorized member of the io.js team.
-
-Once verified, use the SHASUMS256.txt.asc file to get the checksum for
-the binary verification command above.
-
-## Build
-
-### Unix / Macintosh
-
-Prerequisites:
-
-* `gcc` and `g++` 4.8 or newer, or
-* `clang` and `clang++` 3.4 or newer
-* Python 2.6 or 2.7
-* GNU Make 3.81 or newer
-* libexecinfo (FreeBSD and OpenBSD only)
-
-```text
-$ ./configure
-$ make
-$ [sudo] make install
-```
-
-If your Python binary is in a non-standard location or has a
-non-standard name, run the following instead:
-
-```text
-$ export PYTHON=/path/to/python
-$ $PYTHON ./configure
-$ make
-$ [sudo] make install
-```
-
-To run the tests:
-
-```text
-$ make test
-```
-
-To build the documentation:
-
-```text
-$ make doc
-```
-
-To read the documentation:
-
-```text
-$ man doc/iojs.1
-```
-
-To test if io.js was built correctly:
-
-```
-$ iojs -e "console.log('Hello from io.js ' + process.version)"
-```
-
-### Windows
-
-Prerequisites:
-
-* [Python 2.6 or 2.7](https://www.python.org/downloads/)
-* Visual Studio 2013 for Windows Desktop, or
-* Visual Studio Express 2013 for Windows Desktop
-* Basic Unix tools required for some tests,
-  [Git for Windows](http://git-scm.com/download/win) includes Git Bash
-  and tools which can be included in the global `PATH`.
-
-```text
-> vcbuild nosign
-```
-
-To run the tests:
-
-```text
-> vcbuild test
-```
-
-To test if io.js was built correctly:
-
-```
-$ iojs -e "console.log('Hello from io.js ' + process.version)"
-```
-
-### Android / Android based devices, aka. Firefox OS
+### Android
 
 Be sure you have downloaded and extracted [Android NDK]
 (https://developer.android.com/tools/sdk/ndk/index.html)
@@ -164,12 +109,12 @@ $ ./android-configure /path/to/your/android-ndk
 $ make
 ```
 
-### `Intl` (ECMA-402) support:
+### 'Intl' (ECMA-402)
 
 [Intl](https://github.com/joyent/node/wiki/Intl) support is not
 enabled by default.
 
-#### "small" (English only) support
+### 'small' (English only) 
 
 This option will build with "small" (English only) support, but
 the full `Intl` (ECMA-402) APIs.  With `--download=all` it will
@@ -190,10 +135,7 @@ Windows:
 The `small-icu` mode builds with English-only data. You can add full
 data at runtime.
 
-*Note:* more docs are on
-[the joyent/node wiki](https://github.com/joyent/node/wiki/Intl).
-
-#### Build with full ICU support (all locales supported by ICU):
+### 'full ICU'
 
 With the `--download=all`, this may download ICU if you don't have an
 ICU in `deps/icu`.
@@ -208,9 +150,8 @@ Windows:
 
 ```text
 > vcbuild full-icu download-all
-```
+### no 'Intl'
 
-#### Build with no Intl support `:-(`
 
 The `Intl` object will not be available. This is the default at
 present, so this option is not normally needed.
@@ -227,13 +168,13 @@ Windows:
 > vcbuild intl-none
 ```
 
-#### Use existing installed ICU (Unix / Macintosh only):
+### Existing 'ICU'
 
 ```text
 $ pkg-config --modversion icu-i18n && ./configure --with-intl=system-icu
 ```
 
-#### Build with a specific ICU:
+### Specific 'ICU'
 
 You can find other ICU releases at
 [the ICU homepage](http://icu-project.org/download).
@@ -261,9 +202,8 @@ as `deps/icu` (You'll have: `deps/icu/source/...`)
 
 ```text
 > vcbuild full-icu
-```
 
-# Building io.js with FIPS-compliant OpenSSL
+### FIPS-compliant OpenSSL
 
 NOTE: Windows is not yet supported
 
@@ -311,13 +251,6 @@ Instructions:
 9. Verify with `node -p "process.versions.openssl"` (`1.0.2a-fips`)
 
 
-## Resources for Newcomers
-
-* [CONTRIBUTING.md](./CONTRIBUTING.md)
-* [GOVERNANCE.md](./GOVERNANCE.md)
-* IRC:
-  [#io.js on Freenode.net](http://webchat.freenode.net?channels=io.js&uio=d4)
-* [iojs/io.js on Gitter](https://gitter.im/nodejs/io.js)
 
 ## Security
 
@@ -330,14 +263,14 @@ Your email will be acknowledged within 24 hours, and you’ll receive a more
 detailed response to your email within 48 hours indicating the next steps in
 handling your report.
 
-## Current Project Team Members
+## Teams
 
 The io.js project team comprises a group of core collaborators and a sub-group
 that forms the _Technical Steering Committee_ (TSC) which governs the project. For more
 information about the governance of the io.js project, see
 [GOVERNANCE.md](./GOVERNANCE.md).
 
-### TSC (Technical Steering Committee)
+### Technical Steering Committee
 
 * [bnoordhuis](https://github.com/bnoordhuis) - **Ben Noordhuis** &lt;info@bnoordhuis.nl&gt;
 * [chrisdickinson](https://github.com/chrisdickinson) - **Chris Dickinson** &lt;christopher.s.dickinson@gmail.com&gt;
@@ -391,7 +324,7 @@ information about the governance of the io.js project, see
 Collaborators & TSC members follow the [COLLABORATOR_GUIDE.md](./COLLABORATOR_GUIDE.md) in
 maintaining the io.js project.
 
-### Release Team
+### Release
 
 Releases of Node.js and io.js will be signed with one of the following GPG keys:
 
@@ -413,7 +346,7 @@ gpg --keyserver pool.sks-keyservers.net --recv-keys 71DCFD284A79C3B38668286BC97E
 gpg --keyserver pool.sks-keyservers.net --recv-keys DD8F2338BAE7501E3DD5AC78C273792F7D83545D
 ```
 
-See the section above on [Verifying Binaries](#verifying-binaries) for
+See the section above on [Download Verification](#verifying-binaries) for
 details on what to do with these keys to verify that a downloaded file is official.
 
 Previous releases of Node.js have been signed with one of the following GPG
@@ -421,5 +354,4 @@ keys:
 
 * Julien Gilli &lt;jgilli@fastmail.fm&gt; `114F43EE0176B71C7BC219DD50A3051F888C628D`
 * Timothy J Fontaine &lt;tjfontaine@gmail.com&gt; `7937DFD2AB06298B2293C3187D33FF9D0246406D`
-* Isaac Z. Schlueter &lt;i@izs.me&gt; `93C7E9E91B49E432C2F75674B0A78B0A6C481CF6`
->>>>>>> b6a4c05... doc: reorg release team to separate section
+* Isaac Z. Schlueter &lt;i@izs.me&gt; `93C7E9E91B49E432C2F75674B0A78B0A6C481CF6

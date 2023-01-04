@@ -1,0 +1,1 @@
+cmd_/home/cabox/workspace/abakasam/local/bin/node-8.0.0/out/Release/obj.host/v8_inspector_compress_protocol_json.stamp := touch /home/cabox/workspace/abakasam/local/bin/node-8.0.0/out/Release/obj.host/v8_inspector_compress_protocol_json.stamp

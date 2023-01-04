@@ -113,6 +113,18 @@ Tip
 09092022 GCC Environmental Variables
 09102022 GCC Makefile and Makefile Creation
 09112022 Downloading MongoDB
+09122022
+09132022
+09142022
+09152022
+09162022
+09172022 Configuring OpenDNS
+09182022
+09192022
+09202022
+09212022
+09222022
+09232022 Finding Errors and Source Code Compilation
 
 Scripts		articleupload.sh
 			codeproject.sh
@@ -164,11 +176,15 @@ Bash					bash Cookbook, by Carl Albing
 	X Windows System	X Window System In A Nutshell, by Ellie Cutler
 	System Programming	Operating System: Concepts With Java by Abraham Silberschatz
 	Operating System	Operating System: Concepts and Principles by John Zarrel
+	Powershell			
 	
 ReactOS
 	Cyanogenmod			
-	Linux Kernel
-	Android Hardware
+	Linux Kernel		
+	Android Hardware	
+	CentOS				
+	Windows 8			
+	Windows Server 2011	
 
 Ionic					Mobile App Development with Ionic 2, by Chris Griffith
 	Node				

@@ -8,7 +8,7 @@ LDFLAGS_Debug := \
 	-rdynamic \
 	-m64 \
 	-fuse-ld=gold \
-	-B/home/cabox/workspace/iojs/third_party/binutils/Linux_x64/Release/bin \
+	-B/home/cabox/workspace/desktop/iojs/iojs-v3.3.1/third_party/binutils/Linux_x64/Release/bin \
 	-m64 \
 	-Wl,--threads \
 	-Wl,--thread-count=4
@@ -18,7 +18,7 @@ LDFLAGS_Release := \
 	-rdynamic \
 	-m64 \
 	-fuse-ld=gold \
-	-B/home/cabox/workspace/iojs/third_party/binutils/Linux_x64/Release/bin \
+	-B/home/cabox/workspace/desktop/iojs/iojs-v3.3.1/third_party/binutils/Linux_x64/Release/bin \
 	-m64
 
 LIBS :=

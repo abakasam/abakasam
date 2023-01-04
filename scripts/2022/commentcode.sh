@@ -28,6 +28,8 @@ declare -A streams
 
 streams[js]="console.log('<message>')"
 streams[sh]="echo (\"<message>\")"
+streams[!!]="<message>"
+streams[md]="##### <message>"
 
 if [[ ${streams[$language]} == "" ]];
 then :
@@ -95,11 +97,11 @@ do
             if [[ "$typed" == "$type" ]];
             then :
 			
-				echo " "
-				echo "COUNT:        $count"
-				echo "OPERATOR:     $operator"
-				echo "TYPE:         $type == $typed"
-				echo " "
+				#echo " "
+				#echo "COUNT:        $count"
+				#echo "OPERATOR:     $operator"
+				#echo "TYPE:         $type == $typed"
+				#echo " "
 				
                 comments[${#comments[@]}]="$file $line"
             fi

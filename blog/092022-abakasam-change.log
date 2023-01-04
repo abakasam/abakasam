@@ -1,3 +1,932 @@
+TODO: Install PHP/Java Bridge
+
+https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.19/bin/apache-tomcat-7.0.19-fulldocs.tar.gz
+
+1	Stop Tomcat
+2	Move the libraries 
+		JavaBridge.jar, php-servlet.jar and php-script.jar 
+			from the webapps/JavaBridgeTemplate721/WEB-INF/lib directory over to the tomcat lib directory.
+
+3	Edit the Tomcat conf/web.xml. Add the following 9 lines marked with a +:
+
+	<web-app xmlns=... >
+
+	+ <listener><listener-class>php.java.servlet.ContextLoaderListener</listener-class></listener>
+	+ <servlet><servlet-name>PhpJavaServlet</servlet-name><servlet-class>php.java.servlet.PhpJavaServlet</servlet-class>
+	+ </servlet>
+	+ <servlet><servlet-name>PhpCGIServlet</servlet-name><servlet-class>php.java.servlet.fastcgi.FastCGIServlet</servlet-class>
+	+ <init-param><param-name>prefer_system_php_exec</param-name><param-value>On</param-value></init-param>
+	+ <init-param><param-name>php_include_java</param-name><param-value>Off</param-value></init-param>
+	+ </servlet>
+	+ <servlet-mapping><servlet-name>PhpJavaServlet</servlet-name><url-pattern>*.phpjavabridge</url-pattern> </servlet-mapping>
+	+ <servlet-mapping><servlet-name>PhpCGIServlet</servlet-name><url-pattern>*.php</url-pattern></servlet-mapping>
+	...
+
+	</web-app>
+	
+4	Start Tomcat again. Now you can add PHP scripts to tomcat.
+5	Add a PHP test file
+
+	<?php require_once("java/Java.inc");
+	echo java("java.lang.System")->getProperties(); ?>
+
+	to some web context, for example "examples", and browse to http://yourHost.com:8080/examples/test.php.
+
+6	Check the process list using the Unix/Linux or Windows task manager. There should be 5 php-cgi FastCGI executables waiting for requests from Java.
+7	Please see our FAQ for more information how to set up a load balancer or how to create a distributable PHP/Java web application.
+
+
+
+
+
+TODO: Bare Apache Tomcat 7 (Complete)
+
+https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.19/bin/
+
+CentOS 			7.2.1511
+ant				
+
+
+TODO: Install Oracle JDK (Complete)
+
+https://download.java.net/openjdk/jdk6
+
+https://www.oracle.com/java/technologies/javase/6-relnotes.html
+https://dev.java/download/releases/
+
+https://github.com/openjdk/jdk, jdk7-b147
+https://download.java.net/openjdk/jdk7/
+http://hg.openjdk.java.net/jdk7
+
+https://www.cnblogs.com/lidabo/p/12703728.html
+
+TODO: Install Apache Ant (Complete)
+
+export ANT_HOME=/home/cabox/workspace/apache-ant-1.9.16
+export ANT_HOME=/root/SoftWare/Ant/apache-ant-1.9.14
+https://www.cnblogs.com/wintest/p/12217753.html
+https://archive.apache.org/dist/ant/binaries/
+
+TODO: webser PUBLIC_HTML (Complete)
+
+https://www.cnblogs.com/Answer1215/p/14568042.html
+
+TODO: webser documentation (Complete)
+
+express 4.11.2
+multer 	1.4.4
+mysql 	2.18.1
+send 	0.12.1
+
+TODO: Install httrack with openssl
+
+3.45 
+	Failed ssl
+c
+3.48 (testing)
+	url failed
+	went back to hostname
+	failing badly try latest
+
+3.49 
+
+
+
+
+
+wordpress-4.4.0.tar.gz
+
+
+
+
+
+
+
+TODO: Semver webser
+
+webser
+
+Aquaogen	production						NextRelease
+ Sammight	testing=Aquaogen development
+  abakasam	development
+  
+  
+Releases	Organization/Repository=Project
+Projects	Repository=Project
+Changelogs	Repository=Project
+
+Releases    Filter: webser releases
+Projects	Project: webser
+Changelogs	Project: webser
+
+No sync, manual from GitHub to NextRelease
+
+
+webser		Per release
+webser		CHANGELOG.md
+
+(NextRelease)
+
+version | codename
+--------|----------
+ 0      | pan
+ 1      | cup
+ 2      | pot
+ 3      | fork
+ 4      | spoon
+ 5      | bowl
+ 6      | plate
+
+branch: pan-
+binary: 0.?.?
+
+BRANCH SEMVER:software name
+	-version:codename=(NextRelease) -> ROADMAP
+	-feature:?=(Averta Feature Request) 
+	-bug:ID=(Mozilla Bugzilla)
+
+TODO: Create Averta Feature Request on Wordpress
+
+TODO: Host wordpress
+
+Codeanywhere:Aquaogen:Wordpress
+
+Apache Tomcat
+
+TODO: Install PHP 5.2.4
+TODO: Install MySQL 5.0
+TODO: Install Apache mod_rewrite
+
+
+TODO: Get wordpress documentation
+
+
+TODO: Define Apache Tomcat hosting (Complete)
+
+Drifty						Node.js:Express
+	documentation
+	blog
+	testing
+
+Aquaogen					Apache Tomcat
+	(any, not Drifty)
+
+TODO: Node.js PHP
+
+phpfile = exec("php ")
+sendfile(php)
+
+TODO: Create roadmap on NextRelease for webser
+TODO: Host bugzilla
+
+
+BUG: Appears / is ignored for index.html or alike, httrack (Complete)
+	
+	https://www.tutorialspoint.com/java/
+	https://www.tutorialspoint.com/java/index.htm, worked!
+	
+	httrack.com
+	https://github.com/xroche/httrack
+
+
+
+
+
+TODO: Get name of file when using httrack
+
+
+
+
+
+
+
+
+
+
+
+https://drifty-abakasam720639.codeanyapp.com/
+
+documentation/api/iojs/all.html
+documentation/tool/httrack/index.html
+
+TODO: Check build setup for Ionic v1 application
+
+BUILD CHECK
+
+HARDWARE 										listed
+	> SOFTWARE 									product check
+		> DOCUMENTATION							local documenation public_html
+
+HARDWARE
+	HP Envy x360								ok
+
+SOFTWARE
+	Windows 8.1									ok
+	CentOS 7.2.1511								ok
+	webser
+	
+	ionic										
+	iojs										
+	webser									
+	python										
+	javascript									
+	httrack										
+	npm
+	git
+	framework/ionic
+	language/javascript
+	langauge/html
+	langauge/sql
+	langauge/xml
+	language/php
+	language/css
+	api/iojs
+	api/web
+	api/html
+	api/css
+	api/javascript
+	service/codeanywhere
+
+
+
+
+
+
+
+
+
+
+
+TODO: Need to source properly iojs for GitHub
+
+TODO: Checking iojs for build
+
+
+
+
+#size=${#variables[@]}
+#for (( index=1; index<=$(expr $size / 3); index++ ))
+#do
+	# 
+	
+	# echo "$index-1:${variables["${index}-1"]}"
+	# echo "$index-2:${variables["${index}-2"]}"
+	# echo "$index-3:${variables["${index}-3"]}"
+done
+
+# https://www.linuxjournal.com/content/bash-arrays
+# https://www.cnblogs.com/int32bit/p/5310505.html
+# https://www.unix.com/shell-programming-and-scripting/167725-multidimensional-arrays.html
+
+https://www.csdn.net/tags/MtjaggzsNTAwNjYtYmxvZwO0O0OO0O0O.html
+https://www.delftstack.com/howto/linux/bash-echo-multiple-lines/
+
+declare -A path
+
+path[abakasam-scripts]=/abakasam-scripts
+path[heroku]=/heroku-7.60.2/bin
+path[httrack]=/httrack-3.45.1/src
+
+path[iojs]=/iojs-3.3.1
+path[npm]=/iojs-3.3.1/cli-2.1.3
+
+path[ionic]=/ionic-1.3.4/bin
+path[php]=/php-5.6.5/sapi/cli
+path[python]=/python-2.7.5
+
+pathed=""
+for executable in "${path[@]}"
+do
+	# TODO: Argument for local of user
+	pathed+=$(pwd)$executable":"
+done
+
+# TODO: Use .conf to set PATH for environment
+PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin"
+#PATH="$PATH$pathed"
+PATH="$pathed$PATH"
+
+cd
+files=($(find . -name "*bash_profile*" | xargs ls -F))
+pwd
+echo ${files[@]}
+
+cp .bash_profile .last_bash
+
+for file in ${files[@]}
+do
+	echo "PATH=$PATH" >> $file
+	echo "export PATH" >> $file
+done
+
+https://www.unix.com/shell-programming-and-scripting/117958-get-parent-directory-file.html
+https://blog.csdn.net/mei_mei/article/details/6117667
+
+#cat $(pwd)/bash_profile
+#CONTENT=$(cat $(pwd)/bash_profile)
+#echo $CONTENT
+#CONTENT=$(cat $HOME/.bash_profile_old)
+#mv .bash_profile .bash_profile_old
+#rm .bash_profile
+#touch .bash_profile
+#echo $VARIABLES >> .bash_profile
+#echo $CONTENT >> .bash_profile
+
+
+https://www.cnblogs.com/ghgyj/p/4023532.html
+
+
+#index1=1
+#index2=2
+#varname["${index1} ${index2}"]='my value'
+
+#val=${varname["${index1} ${index2}"]}
+
+declare -A variable
+
+variable["1 2"]='my value'
+variable["2 3"]='hello'
+
+for index in ${variable[$@]}
+do
+
+	echo $index:${variable[$index]}
+
+done
+
+variable[key1]=value1
+variable[key2]=value2
+
+size=${#variable[@]}
+keyset=${!variable[@]}
+values=${variable[@]}
+
+TODO: Identify what is not sudomain,domain,protocol,path,file,query: https://subdomain.?.domain for URL 
+
+
+
+iojs-3.3.1/dist				binaries, installaters, and source tarballs + dist, latest
+
+
+         userinfo       host      port
+          ┌──┴───┐ ┌──────┴──────┐ ┌┴┐
+  https://john.doe@www.example.com:123/forum/questions/?tag=networking&order=newest#top
+  └─┬─┘   └───────────┬──────────────┘└───────┬───────┘ └───────────┬─────────────┘ └┬┘
+  scheme          authority                  path                 query           fragment
+
+
+subdomain.?.domain
+
+TODO: Determine dot for js naming (Complete)
+
+website 	iojs.(domain)
+application io.js
+
+TODO: Structure iojs/README (Complete)
+TODO: Reinstall iojs to abakasam/local/bin
+TODO: Reinstall npm to abakasam/local/bin
+TODO: Host documentation for iojs on webser (Complete)
+TODO: Store iojs according to product check
+
+
+documentation/api/iojs/all.html
+
+## Documentation
+
+### IO.js
+
+all.html
+
+### NPM
+
+#### Markdown .md npm/doc
+#### Webpage .html html/index.html
+
+## Systems supported
+
+folder: linux-x86
+
+- linux-armv7l
+- linux-x64
+- linux-x86
+- windows-x64
+- windows-x86
+
+## Running
+
+### Node
+
+	./iojs --version
+	./node --version
+
+### NPM
+
+	./node deps/npm/cli.js
+
+
+test						TestQuality (acceptance, system, integration, unit) (https://www.testquality.com/)
+
+acceptance - feature
+unit - source code
+integration - souce code together
+system - compatibility
+
+
+Many things fixed current compile
+ Without proper listings of developer comments and bugs
+  Will be unable to progress smoothly
+
+BUG: /home/cabox/workspace/desktop/gcc/mpc-0.8.1/src/.libs/libmpc.so: undefined reference to `__gmp_get_memory_functions' (Complete)
+
+no compile of mpfr-2.3.1/gmp-4.1.0
+no complie of mpc-0.8.1
+no compile of mpc-0.8.1/mpfr-2.3.1
+
+
+
+
+
+
+
+
+
+BUG: /home/cabox/workspace/desktop/gcc/mpfr-2.4.2/.libs/libmpfr.so: undefined reference to `__gmp_rand' (Complete)
+
+/home/cabox/workspace/desktop/gcc/mpfr-2.4.2/.libs/libmpfr.so: undefined reference to `__gmpn_sqr_n'
+
+LIBS="-L$COMPILE_PATH/mpfr-2.4.2/gmp-4.1.4/.libs"
+
+
+
+
+
+
+
+
+
+
+
+LIBS=
+
+C_INCLUDE_PATH=
+LIBS="$COMPILE_PATH/mpc-0.8.1/mpfr-2.3.1/.libs"
+
+
+	
+C_INCLUDE_PATH=$COMPILE_PATH/mpc-0.8.1/gmp-4.2
+LIBRARY_PATH=$COMPILE_PATH/mpc-0.8.1/gmp-4.2/.libs
+LD_LIBRARY_PATH=$COMPILE_PATH/mpc-0.8.1/gmp-4.2/.libs
+LD_RUN_PATH=$COMPILE_PATH/mpc-0.8.1/gmp-4.2/.libs
+
+export C_INCLUDE_PATH LIBRARY_PATH LD_LIBRARY_PATH LD_RUN_PATH
+
+
+export C_INCLUDE_PATH="$COMPILE_PATH/mpc-0.8.1/gmp-4.2"
+export LIBRARY_PATH="$COMPILE_PATH/mpc-0.8.1/gmp-4.2/.libs"
+export LD_LIBRARY_PATH="$LIBRARY_PATH"
+
+Such problems commonly occur under GNU/Linux machines, where default
+header and library paths may be inconsistent: gcc is configured to
+search /usr/local/include by default, while /usr/local/lib is not in
+the default search paths. 
+
+If you have a GMP version installed in /usr
+(provided by the OS) and a new one installed in /usr/local, then the
+header of the new GMP version and the library of the old GMP version
+will be used! 
+
+A typical error is the above one in "make check". The
+solution is to add /usr/local/include to your C_INCLUDE_PATH and to
+add /usr/local/lib to your LIBRARY_PATH and LD_LIBRARY_PATH (and/or
+LD_RUN_PATH), as said above. Alternatively, you can use --with-gmp*
+configure options (described above), e.g. --with-gmp=/usr/local, but
+other software that uses GMP and/or MPFR will need correct paths too,
+and environment variables allow to set them in a global way.
+
+gmp/mpn/generic/mul_n.c
+ gmp.h
+ gmp-impl.h
+ longlong.h
+
+mpfr-2.4.2/gmp-4.1.4
+
+TODO: Add #define for gmp_rand to mpfr-gmp.h before make
+
+/home/cabox/workspace/desktop/gcc/mpfr-2.4.2/.libs/libmpfr.so: undefined reference to `__gmp_rand'
+/home/cabox/workspace/desktop/gcc/mpfr-2.4.2/.libs/libmpfr.so: undefined reference to `__gmpn_sqr_n'
+
+__gmp_rand found in gmp-impl.h
+C_INCLUDE_PATH=/home/cabox/workspace/desktop/gcc/mpfr-2.4.2/gmp-4.1.4
+https://gitlab.inria.fr/mpfr/mpfr/-/tree/2.4.2
+
+add to gmp-4.1.4/gmp-impl.h
+
+typedef __gmp_randstate_struct *gmp_randstate_ptr;
+	
+#define _gmp_rand __gmp_rand
+__GMP_DECLSPEC void _gmp_rand _PROTO ((mp_ptr, gmp_randstate_t, unsigned long int));
+
+mpfr-2.4.2/gmp-4.1.4
+	mpfr-impl.h:60
+	MPFR_HAVE_GMP_IMPL
+	mpfr-gmp.c:29
+
+	libmpfr.so
+
+https://wenku.baidu.com/view/6f2c2b41f6335a8102d276a20029bd64783e627b?pcf=2&fr=sogou&bfetype=new&bfetype=new
+make check
+
+
+#define _gmp_rand __gmp_rand
+__GMP_DECLSPEC void _gmp_rand _PROTO ((mp_ptr, gmp_randstate_t, unsigned long int));
+
+(.h)
+mpfr-impl
+mpfr-gmp
+mpfr
+
+gmp.h
+gmp-impl.h
+gmpxx.h
+
+gmp-4.1.4/gmp-impl.h:696
+
+#define _gmp_rand __gmp_rand
+__GMP_DECLSPEC void _gmp_rand _PROTO ((mp_ptr, gmp_randstate_t, unsigned long int));
+
+mpfr-2.4.2/mpfr-gmp.h:228
+
+mpfr-2.4.2/mpfr-gmp.h:260
+
+#define _gmp_rand __gmp_rand
+__MPFR_DECLSPEC void _gmp_rand _PROTO ((mp_ptr, gmp_randstate_t, unsigned long int));
+
+
+--enable-cxx
+strlen <string.h>
+.code32 when .S
+ALIGN(3) to .align 8
+C_INCLUDE_PATH (.h)
+LD_LIBRARY_PATH (.a)
+4.1.x equivalents allowed
+no "make install"
+ld --verbose -lmpfr
+i486-pc-linux-gnu
+
+follow NEWS
+
+webser keeping hosted documentation
+ just need to run documentation check by it
+
+TODO: Add gcc system CentOS configurations
+
+System configuration (gcc -v)
+	x86_64-redhat-linux
+	
+	./configure
+	--with-bugurl=http://bugzilla.redhat.com/bugzilla
+	--enable-bootstrap
+	--enable-shared
+	--enable-threads=posix
+	--enable-checking=release
+	--with-zlib=
+	--enable-_cxa_atexit
+	--disable-libunwind-exceptions
+	--enable-gnu-unique-object
+	--enable-linker-build-id
+	--enable-languages=c,c++,objc,ada
+	--enable-plugin
+	--enable-initfini-array
+	--with-isl=
+	--with-cloog=
+	--enable-gnu-indirect-function
+
+TODO: checking for the correct version of mpc.h... no (Complete)
+TODO: checking for the correct version of the gmp/mpfr/mpc libraries ... no
+
+
+./configure --enable-cxx --with-gmp-include=$COMPILE_PATH/gmp-4.3.2 --with-gmp-lib=$COMPILE_PATH/gmp-4.3.2/.libs --with-mpfr-include=$COMPILE_PATH/mpfr-2.4.2 --with-mpfr-lib=$COMPILE_PATH/mpfr-2.4.2/.libs --with-mpc-include=$COMPILE_PATH/mpc-0.8.1/src LIBS="-L$COMPILE_PATH/mpc-0.8.1/src/.libs"
+
+./configure --enable-cxx --with-gmp-include=$COMPILE_PATH/gmp-4.3.2 --with-gmp-lib=$COMPILE_PATH/gmp-4.3.2/.libs --with-mpfr-include=$COMPILE_PATH/mpfr-2.4.2 --with-mpfr-lib=$COMPILE_PATH/mpfr-2.4.2/.libs --with-mpc-include=$COMPILE_PATH/mpc-0.8.1/src --with-mpc-lib=$COMPILE_PATH/mpc-0.8.1/src/.libs 
+
+--with-mpc-include=$COMPILE_PATH/mpc-0.8.1/src 
+--with-mpc-lib=$COMPILE_PATH/mpc-0.8.1/src/.libs 
+
+LIBS="-L$COMPILE_PATH/mpc-0.8.1/gmp-4.2/.libs"
+
+
+TODO: What version is CentOS Core from irc
+TODO: Check config for optional packages ./configure
+
+
+a lot to do
+ working by NEWS
+
+https://github.com/googlearchive/android-ActionBarCompat-ShareActionProvider
+run gralde 2.1.0
+build apk
+
+TODO: Running gradle to prepare for textadept compilation to apk for chromebook and upload to github
+
+TODO: Download basic apks
+
+TODO: Check gradle latest compilation (Complete)
+TODO: Compile a program with gradle with jetty
+
+https://plugins.gradle.org/plugin/com.dsvdsv.gradle.plugin/1.5
+https://www.qumuban.com/66304.html
+https://www.cnblogs.com/lgh1992314/p/6616210.html
+
+gralde build
+gralde run
+./gradlew build --scan
+
+https://www.jianshu.com/p/a9c8544dc7a6
+
+pid=`jps | grep GradleDaemon | awk '{print $1}'`
+
+BUG: Gradle build daemon disappeared unexpectedly (it may have been killed or may have crashed)
+
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+
+gradle --status
+
+https://www.ucloud.cn/yun/2716.html
+https://www.cnblogs.com/kaerxifa/p/13925785.html
+https://zhuanlan.zhihu.com/p/350652589
+https://www.jianshu.com/p/c79719161b27
+https://blog.csdn.net/u011272795/article/details/106663550
+
+https://developer.android.com/studio/write/lint
+https://iojs.org/download/release/v3.3.1/
+https://bare-abakasam720639.codeanyapp.com/lint-results-debug.html
+
+TODO: Complete andriod OS applications for github user page
+
+Android Terminal	https://github.com/jackpal/Android-Terminal-Emulator
+CatLog				https://github.com/nolanlawson/Catlog
+Droid Examiner		https://github.com/jackpal/droid-examiner
+Ungoogled Chromium	https://github.com/ungoogled-software/ungoogled-chromium-android
+Textadept			https://github.com/orbitalquark/textadept
+					https://github.com/eugals/GTKAndroid/wiki/Building
+
+https://www.cnblogs.com/Jason-c/p/6736936.html
+https://www.jb51.cc/java/750583.html
+
+gradle.properties
+	org.gradle.java.home=C:/path/to/your/jdk
+
+ls -lrt
+
+https://blog.51cto.com/u_1585654/5330831
+https://www.csdn.net/tags/MtzaIg1sNzYyOTEtYmxvZwO0O0OO0O0O.html
+
+export JAVA_HOME=/usr/local/zym/jdk1.8.0_131
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+
+JAVA_HOME=/home/cabox/workspace/java/jdk1.8.0_151
+JRE_HOME=$JAVA_HOME/jre
+CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib
+PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME JRE_HOME CLASSPATH PATH
+
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.342.b07-1.el7_9.x86_64/jre/bin/java
+
+https://blog.csdn.net/shenfengchen/article/details/117512378
+https://blog.csdn.net/u011974797/article/details/78973012
+https://www.cnblogs.com/endv/p/6216572.html
+https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+https://www.jianshu.com/p/86b9c57bf838
+https://www.zhihu.com/tardis/sogou/art/545188967
+https://developer.android.com/studio/command-line/variables
+https://developer.android.com/studio/command-line#tools-sdk
+https://www.cnblogs.com/xwhxxyxhxlfl/p/13633420.html
+https://blog.csdn.net/jabony/article/details/109510039
+http://sdk.android-studio.org/index.php
+https://blog.csdn.net/CheNorton/article/details/50345039
+https://www.jianshu.com/p/86b9c57bf838
+https://www.jianshu.com/p/01f983b05bf5
+https://blog.csdn.net/u011974797/article/details/78973012
+	
+https://developer.android.com/studio/workflow
+	
+android sdk 24
+android build tools v24.0.1
+android support repository
+
+gradlew compileDebugJavaWithJavac
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_281.jdk/Contents/Home
+
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.342.b07-1.el7_9.x86_64/jre/bin/java
+/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.342.b07-1.el7_9.x86_64/
+ls /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.342.b07-1.el7_9.x86_64/
+/usr/java/jdk1.8.0_161/jre/bin/java
+/usr/java/jdk1.8.0_161/
+	
+/home/cabox/workspace/android-studio/sdk
+./sdkmanager --sdk_root=/home/cabox/workspace/android-studio/sdk --list
+
+./sdkmanager --sdk_root=/home/cabox/workspace/android-studio/sdk --install "platforms;android-15"
+./sdkmanager --sdk_root=/home/cabox/workspace/android-studio/sdk --install "platforms;android-10"
+./sdkmanager --sdk_root=/home/cabox/workspace/android-studio/sdk --install "platforms;android-28"
+
+./sdkmanager --sdk_root=/home/cabox/workspace/android-studio/sdk --install "platforms;android-24"
+./sdkmanager --sdk_root=/home/cabox/workspace/android-studio/sdk --install "build-tools;24.0.1"
+./sdkmanager --sdk_root=/home/cabox/workspace/android-studio/sdk --install "extras;android;m2repository"
+
+BUG: Execution failed for task ':Application:compileDebugJavaWithJavac'
+
+:Application:compileDebugJavaWithJavac
+https://www.cnblogs.com/lwbqqyumidi/p/10256690.html
+./gradlew :app:compileDebugJavaWithJavac  --info
+
+https://blog.csdn.net/hustlwz/article/details/71404634
+https://blog.csdn.net/lvshuchangyin/article/details/53785494?locationNum=4&fps=1
+https://blog.csdn.net/qq_29266921/article/details/53113659?locationNum=3&fps=1
+https://blog.csdn.net/fengwuyu4108/article/details/54964574?locationNum=11&fps=1
+https://m.imooc.com/wenda/detail/590522
+https://blog.csdn.net/qq_41816123/article/details/84973225
+https://blog.51cto.com/u_8065654/1896757
+
+:Application:compileDebugJavaWithJavac
+
+file or directory '/home/cabox/workspace/android-ActionBarCompat-ShareActionProvider/Application/src/common/java', not found
+file or directory '/home/cabox/workspace/android-ActionBarCompat-ShareActionProvider/Application/src/template/java', not found
+file or directory '/home/cabox/workspace/android-ActionBarCompat-ShareActionProvider/Application/src/debug/java', not found
+Executing task ':Application:compileDebugJavaWithJavac' (up-to-date check took 0.007 secs) due to:
+  No history is available.
+All input files are considered out-of-date for incremental task ':Application:compileDebugJavaWithJavac'.
+Compiling with source level 1.7 and target level 1.7.
+
+file or directory '/home/cabox/workspace/android-ActionBarCompat-ShareActionProvider/Application/src/common/java', not found
+file or directory '/home/cabox/workspace/android-ActionBarCompat-ShareActionProvider/Application/src/template/java', not found
+file or directory '/home/cabox/workspace/android-ActionBarCompat-ShareActionProvider/Application/src/debug/java', not found
+Compiling with JDK Java compiler API.
+
+Mac笔记本提示找不到tool.jar。在对Kafka源码执行./gradlew jar时提醒找不到tool.jar。使用java -version能正常显示JAVA的版本信息，也能运行JAVA程序。使用echo $JAVA_HOME未显示JAVA的安装路径
+
+作者：KONENET
+链接：https://www.zhihu.com/question/37463836/answer/2276705358
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+https://www.jianshu.com/p/dd7eef6d5516
+
+action bar compat - share action provider
+
+https://www.jianshu.com/p/0c020b9d7d48
+https://www.jianshu.com/p/0c020b9d7d48
+							
+ANDROID_HOME=/home/cabox/workspace/android-studio/sdk
+export ANDROID_HOME
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+https://www.debug8.com/java/t_9697.html
+
+wget "https://get.sdkman.io" | bash
+
+curl -s "https://get.sdkman.io" | bash
+
+
+https://developer.android.com/studio/build/building-cmdline
+https://github.com/eugals/GTKAndroid/wiki/Building
+
+
+
+https://developer.android.com/studio#downloads
+
+ANDROID_HOME=/usr/local/android-sdk-linux
+$ANDROID_HOME/tools
+$ANDROID_HOME/platform-tools
+
+android list sdk --all
+android update sdk -u -a -t 3,47
+GRADLE_HOME
+chmod +x ./gradlew
+sudo passwd root
+
+	sdkmanager
+	 textadept
+	 chromiumos
+install android ndk
+configure android ndk
+clone textadept
+
+
+mkdir rpm
+cd rpm
+sudo su -c "yum install zlib ncurses-libs bzip2-libs --downloadonly --downloaddir=".""
+sudo su -c "yum install *rpm"
+
+https://developer.android.com/studio/install
+https://github.com/eugals/GTKAndroid/wiki/Building
+https://icedtea.classpath.org/download/source/
+
+BUG: configure:7714: $PKG_CONFIG --exists --print-errors "nss"
+
+https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_83_RTM/src/nss-3.83.tar.gz
+nss-3.83/nss/pkg/pkg-config/nss.pc.in
+/usr/lib64/pkgconfig
+https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_83_RTM/src/
+to the PKG_CONFIG_PATH environment variable
+https://blog.csdn.net/llrraa2010/article/details/8893274
+PKG_CONFIG_PATH=/usr/lib64/pkgconfig; export PKG_CONFIG_PATH
+
+BUG: A GCJ JDK home directory could not be found
+
+https://wiki.centos.org/SpecialInterestGroup/SCLo
+https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/
+https://www.cnblogs.com/wdw984/archive/2020/07/17/13330761.html
+https://centos.pkgs.org/7/nux-dextop-x86_64/libgcj-4.8.2-16.el7.i686.rpm.html
+https://git.centos.org/rpms/devtoolset-7-oprofile/blob/c7/f/SPECS/oprofile.spec
+https://mail.openjdk.org/pipermail/icedtea-test/2010-February/000008.html
+https://github.com/eugals/GTKAndroid/wiki/Building
+https://developer.android.com/studio/projects/add-native-code
+https://developer.android.com/studio/install#linux
+https://developer.android.com/ndk/guides
+
+http://ftp.gnu.org/gnu/gcc/gcc-4.6.4/
+https://blog.csdn.net/zhulx_sz/article/details/51718947
+https://www.jianshu.com/p/39a847aec780
+https://blog.csdn.net/zhulx_sz/article/details/51718947g
+https://www.jianshu.com/p/39a847aec780
+https://javajgs.com/archives/50903
+https://www.jianshu.com/p/e470351ba9f2
+https://zhuanlan.zhihu.com/p/92562517
+https://www.51dongshi.com/ezdsdvessc.html
+https://javajgs.com/archives/27782
+
+TODO: (Bare) download devtoolset-7
+
+sudo su -c "yum install devtoolset-7\* --downloadonly --downloaddir=".""
+
+ yum install devtoolset-7 -y
+sudo su -c "yum install devtoolset-7
+devtoolset-7-oprofile
+sudo su -c "yum install devtoolset-7\*"
+oprofile.spec
+	
+%{?scl:%scl_package oprofile}
+Summary: System wide profiler
+Name: %{?scl_prefix}oprofile
+Version: 1.2.0
+Release: 2%{?dist}.1
+License: GPLv2+ and LGPLv2+
+Group: Development/System
+Source0: http://downloads.sourceforge.net/oprofile/oprofile-%{version}.tar.gz
+#FIXME a workaround until java-1.6.0-openjdk-devel is available on all archs
+Source1: openjdk-include.tar.gz
+Patch1: oprofile-power9.patch
+Requires: binutils
+Requires: which
+Requires(pre): shadow-utils
+Requires(postun): shadow-utils
+%{?scl:Requires:%scl_runtime}
+
+TODO: Install android sdk
+
+https://developer.android.com/studio
+
+TODO: Identify state of products
+
+much not managed?
+productmanage
+
+TODO: Purpose networked languages (Complete)
+
+html > css > xml > regex >> 
+	javascript (node) > typescript > dart >> 
+		bash | powershell > php > java > sql | mongodb 
+
+client > server > web
+
+web
+ html  ui
+ css   ux
+ xml   data
+ regex parse
+
+client
+ dart	    class 
+ javascript script
+ typescript program
+ node		run
+
+server
+ sql		data
+ php		script
+ mongodb	meta
+ bash		run
+ powershell run 
+ java		program
+
+TODO: Change to blank containers
+
+Backing up products and desktop for blank container of Drifty
+
 TODO: Fix product check (Complete)
 
 acquire								Download software with README.md
@@ -51,8 +980,6 @@ type        main, documentation, pages
 version     
 feature     
 bugs        
-
-TODO: Change to blank containers
 
 TODO: Define syncnig policy for workspace (Complete)
 
@@ -155,6 +1082,41 @@ collection = client.db("test").collection("testtest");
   client.close();
 
 BUG: Heroku fix sudo
+
+chmod 755 /usr/bin/sudo
+chmod 644 /usr/lib/sudo/sudoers.so
+chown root:dyno /usr/bin/sudo
+
+id
+uid=55642(u55642)
+gid=55642(dyno)
+groups=55642(dyno)
+
+chown owner:owner /u
+
+ls -l /
+root root
+u55642 dyno
+root dyno
+
+/*              u55642:dyno
+/               root:dyno
+/(hardware)     root:root
+
+drwx------
+
+chmod 755 /usr/bin/sudo
+chmod 644 /usr/lib/sudo/sudoers.so
+chown root:dyno /usr/bin/sudo
+
+ls -l /usr/bin/su*
+
+/usr u55642:dyno
+
+/
+
+edit for uid /etc/sudo.conf
+
 
 heroku-22: command not found # su installed
 heroku-20: /usr/bin/sudo must be owned by uid 0 and have the setuid bit set
@@ -345,6 +1307,8 @@ static analysis				Codiga (codiga.io)
 test						TestQuality (acceptance, system, integration, unit) (https://www.testquality.com/)
 lint						AnyLint (https://github.com/FlineDev/AnyLint)
 
+
+source code - unit
 
 https://www.csdn.net/tags/MtTakgwsNjY0MTgtYmxvZwO0O0OO0O0O.html
 
