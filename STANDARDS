@@ -9,48 +9,50 @@ healthly programming
  create blog topic before coding
  ALWAYS know developer comment you are working on and use in git commit
 
-forking (https://github.com/abakasam/webser/network/members)
-@Aquaogen		organization live
- @Sammight 		organization working
-  @abakasam 	user         developer
+forking
+ @Aquaogen		organization live
+  @Sammight 	organization working
+   @abakasam 	user         developer
+ @abakasam		user		 live
+  @Sammight		organization working
+   @Sammight	organization developer
 
 developer comments
-		EXPLAIN		UML 
-	0a	TEST		TestQuality 
-	0b	FEATURE		Growthflags 
-	1	TODO		Codetree
-	1a	IMPROVE		Codiga 
-	1b	REDO		Threatrix 
-	2	BUG			Bugzilla
-	2a	MEMORY		BuildJet 
-	2b	LEGACY		Deadpendency 
-	
-developer comment status (Example: TODO: message (Complete))
+	0a	TEST		
+	0b	FEATURE		
+	1	TODO		
+	1a	IMPROVE		
+	1b	REDO		 
+	2	BUG			
+	2a	MEMORY		 
+	2b	LEGACY		 
+
+developer comment status (Example / TODO: message (Complete))
+	0	task		Codetree
 	1	blog		CodeProject (rss) 
 	2	log			LogOwl (echo) 
-	3	(Complete)	Viezly 
-	4	(Review)	Wikidot 
-	5	(Reviewed)	Docusaurus 
-	6	executable	MSBuild, Gradle, Maven, PWA 
-
+	3	(Complete)	Wikidot
+	4	site		Docusaurus 
+	5	executable	
 
 reports
- code
-  products				f
-  todo					s
-  changelog				s
-  locality				f
- project
-  programming meeting	f
-  project portfolio		u
-  progress report		u
- document
-  blog					u
-  news					s
-  codeproject			u
-  wikidot				u
-  docusaurus			u
-  google site			u
+ code					u
+  products				
+  todo					
+  changelog				
+ project				u
+  programming meeting	
+  project portfolio		
+  progress report		
+ document				m
+  blog					
+  news					
+  codeproject			
+  wikidot				
+  docusaurus			
+  site					
+  journal				
+  codetree				
 
 organizations
  abakasam Virus Writing

@@ -1,3 +1,195 @@
+https://www.w3cschool.cn/javascript/js-obj-string.html
+
+https://www.tutorialspoint.com/html/html_input_tag.htm
+https://nodejs.org/docs/v4.0.0/doc/api/http.html#http_class_http_server
+
+app.js
+application.js
+authentication.js
+database.js
+index.js
+infobase.js
+payment.js
+
+
+
+			<a href="checkout.html">Checkout</a>
+
+https://github.com/financial-times/polyfill-library
+
+return
+const polyfillBundle = polyfillLibrary.getPolyfillString({
+	uaString: 'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)',
+	minify: true,
+	features: {
+		'es6': { flags: ['gated'] }
+	}
+}).then(function(bundleString) {
+	console.log(bundleString);
+});
+
+const polyfillBundle = polyfillLibrary.getPolyfillString({
+	uaString: 'Mozilla/5.0 (Windows; U; MSIE 7.0; Windows NT 6.0; en-US)',
+	minify: true,
+	features: {
+		'es6': { flags: ['gated'] }
+	}
+}).then(function(bundleString) {
+	console.log(bundleString);
+});
+
+var
+
+var connection = new mongo(URI)
+console.log(client)
+
+function open() {
+	connection = new mongo(URI)
+      connection = mysql.createConnection(configuration)
+      connection.connect(function(error) {
+            if (error) {
+                  return console.error('error: ' + error.message)
+            }
+
+            console.log('Connected to the MySQL server')
+      })
+}
+
+function call(command, placeholder) { // https://www.npmjs.com/package/mysql#escaping-query-values
+	
+	connection.query(command, placeholder, function(errors, results, fields) {
+		//module.exports.basedata = results
+	})
+}
+
+function stop() {
+	connection.end()
+}
+
+module.exports = { open, connection, call, stop }
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString
+https://www.mongodb.com/docs/drivers/node/current/quick-start/
+https://www.mongodb.com/docs/drivers/node/current/usage-examples/
+https://www.tutorialspoint.com/mongodb/mongodb_create_database.htm
+
+const uri =
+  "mongodb+srv://<user>:<password>@<cluster-url>?retryWrites=true&w=majority";
+
+const client = new MongoClient(uri);
+
+async function run() {
+  try {
+    const database = client.db('sample_mflix');
+    const movies = database.collection('movies');
+
+    // Query for a movie that has the title 'Back to the Future'
+    const query = { title: 'Back to the Future' };
+    const movie = await movies.findOne(query);
+
+    console.log(movie);
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+
+
+programbase
+
+base - programming
+base - data
+
+info
+data
+
+
+https://support.jumpcloud.com/support/s/article/using-jumpclouds-ldap-as-a-service1
+https://developers.miniorange.com/docs/idp/api/oauth-api
+
+//application.use(express.static('../html'))
+//var site = 'https://bare-4242-abakasam720639.codeanyapp.com/'
+
+application.post('https://port-4242-bare-abakasam720639.codeanyapp.com/create-checkout-session', function(request, response) {
+
+	console.log('hello')
+	
+	var session = stripe.checkout.sessions.create({
+		line_items: [
+			{
+				price: 'price_1MJ7KVFHjUn6coiGrsBWr7Lo',
+				quantity: 1
+			}
+		],
+
+		mode: 'payment',
+		success_url: `${site}/success.html`,
+		cancel_url: `${site}/cancel.html`
+	})
+
+	setTimeout(function() {
+		session.then(function(checkout) {
+			console.log(checkout.url)
+
+			response.redirect(303, checkout.url)
+		})
+	}, 3000)
+})
+
+"scripts": {
+    "version": "
+	
+npm version $npm_package_version --prefix packages/polyfill-library && npm version $npm_package_version --prefix packages/polyfill-service && git add packages/polyfill-library/package.json packages/polyfill-service/package.json
+    "install": "npm ci --prefix packages/polyfill-library && npm ci --prefix packages/polyfill-service",
+    "heroku-postbuild": "npm run build --prefix packages/polyfill-service",
+    "release": "release-it"
+  },
+
+https://www.miniorange.com/node-js-single-sign-on-sso
+https://developers.miniorange.com/docs/idp/api/oauth-api
+online ldap / https://www.foxpass.com/demos
+
+https://polyfill.io/v3/url-builder/
+
+https://developers.miniorange.com/docs/idp/api/user-api-guide
+https://www.cnblogs.com/villa/p/4813187.html
+https://blog.csdn.net/xiao9469/article/details/87783561
+https://blog.csdn.net/weixin_40688217/article/details/108029999
+https://blog.csdn.net/Life_Ding/article/details/122374597
+https://docs.oracle.com/javaee/6/
+https://docs.oracle.com/javaee/6/api/
+https://www.cnblogs.com/lethe-xt/p/3826947.html?utm_medium=referral
+https://www.zhihu.com/tardis/sogou/art/574499595
+https://www.php.net/manual/en/function.http-build-query
+https://www.cnblogs.com/sfshine/archive/2012/06/30/2742895.html
+https://m.php.cn/article/395833.html
+https://hc.apache.org/httpclient-legacy/index.html
+https://learn.microsoft.com/zh-cn/dotnet/api/org.apache.http.client.methods.httpget?view=xamarin-android-sdk-13&viewFallbackFrom=xamarin-android-sdk-9
+https://programtalk.com/java-api-usage-examples/org.apache.http.client.methods.HttpUriRequest/
+http://javadox.com/org.apache.httpcomponents/httpclient/4.3.5/org/apache/http/client/methods/package-summary.html
+http://docs.52im.net/extend/docs/api/android-50/reference/org/apache/http/client/methods/HttpPost.html
+https://www.cnblogs.com/jiangfeilong/p/11109223.html
+https://blog.csdn.net/xuanyuanyelian/article/details/56672198?locationNum=4&fps=1
+https://www.iteye.com/blog/hw1287789687-2346980
+https://www.cnblogs.com/jiangfeilong/p/11109223.html
+http://javadox.com/org.apache.httpcomponents/httpclient/4.3.5/org/apache/http/client/methods/HttpPost.html
+https://hc.apache.org/httpcomponents-client-4.5.x/index.html
+
+Azure					Kristen Meyer				krimeyer@microsoft.com
+Codeanywhere			Mira Mitchell				mira@codeanywhere.net
+Scalegrid				Amanda Smith				amanda.smith@scalegrid.io
+Heroku					Vishal						help.heroku.com
+miniOrange				Rahul Mashere				rahul.mashere@xecurify.com
+
+
+main - github profile
+pages - github pages
+products
+
+https://github.com/cli/cli/releases/tag/v2.21.2
+https://github.com/cli/cli/blob/trunk/docs/source.md
+
 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
 
 

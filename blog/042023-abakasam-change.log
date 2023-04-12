@@ -1,0 +1,253 @@
+https://github.com/settings/tokens
+
+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 
+
+ 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 
+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
+
+xna - c# - c++ - c - GBC - asm - c - z80 - ti83+
+
+asm86c > z80asm > zcc
+
+corert:cppcodegen
+
+xna book											  C#
+https://github.com/dotnet/corert 					  C# > C++
+https://github.com/farisawan-2000/cfront-3 			  C++ > C
+https://github.com/rdbv/cisol						  C > ASM
+https://bzc.sourceforge.net/						  ASM > Z80
+https://packages.debian.org/buster/amd64/devel/z80asm Z80
+
+abakasam 	https://github.com/abakasam/abakasam.git
+encfs 		https://github.com/abakasam/encfs.git
+ionic 		https://github.com/abakasam/iojs.git
+vamos 		https://github.com/abakasam/vamos.git
+webser 		https://github.com/abakasam/webser.git
+iojs		https://github.com/abakasam/iojs.git
+drifty		https://github.com/abakasam/drifty.git
+vx			https://github.com/abakasam/vx.git
+redcore		https://github.com/abakasam/redcore.git
+gamelate	https://github.com/abakasam/gamelate.git
+clisp		https://github.com/abakasam/clisp
+
+
+# ionic
+
+## Metro UI
+Name | Site
+-----|------
+metro 4 | metroui.org.ua
+metro ui template | metro-webdesign.info
+winjs | try.buildwinjs.com
+
+## UI
+Interface | Site | Markingup
+----------|------|-----------
+command | https://www.gnu.org/software/bash/ | HTML3 plain text, text format only
+textual | https://winworldpc.com/product/desqview/desqview-x-2x | HTML4 table 
+graphical | https://getbootstrap.com/ | HTML5
+natural | https://metroui.org.ua/index.html | HTML5 game 
+
+## Running
+```
+wget https://github.com/abakasam/ionic/releases/download/functional/ionic-1.3.4.tar.gz
+tar -xvf ionic-1.3.4.tar.gz
+cd ionic
+chmod u+x iojs/node
+./iojs/node
+./iojs/node bin/ionic
+cd starter/tabs
+../../iojs/node ../../bin/ionic serve tabs
+```
+
+
+
+
+
+
+
+
+
+
+
+2021 grant proposal
+2023 monogame gba compiler
+2024 game boy book
+2025 monogame gba emulator
+2025 redcode book
+2026 corewar book
+2028 clisp expert system - manuals
+2029 clisp book - game ai
+2030 corewar magazine
+2031 game boy (advanced) book
+
+Redcode Book 14.99
+Corewar Book 29.99
+Corewar Magazine 14.99
+Corewar Tournament 10.00
+Game Boy Book 19.99
+Game Boy (Advanced) Book 9.99
+GBA Video Games 0.99 / Game
+MonoGame GBA Compiler 0.00
+MonoGame GBA Emulator 0.00
+CLISP Book 19.99
+CLISP ExpertSystem 49.99
+
+jquery
+silverlight
+angularjs
+?
+?
+drifty (clisps) - chatbot
+
+centos 7
+ gnome
+  lgp
+   vnc
+
+code-server worked alike
+
+node /home/cabox/workspace/abakasam/local/bin/node-8.0.0/deps/npm/bin/npm-cli.js
+
+var filesystem = require('fs')
+var path = require('path')
+filesystem.readFile(path.join(__dirname, 'filename.extension;, {encoding: 'utf-8'}, function (error, reading){
+	if(error) throw error;
+	var data = JSON.parse(reading)
+	console.log(data[0])
+})
+
+https://blog.csdn.net/qq_30100043/article/details/52820165
+https://blog.csdn.net/weixin_42603332/article/details/129455622
+
+https://blog.csdn.net/qq_25844803/article/details/90903421
+
+yum groupinstall "X Window System"
+yum grouplist
+yum groupinstall "GNOME Desktop"
+reboot
+startx
+
+https://mp.weixin.qq.com/s?src=11&timestamp=1680634950&ver=4448&signature=r7ruyJITBp*0s6BGAUbSMj4Up1Ag70tAnfVwLWjnHHqqXyrZ95Gc7FPgLrB*8QcbzPynHnxNngET9xs1-OjyYTdKX-Q-DVDJqolgr2Knq-4g9l*KCv0OBXEKmJ9e-OG4&new=1
+https://www.jianshu.com/p/bdaf15ebe8db
+https://blog.csdn.net/qq_25844803/article/details/90903421
+
+TODO: Check products
+TODO: Install X Window System
+TODO: Install GNOME Desktop
+TODO: Install VNC Server
+TODO: Use ShellNGN to remote
+
+TODO: Backup environment and minimal storage effort
+
+
+TODO: List projects on README for abakasam
+
+encfs
+webser
+iojs
+vamos
+ionic
+drifty
+vx
+redcore
+clisp
+gamelate
+abakasam
+
+TODO: Finish running of old application for Android (ARM > PowerPC) effort
+
+compile press, gift from winzip for tar
+
+x droid examiner
+compile textadept
+x ungoogle chromium
+x catlog
+
+download oneplus 3 kernel
+download oneplus 3 cyanogenmod
+
+vba ti-boy
+x gamelate
+x vba
+
+cancelled nabis
+x corewar
+
+Gamelate
+5, April 2023		Gamelate and Asail seperation
+12, April 2023		Building simple Gameboy game
+19, April 2023		Proper content display
+26, April 2023		Proper content display
+
+Tuner
+5, April 2023		Deciding three cars
+12, April 2023		Dealing with fluids including lubrication
+19, April 2023		Second job not for bills for living
+26, April 2023		Dealing with external metal restoration
+
+Aquaogen Working On EncFS
+System / User / File / Packet / Network / Address
+
+Redesigning EncFS site for approval.
+
+Expected EncFS forked releases 
+1.9.6 Local functional program for each encrypted filesystem
+1.9.7 Local functional program for each operating system
+1.9.8 Detial explanation of each encrypted filesystem
+
+Gabet
+Call of Duty EU Challengers 2023 Cup #10
+Thursday, April 6 2023, 5:00 PM CDT
+
+Runflash
+previous...Clothes, Microsoft Band, 
+Routes (Stores) - Pen Drawn (portable) / mapourrun
+
+Blog / Journals
+
+	Gamelate	https://sites.google.com/view/weddington-plumber/journals/gamelate
+	Tuner		https://sites.google.com/view/weddington-plumber/journals/tuner
+	Aquaogen	https://community.oneplus.com/circle/222
+	Firestar	LinkedIn
+	Drifty		https://ionic.io/blog
+	Asail		http://www.shade.co.jp/en/news
+	abakasam	CodeProject
+	Gabet		Facebook
+	Runflash	Facebook
+News
+
+	creating...
+	user/organization -> NEWS
+	created project -> NEWS
+CodeProject
+
+	Setup RSS by nodejs
+	https://www.codeproject.com/script/Articles/MemberArticles.aspx?amid=14283622
+WikiDot
+
+	Aquaogen			aquaogen.wikidot.com
+	Drifty.Aquaogen		siban.wikidot.com
+	Gamelate.Aquaogen	gamelate.wikidot.com
+Docusaurus
+	netlify.com
+	project ...
+Site (Google)
+	Gamelate	gamelate.wikidot.com
+	Tuner		www.firestar.it
+	Firestar	www.firestar.it
+	Drifty		siban.business.site, siban.wikidot.com
+	Aquaogen	aquaogen.net
+	Asail		asail.co
+	abakasam	github.com/abakasam
+	Gabet		gabet.zohosites.com
+	Runflash	gr.firestar.it
+Codetree
+
+https://www.npmjs.com/package/rss
+https://www.codeproject.com/script/Articles/BlogFeed.aspx
+
+https://www.youtube.com/watch?v=hcCuOiU2Wog
+
+host off codeanywhere.com
+https://www.reddit.com/.rss

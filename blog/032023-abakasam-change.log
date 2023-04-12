@@ -1,0 +1,117 @@
+
+
+BUG: Bare container, timed out...
+
+live		abakasam
+working		Sammight
+developer	Sammight
+
+DEVELOPER LIVE REPOSITORY
+user
+organization
+organization
+
+ORGANIZATION LIVE REPOSITORY
+organization
+organization
+user
+
+developer comments
+	0a	TEST		
+	0b	FEATURE		
+	1	TODO		
+	1a	IMPROVE		
+	1b	REDO		 
+	2	BUG			
+	2a	MEMORY		 
+	2b	LEGACY		 
+	
+developer comment status (Example / TODO: message (Complete))
+	0	task		Codetree
+	1	blog		CodeProject (rss) 
+	2	log			LogOwl (echo) 
+	3	(Complete)	Wikidot
+	4	site		Docusaurus 
+	5	executable	
+
+	
+  blog					u
+  news					s
+  codeproject			u
+  wikidot				u
+  docusaurus			u
+  site					s
+  journal				w
+  codetree				m
+	
+developer comment status (Example / TODO: message (Complete))
+	0	task		Codetree
+	1	blog		CodeProject (rss) 
+	2	log			LogOwl (echo) 
+	3	(Complete)	Wikidot
+	4	site		Docusaurus 
+	5	executable	
+
+developer comments
+					UML 
+	0a	TEST		TestQuality
+	0b	FEATURE		Growthflags
+	1	TODO		Codetree
+	1a	IMPROVE		Codiga
+	1b	REDO		Threatrix 
+	2	BUG			Bugzilla
+	2a	MEMORY		BuildJet 
+	2b	LEGACY		Deadpendency 
+	
+developer comment status (Example: TODO: message (Complete))
+	1	blog		CodeProject (rss) 
+	2	log			LogOwl (echo) 
+	3	(Complete)	Viezly 
+	4	(Review)	Wikidot 
+	5	(Reviewed)	Docusaurus 
+	6	executable	?MSBuild, Gradle, Maven, PWA 
+
+?!create
+
+abakasam	PROFILE
+encfs		vgough/encfs 		> Sammight/encfs 	> abakasam/encfs
+webser		Sammight/webser 	> abakasam/webser
+iojs		Aquaogen/iojs 		> ?!Sammight/iojs 	> abakasam/iojs
+vamos		Sammight/Underhood 	> abakasam/vamos
+ionic		Sammight/ionic2 	> abakasam/ionic
+drifty		Sammight/drifty 	> abakasam/drifty
+vx			Sammight/1993FD 	> abakasam/vx
+redcore		Sammight/corewar 	> abakasam/redcore
+clisp		Sammight/clisp 		> abakasam/clisp
+gameplate	Sammight/gamelate 	> abakasam/gamelate
+
+TODO: Oraganize abakasam LIVE repositories (Complete)
+TODO: Fix README, create NEWS at repository not user nor organization
+
+encfs
+webser
+iojs
+vamos
+ionic
+drifty
+vx
+redcore
+clisp
+gamelate
+abakasam
+
+TODO: Try to balance work schedule (Complete)
+
+80 hours work
+63 hours sleep
+20 hours travel
+5  hours spare
+
+6am > 6pm	first job	12 x ~4 = 48
+8am > 3pm	second job	6 x 7 = 42 | 21
+waiting for part time second job
+
+https://www.timeanddate.com/
+how much time?
+need two days: manage, work
+sunday, monday

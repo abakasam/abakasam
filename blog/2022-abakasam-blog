@@ -169,38 +169,34 @@ Apache Tomcat
 	SQL					
 	MongoDB				MongoDB: The Definitive Guide, by Kristina Chodorow
 
-Bash					bash Cookbook, by Carl Albing
+Bash					
 	Git					Version Control with Git, by Jon Loeliger
 	Regular Expressions	Mastering Regular Expression, by Jeffrey Friedl
 	C++
-	X Windows System	X Window System In A Nutshell, by Ellie Cutler
-	System Programming	Operating System: Concepts With Java by Abraham Silberschatz
-	Operating System	Operating System: Concepts and Principles by John Zarrel
+	X Windows System	
 	Powershell			
 	
 ReactOS
-	Cyanogenmod			
+	Cyanogenmod			CyanogenMod: Installation und Praxis, by Christian Immler
 	Linux Kernel		
-	Android Hardware	
-	CentOS				
-	Windows 8			
-	Windows Server 2011	
+	CentOS (7.2)			
+	Windows (8)			
 
 Ionic					Mobile App Development with Ionic 2, by Chris Griffith
-	Node				
+	Node				Node In Action, by Evan Hahn
 	HTML 				Dynamic HTML: The Definitive Reference, by Danny Goodman
-	CSS					Dynamic HTML: The Definitive Reference, by Danny Goodman
+	CSS					
 	Javascript			Javascript: The Definitive Guide, by David Flanagan
-	XML					Dynamic HTML: The Definitive Reference, by Danny Goodman
+	XML					
 	Bootstrap			
 	Angular				Pro AngularJS, by Adam Freeman
 	JQuery				JQuery In Action, by Bibeault Katz
 
-Geometry				Geometry: A Comprehensive Course
-	Proofs				How to Read and Do Proofs, by Daniel Solow
+Geometry				
+	Proofs				
 	Graphviz
 	GAP
-	Macaulay2
+	Macaulay
 	Maxima
 	Latex
 	Vamos
