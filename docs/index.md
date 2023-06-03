@@ -33,16 +33,18 @@ SISSL     | Sun Industry Standards Source License
 NASA-1.3  | NASA Open Source Agreements 1.3
 Intel     | Intel Open Source License
 IPL-1.0   | IBM Public License 1.0
+Google    | Google License
 
 License   | Organization   | ---------------------------
 ----------|----------------|-----------------------------
-Intel     | Nintendo       | ticalc
+Intel     | Nintendo       | (TI-83+ Gameboy)
 NASA-1.3  | NASA           | CLISP
-MS-PL     | Microsoft      | MonoGame
+MS-PL     | Microsoft      | MonoGame (XNA)
 IPL-1.0   | Sony           | PSP, Watson
-SISSL     | Ahijuna        | Cyanogenmod, Copperhead, Windows 9 (NUI)
-MIT       | ISAL           | Gamelate
-Apache-2.0| Google         | 1993FD, Cordova, Ionic (v1)
+SISSL     | FSU            | Bitlock
+MIT       | ISAL           | (otherwise)
+Apache-2.0| Google         | Gamelate, Cordova, Ionic (v1)
+Google    | Google         | 1993FD
 
 OS      | Desktop | Mobile
 --------|---------|--------
@@ -54,7 +56,7 @@ Ubuntu  | .deb    | .pro
 release | scripts | package | SOURCE
 --------|---------|---------|--------
  msi    | .ps1    | .nupkg  | .zip
- apk    | ?       | ?       | !.aar
+ apk    | .rs     | ?       | .aar
  dmg    | ?       | ?       | ?
  ?      | .sh     | .deb    | .tar.gz  
 
