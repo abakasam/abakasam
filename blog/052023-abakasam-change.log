@@ -1,0 +1,703 @@
+https://linuxize.com/post/how-to-list-installed-packages-on-centos/#list-installed-packages-with-yum
+
+https://dotnet.microsoft.com/en-us/learn/dotnet/hello-world-tutorial/install
+https://learn.microsoft.com/en-us/dotnet/core/install/linux?WT.mc_id=dotnet-35129-website
+https://github.com/dotnet/core/blob/main/linux-support.md
+https://learn.microsoft.com/en-us/dotnet/core/install/linux-centos
+https://learn.microsoft.com/en-us/dotnet/core/install/linux-centos#dependencies
+https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#manual-install
+
+https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
+
+dependencies needed not source
+https://learn.microsoft.com/en-us/dotnet/core/install/linux-centos#dependencies
+
+http://hoststud.com/resources/how-to-check-centos-version-in-linux.112/
+CentOS Linux release 7.2.1511 (Core) 
+
+Dependencies
+When you install with a package manager, these libraries are installed for you. But, if you manually install .NET or you publish a self-contained app, you'll need to make sure these libraries are installed:
+
+sudo su -c "yum list installed"
+
+
+krb5-libs
+libicu
+openssl-libs
+zlib
+If the target runtime environment's OpenSSL version is 1.1 or newer, you'll need to install compat-openssl10.
+
+https://www.linuxcool.com/zwlzkcbbmlqs
+http://hoststud.com/resources/how-to-check-centos-version-in-linux.112/
+
+https://github.com/dotnet/core/blob/main/Documentation/self-contained-linux-apps.md
+https://www.mono-project.com/download/stable/#download-lin
+
+PRODUCT CHECK
+
+acquire								Download software with README
+	compiled						Compile (if Source) without make install, or run
+		binaries					Check on an clean operating system install for: linux, windows, mac, web
+			documentation			Download HTML (or alike) documentation and host locally
+				versioned			Semanticly version branch and software
+										BRANCH SEMVER:software name
+											-version:codename=(NextRelease) 
+											-feature:?=(Averta Feature Request) 
+											-bug:ID=(Mozilla Bugzilla)
+										SOFTWARE SEMVER: name-version(count)-feature(count)-bug(count)
+					archived		Compile into *.tar.gz with folder
+						backedup	Store product (binary, source, media:Apache Tomcat, GitHub, MediaFire)
+							listed	List on Stackshare
+:) = product checked
+
+TODO: Compare Codetree and Microsoft Project (Complete)
+TODO: Add workflow for Codetree to STANDARDS (Complete)
+TODO: Download dotnet (Complete)
+TODO: Move repositories from Asail to Monday (Complete)
+
+TODO: Follow .NET hello world
+BUG: Failed to initialize CoreCLR, HRESULT: 0x80131500
+
+System maintained packages might be expected for .NET 1.0?
+
+Failed to initialize CoreCLR, HRESULT: 0x80131500 转载
+
+
+https://blog.csdn.net/weixin_34297300/article/details/93993158
+https://dotnet.microsoft.com/en-us/download/dotnet/scripts
+
+ls --block-size=M --size
+
+https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository
+
+support date
+README
+source
+OS tested: linux
+documentation
+script powershell
+tar.gz, zip
+stackshare
+
+
+
+support date
+readme
+source
+linux os tested
+documentaion
+powershell script
+tar.gz, zip 
+stackshare
+
+developer comment status (Example / TODO: message (Complete))
+	0	task		Codetree
+	1	blog		CodeProject (rss) 
+	2	log			LogOwl (echo) ($15/m)	   https://logowl.io/#pricing: Business
+	3	(Complete)	Wikidot
+	4	site		Docusaurus 
+	5	executable	
+
+reports
+ code					u ($4/m)				https://github.com/pricing: Team
+  codeanywhere ($15/m)
+  products				
+  todo					
+  changelog				
+ project				u ($7/m)
+  programming meeting	
+  project portfolio		
+  progress report		
+ document				m
+  bug ($6/m)									https://www.godaddy.com/hosting/web-hosting: Perl
+  feature ($9/m)							    https://www.godaddy.com/hosting/web-hosting: WordPress, Averta
+  blog					
+  news					
+  codeproject			
+  wikidot ($50/y)
+  docusaurus ($10/m)						   https://www.godaddy.com/hosting/web-hosting: Windows
+  site					
+  journal			
+  codetree	($9/m)
+
+I left the files on another laptop, including the release. Have to get the laptop. Needed for Windows without 7-Zip and only WinZip (https://www.winzip.com/win/en/) .
+
+repository  GitHub: Software, Azure: Video Game
+release
+
+ INSTALL	(Web, Windows, Chrome, Mac)
+ README		Minimum: Logo, Description, Architecture, Examples
+ LICENSE	MIT
+ NEWS		Versioning
+
+packages	Demo: Docker
+deploy		Heroku: Web Application
+publish		Site, Microsoft Store, Play Store, Apple Store
+
+repository
+release
+package
+markdowns
+ 
+
+Need to get codetree up!
+	
+	const data = new Uint8Array(Buffer.from('Hello Node.js'));
+file.stream.writeFile('message', data, (err) => {
+  if (err) throw err;
+  console.log('The file has been saved!');
+})
+
+
+file.stream.stat(filepath, function(error, stats) {
+	if(error) { return }
+
+	if(stats.isFile()) {
+		file.stream.unlinkSync(filepath)
+	}
+})
+
+	file.stream.writeFile('message', content, function(error) {
+		console.log('hello')
+	})
+
+https://blog.csdn.net/qq_38796823/article/details/88831051
+
+https://www.cnblogs.com/bruce-gou/p/6082167.html
+
+复制代码
+    deleteFolder(path);
+    function deleteFolder(path) {
+        var files = [];
+        if( fs.existsSync(path) ) {
+            files = fs.readdirSync(path);
+            files.forEach(function(file,index){
+                var curPath = path + "/" + file;
+                if(fs.statSync(curPath).isDirectory()) { // recurse
+                    deleteFolder(curPath);
+                } else { // delete file
+                    fs.unlinkSync(curPath);
+                }
+            });
+            fs.rmdirSync(path);
+        }
+    }
+复制代码
+
+var file = file.stream.readdirSync('.')
+console.log(file)
+
+
+var fs = require('fs')
+var content = new Uint8Array(Buffer.from('Hello Node.js'))
+
+fs.writeFile('message', content, function(error) {
+	console.log('The file has been saved!')
+})
+
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/Object#using_object_given_undefined_and_null_types
+https://nodejs.org/docs/latest-v10.x/api/string_decoder.html#string_decoder_new_stringdecoder_encoding
+
+const o = new Object();
+o.foo = 42;
+
+console.log(o);
+// { foo: 42 }
+
+https://nodejs.org/docs/latest-v10.x/api/string_decoder.html
+
+const { StringDecoder } = require('string_decoder');
+const decoder = new StringDecoder('utf8');
+
+const cent = Buffer.from([0xC2, 0xA2]);
+console.log(decoder.write(cent));
+
+const euro = Buffer.from([0xE2, 0x82, 0xAC]);
+console.log(decoder.write(euro));
+
+var decoder = new StringDecoder('UTF8')
+console.log(decoder.write())
+
+
+// https://nodejs.org/docs/latest-v10.x/api/http.html#http_response_write_chunk_encoding_callback
+// https://www.iana.org/assignments/media-types/media-types.xhtml
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#successful_responses
+// ex: text/html, text/xml, text/plain
+
+https://nodejs.org/docs/latest-v10.x/api/fs.html#fs_fs_readfile_path_options_callback
+
+const fs = require('fs');
+
+fs.readFile('/etc/passwd', (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});
+
+have to host blogs?
+ thought to be on github...
+  at raw
+
+https://raw.githubusercontent.com/abakasam/abakasam/main/blog/01042023-abakasam-blog
+
+
+
+
+https://www.netgear.com/support/product/rnd2150v1#download
+
+readynas > xbox
+		 > onedrive
+		 > networked Desktop > onedrive
+
+session hack
+re-dns
+virus heaven
+chatbot
+
+nui os?
+nui os?
+
+intuitive
+gesture
+
+
+abakasam	Fix existing readme and release(s) (planning) - NEWS for abakasam
+Asail		
+Aquaogen
+Drifty
+Sunsoft
+Whisper
+
+https://abakasam.github.io/abakasam/
+https://mp.weixin.qq.com/s?src=3&timestamp=1683127191&ver=1&signature=1XOdQJW2UkSxSoi7VrGxosTHsWqHStcMvyBbAaeWR4jBGp4kZkVZTQh0WwAOxa9L20YhHQX48Gwn5uzPWlg*ZHzXJRWyCJ*uTUAo8lSzCtJb-wzfQfJbGEhzL5tXY15fdez1E*doc8Dgt3N9s3ap0w==
+
+Organization	.org
+Network	.net
+Business (US)	.com
+International	.it .(country or state)
+National	.us
+Government	.gov
+Military	.mil
+School	.edu
+Development	.io
+
+ahijuna			.org
+aquaogen		.net
+ariananabis		.com
+gabet.zohosites .com
+
+firestar		.it
+sam-weddington	.us
+
+?				.gov - mirror's edge or alike
+?				.mil - USAF: 1945 striker > sector strike / first strike > airpath
+ocw.mit			.edu
+
+(repository)	.io
+asail			.co
+siban.business  .site
+
+abakasam
+
+PowerShell			https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell-7.3.4-linux-x64.tar.gz, https://learn.microsoft.com/en-us/powershell/scripting/install/install-other-linux?source=recommendations&view=powershell-7.3#binary-archives
+Press				https://github.com/abakasam/press
+Droid Examiner		https://github.com/jackpal/droid-examiner
+Textadept			https://github.com/orbitalquark/textadept
+Ungoogled Chromium	https://github.com/wchen342/ungoogled-chromium-android
+Catlog				https://github.com/nolanlawson/Catlog
+Cyanogenmod			https://cyanogenmodroms.com/oneplus3/
+OnePlus 3 Kernel	https://github.com/CyanogenMod/android_kernel_oneplus_msm8996
+OnePlus 3 OS		https://github.com/cyanogenmod/android_device_oneplus_oneplus3
+TI-Boy				https://videlais.com/2016/07/03/programming-game-boy-games-using-gbdk-part-1-configuring[-programming-and-compiling/	
+Gamelate			http://gamelate.wikidot.com/
+Visual Boy Advanced https://github.com/GreddySHADE/vba
+NABIS				Cancelled
+Corewar				https://github.com/abakasam/redcore
+
+Press				Working release
+Droid Examiner		Fork
+Textadept			Compile for ChromeOS
+Ungoogled Chromium  Set desktop mode for pinning applications
+Catlog				For
+Cyanogenmod			Preserve
+OnePlus 3 Kernel	Preserve
+OnePlus 3 OS		Preserve
+TI-Boy				ASM or BASIC GBA game
+Gamelate			Planning
+Visual Boy Advanced	Preserved
+NABIS				Cancelled
+Corewar				Stored program concept with abstract assembly
+
+
+session hack
+re-dns
+virus heaven
+chatbot
+
+nui os?
+nui os?
+
+intuitive
+gesture
+
+sesh (session hack) / network map
+redns (routed [weak]encrypted dns) / firewall
+vxheaven (virus heaven) / virus database
+drifty / chatbot
+
+curl -L -o /tmp/powershell.tar.gz 
+https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell-7.3.4-linux-x64.tar.gz
+
+windows 9 / intuitive user interface
+cyanogenmod / mixed reality user interface
+
+PowerShell not terminal
+
+Press (press)
+*.apk not *.deb
+
+Droid Examiner (droid-examiner)
+Textadept (textadept)
+Ungoogled Chromium (ungoogled-chromium-android)
+Catlog (Catlog)
+Cyanogenmod still going...
+
+OnePlus 3 Kernel MSM8996 (android_kernel_oneplus_msm8996)
+OnePlus 3 Cyanogenmod (android_kernel_oneplus_oneplus3)
+Know assembly or fail programming
+
+TI-Boy (tiboyse)
+Gamelate (gamelate)
+Visual Boy Advanced (vba)
+Joy of programming when you make it come alive and use it in video game development
+
+NABIS (1993FD)
+Core War (corewar.io)
+
+Aquaogen
+
+sesh (session hack) / network map
+redns (routed [weak]encrypted dns) / firewall
+vxheaven (virus heaven) / virus database
+drifty / chatbot
+windows 9 / intuitive user interface
+cyanogenmod / mixed reality user interface
+
+/* lets create an rss feed */
+var feed = new RSS({
+    title: 'title',
+    description: 'description',
+    feed_url: 'http://example.com/rss.xml',
+    site_url: 'http://example.com',
+    image_url: 'http://example.com/icon.png',
+    docs: 'http://example.com/rss/docs.html',
+    managingEditor: 'Dylan Greene',
+    webMaster: 'Dylan Greene',
+    copyright: '2013 Dylan Greene',
+    language: 'en',
+    categories: ['Category 1','Category 2','Category 3'],
+    pubDate: 'May 20, 2012 04:00:00 GMT',
+    ttl: '60',
+    custom_namespaces: {
+      'itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd'
+    },
+    custom_elements: [
+      {'itunes:subtitle': 'A show about everything'},
+      {'itunes:author': 'John Doe'},
+      {'itunes:summary': 'All About Everything is a show about everything. Each week we dive into any subject known to man and talk about it as much as we can. Look for our podcast in the Podcasts app or in the iTunes Store'},
+      {'itunes:owner': [
+        {'itunes:name': 'John Doe'},
+        {'itunes:email': 'john.doe@example.com'}
+      ]},
+      {'itunes:image': {
+        _attr: {
+          href: 'http://example.com/podcasts/everything/AllAboutEverything.jpg'
+        }
+      }},
+      {'itunes:category': [
+        {_attr: {
+          text: 'Technology'
+        }},
+        {'itunes:category': {
+          _attr: {
+            text: 'Gadgets'
+          }
+        }}
+      ]}
+    ]
+});
+
+/* loop over data and add to feed */
+feed.item({
+    title:  'item title',
+    description: 'use this for the content. It can include html.',
+    url: 'http://example.com/article4?this&that', // link to the item
+    guid: '1123', // optional - defaults to url
+    categories: ['Category 1','Category 2','Category 3','Category 4'], // optional - array of item categories
+    author: 'Guest Author', // optional - defaults to feed author property
+    date: 'May 27, 2012', // any format that js Date can parse.
+    lat: 33.417974, //optional latitude field for GeoRSS
+    long: -111.933231, //optional longitude field for GeoRSS
+    enclosure: {url:'...', file:'path-to-file'}, // optional enclosure
+    custom_elements: [
+      {'itunes:author': 'John Doe'},
+      {'itunes:subtitle': 'A short primer on table spices'},
+      {'itunes:image': {
+        _attr: {
+          href: 'http://example.com/podcasts/everything/AllAboutEverything/Episode1.jpg'
+        }
+      }},
+      {'itunes:duration': '7:04'}
+    ]
+});
+
+https://www.codeproject.com/script/Articles/BlogFeed.aspx
+
+for key in "${!article[@]}"
+do
+  echo "key  :" $key
+  value=${article[$key]}
+  
+  echo "value:" $value
+  echo " "
+done
+
+#article["Author"]="Sam Weddington"
+#article["Email"]="abakasam@outlook.com"
+#article["License"]="MIT"
+
+#article["Title"]=${part[0]}
+	#article["Description"]=${part[2]}
+	#article["Abstract"]=${part[@]:9}
+	#article["Language"]=${part[1]}
+	#article["Platform"]=${part[3]}
+	#article["Technology"]=${part[4]}
+	#article["Topic"]=${part[5]}
+	#article["Subtopic"]=${part[6]}
+	#article["Subsection"]=${part[8]}
+	#article["Type"]=${part[7]}
+
+#for part in "${article[@]}"
+#do
+#	echo $part
+#	
+#done
+
+https://docs.github.com/en/packages
+https://www.docker.com/
+https://hub.docker.com/
+
+demo - test environment
+ did releases off month with accompanied tag
+ need to host executable
+ looking at packages
+
+executable
+ tag - month year
+ tag - codename
+ readme - readme final release
+
+EncFS
+
+https://vgough.github.io/encfs/
+https://sites.google.com/a/arg0.net/www/encfs
+
+https://github.com/WirelessWhisper/encfs
+
+https://github.com/squibbysquibby/libarchive/blob/master/tar/bsdtar.c
+https://blog.csdn.net/skdkjzz/article/details/17072619
+https://blog.csdn.net/weixin_34297300/article/details/93993158
+
+Needing to install seperated dotnet installation for cli of linux
+error: libunwind.so.8: cannot open shared object file: No such file or directory
+
+mirror.mia11.us.leaseweb.net
+
+yum install libunwind8
+
+sudo su -c "yum update"
+sudo su -c "yum install libunwind libicu"
+
+rpm2cpio "libunwind-1.2-2.el7.x86_64.rpm" | bsdtar -xf -
+
+failedto initialize coreclr, hresult: 0x80131500
+
+https://dotnet.microsoft.com/en-us/download/dotnet/1.0
+https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core#cadence
+https://blog.csdn.net/weixin_42285440/article/details/130088144
+
+https://www.cnblogs.com/lms0755/p/8863199.html
+https://blog.csdn.net/dta0502/article/details/81268505
+
+https://blog.csdn.net/dta0502/article/details/81268505
+libundwind8
+
+TODO: started fixing non repository readmes (Complete)
+
+abakasam (keep clean)
+Asail
+Aquaogen
+Drifty
+Sunsoft
+Whisper
+
+GreddySHADE
+
+Creating video games for profit
+
+https://en.wikipedia.org/wiki/Half-Life_2 (Alyx) -- Quantico
+
+https://github.com/ValveSoftware
+
+https://sites.google.com/view/abakasam (2035)
+
+
+abakasam abakasam.github.io/abakasam
+Asail	 asail.co		
+Aquaogen aquaogen.net
+Drifty	 siban.business.site
+Sunsoft  Build A Bear
+Whisper  netger.com
+
+https://www.netgear.com/support/product/rnd2150v1#download
+
+readynas > xbox
+		 > onedrive
+		 > networked Desktop > onedrive
+
+session hack
+re-dns
+virus heaven
+chatbot
+
+nui os?
+nui os?
+
+intuitive
+gesture
+
+
+abakasam	Fix existing readme and release(s) (planning) - NEWS for abakasam
+Asail		
+Aquaogen
+Drifty
+Sunsoft
+Whisper
+
+https://abakasam.github.io/abakasam/
+https://mp.weixin.qq.com/s?src=3&timestamp=1683127191&ver=1&signature=1XOdQJW2UkSxSoi7VrGxosTHsWqHStcMvyBbAaeWR4jBGp4kZkVZTQh0WwAOxa9L20YhHQX48Gwn5uzPWlg*ZHzXJRWyCJ*uTUAo8lSzCtJb-wzfQfJbGEhzL5tXY15fdez1E*doc8Dgt3N9s3ap0w==
+
+Organization	.org
+Network	.net
+Business (US)	.com
+International	.it .(country or state)
+National	.us
+Government	.gov
+Military	.mil
+School	.edu
+Development	.io
+
+ahijuna			.org
+aquaogen		.net
+ariananabis		.com
+gabet.zohosites .com
+
+firestar		.it
+sam-weddington	.us
+
+?				.gov - mirror's edge or alike
+?				.mil - USAF: 1945 striker > sector strike / first strike > airpath
+ocw.mit			.edu
+
+(repository)	.io
+asail			.co
+siban.business  .site
+
+abakasam
+
+TODO: Identify progress of Chromium or Google early efforts (Complete)
+
+PowerShell			https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell-7.3.4-linux-x64.tar.gz, https://learn.microsoft.com/en-us/powershell/scripting/install/install-other-linux?source=recommendations&view=powershell-7.3#binary-archives
+Press				https://github.com/abakasam/press
+Droid Examiner		https://github.com/jackpal/droid-examiner
+Textadept			https://github.com/orbitalquark/textadept
+Ungoogled Chromium	https://github.com/wchen342/ungoogled-chromium-android
+Catlog				https://github.com/nolanlawson/Catlog
+Cyanogenmod			https://cyanogenmodroms.com/oneplus3/
+OnePlus 3 Kernel	https://github.com/CyanogenMod/android_kernel_oneplus_msm8996
+OnePlus 3 OS		https://github.com/cyanogenmod/android_device_oneplus_oneplus3
+TI-Boy				https://videlais.com/2016/07/03/programming-game-boy-games-using-gbdk-part-1-configuring[-programming-and-compiling/	
+Gamelate			http://gamelate.wikidot.com/
+Visual Boy Advanced https://github.com/GreddySHADE/vba
+NABIS				Cancelled
+Corewar				https://github.com/abakasam/redcore
+
+Press				Working release
+Droid Examiner		Fork
+Textadept			Compile for ChromeOS
+Ungoogled Chromium  Set desktop mode for pinning applications
+Catlog				For
+Cyanogenmod			Preserve
+OnePlus 3 Kernel	Preserve
+OnePlus 3 OS		Preserve
+TI-Boy				ASM or BASIC GBA game
+Gamelate			Planning
+Visual Boy Advanced	Preserved
+NABIS				Cancelled
+Corewar				Stored program concept with abstract assembly
+
+
+session hack
+re-dns
+virus heaven
+chatbot
+
+nui os?
+nui os?
+
+intuitive
+gesture
+
+sesh (session hack) / network map
+redns (routed [weak]encrypted dns) / firewall
+vxheaven (virus heaven) / virus database
+drifty / chatbot
+
+curl -L -o /tmp/powershell.tar.gz 
+https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/powershell-7.3.4-linux-x64.tar.gz
+
+windows 9 / intuitive user interface
+cyanogenmod / mixed reality user interface
+
+PowerShell not terminal
+
+Press (press)
+*.apk not *.deb
+
+Droid Examiner (droid-examiner)
+Textadept (textadept)
+Ungoogled Chromium (ungoogled-chromium-android)
+Catlog (Catlog)
+Cyanogenmod still going...
+
+OnePlus 3 Kernel MSM8996 (android_kernel_oneplus_msm8996)
+OnePlus 3 Cyanogenmod (android_kernel_oneplus_oneplus3)
+Know assembly or fail programming
+
+TI-Boy (tiboyse)
+Gamelate (gamelate)
+Visual Boy Advanced (vba)
+Joy of programming when you make it come alive and use it in video game development
+
+NABIS (1993FD)
+Core War (corewar.io)
+
+Aquaogen
+
+sesh (session hack) / network map
+redns (routed [weak]encrypted dns) / firewall
+vxheaven (virus heaven) / virus database
+drifty / chatbot
+windows 9 / intuitive user interface
+cyanogenmod / mixed reality user interface

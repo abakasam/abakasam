@@ -1,0 +1,13 @@
+05252023 English Codetree Project Management
+
+ check Codetree (project=user?future=repository > issue > milestone > epic)  for repository
+
+codetree	microsoft project
+project		project
+issue		task
+milestone	progress
+epic		assignment
+deliverable product (+documentation)
+
+planning: project > issue > milestone > epic > deliverable
+working: request > pending > in progress > testing > product

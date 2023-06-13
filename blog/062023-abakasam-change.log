@@ -1,0 +1,245 @@
+
+TODO: Create script to list TODOs in folder
+
+
+# ./todos.sh <path> <language file extension>
+
+
+find $path -name *.js
+IFS=" "
+read -ra segment <<< $line
+
+
+https://en.m.wikipedia.org/wiki/Wiki
+
+PATH=/home/cabox/.gvm/pkgsets/go1.11.1/global/bin:/home/cabox/.gvm/gos/go1.11.1/bin:/home/cabox/.gvm/pkgsets/go1.11.1/global/overlay/bin:/home/cabox/.gvm/bin:/home/cabox/.gvm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cabox/.local/bin:/home/cabox/bin
+export PATH
+
+~=/home/cabox
+~/.bashrc
+/etc/bashrc
+
+TODO: Fix bash_profile for bin.sh
+
+https://linuxize.com/post/bash-write-to-file/
+
+TODO: Use bin folder like PATH of bash_profile (Complete)
+
+PATH=/home/cabox/.gvm/pkgsets/go1.11.1/global/bin:/home/cabox/.gvm/gos/go1.11.1/bin:/home/cabox/.gvm/pkgsets/go1.11.1/global/overlay/bin:/home/cabox/.gvm/bin:/home/cabox/.gvm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cabox/.local/bin:/home/cabox/bin
+export PATH
+
+~=/home/cabox
+~/.bashrc
+/etc/bashrc
+
+/home/cabox/workspace/bin
+
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$HOME/.local/bin:$HOME/bin:$HOME/workspace/abakasam/local/bin
+
+export PATH
+
+https://www.cnblogs.com/Ronaldo6688/p/12190640.html
+https://www.cnblogs.com/51try-again/p/10704576.html
+
+https://github.com/abakasam/ionic/releases/download/functional/ionic-1.3.4.tar.gz
+
+
+# PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+PATH=$HOME/.local/bin:$HOME/bin:$HOME/workspace/abakasam/local/bin
+
+export PATH
+
+PATH=/home/cabox/workspace/abakasam/local/bin/node-8.0.0:/home/cabox/workspace/abakasam/local/bin/mongosh-1.5.4/bin:/home/cabox/workspace/abakasam/local/bin/iojs-3.3.1:/home/cabox/workspace/abakasam/local/bin/iojs-3.3.1/deps/npm:/home/cabox/workspace/abakasam/local/bin/scripts:/home/cabox/workspace/abakasam/local/bin/ionic-1.3.4/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+ 
+ 
+export PATH
+
+BUG: Unexpected token ..., node 10.9.0 (Complete)
+
+https://github.com/facebook/docusaurus/discussions/9034
+https://www.buymeacoffee.com/abakasamY
+
+Fix npx for docusaurus template
+
+https://github.com/facebook/docusaurus/discussions/9034
+
+TODO: Find online host for docusaurus (Complete)
+
+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
+https://github.com/settings/tokens
+
+https://flaviocopes.com/npx/
+
+npx failing finding local script
+found pointing to script for commands
+how to create commands
+needing to set global node for commands? or environment? - terminal
+seek script
+template in node_modules/docusaurus-init
+
+https://v1.docusaurus.io/docs/en/installation
+https://www.npmjs.com/package/npx
+
+https://m.youtube.com/watch?v=v5XqHWHktRI&pp=ygUKbm9kZWpzIG5weA%3D%3D
+https://www.npmjs.com/package/npx
+
+https://dashboard.render.com/static/srv-chtrbe7dvk4oliupdl7g/deploys/dep-chtrbefdvk4oliupn10g
+render.com
+
+TODO: Test on Windows wintar
+
+dotnet build --output ./build_output
+
+../dotnet/dotnet build --output ./build_output
+
+https://github.com/ungoogled-software/ungoogled-chromium-android
+
+/home/cabox/workspace/desktop/press/WinTar/ICSharpCode/SharpZipLib/Core
+
+
+mkdir ICSharpCode
+cd ICSharpCode
+mkdir SharpZipLib
+cd SharpZipLib
+mkdir Core
+cd ..
+mkdir Tar
+
+Tools.CommandLine
+ SharpZipLibSrc
+ Tools.CommandLine.sln
+ Tools.CommandLine.TarTool
+  Readme.txt
+  TarTool.cs
+  Tools.CommandLine.csproj
+  app.config
+
+tartool/Tools.CommandLine/tags/Release_1.0/Tools.CommandLine.TarTool/Tools.CommandLine.csproj
+
+ <ItemGroup>
+    <ProjectReference Include="..\SharpZipLibSrc\ICSharpCode.SharpZLib.csproj">
+      <Project>{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}</Project>
+      <Name>ICSharpCode.SharpZLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+
+TODO: Command line upload onedrive
+
+contacting support
+
+Much code failing from environment configurations
+ Have to add by part
+
+TODO: Add library to program with project created (Complete)
+
+https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-list-reference
+
+https://learn.microsoft.com/en-us/dotnet/core/porting/project-structure
+
+Tools.CommandLine
+ SharpZipLibSrc
+ Tools.CommandLine.sln
+ Tools.CommandLine.TarTool
+  Readme.txt
+  TarTool.cs
+  Tools.CommandLine.csproj
+  app.config
+
+https://github.com/senthilrajasek/tartool/tree/master/Tools.CommandLine/tags/Release_1.0/Tools.CommandLine.TarTool
+
+https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-add-reference
+
+dotnet add app/app.csproj reference lib/lib.csproj
+
+dotnet add WinTar/WinTar.csproj reference WinTar/SharpZipLib-1.4.2/src/ICSharpCode.SharpZipLib/ICSharpCode.SharpZipLib.csproj
+
+tartool/Tools.CommandLine/tags/Release_1.0/Tools.CommandLine.TarTool/Tools.CommandLine.csproj
+
+ <ItemGroup>
+    <ProjectReference Include="..\SharpZipLibSrc\ICSharpCode.SharpZLib.csproj">
+      <Project>{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}</Project>
+      <Name>ICSharpCode.SharpZLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+
+
+dotnet sln todo.sln list
+
+https://learn.microsoft.com/en-us/dotnet/core/tutorials/testing-with-cli
+
+
+
+dotnet new 	dotnet new console --framework net7.0 
+
+
+src/ICSharpCode.SharpZipLib/ICSharpCode.SharpZipLib.csproj
+test/ICSharpCode.SharpZipLib.Tests/ICSharpCode.SharpZipLib.Tests.csproj
+benchmark/ICSharpCode.SharpZipLib.Benchmark/ICSharpCode.SharpZipLib.Benchmark.csproj
+
+dotnet add WinTar/WinTar.csproj reference WinTar/SharpZipLib-1.4.2/src/ICSharpCode.SharpZipLib/ICSharpCode.SharpZipLib.csproj
+dotnet add WinTar/WinTar.csproj reference WinTar/SharpZipLib-1.4.2/test/ICSharpCode.SharpZipLib.Tests/ICSharpCode.SharpZipLib.Tests.csproj
+dotnet add WinTar/WinTar.csproj reference WinTar/SharpZipLib-1.4.2/benchmark/ICSharpCode.SharpZipLib.Benchmark/ICSharpCode.SharpZipLib.Benchmark.csproj
+
+
+
+dotnet run --project ./projects/proj1/proj1.csproj
+
+dotnet run --project test/ICSharpCode.SharpZipLib.Tests/ICSharpCode.SharpZipLib.Tests.csproj --framework net7.0
+
+
+src/ICSharpCode.SharpZipLib/ICSharpCode.SharpZipLib.csproj
+test/ICSharpCode.SharpZipLib.Tests/ICSharpCode.SharpZipLib.Tests.csproj
+benchmark/ICSharpCode.SharpZipLib.Benchmark/ICSharpCode.SharpZipLib.Benchmark.csproj
+
+/home/cabox/workspace/desktop/press/dotnet/dotnet
+
+https://dotnet.microsoft.com/en-us/download/dotnet/7.0
+
+https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-environment-variables#net-sdk-and-cli-environment-variables
+https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code?pivots=dotnet-7-0
+
+https://download.visualstudio.microsoft.com/download/pr/351400ef-f2e6-4ee7-9d1b-4c246231a065/9f7826270fb36ada1bdb9e14bc8b5123/dotnet-sdk-7.0.302-linux-x64.tar.gz
+https://download.visualstudio.microsoft.com/download/pr/c973fb82-ecba-4bcc-b1cc-443d817b9472/f4426b15af724f4baf31a50d204d1ca7/dotnet-sdk-7.0.302-win-x64.zip
+
+https://download.visualstudio.microsoft.com/download/pr/b936641a-57d6-4069-bd32-280020863326/5793e00ff9e9973a01ca735479ff15b3/aspnetcore-runtime-7.0.5-linux-x64.tar.gz
+https://download.visualstudio.microsoft.com/download/pr/82e7d963-e5b6-41fe-84d1-a8c3f1a75bd7/fe22d4a60c66449d3e97a246fc41d10b/aspnetcore-runtime-7.0.5-win-x64.zip
+https://download.visualstudio.microsoft.com/download/pr/dffb1939-cef1-4db3-a579-5475a3061cdd/578b208733c914c7b7357f6baa4ecfd6/windowsdesktop-runtime-7.0.5-win-x64.exe
+
+https://download.visualstudio.microsoft.com/download/pr/e577f9c3-cf57-4f3c-aa2f-2c0c9ce7b9c2/16911adb0b0ac64ece205a8cf96a061d/dotnet-runtime-7.0.5-linux-x64.tar.gz
+https://download.visualstudio.microsoft.com/download/pr/6cc30660-3d0b-48f2-8fbe-4a0301c46363/0776581a6c71da0f01290f08c9493581/dotnet-runtime-7.0.5-win-x64.zip
+
+
+wget https://download.visualstudio.microsoft.com/download/pr/351400ef-f2e6-4ee7-9d1b-4c246231a065/9f7826270fb36ada1bdb9e14bc8b5123/dotnet-sdk-7.0.302-linux-x64.tar.gz
+wget https://download.visualstudio.microsoft.com/download/pr/c973fb82-ecba-4bcc-b1cc-443d817b9472/f4426b15af724f4baf31a50d204d1ca7/dotnet-sdk-7.0.302-win-x64.zip
+wget https://download.visualstudio.microsoft.com/download/pr/b936641a-57d6-4069-bd32-280020863326/5793e00ff9e9973a01ca735479ff15b3/aspnetcore-runtime-7.0.5-linux-x64.tar.gz
+wget https://download.visualstudio.microsoft.com/download/pr/82e7d963-e5b6-41fe-84d1-a8c3f1a75bd7/fe22d4a60c66449d3e97a246fc41d10b/aspnetcore-runtime-7.0.5-win-x64.zip
+wget https://download.visualstudio.microsoft.com/download/pr/dffb1939-cef1-4db3-a579-5475a3061cdd/578b208733c914c7b7357f6baa4ecfd6/windowsdesktop-runtime-7.0.5-win-x64.exe
+wget https://download.visualstudio.microsoft.com/download/pr/e577f9c3-cf57-4f3c-aa2f-2c0c9ce7b9c2/16911adb0b0ac64ece205a8cf96a061d/dotnet-runtime-7.0.5-linux-x64.tar.gz
+wget https://download.visualstudio.microsoft.com/download/pr/6cc30660-3d0b-48f2-8fbe-4a0301c46363/0776581a6c71da0f01290f08c9493581/dotnet-runtime-7.0.5-win-x64.zip
+
+
+# BUG: error MSB4018: The reference assemblies for framework ".NETFramework, Version=v7.0" were not found (Complete)
+https://learn.microsoft.com/en-us/dotnet/standard/frameworks
+net11
+dotnet.csproj
+project.assets.json
+
+# BUG: error MSB3644: The reference assemblies for framework ".NETFramework,Version=v1.1" were not found
+dotnet-targeting-pack-1?
+pkgs.org
+
+# LEGACY: .NET v1 absent
+7.5.211 maintained v7 (2023)
+
+# TODO: Install .NET v2
+# TODO: Install .NET v7 (Complete)
