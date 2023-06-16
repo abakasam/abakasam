@@ -77,10 +77,8 @@ done
 
 # TODO: Create TODO (Complete)
 
-rm $todofile
-touch $todofile
+
 
 for comment in "${comments[@]}"
 do
 echo "$comment"
-echo "$comment" >> $todofile
