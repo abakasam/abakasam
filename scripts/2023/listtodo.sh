@@ -61,6 +61,13 @@ done
 lines=()
 done
 
+<<<<<<< HEAD:scripts/2023/listtodo.sh
+=======
+# TODO: Create TODO (Complete)
+
+
+
+>>>>>>> df2f03d796e8d02d2a5a417e9f9eda8ec724f2c1:scripts/2023/todos.sh
 for comment in "${comments[@]}"
 do
 echo "$comment"
