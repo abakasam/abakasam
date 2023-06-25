@@ -4,41 +4,36 @@ style
  only use developer comments
 
 healthly programming
- check Codetree for repository (=project) !repository=user, until finish milestones [8/13/2023]
+ check Codetree for repository
  check NEWS for repository
  create blog topic before coding
- know what developer comment worked on, use message in git commit
+ always know developer comment working on
 
 codetree workflow
- label (developer comments)
- request
- pending
+ label
  size (1, 5, 10, 15, 20: hours)
- in progress
  milestone (due date)
- testing
- done
  epic (group issues)
 
 funding
- individual - buymeacoffee
- product - opencollective
+ individual  buymeacoffee
+ product     opencollective
 
 qualify publish
- support date (support: 2/3/2015)
+ list (username-products)
  readme
  source
  script (.sh, .ps1)
  documentaion
- pack (tar.gz, zip - exe+msi)
+ pack (tar.gz, zip including exe+msi)
  stackshare
 
 publish
- repository		GitHub: Software (Git), Azure: Video Game (Perforce-Git)
+ repository	GitHub: Software (Git), Azure: Video Game (Perforce-Git)
  release		(Linux / Windows) [64-bit]
 
-  INSTALL		(Web, Windows, Chrome, Mac)
-  README		Minimum: Logo, Description, Architecture, Examples
+  INSTALL		Operating System (Web, Windows, Chrome, Mac)
+  README		Minimum: Logo, Description, Architecture (Modules / Process / Runtime: hardware > system > application > user > network)
   LICENSE		MIT
   NEWS			Semantic Versioning: (Branch) Codename.Feature.Count (Release) Codename.Year.Count
 
@@ -54,34 +49,34 @@ forking
 developer comments / labels
 	0a	TEST		
 	0b	FEATURE		
-	1	TODO		
+	1	  TODO		
 	1a	IMPROVE		
 	1b	REDO		 
-	2	BUG			
+	2	  BUG			
 	2a	MEMORY		 
 	2b	LEGACY		 
 
 developer 
  comment status (Example / TODO: message (status))
-				Codetree	
+				    Codetree	
 	Complete	
  document status
-    wiki		Wikidot
-	blog		CodeProject (rss) 
-	log			LogOwl (echo)
-	site		Docusaurus 
+  wiki		  Wikidot
+	blog		  CodeProject (rss) 
+	log			  LogOwl (echo)
+	site		  Docusaurus 
 
 reports
- code					u 
+ code					        u 
   codeanywhere
   products				
   todo					
   changelog				
- project				u
+ project				      u
   programming meeting	
   project portfolio		
   progress report		
- document				m
+ document				      m
   bug
   feature
   blog					

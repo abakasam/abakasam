@@ -1,3 +1,137 @@
+weekly
+github.com/abakasam/abakasam/NEWS
+github.com/username/username/NEWS
+github.com/username/repository/NEWS
+
+
+failed effort?
+
+where are deadline!
+as specified by owner...
+current work?
+
+
+!repository=user, until finish milestones [8/13/2023]
+
+while read line
+do
+	break
+done < $blog
+
+
+files=$(find $path -name "$username-blog")
+for file in ${files[@]}
+do
+	echo $file
+done
+
+  article["Body"]=$(cat $fileblog)
+
+  $blogurl=""
+
+  feeditem="feed.item({ 
+    title: ${article["Title"]},
+    description: ${article["Description"]},
+    url: $blogurl$blogname,
+    author: ${article["Author"]},
+    date: ${article["Date"]},
+  )"
+  
+  #>> codeproject.blogs
+
+# TODO: Create .rss feed item
+
+  IFS=","; read -ra part <<< "$line"
+  
+  article["Date"]=${part[0]}
+  article["Title"]=${part[1]}
+  article["Description"]=${part[2]}
+
+  article["Abstract"]=${part[3]}
+
+  article["Author"]=${part[4]}
+  article["Email"]=${part[5]}
+
+  article["Language"]=${part[6]}
+  article["Platform"]=${part[7]}
+  article["Technology"]=${part[8]}
+
+  article["Topic"]=${part[9]}
+  article["Section"]=${part[10]}
+  article["SubSection"]=${part[11]}
+
+  article["License"]=${part[12]}
+  
+  echo $line
+filefeed=""
+fileitems=""
+
+feed=$(cat $filefeed)
+items=$(cat $fileitems)
+
+  while read line
+  do
+    
+    echo $line
+
+
+
+    break
+  done < $blog
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
+
+![Description](URL)
+
+https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#images
+
+dev server (node) / prod server (apache)
+
+Module / Work assignments
+Conceptual / Functions
+Process / Programs <<<<---------------
+ module /
+ organizational /
+ physical /
+ process /
+ runtime /
+ team /
+ uses /
+ 
+ module / README (at least dependencies)
+organizational / uml
+physical / hardware
+process / framework
+runtime / system
+team / design patterns (=file/folder)
+uses / diagram (logic)
+ 
+ module / README (at least dependencies)
+organizational / uml
+physical / hardware
+process / framework
+runtime / system
+team / design patterns
+uses / diagram (logic)
+ 
+ module / README
+organizational / uml
+physical / hardware
+process / framework
+runtime / system
+team / design patterns
+uses / diagram (logic)
+
+Physical / Hardware
+Uses / Programs
+Calls / Programs
+Data flow / Functional tasks
+Control flow / System states or modes
+Class / Objects
+
+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
+https://www.cnblogs.com/logtion/p/5727568.html
+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
 
 TODO: Create script to list TODOs in folder
 
