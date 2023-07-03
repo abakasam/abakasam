@@ -1,3 +1,112 @@
+TODO: Connect to Microsoft Band
+TODO: install git (Complete)
+TODO: create local nuget repository
+
+https://learn.microsoft.com/en-us/nuget/hosting-packages/overview
+NuGet.Server ... nuget.org
+
+TODO: organize syncs including repositories (Complete)
+
+desktop=workspace - windows=linux
+azure/codeanywhere - hp envy x360/gitpod
+github > onedrive/mediafire
+codetree > render > codeproject
+
+TODO: clean environment for os (Complete)
+
+/home/cabox/workspace (CentOS)
+/Users/Sam/Desktop (Windows 8.1)
+(BeOS)
+
+/home/cabox/workspace/<username>/local
+/Users/Sam/Desktop/<username>/local
+(BeOS)
+
+/sys /home /bin
+/Windows /Users /Program Files
+[system user application]
+
+desktop
+downloads
+products
+<username>/local
+
+desktop
+desktop/downloads
+desktop/products
+desktop/<username>/local
+
+TODO: Create scripts to set environment variables 
+local/bin.sh
+local/bin.ps1
+
+BUG: Git filename too long (Complete)
+
+git config --system core.longpaths true
+
+TODO: start wpf with function without event
+
+TODO: log in wpf without in gui
+
+System.Diagnostics
+Debug.WriteLine
+
+BUG: Debug.WriteLine fail, needed output or terminal for logging
+BUG: BandClientManager not in context as described in documentation
+BUG: Powershell git failure curl
+
+TODO: sync products files on desktop with onedrive
+
+https://github.com/OneDrive/onedrive-api-docs
+
+BUG: Disappering icon for version of onedrive
+
+https://learn.microsoft.com/en-us/dotnet/csharp/methods
+https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using-directive#how-to-use-the-visual-basic-my-namespace
+
+BUG: error: rpc failed; curl 56 openssl ssl_read: connection was reset, errno 10054 (Complete)
+
+https://www.youtube.com/watch?v=dHRUjSs_dio
+
+git config http.postBuffer 524288000
+
+git config -add -system http.postBuffer
+https://git-scm.com/docs/git-config
+
+TODO: Correct standards for Codetree healthy programming (Complete)
+
+user=project
+
+healthly programming
+ check Codetree for repository
+ check NEWS for repository
+ create blog topic before coding
+ always know developer comment working on
+
+codetree workflow
+ label
+ size (1, 5, 10, 15, 20: hours)
+ milestone (due date)
+ epic (group issues)
+
+qualify publish
+ list (username-products)
+ readme
+ source
+ script (.sh, .ps1)
+ documentaion
+ pack (tar.gz, zip including exe+msi)
+ stackshare
+
+ https://www.youtube.com/watch?v=06rPaupyCvs
+
+PATH=$PATH:/home/cabox/workspace/abakasam/local/bin/node-10.9.0/bin/
+node /home/cabox/workspace/abakasam/local/bin/docusaurus-init-1.14.7/node_modules/.bin/docusaurus-init
+
+
+docusaurus -- .md > website
+
+
 weekly
 github.com/abakasam/abakasam/NEWS
 github.com/username/username/NEWS

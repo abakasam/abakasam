@@ -24,7 +24,7 @@ qualify publish
  readme
  source
  script (.sh, .ps1)
- documentaion
+ documentaion (file / .md > .html > .chm)
  pack (tar.gz, zip including exe+msi)
  stackshare
 
@@ -64,7 +64,7 @@ developer
   wiki		  Wikidot
 	blog		  CodeProject (rss) 
 	log			  LogOwl (echo)
-	site		  Docusaurus 
+	site		  Docusaurus (webser/render)
 
 reports
  code					        u 
@@ -89,9 +89,10 @@ reports
   codetree
 
 organizations
- abakasam Virus Writing
- Asail    Game Development
- Aquaogen Software Engineering
- Drifty   Web Development
+ abakasam Virus Writing         Buy Me A Coffee
+ Asail    Game Development      OpenCollective
+ Aquaogen Software Engineering  OpenCollective
+ Drifty   Web Development       Buy Me A Coffee
+ (suspended)
  Sunsoft  Robotics Engineering
- Whisper  Cryptography
+ Whisper  Cryptography          

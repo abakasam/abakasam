@@ -1,53 +1,23 @@
 
 BLOGS
-Date Language Title Description=Language Platform Technology=Language Topic Subtopic Subsection Type Abstract
 
+Date, Title, Description, Abstract, Author, Email, Language, Platform, Technology, Topic, Section, SubSection, License
 
-03132023 Basic Network Policy
-05252023 English Codetree Project Management
+03132023, Basic Network Policy
+05252023, English Codetree Project Management
+06182023, Project Owner Deadlines
 
 PRODUCTS
+
+Scripts   bin.sh
+Scripts   bin.ps1
 
 BOOKS
 
 Apress		Google
 Manning		not Google 
 O'Reilly	Programming 
-Dover		Math 
-Wiley		Logic
+Dover		  Math 
+Wiley	  	Logic
 Penguin		Novels 
-Symantec	Theoretical 
-
-ReactOS
-	Cyanogenmod			CyanogenMod: Installation und Praxis, by Christian Immler
-	Linux Kernel		
-	CentOS (7.2)		
-	Windows (8)			
-	Bash					
-		Git					Version Control with Git, by Jon Loeliger
-		Regular Expressions	Mastering Regular Expression, by Jeffrey Friedl
-		C++					
-		X Windows System	
-		Powershell			
-	Ionic					Mobile App Development with Ionic 2, by Chris Griffith
-		Node				Node In Action, by Evan Hahn
-		HTML 				Dynamic HTML: The Definitive Reference, by Danny Goodman
-		CSS					
-		Javascript			Javascript: The Definitive Guide, by David Flanagan
-		XML					
-		Bootstrap			
-		Angular				Pro AngularJS, by Adam Freeman
-		JQuery				JQuery In Action, by Bibeault Katz
-		Apache Tomcat			
-			PHP					PHP: In A Nutshell, by Paul Hudson
-			SQL					
-			MongoDB				MongoDB: The Definitive Guide, by Kristina Chodorow	
-
-Geometry				
-	Proofs				
-	Graphviz
-	GAP
-	Macaulay
-	Maxima
-	Latex
-	Vamos
+Symantec	Theoretical
