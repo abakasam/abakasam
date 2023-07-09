@@ -1,0 +1,13 @@
+store       http
+service		  http
+system		  .iso
+application	.msi
+tool		    .rar
+framework	  .zip
+library		  .tar.bz2
+hardware	
+language	
+source		  .tar.gz
+
+scripts		  .ps1 .sh
+document	  .txt
