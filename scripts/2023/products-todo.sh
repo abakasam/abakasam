@@ -1,4 +1,4 @@
-# ./todo-products.sh <path> <product extension>
+#./todo-products.sh <path> <product extension>
 # ./todo-products.sh /home/cabox/workspace/abakasam tgz >> PRODUCTS
 
 extension=$2

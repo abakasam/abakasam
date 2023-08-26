@@ -4,7 +4,7 @@ style
  only use developer comments
 
 healthly programming
- check Codetree for repository
+ check Codetree for repository (create TODO with todo-products.sh: https://github.com/abakasam/abakasam/blob/main/scripts/2023/todo-products.sh)
  check NEWS for repository
  create blog topic before coding
  always know developer comment working on
@@ -20,7 +20,7 @@ funding
  product     opencollective
 
 qualify publish
- list (username-products)
+ list (username-products, create PRODUCTS with products-todo.sh: https://github.com/abakasam/abakasam/blob/main/scripts/2023/products-todo.sh)
  readme
  source
  script (.sh, .ps1)

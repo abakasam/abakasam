@@ -1,6 +1,6 @@
 # ./todo-products.sh <path> <language extension>
 # ./todo-products.sh . sh >> TODO
-# ./todo-products.sh /home/cabox/workspace/abakasam/blog log >> TODO
+# ./todo-products.sh . /home/cabox/workspace/abakasam/blog log >> TODO
 
 language=$2
 path=$1

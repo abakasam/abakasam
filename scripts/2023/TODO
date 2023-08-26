@@ -22,3 +22,57 @@
 6195 // BUG: undefined on first database call /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
 7517 types=(TODO IMPROVE REDO BUG MEMORY LEGACY) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
 7565 # TODO: Create TODO (Complete) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+./todo-products.sh <path> <language extension>
+./todo-products.sh . sh >> TODO
+./todo-products.sh /home/cabox/workspace/abakasam/blog js >> TODO
+150 # TODO: Create .rss feed item /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+473 # BUG: error MSB4018: The reference assemblies for framework ".NETFramework, Version=v7.0" were not found (Complete) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+479 # BUG: error MSB3644: The reference assemblies for framework ".NETFramework,Version=v1.1" were not found /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+483 # LEGACY: .NET v1 absent /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+486 # TODO: Install .NET v2 /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+825 // TODO: Route failure without any debug info (Complete) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+827 // TODO: Set headers for express globally https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers (Complete) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+918 # TODO: GitHub get an issue /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+931 # TODO: Create an issue /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1000 // TODO: Fix express callback with next in request /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1007 // TODO: Parse URL parameters from slug /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1010 // TODO: Find public_html from command not code /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1013 // TODO: Local node databases not system or linux /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1704 # TODO: Argument for local of user /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1708 # TODO: Use .conf to set PATH for environment /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5012 # TODO: Test Apache Tomcat 7 /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5022 # TODO: Install JRE6 for Apache Tomcat 7 /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5031 # TODO: Set Apache Tomcat 7 environment variables /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5041 # TODO: Change terminal colors /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5227 # TODO: Add program shortcuts to system /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5562 // TODO: Create HTTP Methods /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+6195 // BUG: undefined on first database call /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+7517 types=(TODO IMPROVE REDO BUG MEMORY LEGACY) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+7565 # TODO: Create TODO (Complete) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+./todo-products.sh <path> <language extension>
+./todo-products.sh . sh >> TODO
+./todo-products.sh /home/cabox/workspace/abakasam/blog js >> TODO
+150 # TODO: Create .rss feed item /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+473 # BUG: error MSB4018: The reference assemblies for framework ".NETFramework, Version=v7.0" were not found (Complete) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+479 # BUG: error MSB3644: The reference assemblies for framework ".NETFramework,Version=v1.1" were not found /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+483 # LEGACY: .NET v1 absent /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+486 # TODO: Install .NET v2 /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+825 // TODO: Route failure without any debug info (Complete) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+827 // TODO: Set headers for express globally https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers (Complete) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+918 # TODO: GitHub get an issue /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+931 # TODO: Create an issue /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1000 // TODO: Fix express callback with next in request /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1007 // TODO: Parse URL parameters from slug /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1010 // TODO: Find public_html from command not code /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1013 // TODO: Local node databases not system or linux /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1704 # TODO: Argument for local of user /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+1708 # TODO: Use .conf to set PATH for environment /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5012 # TODO: Test Apache Tomcat 7 /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5022 # TODO: Install JRE6 for Apache Tomcat 7 /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5031 # TODO: Set Apache Tomcat 7 environment variables /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5041 # TODO: Change terminal colors /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5227 # TODO: Add program shortcuts to system /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+5562 // TODO: Create HTTP Methods /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+6195 // BUG: undefined on first database call /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+7517 types=(TODO IMPROVE REDO BUG MEMORY LEGACY) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
+7565 # TODO: Create TODO (Complete) /home/cabox/workspace/abakasam/blog/072023-abakasam-change.log
